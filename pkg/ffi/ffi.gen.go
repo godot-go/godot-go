@@ -31,6 +31,9 @@ type GDExtensionInterface struct {
 	MemAlloc                                      GDExtensionInterfaceMemAlloc
 	MemRealloc                                    GDExtensionInterfaceMemRealloc
 	MemFree                                       GDExtensionInterfaceMemFree
+	MemAlloc2                                     GDExtensionInterfaceMemAlloc2
+	MemRealloc2                                   GDExtensionInterfaceMemRealloc2
+	MemFree2                                      GDExtensionInterfaceMemFree2
 	PrintError                                    GDExtensionInterfacePrintError
 	PrintErrorWithMessage                         GDExtensionInterfacePrintErrorWithMessage
 	PrintWarning                                  GDExtensionInterfacePrintWarning
@@ -212,6 +215,9 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.MemAlloc = (GDExtensionInterfaceMemAlloc)(LoadProcAddress("mem_alloc"))
 	x.MemRealloc = (GDExtensionInterfaceMemRealloc)(LoadProcAddress("mem_realloc"))
 	x.MemFree = (GDExtensionInterfaceMemFree)(LoadProcAddress("mem_free"))
+	x.MemAlloc2 = (GDExtensionInterfaceMemAlloc2)(LoadProcAddress("mem_alloc2"))
+	x.MemRealloc2 = (GDExtensionInterfaceMemRealloc2)(LoadProcAddress("mem_realloc2"))
+	x.MemFree2 = (GDExtensionInterfaceMemFree2)(LoadProcAddress("mem_free2"))
 	x.PrintError = (GDExtensionInterfacePrintError)(LoadProcAddress("print_error"))
 	x.PrintErrorWithMessage = (GDExtensionInterfacePrintErrorWithMessage)(LoadProcAddress("print_error_with_message"))
 	x.PrintWarning = (GDExtensionInterfacePrintWarning)(LoadProcAddress("print_warning"))

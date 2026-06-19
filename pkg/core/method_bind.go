@@ -48,6 +48,82 @@ type GoMethodMetadata struct {
 	gdeArgumentsMetadata   []GDExtensionClassMethodArgumentMetadata
 	gdeArgumentTypes       []GDExtensionVariantType
 	gdeDefaultArgumentPtrs []GDExtensionVariantPtr
+	// Lifecycle-managed StringName objects for PropertyInfo structs.
+	// These persist for the lifetime of GoMethodMetadata to prevent
+	// dangling pointers in GDExtensionPropertyInfo.name/class_name fields.
+	// See Task 5.1 in fix-orphan-stringname change.
+	gdeReturnPropNameStringName    StringName
+	gdeReturnPropClassNameStringName StringName
+	gdeReturnPropHintString        String
+	gdeArgPropNameStringNames      []StringName
+	gdeArgPropClassNameStringNames []StringName
+	gdeArgPropHintStrings          []String
+	// Lifecycle-managed StringName for the GD method name.
+	gdeMethodNameStringName StringName
+	// Lifecycle-managed StringName/String for variadic (varargs) argument PropertyInfo.
+	// Only set when IsVariadic is true.
+	gdeVarArgPropClassNameStringName StringName
+	gdeVarArgPropNameStringName      StringName
+	gdeVarArgPropHintString          String
+}
+
+// Destroy cleans up all StringName and String objects stored in this metadata.
+// Must be called once during class unregistration to prevent orphan StringNames.
+// IMPORTANT: Each StringName/String is copied to a local variable and pinned
+// before passing to cgo functions. This satisfies the cgo "Go pointer to unpinned
+// Go pointer" check, since GoMethodMetadata contains reflect.Value (Go pointer).
+func (md *GoMethodMetadata) Destroy() {
+
+	// Only destroy return value PropertyInfo if it was created (non-NIL return type).
+	if md.gdeReturnType != GDEXTENSION_VARIANT_TYPE_NIL {
+		retClassName := md.gdeReturnPropClassNameStringName
+		retName := md.gdeReturnPropNameStringName
+		retHint := md.gdeReturnPropHintString
+		pnr.Pin(&retClassName)
+		pnr.Pin(&retName)
+		pnr.Pin(&retHint)
+		retClassName.Destroy()
+		retName.Destroy()
+		retHint.Destroy()
+	}
+
+	// Destroy argument PropertyInfo StringName/String objects.
+	for i := range md.gdeArgPropClassNameStringNames {
+		className := md.gdeArgPropClassNameStringNames[i]
+		pnr.Pin(&className)
+		className.Destroy()
+	}
+	md.gdeArgPropClassNameStringNames = nil
+	for i := range md.gdeArgPropNameStringNames {
+		name := md.gdeArgPropNameStringNames[i]
+		pnr.Pin(&name)
+		name.Destroy()
+	}
+	md.gdeArgPropNameStringNames = nil
+	for i := range md.gdeArgPropHintStrings {
+		hint := md.gdeArgPropHintStrings[i]
+		pnr.Pin(&hint)
+		hint.Destroy()
+	}
+	md.gdeArgPropHintStrings = nil
+
+	// Destroy the GD method name StringName.
+	methodName := md.gdeMethodNameStringName
+	pnr.Pin(&methodName)
+	methodName.Destroy()
+
+	// Destroy variadic argument StringName/String objects (if variadic method).
+	if md.IsVariadic {
+		varClassName := md.gdeVarArgPropClassNameStringName
+		varName := md.gdeVarArgPropNameStringName
+		varHint := md.gdeVarArgPropHintString
+		pnr.Pin(&varClassName)
+		pnr.Pin(&varName)
+		pnr.Pin(&varHint)
+		varClassName.Destroy()
+		varName.Destroy()
+		varHint.Destroy()
+	}
 }
 
 func NewGoMethodMetadata(
@@ -118,8 +194,23 @@ func NewGoMethodMetadata(
 		zap.Any("type", goReturnType),
 	)
 	returnType := ReflectTypeToGDExtensionVariantType(goReturnType)
+	// Track StringName objects for return value PropertyInfo lifecycle management.
+	// These persist in GoMethodMetadata to prevent dangling pointers.
+	var (
+		returnPropNameStringName    StringName
+		returnPropClassNameStringName StringName
+		returnPropHintString        String
+	)
 	if returnType != GDEXTENSION_VARIANT_TYPE_NIL {
-		returnPropertyInfo = NewSimpleGDExtensionPropertyInfo(className, returnType, goReturnType.Name())
+		returnPropClassNameStringName = NewStringNameWithLatin1Chars(className)
+		returnPropNameStringName = NewStringNameWithLatin1Chars(goReturnType.Name())
+		returnPropHintString = NewStringWithUtf8Chars("")
+		returnPropertyInfo = NewGDExtensionPropertyInfoFromNames(
+			&returnPropClassNameStringName,
+			returnType,
+			&returnPropNameStringName,
+			&returnPropHintString,
+		)
 	}
 	argumentCount := mt.NumIn() - 1
 	if len(argumentNames) > argumentCount {
@@ -136,31 +227,58 @@ func NewGoMethodMetadata(
 	variantTypes := make([]GDExtensionVariantType, argumentCount)
 	argumentsInfo := make([]GDExtensionPropertyInfo, argumentCount)
 	argumentsMetadata := make([]GDExtensionClassMethodArgumentMetadata, argumentCount)
+	// Track StringName objects for argument PropertyInfo lifecycle management.
+	// These persist in GoMethodMetadata to prevent dangling pointers.
+	argPropNameStringNames := make([]StringName, argumentCount)
+	argPropClassNameStringNames := make([]StringName, argumentCount)
+	argPropHintStrings := make([]String, argumentCount)
 	for i := 0; i < argumentCount; i++ {
 		t := mt.In(i + 1)
 		goArgumentTypes[i] = t
 		variantTypes[i] = ReflectTypeToGDExtensionVariantType(t)
-		argumentsInfo[i] = NewSimpleGDExtensionPropertyInfo(className, variantTypes[i], t.Name())
+		argPropClassNameStringNames[i] = NewStringNameWithLatin1Chars(className)
+		argPropNameStringNames[i] = NewStringNameWithLatin1Chars(t.Name())
+		argPropHintStrings[i] = NewStringWithUtf8Chars("")
+		argumentsInfo[i] = NewGDExtensionPropertyInfoFromNames(
+			&argPropClassNameStringNames[i],
+			variantTypes[i],
+			&argPropNameStringNames[i],
+			&argPropHintStrings[i],
+		)
 		argumentsMetadata[i] = GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE
 	}
 	ret := &GoMethodMetadata{
-		ClassName:              className,
-		GdMethodName:           gdMethodName,
-		GoMethodName:           goMethodName,
-		Func:                   fn,
-		GoReturnType:           goReturnType,
-		GoReturnStyle:          returnStyle,
-		GoArgumentTypes:        goArgumentTypes,
-		DefaultArguments:       defaultArguments,
-		IsVariadic:             isVariadicFlaged,
-		IsVirtual:              isVirtual,
-		MethodFlags:            methodFlags,
-		gdeReturnType:          returnType,
-		gdeReturnPropertyInfo:  returnPropertyInfo,
-		gdeArgumentsInfo:       argumentsInfo,
-		gdeArgumentsMetadata:   argumentsMetadata,
-		gdeArgumentTypes:       variantTypes,
-		gdeDefaultArgumentPtrs: defaultArgumentPtrs,
+		ClassName:                    className,
+		GdMethodName:                 gdMethodName,
+		GoMethodName:                 goMethodName,
+		Func:                         fn,
+		GoReturnType:                 goReturnType,
+		GoReturnStyle:                returnStyle,
+		GoArgumentTypes:              goArgumentTypes,
+		DefaultArguments:             defaultArguments,
+		IsVariadic:                   isVariadicFlaged,
+		IsVirtual:                    isVirtual,
+		MethodFlags:                  methodFlags,
+		gdeReturnType:                returnType,
+		gdeReturnPropertyInfo:        returnPropertyInfo,
+		gdeArgumentsInfo:             argumentsInfo,
+		gdeArgumentsMetadata:         argumentsMetadata,
+		gdeArgumentTypes:             variantTypes,
+		gdeDefaultArgumentPtrs:       defaultArgumentPtrs,
+		gdeReturnPropNameStringName:  returnPropNameStringName,
+		gdeReturnPropClassNameStringName: returnPropClassNameStringName,
+		gdeReturnPropHintString:      returnPropHintString,
+		gdeArgPropNameStringNames:    argPropNameStringNames,
+		gdeArgPropClassNameStringNames: argPropClassNameStringNames,
+		gdeArgPropHintStrings:        argPropHintStrings,
+		gdeMethodNameStringName:      NewStringNameWithLatin1Chars(gdMethodName),
+	}
+	// Create variadic argument PropertyInfo StringNames for variadic methods.
+	// These persist in GoMethodMetadata for lifecycle management.
+	if isVariadicFlaged {
+		ret.gdeVarArgPropClassNameStringName = NewStringNameWithLatin1Chars(className)
+		ret.gdeVarArgPropNameStringName = NewStringNameWithLatin1Chars("varargs")
+		ret.gdeVarArgPropHintString = NewStringWithUtf8Chars("")
 	}
 	pnr.Pin(&returnPropertyInfo)
 	pnr.Pin(ret)
@@ -320,9 +438,23 @@ func NewGDExtensionClassMethodInfoFromMethodBind(md *GoMethodMetadata) *GDExtens
 	)
 	returnPropertyInfoPtr := &md.gdeReturnPropertyInfo
 	pnr.Pin(returnPropertyInfoPtr)
+
+	// Pin StringName objects used in return PropertyInfo to prevent GC movement
+	// during the cgo call. These are stored in GoMethodMetadata and persist.
+	if md.gdeReturnType != GDEXTENSION_VARIANT_TYPE_NIL {
+		pnr.Pin(&md.gdeReturnPropNameStringName)
+		pnr.Pin(&md.gdeReturnPropClassNameStringName)
+		pnr.Pin(&md.gdeReturnPropHintString)
+	}
+
 	if md.IsVariadic {
+		// Use variadic argument PropertyInfo StringNames from GoMethodMetadata.
+		// Their lifecycle is managed by GoMethodMetadata.Destroy().
+		pnr.Pin(&md.gdeVarArgPropClassNameStringName)
+		pnr.Pin(&md.gdeVarArgPropNameStringName)
+		pnr.Pin(&md.gdeVarArgPropHintString)
 		argumentsInfo := []GDExtensionPropertyInfo{
-			NewSimpleGDExtensionPropertyInfo(md.ClassName, GDEXTENSION_VARIANT_TYPE_NIL, "varargs"),
+			NewGDExtensionPropertyInfoFromNames(&md.gdeVarArgPropClassNameStringName, GDEXTENSION_VARIANT_TYPE_NIL, &md.gdeVarArgPropNameStringName, &md.gdeVarArgPropHintString),
 		}
 		argumentInfoCount = (uint32)(len(argumentsInfo))
 		argumentInfosPtr = unsafe.SliceData(argumentsInfo)
@@ -341,6 +473,12 @@ func NewGDExtensionClassMethodInfoFromMethodBind(md *GoMethodMetadata) *GDExtens
 		argumentsMetadataPtr = unsafe.SliceData(md.gdeArgumentsMetadata)
 		defaultArgumentCount = (uint32)(len(md.gdeDefaultArgumentPtrs))
 		defaultArgumentPtrsPtr = unsafe.SliceData(md.gdeDefaultArgumentPtrs)
+		// Pin StringName objects used in argument PropertyInfo structs
+		for i := range md.gdeArgPropNameStringNames {
+			pnr.Pin(&md.gdeArgPropNameStringNames[i])
+			pnr.Pin(&md.gdeArgPropClassNameStringNames[i])
+			pnr.Pin(&md.gdeArgPropHintStrings[i])
+		}
 	}
 	pnr.Pin(argumentInfosPtr)
 	pnr.Pin(argumentsMetadataPtr)
@@ -348,10 +486,11 @@ func NewGDExtensionClassMethodInfoFromMethodBind(md *GoMethodMetadata) *GDExtens
 	for i := range md.gdeDefaultArgumentPtrs {
 		pnr.Pin(md.gdeDefaultArgumentPtrs[i])
 	}
-	gdMethodNameStringName := NewStringNameWithLatin1Chars(md.GdMethodName)
-	// defer gdMethodNameStringName.Destroy()
+	// Use the tracked method name StringName from GoMethodMetadata.
+	// Its lifecycle is managed by GoMethodMetadata.Destroy().
+	pnr.Pin(&md.gdeMethodNameStringName)
 	ret := NewGDExtensionClassMethodInfo(
-		gdMethodNameStringName.AsGDExtensionConstStringNamePtr(),
+		md.gdeMethodNameStringName.AsGDExtensionConstStringNamePtr(),
 		unsafe.Pointer(cgo.NewHandle(md)),
 		(GDExtensionClassMethodCall)(C.cgo_method_bind_method_call),
 		(GDExtensionClassMethodPtrCall)(C.cgo_method_bind_method_ptrcall),

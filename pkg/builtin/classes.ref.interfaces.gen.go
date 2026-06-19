@@ -988,6 +988,14 @@ type RefJavaScriptObject interface {
 	Ref
 	TypedPtr() JavaScriptObject
 }
+type RefJointLimitation3D interface {
+	Ref
+	TypedPtr() JointLimitation3D
+}
+type RefJointLimitationCone3D interface {
+	Ref
+	TypedPtr() JointLimitationCone3D
+}
 type RefKinematicCollision2D interface {
 	Ref
 	TypedPtr() KinematicCollision2D
@@ -1172,6 +1180,10 @@ type RefOpenXRAnalogThresholdModifier interface {
 	Ref
 	TypedPtr() OpenXRAnalogThresholdModifier
 }
+type RefOpenXRAnchorTracker interface {
+	Ref
+	TypedPtr() OpenXRAnchorTracker
+}
 type RefOpenXRBindingModifier interface {
 	Ref
 	TypedPtr() OpenXRBindingModifier
@@ -1207,6 +1219,106 @@ type RefOpenXRInteractionProfile interface {
 type RefOpenXRInterface interface {
 	Ref
 	TypedPtr() OpenXRInterface
+}
+type RefOpenXRMarkerTracker interface {
+	Ref
+	TypedPtr() OpenXRMarkerTracker
+}
+type RefOpenXRPlaneTracker interface {
+	Ref
+	TypedPtr() OpenXRPlaneTracker
+}
+type RefOpenXRSpatialCapabilityConfigurationAnchor interface {
+	Ref
+	TypedPtr() OpenXRSpatialCapabilityConfigurationAnchor
+}
+type RefOpenXRSpatialCapabilityConfigurationAprilTag interface {
+	Ref
+	TypedPtr() OpenXRSpatialCapabilityConfigurationAprilTag
+}
+type RefOpenXRSpatialCapabilityConfigurationAruco interface {
+	Ref
+	TypedPtr() OpenXRSpatialCapabilityConfigurationAruco
+}
+type RefOpenXRSpatialCapabilityConfigurationBaseHeader interface {
+	Ref
+	TypedPtr() OpenXRSpatialCapabilityConfigurationBaseHeader
+}
+type RefOpenXRSpatialCapabilityConfigurationMicroQrCode interface {
+	Ref
+	TypedPtr() OpenXRSpatialCapabilityConfigurationMicroQrCode
+}
+type RefOpenXRSpatialCapabilityConfigurationPlaneTracking interface {
+	Ref
+	TypedPtr() OpenXRSpatialCapabilityConfigurationPlaneTracking
+}
+type RefOpenXRSpatialCapabilityConfigurationQrCode interface {
+	Ref
+	TypedPtr() OpenXRSpatialCapabilityConfigurationQrCode
+}
+type RefOpenXRSpatialComponentAnchorList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentAnchorList
+}
+type RefOpenXRSpatialComponentBounded2DList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentBounded2DList
+}
+type RefOpenXRSpatialComponentBounded3DList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentBounded3DList
+}
+type RefOpenXRSpatialComponentData interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentData
+}
+type RefOpenXRSpatialComponentMarkerList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentMarkerList
+}
+type RefOpenXRSpatialComponentMesh2DList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentMesh2DList
+}
+type RefOpenXRSpatialComponentMesh3DList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentMesh3DList
+}
+type RefOpenXRSpatialComponentParentList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentParentList
+}
+type RefOpenXRSpatialComponentPersistenceList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentPersistenceList
+}
+type RefOpenXRSpatialComponentPlaneAlignmentList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentPlaneAlignmentList
+}
+type RefOpenXRSpatialComponentPlaneSemanticLabelList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentPlaneSemanticLabelList
+}
+type RefOpenXRSpatialComponentPolygon2DList interface {
+	Ref
+	TypedPtr() OpenXRSpatialComponentPolygon2DList
+}
+type RefOpenXRSpatialContextPersistenceConfig interface {
+	Ref
+	TypedPtr() OpenXRSpatialContextPersistenceConfig
+}
+type RefOpenXRSpatialEntityTracker interface {
+	Ref
+	TypedPtr() OpenXRSpatialEntityTracker
+}
+type RefOpenXRSpatialQueryResultData interface {
+	Ref
+	TypedPtr() OpenXRSpatialQueryResultData
+}
+type RefOpenXRStructureBase interface {
+	Ref
+	TypedPtr() OpenXRStructureBase
 }
 type RefOptimizedTranslation interface {
 	Ref
@@ -1692,6 +1804,10 @@ type RefSky interface {
 	Ref
 	TypedPtr() Sky
 }
+type RefSocketServer interface {
+	Ref
+	TypedPtr() SocketServer
+}
 type RefSphereMesh interface {
 	Ref
 	TypedPtr() SphereMesh
@@ -1728,6 +1844,10 @@ type RefStreamPeerGZIP interface {
 	Ref
 	TypedPtr() StreamPeerGZIP
 }
+type RefStreamPeerSocket interface {
+	Ref
+	TypedPtr() StreamPeerSocket
+}
 type RefStreamPeerTCP interface {
 	Ref
 	TypedPtr() StreamPeerTCP
@@ -1735,6 +1855,10 @@ type RefStreamPeerTCP interface {
 type RefStreamPeerTLS interface {
 	Ref
 	TypedPtr() StreamPeerTLS
+}
+type RefStreamPeerUDS interface {
+	Ref
+	TypedPtr() StreamPeerUDS
 }
 type RefStyleBox interface {
 	Ref
@@ -1911,6 +2035,10 @@ type RefTweener interface {
 type RefUDPServer interface {
 	Ref
 	TypedPtr() UDPServer
+}
+type RefUDSServer interface {
+	Ref
+	TypedPtr() UDSServer
 }
 type RefUPNP interface {
 	Ref

@@ -22,11 +22,10 @@ import (
 
 func ClassDBAddPropertyGroup(t GDClass, p_name string, p_prefix string) {
 	cn := t.GetClassName()
-	if _, ok := Internal.GDRegisteredGDClasses.Get(cn); !ok {
+	ci, ok := Internal.GDRegisteredGDClasses.Get(cn)
+	if !ok {
 		panic(fmt.Sprintf(`Trying to add property group "%s" to non-existing class "%s".`, p_name, cn))
 	}
-	className := NewStringNameWithLatin1Chars(cn)
-	defer className.Destroy()
 	name := NewStringWithUtf8Chars(p_name)
 	defer name.Destroy()
 	prefix := NewStringWithUtf8Chars(p_prefix)
@@ -36,9 +35,13 @@ func ClassDBAddPropertyGroup(t GDClass, p_name string, p_prefix string) {
 		zap.String("name", p_name),
 		zap.String("prefix", p_prefix),
 	)
+	cnName := ci.NameStringName
+	pnr.Pin(&cnName)
+	pnr.Pin(&name)
+	pnr.Pin(&prefix)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyGroup(
 		FFI.Library,
-		className.AsGDExtensionConstStringNamePtr(),
+		cnName.AsGDExtensionConstStringNamePtr(),
 		name.AsGDExtensionConstStringPtr(),
 		prefix.AsGDExtensionConstStringPtr(),
 	)
@@ -46,11 +49,10 @@ func ClassDBAddPropertyGroup(t GDClass, p_name string, p_prefix string) {
 
 func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
 	cn := t.GetClassName()
-	if _, ok := Internal.GDRegisteredGDClasses.Get(cn); !ok {
+	ci, ok := Internal.GDRegisteredGDClasses.Get(cn)
+	if !ok {
 		panic(fmt.Sprintf(`Trying to add property sub-group "%s" to non-existing class "%s".`, p_name, cn))
 	}
-	className := NewStringNameWithLatin1Chars(cn)
-	defer className.Destroy()
 	name := NewStringWithUtf8Chars(p_name)
 	defer name.Destroy()
 	prefix := NewStringWithUtf8Chars(p_prefix)
@@ -60,9 +62,13 @@ func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
 		zap.String("name", p_name),
 		zap.String("prefix", p_prefix),
 	)
+	cnName := ci.NameStringName
+	pnr.Pin(&cnName)
+	pnr.Pin(&name)
+	pnr.Pin(&prefix)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertySubgroup(
 		FFI.Library,
-		className.AsGDExtensionConstStringNamePtr(),
+		cnName.AsGDExtensionConstStringNamePtr(),
 		name.AsGDExtensionConstStringPtr(),
 		prefix.AsGDExtensionConstStringPtr(),
 	)
@@ -122,21 +128,21 @@ func ClassDBAddProperty(
 	}
 	// register property with plugin
 	ci.PropertyNameSet[pn] = struct{}{}
-	className := NewStringNameWithLatin1Chars(cn)
-	defer className.Destroy()
 	propName := NewStringNameWithLatin1Chars(pn)
 	defer propName.Destroy()
 	hint := NewStringWithUtf8Chars("")
 	defer hint.Destroy()
+	pnr.Pin(&hint)
 	// register with Godot
 	prop_info := NewGDExtensionPropertyInfo(
-		className.AsGDExtensionConstStringNamePtr(),
+		ci.NameStringName.AsGDExtensionConstStringNamePtr(),
 		p_property_type,
 		propName.AsGDExtensionConstStringNamePtr(),
 		uint32(PROPERTY_HINT_NONE),
 		hint.AsGDExtensionConstStringPtr(),
 		uint32(PROPERTY_USAGE_DEFAULT),
 	)
+	pnr.Pin(&prop_info)
 	snSetterGDName := NewStringNameWithLatin1Chars(setter.GdMethodName)
 	defer snSetterGDName.Destroy()
 	snGetterGDName := NewStringNameWithLatin1Chars(getter.GdMethodName)
@@ -146,9 +152,14 @@ func ClassDBAddProperty(
 		zap.String("name", p_property_name),
 		zap.Int("variant_type", int(p_property_type)),
 	)
+	cnName := ci.NameStringName
+	pnr.Pin(&cnName)
+	pnr.Pin(&propName)
+	pnr.Pin(&snSetterGDName)
+	pnr.Pin(&snGetterGDName)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed(
 		FFI.Library,
-		ci.NameAsStringNamePtr,
+		cnName.AsGDExtensionConstStringNamePtr(),
 		&prop_info,
 		snSetterGDName.AsGDExtensionConstStringNamePtr(),
 		snGetterGDName.AsGDExtensionConstStringNamePtr(),
@@ -177,44 +188,59 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		return
 	}
 	ci.SignalNameSet[signalName] = struct{}{}
+
+	// Build temporary StringName/String objects for signal parameter PropertyInfo.
+	// Godot copies the pointer data from the PropertyInfo array, so these can be
+	// destroyed immediately after the registration call.
+	paramSnNames := make([]StringName, len(params))
+	paramHintStrings := make([]String, len(params))
 	paramArr := make([]GDExtensionPropertyInfo, len(params))
 	for i, p := range params {
-		snTypeName := NewStringNameWithLatin1Chars(typeName)
-		defer snTypeName.Destroy()
-		snName := NewStringNameWithLatin1Chars(p.Name)
-		defer snName.Destroy()
-		hintString := NewStringWithUtf8Chars("")
-		defer hintString.Destroy()
+		paramSnNames[i] = NewStringNameWithLatin1Chars(p.Name)
+		paramHintStrings[i] = NewStringWithUtf8Chars("")
 		paramArr[i] = NewGDExtensionPropertyInfo(
-			snTypeName.AsGDExtensionConstStringNamePtr(),
+			ci.NameStringName.AsGDExtensionConstStringNamePtr(),
 			p.Type,
-			snName.AsGDExtensionConstStringNamePtr(),
+			paramSnNames[i].AsGDExtensionConstStringNamePtr(),
 			(uint32)(PROPERTY_HINT_NONE),
-			hintString.AsGDExtensionConstStringPtr(),
+			paramHintStrings[i].AsGDExtensionConstStringPtr(),
 			(uint32)(PROPERTY_USAGE_DEFAULT),
 		)
-		// defer paramArr[i].Destroy()
 	}
+
 	var pi *GDExtensionPropertyInfo
 	if len(paramArr) > 0 {
 		pi = (*GDExtensionPropertyInfo)(unsafe.Pointer(&paramArr[0]))
+		pnr.Pin(&paramArr)
 	} else {
 		pi = (*GDExtensionPropertyInfo)(nullptr)
 	}
-	snTypeName := NewStringNameWithLatin1Chars(typeName)
-	defer snTypeName.Destroy()
+
+	// Store the signal name StringName in ClassInfo for lifecycle management.
+	// Godot retains a reference to this StringName in its ClassDB, so we must
+	// not destroy it until the class is unregistered (handled in ClassInfo.Destroy()).
 	snSignalName := NewStringNameWithLatin1Chars(signalName)
-	defer snSignalName.Destroy()
+	ci.SignalNameStringNames[signalName] = snSignalName
 	log.Info("register signal",
 		zap.String("class", typeName),
 		zap.String("name", signalName),
 	)
+	cnName := ci.NameStringName
+	pnr.Pin(&cnName)
+	pnr.Pin(&snSignalName)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassSignal(
 		FFI.Library,
-		snTypeName.AsGDExtensionConstStringNamePtr(),
+		cnName.AsGDExtensionConstStringNamePtr(),
 		snSignalName.AsGDExtensionConstStringNamePtr(),
 		pi,
 		GDExtensionInt(len(params)))
+
+	// Destroy temporary signal parameter StringNames and hint strings.
+	// Godot already copied the pointer data from the PropertyInfo array above.
+	for i := range paramSnNames {
+		paramSnNames[i].Destroy()
+		paramHintStrings[i].Destroy()
+	}
 }
 
 func ClassDBBindMethod[T GDClass](
@@ -331,9 +357,12 @@ func classDBBindMethod[T GDClass](
 		)
 	}
 	// and register with godot
+	cnName := ci.NameStringName
+	pnr.Pin(&cnName)
+	pnr.Pin(cmi)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassMethod(
 		FFI.Library,
-		ci.NameAsStringNamePtr,
+		cnName.AsGDExtensionConstStringNamePtr(),
 		cmi,
 	)
 }
@@ -392,6 +421,9 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 		zap.String("const", snConstantName.ToUtf8()),
 		zap.Int("value", (int)(p_constant_value)),
 	)
+	pnr.Pin(&snTypeName)
+	pnr.Pin(&snEnumName)
+	pnr.Pin(&snConstantName)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant(
 		FFI.Library,
 		snTypeName.AsGDExtensionConstStringNamePtr(),
@@ -506,6 +538,9 @@ func ClassDBRegisterClass[T Object](
 		zap.String("parent_type", parentName),
 	)
 	// register with Godot
+	pnr.Pin(&snName)
+	pnr.Pin(&snParentName)
+	pnr.Pin(&info)
 	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass4(
 		(GDExtensionClassLibraryPtr)(FFI.Library),
 		snName.AsGDExtensionConstStringNamePtr(),
@@ -532,17 +567,23 @@ func ClassDBUnregisterClass[T Object]() {
 	Internal.GDRegisteredGDClasses.Delete(className)
 	name := NewStringNameWithLatin1Chars(className)
 	defer name.Destroy()
+	pnr.Pin(&name)
 	CallFunc_GDExtensionInterfaceClassdbUnregisterExtensionClass(
 		FFI.Library,
 		name.AsGDExtensionConstStringNamePtr(),
 	)
-	for n, mb := range cl.VirtualMethodMap {
-		delete(cl.VirtualMethodMap, n)
-		mb.ClassMethodInfo.Destroy()
+	for _, mb := range cl.VirtualMethodMap {
+		// Pin metadata before Destroy to satisfy cgo "Go pointer to unpinned Go pointer" check.
+		// GoMethodMetadata contains reflect.Value (Go pointer) which must be pinned when
+		// passing StringName fields to cgo functions.
+		pnr.Pin(&mb.GoMethodMetadata)
+		mb.GoMethodMetadata.Destroy()
 	}
-	for n, mb := range cl.MethodMap {
-		delete(cl.MethodMap, n)
-		mb.ClassMethodInfo.Destroy()
+	cl.VirtualMethodMap = nil
+	for _, mb := range cl.MethodMap {
+		pnr.Pin(&mb.GoMethodMetadata)
+		mb.GoMethodMetadata.Destroy()
 	}
+	cl.MethodMap = nil
 	cl.Destroy()
 }

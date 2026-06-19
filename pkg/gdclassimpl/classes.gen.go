@@ -4165,6 +4165,80 @@ func (cx *AimModifier3DImpl) IsUsingSecondaryRotation(
 	return ret
 }
 
+/* SetRelative implements AimModifier3D.set_relative:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *AimModifier3DImpl) SetRelative(
+	index int32,
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("AimModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_relative")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		300928843,
+	)
+	if fn == nil {
+		panic("could not find method function AimModifier3D.set_relative (300928843)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsRelative implements AimModifier3D.is_relative:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *AimModifier3DImpl) IsRelative(
+	index int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("AimModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_relative")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function AimModifier3D.is_relative (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type AnimatableBody2DImpl struct {
 	StaticBody2DImpl
 }
@@ -15371,6 +15445,73 @@ func (cx *AnimationNodeOneShotImpl) IsLoopBrokenAtEnd() bool {
 	return ret
 }
 
+/* SetAbortOnReset implements AnimationNodeOneShot.set_abort_on_reset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *AnimationNodeOneShotImpl) SetAbortOnReset(
+	enable bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("AnimationNodeOneShot")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_abort_on_reset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function AnimationNodeOneShot.set_abort_on_reset (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enable))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsAbortedOnReset implements AnimationNodeOneShot.is_aborted_on_reset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *AnimationNodeOneShotImpl) IsAbortedOnReset() bool {
+
+	className := NewStringNameWithLatin1Chars("AnimationNodeOneShot")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_aborted_on_reset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function AnimationNodeOneShot.is_aborted_on_reset (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetAutorestart implements AnimationNodeOneShot.set_autorestart:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -16926,6 +17067,138 @@ func (cx *AnimationNodeStateMachinePlaybackImpl) GetFadingFromNode() StringName 
 	}
 
 	var ret StringName
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetFadingFromPlayPosition implements AnimationNodeStateMachinePlayback.get_fading_from_play_position:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *AnimationNodeStateMachinePlaybackImpl) GetFadingFromPlayPosition() float32 {
+
+	className := NewStringNameWithLatin1Chars("AnimationNodeStateMachinePlayback")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_fading_from_play_position")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function AnimationNodeStateMachinePlayback.get_fading_from_play_position (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetFadingFromLength implements AnimationNodeStateMachinePlayback.get_fading_from_length:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *AnimationNodeStateMachinePlaybackImpl) GetFadingFromLength() float32 {
+
+	className := NewStringNameWithLatin1Chars("AnimationNodeStateMachinePlayback")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_fading_from_length")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function AnimationNodeStateMachinePlayback.get_fading_from_length (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetFadingPosition implements AnimationNodeStateMachinePlayback.get_fading_position:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *AnimationNodeStateMachinePlaybackImpl) GetFadingPosition() float32 {
+
+	className := NewStringNameWithLatin1Chars("AnimationNodeStateMachinePlayback")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_fading_position")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function AnimationNodeStateMachinePlayback.get_fading_position (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetFadingLength implements AnimationNodeStateMachinePlayback.get_fading_length:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *AnimationNodeStateMachinePlaybackImpl) GetFadingLength() float32 {
+
+	className := NewStringNameWithLatin1Chars("AnimationNodeStateMachinePlayback")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_fading_length")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function AnimationNodeStateMachinePlayback.get_fading_length (1740695150)")
+	}
+
+	var ret float32
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -19241,12 +19514,45 @@ func (cx *AnimationPlayerImpl) IsPlaying() bool {
 	return ret
 }
 
+/* IsAnimationActive implements AnimationPlayer.is_animation_active:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *AnimationPlayerImpl) IsAnimationActive() bool {
+
+	className := NewStringNameWithLatin1Chars("AnimationPlayer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_animation_active")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function AnimationPlayer.is_animation_active (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetCurrentAnimation implements AnimationPlayer.set_current_animation:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
  */
 func (cx *AnimationPlayerImpl) SetCurrentAnimation(
-	animation String,
+	animation StringName,
 ) {
 
 	className := NewStringNameWithLatin1Chars("AnimationPlayer")
@@ -19256,10 +19562,10 @@ func (cx *AnimationPlayerImpl) SetCurrentAnimation(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		83702148,
+		3304788590,
 	)
 	if fn == nil {
-		panic("could not find method function AnimationPlayer.set_current_animation (83702148)")
+		panic("could not find method function AnimationPlayer.set_current_animation (3304788590)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -19277,9 +19583,9 @@ func (cx *AnimationPlayerImpl) SetCurrentAnimation(
 
 /* GetCurrentAnimation implements AnimationPlayer.get_current_animation:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
+ * return_type = StringName, return_meta =
  */
-func (cx *AnimationPlayerImpl) GetCurrentAnimation() String {
+func (cx *AnimationPlayerImpl) GetCurrentAnimation() StringName {
 
 	className := NewStringNameWithLatin1Chars("AnimationPlayer")
 	defer className.Destroy()
@@ -19288,13 +19594,13 @@ func (cx *AnimationPlayerImpl) GetCurrentAnimation() String {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		201670096,
+		2002593661,
 	)
 	if fn == nil {
-		panic("could not find method function AnimationPlayer.get_current_animation (201670096)")
+		panic("could not find method function AnimationPlayer.get_current_animation (2002593661)")
 	}
 
-	var ret String
+	var ret StringName
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -19313,7 +19619,7 @@ func (cx *AnimationPlayerImpl) GetCurrentAnimation() String {
  * return_type = , return_meta =
  */
 func (cx *AnimationPlayerImpl) SetAssignedAnimation(
-	animation String,
+	animation StringName,
 ) {
 
 	className := NewStringNameWithLatin1Chars("AnimationPlayer")
@@ -19323,10 +19629,10 @@ func (cx *AnimationPlayerImpl) SetAssignedAnimation(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		83702148,
+		3304788590,
 	)
 	if fn == nil {
-		panic("could not find method function AnimationPlayer.set_assigned_animation (83702148)")
+		panic("could not find method function AnimationPlayer.set_assigned_animation (3304788590)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -19344,9 +19650,9 @@ func (cx *AnimationPlayerImpl) SetAssignedAnimation(
 
 /* GetAssignedAnimation implements AnimationPlayer.get_assigned_animation:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
+ * return_type = StringName, return_meta =
  */
-func (cx *AnimationPlayerImpl) GetAssignedAnimation() String {
+func (cx *AnimationPlayerImpl) GetAssignedAnimation() StringName {
 
 	className := NewStringNameWithLatin1Chars("AnimationPlayer")
 	defer className.Destroy()
@@ -19355,13 +19661,13 @@ func (cx *AnimationPlayerImpl) GetAssignedAnimation() String {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		201670096,
+		2002593661,
 	)
 	if fn == nil {
-		panic("could not find method function AnimationPlayer.get_assigned_animation (201670096)")
+		panic("could not find method function AnimationPlayer.get_assigned_animation (2002593661)")
 	}
 
-	var ret String
+	var ret StringName
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -19411,9 +19717,9 @@ func (cx *AnimationPlayerImpl) Queue(
 
 /* GetQueue implements AnimationPlayer.get_queue:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PackedStringArray, return_meta =
+ * return_type = typedarray::StringName, return_meta =
  */
-func (cx *AnimationPlayerImpl) GetQueue() PackedStringArray {
+func (cx *AnimationPlayerImpl) GetQueue() StringName {
 
 	className := NewStringNameWithLatin1Chars("AnimationPlayer")
 	defer className.Destroy()
@@ -19422,13 +19728,13 @@ func (cx *AnimationPlayerImpl) GetQueue() PackedStringArray {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2981934095,
+		2915620761,
 	)
 	if fn == nil {
-		panic("could not find method function AnimationPlayer.get_queue (2981934095)")
+		panic("could not find method function AnimationPlayer.get_queue (2915620761)")
 	}
 
-	var ret PackedStringArray
+	var ret StringName
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -19577,7 +19883,7 @@ func (cx *AnimationPlayerImpl) GetPlayingSpeed() float32 {
  * return_type = , return_meta =
  */
 func (cx *AnimationPlayerImpl) SetAutoplay(
-	name String,
+	name StringName,
 ) {
 
 	className := NewStringNameWithLatin1Chars("AnimationPlayer")
@@ -19587,10 +19893,10 @@ func (cx *AnimationPlayerImpl) SetAutoplay(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		83702148,
+		3304788590,
 	)
 	if fn == nil {
-		panic("could not find method function AnimationPlayer.set_autoplay (83702148)")
+		panic("could not find method function AnimationPlayer.set_autoplay (3304788590)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -19608,9 +19914,9 @@ func (cx *AnimationPlayerImpl) SetAutoplay(
 
 /* GetAutoplay implements AnimationPlayer.get_autoplay:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
+ * return_type = StringName, return_meta =
  */
-func (cx *AnimationPlayerImpl) GetAutoplay() String {
+func (cx *AnimationPlayerImpl) GetAutoplay() StringName {
 
 	className := NewStringNameWithLatin1Chars("AnimationPlayer")
 	defer className.Destroy()
@@ -19619,13 +19925,13 @@ func (cx *AnimationPlayerImpl) GetAutoplay() String {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		201670096,
+		2002593661,
 	)
 	if fn == nil {
-		panic("could not find method function AnimationPlayer.get_autoplay (201670096)")
+		panic("could not find method function AnimationPlayer.get_autoplay (2002593661)")
 	}
 
-	var ret String
+	var ret StringName
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -33369,6 +33675,146 @@ func (cx *AudioServerImpl) SetInputDevice(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* SetInputDeviceActive implements AudioServer.set_input_device_active:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *AudioServerImpl) SetInputDeviceActive(
+	active bool,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("AudioServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_input_device_active")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1413768114,
+	)
+	if fn == nil {
+		panic("could not find method function AudioServer.set_input_device_active (1413768114)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&active))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetInputFramesAvailable implements AudioServer.get_input_frames_available:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *AudioServerImpl) GetInputFramesAvailable() int32 {
+
+	className := NewStringNameWithLatin1Chars("AudioServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_input_frames_available")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2455072627,
+	)
+	if fn == nil {
+		panic("could not find method function AudioServer.get_input_frames_available (2455072627)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetInputBufferLengthFrames implements AudioServer.get_input_buffer_length_frames:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *AudioServerImpl) GetInputBufferLengthFrames() int32 {
+
+	className := NewStringNameWithLatin1Chars("AudioServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_input_buffer_length_frames")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2455072627,
+	)
+	if fn == nil {
+		panic("could not find method function AudioServer.get_input_buffer_length_frames (2455072627)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetInputFrames implements AudioServer.get_input_frames:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedVector2Array, return_meta =
+ */
+func (cx *AudioServerImpl) GetInputFrames(
+	frames int32,
+) PackedVector2Array {
+
+	className := NewStringNameWithLatin1Chars("AudioServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_input_frames")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2649534757,
+	)
+	if fn == nil {
+		panic("could not find method function AudioServer.get_input_frames (2649534757)")
+	}
+
+	var ret PackedVector2Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&frames))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetBusLayout implements AudioServer.set_bus_layout:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -41745,6 +42191,73 @@ func (cx *AudioStreamRandomizerImpl) GetRandomPitch() float32 {
 	)
 	if fn == nil {
 		panic("could not find method function AudioStreamRandomizer.get_random_pitch (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRandomPitchSemitones implements AudioStreamRandomizer.set_random_pitch_semitones:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *AudioStreamRandomizerImpl) SetRandomPitchSemitones(
+	semitones float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("AudioStreamRandomizer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_random_pitch_semitones")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function AudioStreamRandomizer.set_random_pitch_semitones (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&semitones))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRandomPitchSemitones implements AudioStreamRandomizer.get_random_pitch_semitones:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *AudioStreamRandomizerImpl) GetRandomPitchSemitones() float32 {
+
+	className := NewStringNameWithLatin1Chars("AudioStreamRandomizer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_random_pitch_semitones")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function AudioStreamRandomizer.get_random_pitch_semitones (1740695150)")
 	}
 
 	var ret float32
@@ -50548,6 +51061,80 @@ func (cx *BoneConstraint3DImpl) GetApplyBone(
 	return ret
 }
 
+/* SetReferenceType implements BoneConstraint3D.set_reference_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneConstraint3DImpl) SetReferenceType(
+	index int32,
+	typeName BoneConstraint3DReferenceType,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneConstraint3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_reference_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1830520418,
+	)
+	if fn == nil {
+		panic("could not find method function BoneConstraint3D.set_reference_type (1830520418)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetReferenceType implements BoneConstraint3D.get_reference_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::BoneConstraint3D.ReferenceType, return_meta =
+ */
+func (cx *BoneConstraint3DImpl) GetReferenceType(
+	index int32,
+) BoneConstraint3DReferenceType {
+
+	className := NewStringNameWithLatin1Chars("BoneConstraint3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_reference_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3456416152,
+	)
+	if fn == nil {
+		panic("could not find method function BoneConstraint3D.get_reference_type (3456416152)")
+	}
+
+	var ret BoneConstraint3DReferenceType
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetReferenceBoneName implements BoneConstraint3D.set_reference_bone_name:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -50681,6 +51268,80 @@ func (cx *BoneConstraint3DImpl) GetReferenceBone(
 	}
 
 	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetReferenceNode implements BoneConstraint3D.set_reference_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneConstraint3DImpl) SetReferenceNode(
+	index int32,
+	node NodePath,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneConstraint3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_reference_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2761262315,
+	)
+	if fn == nil {
+		panic("could not find method function BoneConstraint3D.set_reference_node (2761262315)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetReferenceNode implements BoneConstraint3D.get_reference_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = NodePath, return_meta =
+ */
+func (cx *BoneConstraint3DImpl) GetReferenceNode(
+	index int32,
+) NodePath {
+
+	className := NewStringNameWithLatin1Chars("BoneConstraint3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_reference_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		408788394,
+	)
+	if fn == nil {
+		panic("could not find method function BoneConstraint3D.get_reference_node (408788394)")
+	}
+
+	var ret NodePath
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -50994,6 +51655,1282 @@ func (cx *BoneMapImpl) FindProfileBoneName(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skeleton_bone_name))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type BoneTwistDisperser3DImpl struct {
+	SkeletonModifier3DImpl
+}
+
+func NewGDExtensionClassFromBoneTwistDisperser3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &BoneTwistDisperser3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewBoneTwistDisperser3DWithGodotOwnerObject(owner *GodotObject) BoneTwistDisperser3D {
+	inst := &BoneTwistDisperser3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *BoneTwistDisperser3DImpl) GetClassName() string {
+	return "BoneTwistDisperser3D"
+}
+
+func (cx *BoneTwistDisperser3DImpl) GetParentClassName() string {
+	return "SkeletonModifier3D"
+}
+
+/* SetSettingCount implements BoneTwistDisperser3D.set_setting_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetSettingCount(
+	count int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_setting_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_setting_count (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&count))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSettingCount implements BoneTwistDisperser3D.get_setting_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *BoneTwistDisperser3DImpl) GetSettingCount() int32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_setting_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_setting_count (3905245786)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* ClearSettings implements BoneTwistDisperser3D.clear_settings:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) ClearSettings() {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("clear_settings")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.clear_settings (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetMutableBoneAxes implements BoneTwistDisperser3D.set_mutable_bone_axes:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetMutableBoneAxes(
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_mutable_bone_axes")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_mutable_bone_axes (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* AreBoneAxesMutable implements BoneTwistDisperser3D.are_bone_axes_mutable:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) AreBoneAxesMutable() bool {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("are_bone_axes_mutable")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.are_bone_axes_mutable (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRootBoneName implements BoneTwistDisperser3D.set_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetRootBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_root_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBoneName implements BoneTwistDisperser3D.get_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetRootBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_root_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRootBone implements BoneTwistDisperser3D.set_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetRootBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_root_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBone implements BoneTwistDisperser3D.get_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *BoneTwistDisperser3DImpl) GetRootBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_root_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneName implements BoneTwistDisperser3D.set_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetEndBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_end_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneName implements BoneTwistDisperser3D.get_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetEndBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_end_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBone implements BoneTwistDisperser3D.set_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetEndBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_end_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBone implements BoneTwistDisperser3D.get_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *BoneTwistDisperser3DImpl) GetEndBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_end_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetReferenceBoneName implements BoneTwistDisperser3D.get_reference_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetReferenceBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_reference_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_reference_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetReferenceBone implements BoneTwistDisperser3D.get_reference_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *BoneTwistDisperser3DImpl) GetReferenceBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_reference_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_reference_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetExtendEndBone implements BoneTwistDisperser3D.set_extend_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetExtendEndBone(
+	index int32,
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_extend_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		300928843,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_extend_end_bone (300928843)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsEndBoneExtended implements BoneTwistDisperser3D.is_end_bone_extended:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) IsEndBoneExtended(
+	index int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_end_bone_extended")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.is_end_bone_extended (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneDirection implements BoneTwistDisperser3D.set_end_bone_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetEndBoneDirection(
+	index int32,
+	bone_direction SkeletonModifier3DBoneDirection,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2838484201,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_end_bone_direction (2838484201)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_direction))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneDirection implements BoneTwistDisperser3D.get_end_bone_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::SkeletonModifier3D.BoneDirection, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetEndBoneDirection(
+	index int32,
+) SkeletonModifier3DBoneDirection {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1843036459,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_end_bone_direction (1843036459)")
+	}
+
+	var ret SkeletonModifier3DBoneDirection
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTwistFromRest implements BoneTwistDisperser3D.set_twist_from_rest:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetTwistFromRest(
+	index int32,
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_twist_from_rest")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		300928843,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_twist_from_rest (300928843)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsTwistFromRest implements BoneTwistDisperser3D.is_twist_from_rest:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) IsTwistFromRest(
+	index int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_twist_from_rest")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.is_twist_from_rest (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTwistFrom implements BoneTwistDisperser3D.set_twist_from:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetTwistFrom(
+	index int32,
+	from Quaternion,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_twist_from")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2823819782,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_twist_from (2823819782)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTwistFrom implements BoneTwistDisperser3D.get_twist_from:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Quaternion, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetTwistFrom(
+	index int32,
+) Quaternion {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_twist_from")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		476865136,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_twist_from (476865136)")
+	}
+
+	var ret Quaternion
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetDisperseMode implements BoneTwistDisperser3D.set_disperse_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetDisperseMode(
+	index int32,
+	disperse_mode BoneTwistDisperser3DDisperseMode,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_disperse_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2954194337,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_disperse_mode (2954194337)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&disperse_mode))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetDisperseMode implements BoneTwistDisperser3D.get_disperse_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::BoneTwistDisperser3D.DisperseMode, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetDisperseMode(
+	index int32,
+) BoneTwistDisperser3DDisperseMode {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_disperse_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1326397005,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_disperse_mode (1326397005)")
+	}
+
+	var ret BoneTwistDisperser3DDisperseMode
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetWeightPosition implements BoneTwistDisperser3D.set_weight_position:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetWeightPosition(
+	index int32,
+	weight_position float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_weight_position")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1602489585,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_weight_position (1602489585)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&weight_position))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetWeightPosition implements BoneTwistDisperser3D.get_weight_position:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *BoneTwistDisperser3DImpl) GetWeightPosition(
+	index int32,
+) float32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_weight_position")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2339986948,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_weight_position (2339986948)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetDampingCurve implements BoneTwistDisperser3D.set_damping_curve:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetDampingCurve(
+	index int32,
+	curve RefCurve,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_damping_curve")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1447180063,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_damping_curve (1447180063)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetDampingCurve implements BoneTwistDisperser3D.get_damping_curve:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Curve, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetDampingCurve(
+	index int32,
+) RefCurve {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_damping_curve")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		747537754,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_damping_curve (747537754)")
+	}
+
+	var ret CurveImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefCurveGDExtensionIternalConstructor(&ret)
+}
+
+/* GetJointBoneName implements BoneTwistDisperser3D.get_joint_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) GetJointBoneName(
+	index int32,
+	joint int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1391810591,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_joint_bone_name (1391810591)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetJointBone implements BoneTwistDisperser3D.get_joint_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *BoneTwistDisperser3DImpl) GetJointBone(
+	index int32,
+	joint int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3175239445,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_joint_bone (3175239445)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetJointTwistAmount implements BoneTwistDisperser3D.get_joint_twist_amount:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *BoneTwistDisperser3DImpl) GetJointTwistAmount(
+	index int32,
+	joint int32,
+) float32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_twist_amount")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3085491603,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_joint_twist_amount (3085491603)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetJointTwistAmount implements BoneTwistDisperser3D.set_joint_twist_amount:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *BoneTwistDisperser3DImpl) SetJointTwistAmount(
+	index int32,
+	joint int32,
+	twist_amount float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joint_twist_amount")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3506521499,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.set_joint_twist_amount (3506521499)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&twist_amount))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetJointCount implements BoneTwistDisperser3D.get_joint_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *BoneTwistDisperser3DImpl) GetJointCount(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("BoneTwistDisperser3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function BoneTwistDisperser3D.get_joint_count (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -52737,6 +54674,24 @@ func (cx *ButtonGroupImpl) IsAllowUnpress() bool {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
+}
+
+type CCDIK3DImpl struct {
+	IterateIK3DImpl
+}
+
+func NewGDExtensionClassFromCCDIK3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &CCDIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewCCDIK3DWithGodotOwnerObject(owner *GodotObject) CCDIK3D {
+	inst := &CCDIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
 }
 
 type CPUParticles2DImpl struct {
@@ -54929,6 +56884,140 @@ func (cx *CPUParticles2DImpl) GetEmissionColors() PackedColorArray {
 	}
 
 	var ret PackedColorArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEmissionRingInnerRadius implements CPUParticles2D.set_emission_ring_inner_radius:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *CPUParticles2DImpl) SetEmissionRingInnerRadius(
+	inner_radius float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("CPUParticles2D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_emission_ring_inner_radius")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function CPUParticles2D.set_emission_ring_inner_radius (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&inner_radius))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEmissionRingInnerRadius implements CPUParticles2D.get_emission_ring_inner_radius:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *CPUParticles2DImpl) GetEmissionRingInnerRadius() float32 {
+
+	className := NewStringNameWithLatin1Chars("CPUParticles2D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_emission_ring_inner_radius")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function CPUParticles2D.get_emission_ring_inner_radius (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEmissionRingRadius implements CPUParticles2D.set_emission_ring_radius:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *CPUParticles2DImpl) SetEmissionRingRadius(
+	radius float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("CPUParticles2D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_emission_ring_radius")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function CPUParticles2D.set_emission_ring_radius (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&radius))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEmissionRingRadius implements CPUParticles2D.get_emission_ring_radius:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *CPUParticles2DImpl) GetEmissionRingRadius() float32 {
+
+	className := NewStringNameWithLatin1Chars("CPUParticles2D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_emission_ring_radius")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function CPUParticles2D.get_emission_ring_radius (1740695150)")
+	}
+
+	var ret float32
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -61955,7 +64044,7 @@ func (cx *CallbackTweenerImpl) GetParentClassName() string {
 
 /* SetDelay implements CallbackTweener.set_delay:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = CallbackTweener, return_meta =
+ * return_type = CallbackTweener, return_meta = required
  */
 func (cx *CallbackTweenerImpl) SetDelay(
 	delay float64,
@@ -67466,6 +69555,44 @@ func (cx *CameraFeedImpl) SetYcbcrImage(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* SetYcbcrImages implements CameraFeed.set_ycbcr_images:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *CameraFeedImpl) SetYcbcrImages(
+	y_image RefImage,
+	cbcr_image RefImage,
+) {
+
+	className := NewStringNameWithLatin1Chars("CameraFeed")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_ycbcr_images")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1986484629,
+	)
+	if fn == nil {
+		panic("could not find method function CameraFeed.set_ycbcr_images (1986484629)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&y_image))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&cbcr_image))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* SetExternal implements CameraFeed.set_external:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -69367,6 +71494,64 @@ func (cx *CanvasItemImpl) DrawPolylineColors(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* DrawEllipseArc implements CanvasItem.draw_ellipse_arc:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *CanvasItemImpl) DrawEllipseArc(
+	center Vector2,
+	major float32,
+	minor float32,
+	start_angle float32,
+	end_angle float32,
+	point_count int32,
+	color Color,
+	width float32,
+	antialiased bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("CanvasItem")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("draw_ellipse_arc")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		936174114,
+	)
+	if fn == nil {
+		panic("could not find method function CanvasItem.draw_ellipse_arc (936174114)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 9
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&center))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&major))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&minor))
+	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&start_angle))
+	pnr.Pin(argPtrSlice[3])
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&end_angle))
+	pnr.Pin(argPtrSlice[4])
+	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&point_count))
+	pnr.Pin(argPtrSlice[5])
+	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	pnr.Pin(argPtrSlice[6])
+	argPtrSlice[7] = (GDExtensionConstTypePtr)(unsafe.Pointer(&width))
+	pnr.Pin(argPtrSlice[7])
+	argPtrSlice[8] = (GDExtensionConstTypePtr)(unsafe.Pointer(&antialiased))
+	pnr.Pin(argPtrSlice[8])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* DrawArc implements CanvasItem.draw_arc:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -69600,6 +71785,58 @@ func (cx *CanvasItemImpl) DrawCircle(
 	pnr.Pin(argPtrSlice[4])
 	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&antialiased))
 	pnr.Pin(argPtrSlice[5])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* DrawEllipse implements CanvasItem.draw_ellipse:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *CanvasItemImpl) DrawEllipse(
+	position Vector2,
+	major float32,
+	minor float32,
+	color Color,
+	filled bool,
+	width float32,
+	antialiased bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("CanvasItem")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("draw_ellipse")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3790774806,
+	)
+	if fn == nil {
+		panic("could not find method function CanvasItem.draw_ellipse (3790774806)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 7
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&major))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&minor))
+	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	pnr.Pin(argPtrSlice[3])
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&filled))
+	pnr.Pin(argPtrSlice[4])
+	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&width))
+	pnr.Pin(argPtrSlice[5])
+	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&antialiased))
+	pnr.Pin(argPtrSlice[6])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -71409,7 +73646,7 @@ func (cx *CanvasItemImpl) MakeCanvasPositionLocal(
 
 /* MakeInputLocal implements CanvasItem.make_input_local:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = InputEvent, return_meta =
+ * return_type = InputEvent, return_meta = required
  */
 func (cx *CanvasItemImpl) MakeInputLocal(
 	event RefInputEvent,
@@ -74405,6 +76642,668 @@ func (cx *CenterContainerImpl) IsUsingTopLeft() bool {
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type ChainIK3DImpl struct {
+	IKModifier3DImpl
+}
+
+func NewGDExtensionClassFromChainIK3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &ChainIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewChainIK3DWithGodotOwnerObject(owner *GodotObject) ChainIK3D {
+	inst := &ChainIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *ChainIK3DImpl) GetClassName() string {
+	return "ChainIK3D"
+}
+
+func (cx *ChainIK3DImpl) GetParentClassName() string {
+	return "IKModifier3D"
+}
+
+/* SetRootBoneName implements ChainIK3D.set_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ChainIK3DImpl) SetRootBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.set_root_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBoneName implements ChainIK3D.get_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *ChainIK3DImpl) GetRootBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_root_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRootBone implements ChainIK3D.set_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ChainIK3DImpl) SetRootBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.set_root_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBone implements ChainIK3D.get_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *ChainIK3DImpl) GetRootBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_root_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneName implements ChainIK3D.set_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ChainIK3DImpl) SetEndBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.set_end_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneName implements ChainIK3D.get_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *ChainIK3DImpl) GetEndBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_end_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBone implements ChainIK3D.set_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ChainIK3DImpl) SetEndBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.set_end_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBone implements ChainIK3D.get_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *ChainIK3DImpl) GetEndBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_end_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetExtendEndBone implements ChainIK3D.set_extend_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ChainIK3DImpl) SetExtendEndBone(
+	index int32,
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_extend_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		300928843,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.set_extend_end_bone (300928843)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsEndBoneExtended implements ChainIK3D.is_end_bone_extended:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *ChainIK3DImpl) IsEndBoneExtended(
+	index int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_end_bone_extended")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.is_end_bone_extended (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneDirection implements ChainIK3D.set_end_bone_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ChainIK3DImpl) SetEndBoneDirection(
+	index int32,
+	bone_direction SkeletonModifier3DBoneDirection,
+) {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2838484201,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.set_end_bone_direction (2838484201)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_direction))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneDirection implements ChainIK3D.get_end_bone_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::SkeletonModifier3D.BoneDirection, return_meta =
+ */
+func (cx *ChainIK3DImpl) GetEndBoneDirection(
+	index int32,
+) SkeletonModifier3DBoneDirection {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1843036459,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_end_bone_direction (1843036459)")
+	}
+
+	var ret SkeletonModifier3DBoneDirection
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneLength implements ChainIK3D.set_end_bone_length:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ChainIK3DImpl) SetEndBoneLength(
+	index int32,
+	length float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_length")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1602489585,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.set_end_bone_length (1602489585)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&length))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneLength implements ChainIK3D.get_end_bone_length:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *ChainIK3DImpl) GetEndBoneLength(
+	index int32,
+) float32 {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_length")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2339986948,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_end_bone_length (2339986948)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetJointBoneName implements ChainIK3D.get_joint_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *ChainIK3DImpl) GetJointBoneName(
+	index int32,
+	joint int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1391810591,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_joint_bone_name (1391810591)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetJointBone implements ChainIK3D.get_joint_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *ChainIK3DImpl) GetJointBone(
+	index int32,
+	joint int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3175239445,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_joint_bone (3175239445)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetJointCount implements ChainIK3D.get_joint_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *ChainIK3DImpl) GetJointCount(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("ChainIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function ChainIK3D.get_joint_count (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -79577,9 +82476,11 @@ func (cx *ClassDBImpl) ClassCallStatic(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(class)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -81467,6 +84368,73 @@ func (cx *CodeEditImpl) IsLineNumbersZeroPadded() bool {
 	}
 
 	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetLineNumbersMinDigits implements CodeEdit.set_line_numbers_min_digits:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *CodeEditImpl) SetLineNumbersMinDigits(
+	count int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("CodeEdit")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_line_numbers_min_digits")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function CodeEdit.set_line_numbers_min_digits (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&count))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetLineNumbersMinDigits implements CodeEdit.get_line_numbers_min_digits:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *CodeEditImpl) GetLineNumbersMinDigits() int32 {
+
+	className := NewStringNameWithLatin1Chars("CodeEdit")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_line_numbers_min_digits")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function CodeEdit.get_line_numbers_min_digits (3905245786)")
+	}
+
+	var ret int32
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -93197,6 +96165,40 @@ func (cx *ControlImpl) SetPivotOffset(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* SetPivotOffsetRatio implements Control.set_pivot_offset_ratio:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ControlImpl) SetPivotOffsetRatio(
+	ratio Vector2,
+) {
+
+	className := NewStringNameWithLatin1Chars("Control")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_pivot_offset_ratio")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		743155724,
+	)
+	if fn == nil {
+		panic("could not find method function Control.set_pivot_offset_ratio (743155724)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ratio))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* GetBegin implements Control.get_begin:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = Vector2, return_meta =
@@ -93445,6 +96447,72 @@ func (cx *ControlImpl) GetPivotOffset() Vector2 {
 	)
 	if fn == nil {
 		panic("could not find method function Control.get_pivot_offset (3341600327)")
+	}
+
+	var ret Vector2
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetPivotOffsetRatio implements Control.get_pivot_offset_ratio:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector2, return_meta =
+ */
+func (cx *ControlImpl) GetPivotOffsetRatio() Vector2 {
+
+	className := NewStringNameWithLatin1Chars("Control")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_pivot_offset_ratio")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3341600327,
+	)
+	if fn == nil {
+		panic("could not find method function Control.get_pivot_offset_ratio (3341600327)")
+	}
+
+	var ret Vector2
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetCombinedPivotOffset implements Control.get_combined_pivot_offset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector2, return_meta =
+ */
+func (cx *ControlImpl) GetCombinedPivotOffset() Vector2 {
+
+	className := NewStringNameWithLatin1Chars("Control")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_combined_pivot_offset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3341600327,
+	)
+	if fn == nil {
+		panic("could not find method function Control.get_combined_pivot_offset (3341600327)")
 	}
 
 	var ret Vector2
@@ -93830,7 +96898,9 @@ func (cx *ControlImpl) GetFocusBehaviorRecursive() ControlFocusBehaviorRecursive
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = bool, return_meta =
  */
-func (cx *ControlImpl) HasFocus() bool {
+func (cx *ControlImpl) HasFocus(
+	ignore_hidden_focus bool,
+) bool {
 
 	className := NewStringNameWithLatin1Chars("Control")
 	defer className.Destroy()
@@ -93839,10 +96909,10 @@ func (cx *ControlImpl) HasFocus() bool {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		36873697,
+		3302206351,
 	)
 	if fn == nil {
-		panic("could not find method function Control.has_focus (36873697)")
+		panic("could not find method function Control.has_focus (3302206351)")
 	}
 
 	var ret bool
@@ -93851,10 +96921,12 @@ func (cx *ControlImpl) HasFocus() bool {
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 0
+	callArgCount := 1
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ignore_hidden_focus))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -93863,7 +96935,9 @@ func (cx *ControlImpl) HasFocus() bool {
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
  */
-func (cx *ControlImpl) GrabFocus() {
+func (cx *ControlImpl) GrabFocus(
+	hide_focus bool,
+) {
 
 	className := NewStringNameWithLatin1Chars("Control")
 	defer className.Destroy()
@@ -93872,20 +96946,22 @@ func (cx *ControlImpl) GrabFocus() {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
+		107499316,
 	)
 	if fn == nil {
-		panic("could not find method function Control.grab_focus (3218959716)")
+		panic("could not find method function Control.grab_focus (107499316)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 0
+	callArgCount := 1
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&hide_focus))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -110595,7 +113671,7 @@ func (cx *DisplayServerImpl) TtsSpeak(
 	volume int32,
 	pitch float32,
 	rate float32,
-	utterance_id int32,
+	utterance_id int64,
 	interrupt bool,
 ) {
 
@@ -113835,6 +116911,40 @@ func (cx *DisplayServerImpl) WindowStartResize(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* WindowSetColor implements DisplayServer.window_set_color:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *DisplayServerImpl) WindowSetColor(
+	color Color,
+) {
+
+	className := NewStringNameWithLatin1Chars("DisplayServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("window_set_color")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2920490490,
+	)
+	if fn == nil {
+		panic("could not find method function DisplayServer.window_set_color (2920490490)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* AccessibilityShouldIncreaseContrast implements DisplayServer.accessibility_should_increase_contrast:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = int, return_meta = int32
@@ -114059,6 +117169,7 @@ func (cx *DisplayServerImpl) AccessibilityCreateSubTextEditElements(
 	shaped_text RID,
 	min_height float32,
 	insert_pos int32,
+	is_last_line bool,
 ) RID {
 
 	className := NewStringNameWithLatin1Chars("DisplayServer")
@@ -114068,10 +117179,10 @@ func (cx *DisplayServerImpl) AccessibilityCreateSubTextEditElements(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3328635351,
+		2702009895,
 	)
 	if fn == nil {
-		panic("could not find method function DisplayServer.accessibility_create_sub_text_edit_elements (3328635351)")
+		panic("could not find method function DisplayServer.accessibility_create_sub_text_edit_elements (2702009895)")
 	}
 
 	var ret RID
@@ -114080,7 +117191,7 @@ func (cx *DisplayServerImpl) AccessibilityCreateSubTextEditElements(
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 4
+	callArgCount := 5
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
@@ -114092,6 +117203,8 @@ func (cx *DisplayServerImpl) AccessibilityCreateSubTextEditElements(
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&insert_pos))
 	pnr.Pin(argPtrSlice[3])
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&is_last_line))
+	pnr.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -120611,6 +123724,929 @@ func (cx *EditorDebuggerSessionImpl) SetBreakpoint(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+type EditorDockImpl struct {
+	MarginContainerImpl
+}
+
+func NewGDExtensionClassFromEditorDockOwner(owner *GodotObject) GDExtensionClass {
+	inst := &EditorDockImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewEditorDockWithGodotOwnerObject(owner *GodotObject) EditorDock {
+	inst := &EditorDockImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *EditorDockImpl) GetClassName() string {
+	return "EditorDock"
+}
+
+func (cx *EditorDockImpl) GetParentClassName() string {
+	return "MarginContainer"
+}
+
+/* Open implements EditorDock.open:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) Open() {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("open")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.open (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* MakeVisible implements EditorDock.make_visible:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) MakeVisible() {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("make_visible")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.make_visible (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* Close implements EditorDock.close:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) Close() {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("close")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.close (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetTitle implements EditorDock.set_title:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetTitle(
+	title String,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_title")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		83702148,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_title (83702148)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTitle implements EditorDock.get_title:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *EditorDockImpl) GetTitle() String {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_title")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_title (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetLayoutKey implements EditorDock.set_layout_key:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetLayoutKey(
+	layout_key String,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_layout_key")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		83702148,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_layout_key (83702148)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layout_key))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetLayoutKey implements EditorDock.get_layout_key:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *EditorDockImpl) GetLayoutKey() String {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_layout_key")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_layout_key (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetGlobal implements EditorDock.set_global:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetGlobal(
+	global bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_global")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_global (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&global))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsGlobal implements EditorDock.is_global:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorDockImpl) IsGlobal() bool {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_global")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.is_global (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTransient implements EditorDock.set_transient:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetTransient(
+	transient bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_transient")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_transient (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transient))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsTransient implements EditorDock.is_transient:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorDockImpl) IsTransient() bool {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_transient")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.is_transient (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetClosable implements EditorDock.set_closable:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetClosable(
+	closable bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_closable")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_closable (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&closable))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsClosable implements EditorDock.is_closable:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorDockImpl) IsClosable() bool {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_closable")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.is_closable (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetIconName implements EditorDock.set_icon_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetIconName(
+	icon_name StringName,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_icon_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3304788590,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_icon_name (3304788590)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon_name))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetIconName implements EditorDock.get_icon_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = StringName, return_meta =
+ */
+func (cx *EditorDockImpl) GetIconName() StringName {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_icon_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2002593661,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_icon_name (2002593661)")
+	}
+
+	var ret StringName
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetDockIcon implements EditorDock.set_dock_icon:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetDockIcon(
+	icon RefTexture2D,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_dock_icon")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4051416890,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_dock_icon (4051416890)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetDockIcon implements EditorDock.get_dock_icon:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Texture2D, return_meta =
+ */
+func (cx *EditorDockImpl) GetDockIcon() RefTexture2D {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_dock_icon")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3635182373,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_dock_icon (3635182373)")
+	}
+
+	var ret Texture2DImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefTexture2DGDExtensionIternalConstructor(&ret)
+}
+
+/* SetForceShowIcon implements EditorDock.set_force_show_icon:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetForceShowIcon(
+	force bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_force_show_icon")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_force_show_icon (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&force))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetForceShowIcon implements EditorDock.get_force_show_icon:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorDockImpl) GetForceShowIcon() bool {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_force_show_icon")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_force_show_icon (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTitleColor implements EditorDock.set_title_color:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetTitleColor(
+	color Color,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_title_color")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2920490490,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_title_color (2920490490)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTitleColor implements EditorDock.get_title_color:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Color, return_meta =
+ */
+func (cx *EditorDockImpl) GetTitleColor() Color {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_title_color")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3444240500,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_title_color (3444240500)")
+	}
+
+	var ret Color
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetDockShortcut implements EditorDock.set_dock_shortcut:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetDockShortcut(
+	shortcut RefShortcut,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_dock_shortcut")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		857163497,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_dock_shortcut (857163497)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetDockShortcut implements EditorDock.get_dock_shortcut:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Shortcut, return_meta =
+ */
+func (cx *EditorDockImpl) GetDockShortcut() RefShortcut {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_dock_shortcut")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3415666916,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_dock_shortcut (3415666916)")
+	}
+
+	var ret ShortcutImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefShortcutGDExtensionIternalConstructor(&ret)
+}
+
+/* SetDefaultSlot implements EditorDock.set_default_slot:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetDefaultSlot(
+	slot EditorDockDockSlot,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_default_slot")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4142995464,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_default_slot (4142995464)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetDefaultSlot implements EditorDock.get_default_slot:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::EditorDock.DockSlot, return_meta =
+ */
+func (cx *EditorDockImpl) GetDefaultSlot() EditorDockDockSlot {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_default_slot")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3298961740,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_default_slot (3298961740)")
+	}
+
+	var ret EditorDockDockSlot
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetAvailableLayouts implements EditorDock.set_available_layouts:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorDockImpl) SetAvailableLayouts(
+	layouts EditorDockDockLayout,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_available_layouts")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3440531249,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.set_available_layouts (3440531249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layouts))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetAvailableLayouts implements EditorDock.get_available_layouts:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bitfield::EditorDock.DockLayout, return_meta =
+ */
+func (cx *EditorDockImpl) GetAvailableLayouts() EditorDockDockLayout {
+
+	className := NewStringNameWithLatin1Chars("EditorDock")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_available_layouts")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		495015512,
+	)
+	if fn == nil {
+		panic("could not find method function EditorDock.get_available_layouts (495015512)")
+	}
+
+	var ret EditorDockDockLayout
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type EditorExportPlatformImpl struct {
 	RefCountedImpl
 }
@@ -123589,9 +127625,9 @@ func (cx *EditorExportPresetImpl) GetEncryptionKey() String {
 
 /* GetScriptExportMode implements EditorExportPreset.get_script_export_mode:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = int, return_meta = int32
+ * return_type = enum::EditorExportPreset.ScriptExportMode, return_meta =
  */
-func (cx *EditorExportPresetImpl) GetScriptExportMode() int32 {
+func (cx *EditorExportPresetImpl) GetScriptExportMode() EditorExportPresetScriptExportMode {
 
 	className := NewStringNameWithLatin1Chars("EditorExportPreset")
 	defer className.Destroy()
@@ -123600,13 +127636,13 @@ func (cx *EditorExportPresetImpl) GetScriptExportMode() int32 {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3905245786,
+		2835358398,
 	)
 	if fn == nil {
-		panic("could not find method function EditorExportPreset.get_script_export_mode (3905245786)")
+		panic("could not find method function EditorExportPreset.get_script_export_mode (2835358398)")
 	}
 
-	var ret int32
+	var ret EditorExportPresetScriptExportMode
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -124141,7 +128177,7 @@ func (cx *EditorFeatureProfileImpl) LoadFromFile(
 }
 
 type EditorFileDialogImpl struct {
-	ConfirmationDialogImpl
+	FileDialogImpl
 }
 
 func NewGDExtensionClassFromEditorFileDialogOwner(owner *GodotObject) GDExtensionClass {
@@ -124164,59 +128200,29 @@ func (cx *EditorFileDialogImpl) GetClassName() string {
 }
 
 func (cx *EditorFileDialogImpl) GetParentClassName() string {
-	return "ConfirmationDialog"
+	return "FileDialog"
 }
 
-/* ClearFilters implements EditorFileDialog.clear_filters:
+/* AddSideMenu implements EditorFileDialog.add_side_menu:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
  */
-func (cx *EditorFileDialogImpl) ClearFilters() {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("clear_filters")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.clear_filters (3218959716)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* AddFilter implements EditorFileDialog.add_filter:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) AddFilter(
-	filter String,
-	description String,
+func (cx *EditorFileDialogImpl) AddSideMenu(
+	menu Control,
+	title String,
 ) {
 
 	className := NewStringNameWithLatin1Chars("EditorFileDialog")
 	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("add_filter")
+	methodName := NewStringNameWithLatin1Chars("add_side_menu")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3388804757,
+		402368861,
 	)
 	if fn == nil {
-		panic("could not find method function EditorFileDialog.add_filter (3388804757)")
+		panic("could not find method function EditorFileDialog.add_side_menu (402368861)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -124227,1072 +128233,11 @@ func (cx *EditorFileDialogImpl) AddFilter(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&filter))
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&description))
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetFilters implements EditorFileDialog.set_filters:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetFilters(
-	filters PackedStringArray,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_filters")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		4015028928,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_filters (4015028928)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&filters))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* GetFilters implements EditorFileDialog.get_filters:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PackedStringArray, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetFilters() PackedStringArray {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_filters")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		1139954409,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_filters (1139954409)")
-	}
-
-	var ret PackedStringArray
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetOptionName implements EditorFileDialog.get_option_name:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetOptionName(
-	option int32,
-) String {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_option_name")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		844755477,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_option_name (844755477)")
-	}
-
-	var ret String
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&option))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetOptionValues implements EditorFileDialog.get_option_values:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PackedStringArray, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetOptionValues(
-	option int32,
-) PackedStringArray {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_option_values")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		647634434,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_option_values (647634434)")
-	}
-
-	var ret PackedStringArray
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&option))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetOptionDefault implements EditorFileDialog.get_option_default:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = int, return_meta = int32
- */
-func (cx *EditorFileDialogImpl) GetOptionDefault(
-	option int32,
-) int32 {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_option_default")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		923996154,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_option_default (923996154)")
-	}
-
-	var ret int32
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&option))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* SetOptionName implements EditorFileDialog.set_option_name:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetOptionName(
-	option int32,
-	name String,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_option_name")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		501894301,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_option_name (501894301)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 2
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&option))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
-	pnr.Pin(argPtrSlice[1])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetOptionValues implements EditorFileDialog.set_option_values:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetOptionValues(
-	option int32,
-	values PackedStringArray,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_option_values")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3353661094,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_option_values (3353661094)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 2
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&option))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&values))
-	pnr.Pin(argPtrSlice[1])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetOptionDefault implements EditorFileDialog.set_option_default:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetOptionDefault(
-	option int32,
-	default_value_index int32,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_option_default")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3937882851,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_option_default (3937882851)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 2
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&option))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&default_value_index))
-	pnr.Pin(argPtrSlice[1])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetOptionCount implements EditorFileDialog.set_option_count:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetOptionCount(
-	count int32,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_option_count")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		1286410249,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_option_count (1286410249)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&count))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* GetOptionCount implements EditorFileDialog.get_option_count:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = int, return_meta = int32
- */
-func (cx *EditorFileDialogImpl) GetOptionCount() int32 {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_option_count")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3905245786,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_option_count (3905245786)")
-	}
-
-	var ret int32
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* AddOption implements EditorFileDialog.add_option:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) AddOption(
-	name String,
-	values PackedStringArray,
-	default_value_index int32,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("add_option")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		149592325,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.add_option (149592325)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 3
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&values))
-	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&default_value_index))
-	pnr.Pin(argPtrSlice[2])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* GetSelectedOptions implements EditorFileDialog.get_selected_options:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Dictionary, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetSelectedOptions() Dictionary {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_selected_options")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3102165223,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_selected_options (3102165223)")
-	}
-
-	var ret Dictionary
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* ClearFilenameFilter implements EditorFileDialog.clear_filename_filter:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) ClearFilenameFilter() {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("clear_filename_filter")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.clear_filename_filter (3218959716)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetFilenameFilter implements EditorFileDialog.set_filename_filter:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetFilenameFilter(
-	filter String,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_filename_filter")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		83702148,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_filename_filter (83702148)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&filter))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* GetFilenameFilter implements EditorFileDialog.get_filename_filter:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetFilenameFilter() String {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_filename_filter")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		201670096,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_filename_filter (201670096)")
-	}
-
-	var ret String
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetCurrentDir implements EditorFileDialog.get_current_dir:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetCurrentDir() String {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_current_dir")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		201670096,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_current_dir (201670096)")
-	}
-
-	var ret String
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetCurrentFile implements EditorFileDialog.get_current_file:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetCurrentFile() String {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_current_file")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		201670096,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_current_file (201670096)")
-	}
-
-	var ret String
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetCurrentPath implements EditorFileDialog.get_current_path:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = String, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetCurrentPath() String {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_current_path")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		201670096,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_current_path (201670096)")
-	}
-
-	var ret String
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* SetCurrentDir implements EditorFileDialog.set_current_dir:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetCurrentDir(
-	dir String,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_current_dir")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		83702148,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_current_dir (83702148)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dir))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetCurrentFile implements EditorFileDialog.set_current_file:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetCurrentFile(
-	file String,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_current_file")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		83702148,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_current_file (83702148)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&file))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetCurrentPath implements EditorFileDialog.set_current_path:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetCurrentPath(
-	path String,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_current_path")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		83702148,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_current_path (83702148)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetFileMode implements EditorFileDialog.set_file_mode:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetFileMode(
-	mode EditorFileDialogFileMode,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_file_mode")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		274150415,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_file_mode (274150415)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mode))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* GetFileMode implements EditorFileDialog.get_file_mode:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::EditorFileDialog.FileMode, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetFileMode() EditorFileDialogFileMode {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_file_mode")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		2681044145,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_file_mode (2681044145)")
-	}
-
-	var ret EditorFileDialogFileMode
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetVbox implements EditorFileDialog.get_vbox:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = VBoxContainer, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetVbox() VBoxContainer {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_vbox")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		915758477,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_vbox (915758477)")
-	}
-
-	var ret VBoxContainerImpl
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
-}
-
-/* GetLineEdit implements EditorFileDialog.get_line_edit:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = LineEdit, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetLineEdit() LineEdit {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_line_edit")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		4071694264,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_line_edit (4071694264)")
-	}
-
-	var ret LineEditImpl
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
-}
-
-/* SetAccess implements EditorFileDialog.set_access:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetAccess(
-	access EditorFileDialogAccess,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_access")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3882893764,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_access (3882893764)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&access))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* GetAccess implements EditorFileDialog.get_access:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::EditorFileDialog.Access, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetAccess() EditorFileDialogAccess {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_access")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		778734016,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_access (778734016)")
-	}
-
-	var ret EditorFileDialogAccess
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* SetShowHiddenFiles implements EditorFileDialog.set_show_hidden_files:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetShowHiddenFiles(
-	show bool,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_show_hidden_files")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		2586408642,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_show_hidden_files (2586408642)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&show))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* IsShowingHiddenFiles implements EditorFileDialog.is_showing_hidden_files:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = bool, return_meta =
- */
-func (cx *EditorFileDialogImpl) IsShowingHiddenFiles() bool {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("is_showing_hidden_files")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		36873697,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.is_showing_hidden_files (36873697)")
-	}
-
-	var ret bool
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* SetDisplayMode implements EditorFileDialog.set_display_mode:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) SetDisplayMode(
-	mode EditorFileDialogDisplayMode,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_display_mode")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3049004050,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.set_display_mode (3049004050)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mode))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* GetDisplayMode implements EditorFileDialog.get_display_mode:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::EditorFileDialog.DisplayMode, return_meta =
- */
-func (cx *EditorFileDialogImpl) GetDisplayMode() EditorFileDialogDisplayMode {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_display_mode")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3517174669,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.get_display_mode (3517174669)")
-	}
-
-	var ret EditorFileDialogDisplayMode
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
 }
 
 /* SetDisableOverwriteWarning implements EditorFileDialog.set_disable_overwrite_warning:
@@ -125360,103 +128305,6 @@ func (cx *EditorFileDialogImpl) IsOverwriteWarningDisabled() bool {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
-}
-
-/* AddSideMenu implements EditorFileDialog.add_side_menu:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) AddSideMenu(
-	menu Control,
-	title String,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("add_side_menu")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		402368861,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.add_side_menu (402368861)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 2
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
-	pnr.Pin(argPtrSlice[1])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* PopupFileDialog implements EditorFileDialog.popup_file_dialog:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) PopupFileDialog() {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("popup_file_dialog")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.popup_file_dialog (3218959716)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* Invalidate implements EditorFileDialog.invalidate:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorFileDialogImpl) Invalidate() {
-
-	className := NewStringNameWithLatin1Chars("EditorFileDialog")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("invalidate")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
-	)
-	if fn == nil {
-		panic("could not find method function EditorFileDialog.invalidate (3218959716)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 type EditorFileSystemImpl struct {
@@ -127546,6 +130394,171 @@ func (cx *EditorInterfaceImpl) GetEditorScale() float32 {
 	return ret
 }
 
+/* GetEditorLanguage implements EditorInterface.get_editor_language:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *EditorInterfaceImpl) GetEditorLanguage() String {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_editor_language")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.get_editor_language (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsNode3DSnapEnabled implements EditorInterface.is_node_3d_snap_enabled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorInterfaceImpl) IsNode3DSnapEnabled() bool {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_node_3d_snap_enabled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.is_node_3d_snap_enabled (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetNode3DTranslateSnap implements EditorInterface.get_node_3d_translate_snap:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *EditorInterfaceImpl) GetNode3DTranslateSnap() float32 {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_node_3d_translate_snap")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.get_node_3d_translate_snap (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetNode3DRotateSnap implements EditorInterface.get_node_3d_rotate_snap:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *EditorInterfaceImpl) GetNode3DRotateSnap() float32 {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_node_3d_rotate_snap")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.get_node_3d_rotate_snap (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetNode3DScaleSnap implements EditorInterface.get_node_3d_scale_snap:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *EditorInterfaceImpl) GetNode3DScaleSnap() float32 {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_node_3d_scale_snap")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.get_node_3d_scale_snap (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* PopupDialog implements EditorInterface.popup_dialog:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -128391,6 +131404,80 @@ func (cx *EditorInterfaceImpl) ReloadSceneFromPath(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* SetObjectEdited implements EditorInterface.set_object_edited:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorInterfaceImpl) SetObjectEdited(
+	object Object,
+	edited bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_object_edited")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1462101905,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.set_object_edited (1462101905)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&edited))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsObjectEdited implements EditorInterface.is_object_edited:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorInterfaceImpl) IsObjectEdited(
+	object Object,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_object_edited")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		397768994,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.is_object_edited (397768994)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* GetOpenScenes implements EditorInterface.get_open_scenes:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = PackedStringArray, return_meta =
@@ -128488,6 +131575,40 @@ func (cx *EditorInterfaceImpl) GetEditedSceneRoot() Node {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
+}
+
+/* AddRootNode implements EditorInterface.add_root_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorInterfaceImpl) AddRootNode(
+	node Node,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorInterface")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("add_root_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1078189570,
+	)
+	if fn == nil {
+		panic("could not find method function EditorInterface.add_root_node (1078189570)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 /* SaveScene implements EditorInterface.save_scene:
@@ -129896,6 +133017,74 @@ func (cx *EditorPluginImpl) GetParentClassName() string {
 	return "Node"
 }
 
+/* AddDock implements EditorPlugin.add_dock:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorPluginImpl) AddDock(
+	dock EditorDock,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorPlugin")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("add_dock")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		158651717,
+	)
+	if fn == nil {
+		panic("could not find method function EditorPlugin.add_dock (158651717)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dock))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* RemoveDock implements EditorPlugin.remove_dock:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorPluginImpl) RemoveDock(
+	dock EditorDock,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorPlugin")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("remove_dock")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		158651717,
+	)
+	if fn == nil {
+		panic("could not find method function EditorPlugin.remove_dock (158651717)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dock))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* AddControlToContainer implements EditorPlugin.add_control_to_container:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -129933,157 +133122,6 @@ func (cx *EditorPluginImpl) AddControlToContainer(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
-/* AddControlToBottomPanel implements EditorPlugin.add_control_to_bottom_panel:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Button, return_meta =
- */
-func (cx *EditorPluginImpl) AddControlToBottomPanel(
-	control Control,
-	title String,
-	shortcut RefShortcut,
-) Button {
-
-	className := NewStringNameWithLatin1Chars("EditorPlugin")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("add_control_to_bottom_panel")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		111032269,
-	)
-	if fn == nil {
-		panic("could not find method function EditorPlugin.add_control_to_bottom_panel (111032269)")
-	}
-
-	var ret ButtonImpl
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 3
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
-	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
-	pnr.Pin(argPtrSlice[2])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
-}
-
-/* AddControlToDock implements EditorPlugin.add_control_to_dock:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorPluginImpl) AddControlToDock(
-	slot EditorPluginDockSlot,
-	control Control,
-	shortcut RefShortcut,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorPlugin")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("add_control_to_dock")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		2994930786,
-	)
-	if fn == nil {
-		panic("could not find method function EditorPlugin.add_control_to_dock (2994930786)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 3
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
-	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
-	pnr.Pin(argPtrSlice[2])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* RemoveControlFromDocks implements EditorPlugin.remove_control_from_docks:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorPluginImpl) RemoveControlFromDocks(
-	control Control,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorPlugin")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("remove_control_from_docks")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		1496901182,
-	)
-	if fn == nil {
-		panic("could not find method function EditorPlugin.remove_control_from_docks (1496901182)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* RemoveControlFromBottomPanel implements EditorPlugin.remove_control_from_bottom_panel:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorPluginImpl) RemoveControlFromBottomPanel(
-	control Control,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorPlugin")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("remove_control_from_bottom_panel")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		1496901182,
-	)
-	if fn == nil {
-		panic("could not find method function EditorPlugin.remove_control_from_bottom_panel (1496901182)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 1
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
-	pnr.Pin(argPtrSlice[0])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
 /* RemoveControlFromContainer implements EditorPlugin.remove_control_from_container:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -130117,43 +133155,6 @@ func (cx *EditorPluginImpl) RemoveControlFromContainer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&container))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
-	pnr.Pin(argPtrSlice[1])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-}
-
-/* SetDockTabIcon implements EditorPlugin.set_dock_tab_icon:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *EditorPluginImpl) SetDockTabIcon(
-	control Control,
-	icon RefTexture2D,
-) {
-
-	className := NewStringNameWithLatin1Chars("EditorPlugin")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_dock_tab_icon")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3450529724,
-	)
-	if fn == nil {
-		panic("could not find method function EditorPlugin.set_dock_tab_icon (3450529724)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 2
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
-	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -130372,6 +133373,194 @@ func (cx *EditorPluginImpl) RemoveCustomType(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* AddControlToDock implements EditorPlugin.add_control_to_dock:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorPluginImpl) AddControlToDock(
+	slot EditorPluginDockSlot,
+	control Control,
+	shortcut RefShortcut,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorPlugin")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("add_control_to_dock")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2994930786,
+	)
+	if fn == nil {
+		panic("could not find method function EditorPlugin.add_control_to_dock (2994930786)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* RemoveControlFromDocks implements EditorPlugin.remove_control_from_docks:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorPluginImpl) RemoveControlFromDocks(
+	control Control,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorPlugin")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("remove_control_from_docks")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1496901182,
+	)
+	if fn == nil {
+		panic("could not find method function EditorPlugin.remove_control_from_docks (1496901182)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetDockTabIcon implements EditorPlugin.set_dock_tab_icon:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorPluginImpl) SetDockTabIcon(
+	control Control,
+	icon RefTexture2D,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorPlugin")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_dock_tab_icon")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3450529724,
+	)
+	if fn == nil {
+		panic("could not find method function EditorPlugin.set_dock_tab_icon (3450529724)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* AddControlToBottomPanel implements EditorPlugin.add_control_to_bottom_panel:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Button, return_meta =
+ */
+func (cx *EditorPluginImpl) AddControlToBottomPanel(
+	control Control,
+	title String,
+	shortcut RefShortcut,
+) Button {
+
+	className := NewStringNameWithLatin1Chars("EditorPlugin")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("add_control_to_bottom_panel")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		111032269,
+	)
+	if fn == nil {
+		panic("could not find method function EditorPlugin.add_control_to_bottom_panel (111032269)")
+	}
+
+	var ret ButtonImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return &ret
+}
+
+/* RemoveControlFromBottomPanel implements EditorPlugin.remove_control_from_bottom_panel:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorPluginImpl) RemoveControlFromBottomPanel(
+	control Control,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorPlugin")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("remove_control_from_bottom_panel")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1496901182,
+	)
+	if fn == nil {
+		panic("could not find method function EditorPlugin.remove_control_from_bottom_panel (1496901182)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -133432,6 +136621,40 @@ func (cx *EditorResourcePreviewGeneratorImpl) GetParentClassName() string {
 	return "RefCounted"
 }
 
+/* RequestDrawAndWait implements EditorResourcePreviewGenerator.request_draw_and_wait:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorResourcePreviewGeneratorImpl) RequestDrawAndWait(
+	viewport RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorResourcePreviewGenerator")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("request_draw_and_wait")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		145472570,
+	)
+	if fn == nil {
+		panic("could not find method function EditorResourcePreviewGenerator.request_draw_and_wait (145472570)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&viewport))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type EditorResourceTooltipPluginImpl struct {
 	RefCountedImpl
 }
@@ -134836,6 +138059,224 @@ func (cx *EditorSettingsImpl) SetBuiltinActionOverride(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* AddShortcut implements EditorSettings.add_shortcut:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorSettingsImpl) AddShortcut(
+	path String,
+	shortcut RefShortcut,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("add_shortcut")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4124020929,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSettings.add_shortcut (4124020929)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* RemoveShortcut implements EditorSettings.remove_shortcut:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorSettingsImpl) RemoveShortcut(
+	path String,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("remove_shortcut")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		83702148,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSettings.remove_shortcut (83702148)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsShortcut implements EditorSettings.is_shortcut:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorSettingsImpl) IsShortcut(
+	path String,
+	event RefInputEvent,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("EditorSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_shortcut")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		699917945,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSettings.is_shortcut (699917945)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* HasShortcut implements EditorSettings.has_shortcut:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *EditorSettingsImpl) HasShortcut(
+	path String,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("EditorSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_shortcut")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3927539163,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSettings.has_shortcut (3927539163)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetShortcut implements EditorSettings.get_shortcut:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Shortcut, return_meta =
+ */
+func (cx *EditorSettingsImpl) GetShortcut(
+	path String,
+) RefShortcut {
+
+	className := NewStringNameWithLatin1Chars("EditorSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_shortcut")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1149070301,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSettings.get_shortcut (1149070301)")
+	}
+
+	var ret ShortcutImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefShortcutGDExtensionIternalConstructor(&ret)
+}
+
+/* GetShortcutList implements EditorSettings.get_shortcut_list:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedStringArray, return_meta =
+ */
+func (cx *EditorSettingsImpl) GetShortcutList() PackedStringArray {
+
+	className := NewStringNameWithLatin1Chars("EditorSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_shortcut_list")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2981934095,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSettings.get_shortcut_list (2981934095)")
+	}
+
+	var ret PackedStringArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* CheckChangedSettingsInGroup implements EditorSettings.check_changed_settings_in_group:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = bool, return_meta =
@@ -135222,6 +138663,73 @@ func (cx *EditorSpinSliderImpl) IsFlat() bool {
 	}
 
 	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetControlState implements EditorSpinSlider.set_control_state:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EditorSpinSliderImpl) SetControlState(
+	state EditorSpinSliderControlState,
+) {
+
+	className := NewStringNameWithLatin1Chars("EditorSpinSlider")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_control_state")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1324557109,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSpinSlider.set_control_state (1324557109)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetControlState implements EditorSpinSlider.get_control_state:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::EditorSpinSlider.ControlState, return_meta =
+ */
+func (cx *EditorSpinSliderImpl) GetControlState() EditorSpinSliderControlState {
+
+	className := NewStringNameWithLatin1Chars("EditorSpinSlider")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_control_state")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3406006200,
+	)
+	if fn == nil {
+		panic("could not find method function EditorSpinSlider.get_control_state (3406006200)")
+	}
+
+	var ret EditorSpinSliderControlState
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -135691,9 +139199,11 @@ func (cx *EditorUndoRedoManagerImpl) AddDoMethod(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantGodotObject(object.GetGodotObjectOwner())
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -135738,9 +139248,11 @@ func (cx *EditorUndoRedoManagerImpl) AddUndoMethod(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantGodotObject(object.GetGodotObjectOwner())
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -139911,6 +143423,140 @@ func (cx *EnvironmentImpl) GetTonemapWhite() float32 {
 	)
 	if fn == nil {
 		panic("could not find method function Environment.get_tonemap_white (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTonemapAgxWhite implements Environment.set_tonemap_agx_white:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EnvironmentImpl) SetTonemapAgxWhite(
+	white float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("Environment")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tonemap_agx_white")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function Environment.set_tonemap_agx_white (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&white))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTonemapAgxWhite implements Environment.get_tonemap_agx_white:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *EnvironmentImpl) GetTonemapAgxWhite() float32 {
+
+	className := NewStringNameWithLatin1Chars("Environment")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_tonemap_agx_white")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function Environment.get_tonemap_agx_white (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTonemapAgxContrast implements Environment.set_tonemap_agx_contrast:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *EnvironmentImpl) SetTonemapAgxContrast(
+	contrast float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("Environment")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tonemap_agx_contrast")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function Environment.set_tonemap_agx_contrast (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&contrast))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTonemapAgxContrast implements Environment.get_tonemap_agx_contrast:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *EnvironmentImpl) GetTonemapAgxContrast() float32 {
+
+	className := NewStringNameWithLatin1Chars("Environment")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_tonemap_agx_contrast")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function Environment.get_tonemap_agx_contrast (1740695150)")
 	}
 
 	var ret float32
@@ -145268,6 +148914,24 @@ func (cx *ExternalTextureImpl) SetExternalBufferId(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+type FABRIK3DImpl struct {
+	IterateIK3DImpl
+}
+
+func NewGDExtensionClassFromFABRIK3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &FABRIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewFABRIK3DWithGodotOwnerObject(owner *GodotObject) FABRIK3D {
+	inst := &FABRIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
 type FBXDocumentImpl struct {
 	GLTFDocumentImpl
 }
@@ -147051,7 +150715,7 @@ func (cx *FileAccessImpl) GetOpenError() Error {
  * return_type = FileAccess, return_meta =
  */
 func (cx *FileAccessImpl) CreateTemp(
-	mode_flags int32,
+	mode_flags FileAccessModeFlags,
 	prefix String,
 	extension String,
 	keep bool,
@@ -147064,10 +150728,10 @@ func (cx *FileAccessImpl) CreateTemp(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3075606245,
+		171914364,
 	)
 	if fn == nil {
-		panic("could not find method function FileAccess.create_temp (3075606245)")
+		panic("could not find method function FileAccess.create_temp (171914364)")
 	}
 
 	var ret FileAccessImpl
@@ -147874,9 +151538,7 @@ func (cx *FileAccessImpl) GetCsvLine(
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = String, return_meta =
  */
-func (cx *FileAccessImpl) GetAsText(
-	skip_cr bool,
-) String {
+func (cx *FileAccessImpl) GetAsText() String {
 
 	className := NewStringNameWithLatin1Chars("FileAccess")
 	defer className.Destroy()
@@ -147885,10 +151547,10 @@ func (cx *FileAccessImpl) GetAsText(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		1162154673,
+		201670096,
 	)
 	if fn == nil {
-		panic("could not find method function FileAccess.get_as_text (1162154673)")
+		panic("could not find method function FileAccess.get_as_text (201670096)")
 	}
 
 	var ret String
@@ -147897,12 +151559,10 @@ func (cx *FileAccessImpl) GetAsText(
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 1
+	callArgCount := 0
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skip_cr))
-	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -149084,6 +152744,249 @@ func (cx *FileAccessImpl) GetReadOnlyAttribute(
 	return ret
 }
 
+/* GetExtendedAttribute implements FileAccess.get_extended_attribute:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = PackedByteArray, return_meta =
+ */
+func (cx *FileAccessImpl) GetExtendedAttribute(
+	file String,
+	attribute_name String,
+) PackedByteArray {
+
+	className := NewStringNameWithLatin1Chars("FileAccess")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_extended_attribute")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		955893464,
+	)
+	if fn == nil {
+		panic("could not find method function FileAccess.get_extended_attribute (955893464)")
+	}
+
+	var ret PackedByteArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&file))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attribute_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetExtendedAttributeString implements FileAccess.get_extended_attribute_string:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *FileAccessImpl) GetExtendedAttributeString(
+	file String,
+	attribute_name String,
+) String {
+
+	className := NewStringNameWithLatin1Chars("FileAccess")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_extended_attribute_string")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1218461987,
+	)
+	if fn == nil {
+		panic("could not find method function FileAccess.get_extended_attribute_string (1218461987)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&file))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attribute_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetExtendedAttribute implements FileAccess.set_extended_attribute:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *FileAccessImpl) SetExtendedAttribute(
+	file String,
+	attribute_name String,
+	data PackedByteArray,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("FileAccess")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_extended_attribute")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2643421469,
+	)
+	if fn == nil {
+		panic("could not find method function FileAccess.set_extended_attribute (2643421469)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&file))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attribute_name))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetExtendedAttributeString implements FileAccess.set_extended_attribute_string:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *FileAccessImpl) SetExtendedAttributeString(
+	file String,
+	attribute_name String,
+	data String,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("FileAccess")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_extended_attribute_string")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		699024349,
+	)
+	if fn == nil {
+		panic("could not find method function FileAccess.set_extended_attribute_string (699024349)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&file))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attribute_name))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* RemoveExtendedAttribute implements FileAccess.remove_extended_attribute:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *FileAccessImpl) RemoveExtendedAttribute(
+	file String,
+	attribute_name String,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("FileAccess")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("remove_extended_attribute")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		852856452,
+	)
+	if fn == nil {
+		panic("could not find method function FileAccess.remove_extended_attribute (852856452)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&file))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attribute_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetExtendedAttributesList implements FileAccess.get_extended_attributes_list:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = PackedStringArray, return_meta =
+ */
+func (cx *FileAccessImpl) GetExtendedAttributesList(
+	file String,
+) PackedStringArray {
+
+	className := NewStringNameWithLatin1Chars("FileAccess")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_extended_attributes_list")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3538744774,
+	)
+	if fn == nil {
+		panic("could not find method function FileAccess.get_extended_attributes_list (3538744774)")
+	}
+
+	var ret PackedStringArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&file))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type FileDialogImpl struct {
 	ConfirmationDialogImpl
 }
@@ -149148,6 +153051,7 @@ func (cx *FileDialogImpl) ClearFilters() {
 func (cx *FileDialogImpl) AddFilter(
 	filter String,
 	description String,
+	mime_type String,
 ) {
 
 	className := NewStringNameWithLatin1Chars("FileDialog")
@@ -149157,17 +153061,17 @@ func (cx *FileDialogImpl) AddFilter(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3388804757,
+		914921954,
 	)
 	if fn == nil {
-		panic("could not find method function FileDialog.add_filter (3388804757)")
+		panic("could not find method function FileDialog.add_filter (914921954)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 2
+	callArgCount := 3
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
@@ -149175,6 +153079,8 @@ func (cx *FileDialogImpl) AddFilter(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&description))
 	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mime_type))
+	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -150544,6 +154450,238 @@ func (cx *FileDialogImpl) DeselectAll() {
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* SetFavoriteList implements FileDialog.set_favorite_list:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *FileDialogImpl) SetFavoriteList(
+	favorites PackedStringArray,
+) {
+
+	className := NewStringNameWithLatin1Chars("FileDialog")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_favorite_list")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4015028928,
+	)
+	if fn == nil {
+		panic("could not find method function FileDialog.set_favorite_list (4015028928)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&favorites))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetFavoriteList implements FileDialog.get_favorite_list:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = PackedStringArray, return_meta =
+ */
+func (cx *FileDialogImpl) GetFavoriteList() PackedStringArray {
+
+	className := NewStringNameWithLatin1Chars("FileDialog")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_favorite_list")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2981934095,
+	)
+	if fn == nil {
+		panic("could not find method function FileDialog.get_favorite_list (2981934095)")
+	}
+
+	var ret PackedStringArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRecentList implements FileDialog.set_recent_list:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *FileDialogImpl) SetRecentList(
+	recents PackedStringArray,
+) {
+
+	className := NewStringNameWithLatin1Chars("FileDialog")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_recent_list")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4015028928,
+	)
+	if fn == nil {
+		panic("could not find method function FileDialog.set_recent_list (4015028928)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&recents))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRecentList implements FileDialog.get_recent_list:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = PackedStringArray, return_meta =
+ */
+func (cx *FileDialogImpl) GetRecentList() PackedStringArray {
+
+	className := NewStringNameWithLatin1Chars("FileDialog")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_recent_list")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2981934095,
+	)
+	if fn == nil {
+		panic("could not find method function FileDialog.get_recent_list (2981934095)")
+	}
+
+	var ret PackedStringArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetGetIconCallback implements FileDialog.set_get_icon_callback:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *FileDialogImpl) SetGetIconCallback(
+	callback Callable,
+) {
+
+	className := NewStringNameWithLatin1Chars("FileDialog")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_get_icon_callback")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1611583062,
+	)
+	if fn == nil {
+		panic("could not find method function FileDialog.set_get_icon_callback (1611583062)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetGetThumbnailCallback implements FileDialog.set_get_thumbnail_callback:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *FileDialogImpl) SetGetThumbnailCallback(
+	callback Callable,
+) {
+
+	className := NewStringNameWithLatin1Chars("FileDialog")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_get_thumbnail_callback")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1611583062,
+	)
+	if fn == nil {
+		panic("could not find method function FileDialog.set_get_thumbnail_callback (1611583062)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* PopupFileDialog implements FileDialog.popup_file_dialog:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *FileDialogImpl) PopupFileDialog() {
+
+	className := NewStringNameWithLatin1Chars("FileDialog")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("popup_file_dialog")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function FileDialog.popup_file_dialog (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* Invalidate implements FileDialog.invalidate:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -150575,7 +154713,7 @@ func (cx *FileDialogImpl) Invalidate() {
 }
 
 type FileSystemDockImpl struct {
-	VBoxContainerImpl
+	EditorDockImpl
 }
 
 func NewGDExtensionClassFromFileSystemDockOwner(owner *GodotObject) GDExtensionClass {
@@ -150598,7 +154736,7 @@ func (cx *FileSystemDockImpl) GetClassName() string {
 }
 
 func (cx *FileSystemDockImpl) GetParentClassName() string {
-	return "VBoxContainer"
+	return "EditorDock"
 }
 
 /* NavigateToPath implements FileSystemDock.navigate_to_path:
@@ -158681,6 +162819,46 @@ func (cx *GDExtensionManagerImpl) LoadExtension(
 	return ret
 }
 
+/* LoadExtensionFromFunction implements GDExtensionManager.load_extension_from_function:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::GDExtensionManager.LoadStatus, return_meta =
+ */
+func (cx *GDExtensionManagerImpl) LoadExtensionFromFunction(
+	path String,
+	init_func *GDExtensionInitializationFunction,
+) GDExtensionManagerLoadStatus {
+
+	className := NewStringNameWithLatin1Chars("GDExtensionManager")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("load_extension_from_function")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1565094761,
+	)
+	if fn == nil {
+		panic("could not find method function GDExtensionManager.load_extension_from_function (1565094761)")
+	}
+
+	var ret GDExtensionManagerLoadStatus
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&init_func))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* ReloadExtension implements GDExtensionManager.reload_extension:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = enum::GDExtensionManager.LoadStatus, return_meta =
@@ -158975,6 +163153,76 @@ func (cx *GLTFAccessorImpl) GetClassName() string {
 
 func (cx *GLTFAccessorImpl) GetParentClassName() string {
 	return "Resource"
+}
+
+/* FromDictionary implements GLTFAccessor.from_dictionary:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = GLTFAccessor, return_meta =
+ */
+func (cx *GLTFAccessorImpl) FromDictionary(
+	dictionary Dictionary,
+) RefGLTFAccessor {
+
+	className := NewStringNameWithLatin1Chars("GLTFAccessor")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("from_dictionary")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3495091019,
+	)
+	if fn == nil {
+		panic("could not find method function GLTFAccessor.from_dictionary (3495091019)")
+	}
+
+	var ret GLTFAccessorImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefGLTFAccessorGDExtensionIternalConstructor(&ret)
+}
+
+/* ToDictionary implements GLTFAccessor.to_dictionary:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Dictionary, return_meta =
+ */
+func (cx *GLTFAccessorImpl) ToDictionary() Dictionary {
+
+	className := NewStringNameWithLatin1Chars("GLTFAccessor")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("to_dictionary")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3102165223,
+	)
+	if fn == nil {
+		panic("could not find method function GLTFAccessor.to_dictionary (3102165223)")
+	}
+
+	var ret Dictionary
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 /* GetBufferView implements GLTFAccessor.get_buffer_view:
@@ -160277,6 +164525,76 @@ func (cx *GLTFBufferViewImpl) LoadBufferViewData(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
 	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FromDictionary implements GLTFBufferView.from_dictionary:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = GLTFBufferView, return_meta =
+ */
+func (cx *GLTFBufferViewImpl) FromDictionary(
+	dictionary Dictionary,
+) RefGLTFBufferView {
+
+	className := NewStringNameWithLatin1Chars("GLTFBufferView")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("from_dictionary")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2594413512,
+	)
+	if fn == nil {
+		panic("could not find method function GLTFBufferView.from_dictionary (2594413512)")
+	}
+
+	var ret GLTFBufferViewImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefGLTFBufferViewGDExtensionIternalConstructor(&ret)
+}
+
+/* ToDictionary implements GLTFBufferView.to_dictionary:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Dictionary, return_meta =
+ */
+func (cx *GLTFBufferViewImpl) ToDictionary() Dictionary {
+
+	className := NewStringNameWithLatin1Chars("GLTFBufferView")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("to_dictionary")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3102165223,
+	)
+	if fn == nil {
+		panic("could not find method function GLTFBufferView.to_dictionary (3102165223)")
+	}
+
+	var ret Dictionary
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -167910,10 +172228,10 @@ func (cx *GLTFStateImpl) GetJson() Dictionary {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2382534195,
+		3102165223,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_json (2382534195)")
+		panic("could not find method function GLTFState.get_json (3102165223)")
 	}
 
 	var ret Dictionary
@@ -167977,10 +172295,10 @@ func (cx *GLTFStateImpl) GetMajorVersion() int32 {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2455072627,
+		3905245786,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_major_version (2455072627)")
+		panic("could not find method function GLTFState.get_major_version (3905245786)")
 	}
 
 	var ret int32
@@ -168044,10 +172362,10 @@ func (cx *GLTFStateImpl) GetMinorVersion() int32 {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2455072627,
+		3905245786,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_minor_version (2455072627)")
+		panic("could not find method function GLTFState.get_minor_version (3905245786)")
 	}
 
 	var ret int32
@@ -168178,10 +172496,10 @@ func (cx *GLTFStateImpl) GetGlbData() PackedByteArray {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2115431945,
+		2362200018,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_glb_data (2115431945)")
+		panic("could not find method function GLTFState.get_glb_data (2362200018)")
 	}
 
 	var ret PackedByteArray
@@ -168245,10 +172563,10 @@ func (cx *GLTFStateImpl) GetUseNamedSkinBinds() bool {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2240911060,
+		36873697,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_use_named_skin_binds (2240911060)")
+		panic("could not find method function GLTFState.get_use_named_skin_binds (36873697)")
 	}
 
 	var ret bool
@@ -168312,10 +172630,10 @@ func (cx *GLTFStateImpl) GetNodes() RefGLTFNode {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_nodes (2915620761)")
+		panic("could not find method function GLTFState.get_nodes (3995934104)")
 	}
 
 	var ret GLTFNodeImpl
@@ -168380,10 +172698,10 @@ func (cx *GLTFStateImpl) GetBuffers() PackedByteArray {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_buffers (2915620761)")
+		panic("could not find method function GLTFState.get_buffers (3995934104)")
 	}
 
 	var ret PackedByteArray
@@ -168447,10 +172765,10 @@ func (cx *GLTFStateImpl) GetBufferViews() RefGLTFBufferView {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_buffer_views (2915620761)")
+		panic("could not find method function GLTFState.get_buffer_views (3995934104)")
 	}
 
 	var ret GLTFBufferViewImpl
@@ -168515,10 +172833,10 @@ func (cx *GLTFStateImpl) GetAccessors() RefGLTFAccessor {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_accessors (2915620761)")
+		panic("could not find method function GLTFState.get_accessors (3995934104)")
 	}
 
 	var ret GLTFAccessorImpl
@@ -168583,10 +172901,10 @@ func (cx *GLTFStateImpl) GetMeshes() RefGLTFMesh {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_meshes (2915620761)")
+		panic("could not find method function GLTFState.get_meshes (3995934104)")
 	}
 
 	var ret GLTFMeshImpl
@@ -168643,7 +172961,7 @@ func (cx *GLTFStateImpl) SetMeshes(
  * return_type = int, return_meta = int32
  */
 func (cx *GLTFStateImpl) GetAnimationPlayersCount(
-	idx int32,
+	anim_player_index int32,
 ) int32 {
 
 	className := NewStringNameWithLatin1Chars("GLTFState")
@@ -168653,10 +172971,10 @@ func (cx *GLTFStateImpl) GetAnimationPlayersCount(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3744713108,
+		923996154,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_animation_players_count (3744713108)")
+		panic("could not find method function GLTFState.get_animation_players_count (923996154)")
 	}
 
 	var ret int32
@@ -168669,7 +172987,7 @@ func (cx *GLTFStateImpl) GetAnimationPlayersCount(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anim_player_index))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -168680,7 +172998,7 @@ func (cx *GLTFStateImpl) GetAnimationPlayersCount(
  * return_type = AnimationPlayer, return_meta =
  */
 func (cx *GLTFStateImpl) GetAnimationPlayer(
-	idx int32,
+	anim_player_index int32,
 ) AnimationPlayer {
 
 	className := NewStringNameWithLatin1Chars("GLTFState")
@@ -168690,10 +173008,10 @@ func (cx *GLTFStateImpl) GetAnimationPlayer(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		925043400,
+		1550200483,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_animation_player (925043400)")
+		panic("could not find method function GLTFState.get_animation_player (1550200483)")
 	}
 
 	var ret AnimationPlayerImpl
@@ -168706,7 +173024,7 @@ func (cx *GLTFStateImpl) GetAnimationPlayer(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anim_player_index))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
@@ -168725,10 +173043,10 @@ func (cx *GLTFStateImpl) GetMaterials() RefMaterial {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_materials (2915620761)")
+		panic("could not find method function GLTFState.get_materials (3995934104)")
 	}
 
 	var ret MaterialImpl
@@ -168793,10 +173111,10 @@ func (cx *GLTFStateImpl) GetSceneName() String {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2841200299,
+		201670096,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_scene_name (2841200299)")
+		panic("could not find method function GLTFState.get_scene_name (201670096)")
 	}
 
 	var ret String
@@ -168860,10 +173178,10 @@ func (cx *GLTFStateImpl) GetBasePath() String {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2841200299,
+		201670096,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_base_path (2841200299)")
+		panic("could not find method function GLTFState.get_base_path (201670096)")
 	}
 
 	var ret String
@@ -168994,10 +173312,10 @@ func (cx *GLTFStateImpl) GetRootNodes() PackedInt32Array {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		969006518,
+		1930428628,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_root_nodes (969006518)")
+		panic("could not find method function GLTFState.get_root_nodes (1930428628)")
 	}
 
 	var ret PackedInt32Array
@@ -169061,10 +173379,10 @@ func (cx *GLTFStateImpl) GetTextures() RefGLTFTexture {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_textures (2915620761)")
+		panic("could not find method function GLTFState.get_textures (3995934104)")
 	}
 
 	var ret GLTFTextureImpl
@@ -169129,10 +173447,10 @@ func (cx *GLTFStateImpl) GetTextureSamplers() RefGLTFTextureSampler {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_texture_samplers (2915620761)")
+		panic("could not find method function GLTFState.get_texture_samplers (3995934104)")
 	}
 
 	var ret GLTFTextureSamplerImpl
@@ -169197,10 +173515,10 @@ func (cx *GLTFStateImpl) GetImages() RefTexture2D {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_images (2915620761)")
+		panic("could not find method function GLTFState.get_images (3995934104)")
 	}
 
 	var ret Texture2DImpl
@@ -169265,10 +173583,10 @@ func (cx *GLTFStateImpl) GetSkins() RefGLTFSkin {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_skins (2915620761)")
+		panic("could not find method function GLTFState.get_skins (3995934104)")
 	}
 
 	var ret GLTFSkinImpl
@@ -169333,10 +173651,10 @@ func (cx *GLTFStateImpl) GetCameras() RefGLTFCamera {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_cameras (2915620761)")
+		panic("could not find method function GLTFState.get_cameras (3995934104)")
 	}
 
 	var ret GLTFCameraImpl
@@ -169401,10 +173719,10 @@ func (cx *GLTFStateImpl) GetLights() RefGLTFLight {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_lights (2915620761)")
+		panic("could not find method function GLTFState.get_lights (3995934104)")
 	}
 
 	var ret GLTFLightImpl
@@ -169469,10 +173787,10 @@ func (cx *GLTFStateImpl) GetUniqueNames() String {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_unique_names (2915620761)")
+		panic("could not find method function GLTFState.get_unique_names (3995934104)")
 	}
 
 	var ret String
@@ -169536,10 +173854,10 @@ func (cx *GLTFStateImpl) GetUniqueAnimationNames() String {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_unique_animation_names (2915620761)")
+		panic("could not find method function GLTFState.get_unique_animation_names (3995934104)")
 	}
 
 	var ret String
@@ -169603,10 +173921,10 @@ func (cx *GLTFStateImpl) GetSkeletons() RefGLTFSkeleton {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_skeletons (2915620761)")
+		panic("could not find method function GLTFState.get_skeletons (3995934104)")
 	}
 
 	var ret GLTFSkeletonImpl
@@ -169671,10 +173989,10 @@ func (cx *GLTFStateImpl) GetCreateAnimations() bool {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2240911060,
+		36873697,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_create_animations (2240911060)")
+		panic("could not find method function GLTFState.get_create_animations (36873697)")
 	}
 
 	var ret bool
@@ -169738,10 +174056,10 @@ func (cx *GLTFStateImpl) GetImportAsSkeletonBones() bool {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2240911060,
+		36873697,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_import_as_skeleton_bones (2240911060)")
+		panic("could not find method function GLTFState.get_import_as_skeleton_bones (36873697)")
 	}
 
 	var ret bool
@@ -169805,10 +174123,10 @@ func (cx *GLTFStateImpl) GetAnimations() RefGLTFAnimation {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2915620761,
+		3995934104,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_animations (2915620761)")
+		panic("could not find method function GLTFState.get_animations (3995934104)")
 	}
 
 	var ret GLTFAnimationImpl
@@ -169865,7 +174183,7 @@ func (cx *GLTFStateImpl) SetAnimations(
  * return_type = Node, return_meta =
  */
 func (cx *GLTFStateImpl) GetSceneNode(
-	idx int32,
+	gltf_node_index int32,
 ) Node {
 
 	className := NewStringNameWithLatin1Chars("GLTFState")
@@ -169875,10 +174193,10 @@ func (cx *GLTFStateImpl) GetSceneNode(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		4253421667,
+		539202265,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_scene_node (4253421667)")
+		panic("could not find method function GLTFState.get_scene_node (539202265)")
 	}
 
 	var ret NodeImpl
@@ -169891,7 +174209,7 @@ func (cx *GLTFStateImpl) GetSceneNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gltf_node_index))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
@@ -169912,10 +174230,10 @@ func (cx *GLTFStateImpl) GetNodeIndex(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		1205807060,
+		3810805390,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_node_index (1205807060)")
+		panic("could not find method function GLTFState.get_node_index (3810805390)")
 	}
 
 	var ret int32
@@ -169949,10 +174267,10 @@ func (cx *GLTFStateImpl) GetAdditionalData(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2138907829,
+		2760726917,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_additional_data (2138907829)")
+		panic("could not find method function GLTFState.get_additional_data (2760726917)")
 	}
 
 	var ret Variant
@@ -170008,26 +174326,26 @@ func (cx *GLTFStateImpl) SetAdditionalData(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
-/* GetHandleBinaryImage implements GLTFState.get_handle_binary_image:
+/* GetHandleBinaryImageMode implements GLTFState.get_handle_binary_image_mode:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = int, return_meta = int32
+ * return_type = enum::GLTFState.HandleBinaryImageMode, return_meta =
  */
-func (cx *GLTFStateImpl) GetHandleBinaryImage() int32 {
+func (cx *GLTFStateImpl) GetHandleBinaryImageMode() GLTFStateHandleBinaryImageMode {
 
 	className := NewStringNameWithLatin1Chars("GLTFState")
 	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_handle_binary_image")
+	methodName := NewStringNameWithLatin1Chars("get_handle_binary_image_mode")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2455072627,
+		1363384196,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.get_handle_binary_image (2455072627)")
+		panic("could not find method function GLTFState.get_handle_binary_image_mode (1363384196)")
 	}
 
-	var ret int32
+	var ret GLTFStateHandleBinaryImageMode
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -170041,25 +174359,25 @@ func (cx *GLTFStateImpl) GetHandleBinaryImage() int32 {
 	return ret
 }
 
-/* SetHandleBinaryImage implements GLTFState.set_handle_binary_image:
+/* SetHandleBinaryImageMode implements GLTFState.set_handle_binary_image_mode:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
  */
-func (cx *GLTFStateImpl) SetHandleBinaryImage(
-	method int32,
+func (cx *GLTFStateImpl) SetHandleBinaryImageMode(
+	method GLTFStateHandleBinaryImageMode,
 ) {
 
 	className := NewStringNameWithLatin1Chars("GLTFState")
 	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_handle_binary_image")
+	methodName := NewStringNameWithLatin1Chars("set_handle_binary_image_mode")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		1286410249,
+		854676334,
 	)
 	if fn == nil {
-		panic("could not find method function GLTFState.set_handle_binary_image (1286410249)")
+		panic("could not find method function GLTFState.set_handle_binary_image_mode (854676334)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -170140,6 +174458,73 @@ func (cx *GLTFStateImpl) GetBakeFps() float64 {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
+}
+
+/* GetHandleBinaryImage implements GLTFState.get_handle_binary_image:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *GLTFStateImpl) GetHandleBinaryImage() int32 {
+
+	className := NewStringNameWithLatin1Chars("GLTFState")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_handle_binary_image")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function GLTFState.get_handle_binary_image (3905245786)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetHandleBinaryImage implements GLTFState.set_handle_binary_image:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GLTFStateImpl) SetHandleBinaryImage(
+	method int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("GLTFState")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_handle_binary_image")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function GLTFState.set_handle_binary_image (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&method))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 type GLTFTextureImpl struct {
@@ -179723,6 +184108,252 @@ func (cx *GeometryInstance3DImpl) GetCustomAabb() AABB {
 	return ret
 }
 
+type GodotInstanceImpl struct {
+	ObjectImpl
+}
+
+func NewGDExtensionClassFromGodotInstanceOwner(owner *GodotObject) GDExtensionClass {
+	inst := &GodotInstanceImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewGodotInstanceWithGodotOwnerObject(owner *GodotObject) GodotInstance {
+	inst := &GodotInstanceImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *GodotInstanceImpl) GetClassName() string {
+	return "GodotInstance"
+}
+
+func (cx *GodotInstanceImpl) GetParentClassName() string {
+	return "Object"
+}
+
+/* Start implements GodotInstance.start:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *GodotInstanceImpl) Start() bool {
+
+	className := NewStringNameWithLatin1Chars("GodotInstance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("start")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function GodotInstance.start (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsStarted implements GodotInstance.is_started:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *GodotInstanceImpl) IsStarted() bool {
+
+	className := NewStringNameWithLatin1Chars("GodotInstance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_started")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function GodotInstance.is_started (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* Iteration implements GodotInstance.iteration:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *GodotInstanceImpl) Iteration() bool {
+
+	className := NewStringNameWithLatin1Chars("GodotInstance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("iteration")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function GodotInstance.iteration (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FocusIn implements GodotInstance.focus_in:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GodotInstanceImpl) FocusIn() {
+
+	className := NewStringNameWithLatin1Chars("GodotInstance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("focus_in")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function GodotInstance.focus_in (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* FocusOut implements GodotInstance.focus_out:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GodotInstanceImpl) FocusOut() {
+
+	className := NewStringNameWithLatin1Chars("GodotInstance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("focus_out")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function GodotInstance.focus_out (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* Pause implements GodotInstance.pause:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GodotInstanceImpl) Pause() {
+
+	className := NewStringNameWithLatin1Chars("GodotInstance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("pause")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function GodotInstance.pause (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* Resume implements GodotInstance.resume:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GodotInstanceImpl) Resume() {
+
+	className := NewStringNameWithLatin1Chars("GodotInstance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("resume")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function GodotInstance.resume (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type GradientImpl struct {
 	ResourceImpl
 }
@@ -183958,6 +188589,73 @@ func (cx *GraphElementImpl) IsSelected() bool {
 	return ret
 }
 
+/* SetScalingMenus implements GraphElement.set_scaling_menus:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GraphElementImpl) SetScalingMenus(
+	scaling_menus bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("GraphElement")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_scaling_menus")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function GraphElement.set_scaling_menus (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scaling_menus))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsScalingMenus implements GraphElement.is_scaling_menus:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *GraphElementImpl) IsScalingMenus() bool {
+
+	className := NewStringNameWithLatin1Chars("GraphElement")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_scaling_menus")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function GraphElement.is_scaling_menus (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetPositionOffset implements GraphElement.set_position_offset:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -185035,6 +189733,80 @@ func (cx *GraphNodeImpl) GetSlotCustomIconLeft(
 	return NewRefTexture2DGDExtensionIternalConstructor(&ret)
 }
 
+/* SetSlotMetadataLeft implements GraphNode.set_slot_metadata_left:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GraphNodeImpl) SetSlotMetadataLeft(
+	slot_index int32,
+	value Variant,
+) {
+
+	className := NewStringNameWithLatin1Chars("GraphNode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_slot_metadata_left")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2152698145,
+	)
+	if fn == nil {
+		panic("could not find method function GraphNode.set_slot_metadata_left (2152698145)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSlotMetadataLeft implements GraphNode.get_slot_metadata_left:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Variant, return_meta =
+ */
+func (cx *GraphNodeImpl) GetSlotMetadataLeft(
+	slot_index int32,
+) Variant {
+
+	className := NewStringNameWithLatin1Chars("GraphNode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_slot_metadata_left")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4227898402,
+	)
+	if fn == nil {
+		panic("could not find method function GraphNode.get_slot_metadata_left (4227898402)")
+	}
+
+	var ret Variant
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* IsSlotEnabledRight implements GraphNode.is_slot_enabled_right:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = bool, return_meta =
@@ -185329,6 +190101,80 @@ func (cx *GraphNodeImpl) GetSlotCustomIconRight(
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefTexture2DGDExtensionIternalConstructor(&ret)
+}
+
+/* SetSlotMetadataRight implements GraphNode.set_slot_metadata_right:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *GraphNodeImpl) SetSlotMetadataRight(
+	slot_index int32,
+	value Variant,
+) {
+
+	className := NewStringNameWithLatin1Chars("GraphNode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_slot_metadata_right")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2152698145,
+	)
+	if fn == nil {
+		panic("could not find method function GraphNode.set_slot_metadata_right (2152698145)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSlotMetadataRight implements GraphNode.get_slot_metadata_right:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Variant, return_meta =
+ */
+func (cx *GraphNodeImpl) GetSlotMetadataRight(
+	slot_index int32,
+) Variant {
+
+	className := NewStringNameWithLatin1Chars("GraphNode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_slot_metadata_right")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4227898402,
+	)
+	if fn == nil {
+		panic("could not find method function GraphNode.get_slot_metadata_right (4227898402)")
+	}
+
+	var ret Variant
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 /* IsSlotDrawStylebox implements GraphNode.is_slot_draw_stylebox:
@@ -190616,6 +195462,227 @@ func (cx *HingeJoint3DImpl) GetFlag(
 	return ret
 }
 
+type IKModifier3DImpl struct {
+	SkeletonModifier3DImpl
+}
+
+func NewGDExtensionClassFromIKModifier3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &IKModifier3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewIKModifier3DWithGodotOwnerObject(owner *GodotObject) IKModifier3D {
+	inst := &IKModifier3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *IKModifier3DImpl) GetClassName() string {
+	return "IKModifier3D"
+}
+
+func (cx *IKModifier3DImpl) GetParentClassName() string {
+	return "SkeletonModifier3D"
+}
+
+/* SetSettingCount implements IKModifier3D.set_setting_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IKModifier3DImpl) SetSettingCount(
+	count int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("IKModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_setting_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function IKModifier3D.set_setting_count (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&count))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSettingCount implements IKModifier3D.get_setting_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *IKModifier3DImpl) GetSettingCount() int32 {
+
+	className := NewStringNameWithLatin1Chars("IKModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_setting_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function IKModifier3D.get_setting_count (3905245786)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* ClearSettings implements IKModifier3D.clear_settings:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IKModifier3DImpl) ClearSettings() {
+
+	className := NewStringNameWithLatin1Chars("IKModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("clear_settings")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function IKModifier3D.clear_settings (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetMutableBoneAxes implements IKModifier3D.set_mutable_bone_axes:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IKModifier3DImpl) SetMutableBoneAxes(
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("IKModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_mutable_bone_axes")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function IKModifier3D.set_mutable_bone_axes (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* AreBoneAxesMutable implements IKModifier3D.are_bone_axes_mutable:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *IKModifier3DImpl) AreBoneAxesMutable() bool {
+
+	className := NewStringNameWithLatin1Chars("IKModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("are_bone_axes_mutable")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function IKModifier3D.are_bone_axes_mutable (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* Reset implements IKModifier3D.reset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IKModifier3DImpl) Reset() {
+
+	className := NewStringNameWithLatin1Chars("IKModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("reset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function IKModifier3D.reset (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type IPImpl struct {
 	ObjectImpl
 }
@@ -193682,6 +198749,43 @@ func (cx *ImageImpl) LoadDdsFromBuffer(
 	return ret
 }
 
+/* LoadExrFromBuffer implements Image.load_exr_from_buffer:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *ImageImpl) LoadExrFromBuffer(
+	buffer PackedByteArray,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("Image")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("load_exr_from_buffer")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		680677267,
+	)
+	if fn == nil {
+		panic("could not find method function Image.load_exr_from_buffer (680677267)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* LoadSvgFromBuffer implements Image.load_svg_from_buffer:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = enum::Error, return_meta =
@@ -195417,6 +200521,43 @@ func (cx *ImporterMeshImpl) GetMesh(
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefArrayMeshGDExtensionIternalConstructor(&ret)
+}
+
+/* FromMesh implements ImporterMesh.from_mesh:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = ImporterMesh, return_meta =
+ */
+func (cx *ImporterMeshImpl) FromMesh(
+	mesh RefMesh,
+) RefImporterMesh {
+
+	className := NewStringNameWithLatin1Chars("ImporterMesh")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("from_mesh")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		283226343,
+	)
+	if fn == nil {
+		panic("could not find method function ImporterMesh.from_mesh (283226343)")
+	}
+
+	var ret ImporterMeshImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefImporterMeshGDExtensionIternalConstructor(&ret)
 }
 
 /* Clear implements ImporterMesh.clear:
@@ -197626,6 +202767,80 @@ func (cx *InputImpl) SetGyroscope(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* SetJoyLight implements Input.set_joy_light:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *InputImpl) SetJoyLight(
+	device int32,
+	color Color,
+) {
+
+	className := NewStringNameWithLatin1Chars("Input")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joy_light")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2878471219,
+	)
+	if fn == nil {
+		panic("could not find method function Input.set_joy_light (2878471219)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&device))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* HasJoyLight implements Input.has_joy_light:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *InputImpl) HasJoyLight(
+	device int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("Input")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_joy_light")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function Input.has_joy_light (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&device))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* GetLastMouseVelocity implements Input.get_last_mouse_velocity:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = Vector2, return_meta =
@@ -198804,7 +204019,7 @@ func (cx *InputEventImpl) Accumulate(
 
 /* XformedBy implements InputEvent.xformed_by:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = InputEvent, return_meta =
+ * return_type = InputEvent, return_meta = required
  */
 func (cx *InputEventImpl) XformedBy(
 	xform Transform2D,
@@ -206890,6 +212105,140 @@ func (cx *ItemListImpl) GetHScrollBar() HScrollBar {
 	return &ret
 }
 
+/* SetScrollHintMode implements ItemList.set_scroll_hint_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ItemListImpl) SetScrollHintMode(
+	scroll_hint_mode ItemListScrollHintMode,
+) {
+
+	className := NewStringNameWithLatin1Chars("ItemList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_scroll_hint_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2917787337,
+	)
+	if fn == nil {
+		panic("could not find method function ItemList.set_scroll_hint_mode (2917787337)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scroll_hint_mode))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetScrollHintMode implements ItemList.get_scroll_hint_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::ItemList.ScrollHintMode, return_meta =
+ */
+func (cx *ItemListImpl) GetScrollHintMode() ItemListScrollHintMode {
+
+	className := NewStringNameWithLatin1Chars("ItemList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_scroll_hint_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2522227939,
+	)
+	if fn == nil {
+		panic("could not find method function ItemList.get_scroll_hint_mode (2522227939)")
+	}
+
+	var ret ItemListScrollHintMode
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTileScrollHint implements ItemList.set_tile_scroll_hint:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ItemListImpl) SetTileScrollHint(
+	tile_scroll_hint bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("ItemList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tile_scroll_hint")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function ItemList.set_tile_scroll_hint (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tile_scroll_hint))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsScrollHintTiled implements ItemList.is_scroll_hint_tiled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *ItemListImpl) IsScrollHintTiled() bool {
+
+	className := NewStringNameWithLatin1Chars("ItemList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_scroll_hint_tiled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function ItemList.is_scroll_hint_tiled (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetTextOverrunBehavior implements ItemList.set_text_overrun_behavior:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -207054,6 +212403,855 @@ func (cx *ItemListImpl) ForceUpdateListSize() {
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+type IterateIK3DImpl struct {
+	ChainIK3DImpl
+}
+
+func NewGDExtensionClassFromIterateIK3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &IterateIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewIterateIK3DWithGodotOwnerObject(owner *GodotObject) IterateIK3D {
+	inst := &IterateIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *IterateIK3DImpl) GetClassName() string {
+	return "IterateIK3D"
+}
+
+func (cx *IterateIK3DImpl) GetParentClassName() string {
+	return "ChainIK3D"
+}
+
+/* SetMaxIterations implements IterateIK3D.set_max_iterations:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetMaxIterations(
+	max_iterations int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_max_iterations")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_max_iterations (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_iterations))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMaxIterations implements IterateIK3D.get_max_iterations:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *IterateIK3DImpl) GetMaxIterations() int32 {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_max_iterations")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_max_iterations (3905245786)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMinDistance implements IterateIK3D.set_min_distance:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetMinDistance(
+	min_distance float64,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_min_distance")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_min_distance (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&min_distance))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMinDistance implements IterateIK3D.get_min_distance:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = double
+ */
+func (cx *IterateIK3DImpl) GetMinDistance() float64 {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_min_distance")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_min_distance (1740695150)")
+	}
+
+	var ret float64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetAngularDeltaLimit implements IterateIK3D.set_angular_delta_limit:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetAngularDeltaLimit(
+	angular_delta_limit float64,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_angular_delta_limit")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_angular_delta_limit (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&angular_delta_limit))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetAngularDeltaLimit implements IterateIK3D.get_angular_delta_limit:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = double
+ */
+func (cx *IterateIK3DImpl) GetAngularDeltaLimit() float64 {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_angular_delta_limit")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_angular_delta_limit (1740695150)")
+	}
+
+	var ret float64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetDeterministic implements IterateIK3D.set_deterministic:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetDeterministic(
+	deterministic bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_deterministic")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_deterministic (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&deterministic))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsDeterministic implements IterateIK3D.is_deterministic:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *IterateIK3DImpl) IsDeterministic() bool {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_deterministic")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.is_deterministic (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTargetNode implements IterateIK3D.set_target_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetTargetNode(
+	index int32,
+	target_node NodePath,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_target_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2761262315,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_target_node (2761262315)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&target_node))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTargetNode implements IterateIK3D.get_target_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = NodePath, return_meta =
+ */
+func (cx *IterateIK3DImpl) GetTargetNode(
+	index int32,
+) NodePath {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_target_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		408788394,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_target_node (408788394)")
+	}
+
+	var ret NodePath
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetJointRotationAxis implements IterateIK3D.set_joint_rotation_axis:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetJointRotationAxis(
+	index int32,
+	joint int32,
+	axis SkeletonModifier3DRotationAxis,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joint_rotation_axis")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1391134969,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_joint_rotation_axis (1391134969)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&axis))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetJointRotationAxis implements IterateIK3D.get_joint_rotation_axis:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::SkeletonModifier3D.RotationAxis, return_meta =
+ */
+func (cx *IterateIK3DImpl) GetJointRotationAxis(
+	index int32,
+	joint int32,
+) SkeletonModifier3DRotationAxis {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_rotation_axis")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3312594080,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_joint_rotation_axis (3312594080)")
+	}
+
+	var ret SkeletonModifier3DRotationAxis
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetJointRotationAxisVector implements IterateIK3D.set_joint_rotation_axis_vector:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetJointRotationAxisVector(
+	index int32,
+	joint int32,
+	axis_vector Vector3,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joint_rotation_axis_vector")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2866752138,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_joint_rotation_axis_vector (2866752138)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&axis_vector))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetJointRotationAxisVector implements IterateIK3D.get_joint_rotation_axis_vector:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector3, return_meta =
+ */
+func (cx *IterateIK3DImpl) GetJointRotationAxisVector(
+	index int32,
+	joint int32,
+) Vector3 {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_rotation_axis_vector")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1592972041,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_joint_rotation_axis_vector (1592972041)")
+	}
+
+	var ret Vector3
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetJointLimitation implements IterateIK3D.set_joint_limitation:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetJointLimitation(
+	index int32,
+	joint int32,
+	limitation RefJointLimitation3D,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joint_limitation")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1194636955,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_joint_limitation (1194636955)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&limitation))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetJointLimitation implements IterateIK3D.get_joint_limitation:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = JointLimitation3D, return_meta =
+ */
+func (cx *IterateIK3DImpl) GetJointLimitation(
+	index int32,
+	joint int32,
+) RefJointLimitation3D {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_limitation")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		91665146,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_joint_limitation (91665146)")
+	}
+
+	var ret JointLimitation3DImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefJointLimitation3DGDExtensionIternalConstructor(&ret)
+}
+
+/* SetJointLimitationRightAxis implements IterateIK3D.set_joint_limitation_right_axis:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetJointLimitationRightAxis(
+	index int32,
+	joint int32,
+	direction SkeletonModifier3DSecondaryDirection,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joint_limitation_right_axis")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3838967147,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_joint_limitation_right_axis (3838967147)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&direction))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetJointLimitationRightAxis implements IterateIK3D.get_joint_limitation_right_axis:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::SkeletonModifier3D.SecondaryDirection, return_meta =
+ */
+func (cx *IterateIK3DImpl) GetJointLimitationRightAxis(
+	index int32,
+	joint int32,
+) SkeletonModifier3DSecondaryDirection {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_limitation_right_axis")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		623936134,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_joint_limitation_right_axis (623936134)")
+	}
+
+	var ret SkeletonModifier3DSecondaryDirection
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetJointLimitationRightAxisVector implements IterateIK3D.set_joint_limitation_right_axis_vector:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetJointLimitationRightAxisVector(
+	index int32,
+	joint int32,
+	vector Vector3,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joint_limitation_right_axis_vector")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2866752138,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_joint_limitation_right_axis_vector (2866752138)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&vector))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetJointLimitationRightAxisVector implements IterateIK3D.get_joint_limitation_right_axis_vector:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector3, return_meta =
+ */
+func (cx *IterateIK3DImpl) GetJointLimitationRightAxisVector(
+	index int32,
+	joint int32,
+) Vector3 {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_limitation_right_axis_vector")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1592972041,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_joint_limitation_right_axis_vector (1592972041)")
+	}
+
+	var ret Vector3
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetJointLimitationRotationOffset implements IterateIK3D.set_joint_limitation_rotation_offset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *IterateIK3DImpl) SetJointLimitationRotationOffset(
+	index int32,
+	joint int32,
+	offset Quaternion,
+) {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_joint_limitation_rotation_offset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4188936002,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.set_joint_limitation_rotation_offset (4188936002)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&offset))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetJointLimitationRotationOffset implements IterateIK3D.get_joint_limitation_rotation_offset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Quaternion, return_meta =
+ */
+func (cx *IterateIK3DImpl) GetJointLimitationRotationOffset(
+	index int32,
+	joint int32,
+) Quaternion {
+
+	className := NewStringNameWithLatin1Chars("IterateIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_joint_limitation_rotation_offset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722473700,
+	)
+	if fn == nil {
+		panic("could not find method function IterateIK3D.get_joint_limitation_rotation_offset (2722473700)")
+	}
+
+	var ret Quaternion
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type JNISingletonImpl struct {
 	ObjectImpl
 }
@@ -207070,6 +213268,52 @@ func NewJNISingletonWithGodotOwnerObject(owner *GodotObject) JNISingleton {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return inst
+}
+
+// section: methods
+func (cx *JNISingletonImpl) GetClassName() string {
+	return "JNISingleton"
+}
+
+func (cx *JNISingletonImpl) GetParentClassName() string {
+	return "Object"
+}
+
+/* HasJavaMethod implements JNISingleton.has_java_method:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *JNISingletonImpl) HasJavaMethod(
+	method StringName,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("JNISingleton")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_java_method")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2619796661,
+	)
+	if fn == nil {
+		panic("could not find method function JNISingleton.has_java_method (2619796661)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&method))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 type JSONImpl struct {
@@ -207775,6 +214019,24 @@ func (cx *JSONRPCImpl) MakeResponseError(
 	return ret
 }
 
+type JacobianIK3DImpl struct {
+	IterateIK3DImpl
+}
+
+func NewGDExtensionClassFromJacobianIK3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &JacobianIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewJacobianIK3DWithGodotOwnerObject(owner *GodotObject) JacobianIK3D {
+	inst := &JacobianIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
 type JavaClassImpl struct {
 	RefCountedImpl
 }
@@ -207899,6 +214161,43 @@ func (cx *JavaClassImpl) GetJavaParentClass() RefJavaClass {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefJavaClassGDExtensionIternalConstructor(&ret)
+}
+
+/* HasJavaMethod implements JavaClass.has_java_method:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *JavaClassImpl) HasJavaMethod(
+	method StringName,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("JavaClass")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_java_method")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2619796661,
+	)
+	if fn == nil {
+		panic("could not find method function JavaClass.has_java_method (2619796661)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&method))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 type JavaClassWrapperImpl struct {
@@ -208056,6 +214355,43 @@ func (cx *JavaObjectImpl) GetJavaClass() RefJavaClass {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefJavaClassGDExtensionIternalConstructor(&ret)
+}
+
+/* HasJavaMethod implements JavaObject.has_java_method:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *JavaObjectImpl) HasJavaMethod(
+	method StringName,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("JavaObject")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_java_method")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2619796661,
+	)
+	if fn == nil {
+		panic("could not find method function JavaObject.has_java_method (2619796661)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&method))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 type JavaScriptBridgeImpl struct {
@@ -208306,6 +214642,7 @@ func (cx *JavaScriptBridgeImpl) CreateObject(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantString(object)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -209117,6 +215454,118 @@ func (cx *Joint3DImpl) GetRid() RID {
 	}
 
 	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type JointLimitation3DImpl struct {
+	ResourceImpl
+}
+
+func NewGDExtensionClassFromJointLimitation3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &JointLimitation3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewJointLimitation3DWithGodotOwnerObject(owner *GodotObject) RefJointLimitation3D {
+	inst := &JointLimitation3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefJointLimitation3DGDExtensionIternalConstructor(inst)
+}
+
+type JointLimitationCone3DImpl struct {
+	JointLimitation3DImpl
+}
+
+func NewGDExtensionClassFromJointLimitationCone3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &JointLimitationCone3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewJointLimitationCone3DWithGodotOwnerObject(owner *GodotObject) RefJointLimitationCone3D {
+	inst := &JointLimitationCone3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefJointLimitationCone3DGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *JointLimitationCone3DImpl) GetClassName() string {
+	return "JointLimitationCone3D"
+}
+
+func (cx *JointLimitationCone3DImpl) GetParentClassName() string {
+	return "JointLimitation3D"
+}
+
+/* SetAngle implements JointLimitationCone3D.set_angle:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *JointLimitationCone3DImpl) SetAngle(
+	angle float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("JointLimitationCone3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_angle")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function JointLimitationCone3D.set_angle (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&angle))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetAngle implements JointLimitationCone3D.get_angle:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *JointLimitationCone3DImpl) GetAngle() float32 {
+
+	className := NewStringNameWithLatin1Chars("JointLimitationCone3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_angle")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function JointLimitationCone3D.get_angle (1740695150)")
+	}
+
+	var ret float32
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -219687,6 +226136,590 @@ func NewLightmapperRDWithGodotOwnerObject(owner *GodotObject) RefLightmapperRD {
 	return NewRefLightmapperRDGDExtensionIternalConstructor(inst)
 }
 
+type LimitAngularVelocityModifier3DImpl struct {
+	SkeletonModifier3DImpl
+}
+
+func NewGDExtensionClassFromLimitAngularVelocityModifier3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &LimitAngularVelocityModifier3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewLimitAngularVelocityModifier3DWithGodotOwnerObject(owner *GodotObject) LimitAngularVelocityModifier3D {
+	inst := &LimitAngularVelocityModifier3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *LimitAngularVelocityModifier3DImpl) GetClassName() string {
+	return "LimitAngularVelocityModifier3D"
+}
+
+func (cx *LimitAngularVelocityModifier3DImpl) GetParentClassName() string {
+	return "SkeletonModifier3D"
+}
+
+/* SetRootBoneName implements LimitAngularVelocityModifier3D.set_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) SetRootBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.set_root_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBoneName implements LimitAngularVelocityModifier3D.get_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) GetRootBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.get_root_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRootBone implements LimitAngularVelocityModifier3D.set_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) SetRootBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.set_root_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBone implements LimitAngularVelocityModifier3D.get_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) GetRootBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.get_root_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneName implements LimitAngularVelocityModifier3D.set_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) SetEndBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.set_end_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneName implements LimitAngularVelocityModifier3D.get_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) GetEndBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.get_end_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBone implements LimitAngularVelocityModifier3D.set_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) SetEndBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.set_end_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBone implements LimitAngularVelocityModifier3D.get_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) GetEndBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.get_end_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetChainCount implements LimitAngularVelocityModifier3D.set_chain_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) SetChainCount(
+	count int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_chain_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.set_chain_count (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&count))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetChainCount implements LimitAngularVelocityModifier3D.get_chain_count:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) GetChainCount() int32 {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_chain_count")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.get_chain_count (3905245786)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* ClearChains implements LimitAngularVelocityModifier3D.clear_chains:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) ClearChains() {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("clear_chains")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.clear_chains (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetMaxAngularVelocity implements LimitAngularVelocityModifier3D.set_max_angular_velocity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) SetMaxAngularVelocity(
+	angular_velocity float64,
+) {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_max_angular_velocity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.set_max_angular_velocity (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&angular_velocity))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMaxAngularVelocity implements LimitAngularVelocityModifier3D.get_max_angular_velocity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = double
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) GetMaxAngularVelocity() float64 {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_max_angular_velocity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.get_max_angular_velocity (1740695150)")
+	}
+
+	var ret float64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetExclude implements LimitAngularVelocityModifier3D.set_exclude:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) SetExclude(
+	exclude bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_exclude")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.set_exclude (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exclude))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsExclude implements LimitAngularVelocityModifier3D.is_exclude:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) IsExclude() bool {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_exclude")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.is_exclude (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* Reset implements LimitAngularVelocityModifier3D.reset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LimitAngularVelocityModifier3DImpl) Reset() {
+
+	className := NewStringNameWithLatin1Chars("LimitAngularVelocityModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("reset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function LimitAngularVelocityModifier3D.reset (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type Line2DImpl struct {
 	Node2DImpl
 }
@@ -221054,7 +228087,9 @@ func (cx *LineEditImpl) GetHorizontalAlignment() HorizontalAlignment {
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
  */
-func (cx *LineEditImpl) Edit() {
+func (cx *LineEditImpl) Edit(
+	hide_focus bool,
+) {
 
 	className := NewStringNameWithLatin1Chars("LineEdit")
 	defer className.Destroy()
@@ -221063,20 +228098,22 @@ func (cx *LineEditImpl) Edit() {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
+		107499316,
 	)
 	if fn == nil {
-		panic("could not find method function LineEdit.edit (3218959716)")
+		panic("could not find method function LineEdit.edit (107499316)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 0
+	callArgCount := 1
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&hide_focus))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -223854,6 +230891,140 @@ func (cx *LineEditImpl) GetRightIcon() RefTexture2D {
 	return NewRefTexture2DGDExtensionIternalConstructor(&ret)
 }
 
+/* SetIconExpandMode implements LineEdit.set_icon_expand_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LineEditImpl) SetIconExpandMode(
+	mode LineEditExpandMode,
+) {
+
+	className := NewStringNameWithLatin1Chars("LineEdit")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_icon_expand_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3019903192,
+	)
+	if fn == nil {
+		panic("could not find method function LineEdit.set_icon_expand_mode (3019903192)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mode))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetIconExpandMode implements LineEdit.get_icon_expand_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::LineEdit.ExpandMode, return_meta =
+ */
+func (cx *LineEditImpl) GetIconExpandMode() LineEditExpandMode {
+
+	className := NewStringNameWithLatin1Chars("LineEdit")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_icon_expand_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3273584435,
+	)
+	if fn == nil {
+		panic("could not find method function LineEdit.get_icon_expand_mode (3273584435)")
+	}
+
+	var ret LineEditExpandMode
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRightIconScale implements LineEdit.set_right_icon_scale:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LineEditImpl) SetRightIconScale(
+	scale float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("LineEdit")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_right_icon_scale")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		373806689,
+	)
+	if fn == nil {
+		panic("could not find method function LineEdit.set_right_icon_scale (373806689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scale))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRightIconScale implements LineEdit.get_right_icon_scale:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *LineEditImpl) GetRightIconScale() float32 {
+
+	className := NewStringNameWithLatin1Chars("LineEdit")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_right_icon_scale")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1740695150,
+	)
+	if fn == nil {
+		panic("could not find method function LineEdit.get_right_icon_scale (1740695150)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetFlat implements LineEdit.set_flat:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -224066,6 +231237,140 @@ func (cx *LinkButtonImpl) GetText() String {
 	)
 	if fn == nil {
 		panic("could not find method function LinkButton.get_text (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTextOverrunBehavior implements LinkButton.set_text_overrun_behavior:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LinkButtonImpl) SetTextOverrunBehavior(
+	overrun_behavior TextServerOverrunBehavior,
+) {
+
+	className := NewStringNameWithLatin1Chars("LinkButton")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_text_overrun_behavior")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1008890932,
+	)
+	if fn == nil {
+		panic("could not find method function LinkButton.set_text_overrun_behavior (1008890932)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&overrun_behavior))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTextOverrunBehavior implements LinkButton.get_text_overrun_behavior:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::TextServer.OverrunBehavior, return_meta =
+ */
+func (cx *LinkButtonImpl) GetTextOverrunBehavior() TextServerOverrunBehavior {
+
+	className := NewStringNameWithLatin1Chars("LinkButton")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_text_overrun_behavior")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3779142101,
+	)
+	if fn == nil {
+		panic("could not find method function LinkButton.get_text_overrun_behavior (3779142101)")
+	}
+
+	var ret TextServerOverrunBehavior
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEllipsisChar implements LinkButton.set_ellipsis_char:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LinkButtonImpl) SetEllipsisChar(
+	char String,
+) {
+
+	className := NewStringNameWithLatin1Chars("LinkButton")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_ellipsis_char")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		83702148,
+	)
+	if fn == nil {
+		panic("could not find method function LinkButton.set_ellipsis_char (83702148)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&char))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEllipsisChar implements LinkButton.get_ellipsis_char:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *LinkButtonImpl) GetEllipsisChar() String {
+
+	className := NewStringNameWithLatin1Chars("LinkButton")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_ellipsis_char")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function LinkButton.get_ellipsis_char (201670096)")
 	}
 
 	var ret String
@@ -224924,6 +232229,73 @@ func (cx *LookAtModifier3DImpl) IsUsingSecondaryRotation() bool {
 	)
 	if fn == nil {
 		panic("could not find method function LookAtModifier3D.is_using_secondary_rotation (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRelative implements LookAtModifier3D.set_relative:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *LookAtModifier3DImpl) SetRelative(
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("LookAtModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_relative")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function LookAtModifier3D.set_relative (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsRelative implements LookAtModifier3D.is_relative:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *LookAtModifier3DImpl) IsRelative() bool {
+
+	className := NewStringNameWithLatin1Chars("LookAtModifier3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_relative")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function LookAtModifier3D.is_relative (36873697)")
 	}
 
 	var ret bool
@@ -233319,7 +240691,7 @@ func (cx *MethodTweenerImpl) GetParentClassName() string {
 
 /* SetDelay implements MethodTweener.set_delay:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = MethodTweener, return_meta =
+ * return_type = MethodTweener, return_meta = required
  */
 func (cx *MethodTweenerImpl) SetDelay(
 	delay float64,
@@ -233356,7 +240728,7 @@ func (cx *MethodTweenerImpl) SetDelay(
 
 /* SetTrans implements MethodTweener.set_trans:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = MethodTweener, return_meta =
+ * return_type = MethodTweener, return_meta = required
  */
 func (cx *MethodTweenerImpl) SetTrans(
 	trans TweenTransitionType,
@@ -233393,7 +240765,7 @@ func (cx *MethodTweenerImpl) SetTrans(
 
 /* SetEase implements MethodTweener.set_ease:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = MethodTweener, return_meta =
+ * return_type = MethodTweener, return_meta = required
  */
 func (cx *MethodTweenerImpl) SetEase(
 	ease TweenEaseType,
@@ -233640,6 +241012,73 @@ func (cx *MissingNodeImpl) IsRecordingProperties() bool {
 	)
 	if fn == nil {
 		panic("could not find method function MissingNode.is_recording_properties (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRecordingSignals implements MissingNode.set_recording_signals:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *MissingNodeImpl) SetRecordingSignals(
+	enable bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("MissingNode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_recording_signals")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function MissingNode.set_recording_signals (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enable))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsRecordingSignals implements MissingNode.is_recording_signals:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *MissingNodeImpl) IsRecordingSignals() bool {
+
+	className := NewStringNameWithLatin1Chars("MissingNode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_recording_signals")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function MissingNode.is_recording_signals (36873697)")
 	}
 
 	var ret bool
@@ -235560,6 +242999,36 @@ func (cx *MultiMeshImpl) ResetInstancePhysicsInterpolation(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&instance))
 	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* ResetInstancesPhysicsInterpolation implements MultiMesh.reset_instances_physics_interpolation:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *MultiMeshImpl) ResetInstancesPhysicsInterpolation() {
+
+	className := NewStringNameWithLatin1Chars("MultiMesh")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("reset_instances_physics_interpolation")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function MultiMesh.reset_instances_physics_interpolation (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -238486,6 +245955,80 @@ func (cx *NativeMenuImpl) GetSystemMenuName(
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
+}
+
+/* GetSystemMenuText implements NativeMenu.get_system_menu_text:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *NativeMenuImpl) GetSystemMenuText(
+	menu_id NativeMenuSystemMenus,
+) String {
+
+	className := NewStringNameWithLatin1Chars("NativeMenu")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_system_menu_text")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1281499290,
+	)
+	if fn == nil {
+		panic("could not find method function NativeMenu.get_system_menu_text (1281499290)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu_id))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetSystemMenuText implements NativeMenu.set_system_menu_text:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *NativeMenuImpl) SetSystemMenuText(
+	menu_id NativeMenuSystemMenus,
+	name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("NativeMenu")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_system_menu_text")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3925225603,
+	)
+	if fn == nil {
+		panic("could not find method function NativeMenu.set_system_menu_text (3925225603)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu_id))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 /* CreateMenu implements NativeMenu.create_menu:
@@ -263801,6 +271344,107 @@ func (cx *NavigationServer2DImpl) GetProcessInfo(
 	return ret
 }
 
+type NavigationServer2DManagerImpl struct {
+	ObjectImpl
+}
+
+func NewGDExtensionClassFromNavigationServer2DManagerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &NavigationServer2DManagerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewNavigationServer2DManagerWithGodotOwnerObject(owner *GodotObject) NavigationServer2DManager {
+	inst := &NavigationServer2DManagerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *NavigationServer2DManagerImpl) GetClassName() string {
+	return "NavigationServer2DManager"
+}
+
+func (cx *NavigationServer2DManagerImpl) GetParentClassName() string {
+	return "Object"
+}
+
+/* RegisterServer implements NavigationServer2DManager.register_server:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *NavigationServer2DManagerImpl) RegisterServer(
+	name String,
+	create_callback Callable,
+) {
+
+	className := NewStringNameWithLatin1Chars("NavigationServer2DManager")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("register_server")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2137474292,
+	)
+	if fn == nil {
+		panic("could not find method function NavigationServer2DManager.register_server (2137474292)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&create_callback))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetDefaultServer implements NavigationServer2DManager.set_default_server:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *NavigationServer2DManagerImpl) SetDefaultServer(
+	name String,
+	priority int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("NavigationServer2DManager")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_default_server")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2956805083,
+	)
+	if fn == nil {
+		panic("could not find method function NavigationServer2DManager.set_default_server (2956805083)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&priority))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type NavigationServer3DImpl struct {
 	ObjectImpl
 }
@@ -269566,6 +277210,107 @@ func (cx *NavigationServer3DImpl) GetProcessInfo(
 	return ret
 }
 
+type NavigationServer3DManagerImpl struct {
+	ObjectImpl
+}
+
+func NewGDExtensionClassFromNavigationServer3DManagerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &NavigationServer3DManagerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewNavigationServer3DManagerWithGodotOwnerObject(owner *GodotObject) NavigationServer3DManager {
+	inst := &NavigationServer3DManagerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *NavigationServer3DManagerImpl) GetClassName() string {
+	return "NavigationServer3DManager"
+}
+
+func (cx *NavigationServer3DManagerImpl) GetParentClassName() string {
+	return "Object"
+}
+
+/* RegisterServer implements NavigationServer3DManager.register_server:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *NavigationServer3DManagerImpl) RegisterServer(
+	name String,
+	create_callback Callable,
+) {
+
+	className := NewStringNameWithLatin1Chars("NavigationServer3DManager")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("register_server")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2137474292,
+	)
+	if fn == nil {
+		panic("could not find method function NavigationServer3DManager.register_server (2137474292)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&create_callback))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SetDefaultServer implements NavigationServer3DManager.set_default_server:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *NavigationServer3DManagerImpl) SetDefaultServer(
+	name String,
+	priority int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("NavigationServer3DManager")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_default_server")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2956805083,
+	)
+	if fn == nil {
+		panic("could not find method function NavigationServer3DManager.set_default_server (2956805083)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&priority))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type NinePatchRectImpl struct {
 	ControlImpl
 }
@@ -273089,7 +280834,7 @@ func (cx *NodeImpl) GetTree() SceneTree {
 
 /* CreateTween implements Node.create_tween:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *NodeImpl) CreateTween() RefTween {
 
@@ -273920,6 +281665,7 @@ func (cx *NodeImpl) Rpc(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -273968,9 +281714,11 @@ func (cx *NodeImpl) RpcId(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantInt64(int64(peer_id))
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -274048,6 +281796,7 @@ func (cx *NodeImpl) CallDeferredThreadGroup(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -274166,6 +281915,7 @@ func (cx *NodeImpl) CallThreadSafe(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -283404,6 +291154,7 @@ func (cx *ObjectImpl) EmitSignal(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(signal)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -283451,6 +291202,7 @@ func (cx *ObjectImpl) Call(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -283498,6 +291250,7 @@ func (cx *ObjectImpl) CallDeferred(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -285382,6 +293135,39 @@ func (cx *OpenXRAPIExtensionImpl) GetParentClassName() string {
 	return "RefCounted"
 }
 
+/* GetOpenxrVersion implements OpenXRAPIExtension.get_openxr_version:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRAPIExtensionImpl) GetOpenxrVersion() uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRAPIExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_openxr_version")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2455072627,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRAPIExtension.get_openxr_version (2455072627)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* GetInstance implements OpenXRAPIExtension.get_instance:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = int, return_meta = uint64
@@ -286963,6 +294749,36 @@ func (cx *OpenXRAPIExtensionImpl) IsEnvironmentBlendModeAlphaSupported() OpenXRA
 	return ret
 }
 
+/* UpdateMainSwapchainSize implements OpenXRAPIExtension.update_main_swapchain_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRAPIExtensionImpl) UpdateMainSwapchainSize() {
+
+	className := NewStringNameWithLatin1Chars("OpenXRAPIExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("update_main_swapchain_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRAPIExtension.update_main_swapchain_size (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type OpenXRActionImpl struct {
 	ResourceImpl
 }
@@ -288376,6 +296192,200 @@ func (cx *OpenXRAnalogThresholdModifierImpl) GetOffHaptic() RefOpenXRHapticBase 
 	return NewRefOpenXRHapticBaseGDExtensionIternalConstructor(&ret)
 }
 
+type OpenXRAnchorTrackerImpl struct {
+	OpenXRSpatialEntityTrackerImpl
+}
+
+func NewGDExtensionClassFromOpenXRAnchorTrackerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRAnchorTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRAnchorTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRAnchorTracker {
+	inst := &OpenXRAnchorTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRAnchorTrackerGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRAnchorTrackerImpl) GetClassName() string {
+	return "OpenXRAnchorTracker"
+}
+
+func (cx *OpenXRAnchorTrackerImpl) GetParentClassName() string {
+	return "OpenXRSpatialEntityTracker"
+}
+
+/* HasUuid implements OpenXRAnchorTracker.has_uuid:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRAnchorTrackerImpl) HasUuid() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRAnchorTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_uuid")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRAnchorTracker.has_uuid (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetUuid implements OpenXRAnchorTracker.set_uuid:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRAnchorTrackerImpl) SetUuid(
+	uuid String,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRAnchorTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_uuid")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		83702148,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRAnchorTracker.set_uuid (83702148)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&uuid))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetUuid implements OpenXRAnchorTracker.get_uuid:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *OpenXRAnchorTrackerImpl) GetUuid() String {
+
+	className := NewStringNameWithLatin1Chars("OpenXRAnchorTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_uuid")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRAnchorTracker.get_uuid (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRAndroidThreadSettingsExtensionImpl struct {
+	OpenXRExtensionWrapperImpl
+}
+
+func NewGDExtensionClassFromOpenXRAndroidThreadSettingsExtensionOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRAndroidThreadSettingsExtensionImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRAndroidThreadSettingsExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRAndroidThreadSettingsExtension {
+	inst := &OpenXRAndroidThreadSettingsExtensionImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *OpenXRAndroidThreadSettingsExtensionImpl) GetClassName() string {
+	return "OpenXRAndroidThreadSettingsExtension"
+}
+
+func (cx *OpenXRAndroidThreadSettingsExtensionImpl) GetParentClassName() string {
+	return "OpenXRExtensionWrapper"
+}
+
+/* SetApplicationThreadType implements OpenXRAndroidThreadSettingsExtension.set_application_thread_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRAndroidThreadSettingsExtensionImpl) SetApplicationThreadType(
+	thread_type OpenXRAndroidThreadSettingsExtensionThreadType,
+	thread_id uint32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRAndroidThreadSettingsExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_application_thread_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1558751158,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRAndroidThreadSettingsExtension.set_application_thread_type (1558751158)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&thread_type))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&thread_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type OpenXRBindingModifierImpl struct {
 	ResourceImpl
 }
@@ -288994,6 +297004,73 @@ func (cx *OpenXRCompositionLayerImpl) IsNativelySupported() bool {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
+}
+
+/* IsProtectedContent implements OpenXRCompositionLayer.is_protected_content:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRCompositionLayerImpl) IsProtectedContent() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRCompositionLayer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_protected_content")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRCompositionLayer.is_protected_content (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetProtectedContent implements OpenXRCompositionLayer.set_protected_content:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRCompositionLayerImpl) SetProtectedContent(
+	protected_content bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRCompositionLayer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_protected_content")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRCompositionLayer.set_protected_content (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&protected_content))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 /* SetMinFilter implements OpenXRCompositionLayer.set_min_filter:
@@ -291265,6 +299342,230 @@ func NewOpenXRExtensionWrapperExtensionWithGodotOwnerObject(owner *GodotObject) 
 	return inst
 }
 
+type OpenXRFrameSynthesisExtensionImpl struct {
+	OpenXRExtensionWrapperImpl
+}
+
+func NewGDExtensionClassFromOpenXRFrameSynthesisExtensionOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRFrameSynthesisExtensionImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRFrameSynthesisExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRFrameSynthesisExtension {
+	inst := &OpenXRFrameSynthesisExtensionImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *OpenXRFrameSynthesisExtensionImpl) GetClassName() string {
+	return "OpenXRFrameSynthesisExtension"
+}
+
+func (cx *OpenXRFrameSynthesisExtensionImpl) GetParentClassName() string {
+	return "OpenXRExtensionWrapper"
+}
+
+/* IsAvailable implements OpenXRFrameSynthesisExtension.is_available:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRFrameSynthesisExtensionImpl) IsAvailable() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRFrameSynthesisExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_available")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRFrameSynthesisExtension.is_available (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsEnabled implements OpenXRFrameSynthesisExtension.is_enabled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRFrameSynthesisExtensionImpl) IsEnabled() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRFrameSynthesisExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_enabled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRFrameSynthesisExtension.is_enabled (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEnabled implements OpenXRFrameSynthesisExtension.set_enabled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRFrameSynthesisExtensionImpl) SetEnabled(
+	enable bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRFrameSynthesisExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_enabled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRFrameSynthesisExtension.set_enabled (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enable))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRelaxFrameInterval implements OpenXRFrameSynthesisExtension.get_relax_frame_interval:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRFrameSynthesisExtensionImpl) GetRelaxFrameInterval() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRFrameSynthesisExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_relax_frame_interval")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRFrameSynthesisExtension.get_relax_frame_interval (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRelaxFrameInterval implements OpenXRFrameSynthesisExtension.set_relax_frame_interval:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRFrameSynthesisExtensionImpl) SetRelaxFrameInterval(
+	relax_frame_interval bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRFrameSynthesisExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_relax_frame_interval")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRFrameSynthesisExtension.set_relax_frame_interval (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&relax_frame_interval))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* SkipNextFrame implements OpenXRFrameSynthesisExtension.skip_next_frame:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRFrameSynthesisExtensionImpl) SkipNextFrame() {
+
+	className := NewStringNameWithLatin1Chars("OpenXRFrameSynthesisExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("skip_next_frame")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRFrameSynthesisExtension.skip_next_frame (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 type OpenXRFutureExtensionImpl struct {
 	OpenXRExtensionWrapperImpl
 }
@@ -293234,6 +301535,43 @@ func (cx *OpenXRInteractionProfileMetadataImpl) RegisterProfileRename(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* RegisterPathRename implements OpenXRInteractionProfileMetadata.register_path_rename:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRInteractionProfileMetadataImpl) RegisterPathRename(
+	old_name String,
+	new_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRInteractionProfileMetadata")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("register_path_rename")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3186203200,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRInteractionProfileMetadata.register_path_rename (3186203200)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&old_name))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&new_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* RegisterTopLevelPath implements OpenXRInteractionProfileMetadata.register_top_level_path:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -293241,7 +301579,7 @@ func (cx *OpenXRInteractionProfileMetadataImpl) RegisterProfileRename(
 func (cx *OpenXRInteractionProfileMetadataImpl) RegisterTopLevelPath(
 	display_name String,
 	openxr_path String,
-	openxr_extension_name String,
+	openxr_extension_names String,
 ) {
 
 	className := NewStringNameWithLatin1Chars("OpenXRInteractionProfileMetadata")
@@ -293269,7 +301607,7 @@ func (cx *OpenXRInteractionProfileMetadataImpl) RegisterTopLevelPath(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_path))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_extension_name))
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_extension_names))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -293281,7 +301619,7 @@ func (cx *OpenXRInteractionProfileMetadataImpl) RegisterTopLevelPath(
 func (cx *OpenXRInteractionProfileMetadataImpl) RegisterInteractionProfile(
 	display_name String,
 	openxr_path String,
-	openxr_extension_name String,
+	openxr_extension_names String,
 ) {
 
 	className := NewStringNameWithLatin1Chars("OpenXRInteractionProfileMetadata")
@@ -293309,7 +301647,7 @@ func (cx *OpenXRInteractionProfileMetadataImpl) RegisterInteractionProfile(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_path))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_extension_name))
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_extension_names))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -293323,7 +301661,7 @@ func (cx *OpenXRInteractionProfileMetadataImpl) RegisterIoPath(
 	display_name String,
 	toplevel_path String,
 	openxr_path String,
-	openxr_extension_name String,
+	openxr_extension_names String,
 	action_type OpenXRActionActionType,
 ) {
 
@@ -293356,7 +301694,7 @@ func (cx *OpenXRInteractionProfileMetadataImpl) RegisterIoPath(
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_path))
 	pnr.Pin(argPtrSlice[3])
-	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_extension_name))
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&openxr_extension_names))
 	pnr.Pin(argPtrSlice[4])
 	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action_type))
 	pnr.Pin(argPtrSlice[5])
@@ -294516,6 +302854,702 @@ func (cx *OpenXRInterfaceImpl) SetGpuLevel(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+type OpenXRMarkerTrackerImpl struct {
+	OpenXRSpatialEntityTrackerImpl
+}
+
+func NewGDExtensionClassFromOpenXRMarkerTrackerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRMarkerTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRMarkerTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRMarkerTracker {
+	inst := &OpenXRMarkerTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRMarkerTrackerGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRMarkerTrackerImpl) GetClassName() string {
+	return "OpenXRMarkerTracker"
+}
+
+func (cx *OpenXRMarkerTrackerImpl) GetParentClassName() string {
+	return "OpenXRSpatialEntityTracker"
+}
+
+/* SetBoundsSize implements OpenXRMarkerTracker.set_bounds_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRMarkerTrackerImpl) SetBoundsSize(
+	bounds_size Vector2,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_bounds_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		743155724,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.set_bounds_size (743155724)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bounds_size))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetBoundsSize implements OpenXRMarkerTracker.get_bounds_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector2, return_meta =
+ */
+func (cx *OpenXRMarkerTrackerImpl) GetBoundsSize() Vector2 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_bounds_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3341600327,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.get_bounds_size (3341600327)")
+	}
+
+	var ret Vector2
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMarkerType implements OpenXRMarkerTracker.set_marker_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRMarkerTrackerImpl) SetMarkerType(
+	marker_type OpenXRSpatialComponentMarkerListMarkerType,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_marker_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2156241362,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.set_marker_type (2156241362)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&marker_type))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMarkerType implements OpenXRMarkerTracker.get_marker_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialComponentMarkerList.MarkerType, return_meta =
+ */
+func (cx *OpenXRMarkerTrackerImpl) GetMarkerType() OpenXRSpatialComponentMarkerListMarkerType {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_marker_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		612702862,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.get_marker_type (612702862)")
+	}
+
+	var ret OpenXRSpatialComponentMarkerListMarkerType
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMarkerId implements OpenXRMarkerTracker.set_marker_id:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRMarkerTrackerImpl) SetMarkerId(
+	marker_id uint32,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_marker_id")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.set_marker_id (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&marker_id))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMarkerId implements OpenXRMarkerTracker.get_marker_id:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint32
+ */
+func (cx *OpenXRMarkerTrackerImpl) GetMarkerId() uint32 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_marker_id")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.get_marker_id (3905245786)")
+	}
+
+	var ret uint32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMarkerData implements OpenXRMarkerTracker.set_marker_data:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRMarkerTrackerImpl) SetMarkerData(
+	marker_data Variant,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_marker_data")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1114965689,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.set_marker_data (1114965689)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&marker_data))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMarkerData implements OpenXRMarkerTracker.get_marker_data:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Variant, return_meta =
+ */
+func (cx *OpenXRMarkerTrackerImpl) GetMarkerData() Variant {
+
+	className := NewStringNameWithLatin1Chars("OpenXRMarkerTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_marker_data")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1214101251,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRMarkerTracker.get_marker_data (1214101251)")
+	}
+
+	var ret Variant
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRPlaneTrackerImpl struct {
+	OpenXRSpatialEntityTrackerImpl
+}
+
+func NewGDExtensionClassFromOpenXRPlaneTrackerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRPlaneTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRPlaneTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRPlaneTracker {
+	inst := &OpenXRPlaneTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRPlaneTrackerGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRPlaneTrackerImpl) GetClassName() string {
+	return "OpenXRPlaneTracker"
+}
+
+func (cx *OpenXRPlaneTrackerImpl) GetParentClassName() string {
+	return "OpenXRSpatialEntityTracker"
+}
+
+/* SetBoundsSize implements OpenXRPlaneTracker.set_bounds_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) SetBoundsSize(
+	bounds_size Vector2,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_bounds_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		743155724,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.set_bounds_size (743155724)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bounds_size))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetBoundsSize implements OpenXRPlaneTracker.get_bounds_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector2, return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) GetBoundsSize() Vector2 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_bounds_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3341600327,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.get_bounds_size (3341600327)")
+	}
+
+	var ret Vector2
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetPlaneAlignment implements OpenXRPlaneTracker.set_plane_alignment:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) SetPlaneAlignment(
+	plane_alignment OpenXRSpatialComponentPlaneAlignmentListPlaneAlignment,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_plane_alignment")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1214382230,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.set_plane_alignment (1214382230)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plane_alignment))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetPlaneAlignment implements OpenXRPlaneTracker.get_plane_alignment:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialComponentPlaneAlignmentList.PlaneAlignment, return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) GetPlaneAlignment() OpenXRSpatialComponentPlaneAlignmentListPlaneAlignment {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_plane_alignment")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		845541441,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.get_plane_alignment (845541441)")
+	}
+
+	var ret OpenXRSpatialComponentPlaneAlignmentListPlaneAlignment
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetPlaneLabel implements OpenXRPlaneTracker.set_plane_label:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) SetPlaneLabel(
+	plane_label String,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_plane_label")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		83702148,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.set_plane_label (83702148)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plane_label))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetPlaneLabel implements OpenXRPlaneTracker.get_plane_label:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) GetPlaneLabel() String {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_plane_label")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.get_plane_label (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMeshData implements OpenXRPlaneTracker.set_mesh_data:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) SetMeshData(
+	origin Transform3D,
+	vertices PackedVector2Array,
+	indices PackedInt32Array,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_mesh_data")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1877193149,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.set_mesh_data (1877193149)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&origin))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&vertices))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&indices))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* ClearMeshData implements OpenXRPlaneTracker.clear_mesh_data:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) ClearMeshData() {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("clear_mesh_data")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.clear_mesh_data (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMeshOffset implements OpenXRPlaneTracker.get_mesh_offset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Transform3D, return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) GetMeshOffset() Transform3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_mesh_offset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3229777777,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.get_mesh_offset (3229777777)")
+	}
+
+	var ret Transform3D
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetMesh implements OpenXRPlaneTracker.get_mesh:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Mesh, return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) GetMesh() RefMesh {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_mesh")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4081188045,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.get_mesh (4081188045)")
+	}
+
+	var ret MeshImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefMeshGDExtensionIternalConstructor(&ret)
+}
+
+/* GetShape implements OpenXRPlaneTracker.get_shape:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Shape3D, return_meta =
+ */
+func (cx *OpenXRPlaneTrackerImpl) GetShape(
+	thickness float32,
+) RefShape3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRPlaneTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_shape")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3358509884,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRPlaneTracker.get_shape (3358509884)")
+	}
+
+	var ret Shape3DImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&thickness))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefShape3DGDExtensionIternalConstructor(&ret)
+}
+
 type OpenXRRenderModelImpl struct {
 	Node3DImpl
 }
@@ -295308,6 +304342,3913 @@ func (cx *OpenXRRenderModelManagerImpl) SetMakeLocalToPose(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&make_local_to_pose))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+type OpenXRSpatialAnchorCapabilityImpl struct {
+	OpenXRExtensionWrapperImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialAnchorCapabilityOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialAnchorCapabilityImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialAnchorCapabilityWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialAnchorCapability {
+	inst := &OpenXRSpatialAnchorCapabilityImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *OpenXRSpatialAnchorCapabilityImpl) GetClassName() string {
+	return "OpenXRSpatialAnchorCapability"
+}
+
+func (cx *OpenXRSpatialAnchorCapabilityImpl) GetParentClassName() string {
+	return "OpenXRExtensionWrapper"
+}
+
+/* IsSpatialAnchorSupported implements OpenXRSpatialAnchorCapability.is_spatial_anchor_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) IsSpatialAnchorSupported() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_spatial_anchor_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.is_spatial_anchor_supported (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsSpatialPersistenceSupported implements OpenXRSpatialAnchorCapability.is_spatial_persistence_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) IsSpatialPersistenceSupported() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_spatial_persistence_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.is_spatial_persistence_supported (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsPersistenceScopeSupported implements OpenXRSpatialAnchorCapability.is_persistence_scope_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) IsPersistenceScopeSupported(
+	scope OpenXRSpatialAnchorCapabilityPersistenceScope,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_persistence_scope_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3651771626,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.is_persistence_scope_supported (3651771626)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scope))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* CreatePersistenceContext implements OpenXRSpatialAnchorCapability.create_persistence_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = OpenXRFutureResult, return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) CreatePersistenceContext(
+	scope OpenXRSpatialAnchorCapabilityPersistenceScope,
+	user_callback Callable,
+) RefOpenXRFutureResult {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("create_persistence_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		856276630,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.create_persistence_context (856276630)")
+	}
+
+	var ret OpenXRFutureResultImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scope))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefOpenXRFutureResultGDExtensionIternalConstructor(&ret)
+}
+
+/* GetPersistenceContextHandle implements OpenXRSpatialAnchorCapability.get_persistence_context_handle:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) GetPersistenceContextHandle(
+	persistence_context RID,
+) uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_persistence_context_handle")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2198884583,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.get_persistence_context_handle (2198884583)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FreePersistenceContext implements OpenXRSpatialAnchorCapability.free_persistence_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) FreePersistenceContext(
+	persistence_context RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("free_persistence_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.free_persistence_context (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* CreateNewAnchor implements OpenXRSpatialAnchorCapability.create_new_anchor:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = OpenXRAnchorTracker, return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) CreateNewAnchor(
+	transform Transform3D,
+	spatial_context RID,
+) RefOpenXRAnchorTracker {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("create_new_anchor")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		607100373,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.create_new_anchor (607100373)")
+	}
+
+	var ret OpenXRAnchorTrackerImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transform))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefOpenXRAnchorTrackerGDExtensionIternalConstructor(&ret)
+}
+
+/* RemoveAnchor implements OpenXRSpatialAnchorCapability.remove_anchor:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) RemoveAnchor(
+	anchor_tracker RefOpenXRAnchorTracker,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("remove_anchor")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3579451518,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.remove_anchor (3579451518)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anchor_tracker))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* PersistAnchor implements OpenXRSpatialAnchorCapability.persist_anchor:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = OpenXRFutureResult, return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) PersistAnchor(
+	anchor_tracker RefOpenXRAnchorTracker,
+	persistence_context RID,
+	user_callback Callable,
+) RefOpenXRFutureResult {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("persist_anchor")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4244202513,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.persist_anchor (4244202513)")
+	}
+
+	var ret OpenXRFutureResultImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anchor_tracker))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefOpenXRFutureResultGDExtensionIternalConstructor(&ret)
+}
+
+/* UnpersistAnchor implements OpenXRSpatialAnchorCapability.unpersist_anchor:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = OpenXRFutureResult, return_meta =
+ */
+func (cx *OpenXRSpatialAnchorCapabilityImpl) UnpersistAnchor(
+	anchor_tracker RefOpenXRAnchorTracker,
+	persistence_context RID,
+	user_callback Callable,
+) RefOpenXRFutureResult {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialAnchorCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("unpersist_anchor")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4244202513,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialAnchorCapability.unpersist_anchor (4244202513)")
+	}
+
+	var ret OpenXRFutureResultImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anchor_tracker))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefOpenXRFutureResultGDExtensionIternalConstructor(&ret)
+}
+
+type OpenXRSpatialCapabilityConfigurationAnchorImpl struct {
+	OpenXRSpatialCapabilityConfigurationBaseHeaderImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationAnchorOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialCapabilityConfigurationAnchorImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialCapabilityConfigurationAnchorWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationAnchor {
+	inst := &OpenXRSpatialCapabilityConfigurationAnchorImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialCapabilityConfigurationAnchorGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialCapabilityConfigurationAnchorImpl) GetClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationAnchor"
+}
+
+func (cx *OpenXRSpatialCapabilityConfigurationAnchorImpl) GetParentClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationBaseHeader"
+}
+
+/* GetEnabledComponents implements OpenXRSpatialCapabilityConfigurationAnchor.get_enabled_components:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt64Array, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationAnchorImpl) GetEnabledComponents() PackedInt64Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationAnchor")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_enabled_components")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		235988956,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationAnchor.get_enabled_components (235988956)")
+	}
+
+	var ret PackedInt64Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialCapabilityConfigurationAprilTagImpl struct {
+	OpenXRSpatialCapabilityConfigurationBaseHeaderImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationAprilTagOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialCapabilityConfigurationAprilTagImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialCapabilityConfigurationAprilTagWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationAprilTag {
+	inst := &OpenXRSpatialCapabilityConfigurationAprilTagImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialCapabilityConfigurationAprilTagGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialCapabilityConfigurationAprilTagImpl) GetClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationAprilTag"
+}
+
+func (cx *OpenXRSpatialCapabilityConfigurationAprilTagImpl) GetParentClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationBaseHeader"
+}
+
+/* GetEnabledComponents implements OpenXRSpatialCapabilityConfigurationAprilTag.get_enabled_components:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt64Array, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationAprilTagImpl) GetEnabledComponents() PackedInt64Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationAprilTag")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_enabled_components")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		235988956,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationAprilTag.get_enabled_components (235988956)")
+	}
+
+	var ret PackedInt64Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetAprilDict implements OpenXRSpatialCapabilityConfigurationAprilTag.set_april_dict:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationAprilTagImpl) SetAprilDict(
+	april_dict OpenXRSpatialCapabilityConfigurationAprilTagAprilTagDict,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationAprilTag")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_april_dict")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3902905799,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationAprilTag.set_april_dict (3902905799)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&april_dict))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetAprilDict implements OpenXRSpatialCapabilityConfigurationAprilTag.get_april_dict:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialCapabilityConfigurationAprilTag.AprilTagDict, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationAprilTagImpl) GetAprilDict() OpenXRSpatialCapabilityConfigurationAprilTagAprilTagDict {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationAprilTag")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_april_dict")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		440273016,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationAprilTag.get_april_dict (440273016)")
+	}
+
+	var ret OpenXRSpatialCapabilityConfigurationAprilTagAprilTagDict
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialCapabilityConfigurationArucoImpl struct {
+	OpenXRSpatialCapabilityConfigurationBaseHeaderImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationArucoOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialCapabilityConfigurationArucoImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialCapabilityConfigurationArucoWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationAruco {
+	inst := &OpenXRSpatialCapabilityConfigurationArucoImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialCapabilityConfigurationArucoGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialCapabilityConfigurationArucoImpl) GetClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationAruco"
+}
+
+func (cx *OpenXRSpatialCapabilityConfigurationArucoImpl) GetParentClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationBaseHeader"
+}
+
+/* GetEnabledComponents implements OpenXRSpatialCapabilityConfigurationAruco.get_enabled_components:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt64Array, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationArucoImpl) GetEnabledComponents() PackedInt64Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationAruco")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_enabled_components")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		235988956,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationAruco.get_enabled_components (235988956)")
+	}
+
+	var ret PackedInt64Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetArucoDict implements OpenXRSpatialCapabilityConfigurationAruco.set_aruco_dict:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationArucoImpl) SetArucoDict(
+	aruco_dict OpenXRSpatialCapabilityConfigurationArucoArucoDict,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationAruco")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_aruco_dict")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2268055963,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationAruco.set_aruco_dict (2268055963)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&aruco_dict))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetArucoDict implements OpenXRSpatialCapabilityConfigurationAruco.get_aruco_dict:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialCapabilityConfigurationAruco.ArucoDict, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationArucoImpl) GetArucoDict() OpenXRSpatialCapabilityConfigurationArucoArucoDict {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationAruco")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_aruco_dict")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1080386209,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationAruco.get_aruco_dict (1080386209)")
+	}
+
+	var ret OpenXRSpatialCapabilityConfigurationArucoArucoDict
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialCapabilityConfigurationBaseHeaderImpl struct {
+	RefCountedImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationBaseHeaderOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialCapabilityConfigurationBaseHeaderImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialCapabilityConfigurationBaseHeaderWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationBaseHeader {
+	inst := &OpenXRSpatialCapabilityConfigurationBaseHeaderImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialCapabilityConfigurationBaseHeaderImpl) GetClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationBaseHeader"
+}
+
+func (cx *OpenXRSpatialCapabilityConfigurationBaseHeaderImpl) GetParentClassName() string {
+	return "RefCounted"
+}
+
+/* HasValidConfiguration implements OpenXRSpatialCapabilityConfigurationBaseHeader.has_valid_configuration:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationBaseHeaderImpl) HasValidConfiguration() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationBaseHeader")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_valid_configuration")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationBaseHeader.has_valid_configuration (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl struct {
+	OpenXRSpatialCapabilityConfigurationBaseHeaderImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationMicroQrCodeOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialCapabilityConfigurationMicroQrCodeWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationMicroQrCode {
+	inst := &OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) GetClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationMicroQrCode"
+}
+
+func (cx *OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) GetParentClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationBaseHeader"
+}
+
+/* GetEnabledComponents implements OpenXRSpatialCapabilityConfigurationMicroQrCode.get_enabled_components:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt64Array, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) GetEnabledComponents() PackedInt64Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationMicroQrCode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_enabled_components")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		235988956,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationMicroQrCode.get_enabled_components (235988956)")
+	}
+
+	var ret PackedInt64Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl struct {
+	OpenXRSpatialCapabilityConfigurationBaseHeaderImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationPlaneTrackingOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialCapabilityConfigurationPlaneTrackingWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationPlaneTracking {
+	inst := &OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) GetClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationPlaneTracking"
+}
+
+func (cx *OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) GetParentClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationBaseHeader"
+}
+
+/* SupportsMesh2D implements OpenXRSpatialCapabilityConfigurationPlaneTracking.supports_mesh_2d:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) SupportsMesh2D() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationPlaneTracking")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("supports_mesh_2d")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationPlaneTracking.supports_mesh_2d (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SupportsPolygons implements OpenXRSpatialCapabilityConfigurationPlaneTracking.supports_polygons:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) SupportsPolygons() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationPlaneTracking")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("supports_polygons")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationPlaneTracking.supports_polygons (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SupportsLabels implements OpenXRSpatialCapabilityConfigurationPlaneTracking.supports_labels:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) SupportsLabels() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationPlaneTracking")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("supports_labels")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationPlaneTracking.supports_labels (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetEnabledComponents implements OpenXRSpatialCapabilityConfigurationPlaneTracking.get_enabled_components:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt64Array, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) GetEnabledComponents() PackedInt64Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationPlaneTracking")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_enabled_components")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		235988956,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationPlaneTracking.get_enabled_components (235988956)")
+	}
+
+	var ret PackedInt64Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialCapabilityConfigurationQrCodeImpl struct {
+	OpenXRSpatialCapabilityConfigurationBaseHeaderImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationQrCodeOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialCapabilityConfigurationQrCodeImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialCapabilityConfigurationQrCodeWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationQrCode {
+	inst := &OpenXRSpatialCapabilityConfigurationQrCodeImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialCapabilityConfigurationQrCodeGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialCapabilityConfigurationQrCodeImpl) GetClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationQrCode"
+}
+
+func (cx *OpenXRSpatialCapabilityConfigurationQrCodeImpl) GetParentClassName() string {
+	return "OpenXRSpatialCapabilityConfigurationBaseHeader"
+}
+
+/* GetEnabledComponents implements OpenXRSpatialCapabilityConfigurationQrCode.get_enabled_components:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt64Array, return_meta =
+ */
+func (cx *OpenXRSpatialCapabilityConfigurationQrCodeImpl) GetEnabledComponents() PackedInt64Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialCapabilityConfigurationQrCode")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_enabled_components")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		235988956,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialCapabilityConfigurationQrCode.get_enabled_components (235988956)")
+	}
+
+	var ret PackedInt64Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentAnchorListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentAnchorListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentAnchorListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentAnchorListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentAnchorList {
+	inst := &OpenXRSpatialComponentAnchorListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentAnchorListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentAnchorListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentAnchorList"
+}
+
+func (cx *OpenXRSpatialComponentAnchorListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetEntityPose implements OpenXRSpatialComponentAnchorList.get_entity_pose:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Transform3D, return_meta =
+ */
+func (cx *OpenXRSpatialComponentAnchorListImpl) GetEntityPose(
+	index int64,
+) Transform3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentAnchorList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_entity_pose")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1965739696,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentAnchorList.get_entity_pose (1965739696)")
+	}
+
+	var ret Transform3D
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentBounded2DListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentBounded2DListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentBounded2DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentBounded2DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentBounded2DList {
+	inst := &OpenXRSpatialComponentBounded2DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentBounded2DListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentBounded2DListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentBounded2DList"
+}
+
+func (cx *OpenXRSpatialComponentBounded2DListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetCenterPose implements OpenXRSpatialComponentBounded2DList.get_center_pose:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Transform3D, return_meta =
+ */
+func (cx *OpenXRSpatialComponentBounded2DListImpl) GetCenterPose(
+	index int64,
+) Transform3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentBounded2DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_center_pose")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1965739696,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentBounded2DList.get_center_pose (1965739696)")
+	}
+
+	var ret Transform3D
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetSize implements OpenXRSpatialComponentBounded2DList.get_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector2, return_meta =
+ */
+func (cx *OpenXRSpatialComponentBounded2DListImpl) GetSize(
+	index int64,
+) Vector2 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentBounded2DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2299179447,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentBounded2DList.get_size (2299179447)")
+	}
+
+	var ret Vector2
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentBounded3DListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentBounded3DListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentBounded3DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentBounded3DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentBounded3DList {
+	inst := &OpenXRSpatialComponentBounded3DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentBounded3DListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentBounded3DListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentBounded3DList"
+}
+
+func (cx *OpenXRSpatialComponentBounded3DListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetCenterPose implements OpenXRSpatialComponentBounded3DList.get_center_pose:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Transform3D, return_meta =
+ */
+func (cx *OpenXRSpatialComponentBounded3DListImpl) GetCenterPose(
+	index int64,
+) Transform3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentBounded3DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_center_pose")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1965739696,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentBounded3DList.get_center_pose (1965739696)")
+	}
+
+	var ret Transform3D
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetSize implements OpenXRSpatialComponentBounded3DList.get_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector3, return_meta =
+ */
+func (cx *OpenXRSpatialComponentBounded3DListImpl) GetSize(
+	index int64,
+) Vector3 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentBounded3DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		711720468,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentBounded3DList.get_size (711720468)")
+	}
+
+	var ret Vector3
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentDataImpl struct {
+	RefCountedImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentDataOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentDataImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentDataWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentData {
+	inst := &OpenXRSpatialComponentDataImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentDataGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentDataImpl) GetClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+func (cx *OpenXRSpatialComponentDataImpl) GetParentClassName() string {
+	return "RefCounted"
+}
+
+/* SetCapacity implements OpenXRSpatialComponentData.set_capacity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialComponentDataImpl) SetCapacity(
+	capacity uint32,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentData")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_capacity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentData.set_capacity (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&capacity))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+type OpenXRSpatialComponentMarkerListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentMarkerListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentMarkerListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentMarkerListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentMarkerList {
+	inst := &OpenXRSpatialComponentMarkerListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentMarkerListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentMarkerListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentMarkerList"
+}
+
+func (cx *OpenXRSpatialComponentMarkerListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetMarkerType implements OpenXRSpatialComponentMarkerList.get_marker_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialComponentMarkerList.MarkerType, return_meta =
+ */
+func (cx *OpenXRSpatialComponentMarkerListImpl) GetMarkerType(
+	index int64,
+) OpenXRSpatialComponentMarkerListMarkerType {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMarkerList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_marker_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2627847866,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMarkerList.get_marker_type (2627847866)")
+	}
+
+	var ret OpenXRSpatialComponentMarkerListMarkerType
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetMarkerId implements OpenXRSpatialComponentMarkerList.get_marker_id:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint32
+ */
+func (cx *OpenXRSpatialComponentMarkerListImpl) GetMarkerId(
+	index int64,
+) uint32 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMarkerList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_marker_id")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMarkerList.get_marker_id (923996154)")
+	}
+
+	var ret uint32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetMarkerData implements OpenXRSpatialComponentMarkerList.get_marker_data:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Variant, return_meta =
+ */
+func (cx *OpenXRSpatialComponentMarkerListImpl) GetMarkerData(
+	snapshot RID,
+	index int64,
+) Variant {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMarkerList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_marker_data")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4069510997,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMarkerList.get_marker_data (4069510997)")
+	}
+
+	var ret Variant
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentMesh2DListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentMesh2DListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentMesh2DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentMesh2DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentMesh2DList {
+	inst := &OpenXRSpatialComponentMesh2DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentMesh2DListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentMesh2DListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentMesh2DList"
+}
+
+func (cx *OpenXRSpatialComponentMesh2DListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetTransform implements OpenXRSpatialComponentMesh2DList.get_transform:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Transform3D, return_meta =
+ */
+func (cx *OpenXRSpatialComponentMesh2DListImpl) GetTransform(
+	index int64,
+) Transform3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMesh2DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_transform")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1965739696,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMesh2DList.get_transform (1965739696)")
+	}
+
+	var ret Transform3D
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetVertices implements OpenXRSpatialComponentMesh2DList.get_vertices:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedVector2Array, return_meta =
+ */
+func (cx *OpenXRSpatialComponentMesh2DListImpl) GetVertices(
+	snapshot RID,
+	index int64,
+) PackedVector2Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMesh2DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_vertices")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		110850971,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMesh2DList.get_vertices (110850971)")
+	}
+
+	var ret PackedVector2Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetIndices implements OpenXRSpatialComponentMesh2DList.get_indices:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt32Array, return_meta =
+ */
+func (cx *OpenXRSpatialComponentMesh2DListImpl) GetIndices(
+	snapshot RID,
+	index int64,
+) PackedInt32Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMesh2DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_indices")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3393655756,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMesh2DList.get_indices (3393655756)")
+	}
+
+	var ret PackedInt32Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentMesh3DListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentMesh3DListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentMesh3DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentMesh3DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentMesh3DList {
+	inst := &OpenXRSpatialComponentMesh3DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentMesh3DListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentMesh3DListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentMesh3DList"
+}
+
+func (cx *OpenXRSpatialComponentMesh3DListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetTransform implements OpenXRSpatialComponentMesh3DList.get_transform:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Transform3D, return_meta =
+ */
+func (cx *OpenXRSpatialComponentMesh3DListImpl) GetTransform(
+	index int64,
+) Transform3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMesh3DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_transform")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1965739696,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMesh3DList.get_transform (1965739696)")
+	}
+
+	var ret Transform3D
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetMesh implements OpenXRSpatialComponentMesh3DList.get_mesh:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Mesh, return_meta =
+ */
+func (cx *OpenXRSpatialComponentMesh3DListImpl) GetMesh(
+	index int64,
+) RefMesh {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentMesh3DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_mesh")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1576363275,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentMesh3DList.get_mesh (1576363275)")
+	}
+
+	var ret MeshImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefMeshGDExtensionIternalConstructor(&ret)
+}
+
+type OpenXRSpatialComponentParentListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentParentListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentParentListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentParentListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentParentList {
+	inst := &OpenXRSpatialComponentParentListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentParentListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentParentListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentParentList"
+}
+
+func (cx *OpenXRSpatialComponentParentListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetParent implements OpenXRSpatialComponentParentList.get_parent:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialComponentParentListImpl) GetParent(
+	index int64,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentParentList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_parent")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		495598643,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentParentList.get_parent (495598643)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentPersistenceListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentPersistenceListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentPersistenceListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentPersistenceListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPersistenceList {
+	inst := &OpenXRSpatialComponentPersistenceListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentPersistenceListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentPersistenceListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentPersistenceList"
+}
+
+func (cx *OpenXRSpatialComponentPersistenceListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetPersistentUuid implements OpenXRSpatialComponentPersistenceList.get_persistent_uuid:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *OpenXRSpatialComponentPersistenceListImpl) GetPersistentUuid(
+	index int64,
+) String {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentPersistenceList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_persistent_uuid")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentPersistenceList.get_persistent_uuid (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetPersistentState implements OpenXRSpatialComponentPersistenceList.get_persistent_state:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRSpatialComponentPersistenceListImpl) GetPersistentState(
+	index int64,
+) uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentPersistenceList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_persistent_state")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentPersistenceList.get_persistent_state (923996154)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentPlaneAlignmentListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentPlaneAlignmentListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentPlaneAlignmentListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentPlaneAlignmentListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPlaneAlignmentList {
+	inst := &OpenXRSpatialComponentPlaneAlignmentListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentPlaneAlignmentListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentPlaneAlignmentListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentPlaneAlignmentList"
+}
+
+func (cx *OpenXRSpatialComponentPlaneAlignmentListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetPlaneAlignment implements OpenXRSpatialComponentPlaneAlignmentList.get_plane_alignment:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialComponentPlaneAlignmentList.PlaneAlignment, return_meta =
+ */
+func (cx *OpenXRSpatialComponentPlaneAlignmentListImpl) GetPlaneAlignment(
+	index int64,
+) OpenXRSpatialComponentPlaneAlignmentListPlaneAlignment {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentPlaneAlignmentList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_plane_alignment")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3340200270,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentPlaneAlignmentList.get_plane_alignment (3340200270)")
+	}
+
+	var ret OpenXRSpatialComponentPlaneAlignmentListPlaneAlignment
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentPlaneSemanticLabelListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentPlaneSemanticLabelListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentPlaneSemanticLabelListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentPlaneSemanticLabelListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPlaneSemanticLabelList {
+	inst := &OpenXRSpatialComponentPlaneSemanticLabelListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentPlaneSemanticLabelListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentPlaneSemanticLabelListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentPlaneSemanticLabelList"
+}
+
+func (cx *OpenXRSpatialComponentPlaneSemanticLabelListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetPlaneSemanticLabel implements OpenXRSpatialComponentPlaneSemanticLabelList.get_plane_semantic_label:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialComponentPlaneSemanticLabelList.PlaneSemanticLabel, return_meta =
+ */
+func (cx *OpenXRSpatialComponentPlaneSemanticLabelListImpl) GetPlaneSemanticLabel(
+	index int64,
+) OpenXRSpatialComponentPlaneSemanticLabelListPlaneSemanticLabel {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentPlaneSemanticLabelList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_plane_semantic_label")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1889332427,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentPlaneSemanticLabelList.get_plane_semantic_label (1889332427)")
+	}
+
+	var ret OpenXRSpatialComponentPlaneSemanticLabelListPlaneSemanticLabel
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialComponentPolygon2DListImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialComponentPolygon2DListOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialComponentPolygon2DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialComponentPolygon2DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPolygon2DList {
+	inst := &OpenXRSpatialComponentPolygon2DListImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialComponentPolygon2DListGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialComponentPolygon2DListImpl) GetClassName() string {
+	return "OpenXRSpatialComponentPolygon2DList"
+}
+
+func (cx *OpenXRSpatialComponentPolygon2DListImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetTransform implements OpenXRSpatialComponentPolygon2DList.get_transform:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Transform3D, return_meta =
+ */
+func (cx *OpenXRSpatialComponentPolygon2DListImpl) GetTransform(
+	index int64,
+) Transform3D {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentPolygon2DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_transform")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1965739696,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentPolygon2DList.get_transform (1965739696)")
+	}
+
+	var ret Transform3D
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetVertices implements OpenXRSpatialComponentPolygon2DList.get_vertices:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedVector2Array, return_meta =
+ */
+func (cx *OpenXRSpatialComponentPolygon2DListImpl) GetVertices(
+	snapshot RID,
+	index int64,
+) PackedVector2Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialComponentPolygon2DList")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_vertices")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		110850971,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialComponentPolygon2DList.get_vertices (110850971)")
+	}
+
+	var ret PackedVector2Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialContextPersistenceConfigImpl struct {
+	OpenXRStructureBaseImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialContextPersistenceConfigOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialContextPersistenceConfigImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialContextPersistenceConfigWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialContextPersistenceConfig {
+	inst := &OpenXRSpatialContextPersistenceConfigImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialContextPersistenceConfigGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialContextPersistenceConfigImpl) GetClassName() string {
+	return "OpenXRSpatialContextPersistenceConfig"
+}
+
+func (cx *OpenXRSpatialContextPersistenceConfigImpl) GetParentClassName() string {
+	return "OpenXRStructureBase"
+}
+
+/* AddPersistenceContext implements OpenXRSpatialContextPersistenceConfig.add_persistence_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialContextPersistenceConfigImpl) AddPersistenceContext(
+	persistence_context RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialContextPersistenceConfig")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("add_persistence_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialContextPersistenceConfig.add_persistence_context (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* RemovePersistenceContext implements OpenXRSpatialContextPersistenceConfig.remove_persistence_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialContextPersistenceConfigImpl) RemovePersistenceContext(
+	persistence_context RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialContextPersistenceConfig")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("remove_persistence_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialContextPersistenceConfig.remove_persistence_context (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+type OpenXRSpatialEntityExtensionImpl struct {
+	OpenXRExtensionWrapperImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialEntityExtensionOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialEntityExtensionImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialEntityExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialEntityExtension {
+	inst := &OpenXRSpatialEntityExtensionImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *OpenXRSpatialEntityExtensionImpl) GetClassName() string {
+	return "OpenXRSpatialEntityExtension"
+}
+
+func (cx *OpenXRSpatialEntityExtensionImpl) GetParentClassName() string {
+	return "OpenXRExtensionWrapper"
+}
+
+/* SupportsCapability implements OpenXRSpatialEntityExtension.supports_capability:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) SupportsCapability(
+	capability OpenXRSpatialEntityExtensionCapability,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("supports_capability")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1940837202,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.supports_capability (1940837202)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&capability))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SupportsComponentType implements OpenXRSpatialEntityExtension.supports_component_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) SupportsComponentType(
+	capability OpenXRSpatialEntityExtensionCapability,
+	component_type OpenXRSpatialEntityExtensionComponentType,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("supports_component_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		26842779,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.supports_component_type (26842779)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&capability))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_type))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* CreateSpatialContext implements OpenXRSpatialEntityExtension.create_spatial_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = OpenXRFutureResult, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) CreateSpatialContext(
+	capability_configurations RefOpenXRSpatialCapabilityConfigurationBaseHeader,
+	next RefOpenXRStructureBase,
+	user_callback Callable,
+) RefOpenXRFutureResult {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("create_spatial_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1874506473,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.create_spatial_context (1874506473)")
+	}
+
+	var ret OpenXRFutureResultImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&capability_configurations))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefOpenXRFutureResultGDExtensionIternalConstructor(&ret)
+}
+
+/* GetSpatialContextReady implements OpenXRSpatialEntityExtension.get_spatial_context_ready:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetSpatialContextReady(
+	spatial_context RID,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_spatial_context_ready")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4155700596,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_spatial_context_ready (4155700596)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FreeSpatialContext implements OpenXRSpatialEntityExtension.free_spatial_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) FreeSpatialContext(
+	spatial_context RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("free_spatial_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.free_spatial_context (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSpatialContextHandle implements OpenXRSpatialEntityExtension.get_spatial_context_handle:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetSpatialContextHandle(
+	spatial_context RID,
+) uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_spatial_context_handle")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2198884583,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_spatial_context_handle (2198884583)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* DiscoverSpatialEntities implements OpenXRSpatialEntityExtension.discover_spatial_entities:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = OpenXRFutureResult, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) DiscoverSpatialEntities(
+	spatial_context RID,
+	component_types PackedInt64Array,
+	next RefOpenXRStructureBase,
+	user_callback Callable,
+) RefOpenXRFutureResult {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("discover_spatial_entities")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2252833536,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.discover_spatial_entities (2252833536)")
+	}
+
+	var ret OpenXRFutureResultImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 4
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_types))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
+	pnr.Pin(argPtrSlice[3])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefOpenXRFutureResultGDExtensionIternalConstructor(&ret)
+}
+
+/* UpdateSpatialEntities implements OpenXRSpatialEntityExtension.update_spatial_entities:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) UpdateSpatialEntities(
+	spatial_context RID,
+	entities RID,
+	component_types PackedInt64Array,
+	next RefOpenXRStructureBase,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("update_spatial_entities")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3446086438,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.update_spatial_entities (3446086438)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 4
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entities))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_types))
+	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+	pnr.Pin(argPtrSlice[3])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FreeSpatialSnapshot implements OpenXRSpatialEntityExtension.free_spatial_snapshot:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) FreeSpatialSnapshot(
+	spatial_snapshot RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("free_spatial_snapshot")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.free_spatial_snapshot (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSpatialSnapshotHandle implements OpenXRSpatialEntityExtension.get_spatial_snapshot_handle:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetSpatialSnapshotHandle(
+	spatial_snapshot RID,
+) uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_spatial_snapshot_handle")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2198884583,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_spatial_snapshot_handle (2198884583)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetSpatialSnapshotContext implements OpenXRSpatialEntityExtension.get_spatial_snapshot_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetSpatialSnapshotContext(
+	spatial_snapshot RID,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_spatial_snapshot_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3814569979,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_spatial_snapshot_context (3814569979)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* QuerySnapshot implements OpenXRSpatialEntityExtension.query_snapshot:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) QuerySnapshot(
+	spatial_snapshot RID,
+	component_data RefOpenXRSpatialComponentData,
+	next RefOpenXRStructureBase,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("query_snapshot")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		641015484,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.query_snapshot (641015484)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetString implements OpenXRSpatialEntityExtension.get_string:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetString(
+	spatial_snapshot RID,
+	buffer_id uint64,
+) String {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_string")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1464764419,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_string (1464764419)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetUint8Buffer implements OpenXRSpatialEntityExtension.get_uint8_buffer:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedByteArray, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetUint8Buffer(
+	spatial_snapshot RID,
+	buffer_id uint64,
+) PackedByteArray {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_uint8_buffer")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3570600051,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_uint8_buffer (3570600051)")
+	}
+
+	var ret PackedByteArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetUint16Buffer implements OpenXRSpatialEntityExtension.get_uint16_buffer:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt32Array, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetUint16Buffer(
+	spatial_snapshot RID,
+	buffer_id uint64,
+) PackedInt32Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_uint16_buffer")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3393655756,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_uint16_buffer (3393655756)")
+	}
+
+	var ret PackedInt32Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetUint32Buffer implements OpenXRSpatialEntityExtension.get_uint32_buffer:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt32Array, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetUint32Buffer(
+	spatial_snapshot RID,
+	buffer_id uint64,
+) PackedInt32Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_uint32_buffer")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3393655756,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_uint32_buffer (3393655756)")
+	}
+
+	var ret PackedInt32Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetFloatBuffer implements OpenXRSpatialEntityExtension.get_float_buffer:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedFloat32Array, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetFloatBuffer(
+	spatial_snapshot RID,
+	buffer_id uint64,
+) PackedFloat32Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_float_buffer")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2313216651,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_float_buffer (2313216651)")
+	}
+
+	var ret PackedFloat32Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetVector2Buffer implements OpenXRSpatialEntityExtension.get_vector2_buffer:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedVector2Array, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetVector2Buffer(
+	spatial_snapshot RID,
+	buffer_id uint64,
+) PackedVector2Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_vector2_buffer")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		110850971,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_vector2_buffer (110850971)")
+	}
+
+	var ret PackedVector2Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetVector3Buffer implements OpenXRSpatialEntityExtension.get_vector3_buffer:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedVector3Array, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetVector3Buffer(
+	spatial_snapshot RID,
+	buffer_id uint64,
+) PackedVector3Array {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_vector3_buffer")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1166453791,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_vector3_buffer (1166453791)")
+	}
+
+	var ret PackedVector3Array
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FindSpatialEntity implements OpenXRSpatialEntityExtension.find_spatial_entity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) FindSpatialEntity(
+	entity_id uint64,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("find_spatial_entity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		937000113,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.find_spatial_entity (937000113)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity_id))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* AddSpatialEntity implements OpenXRSpatialEntityExtension.add_spatial_entity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) AddSpatialEntity(
+	spatial_context RID,
+	entity_id uint64,
+	entity uint64,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("add_spatial_entity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2256026069,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.add_spatial_entity (2256026069)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 3
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity_id))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity))
+	pnr.Pin(argPtrSlice[2])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* MakeSpatialEntity implements OpenXRSpatialEntityExtension.make_spatial_entity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) MakeSpatialEntity(
+	spatial_context RID,
+	entity_id uint64,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("make_spatial_entity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2233757277,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.make_spatial_entity (2233757277)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity_id))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetSpatialEntityId implements OpenXRSpatialEntityExtension.get_spatial_entity_id:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetSpatialEntityId(
+	entity RID,
+) uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_spatial_entity_id")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2198884583,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_spatial_entity_id (2198884583)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetSpatialEntityContext implements OpenXRSpatialEntityExtension.get_spatial_entity_context:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) GetSpatialEntityContext(
+	entity RID,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_spatial_entity_context")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3814569979,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.get_spatial_entity_context (3814569979)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FreeSpatialEntity implements OpenXRSpatialEntityExtension.free_spatial_entity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialEntityExtensionImpl) FreeSpatialEntity(
+	entity RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityExtension")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("free_spatial_entity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityExtension.free_spatial_entity (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+type OpenXRSpatialEntityTrackerImpl struct {
+	XRPositionalTrackerImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialEntityTrackerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialEntityTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialEntityTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialEntityTracker {
+	inst := &OpenXRSpatialEntityTrackerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialEntityTrackerGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialEntityTrackerImpl) GetClassName() string {
+	return "OpenXRSpatialEntityTracker"
+}
+
+func (cx *OpenXRSpatialEntityTrackerImpl) GetParentClassName() string {
+	return "XRPositionalTracker"
+}
+
+/* SetEntity implements OpenXRSpatialEntityTracker.set_entity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialEntityTrackerImpl) SetEntity(
+	entity RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_entity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityTracker.set_entity (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEntity implements OpenXRSpatialEntityTracker.get_entity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *OpenXRSpatialEntityTrackerImpl) GetEntity() RID {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_entity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2944877500,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityTracker.get_entity (2944877500)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetSpatialTrackingState implements OpenXRSpatialEntityTracker.set_spatial_tracking_state:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRSpatialEntityTrackerImpl) SetSpatialTrackingState(
+	spatial_tracking_state OpenXRSpatialEntityTrackerEntityTrackingState,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_spatial_tracking_state")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2170234447,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityTracker.set_spatial_tracking_state (2170234447)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_tracking_state))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSpatialTrackingState implements OpenXRSpatialEntityTracker.get_spatial_tracking_state:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialEntityTracker.EntityTrackingState, return_meta =
+ */
+func (cx *OpenXRSpatialEntityTrackerImpl) GetSpatialTrackingState() OpenXRSpatialEntityTrackerEntityTrackingState {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialEntityTracker")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_spatial_tracking_state")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3351876560,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialEntityTracker.get_spatial_tracking_state (3351876560)")
+	}
+
+	var ret OpenXRSpatialEntityTrackerEntityTrackingState
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialMarkerTrackingCapabilityImpl struct {
+	OpenXRExtensionWrapperImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialMarkerTrackingCapabilityOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialMarkerTrackingCapabilityImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialMarkerTrackingCapabilityWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialMarkerTrackingCapability {
+	inst := &OpenXRSpatialMarkerTrackingCapabilityImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) GetClassName() string {
+	return "OpenXRSpatialMarkerTrackingCapability"
+}
+
+func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) GetParentClassName() string {
+	return "OpenXRExtensionWrapper"
+}
+
+/* IsQrcodeSupported implements OpenXRSpatialMarkerTrackingCapability.is_qrcode_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) IsQrcodeSupported() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialMarkerTrackingCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_qrcode_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialMarkerTrackingCapability.is_qrcode_supported (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsMicroQrcodeSupported implements OpenXRSpatialMarkerTrackingCapability.is_micro_qrcode_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) IsMicroQrcodeSupported() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialMarkerTrackingCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_micro_qrcode_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialMarkerTrackingCapability.is_micro_qrcode_supported (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsArucoSupported implements OpenXRSpatialMarkerTrackingCapability.is_aruco_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) IsArucoSupported() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialMarkerTrackingCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_aruco_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialMarkerTrackingCapability.is_aruco_supported (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsAprilTagSupported implements OpenXRSpatialMarkerTrackingCapability.is_april_tag_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) IsAprilTagSupported() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialMarkerTrackingCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_april_tag_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialMarkerTrackingCapability.is_april_tag_supported (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialPlaneTrackingCapabilityImpl struct {
+	OpenXRExtensionWrapperImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialPlaneTrackingCapabilityOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialPlaneTrackingCapabilityImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialPlaneTrackingCapabilityWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialPlaneTrackingCapability {
+	inst := &OpenXRSpatialPlaneTrackingCapabilityImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *OpenXRSpatialPlaneTrackingCapabilityImpl) GetClassName() string {
+	return "OpenXRSpatialPlaneTrackingCapability"
+}
+
+func (cx *OpenXRSpatialPlaneTrackingCapabilityImpl) GetParentClassName() string {
+	return "OpenXRExtensionWrapper"
+}
+
+/* IsSupported implements OpenXRSpatialPlaneTrackingCapability.is_supported:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *OpenXRSpatialPlaneTrackingCapabilityImpl) IsSupported() bool {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialPlaneTrackingCapability")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_supported")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialPlaneTrackingCapability.is_supported (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRSpatialQueryResultDataImpl struct {
+	OpenXRSpatialComponentDataImpl
+}
+
+func NewGDExtensionClassFromOpenXRSpatialQueryResultDataOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRSpatialQueryResultDataImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRSpatialQueryResultDataWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialQueryResultData {
+	inst := &OpenXRSpatialQueryResultDataImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRSpatialQueryResultDataGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRSpatialQueryResultDataImpl) GetClassName() string {
+	return "OpenXRSpatialQueryResultData"
+}
+
+func (cx *OpenXRSpatialQueryResultDataImpl) GetParentClassName() string {
+	return "OpenXRSpatialComponentData"
+}
+
+/* GetCapacity implements OpenXRSpatialQueryResultData.get_capacity:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int64
+ */
+func (cx *OpenXRSpatialQueryResultDataImpl) GetCapacity() int64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialQueryResultData")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_capacity")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialQueryResultData.get_capacity (3905245786)")
+	}
+
+	var ret int64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetEntityId implements OpenXRSpatialQueryResultData.get_entity_id:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRSpatialQueryResultDataImpl) GetEntityId(
+	index int64,
+) uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialQueryResultData")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_entity_id")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialQueryResultData.get_entity_id (923996154)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetEntityState implements OpenXRSpatialQueryResultData.get_entity_state:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::OpenXRSpatialEntityTracker.EntityTrackingState, return_meta =
+ */
+func (cx *OpenXRSpatialQueryResultDataImpl) GetEntityState(
+	index int64,
+) OpenXRSpatialEntityTrackerEntityTrackingState {
+
+	className := NewStringNameWithLatin1Chars("OpenXRSpatialQueryResultData")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_entity_state")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1411962015,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRSpatialQueryResultData.get_entity_state (1411962015)")
+	}
+
+	var ret OpenXRSpatialEntityTrackerEntityTrackingState
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+type OpenXRStructureBaseImpl struct {
+	RefCountedImpl
+}
+
+func NewGDExtensionClassFromOpenXRStructureBaseOwner(owner *GodotObject) GDExtensionClass {
+	inst := &OpenXRStructureBaseImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewOpenXRStructureBaseWithGodotOwnerObject(owner *GodotObject) RefOpenXRStructureBase {
+	inst := &OpenXRStructureBaseImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefOpenXRStructureBaseGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *OpenXRStructureBaseImpl) GetClassName() string {
+	return "OpenXRStructureBase"
+}
+
+func (cx *OpenXRStructureBaseImpl) GetParentClassName() string {
+	return "RefCounted"
+}
+
+/* GetStructureType implements OpenXRStructureBase.get_structure_type:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint64
+ */
+func (cx *OpenXRStructureBaseImpl) GetStructureType() uint64 {
+
+	className := NewStringNameWithLatin1Chars("OpenXRStructureBase")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_structure_type")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2455072627,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRStructureBase.get_structure_type (2455072627)")
+	}
+
+	var ret uint64
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetNext implements OpenXRStructureBase.set_next:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *OpenXRStructureBaseImpl) SetNext(
+	entity RefOpenXRStructureBase,
+) {
+
+	className := NewStringNameWithLatin1Chars("OpenXRStructureBase")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_next")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		334698771,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRStructureBase.set_next (334698771)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetNext implements OpenXRStructureBase.get_next:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = OpenXRStructureBase, return_meta =
+ */
+func (cx *OpenXRStructureBaseImpl) GetNext() RefOpenXRStructureBase {
+
+	className := NewStringNameWithLatin1Chars("OpenXRStructureBase")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_next")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2798796760,
+	)
+	if fn == nil {
+		panic("could not find method function OpenXRStructureBase.get_next (2798796760)")
+	}
+
+	var ret OpenXRStructureBaseImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefOpenXRStructureBaseGDExtensionIternalConstructor(&ret)
 }
 
 type OpenXRVisibilityMaskImpl struct {
@@ -304816,6 +317757,7 @@ func (cx *PerformanceImpl) AddCustomMonitor(
 	id StringName,
 	callable Callable,
 	arguments Array,
+	typeName PerformanceMonitorType,
 ) {
 
 	className := NewStringNameWithLatin1Chars("Performance")
@@ -304825,17 +317767,17 @@ func (cx *PerformanceImpl) AddCustomMonitor(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		4099036814,
+		3655788610,
 	)
 	if fn == nil {
-		panic("could not find method function Performance.add_custom_monitor (4099036814)")
+		panic("could not find method function Performance.add_custom_monitor (3655788610)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 3
+	callArgCount := 4
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
@@ -304845,6 +317787,8 @@ func (cx *PerformanceImpl) AddCustomMonitor(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&arguments))
 	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
+	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -305009,6 +317953,39 @@ func (cx *PerformanceImpl) GetCustomMonitorNames() StringName {
 	}
 
 	var ret StringName
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetCustomMonitorTypes implements Performance.get_custom_monitor_types:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedInt32Array, return_meta =
+ */
+func (cx *PerformanceImpl) GetCustomMonitorTypes() PackedInt32Array {
+
+	className := NewStringNameWithLatin1Chars("Performance")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_custom_monitor_types")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		969006518,
+	)
+	if fn == nil {
+		panic("could not find method function Performance.get_custom_monitor_types (969006518)")
+	}
+
+	var ret PackedInt32Array
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -309919,7 +322896,7 @@ func (cx *PhysicsDirectBodyState2DImpl) IntegrateForces() {
 
 /* GetSpaceState implements PhysicsDirectBodyState2D.get_space_state:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PhysicsDirectSpaceState2D, return_meta =
+ * return_type = PhysicsDirectSpaceState2D, return_meta = required
  */
 func (cx *PhysicsDirectBodyState2DImpl) GetSpaceState() PhysicsDirectSpaceState2D {
 
@@ -311694,7 +324671,7 @@ func (cx *PhysicsDirectBodyState3DImpl) IntegrateForces() {
 
 /* GetSpaceState implements PhysicsDirectBodyState3D.get_space_state:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PhysicsDirectSpaceState3D, return_meta =
+ * return_type = PhysicsDirectSpaceState3D, return_meta = required
  */
 func (cx *PhysicsDirectBodyState3DImpl) GetSpaceState() PhysicsDirectSpaceState3D {
 
@@ -336235,6 +349212,140 @@ func (cx *PopupMenuImpl) GetSystemMenu() NativeMenuSystemMenus {
 	return ret
 }
 
+/* SetShrinkHeight implements PopupMenu.set_shrink_height:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *PopupMenuImpl) SetShrinkHeight(
+	shrink bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("PopupMenu")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_shrink_height")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function PopupMenu.set_shrink_height (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shrink))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetShrinkHeight implements PopupMenu.get_shrink_height:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *PopupMenuImpl) GetShrinkHeight() bool {
+
+	className := NewStringNameWithLatin1Chars("PopupMenu")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_shrink_height")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function PopupMenu.get_shrink_height (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetShrinkWidth implements PopupMenu.set_shrink_width:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *PopupMenuImpl) SetShrinkWidth(
+	shrink bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("PopupMenu")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_shrink_width")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function PopupMenu.set_shrink_width (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shrink))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetShrinkWidth implements PopupMenu.get_shrink_width:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *PopupMenuImpl) GetShrinkWidth() bool {
+
+	className := NewStringNameWithLatin1Chars("PopupMenu")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_shrink_width")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function PopupMenu.get_shrink_width (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type PopupPanelImpl struct {
 	PopupImpl
 }
@@ -339404,6 +352515,76 @@ func (cx *ProjectSettingsImpl) SaveCustom(
 	return ret
 }
 
+/* GetChangedSettings implements ProjectSettings.get_changed_settings:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = PackedStringArray, return_meta =
+ */
+func (cx *ProjectSettingsImpl) GetChangedSettings() PackedStringArray {
+
+	className := NewStringNameWithLatin1Chars("ProjectSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_changed_settings")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1139954409,
+	)
+	if fn == nil {
+		panic("could not find method function ProjectSettings.get_changed_settings (1139954409)")
+	}
+
+	var ret PackedStringArray
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* CheckChangedSettingsInGroup implements ProjectSettings.check_changed_settings_in_group:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *ProjectSettingsImpl) CheckChangedSettingsInGroup(
+	setting_prefix String,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("ProjectSettings")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("check_changed_settings_in_group")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3927539163,
+	)
+	if fn == nil {
+		panic("could not find method function ProjectSettings.check_changed_settings_in_group (3927539163)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&setting_prefix))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type PropertyTweenerImpl struct {
 	TweenerImpl
 }
@@ -339433,7 +352614,7 @@ func (cx *PropertyTweenerImpl) GetParentClassName() string {
 
 /* From implements PropertyTweener.from:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *PropertyTweenerImpl) From(
 	value Variant,
@@ -339470,7 +352651,7 @@ func (cx *PropertyTweenerImpl) From(
 
 /* FromCurrent implements PropertyTweener.from_current:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *PropertyTweenerImpl) FromCurrent() RefPropertyTweener {
 
@@ -339503,7 +352684,7 @@ func (cx *PropertyTweenerImpl) FromCurrent() RefPropertyTweener {
 
 /* AsRelative implements PropertyTweener.as_relative:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *PropertyTweenerImpl) AsRelative() RefPropertyTweener {
 
@@ -339536,7 +352717,7 @@ func (cx *PropertyTweenerImpl) AsRelative() RefPropertyTweener {
 
 /* SetTrans implements PropertyTweener.set_trans:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *PropertyTweenerImpl) SetTrans(
 	trans TweenTransitionType,
@@ -339573,7 +352754,7 @@ func (cx *PropertyTweenerImpl) SetTrans(
 
 /* SetEase implements PropertyTweener.set_ease:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *PropertyTweenerImpl) SetEase(
 	ease TweenEaseType,
@@ -339610,7 +352791,7 @@ func (cx *PropertyTweenerImpl) SetEase(
 
 /* SetCustomInterpolator implements PropertyTweener.set_custom_interpolator:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *PropertyTweenerImpl) SetCustomInterpolator(
 	interpolator_method Callable,
@@ -339647,7 +352828,7 @@ func (cx *PropertyTweenerImpl) SetCustomInterpolator(
 
 /* SetDelay implements PropertyTweener.set_delay:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *PropertyTweenerImpl) SetDelay(
 	delay float64,
@@ -347316,6 +360497,73 @@ func (cx *RDVertexAttributeImpl) GetClassName() string {
 
 func (cx *RDVertexAttributeImpl) GetParentClassName() string {
 	return "RefCounted"
+}
+
+/* SetBinding implements RDVertexAttribute.set_binding:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RDVertexAttributeImpl) SetBinding(
+	p_member uint32,
+) {
+
+	className := NewStringNameWithLatin1Chars("RDVertexAttribute")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_binding")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function RDVertexAttribute.set_binding (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&p_member))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetBinding implements RDVertexAttribute.get_binding:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = uint32
+ */
+func (cx *RDVertexAttributeImpl) GetBinding() uint32 {
+
+	className := NewStringNameWithLatin1Chars("RDVertexAttribute")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_binding")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function RDVertexAttribute.get_binding (3905245786)")
+	}
+
+	var ret uint32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 /* SetLocation implements RDVertexAttribute.set_location:
@@ -359085,6 +372333,52 @@ func (cx *RenderingDeviceImpl) DrawListBindVertexArray(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* DrawListBindVertexBuffersFormat implements RenderingDevice.draw_list_bind_vertex_buffers_format:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RenderingDeviceImpl) DrawListBindVertexBuffersFormat(
+	draw_list int64,
+	vertex_format int64,
+	vertex_count uint32,
+	vertex_buffers RID,
+	offsets PackedInt64Array,
+) {
+
+	className := NewStringNameWithLatin1Chars("RenderingDevice")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("draw_list_bind_vertex_buffers_format")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2008628980,
+	)
+	if fn == nil {
+		panic("could not find method function RenderingDevice.draw_list_bind_vertex_buffers_format (2008628980)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 5
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&draw_list))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&vertex_format))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&vertex_count))
+	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&vertex_buffers))
+	pnr.Pin(argPtrSlice[3])
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&offsets))
+	pnr.Pin(argPtrSlice[4])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* DrawListBindIndexArray implements RenderingDevice.draw_list_bind_index_array:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -362428,6 +375722,40 @@ func (cx *RenderingServerImpl) MaterialSetNextPass(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* MaterialSetUseDebanding implements RenderingServer.material_set_use_debanding:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RenderingServerImpl) MaterialSetUseDebanding(
+	enable bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("RenderingServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("material_set_use_debanding")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function RenderingServer.material_set_use_debanding (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enable))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* MeshCreateFromSurfaces implements RenderingServer.mesh_create_from_surfaces:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = RID, return_meta =
@@ -364526,6 +377854,40 @@ func (cx *RenderingServerImpl) MultimeshInstanceResetPhysicsInterpolation(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* MultimeshInstancesResetPhysicsInterpolation implements RenderingServer.multimesh_instances_reset_physics_interpolation:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RenderingServerImpl) MultimeshInstancesResetPhysicsInterpolation(
+	multimesh RID,
+) {
+
+	className := NewStringNameWithLatin1Chars("RenderingServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("multimesh_instances_reset_physics_interpolation")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2722037293,
+	)
+	if fn == nil {
+		panic("could not find method function RenderingServer.multimesh_instances_reset_physics_interpolation (2722037293)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&multimesh))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -373137,6 +386499,43 @@ func (cx *RenderingServerImpl) EnvironmentSetTonemap(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* EnvironmentSetTonemapAgxContrast implements RenderingServer.environment_set_tonemap_agx_contrast:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RenderingServerImpl) EnvironmentSetTonemapAgxContrast(
+	env RID,
+	agx_contrast float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("RenderingServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("environment_set_tonemap_agx_contrast")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1794382983,
+	)
+	if fn == nil {
+		panic("could not find method function RenderingServer.environment_set_tonemap_agx_contrast (1794382983)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&env))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&agx_contrast))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* EnvironmentSetAdjustment implements RenderingServer.environment_set_adjustment:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -373573,6 +386972,40 @@ func (cx *RenderingServerImpl) EnvironmentGlowSetUseBicubicUpscale(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enable))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* EnvironmentSetSsrHalfSize implements RenderingServer.environment_set_ssr_half_size:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RenderingServerImpl) EnvironmentSetSsrHalfSize(
+	half_size bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("RenderingServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("environment_set_ssr_half_size")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function RenderingServer.environment_set_ssr_half_size (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&half_size))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -376965,6 +390398,55 @@ func (cx *RenderingServerImpl) CanvasItemAddCircle(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* CanvasItemAddEllipse implements RenderingServer.canvas_item_add_ellipse:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RenderingServerImpl) CanvasItemAddEllipse(
+	item RID,
+	pos Vector2,
+	major float32,
+	minor float32,
+	color Color,
+	antialiased bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("RenderingServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("canvas_item_add_ellipse")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4188642757,
+	)
+	if fn == nil {
+		panic("could not find method function RenderingServer.canvas_item_add_ellipse (4188642757)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 6
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&item))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&major))
+	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&minor))
+	pnr.Pin(argPtrSlice[3])
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	pnr.Pin(argPtrSlice[4])
+	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&antialiased))
+	pnr.Pin(argPtrSlice[5])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
 /* CanvasItemAddTextureRect implements RenderingServer.canvas_item_add_texture_rect:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -380334,6 +393816,50 @@ func (cx *RenderingServerImpl) GetWhiteTexture() RID {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
+}
+
+/* SetBootImageWithStretch implements RenderingServer.set_boot_image_with_stretch:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *RenderingServerImpl) SetBootImageWithStretch(
+	image RefImage,
+	color Color,
+	stretch_mode RenderingServerSplashStretchMode,
+	use_filter bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("RenderingServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_boot_image_with_stretch")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1104470771,
+	)
+	if fn == nil {
+		panic("could not find method function RenderingServer.set_boot_image_with_stretch (1104470771)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 4
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	pnr.Pin(argPtrSlice[1])
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stretch_mode))
+	pnr.Pin(argPtrSlice[2])
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&use_filter))
+	pnr.Pin(argPtrSlice[3])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 /* SetBootImage implements RenderingServer.set_boot_image:
@@ -396405,7 +409931,7 @@ func (cx *SceneTreeImpl) IsPaused() bool {
 
 /* CreateTimer implements SceneTree.create_timer:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = SceneTreeTimer, return_meta =
+ * return_type = SceneTreeTimer, return_meta = required
  */
 func (cx *SceneTreeImpl) CreateTimer(
 	time_sec float64,
@@ -396451,7 +409977,7 @@ func (cx *SceneTreeImpl) CreateTimer(
 
 /* CreateTween implements SceneTree.create_tween:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *SceneTreeImpl) CreateTween() RefTween {
 
@@ -396748,12 +410274,15 @@ func (cx *SceneTreeImpl) CallGroupFlags(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantInt64(int64(flags))
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(group)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	v2 := NewVariantStringName(method)
+	defer v2.Destroy()
 	argPtrSlice[2] = v2.NativeConstPtr()
 	pnr.Pin(argPtrSlice[2])
 	for i := range varargs {
@@ -396881,9 +410410,11 @@ func (cx *SceneTreeImpl) CallGroup(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(group)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	v1 := NewVariantStringName(method)
+	defer v1.Destroy()
 	argPtrSlice[1] = v1.NativeConstPtr()
 	pnr.Pin(argPtrSlice[1])
 	for i := range varargs {
@@ -397221,6 +410752,43 @@ func (cx *SceneTreeImpl) ChangeSceneToPacked(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&packed_scene))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* ChangeSceneToNode implements SceneTree.change_scene_to_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *SceneTreeImpl) ChangeSceneToNode(
+	node Node,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("SceneTree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("change_scene_to_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2584678054,
+	)
+	if fn == nil {
+		panic("could not find method function SceneTree.change_scene_to_node (2584678054)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -400027,6 +413595,140 @@ func (cx *ScrollContainerImpl) GetDeadzone() int32 {
 	}
 
 	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetScrollHintMode implements ScrollContainer.set_scroll_hint_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ScrollContainerImpl) SetScrollHintMode(
+	scroll_hint_mode ScrollContainerScrollHintMode,
+) {
+
+	className := NewStringNameWithLatin1Chars("ScrollContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_scroll_hint_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		578158943,
+	)
+	if fn == nil {
+		panic("could not find method function ScrollContainer.set_scroll_hint_mode (578158943)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scroll_hint_mode))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetScrollHintMode implements ScrollContainer.get_scroll_hint_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::ScrollContainer.ScrollHintMode, return_meta =
+ */
+func (cx *ScrollContainerImpl) GetScrollHintMode() ScrollContainerScrollHintMode {
+
+	className := NewStringNameWithLatin1Chars("ScrollContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_scroll_hint_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		246835423,
+	)
+	if fn == nil {
+		panic("could not find method function ScrollContainer.get_scroll_hint_mode (246835423)")
+	}
+
+	var ret ScrollContainerScrollHintMode
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTileScrollHint implements ScrollContainer.set_tile_scroll_hint:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ScrollContainerImpl) SetTileScrollHint(
+	tile_scroll_hint bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("ScrollContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tile_scroll_hint")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function ScrollContainer.set_tile_scroll_hint (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tile_scroll_hint))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsScrollHintTiled implements ScrollContainer.is_scroll_hint_tiled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *ScrollContainerImpl) IsScrollHintTiled() bool {
+
+	className := NewStringNameWithLatin1Chars("ScrollContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_scroll_hint_tiled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function ScrollContainer.is_scroll_hint_tiled (2240911060)")
+	}
+
+	var ret bool
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -415387,6 +429089,162 @@ func (cx *SliderJoint3DImpl) GetParam(
 	return ret
 }
 
+type SocketServerImpl struct {
+	RefCountedImpl
+}
+
+func NewGDExtensionClassFromSocketServerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &SocketServerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewSocketServerWithGodotOwnerObject(owner *GodotObject) RefSocketServer {
+	inst := &SocketServerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefSocketServerGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *SocketServerImpl) GetClassName() string {
+	return "SocketServer"
+}
+
+func (cx *SocketServerImpl) GetParentClassName() string {
+	return "RefCounted"
+}
+
+/* IsConnectionAvailable implements SocketServer.is_connection_available:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *SocketServerImpl) IsConnectionAvailable() bool {
+
+	className := NewStringNameWithLatin1Chars("SocketServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_connection_available")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function SocketServer.is_connection_available (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsListening implements SocketServer.is_listening:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *SocketServerImpl) IsListening() bool {
+
+	className := NewStringNameWithLatin1Chars("SocketServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_listening")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function SocketServer.is_listening (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* Stop implements SocketServer.stop:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SocketServerImpl) Stop() {
+
+	className := NewStringNameWithLatin1Chars("SocketServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("stop")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function SocketServer.stop (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* TakeSocketConnection implements SocketServer.take_socket_connection:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = StreamPeerSocket, return_meta =
+ */
+func (cx *SocketServerImpl) TakeSocketConnection() RefStreamPeerSocket {
+
+	className := NewStringNameWithLatin1Chars("SocketServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("take_socket_connection")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1883962599,
+	)
+	if fn == nil {
+		panic("could not find method function SocketServer.take_socket_connection (1883962599)")
+	}
+
+	var ret StreamPeerSocketImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefStreamPeerSocketGDExtensionIternalConstructor(&ret)
+}
+
 type SoftBody3DImpl struct {
 	MeshInstance3DImpl
 }
@@ -417638,6 +431496,73 @@ func (cx *SpinBoxImpl) GetCustomArrowStep() float64 {
 	return ret
 }
 
+/* SetCustomArrowRound implements SpinBox.set_custom_arrow_round:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SpinBoxImpl) SetCustomArrowRound(
+	round bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("SpinBox")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_custom_arrow_round")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function SpinBox.set_custom_arrow_round (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&round))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsCustomArrowRounding implements SpinBox.is_custom_arrow_rounding:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *SpinBoxImpl) IsCustomArrowRounding() bool {
+
+	className := NewStringNameWithLatin1Chars("SpinBox")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_custom_arrow_rounding")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function SpinBox.is_custom_arrow_rounding (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* IsEditable implements SpinBox.is_editable:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = bool, return_meta =
@@ -417868,6 +431793,329 @@ func (cx *SpinBoxImpl) GetLineEdit() LineEdit {
 	return &ret
 }
 
+type SplineIK3DImpl struct {
+	ChainIK3DImpl
+}
+
+func NewGDExtensionClassFromSplineIK3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &SplineIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewSplineIK3DWithGodotOwnerObject(owner *GodotObject) SplineIK3D {
+	inst := &SplineIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *SplineIK3DImpl) GetClassName() string {
+	return "SplineIK3D"
+}
+
+func (cx *SplineIK3DImpl) GetParentClassName() string {
+	return "ChainIK3D"
+}
+
+/* SetPath3D implements SplineIK3D.set_path_3d:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SplineIK3DImpl) SetPath3D(
+	index int32,
+	path_3d NodePath,
+) {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_path_3d")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2761262315,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.set_path_3d (2761262315)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path_3d))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetPath3D implements SplineIK3D.get_path_3d:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = NodePath, return_meta =
+ */
+func (cx *SplineIK3DImpl) GetPath3D(
+	index int32,
+) NodePath {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_path_3d")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		408788394,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.get_path_3d (408788394)")
+	}
+
+	var ret NodePath
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTiltEnabled implements SplineIK3D.set_tilt_enabled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SplineIK3DImpl) SetTiltEnabled(
+	index int32,
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tilt_enabled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		300928843,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.set_tilt_enabled (300928843)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsTiltEnabled implements SplineIK3D.is_tilt_enabled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *SplineIK3DImpl) IsTiltEnabled(
+	index int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_tilt_enabled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.is_tilt_enabled (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTiltFadeIn implements SplineIK3D.set_tilt_fade_in:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SplineIK3DImpl) SetTiltFadeIn(
+	index int32,
+	size int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tilt_fade_in")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.set_tilt_fade_in (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&size))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTiltFadeIn implements SplineIK3D.get_tilt_fade_in:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *SplineIK3DImpl) GetTiltFadeIn(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_tilt_fade_in")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.get_tilt_fade_in (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTiltFadeOut implements SplineIK3D.set_tilt_fade_out:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SplineIK3DImpl) SetTiltFadeOut(
+	index int32,
+	size int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tilt_fade_out")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.set_tilt_fade_out (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&size))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTiltFadeOut implements SplineIK3D.get_tilt_fade_out:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *SplineIK3DImpl) GetTiltFadeOut(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("SplineIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_tilt_fade_out")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function SplineIK3D.get_tilt_fade_out (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type SplitContainerImpl struct {
 	ContainerImpl
 }
@@ -417895,25 +432143,25 @@ func (cx *SplitContainerImpl) GetParentClassName() string {
 	return "Container"
 }
 
-/* SetSplitOffset implements SplitContainer.set_split_offset:
+/* SetSplitOffsets implements SplitContainer.set_split_offsets:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
  */
-func (cx *SplitContainerImpl) SetSplitOffset(
-	offset int32,
+func (cx *SplitContainerImpl) SetSplitOffsets(
+	offsets PackedInt32Array,
 ) {
 
 	className := NewStringNameWithLatin1Chars("SplitContainer")
 	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("set_split_offset")
+	methodName := NewStringNameWithLatin1Chars("set_split_offsets")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		1286410249,
+		3614634198,
 	)
 	if fn == nil {
-		panic("could not find method function SplitContainer.set_split_offset (1286410249)")
+		panic("could not find method function SplitContainer.set_split_offsets (3614634198)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -417924,31 +432172,31 @@ func (cx *SplitContainerImpl) SetSplitOffset(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&offset))
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&offsets))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
-/* GetSplitOffset implements SplitContainer.get_split_offset:
+/* GetSplitOffsets implements SplitContainer.get_split_offsets:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = int, return_meta = int32
+ * return_type = PackedInt32Array, return_meta =
  */
-func (cx *SplitContainerImpl) GetSplitOffset() int32 {
+func (cx *SplitContainerImpl) GetSplitOffsets() PackedInt32Array {
 
 	className := NewStringNameWithLatin1Chars("SplitContainer")
 	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_split_offset")
+	methodName := NewStringNameWithLatin1Chars("get_split_offsets")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3905245786,
+		1930428628,
 	)
 	if fn == nil {
-		panic("could not find method function SplitContainer.get_split_offset (3905245786)")
+		panic("could not find method function SplitContainer.get_split_offsets (1930428628)")
 	}
 
-	var ret int32
+	var ret PackedInt32Array
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -417966,7 +432214,9 @@ func (cx *SplitContainerImpl) GetSplitOffset() int32 {
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
  */
-func (cx *SplitContainerImpl) ClampSplitOffset() {
+func (cx *SplitContainerImpl) ClampSplitOffset(
+	priority_index int32,
+) {
 
 	className := NewStringNameWithLatin1Chars("SplitContainer")
 	defer className.Destroy()
@@ -417975,20 +432225,22 @@ func (cx *SplitContainerImpl) ClampSplitOffset() {
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
+		1995695955,
 	)
 	if fn == nil {
-		panic("could not find method function SplitContainer.clamp_split_offset (3218959716)")
+		panic("could not find method function SplitContainer.clamp_split_offset (1995695955)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	pnr.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
 	pnr.Pin(cOwner)
-	callArgCount := 0
+	callArgCount := 1
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&priority_index))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
@@ -418528,23 +432780,23 @@ func (cx *SplitContainerImpl) IsDragAreaHighlightInEditorEnabled() bool {
 	return ret
 }
 
-/* GetDragAreaControl implements SplitContainer.get_drag_area_control:
+/* GetDragAreaControls implements SplitContainer.get_drag_area_controls:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Control, return_meta =
+ * return_type = typedarray::Control, return_meta =
  */
-func (cx *SplitContainerImpl) GetDragAreaControl() Control {
+func (cx *SplitContainerImpl) GetDragAreaControls() Control {
 
 	className := NewStringNameWithLatin1Chars("SplitContainer")
 	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_drag_area_control")
+	methodName := NewStringNameWithLatin1Chars("get_drag_area_controls")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		829782337,
+		2915620761,
 	)
 	if fn == nil {
-		panic("could not find method function SplitContainer.get_drag_area_control (829782337)")
+		panic("could not find method function SplitContainer.get_drag_area_controls (2915620761)")
 	}
 
 	var ret ControlImpl
@@ -418615,6 +432867,106 @@ func (cx *SplitContainerImpl) IsTouchDraggerEnabled() bool {
 	}
 
 	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetDragAreaControl implements SplitContainer.get_drag_area_control:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Control, return_meta =
+ */
+func (cx *SplitContainerImpl) GetDragAreaControl() Control {
+
+	className := NewStringNameWithLatin1Chars("SplitContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_drag_area_control")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		829782337,
+	)
+	if fn == nil {
+		panic("could not find method function SplitContainer.get_drag_area_control (829782337)")
+	}
+
+	var ret ControlImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return &ret
+}
+
+/* SetSplitOffset implements SplitContainer.set_split_offset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SplitContainerImpl) SetSplitOffset(
+	offset int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("SplitContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_split_offset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function SplitContainer.set_split_offset (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&offset))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSplitOffset implements SplitContainer.get_split_offset:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *SplitContainerImpl) GetSplitOffset() int32 {
+
+	className := NewStringNameWithLatin1Chars("SplitContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_split_offset")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function SplitContainer.get_split_offset (3905245786)")
+	}
+
+	var ret int32
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -420281,7 +434633,7 @@ func (cx *SpringBoneSimulator3DImpl) IsEndBoneExtended(
  */
 func (cx *SpringBoneSimulator3DImpl) SetEndBoneDirection(
 	index int32,
-	bone_direction SpringBoneSimulator3DBoneDirection,
+	bone_direction SkeletonModifier3DBoneDirection,
 ) {
 
 	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
@@ -420291,10 +434643,10 @@ func (cx *SpringBoneSimulator3DImpl) SetEndBoneDirection(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		204796492,
+		2838484201,
 	)
 	if fn == nil {
-		panic("could not find method function SpringBoneSimulator3D.set_end_bone_direction (204796492)")
+		panic("could not find method function SpringBoneSimulator3D.set_end_bone_direction (2838484201)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -420314,11 +434666,11 @@ func (cx *SpringBoneSimulator3DImpl) SetEndBoneDirection(
 
 /* GetEndBoneDirection implements SpringBoneSimulator3D.get_end_bone_direction:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::SpringBoneSimulator3D.BoneDirection, return_meta =
+ * return_type = enum::SkeletonModifier3D.BoneDirection, return_meta =
  */
 func (cx *SpringBoneSimulator3DImpl) GetEndBoneDirection(
 	index int32,
-) SpringBoneSimulator3DBoneDirection {
+) SkeletonModifier3DBoneDirection {
 
 	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
 	defer className.Destroy()
@@ -420327,13 +434679,13 @@ func (cx *SpringBoneSimulator3DImpl) GetEndBoneDirection(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2438315700,
+		1843036459,
 	)
 	if fn == nil {
-		panic("could not find method function SpringBoneSimulator3D.get_end_bone_direction (2438315700)")
+		panic("could not find method function SpringBoneSimulator3D.get_end_bone_direction (1843036459)")
 	}
 
-	var ret SpringBoneSimulator3DBoneDirection
+	var ret SkeletonModifier3DBoneDirection
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -420799,7 +435151,7 @@ func (cx *SpringBoneSimulator3DImpl) GetRadius(
  */
 func (cx *SpringBoneSimulator3DImpl) SetRotationAxis(
 	index int32,
-	axis SpringBoneSimulator3DRotationAxis,
+	axis SkeletonModifier3DRotationAxis,
 ) {
 
 	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
@@ -420809,10 +435161,10 @@ func (cx *SpringBoneSimulator3DImpl) SetRotationAxis(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		3534169209,
+		1539703856,
 	)
 	if fn == nil {
-		panic("could not find method function SpringBoneSimulator3D.set_rotation_axis (3534169209)")
+		panic("could not find method function SpringBoneSimulator3D.set_rotation_axis (1539703856)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -420832,11 +435184,11 @@ func (cx *SpringBoneSimulator3DImpl) SetRotationAxis(
 
 /* GetRotationAxis implements SpringBoneSimulator3D.get_rotation_axis:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::SpringBoneSimulator3D.RotationAxis, return_meta =
+ * return_type = enum::SkeletonModifier3D.RotationAxis, return_meta =
  */
 func (cx *SpringBoneSimulator3DImpl) GetRotationAxis(
 	index int32,
-) SpringBoneSimulator3DRotationAxis {
+) SkeletonModifier3DRotationAxis {
 
 	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
 	defer className.Destroy()
@@ -420845,13 +435197,13 @@ func (cx *SpringBoneSimulator3DImpl) GetRotationAxis(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		748837671,
+		2844851118,
 	)
 	if fn == nil {
-		panic("could not find method function SpringBoneSimulator3D.get_rotation_axis (748837671)")
+		panic("could not find method function SpringBoneSimulator3D.get_rotation_axis (2844851118)")
 	}
 
-	var ret SpringBoneSimulator3DRotationAxis
+	var ret SkeletonModifier3DRotationAxis
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -421791,7 +436143,7 @@ func (cx *SpringBoneSimulator3DImpl) GetJointBone(
 func (cx *SpringBoneSimulator3DImpl) SetJointRotationAxis(
 	index int32,
 	joint int32,
-	axis SpringBoneSimulator3DRotationAxis,
+	axis SkeletonModifier3DRotationAxis,
 ) {
 
 	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
@@ -421801,10 +436153,10 @@ func (cx *SpringBoneSimulator3DImpl) SetJointRotationAxis(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		4224018032,
+		1391134969,
 	)
 	if fn == nil {
-		panic("could not find method function SpringBoneSimulator3D.set_joint_rotation_axis (4224018032)")
+		panic("could not find method function SpringBoneSimulator3D.set_joint_rotation_axis (1391134969)")
 	}
 
 	retPtr := (GDExtensionTypePtr)(nullptr)
@@ -421826,12 +436178,12 @@ func (cx *SpringBoneSimulator3DImpl) SetJointRotationAxis(
 
 /* GetJointRotationAxis implements SpringBoneSimulator3D.get_joint_rotation_axis:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::SpringBoneSimulator3D.RotationAxis, return_meta =
+ * return_type = enum::SkeletonModifier3D.RotationAxis, return_meta =
  */
 func (cx *SpringBoneSimulator3DImpl) GetJointRotationAxis(
 	index int32,
 	joint int32,
-) SpringBoneSimulator3DRotationAxis {
+) SkeletonModifier3DRotationAxis {
 
 	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
 	defer className.Destroy()
@@ -421840,13 +436192,13 @@ func (cx *SpringBoneSimulator3DImpl) GetJointRotationAxis(
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 		className.AsGDExtensionConstStringNamePtr(),
 		methodName.AsGDExtensionConstStringNamePtr(),
-		2488679199,
+		3312594080,
 	)
 	if fn == nil {
-		panic("could not find method function SpringBoneSimulator3D.get_joint_rotation_axis (2488679199)")
+		panic("could not find method function SpringBoneSimulator3D.get_joint_rotation_axis (3312594080)")
 	}
 
-	var ret SpringBoneSimulator3DRotationAxis
+	var ret SkeletonModifier3DRotationAxis
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -422885,6 +437237,73 @@ func (cx *SpringBoneSimulator3DImpl) GetExternalForce() Vector3 {
 	}
 
 	var ret Vector3
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMutableBoneAxes implements SpringBoneSimulator3D.set_mutable_bone_axes:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *SpringBoneSimulator3DImpl) SetMutableBoneAxes(
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_mutable_bone_axes")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function SpringBoneSimulator3D.set_mutable_bone_axes (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* AreBoneAxesMutable implements SpringBoneSimulator3D.are_bone_axes_mutable:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *SpringBoneSimulator3DImpl) AreBoneAxesMutable() bool {
+
+	className := NewStringNameWithLatin1Chars("SpringBoneSimulator3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("are_bone_axes_mutable")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function SpringBoneSimulator3D.are_bone_axes_mutable (36873697)")
+	}
+
+	var ret bool
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -428711,8 +443130,131 @@ func (cx *StreamPeerGZIPImpl) Clear() {
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
-type StreamPeerTCPImpl struct {
+type StreamPeerSocketImpl struct {
 	StreamPeerImpl
+}
+
+func NewGDExtensionClassFromStreamPeerSocketOwner(owner *GodotObject) GDExtensionClass {
+	inst := &StreamPeerSocketImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewStreamPeerSocketWithGodotOwnerObject(owner *GodotObject) RefStreamPeerSocket {
+	inst := &StreamPeerSocketImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefStreamPeerSocketGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *StreamPeerSocketImpl) GetClassName() string {
+	return "StreamPeerSocket"
+}
+
+func (cx *StreamPeerSocketImpl) GetParentClassName() string {
+	return "StreamPeer"
+}
+
+/* Poll implements StreamPeerSocket.poll:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *StreamPeerSocketImpl) Poll() Error {
+
+	className := NewStringNameWithLatin1Chars("StreamPeerSocket")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("poll")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		166280745,
+	)
+	if fn == nil {
+		panic("could not find method function StreamPeerSocket.poll (166280745)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetStatus implements StreamPeerSocket.get_status:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::StreamPeerSocket.Status, return_meta =
+ */
+func (cx *StreamPeerSocketImpl) GetStatus() StreamPeerSocketStatus {
+
+	className := NewStringNameWithLatin1Chars("StreamPeerSocket")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_status")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1156122502,
+	)
+	if fn == nil {
+		panic("could not find method function StreamPeerSocket.get_status (1156122502)")
+	}
+
+	var ret StreamPeerSocketStatus
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* DisconnectFromHost implements StreamPeerSocket.disconnect_from_host:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *StreamPeerSocketImpl) DisconnectFromHost() {
+
+	className := NewStringNameWithLatin1Chars("StreamPeerSocket")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("disconnect_from_host")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3218959716,
+	)
+	if fn == nil {
+		panic("could not find method function StreamPeerSocket.disconnect_from_host (3218959716)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+type StreamPeerTCPImpl struct {
+	StreamPeerSocketImpl
 }
 
 func NewGDExtensionClassFromStreamPeerTCPOwner(owner *GodotObject) GDExtensionClass {
@@ -428735,7 +443277,7 @@ func (cx *StreamPeerTCPImpl) GetClassName() string {
 }
 
 func (cx *StreamPeerTCPImpl) GetParentClassName() string {
-	return "StreamPeer"
+	return "StreamPeerSocket"
 }
 
 /* Bind implements StreamPeerTCP.bind:
@@ -428814,72 +443356,6 @@ func (cx *StreamPeerTCPImpl) ConnectToHost(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&port))
 	pnr.Pin(argPtrSlice[1])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* Poll implements StreamPeerTCP.poll:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::Error, return_meta =
- */
-func (cx *StreamPeerTCPImpl) Poll() Error {
-
-	className := NewStringNameWithLatin1Chars("StreamPeerTCP")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("poll")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		166280745,
-	)
-	if fn == nil {
-		panic("could not find method function StreamPeerTCP.poll (166280745)")
-	}
-
-	var ret Error
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* GetStatus implements StreamPeerTCP.get_status:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = enum::StreamPeerTCP.Status, return_meta =
- */
-func (cx *StreamPeerTCPImpl) GetStatus() StreamPeerTCPStatus {
-
-	className := NewStringNameWithLatin1Chars("StreamPeerTCP")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("get_status")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		859471121,
-	)
-	if fn == nil {
-		panic("could not find method function StreamPeerTCP.get_status (859471121)")
-	}
-
-	var ret StreamPeerTCPStatus
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -428981,36 +443457,6 @@ func (cx *StreamPeerTCPImpl) GetLocalPort() int32 {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
-}
-
-/* DisconnectFromHost implements StreamPeerTCP.disconnect_from_host:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *StreamPeerTCPImpl) DisconnectFromHost() {
-
-	className := NewStringNameWithLatin1Chars("StreamPeerTCP")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("disconnect_from_host")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
-	)
-	if fn == nil {
-		panic("could not find method function StreamPeerTCP.disconnect_from_host (3218959716)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 /* SetNoDelay implements StreamPeerTCP.set_no_delay:
@@ -429281,6 +443727,140 @@ func (cx *StreamPeerTLSImpl) DisconnectFromStream() {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+type StreamPeerUDSImpl struct {
+	StreamPeerSocketImpl
+}
+
+func NewGDExtensionClassFromStreamPeerUDSOwner(owner *GodotObject) GDExtensionClass {
+	inst := &StreamPeerUDSImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewStreamPeerUDSWithGodotOwnerObject(owner *GodotObject) RefStreamPeerUDS {
+	inst := &StreamPeerUDSImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefStreamPeerUDSGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *StreamPeerUDSImpl) GetClassName() string {
+	return "StreamPeerUDS"
+}
+
+func (cx *StreamPeerUDSImpl) GetParentClassName() string {
+	return "StreamPeerSocket"
+}
+
+/* Bind implements StreamPeerUDS.bind:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *StreamPeerUDSImpl) Bind(
+	path String,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("StreamPeerUDS")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("bind")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		166001499,
+	)
+	if fn == nil {
+		panic("could not find method function StreamPeerUDS.bind (166001499)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* ConnectToHost implements StreamPeerUDS.connect_to_host:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *StreamPeerUDSImpl) ConnectToHost(
+	path String,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("StreamPeerUDS")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("connect_to_host")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		166001499,
+	)
+	if fn == nil {
+		panic("could not find method function StreamPeerUDS.connect_to_host (166001499)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetConnectedPath implements StreamPeerUDS.get_connected_path:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *StreamPeerUDSImpl) GetConnectedPath() String {
+
+	className := NewStringNameWithLatin1Chars("StreamPeerUDS")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_connected_path")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function StreamPeerUDS.get_connected_path (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 type StyleBoxImpl struct {
@@ -432397,7 +446977,7 @@ func (cx *SubtweenTweenerImpl) GetParentClassName() string {
 
 /* SetDelay implements SubtweenTweener.set_delay:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = SubtweenTweener, return_meta =
+ * return_type = SubtweenTweener, return_meta = required
  */
 func (cx *SubtweenTweenerImpl) SetDelay(
 	delay float64,
@@ -434870,7 +449450,7 @@ func (cx *SystemFontImpl) SetFontStretch(
 }
 
 type TCPServerImpl struct {
-	RefCountedImpl
+	SocketServerImpl
 }
 
 func NewGDExtensionClassFromTCPServerOwner(owner *GodotObject) GDExtensionClass {
@@ -434893,7 +449473,7 @@ func (cx *TCPServerImpl) GetClassName() string {
 }
 
 func (cx *TCPServerImpl) GetParentClassName() string {
-	return "RefCounted"
+	return "SocketServer"
 }
 
 /* Listen implements TCPServer.listen:
@@ -434932,72 +449512,6 @@ func (cx *TCPServerImpl) Listen(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bind_address))
 	pnr.Pin(argPtrSlice[1])
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* IsConnectionAvailable implements TCPServer.is_connection_available:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = bool, return_meta =
- */
-func (cx *TCPServerImpl) IsConnectionAvailable() bool {
-
-	className := NewStringNameWithLatin1Chars("TCPServer")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("is_connection_available")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		36873697,
-	)
-	if fn == nil {
-		panic("could not find method function TCPServer.is_connection_available (36873697)")
-	}
-
-	var ret bool
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return ret
-}
-
-/* IsListening implements TCPServer.is_listening:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = bool, return_meta =
- */
-func (cx *TCPServerImpl) IsListening() bool {
-
-	className := NewStringNameWithLatin1Chars("TCPServer")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("is_listening")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		36873697,
-	)
-	if fn == nil {
-		panic("could not find method function TCPServer.is_listening (36873697)")
-	}
-
-	var ret bool
-	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
-
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -435066,36 +449580,6 @@ func (cx *TCPServerImpl) TakeConnection() RefStreamPeerTCP {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefStreamPeerTCPGDExtensionIternalConstructor(&ret)
-}
-
-/* Stop implements TCPServer.stop:
- * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = , return_meta =
- */
-func (cx *TCPServerImpl) Stop() {
-
-	className := NewStringNameWithLatin1Chars("TCPServer")
-	defer className.Destroy()
-	methodName := NewStringNameWithLatin1Chars("stop")
-	defer methodName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
-		3218959716,
-	)
-	if fn == nil {
-		panic("could not find method function TCPServer.stop (3218959716)")
-	}
-
-	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
-	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
-	callArgCount := 0
-	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
-	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
-	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
 type TLSOptionsImpl struct {
@@ -437191,6 +451675,73 @@ func (cx *TabBarImpl) GetDragToRearrangeEnabled() bool {
 	return ret
 }
 
+/* SetSwitchOnDragHover implements TabBar.set_switch_on_drag_hover:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TabBarImpl) SetSwitchOnDragHover(
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("TabBar")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_switch_on_drag_hover")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function TabBar.set_switch_on_drag_hover (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSwitchOnDragHover implements TabBar.get_switch_on_drag_hover:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TabBarImpl) GetSwitchOnDragHover() bool {
+
+	className := NewStringNameWithLatin1Chars("TabBar")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_switch_on_drag_hover")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function TabBar.get_switch_on_drag_hover (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetTabsRearrangeGroup implements TabBar.set_tabs_rearrange_group:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -438884,6 +453435,73 @@ func (cx *TabContainerImpl) GetPopup() Popup {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
+}
+
+/* SetSwitchOnDragHover implements TabContainer.set_switch_on_drag_hover:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TabContainerImpl) SetSwitchOnDragHover(
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("TabContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_switch_on_drag_hover")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function TabContainer.set_switch_on_drag_hover (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetSwitchOnDragHover implements TabContainer.get_switch_on_drag_hover:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TabContainerImpl) GetSwitchOnDragHover() bool {
+
+	className := NewStringNameWithLatin1Chars("TabContainer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_switch_on_drag_hover")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function TabContainer.get_switch_on_drag_hover (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 /* SetDragToRearrangeEnabled implements TabContainer.set_drag_to_rearrange_enabled:
@@ -448012,6 +462630,39 @@ func (cx *TextLineImpl) Clear() {
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* Duplicate implements TextLine.duplicate:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = TextLine, return_meta =
+ */
+func (cx *TextLineImpl) Duplicate() RefTextLine {
+
+	className := NewStringNameWithLatin1Chars("TextLine")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("duplicate")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1912703884,
+	)
+	if fn == nil {
+		panic("could not find method function TextLine.duplicate (1912703884)")
+	}
+
+	var ret TextLineImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefTextLineGDExtensionIternalConstructor(&ret)
+}
+
 /* SetDirection implements TextLine.set_direction:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -448487,6 +463138,43 @@ func (cx *TextLineImpl) ResizeObject(
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&baseline))
 	pnr.Pin(argPtrSlice[3])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* HasObject implements TextLine.has_object:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TextLineImpl) HasObject(
+	key Variant,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TextLine")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_object")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		77467830,
+	)
+	if fn == nil {
+		panic("could not find method function TextLine.has_object (77467830)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -450578,6 +465266,39 @@ func (cx *TextParagraphImpl) Clear() {
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* Duplicate implements TextParagraph.duplicate:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = TextParagraph, return_meta =
+ */
+func (cx *TextParagraphImpl) Duplicate() RefTextParagraph {
+
+	className := NewStringNameWithLatin1Chars("TextParagraph")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("duplicate")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3607706709,
+	)
+	if fn == nil {
+		panic("could not find method function TextParagraph.duplicate (3607706709)")
+	}
+
+	var ret TextParagraphImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefTextParagraphGDExtensionIternalConstructor(&ret)
+}
+
 /* SetDirection implements TextParagraph.set_direction:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -451199,6 +465920,43 @@ func (cx *TextParagraphImpl) ResizeObject(
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&baseline))
 	pnr.Pin(argPtrSlice[3])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* HasObject implements TextParagraph.has_object:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TextParagraphImpl) HasObject(
+	key Variant,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TextParagraph")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_object")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		77467830,
+	)
+	if fn == nil {
+		panic("could not find method function TextParagraph.has_object (77467830)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -453025,6 +467783,43 @@ func (cx *TextServerImpl) GetSupportData() PackedByteArray {
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* IsLocaleUsingSupportData implements TextServer.is_locale_using_support_data:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TextServerImpl) IsLocaleUsingSupportData(
+	locale String,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TextServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_locale_using_support_data")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3927539163,
+	)
+	if fn == nil {
+		panic("could not find method function TextServer.is_locale_using_support_data (3927539163)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -458221,6 +473016,43 @@ func (cx *TextServerImpl) ShapedTextClear(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
 
+/* ShapedTextDuplicate implements TextServer.shaped_text_duplicate:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = RID, return_meta =
+ */
+func (cx *TextServerImpl) ShapedTextDuplicate(
+	rid RID,
+) RID {
+
+	className := NewStringNameWithLatin1Chars("TextServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("shaped_text_duplicate")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		41030802,
+	)
+	if fn == nil {
+		panic("could not find method function TextServer.shaped_text_duplicate (41030802)")
+	}
+
+	var ret RID
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rid))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* ShapedTextSetDirection implements TextServer.shaped_text_set_direction:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -458975,6 +473807,46 @@ func (cx *TextServerImpl) ShapedTextResizeObject(
 	return ret
 }
 
+/* ShapedTextHasObject implements TextServer.shaped_text_has_object:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TextServerImpl) ShapedTextHasObject(
+	shaped RID,
+	key Variant,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TextServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("shaped_text_has_object")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2360964694,
+	)
+	if fn == nil {
+		panic("could not find method function TextServer.shaped_text_has_object (2360964694)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shaped))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* ShapedGetText implements TextServer.shaped_get_text:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = String, return_meta =
@@ -459352,6 +474224,46 @@ func (cx *TextServerImpl) ShapedGetRunRange(
 	)
 	if fn == nil {
 		panic("could not find method function TextServer.shaped_get_run_range (4069534484)")
+	}
+
+	var ret Vector2i
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shaped))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* ShapedGetRunGlyphRange implements TextServer.shaped_get_run_glyph_range:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector2i, return_meta =
+ */
+func (cx *TextServerImpl) ShapedGetRunGlyphRange(
+	shaped RID,
+	index int64,
+) Vector2i {
+
+	className := NewStringNameWithLatin1Chars("TextServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("shaped_get_run_glyph_range")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		4069534484,
+	)
+	if fn == nil {
+		panic("could not find method function TextServer.shaped_get_run_glyph_range (4069534484)")
 	}
 
 	var ret Vector2i
@@ -468745,6 +483657,39 @@ func (cx *ThreadImpl) SetThreadSafetyChecksEnabled(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsMainThread implements Thread.is_main_thread:
+ * is_vararg = false, is_static = true, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *ThreadImpl) IsMainThread() bool {
+
+	className := NewStringNameWithLatin1Chars("Thread")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_main_thread")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function Thread.is_main_thread (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 type TileDataImpl struct {
@@ -483589,6 +498534,73 @@ func (cx *TranslationImpl) GetMessageCount() int32 {
 	return ret
 }
 
+/* SetPluralRulesOverride implements Translation.set_plural_rules_override:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TranslationImpl) SetPluralRulesOverride(
+	rules String,
+) {
+
+	className := NewStringNameWithLatin1Chars("Translation")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_plural_rules_override")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		83702148,
+	)
+	if fn == nil {
+		panic("could not find method function Translation.set_plural_rules_override (83702148)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rules))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetPluralRulesOverride implements Translation.get_plural_rules_override:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TranslationImpl) GetPluralRulesOverride() String {
+
+	className := NewStringNameWithLatin1Chars("Translation")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_plural_rules_override")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		201670096,
+	)
+	if fn == nil {
+		panic("could not find method function Translation.get_plural_rules_override (201670096)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 type TranslationDomainImpl struct {
 	RefCountedImpl
 }
@@ -483749,6 +498761,156 @@ func (cx *TranslationDomainImpl) Clear() {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTranslations implements TranslationDomain.get_translations:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = typedarray::Translation, return_meta =
+ */
+func (cx *TranslationDomainImpl) GetTranslations() RefTranslation {
+
+	className := NewStringNameWithLatin1Chars("TranslationDomain")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_translations")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3995934104,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationDomain.get_translations (3995934104)")
+	}
+
+	var ret TranslationImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefTranslationGDExtensionIternalConstructor(&ret)
+}
+
+/* HasTranslationForLocale implements TranslationDomain.has_translation_for_locale:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TranslationDomainImpl) HasTranslationForLocale(
+	locale String,
+	exact bool,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TranslationDomain")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_translation_for_locale")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2034713381,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationDomain.has_translation_for_locale (2034713381)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* HasTranslation implements TranslationDomain.has_translation:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TranslationDomainImpl) HasTranslation(
+	translation RefTranslation,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TranslationDomain")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_translation")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2696976312,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationDomain.has_translation (2696976312)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FindTranslations implements TranslationDomain.find_translations:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = typedarray::Translation, return_meta =
+ */
+func (cx *TranslationDomainImpl) FindTranslations(
+	locale String,
+	exact bool,
+) RefTranslation {
+
+	className := NewStringNameWithLatin1Chars("TranslationDomain")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("find_translations")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2109650934,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationDomain.find_translations (2109650934)")
+	}
+
+	var ret TranslationImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefTranslationGDExtensionIternalConstructor(&ret)
 }
 
 /* Translate implements TranslationDomain.translate:
@@ -485065,6 +500227,43 @@ func (cx *TranslationServerImpl) GetLocaleName(
 	return ret
 }
 
+/* GetPluralRules implements TranslationServer.get_plural_rules:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TranslationServerImpl) GetPluralRules(
+	locale String,
+) String {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_plural_rules")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3135753539,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.get_plural_rules (3135753539)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* Translate implements TranslationServer.translate:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = StringName, return_meta =
@@ -485256,6 +500455,156 @@ func (cx *TranslationServerImpl) GetTranslationObject(
 	return NewRefTranslationGDExtensionIternalConstructor(&ret)
 }
 
+/* GetTranslations implements TranslationServer.get_translations:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = typedarray::Translation, return_meta =
+ */
+func (cx *TranslationServerImpl) GetTranslations() RefTranslation {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_translations")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3995934104,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.get_translations (3995934104)")
+	}
+
+	var ret TranslationImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefTranslationGDExtensionIternalConstructor(&ret)
+}
+
+/* FindTranslations implements TranslationServer.find_translations:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = typedarray::Translation, return_meta =
+ */
+func (cx *TranslationServerImpl) FindTranslations(
+	locale String,
+	exact bool,
+) RefTranslation {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("find_translations")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2109650934,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.find_translations (2109650934)")
+	}
+
+	var ret TranslationImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefTranslationGDExtensionIternalConstructor(&ret)
+}
+
+/* HasTranslationForLocale implements TranslationServer.has_translation_for_locale:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TranslationServerImpl) HasTranslationForLocale(
+	locale String,
+	exact bool,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_translation_for_locale")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2034713381,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.has_translation_for_locale (2034713381)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* HasTranslation implements TranslationServer.has_translation:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TranslationServerImpl) HasTranslation(
+	translation RefTranslation,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("has_translation")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2696976312,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.has_translation (2696976312)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* HasDomain implements TranslationServer.has_domain:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = bool, return_meta =
@@ -485423,6 +500772,123 @@ func (cx *TranslationServerImpl) GetLoadedLocales() PackedStringArray {
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* FormatNumber implements TranslationServer.format_number:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TranslationServerImpl) FormatNumber(
+	number String,
+	locale String,
+) String {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("format_number")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		315676799,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.format_number (315676799)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&number))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* GetPercentSign implements TranslationServer.get_percent_sign:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TranslationServerImpl) GetPercentSign(
+	locale String,
+) String {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_percent_sign")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3135753539,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.get_percent_sign (3135753539)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* ParseNumber implements TranslationServer.parse_number:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TranslationServerImpl) ParseNumber(
+	number String,
+	locale String,
+) String {
+
+	className := NewStringNameWithLatin1Chars("TranslationServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("parse_number")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		315676799,
+	)
+	if fn == nil {
+		panic("could not find method function TranslationServer.parse_number (315676799)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&number))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
+	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
 }
@@ -486889,6 +502355,80 @@ func (cx *TreeImpl) GetColumnTitle(
 	return ret
 }
 
+/* SetColumnTitleTooltipText implements Tree.set_column_title_tooltip_text:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TreeImpl) SetColumnTitleTooltipText(
+	column int32,
+	tooltip_text String,
+) {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_column_title_tooltip_text")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.set_column_title_tooltip_text (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tooltip_text))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetColumnTitleTooltipText implements Tree.get_column_title_tooltip_text:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TreeImpl) GetColumnTitleTooltipText(
+	column int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_column_title_tooltip_text")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.get_column_title_tooltip_text (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetColumnTitleAlignment implements Tree.set_column_title_alignment:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -487315,6 +502855,140 @@ func (cx *TreeImpl) IsVScrollEnabled() bool {
 	return ret
 }
 
+/* SetScrollHintMode implements Tree.set_scroll_hint_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TreeImpl) SetScrollHintMode(
+	scroll_hint_mode TreeScrollHintMode,
+) {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_scroll_hint_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		415911924,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.set_scroll_hint_mode (415911924)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scroll_hint_mode))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetScrollHintMode implements Tree.get_scroll_hint_mode:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Tree.ScrollHintMode, return_meta =
+ */
+func (cx *TreeImpl) GetScrollHintMode() TreeScrollHintMode {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_scroll_hint_mode")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		553087187,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.get_scroll_hint_mode (553087187)")
+	}
+
+	var ret TreeScrollHintMode
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetTileScrollHint implements Tree.set_tile_scroll_hint:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TreeImpl) SetTileScrollHint(
+	tile_scroll_hint bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_tile_scroll_hint")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.set_tile_scroll_hint (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tile_scroll_hint))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsScrollHintTiled implements Tree.is_scroll_hint_tiled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TreeImpl) IsScrollHintTiled() bool {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_scroll_hint_tiled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2240911060,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.is_scroll_hint_tiled (2240911060)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
 /* SetHideFolding implements Tree.set_hide_folding:
  * is_vararg = false, is_static = false, is_virtual = false,
  * return_type = , return_meta =
@@ -487433,6 +503107,73 @@ func (cx *TreeImpl) IsRecursiveFoldingEnabled() bool {
 	)
 	if fn == nil {
 		panic("could not find method function Tree.is_recursive_folding_enabled (36873697)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEnableDragUnfolding implements Tree.set_enable_drag_unfolding:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TreeImpl) SetEnableDragUnfolding(
+	enable bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_enable_drag_unfolding")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2586408642,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.set_enable_drag_unfolding (2586408642)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enable))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsDragUnfoldingEnabled implements Tree.is_drag_unfolding_enabled:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TreeImpl) IsDragUnfoldingEnabled() bool {
+
+	className := NewStringNameWithLatin1Chars("Tree")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_drag_unfolding_enabled")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		36873697,
+	)
+	if fn == nil {
+		panic("could not find method function Tree.is_drag_unfolding_enabled (36873697)")
 	}
 
 	var ret bool
@@ -489597,6 +505338,80 @@ func (cx *TreeItemImpl) GetCustomDrawCallback(
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
+}
+
+/* SetCustomStylebox implements TreeItem.set_custom_stylebox:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TreeItemImpl) SetCustomStylebox(
+	column int32,
+	stylebox RefStyleBox,
+) {
+
+	className := NewStringNameWithLatin1Chars("TreeItem")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_custom_stylebox")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1433009359,
+	)
+	if fn == nil {
+		panic("could not find method function TreeItem.set_custom_stylebox (1433009359)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stylebox))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetCustomStylebox implements TreeItem.get_custom_stylebox:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = StyleBox, return_meta =
+ */
+func (cx *TreeItemImpl) GetCustomStylebox(
+	column int32,
+) RefStyleBox {
+
+	className := NewStringNameWithLatin1Chars("TreeItem")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_custom_stylebox")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3362509644,
+	)
+	if fn == nil {
+		panic("could not find method function TreeItem.get_custom_stylebox (3362509644)")
+	}
+
+	var ret StyleBoxImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefStyleBoxGDExtensionIternalConstructor(&ret)
 }
 
 /* SetCollapsed implements TreeItem.set_collapsed:
@@ -492162,6 +507977,7 @@ func (cx *TreeItemImpl) CallRecursive(
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	v0 := NewVariantStringName(method)
+	defer v0.Destroy()
 	argPtrSlice[0] = v0.NativeConstPtr()
 	pnr.Pin(argPtrSlice[0])
 	for i := range varargs {
@@ -492945,7 +508761,7 @@ func (cx *TweenImpl) GetParentClassName() string {
 
 /* TweenProperty implements Tween.tween_property:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = PropertyTweener, return_meta =
+ * return_type = PropertyTweener, return_meta = required
  */
 func (cx *TweenImpl) TweenProperty(
 	object Object,
@@ -492991,7 +508807,7 @@ func (cx *TweenImpl) TweenProperty(
 
 /* TweenInterval implements Tween.tween_interval:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = IntervalTweener, return_meta =
+ * return_type = IntervalTweener, return_meta = required
  */
 func (cx *TweenImpl) TweenInterval(
 	time float64,
@@ -493028,7 +508844,7 @@ func (cx *TweenImpl) TweenInterval(
 
 /* TweenCallback implements Tween.tween_callback:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = CallbackTweener, return_meta =
+ * return_type = CallbackTweener, return_meta = required
  */
 func (cx *TweenImpl) TweenCallback(
 	callback Callable,
@@ -493065,7 +508881,7 @@ func (cx *TweenImpl) TweenCallback(
 
 /* TweenMethod implements Tween.tween_method:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = MethodTweener, return_meta =
+ * return_type = MethodTweener, return_meta = required
  */
 func (cx *TweenImpl) TweenMethod(
 	method Callable,
@@ -493111,7 +508927,7 @@ func (cx *TweenImpl) TweenMethod(
 
 /* TweenSubtween implements Tween.tween_subtween:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = SubtweenTweener, return_meta =
+ * return_type = SubtweenTweener, return_meta = required
  */
 func (cx *TweenImpl) TweenSubtween(
 	subtween RefTween,
@@ -493404,7 +509220,7 @@ func (cx *TweenImpl) IsValid() bool {
 
 /* BindNode implements Tween.bind_node:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) BindNode(
 	node Node,
@@ -493441,7 +509257,7 @@ func (cx *TweenImpl) BindNode(
 
 /* SetProcessMode implements Tween.set_process_mode:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetProcessMode(
 	mode TweenTweenProcessMode,
@@ -493478,7 +509294,7 @@ func (cx *TweenImpl) SetProcessMode(
 
 /* SetPauseMode implements Tween.set_pause_mode:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetPauseMode(
 	mode TweenTweenPauseMode,
@@ -493515,7 +509331,7 @@ func (cx *TweenImpl) SetPauseMode(
 
 /* SetIgnoreTimeScale implements Tween.set_ignore_time_scale:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetIgnoreTimeScale(
 	ignore bool,
@@ -493552,7 +509368,7 @@ func (cx *TweenImpl) SetIgnoreTimeScale(
 
 /* SetParallel implements Tween.set_parallel:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetParallel(
 	parallel bool,
@@ -493589,7 +509405,7 @@ func (cx *TweenImpl) SetParallel(
 
 /* SetLoops implements Tween.set_loops:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetLoops(
 	loops int32,
@@ -493659,7 +509475,7 @@ func (cx *TweenImpl) GetLoopsLeft() int32 {
 
 /* SetSpeedScale implements Tween.set_speed_scale:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetSpeedScale(
 	speed float32,
@@ -493696,7 +509512,7 @@ func (cx *TweenImpl) SetSpeedScale(
 
 /* SetTrans implements Tween.set_trans:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetTrans(
 	trans TweenTransitionType,
@@ -493733,7 +509549,7 @@ func (cx *TweenImpl) SetTrans(
 
 /* SetEase implements Tween.set_ease:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) SetEase(
 	ease TweenEaseType,
@@ -493770,7 +509586,7 @@ func (cx *TweenImpl) SetEase(
 
 /* Parallel implements Tween.parallel:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) Parallel() RefTween {
 
@@ -493803,7 +509619,7 @@ func (cx *TweenImpl) Parallel() RefTween {
 
 /* Chain implements Tween.chain:
  * is_vararg = false, is_static = false, is_virtual = false,
- * return_type = Tween, return_meta =
+ * return_type = Tween, return_meta = required
  */
 func (cx *TweenImpl) Chain() RefTween {
 
@@ -493902,6 +509718,1069 @@ func NewTweenerWithGodotOwnerObject(owner *GodotObject) RefTweener {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return NewRefTweenerGDExtensionIternalConstructor(inst)
+}
+
+type TwoBoneIK3DImpl struct {
+	IKModifier3DImpl
+}
+
+func NewGDExtensionClassFromTwoBoneIK3DOwner(owner *GodotObject) GDExtensionClass {
+	inst := &TwoBoneIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewTwoBoneIK3DWithGodotOwnerObject(owner *GodotObject) TwoBoneIK3D {
+	inst := &TwoBoneIK3DImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return inst
+}
+
+// section: methods
+func (cx *TwoBoneIK3DImpl) GetClassName() string {
+	return "TwoBoneIK3D"
+}
+
+func (cx *TwoBoneIK3DImpl) GetParentClassName() string {
+	return "IKModifier3D"
+}
+
+/* SetTargetNode implements TwoBoneIK3D.set_target_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetTargetNode(
+	index int32,
+	target_node NodePath,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_target_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2761262315,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_target_node (2761262315)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&target_node))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetTargetNode implements TwoBoneIK3D.get_target_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = NodePath, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetTargetNode(
+	index int32,
+) NodePath {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_target_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		408788394,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_target_node (408788394)")
+	}
+
+	var ret NodePath
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetPoleNode implements TwoBoneIK3D.set_pole_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetPoleNode(
+	index int32,
+	pole_node NodePath,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_pole_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2761262315,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_pole_node (2761262315)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pole_node))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetPoleNode implements TwoBoneIK3D.get_pole_node:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = NodePath, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetPoleNode(
+	index int32,
+) NodePath {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_pole_node")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		408788394,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_pole_node (408788394)")
+	}
+
+	var ret NodePath
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRootBoneName implements TwoBoneIK3D.set_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetRootBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_root_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBoneName implements TwoBoneIK3D.get_root_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetRootBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_root_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetRootBone implements TwoBoneIK3D.set_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetRootBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_root_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetRootBone implements TwoBoneIK3D.get_root_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *TwoBoneIK3DImpl) GetRootBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_root_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_root_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMiddleBoneName implements TwoBoneIK3D.set_middle_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetMiddleBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_middle_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_middle_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMiddleBoneName implements TwoBoneIK3D.get_middle_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetMiddleBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_middle_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_middle_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetMiddleBone implements TwoBoneIK3D.set_middle_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetMiddleBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_middle_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_middle_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetMiddleBone implements TwoBoneIK3D.get_middle_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *TwoBoneIK3DImpl) GetMiddleBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_middle_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_middle_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetPoleDirection implements TwoBoneIK3D.set_pole_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetPoleDirection(
+	index int32,
+	direction SkeletonModifier3DSecondaryDirection,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_pole_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		258741388,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_pole_direction (258741388)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&direction))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetPoleDirection implements TwoBoneIK3D.get_pole_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::SkeletonModifier3D.SecondaryDirection, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetPoleDirection(
+	index int32,
+) SkeletonModifier3DSecondaryDirection {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_pole_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		377522128,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_pole_direction (377522128)")
+	}
+
+	var ret SkeletonModifier3DSecondaryDirection
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetPoleDirectionVector implements TwoBoneIK3D.set_pole_direction_vector:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetPoleDirectionVector(
+	index int32,
+	vector Vector3,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_pole_direction_vector")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1530502735,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_pole_direction_vector (1530502735)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&vector))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetPoleDirectionVector implements TwoBoneIK3D.get_pole_direction_vector:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Vector3, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetPoleDirectionVector(
+	index int32,
+) Vector3 {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_pole_direction_vector")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		711720468,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_pole_direction_vector (711720468)")
+	}
+
+	var ret Vector3
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneName implements TwoBoneIK3D.set_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetEndBoneName(
+	index int32,
+	bone_name String,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		501894301,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_end_bone_name (501894301)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_name))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneName implements TwoBoneIK3D.get_end_bone_name:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = String, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetEndBoneName(
+	index int32,
+) String {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_name")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		844755477,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_end_bone_name (844755477)")
+	}
+
+	var ret String
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBone implements TwoBoneIK3D.set_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetEndBone(
+	index int32,
+	bone int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3937882851,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_end_bone (3937882851)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBone implements TwoBoneIK3D.get_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *TwoBoneIK3DImpl) GetEndBone(
+	index int32,
+) int32 {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		923996154,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_end_bone (923996154)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetUseVirtualEnd implements TwoBoneIK3D.set_use_virtual_end:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetUseVirtualEnd(
+	index int32,
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_use_virtual_end")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		300928843,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_use_virtual_end (300928843)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsUsingVirtualEnd implements TwoBoneIK3D.is_using_virtual_end:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) IsUsingVirtualEnd(
+	index int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_using_virtual_end")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.is_using_virtual_end (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetExtendEndBone implements TwoBoneIK3D.set_extend_end_bone:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetExtendEndBone(
+	index int32,
+	enabled bool,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_extend_end_bone")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		300928843,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_extend_end_bone (300928843)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&enabled))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* IsEndBoneExtended implements TwoBoneIK3D.is_end_bone_extended:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = bool, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) IsEndBoneExtended(
+	index int32,
+) bool {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("is_end_bone_extended")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1116898809,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.is_end_bone_extended (1116898809)")
+	}
+
+	var ret bool
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneDirection implements TwoBoneIK3D.set_end_bone_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetEndBoneDirection(
+	index int32,
+	bone_direction SkeletonModifier3DBoneDirection,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2838484201,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_end_bone_direction (2838484201)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bone_direction))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneDirection implements TwoBoneIK3D.get_end_bone_direction:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::SkeletonModifier3D.BoneDirection, return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) GetEndBoneDirection(
+	index int32,
+) SkeletonModifier3DBoneDirection {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_direction")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1843036459,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_end_bone_direction (1843036459)")
+	}
+
+	var ret SkeletonModifier3DBoneDirection
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetEndBoneLength implements TwoBoneIK3D.set_end_bone_length:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *TwoBoneIK3DImpl) SetEndBoneLength(
+	index int32,
+	length float32,
+) {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_end_bone_length")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1602489585,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.set_end_bone_length (1602489585)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 2
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&length))
+	pnr.Pin(argPtrSlice[1])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetEndBoneLength implements TwoBoneIK3D.get_end_bone_length:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = float, return_meta = float
+ */
+func (cx *TwoBoneIK3DImpl) GetEndBoneLength(
+	index int32,
+) float32 {
+
+	className := NewStringNameWithLatin1Chars("TwoBoneIK3D")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_end_bone_length")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		2339986948,
+	)
+	if fn == nil {
+		panic("could not find method function TwoBoneIK3D.get_end_bone_length (2339986948)")
+	}
+
+	var ret float32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 type UDPServerImpl struct {
@@ -494231,6 +511110,103 @@ func (cx *UDPServerImpl) GetMaxPendingConnections() int32 {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
+}
+
+type UDSServerImpl struct {
+	SocketServerImpl
+}
+
+func NewGDExtensionClassFromUDSServerOwner(owner *GodotObject) GDExtensionClass {
+	inst := &UDSServerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return (GDExtensionClass)(inst)
+}
+
+func NewUDSServerWithGodotOwnerObject(owner *GodotObject) RefUDSServer {
+	inst := &UDSServerImpl{}
+	inst.Owner = owner
+	pnr.Pin(inst)
+	return NewRefUDSServerGDExtensionIternalConstructor(inst)
+}
+
+// section: methods
+func (cx *UDSServerImpl) GetClassName() string {
+	return "UDSServer"
+}
+
+func (cx *UDSServerImpl) GetParentClassName() string {
+	return "SocketServer"
+}
+
+/* Listen implements UDSServer.listen:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = enum::Error, return_meta =
+ */
+func (cx *UDSServerImpl) Listen(
+	path String,
+) Error {
+
+	className := NewStringNameWithLatin1Chars("UDSServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("listen")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		166001499,
+	)
+	if fn == nil {
+		panic("could not find method function UDSServer.listen (166001499)")
+	}
+
+	var ret Error
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* TakeConnection implements UDSServer.take_connection:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = StreamPeerUDS, return_meta =
+ */
+func (cx *UDSServerImpl) TakeConnection() RefStreamPeerUDS {
+
+	className := NewStringNameWithLatin1Chars("UDSServer")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("take_connection")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1623851112,
+	)
+	if fn == nil {
+		panic("could not find method function UDSServer.take_connection (1623851112)")
+	}
+
+	var ret StreamPeerUDSImpl
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return NewRefStreamPeerUDSGDExtensionIternalConstructor(&ret)
 }
 
 type UPNPImpl struct {
@@ -501834,6 +518810,73 @@ func (cx *ViewportImpl) GetEmbeddedSubwindows() Window {
 	pnr.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
+}
+
+/* SetDragThreshold implements Viewport.set_drag_threshold:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *ViewportImpl) SetDragThreshold(
+	threshold int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("Viewport")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_drag_threshold")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function Viewport.set_drag_threshold (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&threshold))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetDragThreshold implements Viewport.get_drag_threshold:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *ViewportImpl) GetDragThreshold() int32 {
+
+	className := NewStringNameWithLatin1Chars("Viewport")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_drag_threshold")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function Viewport.get_drag_threshold (3905245786)")
+	}
+
+	var ret int32
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
 }
 
 /* SetCanvasCullMask implements Viewport.set_canvas_cull_mask:
@@ -511333,6 +528376,73 @@ func (cx *VisualShaderNodeParameterImpl) GetQualifier() VisualShaderNodeParamete
 	}
 
 	var ret VisualShaderNodeParameterQualifier
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetInstanceIndex implements VisualShaderNodeParameter.set_instance_index:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *VisualShaderNodeParameterImpl) SetInstanceIndex(
+	instance_index int32,
+) {
+
+	className := NewStringNameWithLatin1Chars("VisualShaderNodeParameter")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_instance_index")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1286410249,
+	)
+	if fn == nil {
+		panic("could not find method function VisualShaderNodeParameter.set_instance_index (1286410249)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&instance_index))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetInstanceIndex implements VisualShaderNodeParameter.get_instance_index:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = int, return_meta = int32
+ */
+func (cx *VisualShaderNodeParameterImpl) GetInstanceIndex() int32 {
+
+	className := NewStringNameWithLatin1Chars("VisualShaderNodeParameter")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_instance_index")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		3905245786,
+	)
+	if fn == nil {
+		panic("could not find method function VisualShaderNodeParameter.get_instance_index (3905245786)")
+	}
+
+	var ret int32
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)
@@ -522920,6 +540030,73 @@ func (cx *WindowImpl) GetContentScaleStretch() WindowContentScaleStretch {
 	}
 
 	var ret WindowContentScaleStretch
+	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 0
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+	return ret
+}
+
+/* SetNonclientArea implements Window.set_nonclient_area:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = , return_meta =
+ */
+func (cx *WindowImpl) SetNonclientArea(
+	area Rect2i,
+) {
+
+	className := NewStringNameWithLatin1Chars("Window")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("set_nonclient_area")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		1763793166,
+	)
+	if fn == nil {
+		panic("could not find method function Window.set_nonclient_area (1763793166)")
+	}
+
+	retPtr := (GDExtensionTypePtr)(nullptr)
+	pnr.Pin(retPtr)
+	cOwner := cx.AsGDExtensionObjectPtr()
+	pnr.Pin(cOwner)
+	callArgCount := 1
+	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
+	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+	pnr.Pin(cArgs)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&area))
+	pnr.Pin(argPtrSlice[0])
+	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
+}
+
+/* GetNonclientArea implements Window.get_nonclient_area:
+ * is_vararg = false, is_static = false, is_virtual = false,
+ * return_type = Rect2i, return_meta =
+ */
+func (cx *WindowImpl) GetNonclientArea() Rect2i {
+
+	className := NewStringNameWithLatin1Chars("Window")
+	defer className.Destroy()
+	methodName := NewStringNameWithLatin1Chars("get_nonclient_area")
+	defer methodName.Destroy()
+	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+		className.AsGDExtensionConstStringNamePtr(),
+		methodName.AsGDExtensionConstStringNamePtr(),
+		410525958,
+	)
+	if fn == nil {
+		panic("could not find method function Window.get_nonclient_area (410525958)")
+	}
+
+	var ret Rect2i
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
 	pnr.Pin(retPtr)

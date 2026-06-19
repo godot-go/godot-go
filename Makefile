@@ -22,15 +22,15 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv installdeps generate update_godot_headers_from_binary build clean_src clean remote_debug_test test interactive_test open_demo_in_editor
+.PHONY: goenv installdeps generate update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test interactive_test open_demo_in_editor
 
-goenv:
+goenv: ## Print Go environment variables
 	go env
 
-installdeps:
+installdeps: ## Install Go dependencies (goimports)
 	go install golang.org/x/tools/cmd/goimports@latest
 
-generate: clean
+generate: clean ## Generate Go bindings from Godot API
 	go generate
 	if [ ! -z "$(CLANG_FORMAT)" ]; then \
 		"$(CLANG_FORMAT)" -i pkg/ffi/ffi_wrapper.gen.h; \
@@ -48,7 +48,7 @@ update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	mv gdextension_interface.h godot_headers/godot/
 
 # https://medium.com/@aviad.hayumi/debug-golang-applications-with-c-c-bindings-f254b3f1259e
-build: goenv
+build: goenv ## Build GDExtension library (debug mode)
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
@@ -57,7 +57,7 @@ build: goenv
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
-build-full: goenv
+build-full: goenv ## Build GDExtension library with full debug symbols
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
@@ -66,22 +66,22 @@ build-full: goenv
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags="-N -l" -ldflags=-compressdwarf=0 -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
-clean_src:
+clean_src: ## Remove generated source files
 	find pkg -name *.gen.go -delete
 	find pkg -name *.gen.c -delete
 	find pkg -name *.gen.h -delete
 
-clean: clean_src
+clean: clean_src ## Clean generated files and binaries
 	rm -f test/demo/lib/libgodotgo-*
 
-remote_debug_test:
+remote_debug_test: ## Start Godot with gdbserver for remote debugging
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=crash \
 	GODEBUG=asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	gdbserver --once :55555 "$(GODOT)" --headless --verbose --debug --path test/demo/
 
-ci_gen_test_project_files:
+ci_gen_test_project_files: ## Generate test project files for CI
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
@@ -92,22 +92,25 @@ ci_gen_test_project_files:
 		echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg; \
 	fi
 
-test:
+test: ## Run headless tests
 	CI=1 \
-	LOG_LEVEL=info \
+	LOG_LEVEL=WARN \
 	GOTRACEBACK=single \
 	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
 	"$(GODOT)" --headless --verbose --path test/demo/ --quit
 
-interactive_test:
+interactive_test: ## Run Godot editor with debugging for interactive testing
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	"$(GODOT)" --verbose --debug --path test/demo/
 
-open_demo_in_editor:
+open_demo_in_editor: ## Open demo project in Godot editor with debugging
 	DISPLAY=:0 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	"$(GODOT)" --verbose --debug --path test/demo/ --editor
+
+help: ## Display this help screen
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

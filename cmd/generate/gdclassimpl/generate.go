@@ -49,6 +49,7 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 			"goEncoder":            goEncoder,
 			"goEncodeIsReference":  goEncodeIsReference,
 			"coalesce":             coalesce,
+			"typeOrMeta":           typeOrMeta,
 		}).
 		Parse(classesText)
 
@@ -99,6 +100,7 @@ func GenerateClassRefs(projectPath string, extensionApi extensionapiparser.Exten
 			"goEncoder":            goEncoder,
 			"goEncodeIsReference":  goEncodeIsReference,
 			"coalesce":             coalesce,
+			"typeOrMeta":           typeOrMeta,
 		}).
 		Parse(classesRefsText)
 

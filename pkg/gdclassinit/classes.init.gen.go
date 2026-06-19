@@ -678,6 +678,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_BoneMap),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_BoneMap),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("BoneTwistDisperser3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_BoneTwistDisperser3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_BoneTwistDisperser3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_BoneTwistDisperser3D),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("BoxContainer",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_BoxContainer),
@@ -713,6 +719,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ButtonGroup),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ButtonGroup),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ButtonGroup),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("CCDIK3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_CCDIK3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_CCDIK3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_CCDIK3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("CPUParticles2D",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -893,6 +905,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_CenterContainer),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_CenterContainer),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_CenterContainer),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ChainIK3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ChainIK3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ChainIK3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ChainIK3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("CharFXTransform",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -1278,6 +1296,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorDebuggerSession),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorDebuggerSession),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorDock",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorDock),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_EditorDock),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_EditorDock),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("EditorExportPlatform",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_EditorExportPlatform),
@@ -1614,6 +1638,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ExternalTexture),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ExternalTexture),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("FABRIK3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_FABRIK3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_FABRIK3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_FABRIK3D),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("FBXDocument",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_FBXDocument),
@@ -1932,6 +1962,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GeometryInstance3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GeometryInstance3D),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GodotInstance",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GodotInstance),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GodotInstance),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GodotInstance),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("Gradient",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_Gradient),
@@ -2069,6 +2105,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_HingeJoint3D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_HingeJoint3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_HingeJoint3D),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("IKModifier3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_IKModifier3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_IKModifier3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_IKModifier3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("IP",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -2262,6 +2304,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ItemList),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ItemList),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("IterateIK3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_IterateIK3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_IterateIK3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_IterateIK3D),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("JNISingleton",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_JNISingleton),
@@ -2279,6 +2327,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_JSONRPC),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_JSONRPC),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_JSONRPC),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("JacobianIK3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_JacobianIK3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_JacobianIK3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_JacobianIK3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("JavaClass",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -2321,6 +2375,18 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_Joint3D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Joint3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Joint3D),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("JointLimitation3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_JointLimitation3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_JointLimitation3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_JointLimitation3D),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("JointLimitationCone3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_JointLimitationCone3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_JointLimitationCone3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_JointLimitationCone3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("KinematicCollision2D",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -2399,6 +2465,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_LightmapperRD),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_LightmapperRD),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_LightmapperRD),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("LimitAngularVelocityModifier3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_LimitAngularVelocityModifier3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_LimitAngularVelocityModifier3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_LimitAngularVelocityModifier3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("Line2D",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -2730,11 +2802,23 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationServer2D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationServer2D),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NavigationServer2DManager",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NavigationServer2DManager),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationServer2DManager),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationServer2DManager),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NavigationServer3D",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NavigationServer3D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationServer3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationServer3D),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NavigationServer3DManager",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_NavigationServer3DManager),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_NavigationServer3DManager),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_NavigationServer3DManager),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("NinePatchRect",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -2880,6 +2964,18 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRAnalogThresholdModifier),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRAnalogThresholdModifier),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRAnchorTracker",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRAnchorTracker),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRAnchorTracker),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRAnchorTracker),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRAndroidThreadSettingsExtension",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRAndroidThreadSettingsExtension),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRAndroidThreadSettingsExtension),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRAndroidThreadSettingsExtension),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRBindingModifier",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRBindingModifier),
@@ -2933,6 +3029,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRExtensionWrapperExtension),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRExtensionWrapperExtension),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRExtensionWrapperExtension),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRFrameSynthesisExtension",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRFrameSynthesisExtension),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRFrameSynthesisExtension),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRFrameSynthesisExtension),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRFutureExtension",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -3006,6 +3108,18 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRInterface),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRInterface),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRMarkerTracker",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRMarkerTracker),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRMarkerTracker),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRMarkerTracker),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRPlaneTracker",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRPlaneTracker),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRPlaneTracker),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRPlaneTracker),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRRenderModel",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRRenderModel),
@@ -3023,6 +3137,168 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRRenderModelManager),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRRenderModelManager),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRRenderModelManager),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialAnchorCapability",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialAnchorCapability),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialAnchorCapability),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialAnchorCapability),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialCapabilityConfigurationAnchor",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationAnchor),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationAnchor),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationAnchor),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialCapabilityConfigurationAprilTag",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationAprilTag),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationAprilTag),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationAprilTag),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialCapabilityConfigurationAruco",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationAruco),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationAruco),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationAruco),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialCapabilityConfigurationBaseHeader",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationBaseHeader),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationBaseHeader),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationBaseHeader),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialCapabilityConfigurationMicroQrCode",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationMicroQrCode),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationMicroQrCode),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationMicroQrCode),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialCapabilityConfigurationPlaneTracking",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationPlaneTracking),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationPlaneTracking),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationPlaneTracking),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialCapabilityConfigurationQrCode",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialCapabilityConfigurationQrCode),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialCapabilityConfigurationQrCode),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialCapabilityConfigurationQrCode),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentAnchorList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentAnchorList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentAnchorList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentAnchorList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentBounded2DList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentBounded2DList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentBounded2DList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentBounded2DList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentBounded3DList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentBounded3DList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentBounded3DList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentBounded3DList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentData",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentData),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentData),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentData),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentMarkerList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentMarkerList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentMarkerList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentMarkerList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentMesh2DList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentMesh2DList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentMesh2DList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentMesh2DList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentMesh3DList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentMesh3DList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentMesh3DList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentMesh3DList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentParentList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentParentList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentParentList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentParentList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentPersistenceList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPersistenceList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPersistenceList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPersistenceList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentPlaneAlignmentList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPlaneAlignmentList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPlaneAlignmentList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPlaneAlignmentList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentPlaneSemanticLabelList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPlaneSemanticLabelList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPlaneSemanticLabelList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPlaneSemanticLabelList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialComponentPolygon2DList",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialComponentPolygon2DList),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialComponentPolygon2DList),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialComponentPolygon2DList),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialContextPersistenceConfig",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialContextPersistenceConfig),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialContextPersistenceConfig),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialContextPersistenceConfig),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialEntityExtension",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialEntityExtension),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialEntityExtension),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialEntityExtension),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialEntityTracker",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialEntityTracker),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialEntityTracker),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialEntityTracker),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialMarkerTrackingCapability",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialMarkerTrackingCapability),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialMarkerTrackingCapability),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialMarkerTrackingCapability),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialPlaneTrackingCapability",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialPlaneTrackingCapability),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialPlaneTrackingCapability),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialPlaneTrackingCapability),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRSpatialQueryResultData",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRSpatialQueryResultData),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRSpatialQueryResultData),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRSpatialQueryResultData),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRStructureBase",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_OpenXRStructureBase),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_OpenXRStructureBase),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_OpenXRStructureBase),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("OpenXRVisibilityMask",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4254,6 +4530,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SliderJoint3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SliderJoint3D),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SocketServer",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SocketServer),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SocketServer),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SocketServer),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SoftBody3D",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SoftBody3D),
@@ -4283,6 +4565,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SpinBox),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SpinBox),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SpinBox),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SplineIK3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_SplineIK3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_SplineIK3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_SplineIK3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("SplitContainer",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4404,6 +4692,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_StreamPeerGZIP),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_StreamPeerGZIP),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("StreamPeerSocket",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_StreamPeerSocket),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_StreamPeerSocket),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_StreamPeerSocket),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("StreamPeerTCP",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_StreamPeerTCP),
@@ -4415,6 +4709,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_StreamPeerTLS),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_StreamPeerTLS),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_StreamPeerTLS),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("StreamPeerUDS",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_StreamPeerUDS),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_StreamPeerUDS),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_StreamPeerUDS),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("StyleBox",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -4788,11 +5088,23 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Tweener),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Tweener),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("TwoBoneIK3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_TwoBoneIK3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_TwoBoneIK3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_TwoBoneIK3D),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("UDPServer",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_UDPServer),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_UDPServer),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_UDPServer),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("UDSServer",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_UDSServer),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_UDSServer),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_UDSServer),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("UPNP",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -5960,12 +6272,14 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("BoneAttachment3D", NewGDExtensionClassFromBoneAttachment3DOwner)
 	GDNativeConstructors.Set("BoneConstraint3D", NewGDExtensionClassFromBoneConstraint3DOwner)
 	GDNativeConstructors.Set("BoneMap", NewGDExtensionClassFromBoneMapOwner)
+	GDNativeConstructors.Set("BoneTwistDisperser3D", NewGDExtensionClassFromBoneTwistDisperser3DOwner)
 	GDNativeConstructors.Set("BoxContainer", NewGDExtensionClassFromBoxContainerOwner)
 	GDNativeConstructors.Set("BoxMesh", NewGDExtensionClassFromBoxMeshOwner)
 	GDNativeConstructors.Set("BoxOccluder3D", NewGDExtensionClassFromBoxOccluder3DOwner)
 	GDNativeConstructors.Set("BoxShape3D", NewGDExtensionClassFromBoxShape3DOwner)
 	GDNativeConstructors.Set("Button", NewGDExtensionClassFromButtonOwner)
 	GDNativeConstructors.Set("ButtonGroup", NewGDExtensionClassFromButtonGroupOwner)
+	GDNativeConstructors.Set("CCDIK3D", NewGDExtensionClassFromCCDIK3DOwner)
 	GDNativeConstructors.Set("CPUParticles2D", NewGDExtensionClassFromCPUParticles2DOwner)
 	GDNativeConstructors.Set("CPUParticles3D", NewGDExtensionClassFromCPUParticles3DOwner)
 	GDNativeConstructors.Set("CSGBox3D", NewGDExtensionClassFromCSGBox3DOwner)
@@ -5996,6 +6310,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("CapsuleShape2D", NewGDExtensionClassFromCapsuleShape2DOwner)
 	GDNativeConstructors.Set("CapsuleShape3D", NewGDExtensionClassFromCapsuleShape3DOwner)
 	GDNativeConstructors.Set("CenterContainer", NewGDExtensionClassFromCenterContainerOwner)
+	GDNativeConstructors.Set("ChainIK3D", NewGDExtensionClassFromChainIK3DOwner)
 	GDNativeConstructors.Set("CharFXTransform", NewGDExtensionClassFromCharFXTransformOwner)
 	GDNativeConstructors.Set("CharacterBody2D", NewGDExtensionClassFromCharacterBody2DOwner)
 	GDNativeConstructors.Set("CharacterBody3D", NewGDExtensionClassFromCharacterBody3DOwner)
@@ -6060,6 +6375,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("EditorContextMenuPlugin", NewGDExtensionClassFromEditorContextMenuPluginOwner)
 	GDNativeConstructors.Set("EditorDebuggerPlugin", NewGDExtensionClassFromEditorDebuggerPluginOwner)
 	GDNativeConstructors.Set("EditorDebuggerSession", NewGDExtensionClassFromEditorDebuggerSessionOwner)
+	GDNativeConstructors.Set("EditorDock", NewGDExtensionClassFromEditorDockOwner)
 	GDNativeConstructors.Set("EditorExportPlatform", NewGDExtensionClassFromEditorExportPlatformOwner)
 	GDNativeConstructors.Set("EditorExportPlatformAndroid", NewGDExtensionClassFromEditorExportPlatformAndroidOwner)
 	GDNativeConstructors.Set("EditorExportPlatformAppleEmbedded", NewGDExtensionClassFromEditorExportPlatformAppleEmbeddedOwner)
@@ -6116,6 +6432,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("Environment", NewGDExtensionClassFromEnvironmentOwner)
 	GDNativeConstructors.Set("Expression", NewGDExtensionClassFromExpressionOwner)
 	GDNativeConstructors.Set("ExternalTexture", NewGDExtensionClassFromExternalTextureOwner)
+	GDNativeConstructors.Set("FABRIK3D", NewGDExtensionClassFromFABRIK3DOwner)
 	GDNativeConstructors.Set("FBXDocument", NewGDExtensionClassFromFBXDocumentOwner)
 	GDNativeConstructors.Set("FBXState", NewGDExtensionClassFromFBXStateOwner)
 	GDNativeConstructors.Set("FastNoiseLite", NewGDExtensionClassFromFastNoiseLiteOwner)
@@ -6169,6 +6486,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("Geometry2D", NewGDExtensionClassFromGeometry2DOwner)
 	GDNativeConstructors.Set("Geometry3D", NewGDExtensionClassFromGeometry3DOwner)
 	GDNativeConstructors.Set("GeometryInstance3D", NewGDExtensionClassFromGeometryInstance3DOwner)
+	GDNativeConstructors.Set("GodotInstance", NewGDExtensionClassFromGodotInstanceOwner)
 	GDNativeConstructors.Set("Gradient", NewGDExtensionClassFromGradientOwner)
 	GDNativeConstructors.Set("GradientTexture1D", NewGDExtensionClassFromGradientTexture1DOwner)
 	GDNativeConstructors.Set("GradientTexture2D", NewGDExtensionClassFromGradientTexture2DOwner)
@@ -6192,6 +6510,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("HashingContext", NewGDExtensionClassFromHashingContextOwner)
 	GDNativeConstructors.Set("HeightMapShape3D", NewGDExtensionClassFromHeightMapShape3DOwner)
 	GDNativeConstructors.Set("HingeJoint3D", NewGDExtensionClassFromHingeJoint3DOwner)
+	GDNativeConstructors.Set("IKModifier3D", NewGDExtensionClassFromIKModifier3DOwner)
 	GDNativeConstructors.Set("IP", NewGDExtensionClassFromIPOwner)
 	GDNativeConstructors.Set("Image", NewGDExtensionClassFromImageOwner)
 	GDNativeConstructors.Set("ImageFormatLoader", NewGDExtensionClassFromImageFormatLoaderOwner)
@@ -6224,9 +6543,11 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("InstancePlaceholder", NewGDExtensionClassFromInstancePlaceholderOwner)
 	GDNativeConstructors.Set("IntervalTweener", NewGDExtensionClassFromIntervalTweenerOwner)
 	GDNativeConstructors.Set("ItemList", NewGDExtensionClassFromItemListOwner)
+	GDNativeConstructors.Set("IterateIK3D", NewGDExtensionClassFromIterateIK3DOwner)
 	GDNativeConstructors.Set("JNISingleton", NewGDExtensionClassFromJNISingletonOwner)
 	GDNativeConstructors.Set("JSON", NewGDExtensionClassFromJSONOwner)
 	GDNativeConstructors.Set("JSONRPC", NewGDExtensionClassFromJSONRPCOwner)
+	GDNativeConstructors.Set("JacobianIK3D", NewGDExtensionClassFromJacobianIK3DOwner)
 	GDNativeConstructors.Set("JavaClass", NewGDExtensionClassFromJavaClassOwner)
 	GDNativeConstructors.Set("JavaClassWrapper", NewGDExtensionClassFromJavaClassWrapperOwner)
 	GDNativeConstructors.Set("JavaObject", NewGDExtensionClassFromJavaObjectOwner)
@@ -6234,6 +6555,8 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("JavaScriptObject", NewGDExtensionClassFromJavaScriptObjectOwner)
 	GDNativeConstructors.Set("Joint2D", NewGDExtensionClassFromJoint2DOwner)
 	GDNativeConstructors.Set("Joint3D", NewGDExtensionClassFromJoint3DOwner)
+	GDNativeConstructors.Set("JointLimitation3D", NewGDExtensionClassFromJointLimitation3DOwner)
+	GDNativeConstructors.Set("JointLimitationCone3D", NewGDExtensionClassFromJointLimitationCone3DOwner)
 	GDNativeConstructors.Set("KinematicCollision2D", NewGDExtensionClassFromKinematicCollision2DOwner)
 	GDNativeConstructors.Set("KinematicCollision3D", NewGDExtensionClassFromKinematicCollision3DOwner)
 	GDNativeConstructors.Set("Label", NewGDExtensionClassFromLabelOwner)
@@ -6247,6 +6570,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("LightmapProbe", NewGDExtensionClassFromLightmapProbeOwner)
 	GDNativeConstructors.Set("Lightmapper", NewGDExtensionClassFromLightmapperOwner)
 	GDNativeConstructors.Set("LightmapperRD", NewGDExtensionClassFromLightmapperRDOwner)
+	GDNativeConstructors.Set("LimitAngularVelocityModifier3D", NewGDExtensionClassFromLimitAngularVelocityModifier3DOwner)
 	GDNativeConstructors.Set("Line2D", NewGDExtensionClassFromLine2DOwner)
 	GDNativeConstructors.Set("LineEdit", NewGDExtensionClassFromLineEditOwner)
 	GDNativeConstructors.Set("LinkButton", NewGDExtensionClassFromLinkButtonOwner)
@@ -6302,7 +6626,9 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("NavigationRegion2D", NewGDExtensionClassFromNavigationRegion2DOwner)
 	GDNativeConstructors.Set("NavigationRegion3D", NewGDExtensionClassFromNavigationRegion3DOwner)
 	GDNativeConstructors.Set("NavigationServer2D", NewGDExtensionClassFromNavigationServer2DOwner)
+	GDNativeConstructors.Set("NavigationServer2DManager", NewGDExtensionClassFromNavigationServer2DManagerOwner)
 	GDNativeConstructors.Set("NavigationServer3D", NewGDExtensionClassFromNavigationServer3DOwner)
+	GDNativeConstructors.Set("NavigationServer3DManager", NewGDExtensionClassFromNavigationServer3DManagerOwner)
 	GDNativeConstructors.Set("NinePatchRect", NewGDExtensionClassFromNinePatchRectOwner)
 	GDNativeConstructors.Set("Node", NewGDExtensionClassFromNodeOwner)
 	GDNativeConstructors.Set("Node2D", NewGDExtensionClassFromNode2DOwner)
@@ -6327,6 +6653,8 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("OpenXRActionMap", NewGDExtensionClassFromOpenXRActionMapOwner)
 	GDNativeConstructors.Set("OpenXRActionSet", NewGDExtensionClassFromOpenXRActionSetOwner)
 	GDNativeConstructors.Set("OpenXRAnalogThresholdModifier", NewGDExtensionClassFromOpenXRAnalogThresholdModifierOwner)
+	GDNativeConstructors.Set("OpenXRAnchorTracker", NewGDExtensionClassFromOpenXRAnchorTrackerOwner)
+	GDNativeConstructors.Set("OpenXRAndroidThreadSettingsExtension", NewGDExtensionClassFromOpenXRAndroidThreadSettingsExtensionOwner)
 	GDNativeConstructors.Set("OpenXRBindingModifier", NewGDExtensionClassFromOpenXRBindingModifierOwner)
 	GDNativeConstructors.Set("OpenXRBindingModifierEditor", NewGDExtensionClassFromOpenXRBindingModifierEditorOwner)
 	GDNativeConstructors.Set("OpenXRCompositionLayer", NewGDExtensionClassFromOpenXRCompositionLayerOwner)
@@ -6336,6 +6664,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("OpenXRDpadBindingModifier", NewGDExtensionClassFromOpenXRDpadBindingModifierOwner)
 	GDNativeConstructors.Set("OpenXRExtensionWrapper", NewGDExtensionClassFromOpenXRExtensionWrapperOwner)
 	GDNativeConstructors.Set("OpenXRExtensionWrapperExtension", NewGDExtensionClassFromOpenXRExtensionWrapperExtensionOwner)
+	GDNativeConstructors.Set("OpenXRFrameSynthesisExtension", NewGDExtensionClassFromOpenXRFrameSynthesisExtensionOwner)
 	GDNativeConstructors.Set("OpenXRFutureExtension", NewGDExtensionClassFromOpenXRFutureExtensionOwner)
 	GDNativeConstructors.Set("OpenXRFutureResult", NewGDExtensionClassFromOpenXRFutureResultOwner)
 	GDNativeConstructors.Set("OpenXRHand", NewGDExtensionClassFromOpenXRHandOwner)
@@ -6348,9 +6677,38 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("OpenXRInteractionProfileEditorBase", NewGDExtensionClassFromOpenXRInteractionProfileEditorBaseOwner)
 	GDNativeConstructors.Set("OpenXRInteractionProfileMetadata", NewGDExtensionClassFromOpenXRInteractionProfileMetadataOwner)
 	GDNativeConstructors.Set("OpenXRInterface", NewGDExtensionClassFromOpenXRInterfaceOwner)
+	GDNativeConstructors.Set("OpenXRMarkerTracker", NewGDExtensionClassFromOpenXRMarkerTrackerOwner)
+	GDNativeConstructors.Set("OpenXRPlaneTracker", NewGDExtensionClassFromOpenXRPlaneTrackerOwner)
 	GDNativeConstructors.Set("OpenXRRenderModel", NewGDExtensionClassFromOpenXRRenderModelOwner)
 	GDNativeConstructors.Set("OpenXRRenderModelExtension", NewGDExtensionClassFromOpenXRRenderModelExtensionOwner)
 	GDNativeConstructors.Set("OpenXRRenderModelManager", NewGDExtensionClassFromOpenXRRenderModelManagerOwner)
+	GDNativeConstructors.Set("OpenXRSpatialAnchorCapability", NewGDExtensionClassFromOpenXRSpatialAnchorCapabilityOwner)
+	GDNativeConstructors.Set("OpenXRSpatialCapabilityConfigurationAnchor", NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationAnchorOwner)
+	GDNativeConstructors.Set("OpenXRSpatialCapabilityConfigurationAprilTag", NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationAprilTagOwner)
+	GDNativeConstructors.Set("OpenXRSpatialCapabilityConfigurationAruco", NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationArucoOwner)
+	GDNativeConstructors.Set("OpenXRSpatialCapabilityConfigurationBaseHeader", NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationBaseHeaderOwner)
+	GDNativeConstructors.Set("OpenXRSpatialCapabilityConfigurationMicroQrCode", NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationMicroQrCodeOwner)
+	GDNativeConstructors.Set("OpenXRSpatialCapabilityConfigurationPlaneTracking", NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationPlaneTrackingOwner)
+	GDNativeConstructors.Set("OpenXRSpatialCapabilityConfigurationQrCode", NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationQrCodeOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentAnchorList", NewGDExtensionClassFromOpenXRSpatialComponentAnchorListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentBounded2DList", NewGDExtensionClassFromOpenXRSpatialComponentBounded2DListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentBounded3DList", NewGDExtensionClassFromOpenXRSpatialComponentBounded3DListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentData", NewGDExtensionClassFromOpenXRSpatialComponentDataOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentMarkerList", NewGDExtensionClassFromOpenXRSpatialComponentMarkerListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentMesh2DList", NewGDExtensionClassFromOpenXRSpatialComponentMesh2DListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentMesh3DList", NewGDExtensionClassFromOpenXRSpatialComponentMesh3DListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentParentList", NewGDExtensionClassFromOpenXRSpatialComponentParentListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentPersistenceList", NewGDExtensionClassFromOpenXRSpatialComponentPersistenceListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentPlaneAlignmentList", NewGDExtensionClassFromOpenXRSpatialComponentPlaneAlignmentListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentPlaneSemanticLabelList", NewGDExtensionClassFromOpenXRSpatialComponentPlaneSemanticLabelListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialComponentPolygon2DList", NewGDExtensionClassFromOpenXRSpatialComponentPolygon2DListOwner)
+	GDNativeConstructors.Set("OpenXRSpatialContextPersistenceConfig", NewGDExtensionClassFromOpenXRSpatialContextPersistenceConfigOwner)
+	GDNativeConstructors.Set("OpenXRSpatialEntityExtension", NewGDExtensionClassFromOpenXRSpatialEntityExtensionOwner)
+	GDNativeConstructors.Set("OpenXRSpatialEntityTracker", NewGDExtensionClassFromOpenXRSpatialEntityTrackerOwner)
+	GDNativeConstructors.Set("OpenXRSpatialMarkerTrackingCapability", NewGDExtensionClassFromOpenXRSpatialMarkerTrackingCapabilityOwner)
+	GDNativeConstructors.Set("OpenXRSpatialPlaneTrackingCapability", NewGDExtensionClassFromOpenXRSpatialPlaneTrackingCapabilityOwner)
+	GDNativeConstructors.Set("OpenXRSpatialQueryResultData", NewGDExtensionClassFromOpenXRSpatialQueryResultDataOwner)
+	GDNativeConstructors.Set("OpenXRStructureBase", NewGDExtensionClassFromOpenXRStructureBaseOwner)
 	GDNativeConstructors.Set("OpenXRVisibilityMask", NewGDExtensionClassFromOpenXRVisibilityMaskOwner)
 	GDNativeConstructors.Set("OptimizedTranslation", NewGDExtensionClassFromOptimizedTranslationOwner)
 	GDNativeConstructors.Set("OptionButton", NewGDExtensionClassFromOptionButtonOwner)
@@ -6556,11 +6914,13 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("Sky", NewGDExtensionClassFromSkyOwner)
 	GDNativeConstructors.Set("Slider", NewGDExtensionClassFromSliderOwner)
 	GDNativeConstructors.Set("SliderJoint3D", NewGDExtensionClassFromSliderJoint3DOwner)
+	GDNativeConstructors.Set("SocketServer", NewGDExtensionClassFromSocketServerOwner)
 	GDNativeConstructors.Set("SoftBody3D", NewGDExtensionClassFromSoftBody3DOwner)
 	GDNativeConstructors.Set("SphereMesh", NewGDExtensionClassFromSphereMeshOwner)
 	GDNativeConstructors.Set("SphereOccluder3D", NewGDExtensionClassFromSphereOccluder3DOwner)
 	GDNativeConstructors.Set("SphereShape3D", NewGDExtensionClassFromSphereShape3DOwner)
 	GDNativeConstructors.Set("SpinBox", NewGDExtensionClassFromSpinBoxOwner)
+	GDNativeConstructors.Set("SplineIK3D", NewGDExtensionClassFromSplineIK3DOwner)
 	GDNativeConstructors.Set("SplitContainer", NewGDExtensionClassFromSplitContainerOwner)
 	GDNativeConstructors.Set("SpotLight3D", NewGDExtensionClassFromSpotLight3DOwner)
 	GDNativeConstructors.Set("SpringArm3D", NewGDExtensionClassFromSpringArm3DOwner)
@@ -6581,8 +6941,10 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("StreamPeerBuffer", NewGDExtensionClassFromStreamPeerBufferOwner)
 	GDNativeConstructors.Set("StreamPeerExtension", NewGDExtensionClassFromStreamPeerExtensionOwner)
 	GDNativeConstructors.Set("StreamPeerGZIP", NewGDExtensionClassFromStreamPeerGZIPOwner)
+	GDNativeConstructors.Set("StreamPeerSocket", NewGDExtensionClassFromStreamPeerSocketOwner)
 	GDNativeConstructors.Set("StreamPeerTCP", NewGDExtensionClassFromStreamPeerTCPOwner)
 	GDNativeConstructors.Set("StreamPeerTLS", NewGDExtensionClassFromStreamPeerTLSOwner)
+	GDNativeConstructors.Set("StreamPeerUDS", NewGDExtensionClassFromStreamPeerUDSOwner)
 	GDNativeConstructors.Set("StyleBox", NewGDExtensionClassFromStyleBoxOwner)
 	GDNativeConstructors.Set("StyleBoxEmpty", NewGDExtensionClassFromStyleBoxEmptyOwner)
 	GDNativeConstructors.Set("StyleBoxFlat", NewGDExtensionClassFromStyleBoxFlatOwner)
@@ -6645,7 +7007,9 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("TubeTrailMesh", NewGDExtensionClassFromTubeTrailMeshOwner)
 	GDNativeConstructors.Set("Tween", NewGDExtensionClassFromTweenOwner)
 	GDNativeConstructors.Set("Tweener", NewGDExtensionClassFromTweenerOwner)
+	GDNativeConstructors.Set("TwoBoneIK3D", NewGDExtensionClassFromTwoBoneIK3DOwner)
 	GDNativeConstructors.Set("UDPServer", NewGDExtensionClassFromUDPServerOwner)
+	GDNativeConstructors.Set("UDSServer", NewGDExtensionClassFromUDSServerOwner)
 	GDNativeConstructors.Set("UPNP", NewGDExtensionClassFromUPNPOwner)
 	GDNativeConstructors.Set("UPNPDevice", NewGDExtensionClassFromUPNPDeviceOwner)
 	GDNativeConstructors.Set("UndoRedo", NewGDExtensionClassFromUndoRedoOwner)
@@ -7070,6 +7434,8 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("JavaClass", NewRefJavaClassAsRef)
 	GDClassRefConstructors.Set("JavaObject", NewRefJavaObjectAsRef)
 	GDClassRefConstructors.Set("JavaScriptObject", NewRefJavaScriptObjectAsRef)
+	GDClassRefConstructors.Set("JointLimitation3D", NewRefJointLimitation3DAsRef)
+	GDClassRefConstructors.Set("JointLimitationCone3D", NewRefJointLimitationCone3DAsRef)
 	GDClassRefConstructors.Set("KinematicCollision2D", NewRefKinematicCollision2DAsRef)
 	GDClassRefConstructors.Set("KinematicCollision3D", NewRefKinematicCollision3DAsRef)
 	GDClassRefConstructors.Set("LabelSettings", NewRefLabelSettingsAsRef)
@@ -7116,6 +7482,7 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("OpenXRActionMap", NewRefOpenXRActionMapAsRef)
 	GDClassRefConstructors.Set("OpenXRActionSet", NewRefOpenXRActionSetAsRef)
 	GDClassRefConstructors.Set("OpenXRAnalogThresholdModifier", NewRefOpenXRAnalogThresholdModifierAsRef)
+	GDClassRefConstructors.Set("OpenXRAnchorTracker", NewRefOpenXRAnchorTrackerAsRef)
 	GDClassRefConstructors.Set("OpenXRBindingModifier", NewRefOpenXRBindingModifierAsRef)
 	GDClassRefConstructors.Set("OpenXRDpadBindingModifier", NewRefOpenXRDpadBindingModifierAsRef)
 	GDClassRefConstructors.Set("OpenXRFutureResult", NewRefOpenXRFutureResultAsRef)
@@ -7125,6 +7492,31 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("OpenXRIPBindingModifier", NewRefOpenXRIPBindingModifierAsRef)
 	GDClassRefConstructors.Set("OpenXRInteractionProfile", NewRefOpenXRInteractionProfileAsRef)
 	GDClassRefConstructors.Set("OpenXRInterface", NewRefOpenXRInterfaceAsRef)
+	GDClassRefConstructors.Set("OpenXRMarkerTracker", NewRefOpenXRMarkerTrackerAsRef)
+	GDClassRefConstructors.Set("OpenXRPlaneTracker", NewRefOpenXRPlaneTrackerAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialCapabilityConfigurationAnchor", NewRefOpenXRSpatialCapabilityConfigurationAnchorAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialCapabilityConfigurationAprilTag", NewRefOpenXRSpatialCapabilityConfigurationAprilTagAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialCapabilityConfigurationAruco", NewRefOpenXRSpatialCapabilityConfigurationArucoAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialCapabilityConfigurationBaseHeader", NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialCapabilityConfigurationMicroQrCode", NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialCapabilityConfigurationPlaneTracking", NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialCapabilityConfigurationQrCode", NewRefOpenXRSpatialCapabilityConfigurationQrCodeAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentAnchorList", NewRefOpenXRSpatialComponentAnchorListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentBounded2DList", NewRefOpenXRSpatialComponentBounded2DListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentBounded3DList", NewRefOpenXRSpatialComponentBounded3DListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentData", NewRefOpenXRSpatialComponentDataAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentMarkerList", NewRefOpenXRSpatialComponentMarkerListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentMesh2DList", NewRefOpenXRSpatialComponentMesh2DListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentMesh3DList", NewRefOpenXRSpatialComponentMesh3DListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentParentList", NewRefOpenXRSpatialComponentParentListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentPersistenceList", NewRefOpenXRSpatialComponentPersistenceListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentPlaneAlignmentList", NewRefOpenXRSpatialComponentPlaneAlignmentListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentPlaneSemanticLabelList", NewRefOpenXRSpatialComponentPlaneSemanticLabelListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialComponentPolygon2DList", NewRefOpenXRSpatialComponentPolygon2DListAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialContextPersistenceConfig", NewRefOpenXRSpatialContextPersistenceConfigAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialEntityTracker", NewRefOpenXRSpatialEntityTrackerAsRef)
+	GDClassRefConstructors.Set("OpenXRSpatialQueryResultData", NewRefOpenXRSpatialQueryResultDataAsRef)
+	GDClassRefConstructors.Set("OpenXRStructureBase", NewRefOpenXRStructureBaseAsRef)
 	GDClassRefConstructors.Set("OptimizedTranslation", NewRefOptimizedTranslationAsRef)
 	GDClassRefConstructors.Set("PCKPacker", NewRefPCKPackerAsRef)
 	GDClassRefConstructors.Set("PackedDataContainer", NewRefPackedDataContainerAsRef)
@@ -7246,6 +7638,7 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("Skin", NewRefSkinAsRef)
 	GDClassRefConstructors.Set("SkinReference", NewRefSkinReferenceAsRef)
 	GDClassRefConstructors.Set("Sky", NewRefSkyAsRef)
+	GDClassRefConstructors.Set("SocketServer", NewRefSocketServerAsRef)
 	GDClassRefConstructors.Set("SphereMesh", NewRefSphereMeshAsRef)
 	GDClassRefConstructors.Set("SphereOccluder3D", NewRefSphereOccluder3DAsRef)
 	GDClassRefConstructors.Set("SphereShape3D", NewRefSphereShape3DAsRef)
@@ -7255,8 +7648,10 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("StreamPeerBuffer", NewRefStreamPeerBufferAsRef)
 	GDClassRefConstructors.Set("StreamPeerExtension", NewRefStreamPeerExtensionAsRef)
 	GDClassRefConstructors.Set("StreamPeerGZIP", NewRefStreamPeerGZIPAsRef)
+	GDClassRefConstructors.Set("StreamPeerSocket", NewRefStreamPeerSocketAsRef)
 	GDClassRefConstructors.Set("StreamPeerTCP", NewRefStreamPeerTCPAsRef)
 	GDClassRefConstructors.Set("StreamPeerTLS", NewRefStreamPeerTLSAsRef)
+	GDClassRefConstructors.Set("StreamPeerUDS", NewRefStreamPeerUDSAsRef)
 	GDClassRefConstructors.Set("StyleBox", NewRefStyleBoxAsRef)
 	GDClassRefConstructors.Set("StyleBoxEmpty", NewRefStyleBoxEmptyAsRef)
 	GDClassRefConstructors.Set("StyleBoxFlat", NewRefStyleBoxFlatAsRef)
@@ -7301,6 +7696,7 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("Tween", NewRefTweenAsRef)
 	GDClassRefConstructors.Set("Tweener", NewRefTweenerAsRef)
 	GDClassRefConstructors.Set("UDPServer", NewRefUDPServerAsRef)
+	GDClassRefConstructors.Set("UDSServer", NewRefUDSServerAsRef)
 	GDClassRefConstructors.Set("UPNP", NewRefUPNPAsRef)
 	GDClassRefConstructors.Set("UPNPDevice", NewRefUPNPDeviceAsRef)
 	GDClassRefConstructors.Set("VideoStream", NewRefVideoStreamAsRef)

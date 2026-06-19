@@ -45,11 +45,11 @@ func CreateGDClassInstance(tn string) GDClass {
 		zap.String("class_name", tn),
 		zap.Any("parent_name", ci.ParentName),
 	)
-	snParentName := NewStringNameWithLatin1Chars(ci.ParentName)
-	defer snParentName.Destroy()
 	// create inherited GDExtensionClass first
+	parentName := ci.ParentNameStringName
+	pnr.Pin(&parentName)
 	owner := CallFunc_GDExtensionInterfaceClassdbConstructObject(
-		snParentName.AsGDExtensionConstStringNamePtr(),
+		parentName.AsGDExtensionConstStringNamePtr(),
 	)
 	if owner == nil {
 		log.Panic("owner is nil", zap.String("type_name", tn))

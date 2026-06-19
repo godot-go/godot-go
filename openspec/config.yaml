@@ -1,0 +1,43 @@
+schema: spec-driven
+
+context: |
+  Tech stack: Go, Cgo, Godot
+  Domain: Go bindings for Godot game engine
+
+rules:
+  proposal:
+    - Keep proposals under 500 words
+    - Always include a "Non-goals" section
+  tasks:
+    - Break tasks into chunks of max 2 hours
+  retrospective:
+    - Generate retrospective.md after completing a debugging/investigation-heavy change
+    - Document the investigation journey: what was tried, what worked, what didn't
+    - Include root cause analysis for each fix (before/after code snippets)
+    - Trace any remaining unresolved issues to their origin (Go-side vs Godot-side)
+    - Include key learnings and architecture diagrams
+    - Keep under 1500 words; focus on patterns, not line-by-line diffs
+
+# Additional artifacts (not managed by openspec CLI)
+# retrospective.md — Investigation journey and root cause analysis
+# Generated after impl, alongside proposal.md, design.md, tasks.md
+# Used for: debugging, deep dives, non-trivial investigation
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+# Example:
+#   context: |
+#     Tech stack: TypeScript, React, Node.js
+#     We use conventional commits
+#     Domain: e-commerce platform
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours

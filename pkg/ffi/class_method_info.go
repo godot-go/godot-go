@@ -30,32 +30,28 @@ func NewGDExtensionClassMethodInfo(
 	defaultArgumentCount uint32,
 	defaultArguments *GDExtensionVariantPtr,
 ) *GDExtensionClassMethodInfo {
-	ret := (*GDExtensionClassMethodInfo)(&C.GDExtensionClassMethodInfo{
-		name:            (C.GDExtensionStringNamePtr)(name),
-		method_userdata: methodUserdata,
-		call_func:       (C.GDExtensionClassMethodCall)(callFunc),
-		ptrcall_func:    (C.GDExtensionClassMethodPtrCall)(ptrcallFunc),
-
-		// Bitfield of `GDExtensionClassMethodFlags`.
-		method_flags: (C.uint32_t)(methodFlags),
-
-		/* If `has_return_value` is false, `return_value_info` and `return_value_metadata` are ignored. */
-		has_return_value:      (C.GDExtensionBool)(util.BoolToUint8(hasReturnValue)),
-		return_value_info:     (*C.GDExtensionPropertyInfo)(returnValueInfo),
-		return_value_metadata: (C.GDExtensionClassMethodArgumentMetadata)(returnValueMetadata),
-
-		/* Arguments: `arguments_info` and `arguments_metadata` are array of size `argument_count`.
-		* Name and hint information for the argument can be omitted in release builds. Class name should always be present if it applies.
-		 */
-		argument_count:     (C.uint32_t)(argumentCount),
-		arguments_info:     (*C.GDExtensionPropertyInfo)(argumentsInfo),
-		arguments_metadata: (*C.GDExtensionClassMethodArgumentMetadata)(argumentsMetadata),
-
-		/* Default arguments: `default_arguments` is an array of size `default_argument_count`. */
-		default_argument_count: (C.uint32_t)(defaultArgumentCount),
-		default_arguments:      (*C.GDExtensionVariantPtr)(defaultArguments),
-	})
-	pnr.Pin(ret)
+	// Allocate in C heap to avoid cgo "Go pointer to unpinned Go pointer" panic.
+	// The struct contains C pointers to Go memory (StringName, PropertyInfo, etc.),
+	// and the Go 1.26 cgo checker cannot track pinning across function boundaries.
+	// By allocating in C heap, the cgo checker doesn't see Go pointers in the struct.
+	cptr := C.malloc(C.sizeof_GDExtensionClassMethodInfo)
+	if cptr == nil {
+		panic("malloc failed: GDExtensionClassMethodInfo")
+	}
+	ret := (*GDExtensionClassMethodInfo)(cptr)
+	(*C.GDExtensionClassMethodInfo)(ret).name = (C.GDExtensionStringNamePtr)(name)
+	(*C.GDExtensionClassMethodInfo)(ret).method_userdata = methodUserdata
+	(*C.GDExtensionClassMethodInfo)(ret).call_func = (C.GDExtensionClassMethodCall)(callFunc)
+	(*C.GDExtensionClassMethodInfo)(ret).ptrcall_func = (C.GDExtensionClassMethodPtrCall)(ptrcallFunc)
+	(*C.GDExtensionClassMethodInfo)(ret).method_flags = (C.uint32_t)(methodFlags)
+	(*C.GDExtensionClassMethodInfo)(ret).has_return_value = (C.GDExtensionBool)(util.BoolToUint8(hasReturnValue))
+	(*C.GDExtensionClassMethodInfo)(ret).return_value_info = (*C.GDExtensionPropertyInfo)(returnValueInfo)
+	(*C.GDExtensionClassMethodInfo)(ret).return_value_metadata = (C.GDExtensionClassMethodArgumentMetadata)(returnValueMetadata)
+	(*C.GDExtensionClassMethodInfo)(ret).argument_count = (C.uint32_t)(argumentCount)
+	(*C.GDExtensionClassMethodInfo)(ret).arguments_info = (*C.GDExtensionPropertyInfo)(argumentsInfo)
+	(*C.GDExtensionClassMethodInfo)(ret).arguments_metadata = (*C.GDExtensionClassMethodArgumentMetadata)(argumentsMetadata)
+	(*C.GDExtensionClassMethodInfo)(ret).default_argument_count = (C.uint32_t)(defaultArgumentCount)
+	(*C.GDExtensionClassMethodInfo)(ret).default_arguments = (*C.GDExtensionVariantPtr)(defaultArguments)
 	return ret
 }
 
@@ -68,11 +64,33 @@ func (m *GDExtensionClassMethodInfo) Destroy() {
 	if stringNameDestructor == nil {
 		log.Panic("unable to get StringName Destructor")
 	}
-	CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(m.name))
 	cm := (*C.GDExtensionClassMethodInfo)(m)
-	if cm != nil {
+	if cm == nil {
+		return
+	}
+
+	// Destroy the StringName stored in the struct.
+	// Only call once — m.name and cm.name are the same pointer (type alias).
+	// Calling twice would double-unref and corrupt Godot's refcounted StringName table.
+	if cm.name != nil {
 		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(cm.name))
 	}
+
+	// Destroy StringName pointers in return_value_info
+	if cm.return_value_info != nil {
+		rv := (*GDExtensionPropertyInfo)(cm.return_value_info)
+		if rv.name != nil {
+			CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(rv.name))
+		}
+		if rv.class_name != nil {
+			CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(rv.class_name))
+		}
+		if rv.hint_string != nil {
+			CallFunc_GDExtensionPtrDestructor(stringDestructor, (GDExtensionTypePtr)(rv.hint_string))
+		}
+	}
+
+	// Destroy StringName pointers in each argument's PropertyInfo
 	argTypesSlice := unsafe.Slice(cm.arguments_info, cm.argument_count)
 	for i := range argTypesSlice {
 		CallFunc_GDExtensionPtrDestructor(stringNameDestructor, (GDExtensionTypePtr)(argTypesSlice[i].name))
@@ -84,10 +102,17 @@ func (m *GDExtensionClassMethodInfo) Destroy() {
 	// 	builtin.NewVariant
 	// }
 
-	if cm.return_value_info != nil {
-		(*GDExtensionPropertyInfo)(cm.return_value_info).Destroy()
-	}
-	if cm.argument_count > 0 && cm.arguments_info != nil {
-		(*GDExtensionPropertyInfo)(cm.arguments_info).Destroy()
-	}
+	// NOTE: Do NOT call GDExtensionPropertyInfo.Destroy() on return_value_info or
+	// arguments_info here — their internal StringName/String pointers are already
+	// destroyed above in the argTypesSlice loop (for arguments_info) and in the
+	// individual field cleanup. PropertyInfo.Destroy() uses switch/case and would
+	// only partially destroy pointers, and the structs themselves are Go-owned
+	// (stored in GoMethodMetadata), not C-allocated here.
+	// The StringName lifecycle is managed by GoMethodMetadata (see Task 5.1).
+
+	// Free the C heap-allocated struct itself.
+	// Allocated via C.malloc() in NewGDExtensionClassMethodInfo.
+	// Required for unload+reload safety — without this, the struct leaks on every
+	// registration call when the extension is unloaded and reloaded.
+	C.free(unsafe.Pointer(cm))
 }

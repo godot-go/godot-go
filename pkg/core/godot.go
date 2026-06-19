@@ -49,8 +49,9 @@ func _GDExtensionBindingInit(
 	var hasInit bool
 
 	for i := range GDEXTENSION_MAX_INITIALIZATION_LEVEL {
-		if GDExtensionBindingInitCallbacks[i] != nil {
-			rInitialization.SetInitializationLevel(i)
+		level := GDExtensionInitializationLevel(i)
+		if GDExtensionBindingInitCallbacks[level] != nil {
+			rInitialization.SetInitializationLevel(level)
 			hasInit = true
 			break
 		}

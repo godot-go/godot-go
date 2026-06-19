@@ -69,46 +69,46 @@ type GDExtensionScriptInstancePtr C.GDExtensionScriptInstancePtr
 type GDExtensionVariantType C.GDExtensionVariantType
 
 const (
-	GDEXTENSION_VARIANT_TYPE_NIL GDExtensionVariantType = iota
-	GDEXTENSION_VARIANT_TYPE_BOOL
-	GDEXTENSION_VARIANT_TYPE_INT
-	GDEXTENSION_VARIANT_TYPE_FLOAT
-	GDEXTENSION_VARIANT_TYPE_STRING
-	GDEXTENSION_VARIANT_TYPE_VECTOR2
-	GDEXTENSION_VARIANT_TYPE_VECTOR2I
-	GDEXTENSION_VARIANT_TYPE_RECT2
-	GDEXTENSION_VARIANT_TYPE_RECT2I
-	GDEXTENSION_VARIANT_TYPE_VECTOR3
-	GDEXTENSION_VARIANT_TYPE_VECTOR3I
-	GDEXTENSION_VARIANT_TYPE_TRANSFORM2D
-	GDEXTENSION_VARIANT_TYPE_VECTOR4
-	GDEXTENSION_VARIANT_TYPE_VECTOR4I
-	GDEXTENSION_VARIANT_TYPE_PLANE
-	GDEXTENSION_VARIANT_TYPE_QUATERNION
-	GDEXTENSION_VARIANT_TYPE_AABB
-	GDEXTENSION_VARIANT_TYPE_BASIS
-	GDEXTENSION_VARIANT_TYPE_TRANSFORM3D
-	GDEXTENSION_VARIANT_TYPE_PROJECTION
-	GDEXTENSION_VARIANT_TYPE_COLOR
-	GDEXTENSION_VARIANT_TYPE_STRING_NAME
-	GDEXTENSION_VARIANT_TYPE_NODE_PATH
-	GDEXTENSION_VARIANT_TYPE_RID
-	GDEXTENSION_VARIANT_TYPE_OBJECT
-	GDEXTENSION_VARIANT_TYPE_CALLABLE
-	GDEXTENSION_VARIANT_TYPE_SIGNAL
-	GDEXTENSION_VARIANT_TYPE_DICTIONARY
-	GDEXTENSION_VARIANT_TYPE_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY
-	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY
-	GDEXTENSION_VARIANT_TYPE_VARIANT_MAX
+	GDEXTENSION_VARIANT_TYPE_NIL                  GDExtensionVariantType = 0
+	GDEXTENSION_VARIANT_TYPE_BOOL                                        = 1
+	GDEXTENSION_VARIANT_TYPE_INT                                         = 2
+	GDEXTENSION_VARIANT_TYPE_FLOAT                                       = 3
+	GDEXTENSION_VARIANT_TYPE_STRING                                      = 4
+	GDEXTENSION_VARIANT_TYPE_VECTOR2                                     = 5
+	GDEXTENSION_VARIANT_TYPE_VECTOR2I                                    = 6
+	GDEXTENSION_VARIANT_TYPE_RECT2                                       = 7
+	GDEXTENSION_VARIANT_TYPE_RECT2I                                      = 8
+	GDEXTENSION_VARIANT_TYPE_VECTOR3                                     = 9
+	GDEXTENSION_VARIANT_TYPE_VECTOR3I                                    = 10
+	GDEXTENSION_VARIANT_TYPE_TRANSFORM2D                                 = 11
+	GDEXTENSION_VARIANT_TYPE_VECTOR4                                     = 12
+	GDEXTENSION_VARIANT_TYPE_VECTOR4I                                    = 13
+	GDEXTENSION_VARIANT_TYPE_PLANE                                       = 14
+	GDEXTENSION_VARIANT_TYPE_QUATERNION                                  = 15
+	GDEXTENSION_VARIANT_TYPE_AABB                                        = 16
+	GDEXTENSION_VARIANT_TYPE_BASIS                                       = 17
+	GDEXTENSION_VARIANT_TYPE_TRANSFORM3D                                 = 18
+	GDEXTENSION_VARIANT_TYPE_PROJECTION                                  = 19
+	GDEXTENSION_VARIANT_TYPE_COLOR                                       = 20
+	GDEXTENSION_VARIANT_TYPE_STRING_NAME                                 = 21
+	GDEXTENSION_VARIANT_TYPE_NODE_PATH                                   = 22
+	GDEXTENSION_VARIANT_TYPE_RID                                         = 23
+	GDEXTENSION_VARIANT_TYPE_OBJECT                                      = 24
+	GDEXTENSION_VARIANT_TYPE_CALLABLE                                    = 25
+	GDEXTENSION_VARIANT_TYPE_SIGNAL                                      = 26
+	GDEXTENSION_VARIANT_TYPE_DICTIONARY                                  = 27
+	GDEXTENSION_VARIANT_TYPE_ARRAY                                       = 28
+	GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY                           = 29
+	GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY                          = 30
+	GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY                          = 31
+	GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY                        = 32
+	GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY                        = 33
+	GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY                         = 34
+	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY                        = 35
+	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY                        = 36
+	GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY                          = 37
+	GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY                        = 38
+	GDEXTENSION_VARIANT_TYPE_VARIANT_MAX                                 = 39
 )
 
 var GDExtensionVariantTypeStringMap = map[GDExtensionVariantType]string{
@@ -157,32 +157,32 @@ var GDExtensionVariantTypeStringMap = map[GDExtensionVariantType]string{
 type GDExtensionVariantOperator C.GDExtensionVariantOperator
 
 const (
-	GDEXTENSION_VARIANT_OP_EQUAL GDExtensionVariantOperator = iota
-	GDEXTENSION_VARIANT_OP_NOT_EQUAL
-	GDEXTENSION_VARIANT_OP_LESS
-	GDEXTENSION_VARIANT_OP_LESS_EQUAL
-	GDEXTENSION_VARIANT_OP_GREATER
-	GDEXTENSION_VARIANT_OP_GREATER_EQUAL
-	GDEXTENSION_VARIANT_OP_ADD
-	GDEXTENSION_VARIANT_OP_SUBTRACT
-	GDEXTENSION_VARIANT_OP_MULTIPLY
-	GDEXTENSION_VARIANT_OP_DIVIDE
-	GDEXTENSION_VARIANT_OP_NEGATE
-	GDEXTENSION_VARIANT_OP_POSITIVE
-	GDEXTENSION_VARIANT_OP_MODULE
-	GDEXTENSION_VARIANT_OP_POWER
-	GDEXTENSION_VARIANT_OP_SHIFT_LEFT
-	GDEXTENSION_VARIANT_OP_SHIFT_RIGHT
-	GDEXTENSION_VARIANT_OP_BIT_AND
-	GDEXTENSION_VARIANT_OP_BIT_OR
-	GDEXTENSION_VARIANT_OP_BIT_XOR
-	GDEXTENSION_VARIANT_OP_BIT_NEGATE
-	GDEXTENSION_VARIANT_OP_AND
-	GDEXTENSION_VARIANT_OP_OR
-	GDEXTENSION_VARIANT_OP_XOR
-	GDEXTENSION_VARIANT_OP_NOT
-	GDEXTENSION_VARIANT_OP_IN
-	GDEXTENSION_VARIANT_OP_MAX
+	GDEXTENSION_VARIANT_OP_EQUAL         GDExtensionVariantOperator = 0
+	GDEXTENSION_VARIANT_OP_NOT_EQUAL                                = 1
+	GDEXTENSION_VARIANT_OP_LESS                                     = 2
+	GDEXTENSION_VARIANT_OP_LESS_EQUAL                               = 3
+	GDEXTENSION_VARIANT_OP_GREATER                                  = 4
+	GDEXTENSION_VARIANT_OP_GREATER_EQUAL                            = 5
+	GDEXTENSION_VARIANT_OP_ADD                                      = 6
+	GDEXTENSION_VARIANT_OP_SUBTRACT                                 = 7
+	GDEXTENSION_VARIANT_OP_MULTIPLY                                 = 8
+	GDEXTENSION_VARIANT_OP_DIVIDE                                   = 9
+	GDEXTENSION_VARIANT_OP_NEGATE                                   = 10
+	GDEXTENSION_VARIANT_OP_POSITIVE                                 = 11
+	GDEXTENSION_VARIANT_OP_MODULE                                   = 12
+	GDEXTENSION_VARIANT_OP_POWER                                    = 13
+	GDEXTENSION_VARIANT_OP_SHIFT_LEFT                               = 14
+	GDEXTENSION_VARIANT_OP_SHIFT_RIGHT                              = 15
+	GDEXTENSION_VARIANT_OP_BIT_AND                                  = 16
+	GDEXTENSION_VARIANT_OP_BIT_OR                                   = 17
+	GDEXTENSION_VARIANT_OP_BIT_XOR                                  = 18
+	GDEXTENSION_VARIANT_OP_BIT_NEGATE                               = 19
+	GDEXTENSION_VARIANT_OP_AND                                      = 20
+	GDEXTENSION_VARIANT_OP_OR                                       = 21
+	GDEXTENSION_VARIANT_OP_XOR                                      = 22
+	GDEXTENSION_VARIANT_OP_NOT                                      = 23
+	GDEXTENSION_VARIANT_OP_IN                                       = 24
+	GDEXTENSION_VARIANT_OP_MAX                                      = 25
 )
 
 var GDExtensionVariantOperatorStringMap = map[GDExtensionVariantOperator]string{
@@ -217,13 +217,13 @@ var GDExtensionVariantOperatorStringMap = map[GDExtensionVariantOperator]string{
 type GDExtensionCallErrorType C.GDExtensionCallErrorType
 
 const (
-	GDEXTENSION_CALL_OK GDExtensionCallErrorType = iota
-	GDEXTENSION_CALL_ERROR_INVALID_METHOD
-	GDEXTENSION_CALL_ERROR_INVALID_ARGUMENT
-	GDEXTENSION_CALL_ERROR_TOO_MANY_ARGUMENTS
-	GDEXTENSION_CALL_ERROR_TOO_FEW_ARGUMENTS
-	GDEXTENSION_CALL_ERROR_INSTANCE_IS_NULL
-	GDEXTENSION_CALL_ERROR_METHOD_NOT_CONST
+	GDEXTENSION_CALL_OK                       GDExtensionCallErrorType = 0
+	GDEXTENSION_CALL_ERROR_INVALID_METHOD                              = 1
+	GDEXTENSION_CALL_ERROR_INVALID_ARGUMENT                            = 2
+	GDEXTENSION_CALL_ERROR_TOO_MANY_ARGUMENTS                          = 3
+	GDEXTENSION_CALL_ERROR_TOO_FEW_ARGUMENTS                           = 4
+	GDEXTENSION_CALL_ERROR_INSTANCE_IS_NULL                            = 5
+	GDEXTENSION_CALL_ERROR_METHOD_NOT_CONST                            = 6
 )
 
 var GDExtensionCallErrorTypeStringMap = map[GDExtensionCallErrorType]string{
@@ -239,66 +239,70 @@ var GDExtensionCallErrorTypeStringMap = map[GDExtensionCallErrorType]string{
 type GDExtensionClassMethodFlags C.GDExtensionClassMethodFlags
 
 const (
-	GDEXTENSION_METHOD_FLAG_NORMAL   GDExtensionClassMethodFlags = 1
-	GDEXTENSION_METHOD_FLAG_EDITOR                               = 2
-	GDEXTENSION_METHOD_FLAG_CONST                                = 4
-	GDEXTENSION_METHOD_FLAG_VIRTUAL                              = 8
-	GDEXTENSION_METHOD_FLAG_VARARG                               = 16
-	GDEXTENSION_METHOD_FLAG_STATIC                               = 32
-	GDEXTENSION_METHOD_FLAGS_DEFAULT                             = GDEXTENSION_METHOD_FLAG_NORMAL
+	GDEXTENSION_METHOD_FLAG_NORMAL           GDExtensionClassMethodFlags = 1
+	GDEXTENSION_METHOD_FLAG_EDITOR                                       = 2
+	GDEXTENSION_METHOD_FLAG_CONST                                        = 4
+	GDEXTENSION_METHOD_FLAG_VIRTUAL                                      = 8
+	GDEXTENSION_METHOD_FLAG_VARARG                                       = 16
+	GDEXTENSION_METHOD_FLAG_STATIC                                       = 32
+	GDEXTENSION_METHOD_FLAG_VIRTUAL_REQUIRED                             = 128
+	GDEXTENSION_METHOD_FLAGS_DEFAULT                                     = 1
 )
 
 var GDExtensionClassMethodFlagsStringMap = map[GDExtensionClassMethodFlags]string{
-	GDEXTENSION_METHOD_FLAG_NORMAL:  "GDEXTENSION_METHOD_FLAG_NORMAL",
-	GDEXTENSION_METHOD_FLAG_EDITOR:  "GDEXTENSION_METHOD_FLAG_EDITOR",
-	GDEXTENSION_METHOD_FLAG_CONST:   "GDEXTENSION_METHOD_FLAG_CONST",
-	GDEXTENSION_METHOD_FLAG_VIRTUAL: "GDEXTENSION_METHOD_FLAG_VIRTUAL",
-	GDEXTENSION_METHOD_FLAG_VARARG:  "GDEXTENSION_METHOD_FLAG_VARARG",
-	GDEXTENSION_METHOD_FLAG_STATIC:  "GDEXTENSION_METHOD_FLAG_STATIC",
+	GDEXTENSION_METHOD_FLAG_NORMAL:           "GDEXTENSION_METHOD_FLAG_NORMAL",
+	GDEXTENSION_METHOD_FLAG_EDITOR:           "GDEXTENSION_METHOD_FLAG_EDITOR",
+	GDEXTENSION_METHOD_FLAG_CONST:            "GDEXTENSION_METHOD_FLAG_CONST",
+	GDEXTENSION_METHOD_FLAG_VIRTUAL:          "GDEXTENSION_METHOD_FLAG_VIRTUAL",
+	GDEXTENSION_METHOD_FLAG_VARARG:           "GDEXTENSION_METHOD_FLAG_VARARG",
+	GDEXTENSION_METHOD_FLAG_STATIC:           "GDEXTENSION_METHOD_FLAG_STATIC",
+	GDEXTENSION_METHOD_FLAG_VIRTUAL_REQUIRED: "GDEXTENSION_METHOD_FLAG_VIRTUAL_REQUIRED",
 }
 
 type GDExtensionClassMethodArgumentMetadata C.GDExtensionClassMethodArgumentMetadata
 
 const (
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE GDExtensionClassMethodArgumentMetadata = iota
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR16
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR32
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE               GDExtensionClassMethodArgumentMetadata = 0
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8                                               = 1
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16                                              = 2
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32                                              = 3
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64                                              = 4
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8                                              = 5
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16                                             = 6
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32                                             = 7
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64                                             = 8
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT                                             = 9
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE                                            = 10
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR16                                             = 11
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR32                                             = 12
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_OBJECT_IS_REQUIRED                                        = 13
 )
 
 var GDExtensionClassMethodArgumentMetadataStringMap = map[GDExtensionClassMethodArgumentMetadata]string{
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE:           "GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8:    "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16:   "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32:   "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64:   "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8:   "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16:  "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32:  "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64:  "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT:  "GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE: "GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR16:  "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR16",
-	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR32:  "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR32",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE:               "GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8:        "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT8",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16:       "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT16",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32:       "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT32",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64:       "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_INT64",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8:       "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT8",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16:      "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT16",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32:      "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT32",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64:      "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_UINT64",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT:      "GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_FLOAT",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE:     "GDEXTENSION_METHOD_ARGUMENT_METADATA_REAL_IS_DOUBLE",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR16:      "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR16",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR32:      "GDEXTENSION_METHOD_ARGUMENT_METADATA_INT_IS_CHAR32",
+	GDEXTENSION_METHOD_ARGUMENT_METADATA_OBJECT_IS_REQUIRED: "GDEXTENSION_METHOD_ARGUMENT_METADATA_OBJECT_IS_REQUIRED",
 }
 
 type GDExtensionInitializationLevel C.GDExtensionInitializationLevel
 
 const (
-	GDEXTENSION_INITIALIZATION_CORE GDExtensionInitializationLevel = iota
-	GDEXTENSION_INITIALIZATION_SERVERS
-	GDEXTENSION_INITIALIZATION_SCENE
-	GDEXTENSION_INITIALIZATION_EDITOR
-	GDEXTENSION_MAX_INITIALIZATION_LEVEL
+	GDEXTENSION_INITIALIZATION_CORE      GDExtensionInitializationLevel = 0
+	GDEXTENSION_INITIALIZATION_SERVERS                                  = 1
+	GDEXTENSION_INITIALIZATION_SCENE                                    = 2
+	GDEXTENSION_INITIALIZATION_EDITOR                                   = 3
+	GDEXTENSION_MAX_INITIALIZATION_LEVEL                                = 4
 )
 
 var GDExtensionInitializationLevelStringMap = map[GDExtensionInitializationLevel]string{
@@ -408,6 +412,9 @@ type GDExtensionInterfaceGetGodotVersion2 C.GDExtensionInterfaceGetGodotVersion2
 type GDExtensionInterfaceMemAlloc C.GDExtensionInterfaceMemAlloc
 type GDExtensionInterfaceMemRealloc C.GDExtensionInterfaceMemRealloc
 type GDExtensionInterfaceMemFree C.GDExtensionInterfaceMemFree
+type GDExtensionInterfaceMemAlloc2 C.GDExtensionInterfaceMemAlloc2
+type GDExtensionInterfaceMemRealloc2 C.GDExtensionInterfaceMemRealloc2
+type GDExtensionInterfaceMemFree2 C.GDExtensionInterfaceMemFree2
 type GDExtensionInterfacePrintError C.GDExtensionInterfacePrintError
 type GDExtensionInterfacePrintErrorWithMessage C.GDExtensionInterfacePrintErrorWithMessage
 type GDExtensionInterfacePrintWarning C.GDExtensionInterfacePrintWarning
@@ -653,7 +660,7 @@ func CallFunc_GDExtensionPtrBuiltInMethod(
 	arg1 := (C.GDExtensionTypePtr)(p_base)
 	arg2 := (*C.GDExtensionConstTypePtr)(p_args)
 	arg3 := (C.GDExtensionTypePtr)(r_return)
-	arg4 := (C.int)(p_argument_count)
+	arg4 := (C.int32_t)(p_argument_count)
 
 	log.Debug("called C.cgo_callfn_GDExtensionPtrBuiltInMethod")
 
@@ -812,7 +819,7 @@ func CallFunc_GDExtensionPtrUtilityFunction(
 	arg0 := (C.GDExtensionPtrUtilityFunction)(fn)
 	arg1 := (C.GDExtensionTypePtr)(r_return)
 	arg2 := (*C.GDExtensionConstTypePtr)(p_args)
-	arg3 := (C.int)(p_argument_count)
+	arg3 := (C.int32_t)(p_argument_count)
 
 	log.Debug("called C.cgo_callfn_GDExtensionPtrUtilityFunction")
 
@@ -2155,6 +2162,56 @@ func CallFunc_GDExtensionInterfaceMemFree(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceMemFree")
 
 	C.cgo_callfn_GDExtensionInterfaceMemFree(arg0, arg1)
+
+}
+
+func CallFunc_GDExtensionInterfaceMemAlloc2(
+	p_bytes uint64,
+	p_pad_align GDExtensionBool,
+) unsafe.Pointer {
+	arg0 := (C.GDExtensionInterfaceMemAlloc2)(FFI.MemAlloc2)
+	arg1 := (C.size_t)(p_bytes)
+	arg2 := (C.GDExtensionBool)(p_pad_align)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceMemAlloc2")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceMemAlloc2(arg0, arg1, arg2)
+
+	pnr.Pin(ret)
+
+	return unsafe.Pointer(ret)
+}
+
+func CallFunc_GDExtensionInterfaceMemRealloc2(
+	p_ptr unsafe.Pointer,
+	p_bytes uint64,
+	p_pad_align GDExtensionBool,
+) unsafe.Pointer {
+	arg0 := (C.GDExtensionInterfaceMemRealloc2)(FFI.MemRealloc2)
+	arg1 := unsafe.Pointer(p_ptr)
+	arg2 := (C.size_t)(p_bytes)
+	arg3 := (C.GDExtensionBool)(p_pad_align)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceMemRealloc2")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceMemRealloc2(arg0, arg1, arg2, arg3)
+
+	pnr.Pin(ret)
+
+	return unsafe.Pointer(ret)
+}
+
+func CallFunc_GDExtensionInterfaceMemFree2(
+	p_ptr unsafe.Pointer,
+	p_pad_align GDExtensionBool,
+) {
+	arg0 := (C.GDExtensionInterfaceMemFree2)(FFI.MemFree2)
+	arg1 := unsafe.Pointer(p_ptr)
+	arg2 := (C.GDExtensionBool)(p_pad_align)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceMemFree2")
+
+	C.cgo_callfn_GDExtensionInterfaceMemFree2(arg0, arg1, arg2)
 
 }
 
@@ -3615,8 +3672,8 @@ func CallFunc_GDExtensionInterfaceWorkerThreadPoolAddNativeGroupTask(
 	arg1 := (C.GDExtensionObjectPtr)(p_instance)
 	arg2 := (C.GDExtensionWorkerThreadPoolGroupTask)(p_func)
 	arg3 := unsafe.Pointer(p_userdata)
-	arg4 := (C.int)(p_elements)
-	arg5 := (C.int)(p_tasks)
+	arg4 := (C.int32_t)(p_elements)
+	arg5 := (C.int32_t)(p_tasks)
 	arg6 := (C.GDExtensionBool)(p_high_priority)
 	arg7 := (C.GDExtensionConstStringPtr)(p_description)
 

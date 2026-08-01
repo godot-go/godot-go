@@ -63,6 +63,16 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.image_ref_func(image), "valid")
 	# assert_equal(example.image_const_ref_func(image), "valid")
 
+	# Ref round-trip: Go returns a Ref<Image> to Godot (encode) and receives one (decode).
+	var ret_ref = example.pass_through_ref_image(image)
+	assert_not_equal(ret_ref, null)
+	assert_equal(ret_ref, image)
+	assert_equal(example.return_nil_ref_image(), null)
+
+	# Ref count lifecycle on a RefCounted object passed from Godot.
+	assert_equal(example.test_ref_lifecycle(image), 1)
+	assert_equal(example.test_finalizer_release(image), 1)
+
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())

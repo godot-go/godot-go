@@ -14,2645 +14,2645 @@ package builtin
 // refcount classes
 type RefAESContext interface {
 	Ref
-	TypedPtr() AESContext
+	Ptr() AESContext
 }
 type RefAStar2D interface {
 	Ref
-	TypedPtr() AStar2D
+	Ptr() AStar2D
 }
 type RefAStar3D interface {
 	Ref
-	TypedPtr() AStar3D
+	Ptr() AStar3D
 }
 type RefAStarGrid2D interface {
 	Ref
-	TypedPtr() AStarGrid2D
+	Ptr() AStarGrid2D
 }
 type RefAnimatedTexture interface {
 	Ref
-	TypedPtr() AnimatedTexture
+	Ptr() AnimatedTexture
 }
 type RefAnimation interface {
 	Ref
-	TypedPtr() Animation
+	Ptr() Animation
 }
 type RefAnimationLibrary interface {
 	Ref
-	TypedPtr() AnimationLibrary
+	Ptr() AnimationLibrary
 }
 type RefAnimationNode interface {
 	Ref
-	TypedPtr() AnimationNode
+	Ptr() AnimationNode
 }
 type RefAnimationNodeAdd2 interface {
 	Ref
-	TypedPtr() AnimationNodeAdd2
+	Ptr() AnimationNodeAdd2
 }
 type RefAnimationNodeAdd3 interface {
 	Ref
-	TypedPtr() AnimationNodeAdd3
+	Ptr() AnimationNodeAdd3
 }
 type RefAnimationNodeAnimation interface {
 	Ref
-	TypedPtr() AnimationNodeAnimation
+	Ptr() AnimationNodeAnimation
 }
 type RefAnimationNodeBlend2 interface {
 	Ref
-	TypedPtr() AnimationNodeBlend2
+	Ptr() AnimationNodeBlend2
 }
 type RefAnimationNodeBlend3 interface {
 	Ref
-	TypedPtr() AnimationNodeBlend3
+	Ptr() AnimationNodeBlend3
 }
 type RefAnimationNodeBlendSpace1D interface {
 	Ref
-	TypedPtr() AnimationNodeBlendSpace1D
+	Ptr() AnimationNodeBlendSpace1D
 }
 type RefAnimationNodeBlendSpace2D interface {
 	Ref
-	TypedPtr() AnimationNodeBlendSpace2D
+	Ptr() AnimationNodeBlendSpace2D
 }
 type RefAnimationNodeBlendTree interface {
 	Ref
-	TypedPtr() AnimationNodeBlendTree
+	Ptr() AnimationNodeBlendTree
 }
 type RefAnimationNodeExtension interface {
 	Ref
-	TypedPtr() AnimationNodeExtension
+	Ptr() AnimationNodeExtension
 }
 type RefAnimationNodeOneShot interface {
 	Ref
-	TypedPtr() AnimationNodeOneShot
+	Ptr() AnimationNodeOneShot
 }
 type RefAnimationNodeOutput interface {
 	Ref
-	TypedPtr() AnimationNodeOutput
+	Ptr() AnimationNodeOutput
 }
 type RefAnimationNodeStateMachine interface {
 	Ref
-	TypedPtr() AnimationNodeStateMachine
+	Ptr() AnimationNodeStateMachine
 }
 type RefAnimationNodeStateMachinePlayback interface {
 	Ref
-	TypedPtr() AnimationNodeStateMachinePlayback
+	Ptr() AnimationNodeStateMachinePlayback
 }
 type RefAnimationNodeStateMachineTransition interface {
 	Ref
-	TypedPtr() AnimationNodeStateMachineTransition
+	Ptr() AnimationNodeStateMachineTransition
 }
 type RefAnimationNodeSub2 interface {
 	Ref
-	TypedPtr() AnimationNodeSub2
+	Ptr() AnimationNodeSub2
 }
 type RefAnimationNodeSync interface {
 	Ref
-	TypedPtr() AnimationNodeSync
+	Ptr() AnimationNodeSync
 }
 type RefAnimationNodeTimeScale interface {
 	Ref
-	TypedPtr() AnimationNodeTimeScale
+	Ptr() AnimationNodeTimeScale
 }
 type RefAnimationNodeTimeSeek interface {
 	Ref
-	TypedPtr() AnimationNodeTimeSeek
+	Ptr() AnimationNodeTimeSeek
 }
 type RefAnimationNodeTransition interface {
 	Ref
-	TypedPtr() AnimationNodeTransition
+	Ptr() AnimationNodeTransition
 }
 type RefAnimationRootNode interface {
 	Ref
-	TypedPtr() AnimationRootNode
+	Ptr() AnimationRootNode
 }
 type RefArrayMesh interface {
 	Ref
-	TypedPtr() ArrayMesh
+	Ptr() ArrayMesh
 }
 type RefArrayOccluder3D interface {
 	Ref
-	TypedPtr() ArrayOccluder3D
+	Ptr() ArrayOccluder3D
 }
 type RefAtlasTexture interface {
 	Ref
-	TypedPtr() AtlasTexture
+	Ptr() AtlasTexture
 }
 type RefAudioBusLayout interface {
 	Ref
-	TypedPtr() AudioBusLayout
+	Ptr() AudioBusLayout
 }
 type RefAudioEffect interface {
 	Ref
-	TypedPtr() AudioEffect
+	Ptr() AudioEffect
 }
 type RefAudioEffectAmplify interface {
 	Ref
-	TypedPtr() AudioEffectAmplify
+	Ptr() AudioEffectAmplify
 }
 type RefAudioEffectBandLimitFilter interface {
 	Ref
-	TypedPtr() AudioEffectBandLimitFilter
+	Ptr() AudioEffectBandLimitFilter
 }
 type RefAudioEffectBandPassFilter interface {
 	Ref
-	TypedPtr() AudioEffectBandPassFilter
+	Ptr() AudioEffectBandPassFilter
 }
 type RefAudioEffectCapture interface {
 	Ref
-	TypedPtr() AudioEffectCapture
+	Ptr() AudioEffectCapture
 }
 type RefAudioEffectChorus interface {
 	Ref
-	TypedPtr() AudioEffectChorus
+	Ptr() AudioEffectChorus
 }
 type RefAudioEffectCompressor interface {
 	Ref
-	TypedPtr() AudioEffectCompressor
+	Ptr() AudioEffectCompressor
 }
 type RefAudioEffectDelay interface {
 	Ref
-	TypedPtr() AudioEffectDelay
+	Ptr() AudioEffectDelay
 }
 type RefAudioEffectDistortion interface {
 	Ref
-	TypedPtr() AudioEffectDistortion
+	Ptr() AudioEffectDistortion
 }
 type RefAudioEffectEQ interface {
 	Ref
-	TypedPtr() AudioEffectEQ
+	Ptr() AudioEffectEQ
 }
 type RefAudioEffectEQ10 interface {
 	Ref
-	TypedPtr() AudioEffectEQ10
+	Ptr() AudioEffectEQ10
 }
 type RefAudioEffectEQ21 interface {
 	Ref
-	TypedPtr() AudioEffectEQ21
+	Ptr() AudioEffectEQ21
 }
 type RefAudioEffectEQ6 interface {
 	Ref
-	TypedPtr() AudioEffectEQ6
+	Ptr() AudioEffectEQ6
 }
 type RefAudioEffectFilter interface {
 	Ref
-	TypedPtr() AudioEffectFilter
+	Ptr() AudioEffectFilter
 }
 type RefAudioEffectHardLimiter interface {
 	Ref
-	TypedPtr() AudioEffectHardLimiter
+	Ptr() AudioEffectHardLimiter
 }
 type RefAudioEffectHighPassFilter interface {
 	Ref
-	TypedPtr() AudioEffectHighPassFilter
+	Ptr() AudioEffectHighPassFilter
 }
 type RefAudioEffectHighShelfFilter interface {
 	Ref
-	TypedPtr() AudioEffectHighShelfFilter
+	Ptr() AudioEffectHighShelfFilter
 }
 type RefAudioEffectInstance interface {
 	Ref
-	TypedPtr() AudioEffectInstance
+	Ptr() AudioEffectInstance
 }
 type RefAudioEffectLimiter interface {
 	Ref
-	TypedPtr() AudioEffectLimiter
+	Ptr() AudioEffectLimiter
 }
 type RefAudioEffectLowPassFilter interface {
 	Ref
-	TypedPtr() AudioEffectLowPassFilter
+	Ptr() AudioEffectLowPassFilter
 }
 type RefAudioEffectLowShelfFilter interface {
 	Ref
-	TypedPtr() AudioEffectLowShelfFilter
+	Ptr() AudioEffectLowShelfFilter
 }
 type RefAudioEffectNotchFilter interface {
 	Ref
-	TypedPtr() AudioEffectNotchFilter
+	Ptr() AudioEffectNotchFilter
 }
 type RefAudioEffectPanner interface {
 	Ref
-	TypedPtr() AudioEffectPanner
+	Ptr() AudioEffectPanner
 }
 type RefAudioEffectPhaser interface {
 	Ref
-	TypedPtr() AudioEffectPhaser
+	Ptr() AudioEffectPhaser
 }
 type RefAudioEffectPitchShift interface {
 	Ref
-	TypedPtr() AudioEffectPitchShift
+	Ptr() AudioEffectPitchShift
 }
 type RefAudioEffectRecord interface {
 	Ref
-	TypedPtr() AudioEffectRecord
+	Ptr() AudioEffectRecord
 }
 type RefAudioEffectReverb interface {
 	Ref
-	TypedPtr() AudioEffectReverb
+	Ptr() AudioEffectReverb
 }
 type RefAudioEffectSpectrumAnalyzer interface {
 	Ref
-	TypedPtr() AudioEffectSpectrumAnalyzer
+	Ptr() AudioEffectSpectrumAnalyzer
 }
 type RefAudioEffectSpectrumAnalyzerInstance interface {
 	Ref
-	TypedPtr() AudioEffectSpectrumAnalyzerInstance
+	Ptr() AudioEffectSpectrumAnalyzerInstance
 }
 type RefAudioEffectStereoEnhance interface {
 	Ref
-	TypedPtr() AudioEffectStereoEnhance
+	Ptr() AudioEffectStereoEnhance
 }
 type RefAudioSample interface {
 	Ref
-	TypedPtr() AudioSample
+	Ptr() AudioSample
 }
 type RefAudioSamplePlayback interface {
 	Ref
-	TypedPtr() AudioSamplePlayback
+	Ptr() AudioSamplePlayback
 }
 type RefAudioStream interface {
 	Ref
-	TypedPtr() AudioStream
+	Ptr() AudioStream
 }
 type RefAudioStreamGenerator interface {
 	Ref
-	TypedPtr() AudioStreamGenerator
+	Ptr() AudioStreamGenerator
 }
 type RefAudioStreamGeneratorPlayback interface {
 	Ref
-	TypedPtr() AudioStreamGeneratorPlayback
+	Ptr() AudioStreamGeneratorPlayback
 }
 type RefAudioStreamInteractive interface {
 	Ref
-	TypedPtr() AudioStreamInteractive
+	Ptr() AudioStreamInteractive
 }
 type RefAudioStreamMP3 interface {
 	Ref
-	TypedPtr() AudioStreamMP3
+	Ptr() AudioStreamMP3
 }
 type RefAudioStreamMicrophone interface {
 	Ref
-	TypedPtr() AudioStreamMicrophone
+	Ptr() AudioStreamMicrophone
 }
 type RefAudioStreamOggVorbis interface {
 	Ref
-	TypedPtr() AudioStreamOggVorbis
+	Ptr() AudioStreamOggVorbis
 }
 type RefAudioStreamPlayback interface {
 	Ref
-	TypedPtr() AudioStreamPlayback
+	Ptr() AudioStreamPlayback
 }
 type RefAudioStreamPlaybackInteractive interface {
 	Ref
-	TypedPtr() AudioStreamPlaybackInteractive
+	Ptr() AudioStreamPlaybackInteractive
 }
 type RefAudioStreamPlaybackOggVorbis interface {
 	Ref
-	TypedPtr() AudioStreamPlaybackOggVorbis
+	Ptr() AudioStreamPlaybackOggVorbis
 }
 type RefAudioStreamPlaybackPlaylist interface {
 	Ref
-	TypedPtr() AudioStreamPlaybackPlaylist
+	Ptr() AudioStreamPlaybackPlaylist
 }
 type RefAudioStreamPlaybackPolyphonic interface {
 	Ref
-	TypedPtr() AudioStreamPlaybackPolyphonic
+	Ptr() AudioStreamPlaybackPolyphonic
 }
 type RefAudioStreamPlaybackResampled interface {
 	Ref
-	TypedPtr() AudioStreamPlaybackResampled
+	Ptr() AudioStreamPlaybackResampled
 }
 type RefAudioStreamPlaybackSynchronized interface {
 	Ref
-	TypedPtr() AudioStreamPlaybackSynchronized
+	Ptr() AudioStreamPlaybackSynchronized
 }
 type RefAudioStreamPlaylist interface {
 	Ref
-	TypedPtr() AudioStreamPlaylist
+	Ptr() AudioStreamPlaylist
 }
 type RefAudioStreamPolyphonic interface {
 	Ref
-	TypedPtr() AudioStreamPolyphonic
+	Ptr() AudioStreamPolyphonic
 }
 type RefAudioStreamRandomizer interface {
 	Ref
-	TypedPtr() AudioStreamRandomizer
+	Ptr() AudioStreamRandomizer
 }
 type RefAudioStreamSynchronized interface {
 	Ref
-	TypedPtr() AudioStreamSynchronized
+	Ptr() AudioStreamSynchronized
 }
 type RefAudioStreamWAV interface {
 	Ref
-	TypedPtr() AudioStreamWAV
+	Ptr() AudioStreamWAV
 }
 type RefAwaitTweener interface {
 	Ref
-	TypedPtr() AwaitTweener
+	Ptr() AwaitTweener
 }
 type RefBaseMaterial3D interface {
 	Ref
-	TypedPtr() BaseMaterial3D
+	Ptr() BaseMaterial3D
 }
 type RefBitMap interface {
 	Ref
-	TypedPtr() BitMap
+	Ptr() BitMap
 }
 type RefBlitMaterial interface {
 	Ref
-	TypedPtr() BlitMaterial
+	Ptr() BlitMaterial
 }
 type RefBoneMap interface {
 	Ref
-	TypedPtr() BoneMap
+	Ptr() BoneMap
 }
 type RefBoxMesh interface {
 	Ref
-	TypedPtr() BoxMesh
+	Ptr() BoxMesh
 }
 type RefBoxOccluder3D interface {
 	Ref
-	TypedPtr() BoxOccluder3D
+	Ptr() BoxOccluder3D
 }
 type RefBoxShape3D interface {
 	Ref
-	TypedPtr() BoxShape3D
+	Ptr() BoxShape3D
 }
 type RefButtonGroup interface {
 	Ref
-	TypedPtr() ButtonGroup
+	Ptr() ButtonGroup
 }
 type RefCallbackTweener interface {
 	Ref
-	TypedPtr() CallbackTweener
+	Ptr() CallbackTweener
 }
 type RefCameraAttributes interface {
 	Ref
-	TypedPtr() CameraAttributes
+	Ptr() CameraAttributes
 }
 type RefCameraAttributesPhysical interface {
 	Ref
-	TypedPtr() CameraAttributesPhysical
+	Ptr() CameraAttributesPhysical
 }
 type RefCameraAttributesPractical interface {
 	Ref
-	TypedPtr() CameraAttributesPractical
+	Ptr() CameraAttributesPractical
 }
 type RefCameraFeed interface {
 	Ref
-	TypedPtr() CameraFeed
+	Ptr() CameraFeed
 }
 type RefCameraTexture interface {
 	Ref
-	TypedPtr() CameraTexture
+	Ptr() CameraTexture
 }
 type RefCanvasItemMaterial interface {
 	Ref
-	TypedPtr() CanvasItemMaterial
+	Ptr() CanvasItemMaterial
 }
 type RefCanvasTexture interface {
 	Ref
-	TypedPtr() CanvasTexture
+	Ptr() CanvasTexture
 }
 type RefCapsuleMesh interface {
 	Ref
-	TypedPtr() CapsuleMesh
+	Ptr() CapsuleMesh
 }
 type RefCapsuleShape2D interface {
 	Ref
-	TypedPtr() CapsuleShape2D
+	Ptr() CapsuleShape2D
 }
 type RefCapsuleShape3D interface {
 	Ref
-	TypedPtr() CapsuleShape3D
+	Ptr() CapsuleShape3D
 }
 type RefCharFXTransform interface {
 	Ref
-	TypedPtr() CharFXTransform
+	Ptr() CharFXTransform
 }
 type RefCircleShape2D interface {
 	Ref
-	TypedPtr() CircleShape2D
+	Ptr() CircleShape2D
 }
 type RefCodeHighlighter interface {
 	Ref
-	TypedPtr() CodeHighlighter
+	Ptr() CodeHighlighter
 }
 type RefColorPalette interface {
 	Ref
-	TypedPtr() ColorPalette
+	Ptr() ColorPalette
 }
 type RefCompositor interface {
 	Ref
-	TypedPtr() Compositor
+	Ptr() Compositor
 }
 type RefCompositorEffect interface {
 	Ref
-	TypedPtr() CompositorEffect
+	Ptr() CompositorEffect
 }
 type RefCompressedCubemap interface {
 	Ref
-	TypedPtr() CompressedCubemap
+	Ptr() CompressedCubemap
 }
 type RefCompressedCubemapArray interface {
 	Ref
-	TypedPtr() CompressedCubemapArray
+	Ptr() CompressedCubemapArray
 }
 type RefCompressedTexture2D interface {
 	Ref
-	TypedPtr() CompressedTexture2D
+	Ptr() CompressedTexture2D
 }
 type RefCompressedTexture2DArray interface {
 	Ref
-	TypedPtr() CompressedTexture2DArray
+	Ptr() CompressedTexture2DArray
 }
 type RefCompressedTexture3D interface {
 	Ref
-	TypedPtr() CompressedTexture3D
+	Ptr() CompressedTexture3D
 }
 type RefCompressedTextureLayered interface {
 	Ref
-	TypedPtr() CompressedTextureLayered
+	Ptr() CompressedTextureLayered
 }
 type RefConcavePolygonShape2D interface {
 	Ref
-	TypedPtr() ConcavePolygonShape2D
+	Ptr() ConcavePolygonShape2D
 }
 type RefConcavePolygonShape3D interface {
 	Ref
-	TypedPtr() ConcavePolygonShape3D
+	Ptr() ConcavePolygonShape3D
 }
 type RefConfigFile interface {
 	Ref
-	TypedPtr() ConfigFile
+	Ptr() ConfigFile
 }
 type RefConvexPolygonShape2D interface {
 	Ref
-	TypedPtr() ConvexPolygonShape2D
+	Ptr() ConvexPolygonShape2D
 }
 type RefConvexPolygonShape3D interface {
 	Ref
-	TypedPtr() ConvexPolygonShape3D
+	Ptr() ConvexPolygonShape3D
 }
 type RefCrypto interface {
 	Ref
-	TypedPtr() Crypto
+	Ptr() Crypto
 }
 type RefCryptoKey interface {
 	Ref
-	TypedPtr() CryptoKey
+	Ptr() CryptoKey
 }
 type RefCubemap interface {
 	Ref
-	TypedPtr() Cubemap
+	Ptr() Cubemap
 }
 type RefCubemapArray interface {
 	Ref
-	TypedPtr() CubemapArray
+	Ptr() CubemapArray
 }
 type RefCurve interface {
 	Ref
-	TypedPtr() Curve
+	Ptr() Curve
 }
 type RefCurve2D interface {
 	Ref
-	TypedPtr() Curve2D
+	Ptr() Curve2D
 }
 type RefCurve3D interface {
 	Ref
-	TypedPtr() Curve3D
+	Ptr() Curve3D
 }
 type RefCurveTexture interface {
 	Ref
-	TypedPtr() CurveTexture
+	Ptr() CurveTexture
 }
 type RefCurveXYZTexture interface {
 	Ref
-	TypedPtr() CurveXYZTexture
+	Ptr() CurveXYZTexture
 }
 type RefCylinderMesh interface {
 	Ref
-	TypedPtr() CylinderMesh
+	Ptr() CylinderMesh
 }
 type RefCylinderShape3D interface {
 	Ref
-	TypedPtr() CylinderShape3D
+	Ptr() CylinderShape3D
 }
 type RefDPITexture interface {
 	Ref
-	TypedPtr() DPITexture
+	Ptr() DPITexture
 }
 type RefDTLSServer interface {
 	Ref
-	TypedPtr() DTLSServer
+	Ptr() DTLSServer
 }
 type RefDirAccess interface {
 	Ref
-	TypedPtr() DirAccess
+	Ptr() DirAccess
 }
 type RefDrawableTexture2D interface {
 	Ref
-	TypedPtr() DrawableTexture2D
+	Ptr() DrawableTexture2D
 }
 type RefENetConnection interface {
 	Ref
-	TypedPtr() ENetConnection
+	Ptr() ENetConnection
 }
 type RefENetMultiplayerPeer interface {
 	Ref
-	TypedPtr() ENetMultiplayerPeer
+	Ptr() ENetMultiplayerPeer
 }
 type RefENetPacketPeer interface {
 	Ref
-	TypedPtr() ENetPacketPeer
+	Ptr() ENetPacketPeer
 }
 type RefEditorContextMenuPlugin interface {
 	Ref
-	TypedPtr() EditorContextMenuPlugin
+	Ptr() EditorContextMenuPlugin
 }
 type RefEditorDebuggerPlugin interface {
 	Ref
-	TypedPtr() EditorDebuggerPlugin
+	Ptr() EditorDebuggerPlugin
 }
 type RefEditorDebuggerSession interface {
 	Ref
-	TypedPtr() EditorDebuggerSession
+	Ptr() EditorDebuggerSession
 }
 type RefEditorExportPlatform interface {
 	Ref
-	TypedPtr() EditorExportPlatform
+	Ptr() EditorExportPlatform
 }
 type RefEditorExportPlatformAndroid interface {
 	Ref
-	TypedPtr() EditorExportPlatformAndroid
+	Ptr() EditorExportPlatformAndroid
 }
 type RefEditorExportPlatformAppleEmbedded interface {
 	Ref
-	TypedPtr() EditorExportPlatformAppleEmbedded
+	Ptr() EditorExportPlatformAppleEmbedded
 }
 type RefEditorExportPlatformExtension interface {
 	Ref
-	TypedPtr() EditorExportPlatformExtension
+	Ptr() EditorExportPlatformExtension
 }
 type RefEditorExportPlatformIOS interface {
 	Ref
-	TypedPtr() EditorExportPlatformIOS
+	Ptr() EditorExportPlatformIOS
 }
 type RefEditorExportPlatformLinuxBSD interface {
 	Ref
-	TypedPtr() EditorExportPlatformLinuxBSD
+	Ptr() EditorExportPlatformLinuxBSD
 }
 type RefEditorExportPlatformMacOS interface {
 	Ref
-	TypedPtr() EditorExportPlatformMacOS
+	Ptr() EditorExportPlatformMacOS
 }
 type RefEditorExportPlatformPC interface {
 	Ref
-	TypedPtr() EditorExportPlatformPC
+	Ptr() EditorExportPlatformPC
 }
 type RefEditorExportPlatformVisionOS interface {
 	Ref
-	TypedPtr() EditorExportPlatformVisionOS
+	Ptr() EditorExportPlatformVisionOS
 }
 type RefEditorExportPlatformWeb interface {
 	Ref
-	TypedPtr() EditorExportPlatformWeb
+	Ptr() EditorExportPlatformWeb
 }
 type RefEditorExportPlatformWindows interface {
 	Ref
-	TypedPtr() EditorExportPlatformWindows
+	Ptr() EditorExportPlatformWindows
 }
 type RefEditorExportPlugin interface {
 	Ref
-	TypedPtr() EditorExportPlugin
+	Ptr() EditorExportPlugin
 }
 type RefEditorExportPreset interface {
 	Ref
-	TypedPtr() EditorExportPreset
+	Ptr() EditorExportPreset
 }
 type RefEditorFeatureProfile interface {
 	Ref
-	TypedPtr() EditorFeatureProfile
+	Ptr() EditorFeatureProfile
 }
 type RefEditorFileSystemImportFormatSupportQuery interface {
 	Ref
-	TypedPtr() EditorFileSystemImportFormatSupportQuery
+	Ptr() EditorFileSystemImportFormatSupportQuery
 }
 type RefEditorImportPlugin interface {
 	Ref
-	TypedPtr() EditorImportPlugin
+	Ptr() EditorImportPlugin
 }
 type RefEditorInspectorPlugin interface {
 	Ref
-	TypedPtr() EditorInspectorPlugin
+	Ptr() EditorInspectorPlugin
 }
 type RefEditorNode3DGizmo interface {
 	Ref
-	TypedPtr() EditorNode3DGizmo
+	Ptr() EditorNode3DGizmo
 }
 type RefEditorNode3DGizmoPlugin interface {
 	Ref
-	TypedPtr() EditorNode3DGizmoPlugin
+	Ptr() EditorNode3DGizmoPlugin
 }
 type RefEditorResourceConversionPlugin interface {
 	Ref
-	TypedPtr() EditorResourceConversionPlugin
+	Ptr() EditorResourceConversionPlugin
 }
 type RefEditorResourcePreviewGenerator interface {
 	Ref
-	TypedPtr() EditorResourcePreviewGenerator
+	Ptr() EditorResourcePreviewGenerator
 }
 type RefEditorResourceTooltipPlugin interface {
 	Ref
-	TypedPtr() EditorResourceTooltipPlugin
+	Ptr() EditorResourceTooltipPlugin
 }
 type RefEditorSceneFormatImporter interface {
 	Ref
-	TypedPtr() EditorSceneFormatImporter
+	Ptr() EditorSceneFormatImporter
 }
 type RefEditorSceneFormatImporterBlend interface {
 	Ref
-	TypedPtr() EditorSceneFormatImporterBlend
+	Ptr() EditorSceneFormatImporterBlend
 }
 type RefEditorSceneFormatImporterFBX2GLTF interface {
 	Ref
-	TypedPtr() EditorSceneFormatImporterFBX2GLTF
+	Ptr() EditorSceneFormatImporterFBX2GLTF
 }
 type RefEditorSceneFormatImporterGLTF interface {
 	Ref
-	TypedPtr() EditorSceneFormatImporterGLTF
+	Ptr() EditorSceneFormatImporterGLTF
 }
 type RefEditorSceneFormatImporterUFBX interface {
 	Ref
-	TypedPtr() EditorSceneFormatImporterUFBX
+	Ptr() EditorSceneFormatImporterUFBX
 }
 type RefEditorScenePostImport interface {
 	Ref
-	TypedPtr() EditorScenePostImport
+	Ptr() EditorScenePostImport
 }
 type RefEditorScenePostImportPlugin interface {
 	Ref
-	TypedPtr() EditorScenePostImportPlugin
+	Ptr() EditorScenePostImportPlugin
 }
 type RefEditorScript interface {
 	Ref
-	TypedPtr() EditorScript
+	Ptr() EditorScript
 }
 type RefEditorSettings interface {
 	Ref
-	TypedPtr() EditorSettings
+	Ptr() EditorSettings
 }
 type RefEditorSyntaxHighlighter interface {
 	Ref
-	TypedPtr() EditorSyntaxHighlighter
+	Ptr() EditorSyntaxHighlighter
 }
 type RefEditorTranslationParserPlugin interface {
 	Ref
-	TypedPtr() EditorTranslationParserPlugin
+	Ptr() EditorTranslationParserPlugin
 }
 type RefEncodedObjectAsID interface {
 	Ref
-	TypedPtr() EncodedObjectAsID
+	Ptr() EncodedObjectAsID
 }
 type RefEngineProfiler interface {
 	Ref
-	TypedPtr() EngineProfiler
+	Ptr() EngineProfiler
 }
 type RefEnvironment interface {
 	Ref
-	TypedPtr() Environment
+	Ptr() Environment
 }
 type RefExpression interface {
 	Ref
-	TypedPtr() Expression
+	Ptr() Expression
 }
 type RefExternalTexture interface {
 	Ref
-	TypedPtr() ExternalTexture
+	Ptr() ExternalTexture
 }
 type RefFBXDocument interface {
 	Ref
-	TypedPtr() FBXDocument
+	Ptr() FBXDocument
 }
 type RefFBXState interface {
 	Ref
-	TypedPtr() FBXState
+	Ptr() FBXState
 }
 type RefFastNoiseLite interface {
 	Ref
-	TypedPtr() FastNoiseLite
+	Ptr() FastNoiseLite
 }
 type RefFileAccess interface {
 	Ref
-	TypedPtr() FileAccess
+	Ptr() FileAccess
 }
 type RefFogMaterial interface {
 	Ref
-	TypedPtr() FogMaterial
+	Ptr() FogMaterial
 }
 type RefFoldableGroup interface {
 	Ref
-	TypedPtr() FoldableGroup
+	Ptr() FoldableGroup
 }
 type RefFont interface {
 	Ref
-	TypedPtr() Font
+	Ptr() Font
 }
 type RefFontFile interface {
 	Ref
-	TypedPtr() FontFile
+	Ptr() FontFile
 }
 type RefFontVariation interface {
 	Ref
-	TypedPtr() FontVariation
+	Ptr() FontVariation
 }
 type RefGDExtension interface {
 	Ref
-	TypedPtr() GDExtension
+	Ptr() GDExtension
 }
 type RefGDScript interface {
 	Ref
-	TypedPtr() GDScript
+	Ptr() GDScript
 }
 type RefGDScriptSyntaxHighlighter interface {
 	Ref
-	TypedPtr() GDScriptSyntaxHighlighter
+	Ptr() GDScriptSyntaxHighlighter
 }
 type RefGDScriptTextDocument interface {
 	Ref
-	TypedPtr() GDScriptTextDocument
+	Ptr() GDScriptTextDocument
 }
 type RefGDScriptWorkspace interface {
 	Ref
-	TypedPtr() GDScriptWorkspace
+	Ptr() GDScriptWorkspace
 }
 type RefGLTFAccessor interface {
 	Ref
-	TypedPtr() GLTFAccessor
+	Ptr() GLTFAccessor
 }
 type RefGLTFAnimation interface {
 	Ref
-	TypedPtr() GLTFAnimation
+	Ptr() GLTFAnimation
 }
 type RefGLTFBufferView interface {
 	Ref
-	TypedPtr() GLTFBufferView
+	Ptr() GLTFBufferView
 }
 type RefGLTFCamera interface {
 	Ref
-	TypedPtr() GLTFCamera
+	Ptr() GLTFCamera
 }
 type RefGLTFDocument interface {
 	Ref
-	TypedPtr() GLTFDocument
+	Ptr() GLTFDocument
 }
 type RefGLTFDocumentExtension interface {
 	Ref
-	TypedPtr() GLTFDocumentExtension
+	Ptr() GLTFDocumentExtension
 }
 type RefGLTFDocumentExtensionConvertImporterMesh interface {
 	Ref
-	TypedPtr() GLTFDocumentExtensionConvertImporterMesh
+	Ptr() GLTFDocumentExtensionConvertImporterMesh
 }
 type RefGLTFLight interface {
 	Ref
-	TypedPtr() GLTFLight
+	Ptr() GLTFLight
 }
 type RefGLTFMesh interface {
 	Ref
-	TypedPtr() GLTFMesh
+	Ptr() GLTFMesh
 }
 type RefGLTFNode interface {
 	Ref
-	TypedPtr() GLTFNode
+	Ptr() GLTFNode
 }
 type RefGLTFObjectModelProperty interface {
 	Ref
-	TypedPtr() GLTFObjectModelProperty
+	Ptr() GLTFObjectModelProperty
 }
 type RefGLTFPhysicsBody interface {
 	Ref
-	TypedPtr() GLTFPhysicsBody
+	Ptr() GLTFPhysicsBody
 }
 type RefGLTFPhysicsShape interface {
 	Ref
-	TypedPtr() GLTFPhysicsShape
+	Ptr() GLTFPhysicsShape
 }
 type RefGLTFSkeleton interface {
 	Ref
-	TypedPtr() GLTFSkeleton
+	Ptr() GLTFSkeleton
 }
 type RefGLTFSkin interface {
 	Ref
-	TypedPtr() GLTFSkin
+	Ptr() GLTFSkin
 }
 type RefGLTFSpecGloss interface {
 	Ref
-	TypedPtr() GLTFSpecGloss
+	Ptr() GLTFSpecGloss
 }
 type RefGLTFState interface {
 	Ref
-	TypedPtr() GLTFState
+	Ptr() GLTFState
 }
 type RefGLTFTexture interface {
 	Ref
-	TypedPtr() GLTFTexture
+	Ptr() GLTFTexture
 }
 type RefGLTFTextureSampler interface {
 	Ref
-	TypedPtr() GLTFTextureSampler
+	Ptr() GLTFTextureSampler
 }
 type RefGradient interface {
 	Ref
-	TypedPtr() Gradient
+	Ptr() Gradient
 }
 type RefGradientTexture1D interface {
 	Ref
-	TypedPtr() GradientTexture1D
+	Ptr() GradientTexture1D
 }
 type RefGradientTexture2D interface {
 	Ref
-	TypedPtr() GradientTexture2D
+	Ptr() GradientTexture2D
 }
 type RefHMACContext interface {
 	Ref
-	TypedPtr() HMACContext
+	Ptr() HMACContext
 }
 type RefHTTPClient interface {
 	Ref
-	TypedPtr() HTTPClient
+	Ptr() HTTPClient
 }
 type RefHashingContext interface {
 	Ref
-	TypedPtr() HashingContext
+	Ptr() HashingContext
 }
 type RefHeightMapShape3D interface {
 	Ref
-	TypedPtr() HeightMapShape3D
+	Ptr() HeightMapShape3D
 }
 type RefImage interface {
 	Ref
-	TypedPtr() Image
+	Ptr() Image
 }
 type RefImageFormatLoader interface {
 	Ref
-	TypedPtr() ImageFormatLoader
+	Ptr() ImageFormatLoader
 }
 type RefImageFormatLoaderExtension interface {
 	Ref
-	TypedPtr() ImageFormatLoaderExtension
+	Ptr() ImageFormatLoaderExtension
 }
 type RefImageTexture interface {
 	Ref
-	TypedPtr() ImageTexture
+	Ptr() ImageTexture
 }
 type RefImageTexture3D interface {
 	Ref
-	TypedPtr() ImageTexture3D
+	Ptr() ImageTexture3D
 }
 type RefImageTextureLayered interface {
 	Ref
-	TypedPtr() ImageTextureLayered
+	Ptr() ImageTextureLayered
 }
 type RefImmediateMesh interface {
 	Ref
-	TypedPtr() ImmediateMesh
+	Ptr() ImmediateMesh
 }
 type RefImporterMesh interface {
 	Ref
-	TypedPtr() ImporterMesh
+	Ptr() ImporterMesh
 }
 type RefInputEvent interface {
 	Ref
-	TypedPtr() InputEvent
+	Ptr() InputEvent
 }
 type RefInputEventAction interface {
 	Ref
-	TypedPtr() InputEventAction
+	Ptr() InputEventAction
 }
 type RefInputEventFromWindow interface {
 	Ref
-	TypedPtr() InputEventFromWindow
+	Ptr() InputEventFromWindow
 }
 type RefInputEventGesture interface {
 	Ref
-	TypedPtr() InputEventGesture
+	Ptr() InputEventGesture
 }
 type RefInputEventJoypadButton interface {
 	Ref
-	TypedPtr() InputEventJoypadButton
+	Ptr() InputEventJoypadButton
 }
 type RefInputEventJoypadMotion interface {
 	Ref
-	TypedPtr() InputEventJoypadMotion
+	Ptr() InputEventJoypadMotion
 }
 type RefInputEventKey interface {
 	Ref
-	TypedPtr() InputEventKey
+	Ptr() InputEventKey
 }
 type RefInputEventMIDI interface {
 	Ref
-	TypedPtr() InputEventMIDI
+	Ptr() InputEventMIDI
 }
 type RefInputEventMagnifyGesture interface {
 	Ref
-	TypedPtr() InputEventMagnifyGesture
+	Ptr() InputEventMagnifyGesture
 }
 type RefInputEventMouse interface {
 	Ref
-	TypedPtr() InputEventMouse
+	Ptr() InputEventMouse
 }
 type RefInputEventMouseButton interface {
 	Ref
-	TypedPtr() InputEventMouseButton
+	Ptr() InputEventMouseButton
 }
 type RefInputEventMouseMotion interface {
 	Ref
-	TypedPtr() InputEventMouseMotion
+	Ptr() InputEventMouseMotion
 }
 type RefInputEventPanGesture interface {
 	Ref
-	TypedPtr() InputEventPanGesture
+	Ptr() InputEventPanGesture
 }
 type RefInputEventScreenDrag interface {
 	Ref
-	TypedPtr() InputEventScreenDrag
+	Ptr() InputEventScreenDrag
 }
 type RefInputEventScreenTouch interface {
 	Ref
-	TypedPtr() InputEventScreenTouch
+	Ptr() InputEventScreenTouch
 }
 type RefInputEventShortcut interface {
 	Ref
-	TypedPtr() InputEventShortcut
+	Ptr() InputEventShortcut
 }
 type RefInputEventWithModifiers interface {
 	Ref
-	TypedPtr() InputEventWithModifiers
+	Ptr() InputEventWithModifiers
 }
 type RefIntervalTweener interface {
 	Ref
-	TypedPtr() IntervalTweener
+	Ptr() IntervalTweener
 }
 type RefJSON interface {
 	Ref
-	TypedPtr() JSON
+	Ptr() JSON
 }
 type RefJavaClass interface {
 	Ref
-	TypedPtr() JavaClass
+	Ptr() JavaClass
 }
 type RefJavaObject interface {
 	Ref
-	TypedPtr() JavaObject
+	Ptr() JavaObject
 }
 type RefJavaScriptObject interface {
 	Ref
-	TypedPtr() JavaScriptObject
+	Ptr() JavaScriptObject
 }
 type RefJointLimitation3D interface {
 	Ref
-	TypedPtr() JointLimitation3D
+	Ptr() JointLimitation3D
 }
 type RefJointLimitationCone3D interface {
 	Ref
-	TypedPtr() JointLimitationCone3D
+	Ptr() JointLimitationCone3D
 }
 type RefKinematicCollision2D interface {
 	Ref
-	TypedPtr() KinematicCollision2D
+	Ptr() KinematicCollision2D
 }
 type RefKinematicCollision3D interface {
 	Ref
-	TypedPtr() KinematicCollision3D
+	Ptr() KinematicCollision3D
 }
 type RefLabelSettings interface {
 	Ref
-	TypedPtr() LabelSettings
+	Ptr() LabelSettings
 }
 type RefLightmapGIData interface {
 	Ref
-	TypedPtr() LightmapGIData
+	Ptr() LightmapGIData
 }
 type RefLightmapper interface {
 	Ref
-	TypedPtr() Lightmapper
+	Ptr() Lightmapper
 }
 type RefLightmapperRD interface {
 	Ref
-	TypedPtr() LightmapperRD
+	Ptr() LightmapperRD
 }
 type RefLogger interface {
 	Ref
-	TypedPtr() Logger
+	Ptr() Logger
 }
 type RefMaterial interface {
 	Ref
-	TypedPtr() Material
+	Ptr() Material
 }
 type RefMesh interface {
 	Ref
-	TypedPtr() Mesh
+	Ptr() Mesh
 }
 type RefMeshConvexDecompositionSettings interface {
 	Ref
-	TypedPtr() MeshConvexDecompositionSettings
+	Ptr() MeshConvexDecompositionSettings
 }
 type RefMeshDataTool interface {
 	Ref
-	TypedPtr() MeshDataTool
+	Ptr() MeshDataTool
 }
 type RefMeshLibrary interface {
 	Ref
-	TypedPtr() MeshLibrary
+	Ptr() MeshLibrary
 }
 type RefMeshTexture interface {
 	Ref
-	TypedPtr() MeshTexture
+	Ptr() MeshTexture
 }
 type RefMethodTweener interface {
 	Ref
-	TypedPtr() MethodTweener
+	Ptr() MethodTweener
 }
 type RefMissingResource interface {
 	Ref
-	TypedPtr() MissingResource
+	Ptr() MissingResource
 }
 type RefMobileVRInterface interface {
 	Ref
-	TypedPtr() MobileVRInterface
+	Ptr() MobileVRInterface
 }
 type RefMultiMesh interface {
 	Ref
-	TypedPtr() MultiMesh
+	Ptr() MultiMesh
 }
 type RefMultiplayerAPI interface {
 	Ref
-	TypedPtr() MultiplayerAPI
+	Ptr() MultiplayerAPI
 }
 type RefMultiplayerAPIExtension interface {
 	Ref
-	TypedPtr() MultiplayerAPIExtension
+	Ptr() MultiplayerAPIExtension
 }
 type RefMultiplayerPeer interface {
 	Ref
-	TypedPtr() MultiplayerPeer
+	Ptr() MultiplayerPeer
 }
 type RefMultiplayerPeerExtension interface {
 	Ref
-	TypedPtr() MultiplayerPeerExtension
+	Ptr() MultiplayerPeerExtension
 }
 type RefMutex interface {
 	Ref
-	TypedPtr() Mutex
+	Ptr() Mutex
 }
 type RefNavigationMesh interface {
 	Ref
-	TypedPtr() NavigationMesh
+	Ptr() NavigationMesh
 }
 type RefNavigationMeshSourceGeometryData2D interface {
 	Ref
-	TypedPtr() NavigationMeshSourceGeometryData2D
+	Ptr() NavigationMeshSourceGeometryData2D
 }
 type RefNavigationMeshSourceGeometryData3D interface {
 	Ref
-	TypedPtr() NavigationMeshSourceGeometryData3D
+	Ptr() NavigationMeshSourceGeometryData3D
 }
 type RefNavigationPathQueryParameters2D interface {
 	Ref
-	TypedPtr() NavigationPathQueryParameters2D
+	Ptr() NavigationPathQueryParameters2D
 }
 type RefNavigationPathQueryParameters3D interface {
 	Ref
-	TypedPtr() NavigationPathQueryParameters3D
+	Ptr() NavigationPathQueryParameters3D
 }
 type RefNavigationPathQueryResult2D interface {
 	Ref
-	TypedPtr() NavigationPathQueryResult2D
+	Ptr() NavigationPathQueryResult2D
 }
 type RefNavigationPathQueryResult3D interface {
 	Ref
-	TypedPtr() NavigationPathQueryResult3D
+	Ptr() NavigationPathQueryResult3D
 }
 type RefNavigationPolygon interface {
 	Ref
-	TypedPtr() NavigationPolygon
+	Ptr() NavigationPolygon
 }
 type RefNode3DGizmo interface {
 	Ref
-	TypedPtr() Node3DGizmo
+	Ptr() Node3DGizmo
 }
 type RefNoise interface {
 	Ref
-	TypedPtr() Noise
+	Ptr() Noise
 }
 type RefNoiseTexture2D interface {
 	Ref
-	TypedPtr() NoiseTexture2D
+	Ptr() NoiseTexture2D
 }
 type RefNoiseTexture3D interface {
 	Ref
-	TypedPtr() NoiseTexture3D
+	Ptr() NoiseTexture3D
 }
 type RefORMMaterial3D interface {
 	Ref
-	TypedPtr() ORMMaterial3D
+	Ptr() ORMMaterial3D
 }
 type RefOccluder3D interface {
 	Ref
-	TypedPtr() Occluder3D
+	Ptr() Occluder3D
 }
 type RefOccluderPolygon2D interface {
 	Ref
-	TypedPtr() OccluderPolygon2D
+	Ptr() OccluderPolygon2D
 }
 type RefOfflineMultiplayerPeer interface {
 	Ref
-	TypedPtr() OfflineMultiplayerPeer
+	Ptr() OfflineMultiplayerPeer
 }
 type RefOggPacketSequence interface {
 	Ref
-	TypedPtr() OggPacketSequence
+	Ptr() OggPacketSequence
 }
 type RefOggPacketSequencePlayback interface {
 	Ref
-	TypedPtr() OggPacketSequencePlayback
+	Ptr() OggPacketSequencePlayback
 }
 type RefOpenXRAPIExtension interface {
 	Ref
-	TypedPtr() OpenXRAPIExtension
+	Ptr() OpenXRAPIExtension
 }
 type RefOpenXRAction interface {
 	Ref
-	TypedPtr() OpenXRAction
+	Ptr() OpenXRAction
 }
 type RefOpenXRActionBindingModifier interface {
 	Ref
-	TypedPtr() OpenXRActionBindingModifier
+	Ptr() OpenXRActionBindingModifier
 }
 type RefOpenXRActionMap interface {
 	Ref
-	TypedPtr() OpenXRActionMap
+	Ptr() OpenXRActionMap
 }
 type RefOpenXRActionSet interface {
 	Ref
-	TypedPtr() OpenXRActionSet
+	Ptr() OpenXRActionSet
 }
 type RefOpenXRAnalogThresholdModifier interface {
 	Ref
-	TypedPtr() OpenXRAnalogThresholdModifier
+	Ptr() OpenXRAnalogThresholdModifier
 }
 type RefOpenXRAnchorTracker interface {
 	Ref
-	TypedPtr() OpenXRAnchorTracker
+	Ptr() OpenXRAnchorTracker
 }
 type RefOpenXRBindingModifier interface {
 	Ref
-	TypedPtr() OpenXRBindingModifier
+	Ptr() OpenXRBindingModifier
 }
 type RefOpenXRDpadBindingModifier interface {
 	Ref
-	TypedPtr() OpenXRDpadBindingModifier
+	Ptr() OpenXRDpadBindingModifier
 }
 type RefOpenXRFutureResult interface {
 	Ref
-	TypedPtr() OpenXRFutureResult
+	Ptr() OpenXRFutureResult
 }
 type RefOpenXRHapticBase interface {
 	Ref
-	TypedPtr() OpenXRHapticBase
+	Ptr() OpenXRHapticBase
 }
 type RefOpenXRHapticVibration interface {
 	Ref
-	TypedPtr() OpenXRHapticVibration
+	Ptr() OpenXRHapticVibration
 }
 type RefOpenXRIPBinding interface {
 	Ref
-	TypedPtr() OpenXRIPBinding
+	Ptr() OpenXRIPBinding
 }
 type RefOpenXRIPBindingModifier interface {
 	Ref
-	TypedPtr() OpenXRIPBindingModifier
+	Ptr() OpenXRIPBindingModifier
 }
 type RefOpenXRInteractionProfile interface {
 	Ref
-	TypedPtr() OpenXRInteractionProfile
+	Ptr() OpenXRInteractionProfile
 }
 type RefOpenXRInterface interface {
 	Ref
-	TypedPtr() OpenXRInterface
+	Ptr() OpenXRInterface
 }
 type RefOpenXRMarkerTracker interface {
 	Ref
-	TypedPtr() OpenXRMarkerTracker
+	Ptr() OpenXRMarkerTracker
 }
 type RefOpenXRPlaneTracker interface {
 	Ref
-	TypedPtr() OpenXRPlaneTracker
+	Ptr() OpenXRPlaneTracker
 }
 type RefOpenXRSpatialCapabilityConfigurationAnchor interface {
 	Ref
-	TypedPtr() OpenXRSpatialCapabilityConfigurationAnchor
+	Ptr() OpenXRSpatialCapabilityConfigurationAnchor
 }
 type RefOpenXRSpatialCapabilityConfigurationAprilTag interface {
 	Ref
-	TypedPtr() OpenXRSpatialCapabilityConfigurationAprilTag
+	Ptr() OpenXRSpatialCapabilityConfigurationAprilTag
 }
 type RefOpenXRSpatialCapabilityConfigurationAruco interface {
 	Ref
-	TypedPtr() OpenXRSpatialCapabilityConfigurationAruco
+	Ptr() OpenXRSpatialCapabilityConfigurationAruco
 }
 type RefOpenXRSpatialCapabilityConfigurationBaseHeader interface {
 	Ref
-	TypedPtr() OpenXRSpatialCapabilityConfigurationBaseHeader
+	Ptr() OpenXRSpatialCapabilityConfigurationBaseHeader
 }
 type RefOpenXRSpatialCapabilityConfigurationMicroQrCode interface {
 	Ref
-	TypedPtr() OpenXRSpatialCapabilityConfigurationMicroQrCode
+	Ptr() OpenXRSpatialCapabilityConfigurationMicroQrCode
 }
 type RefOpenXRSpatialCapabilityConfigurationPlaneTracking interface {
 	Ref
-	TypedPtr() OpenXRSpatialCapabilityConfigurationPlaneTracking
+	Ptr() OpenXRSpatialCapabilityConfigurationPlaneTracking
 }
 type RefOpenXRSpatialCapabilityConfigurationQrCode interface {
 	Ref
-	TypedPtr() OpenXRSpatialCapabilityConfigurationQrCode
+	Ptr() OpenXRSpatialCapabilityConfigurationQrCode
 }
 type RefOpenXRSpatialComponentAnchorList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentAnchorList
+	Ptr() OpenXRSpatialComponentAnchorList
 }
 type RefOpenXRSpatialComponentBounded2DList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentBounded2DList
+	Ptr() OpenXRSpatialComponentBounded2DList
 }
 type RefOpenXRSpatialComponentBounded3DList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentBounded3DList
+	Ptr() OpenXRSpatialComponentBounded3DList
 }
 type RefOpenXRSpatialComponentData interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentData
+	Ptr() OpenXRSpatialComponentData
 }
 type RefOpenXRSpatialComponentMarkerList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentMarkerList
+	Ptr() OpenXRSpatialComponentMarkerList
 }
 type RefOpenXRSpatialComponentMesh2DList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentMesh2DList
+	Ptr() OpenXRSpatialComponentMesh2DList
 }
 type RefOpenXRSpatialComponentMesh3DList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentMesh3DList
+	Ptr() OpenXRSpatialComponentMesh3DList
 }
 type RefOpenXRSpatialComponentParentList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentParentList
+	Ptr() OpenXRSpatialComponentParentList
 }
 type RefOpenXRSpatialComponentPersistenceList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentPersistenceList
+	Ptr() OpenXRSpatialComponentPersistenceList
 }
 type RefOpenXRSpatialComponentPlaneAlignmentList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentPlaneAlignmentList
+	Ptr() OpenXRSpatialComponentPlaneAlignmentList
 }
 type RefOpenXRSpatialComponentPlaneSemanticLabelList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentPlaneSemanticLabelList
+	Ptr() OpenXRSpatialComponentPlaneSemanticLabelList
 }
 type RefOpenXRSpatialComponentPolygon2DList interface {
 	Ref
-	TypedPtr() OpenXRSpatialComponentPolygon2DList
+	Ptr() OpenXRSpatialComponentPolygon2DList
 }
 type RefOpenXRSpatialContextPersistenceConfig interface {
 	Ref
-	TypedPtr() OpenXRSpatialContextPersistenceConfig
+	Ptr() OpenXRSpatialContextPersistenceConfig
 }
 type RefOpenXRSpatialEntityTracker interface {
 	Ref
-	TypedPtr() OpenXRSpatialEntityTracker
+	Ptr() OpenXRSpatialEntityTracker
 }
 type RefOpenXRSpatialQueryResultData interface {
 	Ref
-	TypedPtr() OpenXRSpatialQueryResultData
+	Ptr() OpenXRSpatialQueryResultData
 }
 type RefOpenXRStructureBase interface {
 	Ref
-	TypedPtr() OpenXRStructureBase
+	Ptr() OpenXRStructureBase
 }
 type RefOptimizedTranslation interface {
 	Ref
-	TypedPtr() OptimizedTranslation
+	Ptr() OptimizedTranslation
 }
 type RefPCKPacker interface {
 	Ref
-	TypedPtr() PCKPacker
+	Ptr() PCKPacker
 }
 type RefPackedDataContainer interface {
 	Ref
-	TypedPtr() PackedDataContainer
+	Ptr() PackedDataContainer
 }
 type RefPackedDataContainerRef interface {
 	Ref
-	TypedPtr() PackedDataContainerRef
+	Ptr() PackedDataContainerRef
 }
 type RefPackedScene interface {
 	Ref
-	TypedPtr() PackedScene
+	Ptr() PackedScene
 }
 type RefPacketPeer interface {
 	Ref
-	TypedPtr() PacketPeer
+	Ptr() PacketPeer
 }
 type RefPacketPeerDTLS interface {
 	Ref
-	TypedPtr() PacketPeerDTLS
+	Ptr() PacketPeerDTLS
 }
 type RefPacketPeerExtension interface {
 	Ref
-	TypedPtr() PacketPeerExtension
+	Ptr() PacketPeerExtension
 }
 type RefPacketPeerStream interface {
 	Ref
-	TypedPtr() PacketPeerStream
+	Ptr() PacketPeerStream
 }
 type RefPacketPeerUDP interface {
 	Ref
-	TypedPtr() PacketPeerUDP
+	Ptr() PacketPeerUDP
 }
 type RefPanoramaSkyMaterial interface {
 	Ref
-	TypedPtr() PanoramaSkyMaterial
+	Ptr() PanoramaSkyMaterial
 }
 type RefParticleProcessMaterial interface {
 	Ref
-	TypedPtr() ParticleProcessMaterial
+	Ptr() ParticleProcessMaterial
 }
 type RefPhysicalSkyMaterial interface {
 	Ref
-	TypedPtr() PhysicalSkyMaterial
+	Ptr() PhysicalSkyMaterial
 }
 type RefPhysicsMaterial interface {
 	Ref
-	TypedPtr() PhysicsMaterial
+	Ptr() PhysicsMaterial
 }
 type RefPhysicsPointQueryParameters2D interface {
 	Ref
-	TypedPtr() PhysicsPointQueryParameters2D
+	Ptr() PhysicsPointQueryParameters2D
 }
 type RefPhysicsPointQueryParameters3D interface {
 	Ref
-	TypedPtr() PhysicsPointQueryParameters3D
+	Ptr() PhysicsPointQueryParameters3D
 }
 type RefPhysicsRayQueryParameters2D interface {
 	Ref
-	TypedPtr() PhysicsRayQueryParameters2D
+	Ptr() PhysicsRayQueryParameters2D
 }
 type RefPhysicsRayQueryParameters3D interface {
 	Ref
-	TypedPtr() PhysicsRayQueryParameters3D
+	Ptr() PhysicsRayQueryParameters3D
 }
 type RefPhysicsShapeQueryParameters2D interface {
 	Ref
-	TypedPtr() PhysicsShapeQueryParameters2D
+	Ptr() PhysicsShapeQueryParameters2D
 }
 type RefPhysicsShapeQueryParameters3D interface {
 	Ref
-	TypedPtr() PhysicsShapeQueryParameters3D
+	Ptr() PhysicsShapeQueryParameters3D
 }
 type RefPhysicsTestMotionParameters2D interface {
 	Ref
-	TypedPtr() PhysicsTestMotionParameters2D
+	Ptr() PhysicsTestMotionParameters2D
 }
 type RefPhysicsTestMotionParameters3D interface {
 	Ref
-	TypedPtr() PhysicsTestMotionParameters3D
+	Ptr() PhysicsTestMotionParameters3D
 }
 type RefPhysicsTestMotionResult2D interface {
 	Ref
-	TypedPtr() PhysicsTestMotionResult2D
+	Ptr() PhysicsTestMotionResult2D
 }
 type RefPhysicsTestMotionResult3D interface {
 	Ref
-	TypedPtr() PhysicsTestMotionResult3D
+	Ptr() PhysicsTestMotionResult3D
 }
 type RefPlaceholderCubemap interface {
 	Ref
-	TypedPtr() PlaceholderCubemap
+	Ptr() PlaceholderCubemap
 }
 type RefPlaceholderCubemapArray interface {
 	Ref
-	TypedPtr() PlaceholderCubemapArray
+	Ptr() PlaceholderCubemapArray
 }
 type RefPlaceholderMaterial interface {
 	Ref
-	TypedPtr() PlaceholderMaterial
+	Ptr() PlaceholderMaterial
 }
 type RefPlaceholderMesh interface {
 	Ref
-	TypedPtr() PlaceholderMesh
+	Ptr() PlaceholderMesh
 }
 type RefPlaceholderTexture2D interface {
 	Ref
-	TypedPtr() PlaceholderTexture2D
+	Ptr() PlaceholderTexture2D
 }
 type RefPlaceholderTexture2DArray interface {
 	Ref
-	TypedPtr() PlaceholderTexture2DArray
+	Ptr() PlaceholderTexture2DArray
 }
 type RefPlaceholderTexture3D interface {
 	Ref
-	TypedPtr() PlaceholderTexture3D
+	Ptr() PlaceholderTexture3D
 }
 type RefPlaceholderTextureLayered interface {
 	Ref
-	TypedPtr() PlaceholderTextureLayered
+	Ptr() PlaceholderTextureLayered
 }
 type RefPlaneMesh interface {
 	Ref
-	TypedPtr() PlaneMesh
+	Ptr() PlaneMesh
 }
 type RefPointMesh interface {
 	Ref
-	TypedPtr() PointMesh
+	Ptr() PointMesh
 }
 type RefPolygonOccluder3D interface {
 	Ref
-	TypedPtr() PolygonOccluder3D
+	Ptr() PolygonOccluder3D
 }
 type RefPolygonPathFinder interface {
 	Ref
-	TypedPtr() PolygonPathFinder
+	Ptr() PolygonPathFinder
 }
 type RefPortableCompressedTexture2D interface {
 	Ref
-	TypedPtr() PortableCompressedTexture2D
+	Ptr() PortableCompressedTexture2D
 }
 type RefPrimitiveMesh interface {
 	Ref
-	TypedPtr() PrimitiveMesh
+	Ptr() PrimitiveMesh
 }
 type RefPrismMesh interface {
 	Ref
-	TypedPtr() PrismMesh
+	Ptr() PrismMesh
 }
 type RefProceduralSkyMaterial interface {
 	Ref
-	TypedPtr() ProceduralSkyMaterial
+	Ptr() ProceduralSkyMaterial
 }
 type RefPropertyTweener interface {
 	Ref
-	TypedPtr() PropertyTweener
+	Ptr() PropertyTweener
 }
 type RefQuadMesh interface {
 	Ref
-	TypedPtr() QuadMesh
+	Ptr() QuadMesh
 }
 type RefQuadOccluder3D interface {
 	Ref
-	TypedPtr() QuadOccluder3D
+	Ptr() QuadOccluder3D
 }
 type RefRDAccelerationStructureGeometry interface {
 	Ref
-	TypedPtr() RDAccelerationStructureGeometry
+	Ptr() RDAccelerationStructureGeometry
 }
 type RefRDAccelerationStructureInstance interface {
 	Ref
-	TypedPtr() RDAccelerationStructureInstance
+	Ptr() RDAccelerationStructureInstance
 }
 type RefRDAttachmentFormat interface {
 	Ref
-	TypedPtr() RDAttachmentFormat
+	Ptr() RDAttachmentFormat
 }
 type RefRDFramebufferPass interface {
 	Ref
-	TypedPtr() RDFramebufferPass
+	Ptr() RDFramebufferPass
 }
 type RefRDHitGroup interface {
 	Ref
-	TypedPtr() RDHitGroup
+	Ptr() RDHitGroup
 }
 type RefRDPipelineColorBlendState interface {
 	Ref
-	TypedPtr() RDPipelineColorBlendState
+	Ptr() RDPipelineColorBlendState
 }
 type RefRDPipelineColorBlendStateAttachment interface {
 	Ref
-	TypedPtr() RDPipelineColorBlendStateAttachment
+	Ptr() RDPipelineColorBlendStateAttachment
 }
 type RefRDPipelineDepthStencilState interface {
 	Ref
-	TypedPtr() RDPipelineDepthStencilState
+	Ptr() RDPipelineDepthStencilState
 }
 type RefRDPipelineMultisampleState interface {
 	Ref
-	TypedPtr() RDPipelineMultisampleState
+	Ptr() RDPipelineMultisampleState
 }
 type RefRDPipelineRasterizationState interface {
 	Ref
-	TypedPtr() RDPipelineRasterizationState
+	Ptr() RDPipelineRasterizationState
 }
 type RefRDPipelineShader interface {
 	Ref
-	TypedPtr() RDPipelineShader
+	Ptr() RDPipelineShader
 }
 type RefRDPipelineSpecializationConstant interface {
 	Ref
-	TypedPtr() RDPipelineSpecializationConstant
+	Ptr() RDPipelineSpecializationConstant
 }
 type RefRDSamplerState interface {
 	Ref
-	TypedPtr() RDSamplerState
+	Ptr() RDSamplerState
 }
 type RefRDShaderFile interface {
 	Ref
-	TypedPtr() RDShaderFile
+	Ptr() RDShaderFile
 }
 type RefRDShaderSPIRV interface {
 	Ref
-	TypedPtr() RDShaderSPIRV
+	Ptr() RDShaderSPIRV
 }
 type RefRDShaderSource interface {
 	Ref
-	TypedPtr() RDShaderSource
+	Ptr() RDShaderSource
 }
 type RefRDTextureFormat interface {
 	Ref
-	TypedPtr() RDTextureFormat
+	Ptr() RDTextureFormat
 }
 type RefRDTextureView interface {
 	Ref
-	TypedPtr() RDTextureView
+	Ptr() RDTextureView
 }
 type RefRDUniform interface {
 	Ref
-	TypedPtr() RDUniform
+	Ptr() RDUniform
 }
 type RefRDVertexAttribute interface {
 	Ref
-	TypedPtr() RDVertexAttribute
+	Ptr() RDVertexAttribute
 }
 type RefRandomNumberGenerator interface {
 	Ref
-	TypedPtr() RandomNumberGenerator
+	Ptr() RandomNumberGenerator
 }
 type RefRectangleShape2D interface {
 	Ref
-	TypedPtr() RectangleShape2D
+	Ptr() RectangleShape2D
 }
 type RefRefCounted interface {
 	Ref
-	TypedPtr() RefCounted
+	Ptr() RefCounted
 }
 type RefRegEx interface {
 	Ref
-	TypedPtr() RegEx
+	Ptr() RegEx
 }
 type RefRegExMatch interface {
 	Ref
-	TypedPtr() RegExMatch
+	Ptr() RegExMatch
 }
 type RefRenderSceneBuffers interface {
 	Ref
-	TypedPtr() RenderSceneBuffers
+	Ptr() RenderSceneBuffers
 }
 type RefRenderSceneBuffersConfiguration interface {
 	Ref
-	TypedPtr() RenderSceneBuffersConfiguration
+	Ptr() RenderSceneBuffersConfiguration
 }
 type RefRenderSceneBuffersExtension interface {
 	Ref
-	TypedPtr() RenderSceneBuffersExtension
+	Ptr() RenderSceneBuffersExtension
 }
 type RefRenderSceneBuffersRD interface {
 	Ref
-	TypedPtr() RenderSceneBuffersRD
+	Ptr() RenderSceneBuffersRD
 }
 type RefResource interface {
 	Ref
-	TypedPtr() Resource
+	Ptr() Resource
 }
 type RefResourceFormatLoader interface {
 	Ref
-	TypedPtr() ResourceFormatLoader
+	Ptr() ResourceFormatLoader
 }
 type RefResourceFormatSaver interface {
 	Ref
-	TypedPtr() ResourceFormatSaver
+	Ptr() ResourceFormatSaver
 }
 type RefResourceImporter interface {
 	Ref
-	TypedPtr() ResourceImporter
+	Ptr() ResourceImporter
 }
 type RefResourceImporterBMFont interface {
 	Ref
-	TypedPtr() ResourceImporterBMFont
+	Ptr() ResourceImporterBMFont
 }
 type RefResourceImporterBitMap interface {
 	Ref
-	TypedPtr() ResourceImporterBitMap
+	Ptr() ResourceImporterBitMap
 }
 type RefResourceImporterCSVTranslation interface {
 	Ref
-	TypedPtr() ResourceImporterCSVTranslation
+	Ptr() ResourceImporterCSVTranslation
 }
 type RefResourceImporterDynamicFont interface {
 	Ref
-	TypedPtr() ResourceImporterDynamicFont
+	Ptr() ResourceImporterDynamicFont
 }
 type RefResourceImporterImage interface {
 	Ref
-	TypedPtr() ResourceImporterImage
+	Ptr() ResourceImporterImage
 }
 type RefResourceImporterImageFont interface {
 	Ref
-	TypedPtr() ResourceImporterImageFont
+	Ptr() ResourceImporterImageFont
 }
 type RefResourceImporterLayeredTexture interface {
 	Ref
-	TypedPtr() ResourceImporterLayeredTexture
+	Ptr() ResourceImporterLayeredTexture
 }
 type RefResourceImporterMP3 interface {
 	Ref
-	TypedPtr() ResourceImporterMP3
+	Ptr() ResourceImporterMP3
 }
 type RefResourceImporterOBJ interface {
 	Ref
-	TypedPtr() ResourceImporterOBJ
+	Ptr() ResourceImporterOBJ
 }
 type RefResourceImporterOggVorbis interface {
 	Ref
-	TypedPtr() ResourceImporterOggVorbis
+	Ptr() ResourceImporterOggVorbis
 }
 type RefResourceImporterSVG interface {
 	Ref
-	TypedPtr() ResourceImporterSVG
+	Ptr() ResourceImporterSVG
 }
 type RefResourceImporterScene interface {
 	Ref
-	TypedPtr() ResourceImporterScene
+	Ptr() ResourceImporterScene
 }
 type RefResourceImporterShaderFile interface {
 	Ref
-	TypedPtr() ResourceImporterShaderFile
+	Ptr() ResourceImporterShaderFile
 }
 type RefResourceImporterTexture interface {
 	Ref
-	TypedPtr() ResourceImporterTexture
+	Ptr() ResourceImporterTexture
 }
 type RefResourceImporterTextureAtlas interface {
 	Ref
-	TypedPtr() ResourceImporterTextureAtlas
+	Ptr() ResourceImporterTextureAtlas
 }
 type RefResourceImporterWAV interface {
 	Ref
-	TypedPtr() ResourceImporterWAV
+	Ptr() ResourceImporterWAV
 }
 type RefRibbonTrailMesh interface {
 	Ref
-	TypedPtr() RibbonTrailMesh
+	Ptr() RibbonTrailMesh
 }
 type RefRichTextEffect interface {
 	Ref
-	TypedPtr() RichTextEffect
+	Ptr() RichTextEffect
 }
 type RefSceneMultiplayer interface {
 	Ref
-	TypedPtr() SceneMultiplayer
+	Ptr() SceneMultiplayer
 }
 type RefSceneReplicationConfig interface {
 	Ref
-	TypedPtr() SceneReplicationConfig
+	Ptr() SceneReplicationConfig
 }
 type RefSceneState interface {
 	Ref
-	TypedPtr() SceneState
+	Ptr() SceneState
 }
 type RefSceneTreeTimer interface {
 	Ref
-	TypedPtr() SceneTreeTimer
+	Ptr() SceneTreeTimer
 }
 type RefScript interface {
 	Ref
-	TypedPtr() Script
+	Ptr() Script
 }
 type RefScriptBacktrace interface {
 	Ref
-	TypedPtr() ScriptBacktrace
+	Ptr() ScriptBacktrace
 }
 type RefScriptExtension interface {
 	Ref
-	TypedPtr() ScriptExtension
+	Ptr() ScriptExtension
 }
 type RefSegmentShape2D interface {
 	Ref
-	TypedPtr() SegmentShape2D
+	Ptr() SegmentShape2D
 }
 type RefSemaphore interface {
 	Ref
-	TypedPtr() Semaphore
+	Ptr() Semaphore
 }
 type RefSeparationRayShape2D interface {
 	Ref
-	TypedPtr() SeparationRayShape2D
+	Ptr() SeparationRayShape2D
 }
 type RefSeparationRayShape3D interface {
 	Ref
-	TypedPtr() SeparationRayShape3D
+	Ptr() SeparationRayShape3D
 }
 type RefShader interface {
 	Ref
-	TypedPtr() Shader
+	Ptr() Shader
 }
 type RefShaderInclude interface {
 	Ref
-	TypedPtr() ShaderInclude
+	Ptr() ShaderInclude
 }
 type RefShaderMaterial interface {
 	Ref
-	TypedPtr() ShaderMaterial
+	Ptr() ShaderMaterial
 }
 type RefShape2D interface {
 	Ref
-	TypedPtr() Shape2D
+	Ptr() Shape2D
 }
 type RefShape3D interface {
 	Ref
-	TypedPtr() Shape3D
+	Ptr() Shape3D
 }
 type RefShortcut interface {
 	Ref
-	TypedPtr() Shortcut
+	Ptr() Shortcut
 }
 type RefSkeletonModification2D interface {
 	Ref
-	TypedPtr() SkeletonModification2D
+	Ptr() SkeletonModification2D
 }
 type RefSkeletonModification2DCCDIK interface {
 	Ref
-	TypedPtr() SkeletonModification2DCCDIK
+	Ptr() SkeletonModification2DCCDIK
 }
 type RefSkeletonModification2DFABRIK interface {
 	Ref
-	TypedPtr() SkeletonModification2DFABRIK
+	Ptr() SkeletonModification2DFABRIK
 }
 type RefSkeletonModification2DJiggle interface {
 	Ref
-	TypedPtr() SkeletonModification2DJiggle
+	Ptr() SkeletonModification2DJiggle
 }
 type RefSkeletonModification2DLookAt interface {
 	Ref
-	TypedPtr() SkeletonModification2DLookAt
+	Ptr() SkeletonModification2DLookAt
 }
 type RefSkeletonModification2DPhysicalBones interface {
 	Ref
-	TypedPtr() SkeletonModification2DPhysicalBones
+	Ptr() SkeletonModification2DPhysicalBones
 }
 type RefSkeletonModification2DStackHolder interface {
 	Ref
-	TypedPtr() SkeletonModification2DStackHolder
+	Ptr() SkeletonModification2DStackHolder
 }
 type RefSkeletonModification2DTwoBoneIK interface {
 	Ref
-	TypedPtr() SkeletonModification2DTwoBoneIK
+	Ptr() SkeletonModification2DTwoBoneIK
 }
 type RefSkeletonModificationStack2D interface {
 	Ref
-	TypedPtr() SkeletonModificationStack2D
+	Ptr() SkeletonModificationStack2D
 }
 type RefSkeletonProfile interface {
 	Ref
-	TypedPtr() SkeletonProfile
+	Ptr() SkeletonProfile
 }
 type RefSkeletonProfileHumanoid interface {
 	Ref
-	TypedPtr() SkeletonProfileHumanoid
+	Ptr() SkeletonProfileHumanoid
 }
 type RefSkin interface {
 	Ref
-	TypedPtr() Skin
+	Ptr() Skin
 }
 type RefSkinReference interface {
 	Ref
-	TypedPtr() SkinReference
+	Ptr() SkinReference
 }
 type RefSky interface {
 	Ref
-	TypedPtr() Sky
+	Ptr() Sky
 }
 type RefSocketServer interface {
 	Ref
-	TypedPtr() SocketServer
+	Ptr() SocketServer
 }
 type RefSphereMesh interface {
 	Ref
-	TypedPtr() SphereMesh
+	Ptr() SphereMesh
 }
 type RefSphereOccluder3D interface {
 	Ref
-	TypedPtr() SphereOccluder3D
+	Ptr() SphereOccluder3D
 }
 type RefSphereShape3D interface {
 	Ref
-	TypedPtr() SphereShape3D
+	Ptr() SphereShape3D
 }
 type RefSpriteFrames interface {
 	Ref
-	TypedPtr() SpriteFrames
+	Ptr() SpriteFrames
 }
 type RefStandardMaterial3D interface {
 	Ref
-	TypedPtr() StandardMaterial3D
+	Ptr() StandardMaterial3D
 }
 type RefStreamPeer interface {
 	Ref
-	TypedPtr() StreamPeer
+	Ptr() StreamPeer
 }
 type RefStreamPeerBuffer interface {
 	Ref
-	TypedPtr() StreamPeerBuffer
+	Ptr() StreamPeerBuffer
 }
 type RefStreamPeerExtension interface {
 	Ref
-	TypedPtr() StreamPeerExtension
+	Ptr() StreamPeerExtension
 }
 type RefStreamPeerGZIP interface {
 	Ref
-	TypedPtr() StreamPeerGZIP
+	Ptr() StreamPeerGZIP
 }
 type RefStreamPeerSocket interface {
 	Ref
-	TypedPtr() StreamPeerSocket
+	Ptr() StreamPeerSocket
 }
 type RefStreamPeerTCP interface {
 	Ref
-	TypedPtr() StreamPeerTCP
+	Ptr() StreamPeerTCP
 }
 type RefStreamPeerTLS interface {
 	Ref
-	TypedPtr() StreamPeerTLS
+	Ptr() StreamPeerTLS
 }
 type RefStreamPeerUDS interface {
 	Ref
-	TypedPtr() StreamPeerUDS
+	Ptr() StreamPeerUDS
 }
 type RefStyleBox interface {
 	Ref
-	TypedPtr() StyleBox
+	Ptr() StyleBox
 }
 type RefStyleBoxEmpty interface {
 	Ref
-	TypedPtr() StyleBoxEmpty
+	Ptr() StyleBoxEmpty
 }
 type RefStyleBoxFlat interface {
 	Ref
-	TypedPtr() StyleBoxFlat
+	Ptr() StyleBoxFlat
 }
 type RefStyleBoxLine interface {
 	Ref
-	TypedPtr() StyleBoxLine
+	Ptr() StyleBoxLine
 }
 type RefStyleBoxTexture interface {
 	Ref
-	TypedPtr() StyleBoxTexture
+	Ptr() StyleBoxTexture
 }
 type RefSubtweenTweener interface {
 	Ref
-	TypedPtr() SubtweenTweener
+	Ptr() SubtweenTweener
 }
 type RefSurfaceTool interface {
 	Ref
-	TypedPtr() SurfaceTool
+	Ptr() SurfaceTool
 }
 type RefSyntaxHighlighter interface {
 	Ref
-	TypedPtr() SyntaxHighlighter
+	Ptr() SyntaxHighlighter
 }
 type RefSystemFont interface {
 	Ref
-	TypedPtr() SystemFont
+	Ptr() SystemFont
 }
 type RefTCPServer interface {
 	Ref
-	TypedPtr() TCPServer
+	Ptr() TCPServer
 }
 type RefTLSOptions interface {
 	Ref
-	TypedPtr() TLSOptions
+	Ptr() TLSOptions
 }
 type RefTextLine interface {
 	Ref
-	TypedPtr() TextLine
+	Ptr() TextLine
 }
 type RefTextMesh interface {
 	Ref
-	TypedPtr() TextMesh
+	Ptr() TextMesh
 }
 type RefTextParagraph interface {
 	Ref
-	TypedPtr() TextParagraph
+	Ptr() TextParagraph
 }
 type RefTextServer interface {
 	Ref
-	TypedPtr() TextServer
+	Ptr() TextServer
 }
 type RefTextServerAdvanced interface {
 	Ref
-	TypedPtr() TextServerAdvanced
+	Ptr() TextServerAdvanced
 }
 type RefTextServerDummy interface {
 	Ref
-	TypedPtr() TextServerDummy
+	Ptr() TextServerDummy
 }
 type RefTextServerExtension interface {
 	Ref
-	TypedPtr() TextServerExtension
+	Ptr() TextServerExtension
 }
 type RefTexture interface {
 	Ref
-	TypedPtr() Texture
+	Ptr() Texture
 }
 type RefTexture2D interface {
 	Ref
-	TypedPtr() Texture2D
+	Ptr() Texture2D
 }
 type RefTexture2DArray interface {
 	Ref
-	TypedPtr() Texture2DArray
+	Ptr() Texture2DArray
 }
 type RefTexture2DArrayRD interface {
 	Ref
-	TypedPtr() Texture2DArrayRD
+	Ptr() Texture2DArrayRD
 }
 type RefTexture2DRD interface {
 	Ref
-	TypedPtr() Texture2DRD
+	Ptr() Texture2DRD
 }
 type RefTexture3D interface {
 	Ref
-	TypedPtr() Texture3D
+	Ptr() Texture3D
 }
 type RefTexture3DRD interface {
 	Ref
-	TypedPtr() Texture3DRD
+	Ptr() Texture3DRD
 }
 type RefTextureCubemapArrayRD interface {
 	Ref
-	TypedPtr() TextureCubemapArrayRD
+	Ptr() TextureCubemapArrayRD
 }
 type RefTextureCubemapRD interface {
 	Ref
-	TypedPtr() TextureCubemapRD
+	Ptr() TextureCubemapRD
 }
 type RefTextureLayered interface {
 	Ref
-	TypedPtr() TextureLayered
+	Ptr() TextureLayered
 }
 type RefTextureLayeredRD interface {
 	Ref
-	TypedPtr() TextureLayeredRD
+	Ptr() TextureLayeredRD
 }
 type RefTheme interface {
 	Ref
-	TypedPtr() Theme
+	Ptr() Theme
 }
 type RefThread interface {
 	Ref
-	TypedPtr() Thread
+	Ptr() Thread
 }
 type RefTileMapPattern interface {
 	Ref
-	TypedPtr() TileMapPattern
+	Ptr() TileMapPattern
 }
 type RefTileSet interface {
 	Ref
-	TypedPtr() TileSet
+	Ptr() TileSet
 }
 type RefTileSetAtlasSource interface {
 	Ref
-	TypedPtr() TileSetAtlasSource
+	Ptr() TileSetAtlasSource
 }
 type RefTileSetScenesCollectionSource interface {
 	Ref
-	TypedPtr() TileSetScenesCollectionSource
+	Ptr() TileSetScenesCollectionSource
 }
 type RefTileSetSource interface {
 	Ref
-	TypedPtr() TileSetSource
+	Ptr() TileSetSource
 }
 type RefTorusMesh interface {
 	Ref
-	TypedPtr() TorusMesh
+	Ptr() TorusMesh
 }
 type RefTranslation interface {
 	Ref
-	TypedPtr() Translation
+	Ptr() Translation
 }
 type RefTranslationDomain interface {
 	Ref
-	TypedPtr() TranslationDomain
+	Ptr() TranslationDomain
 }
 type RefTriangleMesh interface {
 	Ref
-	TypedPtr() TriangleMesh
+	Ptr() TriangleMesh
 }
 type RefTubeTrailMesh interface {
 	Ref
-	TypedPtr() TubeTrailMesh
+	Ptr() TubeTrailMesh
 }
 type RefTween interface {
 	Ref
-	TypedPtr() Tween
+	Ptr() Tween
 }
 type RefTweener interface {
 	Ref
-	TypedPtr() Tweener
+	Ptr() Tweener
 }
 type RefUDPServer interface {
 	Ref
-	TypedPtr() UDPServer
+	Ptr() UDPServer
 }
 type RefUDSServer interface {
 	Ref
-	TypedPtr() UDSServer
+	Ptr() UDSServer
 }
 type RefUPNP interface {
 	Ref
-	TypedPtr() UPNP
+	Ptr() UPNP
 }
 type RefUPNPDevice interface {
 	Ref
-	TypedPtr() UPNPDevice
+	Ptr() UPNPDevice
 }
 type RefVideoStream interface {
 	Ref
-	TypedPtr() VideoStream
+	Ptr() VideoStream
 }
 type RefVideoStreamPlayback interface {
 	Ref
-	TypedPtr() VideoStreamPlayback
+	Ptr() VideoStreamPlayback
 }
 type RefVideoStreamTheora interface {
 	Ref
-	TypedPtr() VideoStreamTheora
+	Ptr() VideoStreamTheora
 }
 type RefViewportTexture interface {
 	Ref
-	TypedPtr() ViewportTexture
+	Ptr() ViewportTexture
 }
 type RefVisualShader interface {
 	Ref
-	TypedPtr() VisualShader
+	Ptr() VisualShader
 }
 type RefVisualShaderNode interface {
 	Ref
-	TypedPtr() VisualShaderNode
+	Ptr() VisualShaderNode
 }
 type RefVisualShaderNodeBillboard interface {
 	Ref
-	TypedPtr() VisualShaderNodeBillboard
+	Ptr() VisualShaderNodeBillboard
 }
 type RefVisualShaderNodeBooleanConstant interface {
 	Ref
-	TypedPtr() VisualShaderNodeBooleanConstant
+	Ptr() VisualShaderNodeBooleanConstant
 }
 type RefVisualShaderNodeBooleanParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeBooleanParameter
+	Ptr() VisualShaderNodeBooleanParameter
 }
 type RefVisualShaderNodeClamp interface {
 	Ref
-	TypedPtr() VisualShaderNodeClamp
+	Ptr() VisualShaderNodeClamp
 }
 type RefVisualShaderNodeColorConstant interface {
 	Ref
-	TypedPtr() VisualShaderNodeColorConstant
+	Ptr() VisualShaderNodeColorConstant
 }
 type RefVisualShaderNodeColorFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeColorFunc
+	Ptr() VisualShaderNodeColorFunc
 }
 type RefVisualShaderNodeColorOp interface {
 	Ref
-	TypedPtr() VisualShaderNodeColorOp
+	Ptr() VisualShaderNodeColorOp
 }
 type RefVisualShaderNodeColorParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeColorParameter
+	Ptr() VisualShaderNodeColorParameter
 }
 type RefVisualShaderNodeComment interface {
 	Ref
-	TypedPtr() VisualShaderNodeComment
+	Ptr() VisualShaderNodeComment
 }
 type RefVisualShaderNodeCompare interface {
 	Ref
-	TypedPtr() VisualShaderNodeCompare
+	Ptr() VisualShaderNodeCompare
 }
 type RefVisualShaderNodeConstant interface {
 	Ref
-	TypedPtr() VisualShaderNodeConstant
+	Ptr() VisualShaderNodeConstant
 }
 type RefVisualShaderNodeCubemap interface {
 	Ref
-	TypedPtr() VisualShaderNodeCubemap
+	Ptr() VisualShaderNodeCubemap
 }
 type RefVisualShaderNodeCubemapParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeCubemapParameter
+	Ptr() VisualShaderNodeCubemapParameter
 }
 type RefVisualShaderNodeCurveTexture interface {
 	Ref
-	TypedPtr() VisualShaderNodeCurveTexture
+	Ptr() VisualShaderNodeCurveTexture
 }
 type RefVisualShaderNodeCurveXYZTexture interface {
 	Ref
-	TypedPtr() VisualShaderNodeCurveXYZTexture
+	Ptr() VisualShaderNodeCurveXYZTexture
 }
 type RefVisualShaderNodeCustom interface {
 	Ref
-	TypedPtr() VisualShaderNodeCustom
+	Ptr() VisualShaderNodeCustom
 }
 type RefVisualShaderNodeDerivativeFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeDerivativeFunc
+	Ptr() VisualShaderNodeDerivativeFunc
 }
 type RefVisualShaderNodeDeterminant interface {
 	Ref
-	TypedPtr() VisualShaderNodeDeterminant
+	Ptr() VisualShaderNodeDeterminant
 }
 type RefVisualShaderNodeDistanceFade interface {
 	Ref
-	TypedPtr() VisualShaderNodeDistanceFade
+	Ptr() VisualShaderNodeDistanceFade
 }
 type RefVisualShaderNodeDotProduct interface {
 	Ref
-	TypedPtr() VisualShaderNodeDotProduct
+	Ptr() VisualShaderNodeDotProduct
 }
 type RefVisualShaderNodeExpression interface {
 	Ref
-	TypedPtr() VisualShaderNodeExpression
+	Ptr() VisualShaderNodeExpression
 }
 type RefVisualShaderNodeFaceForward interface {
 	Ref
-	TypedPtr() VisualShaderNodeFaceForward
+	Ptr() VisualShaderNodeFaceForward
 }
 type RefVisualShaderNodeFloatConstant interface {
 	Ref
-	TypedPtr() VisualShaderNodeFloatConstant
+	Ptr() VisualShaderNodeFloatConstant
 }
 type RefVisualShaderNodeFloatFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeFloatFunc
+	Ptr() VisualShaderNodeFloatFunc
 }
 type RefVisualShaderNodeFloatOp interface {
 	Ref
-	TypedPtr() VisualShaderNodeFloatOp
+	Ptr() VisualShaderNodeFloatOp
 }
 type RefVisualShaderNodeFloatParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeFloatParameter
+	Ptr() VisualShaderNodeFloatParameter
 }
 type RefVisualShaderNodeFrame interface {
 	Ref
-	TypedPtr() VisualShaderNodeFrame
+	Ptr() VisualShaderNodeFrame
 }
 type RefVisualShaderNodeFresnel interface {
 	Ref
-	TypedPtr() VisualShaderNodeFresnel
+	Ptr() VisualShaderNodeFresnel
 }
 type RefVisualShaderNodeGlobalExpression interface {
 	Ref
-	TypedPtr() VisualShaderNodeGlobalExpression
+	Ptr() VisualShaderNodeGlobalExpression
 }
 type RefVisualShaderNodeGroupBase interface {
 	Ref
-	TypedPtr() VisualShaderNodeGroupBase
+	Ptr() VisualShaderNodeGroupBase
 }
 type RefVisualShaderNodeIf interface {
 	Ref
-	TypedPtr() VisualShaderNodeIf
+	Ptr() VisualShaderNodeIf
 }
 type RefVisualShaderNodeInput interface {
 	Ref
-	TypedPtr() VisualShaderNodeInput
+	Ptr() VisualShaderNodeInput
 }
 type RefVisualShaderNodeIntConstant interface {
 	Ref
-	TypedPtr() VisualShaderNodeIntConstant
+	Ptr() VisualShaderNodeIntConstant
 }
 type RefVisualShaderNodeIntFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeIntFunc
+	Ptr() VisualShaderNodeIntFunc
 }
 type RefVisualShaderNodeIntOp interface {
 	Ref
-	TypedPtr() VisualShaderNodeIntOp
+	Ptr() VisualShaderNodeIntOp
 }
 type RefVisualShaderNodeIntParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeIntParameter
+	Ptr() VisualShaderNodeIntParameter
 }
 type RefVisualShaderNodeIs interface {
 	Ref
-	TypedPtr() VisualShaderNodeIs
+	Ptr() VisualShaderNodeIs
 }
 type RefVisualShaderNodeLinearSceneDepth interface {
 	Ref
-	TypedPtr() VisualShaderNodeLinearSceneDepth
+	Ptr() VisualShaderNodeLinearSceneDepth
 }
 type RefVisualShaderNodeMix interface {
 	Ref
-	TypedPtr() VisualShaderNodeMix
+	Ptr() VisualShaderNodeMix
 }
 type RefVisualShaderNodeMultiplyAdd interface {
 	Ref
-	TypedPtr() VisualShaderNodeMultiplyAdd
+	Ptr() VisualShaderNodeMultiplyAdd
 }
 type RefVisualShaderNodeOuterProduct interface {
 	Ref
-	TypedPtr() VisualShaderNodeOuterProduct
+	Ptr() VisualShaderNodeOuterProduct
 }
 type RefVisualShaderNodeOutput interface {
 	Ref
-	TypedPtr() VisualShaderNodeOutput
+	Ptr() VisualShaderNodeOutput
 }
 type RefVisualShaderNodeParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeParameter
+	Ptr() VisualShaderNodeParameter
 }
 type RefVisualShaderNodeParameterRef interface {
 	Ref
-	TypedPtr() VisualShaderNodeParameterRef
+	Ptr() VisualShaderNodeParameterRef
 }
 type RefVisualShaderNodeParticleAccelerator interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleAccelerator
+	Ptr() VisualShaderNodeParticleAccelerator
 }
 type RefVisualShaderNodeParticleBoxEmitter interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleBoxEmitter
+	Ptr() VisualShaderNodeParticleBoxEmitter
 }
 type RefVisualShaderNodeParticleConeVelocity interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleConeVelocity
+	Ptr() VisualShaderNodeParticleConeVelocity
 }
 type RefVisualShaderNodeParticleEmit interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleEmit
+	Ptr() VisualShaderNodeParticleEmit
 }
 type RefVisualShaderNodeParticleEmitter interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleEmitter
+	Ptr() VisualShaderNodeParticleEmitter
 }
 type RefVisualShaderNodeParticleMeshEmitter interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleMeshEmitter
+	Ptr() VisualShaderNodeParticleMeshEmitter
 }
 type RefVisualShaderNodeParticleMultiplyByAxisAngle interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleMultiplyByAxisAngle
+	Ptr() VisualShaderNodeParticleMultiplyByAxisAngle
 }
 type RefVisualShaderNodeParticleOutput interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleOutput
+	Ptr() VisualShaderNodeParticleOutput
 }
 type RefVisualShaderNodeParticleRandomness interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleRandomness
+	Ptr() VisualShaderNodeParticleRandomness
 }
 type RefVisualShaderNodeParticleRingEmitter interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleRingEmitter
+	Ptr() VisualShaderNodeParticleRingEmitter
 }
 type RefVisualShaderNodeParticleSphereEmitter interface {
 	Ref
-	TypedPtr() VisualShaderNodeParticleSphereEmitter
+	Ptr() VisualShaderNodeParticleSphereEmitter
 }
 type RefVisualShaderNodeProximityFade interface {
 	Ref
-	TypedPtr() VisualShaderNodeProximityFade
+	Ptr() VisualShaderNodeProximityFade
 }
 type RefVisualShaderNodeRandomRange interface {
 	Ref
-	TypedPtr() VisualShaderNodeRandomRange
+	Ptr() VisualShaderNodeRandomRange
 }
 type RefVisualShaderNodeRemap interface {
 	Ref
-	TypedPtr() VisualShaderNodeRemap
+	Ptr() VisualShaderNodeRemap
 }
 type RefVisualShaderNodeReroute interface {
 	Ref
-	TypedPtr() VisualShaderNodeReroute
+	Ptr() VisualShaderNodeReroute
 }
 type RefVisualShaderNodeResizableBase interface {
 	Ref
-	TypedPtr() VisualShaderNodeResizableBase
+	Ptr() VisualShaderNodeResizableBase
 }
 type RefVisualShaderNodeRotationByAxis interface {
 	Ref
-	TypedPtr() VisualShaderNodeRotationByAxis
+	Ptr() VisualShaderNodeRotationByAxis
 }
 type RefVisualShaderNodeSDFRaymarch interface {
 	Ref
-	TypedPtr() VisualShaderNodeSDFRaymarch
+	Ptr() VisualShaderNodeSDFRaymarch
 }
 type RefVisualShaderNodeSDFToScreenUV interface {
 	Ref
-	TypedPtr() VisualShaderNodeSDFToScreenUV
+	Ptr() VisualShaderNodeSDFToScreenUV
 }
 type RefVisualShaderNodeSample3D interface {
 	Ref
-	TypedPtr() VisualShaderNodeSample3D
+	Ptr() VisualShaderNodeSample3D
 }
 type RefVisualShaderNodeScreenNormalWorldSpace interface {
 	Ref
-	TypedPtr() VisualShaderNodeScreenNormalWorldSpace
+	Ptr() VisualShaderNodeScreenNormalWorldSpace
 }
 type RefVisualShaderNodeScreenUVToSDF interface {
 	Ref
-	TypedPtr() VisualShaderNodeScreenUVToSDF
+	Ptr() VisualShaderNodeScreenUVToSDF
 }
 type RefVisualShaderNodeSmoothStep interface {
 	Ref
-	TypedPtr() VisualShaderNodeSmoothStep
+	Ptr() VisualShaderNodeSmoothStep
 }
 type RefVisualShaderNodeStep interface {
 	Ref
-	TypedPtr() VisualShaderNodeStep
+	Ptr() VisualShaderNodeStep
 }
 type RefVisualShaderNodeSwitch interface {
 	Ref
-	TypedPtr() VisualShaderNodeSwitch
+	Ptr() VisualShaderNodeSwitch
 }
 type RefVisualShaderNodeTexture interface {
 	Ref
-	TypedPtr() VisualShaderNodeTexture
+	Ptr() VisualShaderNodeTexture
 }
 type RefVisualShaderNodeTexture2DArray interface {
 	Ref
-	TypedPtr() VisualShaderNodeTexture2DArray
+	Ptr() VisualShaderNodeTexture2DArray
 }
 type RefVisualShaderNodeTexture2DArrayParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeTexture2DArrayParameter
+	Ptr() VisualShaderNodeTexture2DArrayParameter
 }
 type RefVisualShaderNodeTexture2DParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeTexture2DParameter
+	Ptr() VisualShaderNodeTexture2DParameter
 }
 type RefVisualShaderNodeTexture3D interface {
 	Ref
-	TypedPtr() VisualShaderNodeTexture3D
+	Ptr() VisualShaderNodeTexture3D
 }
 type RefVisualShaderNodeTexture3DParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeTexture3DParameter
+	Ptr() VisualShaderNodeTexture3DParameter
 }
 type RefVisualShaderNodeTextureParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeTextureParameter
+	Ptr() VisualShaderNodeTextureParameter
 }
 type RefVisualShaderNodeTextureParameterTriplanar interface {
 	Ref
-	TypedPtr() VisualShaderNodeTextureParameterTriplanar
+	Ptr() VisualShaderNodeTextureParameterTriplanar
 }
 type RefVisualShaderNodeTextureSDF interface {
 	Ref
-	TypedPtr() VisualShaderNodeTextureSDF
+	Ptr() VisualShaderNodeTextureSDF
 }
 type RefVisualShaderNodeTextureSDFNormal interface {
 	Ref
-	TypedPtr() VisualShaderNodeTextureSDFNormal
+	Ptr() VisualShaderNodeTextureSDFNormal
 }
 type RefVisualShaderNodeTransformCompose interface {
 	Ref
-	TypedPtr() VisualShaderNodeTransformCompose
+	Ptr() VisualShaderNodeTransformCompose
 }
 type RefVisualShaderNodeTransformConstant interface {
 	Ref
-	TypedPtr() VisualShaderNodeTransformConstant
+	Ptr() VisualShaderNodeTransformConstant
 }
 type RefVisualShaderNodeTransformDecompose interface {
 	Ref
-	TypedPtr() VisualShaderNodeTransformDecompose
+	Ptr() VisualShaderNodeTransformDecompose
 }
 type RefVisualShaderNodeTransformFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeTransformFunc
+	Ptr() VisualShaderNodeTransformFunc
 }
 type RefVisualShaderNodeTransformOp interface {
 	Ref
-	TypedPtr() VisualShaderNodeTransformOp
+	Ptr() VisualShaderNodeTransformOp
 }
 type RefVisualShaderNodeTransformParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeTransformParameter
+	Ptr() VisualShaderNodeTransformParameter
 }
 type RefVisualShaderNodeTransformVecMult interface {
 	Ref
-	TypedPtr() VisualShaderNodeTransformVecMult
+	Ptr() VisualShaderNodeTransformVecMult
 }
 type RefVisualShaderNodeUIntConstant interface {
 	Ref
-	TypedPtr() VisualShaderNodeUIntConstant
+	Ptr() VisualShaderNodeUIntConstant
 }
 type RefVisualShaderNodeUIntFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeUIntFunc
+	Ptr() VisualShaderNodeUIntFunc
 }
 type RefVisualShaderNodeUIntOp interface {
 	Ref
-	TypedPtr() VisualShaderNodeUIntOp
+	Ptr() VisualShaderNodeUIntOp
 }
 type RefVisualShaderNodeUIntParameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeUIntParameter
+	Ptr() VisualShaderNodeUIntParameter
 }
 type RefVisualShaderNodeUVFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeUVFunc
+	Ptr() VisualShaderNodeUVFunc
 }
 type RefVisualShaderNodeUVPolarCoord interface {
 	Ref
-	TypedPtr() VisualShaderNodeUVPolarCoord
+	Ptr() VisualShaderNodeUVPolarCoord
 }
 type RefVisualShaderNodeVarying interface {
 	Ref
-	TypedPtr() VisualShaderNodeVarying
+	Ptr() VisualShaderNodeVarying
 }
 type RefVisualShaderNodeVaryingGetter interface {
 	Ref
-	TypedPtr() VisualShaderNodeVaryingGetter
+	Ptr() VisualShaderNodeVaryingGetter
 }
 type RefVisualShaderNodeVaryingSetter interface {
 	Ref
-	TypedPtr() VisualShaderNodeVaryingSetter
+	Ptr() VisualShaderNodeVaryingSetter
 }
 type RefVisualShaderNodeVec2Constant interface {
 	Ref
-	TypedPtr() VisualShaderNodeVec2Constant
+	Ptr() VisualShaderNodeVec2Constant
 }
 type RefVisualShaderNodeVec2Parameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeVec2Parameter
+	Ptr() VisualShaderNodeVec2Parameter
 }
 type RefVisualShaderNodeVec3Constant interface {
 	Ref
-	TypedPtr() VisualShaderNodeVec3Constant
+	Ptr() VisualShaderNodeVec3Constant
 }
 type RefVisualShaderNodeVec3Parameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeVec3Parameter
+	Ptr() VisualShaderNodeVec3Parameter
 }
 type RefVisualShaderNodeVec4Constant interface {
 	Ref
-	TypedPtr() VisualShaderNodeVec4Constant
+	Ptr() VisualShaderNodeVec4Constant
 }
 type RefVisualShaderNodeVec4Parameter interface {
 	Ref
-	TypedPtr() VisualShaderNodeVec4Parameter
+	Ptr() VisualShaderNodeVec4Parameter
 }
 type RefVisualShaderNodeVectorBase interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorBase
+	Ptr() VisualShaderNodeVectorBase
 }
 type RefVisualShaderNodeVectorCompose interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorCompose
+	Ptr() VisualShaderNodeVectorCompose
 }
 type RefVisualShaderNodeVectorDecompose interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorDecompose
+	Ptr() VisualShaderNodeVectorDecompose
 }
 type RefVisualShaderNodeVectorDistance interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorDistance
+	Ptr() VisualShaderNodeVectorDistance
 }
 type RefVisualShaderNodeVectorFunc interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorFunc
+	Ptr() VisualShaderNodeVectorFunc
 }
 type RefVisualShaderNodeVectorLen interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorLen
+	Ptr() VisualShaderNodeVectorLen
 }
 type RefVisualShaderNodeVectorOp interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorOp
+	Ptr() VisualShaderNodeVectorOp
 }
 type RefVisualShaderNodeVectorRefract interface {
 	Ref
-	TypedPtr() VisualShaderNodeVectorRefract
+	Ptr() VisualShaderNodeVectorRefract
 }
 type RefVisualShaderNodeWorldPositionFromDepth interface {
 	Ref
-	TypedPtr() VisualShaderNodeWorldPositionFromDepth
+	Ptr() VisualShaderNodeWorldPositionFromDepth
 }
 type RefVoxelGIData interface {
 	Ref
-	TypedPtr() VoxelGIData
+	Ptr() VoxelGIData
 }
 type RefWeakRef interface {
 	Ref
-	TypedPtr() WeakRef
+	Ptr() WeakRef
 }
 type RefWebRTCDataChannel interface {
 	Ref
-	TypedPtr() WebRTCDataChannel
+	Ptr() WebRTCDataChannel
 }
 type RefWebRTCDataChannelExtension interface {
 	Ref
-	TypedPtr() WebRTCDataChannelExtension
+	Ptr() WebRTCDataChannelExtension
 }
 type RefWebRTCMultiplayerPeer interface {
 	Ref
-	TypedPtr() WebRTCMultiplayerPeer
+	Ptr() WebRTCMultiplayerPeer
 }
 type RefWebRTCPeerConnection interface {
 	Ref
-	TypedPtr() WebRTCPeerConnection
+	Ptr() WebRTCPeerConnection
 }
 type RefWebRTCPeerConnectionExtension interface {
 	Ref
-	TypedPtr() WebRTCPeerConnectionExtension
+	Ptr() WebRTCPeerConnectionExtension
 }
 type RefWebSocketMultiplayerPeer interface {
 	Ref
-	TypedPtr() WebSocketMultiplayerPeer
+	Ptr() WebSocketMultiplayerPeer
 }
 type RefWebSocketPeer interface {
 	Ref
-	TypedPtr() WebSocketPeer
+	Ptr() WebSocketPeer
 }
 type RefWebXRInterface interface {
 	Ref
-	TypedPtr() WebXRInterface
+	Ptr() WebXRInterface
 }
 type RefWorld2D interface {
 	Ref
-	TypedPtr() World2D
+	Ptr() World2D
 }
 type RefWorld3D interface {
 	Ref
-	TypedPtr() World3D
+	Ptr() World3D
 }
 type RefWorldBoundaryShape2D interface {
 	Ref
-	TypedPtr() WorldBoundaryShape2D
+	Ptr() WorldBoundaryShape2D
 }
 type RefWorldBoundaryShape3D interface {
 	Ref
-	TypedPtr() WorldBoundaryShape3D
+	Ptr() WorldBoundaryShape3D
 }
 type RefX509Certificate interface {
 	Ref
-	TypedPtr() X509Certificate
+	Ptr() X509Certificate
 }
 type RefXMLParser interface {
 	Ref
-	TypedPtr() XMLParser
+	Ptr() XMLParser
 }
 type RefXRBodyTracker interface {
 	Ref
-	TypedPtr() XRBodyTracker
+	Ptr() XRBodyTracker
 }
 type RefXRControllerTracker interface {
 	Ref
-	TypedPtr() XRControllerTracker
+	Ptr() XRControllerTracker
 }
 type RefXRFaceTracker interface {
 	Ref
-	TypedPtr() XRFaceTracker
+	Ptr() XRFaceTracker
 }
 type RefXRHandTracker interface {
 	Ref
-	TypedPtr() XRHandTracker
+	Ptr() XRHandTracker
 }
 type RefXRInterface interface {
 	Ref
-	TypedPtr() XRInterface
+	Ptr() XRInterface
 }
 type RefXRInterfaceExtension interface {
 	Ref
-	TypedPtr() XRInterfaceExtension
+	Ptr() XRInterfaceExtension
 }
 type RefXRPose interface {
 	Ref
-	TypedPtr() XRPose
+	Ptr() XRPose
 }
 type RefXRPositionalTracker interface {
 	Ref
-	TypedPtr() XRPositionalTracker
+	Ptr() XRPositionalTracker
 }
 type RefXRTracker interface {
 	Ref
-	TypedPtr() XRTracker
+	Ptr() XRTracker
 }
 type RefZIPPacker interface {
 	Ref
-	TypedPtr() ZIPPacker
+	Ptr() ZIPPacker
 }
 type RefZIPReader interface {
 	Ref
-	TypedPtr() ZIPReader
+	Ptr() ZIPReader
 }

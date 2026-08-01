@@ -23,47 +23,19 @@ import (
 var _ {{ $refInterfaceName }} = &{{ $refStructName }}{}
 var _ Ref = &{{ $refStructName }}{}
 
-type {{ $refStructName }} TypedRef[{{ $c.Name }}]
-
-func (r *{{ $refStructName }}) Ptr() RefCounted {
-	rg := (*TypedRef[{{ $c.Name }}])(r)
-	return rg.Ptr().(RefCounted)
-}
-
-func (r *{{ $refStructName }}) TypedPtr() {{ $c.Name }} {
-	rg := (*TypedRef[{{ $c.Name }}])(r)
-	return rg.TypedPtr()
-}
-
-func (r *{{ $refStructName }}) Ref(from Ref) {
-	rg := (*TypedRef[{{ $c.Name }}])(r)
-	rg.Ref(from)
-}
-
-func (r *{{ $refStructName }}) TypedRef(from *{{ $refStructName }}) {
-	rg := (*TypedRef[{{ $c.Name }}])(r)
-	t := (*TypedRef[{{ $c.Name }}])(from)
-	rg.TypedRef((*TypedRef[{{ $c.Name }}])(t))
-}
-
-func (r *{{ $refStructName }}) Unref() {
-	rg := (*TypedRef[{{ $c.Name }}])(r)
-	rg.Unref()
-}
-
-func (r *{{ $refStructName }}) IsValid() bool {
-	return r != nil && r.Reference != nil
+type {{ $refStructName }} struct {
+	*RefBase[{{ $c.Name }}]
 }
 
 func New{{ $refInterfaceName }}(reference {{ $c.Name }}) {{ $refInterfaceName }} {
-	return ({{ $refInterfaceName }})(NewTypedRef[{{ $c.Name }}](reference))
+	return &{{ $refStructName }} {RefBase: NewRefInit[{{ $c.Name }}](reference)}
 }
 
 func New{{ $refInterfaceName }}AsRef(reference RefCounted) Ref {
-	return (Ref)(NewTypedRefGDExtensionIternalConstructor[{{ $c.Name }}](reference.({{ $c.Name }})))
+	return NewRef[{{ $c.Name }}](reference.({{ $c.Name }}))
 }
 
 func New{{ $refInterfaceName }}GDExtensionIternalConstructor(reference {{ $c.Name }}) {{ $refInterfaceName }} {
-	return NewTypedRefGDExtensionIternalConstructor[{{ $c.Name }}](reference)
+	return &{{ $refStructName }} {RefBase: NewRef[{{ $c.Name }}](reference)}
 }
 {{ end -}}

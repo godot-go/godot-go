@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"fmt"
+	"runtime"
 	"strconv"
 	"strings"
 
@@ -409,7 +410,7 @@ func (e *Example) V_Ready() {
 }
 
 func (e *Example) V_Input(refEvent RefInputEvent) {
-	event := refEvent.TypedPtr()
+	event := refEvent.Ptr()
 	if event == nil {
 		log.Warn("Example.V_Input: null refEvent parameter")
 		return
@@ -450,6 +451,70 @@ func (e *Example) ImageRefFunc(refImage RefImage) string {
 	}
 }
 
+// PassThroughRefImage receives a Ref<Image> (decode) and returns it (encode),
+// exercising both Ref boundary directions.
+func (e *Example) PassThroughRefImage(refImage RefImage) RefImage {
+	if refImage == nil || !refImage.IsValid() {
+		return nil
+	}
+	return refImage
+}
+
+// ReturnNilRefImage returns a nil Ref<Image> to Godot.
+func (e *Example) ReturnNilRefImage() RefImage {
+	return nil
+}
+
+// TestRefLifecycle exercises RefBase copy/unref semantics on a RefCounted
+// object passed from Godot: copy (+1), unref (-1), double-unref safe.
+// Returns 1 on success or a negative error code.
+func (e *Example) TestRefLifecycle(ref RefRefCounted) int32 {
+	if ref == nil || !ref.IsValid() {
+		return -1
+	}
+	before := ref.Ptr().GetReferenceCount()
+	dst := NewRef[RefCounted](nil)
+	dst.Ref(ref)
+	mid := ref.Ptr().GetReferenceCount()
+	if mid != before+1 {
+		return -100
+	}
+	dst.Unref()
+	dst.Unref() // double-unref must be a safe no-op
+	after := ref.Ptr().GetReferenceCount()
+	if after != before {
+		return -200
+	}
+	return 1
+}
+
+// TestFinalizerRelease drops a copied Ref and forces GC, verifying the
+// finalizer releases the Go-held reference.
+// Returns 1 on success or a negative error code.
+func (e *Example) TestFinalizerRelease(ref RefRefCounted) int32 {
+	if ref == nil || !ref.IsValid() {
+		return -1
+	}
+	before := ref.Ptr().GetReferenceCount()
+	func() {
+		r := NewRef[RefCounted](nil)
+		r.Ref(ref) // copy: +1 and installs finalizer
+		mid := r.Ptr().GetReferenceCount()
+		if mid != before+1 {
+			return
+		}
+	}()
+	for i := 0; i < 4; i++ {
+		runtime.GC()
+		runtime.Gosched()
+	}
+	after := ref.Ptr().GetReferenceCount()
+	if after != before {
+		return -400
+	}
+	return 1
+}
+
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
@@ -462,7 +527,7 @@ func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	)
 	motion := NewVector2WithFloat32Float32(1.0, 2.0)
 	refCollision := body.MoveAndCollide(motion, true, 0.5, true)
-	collision := refCollision.TypedPtr()
+	collision := refCollision.Ptr()
 	collisionV := NewVariantGodotObject(collision.GetGodotObjectOwner())
 	log.Info("collision returned",
 		zap.String("collision", collisionV.Stringify()),
@@ -572,6 +637,10 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)
 		// ClassDBBindMethod(t, "CustomRefFunc", "custom_ref_func", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "ImageRefFunc", "image_ref_func", []string{"image"}, nil)
+		ClassDBBindMethod(t, "PassThroughRefImage", "pass_through_ref_image", []string{"image"}, nil)
+		ClassDBBindMethod(t, "ReturnNilRefImage", "return_nil_ref_image", nil, nil)
+		ClassDBBindMethod(t, "TestRefLifecycle", "test_ref_lifecycle", []string{"ref"}, nil)
+		ClassDBBindMethod(t, "TestFinalizerRelease", "test_finalizer_release", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

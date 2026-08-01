@@ -45,10 +45,21 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		log.Debug("returing interface",
 			zap.String("name", value.Type().Name()),
 		)
+		if value.IsNil() {
+			*(**GodotObject)(rOut) = nil
+			return
+		}
 		switch inst := value.Interface().(type) {
 		case Object:
 			ObjectEncoder.EncodeTypePtrArg(inst, rOut)
 			// *(*C.GDExtensionObjectPtr)(rOut) = (C.GDExtensionObjectPtr)(inst.AsGDExtensionObjectPtr())
+		case Ref:
+			obj := inst.ToObject()
+			if obj == nil {
+				*(**GodotObject)(rOut) = nil
+				return
+			}
+			ObjectEncoder.EncodeTypePtrArg(obj, rOut)
 		default:
 			log.Panic("unhandled go interface to GDExtensionTypePtr",
 				zap.Any("value", value),
@@ -261,9 +272,20 @@ func GDExtensionVariantPtrFromReflectValue(value reflect.Value, rOut GDExtension
 	case reflect.String:
 		GoStringUtf8Encoder.EncodeReflectVariantPtrArg(value, rOut)
 	case reflect.Interface:
+		if value.IsNil() {
+			CallFunc_GDExtensionInterfaceVariantNewNil(rOut)
+			return
+		}
 		switch inst := value.Interface().(type) {
 		case Object:
 			ObjectEncoder.EncodeVariantPtrArg(inst, rOut)
+		case Ref:
+			obj := inst.ToObject()
+			if obj == nil {
+				CallFunc_GDExtensionInterfaceVariantNewNil(rOut)
+				return
+			}
+			ObjectEncoder.EncodeVariantPtrArg(obj, rOut)
 		default:
 			log.Panic("unhandled go interface to GDExtensionTypePtr",
 				zap.Any("value", value),

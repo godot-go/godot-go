@@ -1,85 +1,94 @@
 package builtin
 
+import "runtime"
+
+// Ref is the refcount protocol implemented by all reference wrappers.
+// Note: the concrete generic implementation is RefBase[T]; the interface
+// cannot share the name because Go disallows an interface and a generic
+// type with the same identifier.
 type Ref interface {
-	Ptr() RefCounted
-	Unref()
+	ToObject() RefCounted
 	Ref(pFrom Ref)
+	Unref()
 	IsValid() bool
 }
 
-type TypedRefT interface {
+type RefCountedT interface {
 	comparable
 	RefCounted
 }
 
-// Ref is a helper struct for RefCounted Godot Objects.
-type TypedRef[T TypedRefT] struct {
-	// HasReference
-	Reference RefCounted
+// RefBase is a reference-counted smart pointer for Godot RefCounted
+// objects. It stores the concrete type T directly and manages the
+// underlying Godot reference count. Go-held references are released when
+// the RefBase becomes unreachable via a finalizer, emulating godot-cpp's
+// Ref destructor.
+type RefBase[T RefCountedT] struct {
+	m_ref T
 }
 
-func (cx *TypedRef[T]) Ptr() RefCounted {
-	return (RefCounted)(cx.Reference)
+func (r *RefBase[T]) Ptr() T {
+	return r.m_ref
 }
 
-func (cx *TypedRef[T]) TypedPtr() T {
-	return cx.Reference.(T)
+func (r *RefBase[T]) ToObject() RefCounted {
+	return r.m_ref
 }
 
-func (cx *TypedRef[T]) Ref(pFrom Ref) {
-	cx.TypedRef(pFrom.(*TypedRef[T]))
-}
-
-// Ref increments a reference counter
-func (cx *TypedRef[T]) TypedRef(from *TypedRef[T]) {
+func (r *RefBase[T]) IsValid() bool {
 	var zero T
-	if from.Reference == cx.Reference {
+	return r != nil && r.m_ref != zero
+}
+
+// Ref copies a reference from another Ref, managing refcounts.
+// After this, both refs share the same underlying object.
+func (r *RefBase[T]) Ref(from Ref) {
+	var zero T
+	if from == nil || !from.IsValid() {
+		r.Unref()
 		return
 	}
-	cx.Unref()
-	cx.Reference = from.Reference
-	if cx.Reference != zero {
-		(RefCounted)(cx.Reference).Reference()
+	o, ok := from.ToObject().(T)
+	if !ok || o == zero {
+		r.Unref()
+		return
 	}
+	if r.m_ref == o {
+		return // self-assignment, no-op
+	}
+	r.Unref()
+	r.m_ref = o
+	r.m_ref.Reference()
+	runtime.SetFinalizer(r, (*RefBase[T]).Unref)
 }
 
-func (cx *TypedRef[T]) RefPointer(r T) {
+// Unref releases this reference. If the refcount drops to zero, the
+// underlying Godot object is freed. Safe to call multiple times.
+func (r *RefBase[T]) Unref() {
+	runtime.SetFinalizer(r, nil)
 	var zero T
-	if r == zero {
-		panic("reference cannot be nil")
+	if r.m_ref != zero {
+		r.m_ref.Unreference()
 	}
-	if !r.InitRef() {
-		panic("init ref failure")
+	r.m_ref = zero
+}
+
+// NewRefInit wraps a user-owned object. InitRef() marks the object as
+// ref-counted (+1) and the Ref owns that reference. Returns nil if the
+// object does not support ref counting.
+func NewRefInit[T RefCountedT](obj T) *RefBase[T] {
+	if !obj.InitRef() {
+		return nil
 	}
-	cx.Reference = r
+	r := &RefBase[T]{m_ref: obj}
+	runtime.SetFinalizer(r, (*RefBase[T]).Unref)
+	return r
 }
 
-func (cx *TypedRef[T]) Unref() {
-	var zero T
-	if cx.Reference != zero && cx.Reference.Unreference() {
-		// cx.Reference.Destroy()
-		// release memory
-		// runtime.Unpin(cx.reference)
-	}
-	cx.Reference = zero
-}
-
-func (cx *TypedRef[T]) IsValid() bool {
-	return cx != nil && cx.Reference != nil
-}
-
-func NewTypedRef[T TypedRefT](reference T) *TypedRef[T] {
-	ref := TypedRef[T]{}
-	ref.RefPointer(reference)
-	ptr := &ref
-	pnr.Pin(ptr)
-	return ptr
-}
-
-func NewTypedRefGDExtensionIternalConstructor[T TypedRefT](reference T) *TypedRef[T] {
-	ref := TypedRef[T]{}
-	ref.Reference = reference
-	ptr := &ref
-	pnr.Pin(ptr)
-	return ptr
+// NewRef wraps a Godot-owned object with transfer semantics: the reference
+// count is not changed because the other side already holds a reference.
+// Mirrors godot-cpp's _gde_internal_constructor. The caller must ensure a
+// reference is held for the wrapper's lifetime; to take ownership, copy.
+func NewRef[T RefCountedT](obj T) *RefBase[T] {
+	return &RefBase[T]{m_ref: obj}
 }

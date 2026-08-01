@@ -32,3 +32,12 @@
 - [x] 5.2 Fix double-free in `ClassMethodInfo.Destroy()` (`pkg/ffi/class_method_info.go:68,72`) — calls destructor on `m.name` and `cm.name` which are the same pointer (type alias), causing double-unref.
 - [x] 5.3 Add `C.free()` to `ClassMethodInfo.Destroy()` — struct allocated via `C.malloc()` in `NewGDExtensionClassMethodInfo` but never freed. Required for unload+reload safety.
 - [x] 5.4 Address pre-existing callback risk — Godot-owned `GDExtensionConstStringNamePtr` in `classdb_callback.go` could be accidentally `Destroy()`'d. Consider read-only wrapper type or runtime guard.
+
+## 6. Revise and Regenerate Documentation (docs/)
+
+- [ ] 6.1 `docs/overview.md` — fix typos ("bidnings", "Insteead", "acess"), update stale claims about virtual methods, packed arrays, default arguments, and static variables to match current bindings
+- [ ] 6.2 `docs/godot_gdextension_string.md` — correct `StringName` size from `[4]uint8` to `[8]uint8`; remove "StringNames don't need Destroy() calls in most cases" guidance; document the value-storage + local-copy-isolate-then-pin pattern
+- [ ] 6.3 `docs/godot-cpp-string-comparison.md` — remove references to the removed `NameAsStringNamePtr` API and the broken `NewGDExtensionPropertyInfo` flow; present the implemented fix (value storage + pinning + C-heap allocation) as the recommended pattern
+- [ ] 6.4 `docs/godot-cpp-string-comparison-notes.md` — mark the investigation as resolved; update task checkboxes and "Current Status" to reflect the implemented fix
+- [ ] 6.5 `docs/stringname-mutation-analysis.md` — verify consistency with the implemented code and keep as the authoritative reference
+- [ ] 6.6 Run `make test` and confirm 43/43 tests pass with no new orphaned StringName warnings (docs-only change, no code regeneration expected)

@@ -122,6 +122,19 @@ The cgo checker sees a C heap pointer and allows it through. Godot reads the str
 
 - **Rationale**: Godot reads `GDExtensionPropertyInfo` by value during the registration call (copy ctor on `p_info->name`, `p_info->class_name`). It never stores the pointer to the struct itself. Only the 8-byte values inside need to be stable during the call, which pinning provides.
 
+### 7. Revise All Documentation to Describe the Implemented Lifecycle
+
+The `docs/` directory describes the pre-fix, broken patterns and contains stale or incorrect claims. Each doc is revised to describe the implemented lifecycle management and cross-reference the authoritative `stringname-mutation-analysis.md`:
+
+- **`docs/overview.md`** — fix typos and outdated claims about virtual methods, packed arrays, and default arguments; keep it a living doc consistent with current bindings.
+- **`docs/godot_gdextension_string.md`** — correct the `StringName` size (`[8]uint8`, not `[4]uint8`), remove "StringNames don't need Destroy()" guidance, and document the value-storage + pin pattern.
+- **`docs/godot-cpp-string-comparison.md`** — remove references to the removed `NameAsStringNamePtr` API and the broken `NewGDExtensionPropertyInfo` flow; document the implemented fix as the recommended pattern.
+- **`docs/godot-cpp-string-comparison-notes.md`** — mark the investigation as resolved; update the task checkboxes and status to reflect the implemented fix.
+- **`docs/stringname-mutation-analysis.md`** — authoritative reference; verify it stays consistent with the implementation.
+
+- **Rationale**: Stale docs mislead contributors and contradict the implemented behavior (e.g., `godot_gdextension_string.md` claims `StringName` is `[4]uint8` and "don't need Destroy() calls in most cases"). Keeping the analysis doc authoritative and the rest consistent avoids reintroducing the fixed bugs.
+- **Alternative considered**: Deleting the stale comparison/notes docs entirely. Rejected — they preserve useful godot-cpp comparison context; revising them is lower cost than losing the analysis.
+
 ## Architecture
 
 ```
@@ -206,3 +219,8 @@ The cgo checker sees a C heap pointer and allows it through. Godot reads the str
 | `openspec/changes/fix-orphan-stringname/tasks.md` | All 16 tasks marked complete; added Section 5 (follow-up known issues). |
 | `openspec/changes/fix-orphan-stringname/proposal.md` | Updated with actual implementation details, known issues, and accurate file list. |
 | `openspec/changes/fix-orphan-stringname/design.md` | Updated with local-copy pattern, C heap allocation decision, cgo safety model, and corrected architecture diagram. |
+| `docs/overview.md` | Fix typos and stale claims; align with current bindings. |
+| `docs/godot_gdextension_string.md` | Correct StringName size, remove "no Destroy() needed" guidance, document value-storage + pin pattern. |
+| `docs/godot-cpp-string-comparison.md` | Remove stale references to removed APIs; document implemented fix as recommended pattern. |
+| `docs/godot-cpp-string-comparison-notes.md` | Mark investigation resolved; update task boxes and status. |
+| `docs/stringname-mutation-analysis.md` | Verify consistency with the implementation; keep as authoritative reference. |

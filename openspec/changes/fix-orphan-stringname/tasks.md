@@ -35,9 +35,17 @@
 
 ## 6. Revise and Regenerate Documentation (docs/)
 
-- [ ] 6.1 `docs/overview.md` — fix typos ("bidnings", "Insteead", "acess"), update stale claims about virtual methods, packed arrays, default arguments, and static variables to match current bindings
-- [ ] 6.2 `docs/godot_gdextension_string.md` — correct `StringName` size from `[4]uint8` to `[8]uint8`; remove "StringNames don't need Destroy() calls in most cases" guidance; document the value-storage + local-copy-isolate-then-pin pattern
-- [ ] 6.3 `docs/godot-cpp-string-comparison.md` — remove references to the removed `NameAsStringNamePtr` API and the broken `NewGDExtensionPropertyInfo` flow; present the implemented fix (value storage + pinning + C-heap allocation) as the recommended pattern
-- [ ] 6.4 `docs/godot-cpp-string-comparison-notes.md` — mark the investigation as resolved; update task checkboxes and "Current Status" to reflect the implemented fix
-- [ ] 6.5 `docs/stringname-mutation-analysis.md` — verify consistency with the implemented code and keep as the authoritative reference
-- [ ] 6.6 Run `make test` and confirm 43/43 tests pass with no new orphaned StringName warnings (docs-only change, no code regeneration expected)
+- [x] 6.1 `docs/overview.md` — fix typos ("bidnings", "Insteead", "acess"), update stale claims about virtual methods, packed arrays, default arguments, and static variables to match current bindings
+- [x] 6.2 `docs/godot_gdextension_string.md` — correct `StringName` size from `[4]uint8` to `[8]uint8`; remove "StringNames don't need Destroy() calls in most cases" guidance; document the value-storage + local-copy-isolate-then-pin pattern
+- [x] 6.3 `docs/godot-cpp-string-comparison.md` — remove references to the removed `NameAsStringNamePtr` API and the broken `NewGDExtensionPropertyInfo` flow; present the implemented fix (value storage + pinning + C-heap allocation) as the recommended pattern
+- [x] 6.4 `docs/godot-cpp-string-comparison-notes.md` — mark the investigation as resolved; update task checkboxes and "Current Status" to reflect the implemented fix
+- [x] 6.5 `docs/stringname-mutation-analysis.md` — verify consistency with the implemented code and keep as the authoritative reference
+- [x] 6.6 Run `make test` and confirm 43/43 tests pass with no new orphaned StringName warnings (docs-only change, no code regeneration expected)
+
+## 7. Eliminate Remaining Orphaned StringName (`Image`)
+
+- [x] 7.1 Reproduce and isolate the `Image (static: 0, total: 1)` orphan via `main.gd` experiments — proven to be created when a valid RefCounted object crosses into Go
+- [x] 7.2 Restore `defer snClassName.Destroy()` in `getObjectInstanceBinding()` (`pkg/builtin/variant.go`) — Godot's `object_get_class_name` placement-constructs the StringName and Go never destroyed it
+- [x] 7.3 Fix the two ptrcall `object_get_class_name` call sites in `pkg/core/method_bind_reflect.go` to pass zero-value `StringName{}` storage instead of `NewStringName()` (pre-initialized storage was overwritten by placement-new, leaking the constructor refcount)
+- [x] 7.4 Run `make test` — 43/43 tests pass with zero orphaned StringName warnings
+- [x] 7.5 Update spec (remove "Godot-side Orphans Remain Acceptable" scenario) and retrospective (replace misdiagnosed "Godot-side limitation" section with actual root cause)

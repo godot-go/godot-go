@@ -16,10 +16,15 @@ Two root causes produce orphaned StringName warnings and instability:
 - Achieve 43/43 passing tests with no crashes.
 
 **Non-Goals:**
-- Eliminating Godot's internal "Orphan StringName" warnings at exit — Godot holds its own refcounts on interned StringName entries, which it reports as orphans on shutdown. This is Godot-side behavior, not addressable from Go.
 - Changing the general-purpose Go `StringName` API for end-users.
 - C-side string allocation or caching.
 - Modifying generated code in `*.gen.*` files.
+
+> Note: The previous claim that Godot's exit-time orphan warnings (e.g. `Image`
+> static refs) are "not addressable from Go" was proven incorrect — the
+> remaining `Image` orphan was a Go-side lifecycle bug in
+> `getObjectInstanceBinding()` (see task 7). `make test` now reports zero
+> orphaned StringName warnings.
 
 ## Decisions
 
@@ -214,6 +219,8 @@ The `docs/` directory describes the pre-fix, broken patterns and contains stale 
 | `pkg/core/classdb.go` | All 8 registration functions updated: read from `ci.NameStringName`, copy to locals, pin all temporaries (`String`, `StringName`, `PropertyInfo`, `MethodInfo`). Removed redundant `NewStringNameWithLatin1Chars(cn)` allocations. |
 | `pkg/core/lib.go` | `CreateGDClassInstance`: use `ci.ParentNameStringName` instead of creating new `StringName`, copy to local, pin before cgo call. |
 | `pkg/core/method_bind.go` | `NewGDExtensionClassMethodInfoFromMethodBind`: add `pnr.Pin(&gdMethodNameStringName)` for the local `StringName` used in `NewGDExtensionClassMethodInfo`. |
+| `pkg/builtin/variant.go` | `getObjectInstanceBinding()`: restore `defer snClassName.Destroy()` after `object_get_class_name` placement-new (task 7). |
+| `pkg/core/method_bind_reflect.go` | ptrcall `object_get_class_name` call sites: pass zero-value `StringName{}` storage instead of `NewStringName()` to avoid leaking the pre-placement refcount (task 7). |
 | `pkg/ffi/class_method_info.go` | `NewGDExtensionClassMethodInfo`: changed from Go stack allocation to C heap (`C.malloc()`). Removed `pnr.Pin(ret)` — no longer needed since memory is C-owned. |
 | `pkg/ffi/property_info.go` | No change — `GDExtensionPropertyInfo` is passed by pointer, Godot reads fields during call. |
 | `openspec/changes/fix-orphan-stringname/tasks.md` | All 16 tasks marked complete; added Section 5 (follow-up known issues). |

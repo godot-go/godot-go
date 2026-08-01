@@ -479,7 +479,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				gdObjPtr := (GDExtensionConstObjectPtr)(arg)
 
 				// GDExtensionUninitializedStringNamePtr
-				gdsn := NewStringName()
+				gdsn := StringName{}
 				defer gdsn.Destroy()
 				ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
 				cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
@@ -631,7 +631,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					gdObjPtr := (GDExtensionConstObjectPtr)(CallFunc_GDExtensionInterfaceRefGetObject(gdRefPtr))
 
 					// GDExtensionUninitializedStringNamePtr
-					gdsn := NewStringName()
+					gdsn := StringName{}
 					defer gdsn.Destroy()
 					ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
 					cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)

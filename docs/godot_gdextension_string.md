@@ -10,7 +10,7 @@ Godot's String type is a flexible string container that internally stores text a
 
 ### Godot Internal Representation
 - **String**: Stored as `[8]uint8` (64-bit builds) or `[4]uint8` (32-bit builds) - uses Small String Optimization (SSO)
-- **StringName**: Stored as `[4]uint8` - optimized for identifiers and interned strings
+- **StringName**: Stored as `[8]uint8` (64-bit builds) or `[4]uint8` (32-bit builds) - a pointer into Godot's global interned hash table, optimized for identifiers
 - **Pointer Types**:
   - `GDExtensionStringPtr` - mutable string pointer
   - `GDExtensionConstStringPtr` - immutable string pointer
@@ -20,8 +20,10 @@ Godot's String type is a flexible string container that internally stores text a
 ```go
 // Godot-go representation
 type String [8]uint8
-type StringName [4]uint8
+type StringName [8]uint8
 ```
+
+`StringName` is **not a string**. Its 8 bytes are a pointer to a refcounted interned `_Data` entry in Godot's global hash table. Two `StringName` values with the same text share the same `_Data` pointer, making equality an O(1) pointer comparison. See [stringname-mutation-analysis.md](stringname-mutation-analysis.md) for the full internals analysis.
 
 ## String Creation
 
@@ -172,10 +174,35 @@ goStr := enc.DecodeVariantPtr(variant)
 // Use StringName for property names, method names, signals
 propName := builtin.NewStringNameWithUtf8Chars("position")
 methodName := builtin.NewStringNameWithUtf8Chars("queue_free")
+defer propName.Destroy()
+defer methodName.Destroy()
 
-// StringNames are interned and more efficient for repeated use
-// They don't need Destroy() calls in most cases
+// StringNames are interned; each New*StringName must be balanced by Destroy()
+// StringName is an 8-byte handle into Godot's interned table; the copy
+// constructor increments the refcount, Destroy() decrements it.
 ```
+
+### StringName Lifetime and Pinning
+
+`StringName` is an 8-byte value. Storing it **by value** in Go structs is safe and is the recommended pattern (`ClassInfo` stores `NameStringName` / `ParentNameStringName` by value). When passing a `StringName` to a GDExtension interface call:
+
+1. Godot's copy constructor only **reads** the 8 bytes and increments the refcount on the shared `_Data` — it never writes back to caller memory.
+2. Go's GC can move heap-allocated values, so pin the value for the duration of the call with `runtime.Pinner`.
+3. When the value lives inside a struct that also holds Go pointers (maps, slices), copy it to an isolated local variable before pinning — the Go cgo checker walks the whole parent struct and panics on unpinned Go pointers otherwise.
+
+```go
+// Register property — local-copy-isolate-then-pin
+ci := Internal.GDRegisteredGDClasses.Get(cn)
+cnName := ci.NameStringName      // copy [8]uint8 to isolated local
+pnr.Pin(&cnName)                 // pin before the call
+CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed(
+	FFI.Library,
+	cnName.AsGDExtensionConstStringNamePtr(),
+	// ...
+)
+```
+
+For structs with C pointers to Go heap (e.g. `GDExtensionClassMethodInfo`), allocate in C heap via `C.malloc()` instead — the cgo checker cannot track pinning across call boundaries and treats C heap memory as foreign.
 
 ## Performance Considerations
 

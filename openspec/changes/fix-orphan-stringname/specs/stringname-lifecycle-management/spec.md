@@ -25,6 +25,6 @@ The implementation MUST eliminate all orphaned StringName warnings attributable 
 - **WHEN** `make test` is executed
 - **THEN** the output contains no orphaned StringName warnings for classes, properties, signals, or methods registered from Go.
 
-#### Scenario: Godot-side Orphans Remain Acceptable
-- **WHEN** `make test` exits and Godot reports orphan warnings for engine-internal references (e.g. `Image` static refs)
-- **THEN** those warnings are recognized as Godot-side behavior, not addressed by this capability, and are documented as such.
+#### Scenario: No Orphaned StringName Warnings Remain
+- **WHEN** `make test` exits
+- **THEN** the output contains no orphaned StringName warnings at all, including for engine object instances (e.g. `Image`) passed into Go methods via `ObjectGetClassName`.

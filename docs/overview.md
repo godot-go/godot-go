@@ -1,6 +1,6 @@
 # Overview
 
-This will be a living doc which will provide an overview of key concepts in the godot-go bidnings.
+This will be a living doc which will provide an overview of key concepts in the godot-go bindings.
 
 # GDScript Language Feature Mapping
 
@@ -8,11 +8,11 @@ There are a lot of language features supported by GDScript that does not map cle
 
 ## Default Parameter Value
 
-Default parameters are currently not supported.
+Default parameters are supported. Register methods with `ClassDBBindMethod` passing a `defaultValues []Variant` slice; GDScript callers may omit trailing arguments.
 
 ## Class Inheritance
 
-Go does not support classical class inheritance. Instead, composition with struct embedding is used in it's place. Lets take a look at the following example user-defined class:
+Go does not support classical class inheritance. Instead, composition with struct embedding is used in its place. Lets take a look at the following example user-defined class:
 
 ```go
 type PlayerCharacter struct {
@@ -35,7 +35,7 @@ We see that `CharacterBody2DImpl` embeds the `PhysicsBody2DImpl` struct, which i
 
 ## Virtual Methods
 
-Go does not natively support virtual functions or struct methods. Insteead, a method name prefix convention will be implemented. The current implementation ignores all virtual methods on existing Godot classes.
+Go does not natively support virtual functions or struct methods. Instead, a method name prefix convention is implemented: methods prefixed with `V_` are registered as Godot virtual methods.
 
 ```go
 func (e *Example) V_Ready() { ... }
@@ -46,24 +46,14 @@ func (e *Example) V_Ready() { ... }
 ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
 ```
 
-__(NOT YET IMPLEMENTED)__ The eventual best practice will be the following example:
+* `V_` denotes that this is a virtual function.
+* `Ready` matches the `_ready` gdscript method.
 
-```go
-func (e *Example) V_Example_Ready() { ... }
-
-...
-
-// register the function with Godot
-ClassDBBindMethodVirtual(t, "V_Example_Ready", "_ready", nil, nil)
-```
-
-* `V_` denotes this this is a virtual function.
-* `Example_` matches the name of the class. godot-go should panic if the registered method does not follow this pattern.
-* `Ready` matches `_ready` gdscript method.
+Virtuals are invoked through the GDExtension `get_virtual_call_data2` / `call_virtual_with_data` path. Unimplemented virtuals return `nil` call data so Godot falls back to its engine default; implemented virtuals are dispatched to the Go method.
 
 ## Default Argument Values
 
-Go does not support default parameter values. Default argument will show up in the godocs comments, but it will not be implemented directly in the code.
+Go does not support default parameter values in its syntax. Default argument values are instead passed through the `defaultValues` parameter of `ClassDBBindMethod` (and the `ClassDBBindMethodVirtual`/`ClassDBBindMethodVarargs` variants). GDScript callers can then omit trailing arguments.
 
 ## Static Methods
 
@@ -75,11 +65,11 @@ Go does not support static variables in structs. __(NOT YET IMPLEMENTED)__ Globa
 
 ## Packed Arrays
 
-Works fine and partially tested in the tests.
+The generated `Packed*Array` types work and are partially tested in the tests. Conversion to Go native slices (e.g. `[]Vector2`) is not yet implemented.
 
 ## Coroutines
 
-Go does not support coroutines; this means we do not have acess to `await` (or `yield`). Without a coroutine alternative, a cumbersome pattern of chaining method calls will be required.  __(NOT YET IMPLEMENTED)__ Instead, we have goroutines to wrap `signal` and `callable`.
+Go does not support coroutines; this means we do not have access to `await` (or `yield`). Without a coroutine alternative, a cumbersome pattern of chaining method calls will be required. __(NOT YET IMPLEMENTED)__ Instead, we have goroutines to wrap `signal` and `callable`.
 
 ## Built-in Types
 
@@ -132,7 +122,7 @@ Go does not support coroutines; this means we do not have acess to `await` (or `
 | `PackedStringArray` | `PackedStringArray` | __(NOT YET IMPLEMENTED)__ `[]string`. |
 | `PackedVector2Array` | `PackedVector2Array` | __(NOT YET IMPLEMENTED)__ `[]Vector2`. |
 | `PackedVector3Array` | `PackedVector3Array` | __(NOT YET IMPLEMENTED)__ `[]Vector3`. |
-| `PackedColorArray` | `PackedColorArray` | __(NOT YET IMPLEMENTED)__ `[]color`. |
+| `PackedColorArray` | `PackedColorArray` | __(NOT YET IMPLEMENTED)__ `[]Color`. |
 | `Dictionary` | `Dictionary` | No additional work needed. |
 | `Signal` | `Signal` | No additional work needed. |
 | `Callable` | `Callable` | No additional work needed. |

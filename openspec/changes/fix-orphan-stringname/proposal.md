@@ -27,12 +27,16 @@ Additionally, the project's documentation (`docs/`) describes the pre-fix, broke
 
 ## Impact
 
-- **Code**: `pkg/core/types.go`, `pkg/core/classdb.go`, `pkg/core/lib.go`, `pkg/core/method_bind.go`, `pkg/ffi/class_method_info.go`, `pkg/ffi/property_info.go`.
+- **Code**: `pkg/core/types.go`, `pkg/core/classdb.go`, `pkg/core/lib.go`, `pkg/core/method_bind.go`, `pkg/core/method_bind_reflect.go`, `pkg/builtin/variant.go`, `pkg/ffi/class_method_info.go`, `pkg/ffi/property_info.go`.
 - **Docs**: `docs/overview.md`, `docs/godot_gdextension_string.md`, `docs/godot-cpp-string-comparison.md`, `docs/godot-cpp-string-comparison-notes.md`, `docs/stringname-mutation-analysis.md`.
 - **Verification**: `make test` — 43/43 tests pass, no cgo panics, no double-frees.
 
 ## Non-goals
 
-- Eliminating Godot-side orphan warnings at exit (e.g. `Image` static refs) — Godot-side behavior, not addressable from Go.
 - Changing the general-purpose `StringName` API for end-users.
 - Modifying generated `*.gen.*` files beyond what `make generate` produces.
+
+> Note: The earlier non-goal "eliminate Godot-side orphan warnings (e.g. `Image`
+> static refs)" was removed — the `Image` orphan was traced to a Go-side bug in
+> `getObjectInstanceBinding()` and is now eliminated (see task 7). `make test`
+> reports zero orphaned StringName warnings.

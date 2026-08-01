@@ -130,7 +130,7 @@ func getObjectInstanceBinding(engineObject *GodotObject) Object {
 		)
 	}
 	pnr.Pin(snClassNamePtr)
-	// defer snClassName.Destroy()
+	defer snClassName.Destroy()
 	className := snClassName.ToUtf8()
 	// const GDExtensionInstanceBindingCallbacks *binding_callbacks = nullptr;
 	// Otherwise, try to look up the correct binding callbacks.

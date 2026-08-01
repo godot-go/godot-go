@@ -112,21 +112,35 @@ Go Creation (refcount +1)  →  Registration (Godot copy, refcount +1)
 Go-side: Every `NewStringName` has matching `Destroy()` ✅
 Godot-side: PropertyInfo copies released on `memdelete` ✅
 
-## Remaining Orphan: `Image` (static: 1, total: 2)
+## Remaining Orphan Was Go-side: `Image` (static: 0, total: 1) — FIXED
 
-`make test` still reports this orphan:
+The last remaining orphan, `Image`, was initially misdiagnosed as a Godot-side
+limitation (`static: 1, total: 2` on Godot 4.6.3). After the 4.7.2 upgrade it
+appeared as `Image (static: 0, total: 1)` and was re-investigated.
 
-```
-Orphan StringName: Image (static: 1, total: 2)
-StringName: 1 unclaimed string names at exit.
-```
+**Isolation:** `make test` was run three ways against `test/demo/main.gd`:
+1. `Image.new()` commented out entirely — no orphan.
+2. `Image.new()` present, image never passed to Go — no orphan.
+3. `Image.new()` + `example.image_ref_func(image)` — orphan appears.
 
-**Trace:** `Image.new()` in GDScript → Godot resolves "Image" class name → creates non-static `StringName("Image")` → stores in internal tables → persists at exit.
+This proved the orphan is created when a valid RefCounted object crosses into
+Go, not by `Image.new()` itself.
 
-- `static: 1` — Godot built-in class registration (engine init)
-- `total: 2` — static + 1 non-static from GDScript class resolution
+**Root cause:** `getObjectInstanceBinding()` (`pkg/builtin/variant.go`) calls
+Godot's `object_get_class_name`, which does `memnew_placement` (a placement-new)
+on the caller-provided `StringName` storage. Go never called `.Destroy()` on it
+(`// defer snClassName.Destroy()` was commented out), leaking one refcount for
+the object's class name (`"Image"`).
 
-**Conclusion:** Godot-side limitation. `Image` is a built-in class (not extension). Non-static reference from class lookup persists in headless mode. Not addressable from Go extension. This orphan is expected and accepted.
+**Fix:** Restore `defer snClassName.Destroy()` in `getObjectInstanceBinding()`.
+
+**Related latent fix:** The two `object_get_class_name` call sites in
+`pkg/core/method_bind_reflect.go` (ptrcall arg decode) passed `NewStringName()`
+(pre-initialized) storage that Godot's placement-new then overwrote, leaking the
+initial constructor refcount. Changed them to zero-value `StringName{}` storage
+(consistent with the variant.go pattern).
+
+**Result:** `make test` reports zero orphaned StringName warnings.
 
 ## Files Modified
 
@@ -139,6 +153,8 @@ StringName: 1 unclaimed string names at exit.
 | `pkg/core/types.go` | Skip property list destruction; signal name cleanup |
 | `pkg/ffi/property_info.go` | `switch/case` → independent `if` in `Destroy()` |
 | `pkg/gdclassimpl/classes.gen.go` | Regenerated with vararg fix |
+| `pkg/builtin/variant.go` | Restored `defer snClassName.Destroy()` in `getObjectInstanceBinding()` |
+| `pkg/core/method_bind_reflect.go` | `StringName{}` (not `NewStringName()`) storage for `object_get_class_name` placement-new |
 
 ## Key Learnings
 
@@ -146,3 +162,5 @@ StringName: 1 unclaimed string names at exit.
 2. **cgo pinning with nested Go pointers**: Copy field to isolated local before pinning — cgo walks the entire parent struct.
 3. **StringName interning**: 8-byte handle into global table. Copy = refcount +1, Destroy = refcount -1. Orphan = refcount > static_count at exit.
 4. **PropertyInfo lifecycle**: Godot copies PropertyInfo during registration, destroys on `memdelete`. Go manages through `GoMethodMetadata.Destroy()`.
+5. **Godot-owned StringName output params**: `object_get_class_name` (and similar `GDExtensionUninitializedStringNamePtr` outputs) placement-construct the StringName in the caller's storage. Pass zero-value `StringName{}` storage and always `Destroy()` it after use — never pre-construct with `NewStringName()`.
+6. **Verify assumptions with isolation tests**: The `Image` orphan appeared Godot-side (`static: 1`) on 4.6.3 but Go-side (`static: 0`) after the 4.7.2 upgrade. Commenting out code paths in `main.gd` pinpointed the real trigger instead of trusting the earlier "Godot-side limitation" conclusion.

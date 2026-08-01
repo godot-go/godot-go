@@ -70,6 +70,7 @@ type GDExtensionInterface struct {
 	VariantHasKey                                 GDExtensionInterfaceVariantHasKey
 	VariantGetObjectInstanceId                    GDExtensionInterfaceVariantGetObjectInstanceId
 	VariantGetTypeName                            GDExtensionInterfaceVariantGetTypeName
+	VariantGetTypeByName                          GDExtensionInterfaceVariantGetTypeByName
 	VariantCanConvert                             GDExtensionInterfaceVariantCanConvert
 	VariantCanConvertStrict                       GDExtensionInterfaceVariantCanConvertStrict
 	GetVariantFromTypeConstructor                 GDExtensionInterfaceGetVariantFromTypeConstructor
@@ -179,6 +180,7 @@ type GDExtensionInterface struct {
 	CallableCustomGetUserData                     GDExtensionInterfaceCallableCustomGetUserData
 	ClassdbConstructObject                        GDExtensionInterfaceClassdbConstructObject
 	ClassdbConstructObject2                       GDExtensionInterfaceClassdbConstructObject2
+	ClassdbConstructObject3                       GDExtensionInterfaceClassdbConstructObject3
 	ClassdbGetMethodBind                          GDExtensionInterfaceClassdbGetMethodBind
 	ClassdbGetClassTag                            GDExtensionInterfaceClassdbGetClassTag
 	ClassdbRegisterExtensionClass                 GDExtensionInterfaceClassdbRegisterExtensionClass
@@ -186,6 +188,7 @@ type GDExtensionInterface struct {
 	ClassdbRegisterExtensionClass3                GDExtensionInterfaceClassdbRegisterExtensionClass3
 	ClassdbRegisterExtensionClass4                GDExtensionInterfaceClassdbRegisterExtensionClass4
 	ClassdbRegisterExtensionClass5                GDExtensionInterfaceClassdbRegisterExtensionClass5
+	ClassdbRegisterExtensionClass6                GDExtensionInterfaceClassdbRegisterExtensionClass6
 	ClassdbRegisterExtensionClassMethod           GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 	ClassdbRegisterExtensionClassVirtualMethod    GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod
 	ClassdbRegisterExtensionClassIntegerConstant  GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
@@ -254,6 +257,7 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.VariantHasKey = (GDExtensionInterfaceVariantHasKey)(LoadProcAddress("variant_has_key"))
 	x.VariantGetObjectInstanceId = (GDExtensionInterfaceVariantGetObjectInstanceId)(LoadProcAddress("variant_get_object_instance_id"))
 	x.VariantGetTypeName = (GDExtensionInterfaceVariantGetTypeName)(LoadProcAddress("variant_get_type_name"))
+	x.VariantGetTypeByName = (GDExtensionInterfaceVariantGetTypeByName)(LoadProcAddress("variant_get_type_by_name"))
 	x.VariantCanConvert = (GDExtensionInterfaceVariantCanConvert)(LoadProcAddress("variant_can_convert"))
 	x.VariantCanConvertStrict = (GDExtensionInterfaceVariantCanConvertStrict)(LoadProcAddress("variant_can_convert_strict"))
 	x.GetVariantFromTypeConstructor = (GDExtensionInterfaceGetVariantFromTypeConstructor)(LoadProcAddress("get_variant_from_type_constructor"))
@@ -363,6 +367,7 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.CallableCustomGetUserData = (GDExtensionInterfaceCallableCustomGetUserData)(LoadProcAddress("callable_custom_get_user_data"))
 	x.ClassdbConstructObject = (GDExtensionInterfaceClassdbConstructObject)(LoadProcAddress("classdb_construct_object"))
 	x.ClassdbConstructObject2 = (GDExtensionInterfaceClassdbConstructObject2)(LoadProcAddress("classdb_construct_object2"))
+	x.ClassdbConstructObject3 = (GDExtensionInterfaceClassdbConstructObject3)(LoadProcAddress("classdb_construct_object3"))
 	x.ClassdbGetMethodBind = (GDExtensionInterfaceClassdbGetMethodBind)(LoadProcAddress("classdb_get_method_bind"))
 	x.ClassdbGetClassTag = (GDExtensionInterfaceClassdbGetClassTag)(LoadProcAddress("classdb_get_class_tag"))
 	x.ClassdbRegisterExtensionClass = (GDExtensionInterfaceClassdbRegisterExtensionClass)(LoadProcAddress("classdb_register_extension_class"))
@@ -370,6 +375,7 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	x.ClassdbRegisterExtensionClass3 = (GDExtensionInterfaceClassdbRegisterExtensionClass3)(LoadProcAddress("classdb_register_extension_class3"))
 	x.ClassdbRegisterExtensionClass4 = (GDExtensionInterfaceClassdbRegisterExtensionClass4)(LoadProcAddress("classdb_register_extension_class4"))
 	x.ClassdbRegisterExtensionClass5 = (GDExtensionInterfaceClassdbRegisterExtensionClass5)(LoadProcAddress("classdb_register_extension_class_5"))
+	x.ClassdbRegisterExtensionClass6 = (GDExtensionInterfaceClassdbRegisterExtensionClass6)(LoadProcAddress("classdb_register_extension_class_6"))
 	x.ClassdbRegisterExtensionClassMethod = (GDExtensionInterfaceClassdbRegisterExtensionClassMethod)(LoadProcAddress("classdb_register_extension_class_method"))
 	x.ClassdbRegisterExtensionClassVirtualMethod = (GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod)(LoadProcAddress("classdb_register_extension_class_virtual_method"))
 	x.ClassdbRegisterExtensionClassIntegerConstant = (GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant)(LoadProcAddress("classdb_register_extension_class_integer_constant"))

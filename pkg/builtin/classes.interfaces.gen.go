@@ -146,6 +146,84 @@ type AcceptDialog interface {
 	SetOkButtonText(text String)
 	GetOkButtonText() String
 }
+type AccessibilityServer interface {
+	Object
+	IsSupported() bool
+	CreateElement(window_id int32, role AccessibilityServerAccessibilityRole) RID
+	CreateSubElement(parent_rid RID, role AccessibilityServerAccessibilityRole, insert_pos int32) RID
+	CreateSubTextEditElements(parent_rid RID, shaped_text RID, min_height float32, insert_pos int32, is_last_line bool) RID
+	HasElement(id RID) bool
+	FreeElement(id RID)
+	ElementSetMeta(id RID, meta Variant)
+	ElementGetMeta(id RID) Variant
+	SetWindowRect(window_id int32, rect_out Rect2, rect_in Rect2)
+	SetWindowFocused(window_id int32, focused bool)
+	UpdateSetFocus(id RID)
+	GetWindowRoot(window_id int32) RID
+	UpdateSetRole(id RID, role AccessibilityServerAccessibilityRole)
+	UpdateSetName(id RID, name String)
+	UpdateSetBrailleLabel(id RID, name String)
+	UpdateSetBrailleRoleDescription(id RID, description String)
+	UpdateSetExtraInfo(id RID, name String)
+	UpdateSetDescription(id RID, description String)
+	UpdateSetValue(id RID, value String)
+	UpdateSetTooltip(id RID, tooltip String)
+	UpdateSetBounds(id RID, rect Rect2)
+	UpdateSetTransform(id RID, transform Transform2D)
+	UpdateAddChild(id RID, child_id RID)
+	UpdateAddRelatedControls(id RID, related_id RID)
+	UpdateAddRelatedDetails(id RID, related_id RID)
+	UpdateAddRelatedDescribedBy(id RID, related_id RID)
+	UpdateAddRelatedFlowTo(id RID, related_id RID)
+	UpdateAddRelatedLabeledBy(id RID, related_id RID)
+	UpdateAddRelatedRadioGroup(id RID, related_id RID)
+	UpdateSetActiveDescendant(id RID, other_id RID)
+	UpdateSetNextOnLine(id RID, other_id RID)
+	UpdateSetPreviousOnLine(id RID, other_id RID)
+	UpdateSetMemberOf(id RID, group_id RID)
+	UpdateSetInPageLinkTarget(id RID, other_id RID)
+	UpdateSetErrorMessage(id RID, other_id RID)
+	UpdateSetLive(id RID, live AccessibilityServerAccessibilityLiveMode)
+	UpdateAddAction(id RID, action AccessibilityServerAccessibilityAction, callable Callable)
+	UpdateAddCustomAction(id RID, action_id int32, action_description String)
+	UpdateSetTableRowCount(id RID, count int32)
+	UpdateSetTableColumnCount(id RID, count int32)
+	UpdateSetTableRowIndex(id RID, index int32)
+	UpdateSetTableColumnIndex(id RID, index int32)
+	UpdateSetTableCellPosition(id RID, row_index int32, column_index int32)
+	UpdateSetTableCellSpan(id RID, row_span int32, column_span int32)
+	UpdateSetListItemCount(id RID, size int32)
+	UpdateSetListItemIndex(id RID, index int32)
+	UpdateSetListItemLevel(id RID, level int32)
+	UpdateSetListItemSelected(id RID, selected bool)
+	UpdateSetListItemExpanded(id RID, expanded bool)
+	UpdateSetPopupType(id RID, popup AccessibilityServerAccessibilityPopupType)
+	UpdateSetChecked(id RID, checekd bool)
+	UpdateSetNumValue(id RID, position float64)
+	UpdateSetNumRange(id RID, min float64, max float64)
+	UpdateSetNumStep(id RID, step float64)
+	UpdateSetNumJump(id RID, jump float64)
+	UpdateSetScrollX(id RID, position float64)
+	UpdateSetScrollXRange(id RID, min float64, max float64)
+	UpdateSetScrollY(id RID, position float64)
+	UpdateSetScrollYRange(id RID, min float64, max float64)
+	UpdateSetTextDecorations(id RID, underline bool, strikethrough bool, overline bool, color Color)
+	UpdateSetTextAlign(id RID, align HorizontalAlignment)
+	UpdateSetTextSelection(id RID, text_start_id RID, start_char int32, text_end_id RID, end_char int32)
+	UpdateSetFlag(id RID, flag AccessibilityServerAccessibilityFlags, value bool)
+	UpdateSetClassname(id RID, classname String)
+	UpdateSetPlaceholder(id RID, placeholder String)
+	UpdateSetLanguage(id RID, language String)
+	UpdateSetTextOrientation(id RID, vertical bool)
+	UpdateSetListOrientation(id RID, vertical bool)
+	UpdateSetShortcut(id RID, shortcut String)
+	UpdateSetUrl(id RID, url String)
+	UpdateSetRoleDescription(id RID, description String)
+	UpdateSetStateDescription(id RID, description String)
+	UpdateSetColorValue(id RID, color Color)
+	UpdateSetBackgroundColor(id RID, color Color)
+	UpdateSetForegroundColor(id RID, color Color)
+}
 type AimModifier3D interface {
 	BoneConstraint3D
 	SetForwardAxis(index int32, axis SkeletonModifier3DBoneAxis)
@@ -314,8 +392,8 @@ type Animation interface {
 	GetMarkerNames() PackedStringArray
 	GetMarkerColor(name StringName) Color
 	SetMarkerColor(name StringName, color Color)
-	SetLength(time_sec float32)
-	GetLength() float32
+	SetLength(time_sec float64)
+	GetLength() float64
 	SetLoopMode(loop_mode AnimationLoopMode)
 	GetLoopMode() AnimationLoopMode
 	SetStep(size_sec float32)
@@ -441,13 +519,17 @@ type AnimationNodeBlend3 interface {
 }
 type AnimationNodeBlendSpace1D interface {
 	AnimationRootNode
-	AddBlendPoint(node RefAnimationRootNode, pos float32, at_index int32)
+	AddBlendPoint(node RefAnimationRootNode, pos float32, at_index int32, name StringName)
 	SetBlendPointPosition(point int32, pos float32)
 	GetBlendPointPosition(point int32) float32
 	SetBlendPointNode(point int32, node RefAnimationRootNode)
 	GetBlendPointNode(point int32) RefAnimationRootNode
+	SetBlendPointName(point int32, name StringName)
+	GetBlendPointName(point int32) StringName
+	FindBlendPointByName(name StringName) int32
 	RemoveBlendPoint(point int32)
 	GetBlendPointCount() int32
+	ReorderBlendPoint(from_index int32, to_index int32)
 	SetMinSpace(min_space float32)
 	GetMinSpace() float32
 	SetMaxSpace(max_space float32)
@@ -460,16 +542,24 @@ type AnimationNodeBlendSpace1D interface {
 	GetBlendMode() AnimationNodeBlendSpace1DBlendMode
 	SetUseSync(enable bool)
 	IsUsingSync() bool
+	SetSyncMode(sync_mode AnimationNodeBlendSpace1DSyncMode)
+	GetSyncMode() AnimationNodeBlendSpace1DSyncMode
+	SetCyclicLength(length float64)
+	GetCyclicLength() float64
 }
 type AnimationNodeBlendSpace2D interface {
 	AnimationRootNode
-	AddBlendPoint(node RefAnimationRootNode, pos Vector2, at_index int32)
+	AddBlendPoint(node RefAnimationRootNode, pos Vector2, at_index int32, name StringName)
 	SetBlendPointPosition(point int32, pos Vector2)
 	GetBlendPointPosition(point int32) Vector2
 	SetBlendPointNode(point int32, node RefAnimationRootNode)
 	GetBlendPointNode(point int32) RefAnimationRootNode
+	SetBlendPointName(point int32, name StringName)
+	GetBlendPointName(point int32) StringName
+	FindBlendPointByName(name StringName) int32
 	RemoveBlendPoint(point int32)
 	GetBlendPointCount() int32
+	ReorderBlendPoint(from_index int32, to_index int32)
 	AddTriangle(x int32, y int32, z int32, at_index int32)
 	GetTrianglePoint(triangle int32, point int32) int32
 	RemoveTriangle(triangle int32)
@@ -490,6 +580,10 @@ type AnimationNodeBlendSpace2D interface {
 	GetBlendMode() AnimationNodeBlendSpace2DBlendMode
 	SetUseSync(enable bool)
 	IsUsingSync() bool
+	SetSyncMode(sync_mode AnimationNodeBlendSpace2DSyncMode)
+	GetSyncMode() AnimationNodeBlendSpace2DSyncMode
+	SetCyclicLength(length float64)
+	GetCyclicLength() float64
 }
 type AnimationNodeBlendTree interface {
 	AnimationRootNode
@@ -800,6 +894,15 @@ type Area3D interface {
 	SetReverbUniformity(amount float32)
 	GetReverbUniformity() float32
 }
+type AreaLight3D interface {
+	Light3D
+	SetAreaTexture(texture RefTexture2D)
+	GetAreaTexture() RefTexture2D
+	SetAreaSize(area_size Vector2)
+	GetAreaSize() Vector2
+	SetAreaNormalizeEnergy(enable bool)
+	IsAreaNormalizingEnergy() bool
+}
 type ArrayMesh interface {
 	Mesh
 	AddBlendShape(name StringName)
@@ -1000,9 +1103,9 @@ type AudioEffectHardLimiter interface {
 	AudioEffect
 	SetCeilingDb(ceiling float32)
 	GetCeilingDb() float32
-	SetPreGainDb(p_pre_gain float32)
+	SetPreGainDb(pre_gain float32)
 	GetPreGainDb() float32
-	SetRelease(p_release float32)
+	SetRelease(release float32)
 	GetRelease() float32
 }
 type AudioEffectHighPassFilter interface {
@@ -1013,7 +1116,7 @@ type AudioEffectHighShelfFilter interface {
 }
 type AudioEffectInstance interface {
 	RefCounted
-	// TODO: Implement virtual method: Internal_Process(src_buffer unsafe.Pointer,dst_buffer *AudioFrame,frame_count int32,)
+	// TODO: Implement virtual method: Internal_Process(src_buffer unsafe.Pointer,r_dst_buffer *AudioFrame,frame_count int32,)
 	// TODO: Implement virtual method: Internal_ProcessSilence() bool
 
 }
@@ -1095,8 +1198,6 @@ type AudioEffectSpectrumAnalyzer interface {
 	AudioEffect
 	SetBufferLength(seconds float32)
 	GetBufferLength() float32
-	SetTapBackPos(seconds float32)
-	GetTapBackPos() float32
 	SetFftSize(size AudioEffectSpectrumAnalyzerFFTSize)
 	GetFftSize() AudioEffectSpectrumAnalyzerFFTSize
 }
@@ -1538,6 +1639,10 @@ type AudioStreamWAV interface {
 	GetTags() Dictionary
 	SaveToWav(path String) Error
 }
+type AwaitTweener interface {
+	Tweener
+	SetTimeout(timeout float64) RefAwaitTweener
+}
 type BackBufferCopy interface {
 	Node2D
 	SetRect(rect Rect2)
@@ -1746,6 +1851,11 @@ type BitMap interface {
 	ConvertToImage() RefImage
 	OpaqueToPolygons(rect Rect2i, epsilon float32) PackedVector2Array
 }
+type BlitMaterial interface {
+	Material
+	SetBlendMode(blend_mode BlitMaterialBlendMode)
+	GetBlendMode() BlitMaterialBlendMode
+}
 type Bone2D interface {
 	Node2D
 	SetRest(rest Transform2D)
@@ -1922,7 +2032,7 @@ type CPUParticles2D interface {
 	SetFixedFps(fps int32)
 	SetFractionalDelta(enable bool)
 	SetSpeedScale(scale float64)
-	RequestParticlesProcess(process_time float32)
+	RequestParticlesProcess(process_time float32, process_time_residual float32)
 	IsEmitting() bool
 	GetAmount() int32
 	GetLifetime() float64
@@ -2025,7 +2135,7 @@ type CPUParticles3D interface {
 	SetSeed(seed uint32)
 	GetSeed() uint32
 	Restart(keep_seed bool)
-	RequestParticlesProcess(process_time float32)
+	RequestParticlesProcess(process_time float32, process_time_residual float32)
 	CaptureAabb() AABB
 	SetDirection(direction Vector3)
 	GetDirection() Vector3
@@ -2179,6 +2289,10 @@ type CSGShape3D interface {
 	IsCalculatingTangents() bool
 	GetMeshes() Array
 	BakeStaticMesh() RefArrayMesh
+	SetAutosmooth(autosmooth bool)
+	IsAutosmooth() bool
+	SetSmoothingAngle(smoothing_angle float32)
+	GetSmoothingAngle() float32
 }
 type CSGSphere3D interface {
 	CSGPrimitive3D
@@ -2377,6 +2491,8 @@ type CameraFeed interface {
 	RefCounted
 	// TODO: Implement virtual method: Internal_ActivateFeed() bool
 	// TODO: Implement virtual method: Internal_DeactivateFeed()
+	// TODO: Implement virtual method: Internal_SetFormat(index int32,parameters Dictionary,) bool
+	// TODO: Implement virtual method: Internal_GetFormats() Array
 	GetId() int32
 	IsActive() bool
 	SetActive(active bool)
@@ -2517,6 +2633,8 @@ type CanvasItem interface {
 	GetTextureRepeat() CanvasItemTextureRepeat
 	SetClipChildrenMode(mode CanvasItemClipChildrenMode)
 	GetClipChildrenMode() CanvasItemClipChildrenMode
+	SetOversamplingWithScale(enabled CanvasItemOversamplingWithScale)
+	GetOversamplingWithScale() CanvasItemOversamplingWithScale
 }
 type CanvasItemMaterial interface {
 	Material
@@ -2926,6 +3044,7 @@ type CodeEdit interface {
 	MoveLinesUp()
 	MoveLinesDown()
 	DeleteLines()
+	JoinLines(line_ending String)
 	DuplicateSelection()
 	DuplicateLines()
 }
@@ -2994,6 +3113,8 @@ type CollisionObject2D interface {
 	IsShapeOwnerOneWayCollisionEnabled(owner_id uint32) bool
 	ShapeOwnerSetOneWayCollisionMargin(owner_id uint32, margin float32)
 	GetShapeOwnerOneWayCollisionMargin(owner_id uint32) float32
+	GetShapeOwnerOneWayCollisionDirection(owner_id uint32) Vector2
+	ShapeOwnerSetOneWayCollisionDirection(owner_id uint32, direction Vector2)
 	ShapeOwnerAddShape(owner_id uint32, shape RefShape2D)
 	ShapeOwnerGetShapeCount(owner_id uint32) int32
 	ShapeOwnerGetShape(owner_id uint32, shape_id int32) RefShape2D
@@ -3052,6 +3173,8 @@ type CollisionPolygon2D interface {
 	IsOneWayCollisionEnabled() bool
 	SetOneWayCollisionMargin(margin float32)
 	GetOneWayCollisionMargin() float32
+	SetOneWayCollisionDirection(direction Vector2)
+	GetOneWayCollisionDirection() Vector2
 }
 type CollisionPolygon3D interface {
 	Node3D
@@ -3078,6 +3201,8 @@ type CollisionShape2D interface {
 	IsOneWayCollisionEnabled() bool
 	SetOneWayCollisionMargin(margin float32)
 	GetOneWayCollisionMargin() float32
+	SetOneWayCollisionDirection(direction Vector2)
+	GetOneWayCollisionDirection() Vector2
 	SetDebugColor(color Color)
 	GetDebugColor() Color
 }
@@ -3244,23 +3369,33 @@ type Container interface {
 	// TODO: Implement virtual method: Internal_GetAllowedSizeFlagsVertical() PackedInt32Array
 	QueueSort()
 	FitChildInRect(child Control, rect Rect2)
+	SetAccessibilityRegion(region bool)
+	IsAccessibilityRegion() bool
 }
 type Control interface {
 	CanvasItem
 	// TODO: Implement virtual method: Internal_HasPoint(point Vector2,) bool
 	// TODO: Implement virtual method: Internal_StructuredTextParser(args Array,text String,) Vector3i
+	// TODO: Implement virtual method: Internal_GetMaximumSize() Vector2
 	// TODO: Implement virtual method: Internal_GetMinimumSize() Vector2
 	// TODO: Implement virtual method: Internal_GetTooltip(at_position Vector2,) String
+	// TODO: Implement virtual method: Internal_GetTooltipAutoTranslateModeAt(at_position Vector2,) NodeAutoTranslateMode
 	// TODO: Implement virtual method: Internal_GetDragData(at_position Vector2,) Variant
 	// TODO: Implement virtual method: Internal_CanDropData(at_position Vector2,data Variant,) bool
 	// TODO: Implement virtual method: Internal_DropData(at_position Vector2,data Variant,)
 	// TODO: Implement virtual method: Internal_MakeCustomTooltip(for_text String,) Object
+	// TODO: Implement virtual method: Internal_GetCursorShape(at_position Vector2,) int32
 	// TODO: Implement virtual method: Internal_AccessibilityGetContextualInfo() String
 	// TODO: Implement virtual method: Internal_GetAccessibilityContainerName(node Node,) String
 	// TODO: Implement virtual method: Internal_GuiInput(event RefInputEvent,)
 	AcceptEvent()
+	GetMaximumSize() Vector2
+	GetCombinedMaximumSize() Vector2
 	GetMinimumSize() Vector2
 	GetCombinedMinimumSize() Vector2
+	SetPropagateMaximumSize(enable bool)
+	IsPropagatingMaximumSize() bool
+	GetBoundMinimumSize() Vector2
 	SetAnchorsPreset(preset ControlLayoutPreset, keep_offsets bool)
 	SetOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int32)
 	SetAnchorsAndOffsetsPreset(preset ControlLayoutPreset, resize_mode ControlLayoutPresetMode, margin int32)
@@ -3274,6 +3409,7 @@ type Control interface {
 	SetPosition(position Vector2, keep_offsets bool)
 	SetSize(size Vector2, keep_offsets bool)
 	ResetSize()
+	SetCustomMaximumSize(size Vector2)
 	SetCustomMinimumSize(size Vector2)
 	SetGlobalPosition(position Vector2, keep_offsets bool)
 	SetRotation(radians float32)
@@ -3291,6 +3427,7 @@ type Control interface {
 	GetPivotOffset() Vector2
 	GetPivotOffsetRatio() Vector2
 	GetCombinedPivotOffset() Vector2
+	GetCustomMaximumSize() Vector2
 	GetCustomMinimumSize() Vector2
 	GetParentAreaSize() Vector2
 	GetGlobalPosition() Vector2
@@ -3314,6 +3451,22 @@ type Control interface {
 	GetStretchRatio() float32
 	SetVSizeFlags(flags ControlSizeFlags)
 	GetVSizeFlags() ControlSizeFlags
+	SetOffsetTransformEnabled(enabled bool)
+	IsOffsetTransformEnabled() bool
+	SetOffsetTransformPosition(offset Vector2)
+	GetOffsetTransformPosition() Vector2
+	SetOffsetTransformPositionRatio(offset Vector2)
+	GetOffsetTransformPositionRatio() Vector2
+	SetOffsetTransformScale(scale Vector2)
+	GetOffsetTransformScale() Vector2
+	SetOffsetTransformRotation(rotation float32)
+	GetOffsetTransformRotation() float32
+	SetOffsetTransformPivot(pivot Vector2)
+	GetOffsetTransformPivot() Vector2
+	SetOffsetTransformPivotRatio(pivot Vector2)
+	GetOffsetTransformPivotRatio() Vector2
+	SetOffsetTransformVisualOnly(enabled bool)
+	IsOffsetTransformVisualOnly() bool
 	SetTheme(theme RefTheme)
 	GetTheme() RefTheme
 	SetThemeTypeVariation(theme_type StringName)
@@ -3363,9 +3516,11 @@ type Control interface {
 	SetTooltipText(hint String)
 	GetTooltipText() String
 	GetTooltip(at_position Vector2) String
+	SetTranslationContext(context StringName)
+	GetTranslationContext() StringName
 	SetDefaultCursorShape(shape ControlCursorShape)
 	GetDefaultCursorShape() ControlCursorShape
-	GetCursorShape(position Vector2) ControlCursorShape
+	GetCursorShape(at_position Vector2) ControlCursorShape
 	SetFocusNeighbor(side Side, neighbor NodePath)
 	GetFocusNeighbor(side Side) NodePath
 	SetFocusNext(next NodePath)
@@ -3379,8 +3534,8 @@ type Control interface {
 	GetAccessibilityName() String
 	SetAccessibilityDescription(description String)
 	GetAccessibilityDescription() String
-	SetAccessibilityLive(mode DisplayServerAccessibilityLiveMode)
-	GetAccessibilityLive() DisplayServerAccessibilityLiveMode
+	SetAccessibilityLive(mode AccessibilityServerAccessibilityLiveMode)
+	GetAccessibilityLive() AccessibilityServerAccessibilityLiveMode
 	SetAccessibilityControlsNodes(node_path NodePath)
 	GetAccessibilityControlsNodes() NodePath
 	SetAccessibilityDescribedByNodes(node_path NodePath)
@@ -3405,6 +3560,7 @@ type Control interface {
 	WarpMouse(position Vector2)
 	SetShortcutContext(node Node)
 	GetShortcutContext() Node
+	UpdateMaximumSize()
 	UpdateMinimumSize()
 	SetLayoutDirection(direction ControlLayoutDirection)
 	GetLayoutDirection() ControlLayoutDirection
@@ -3650,6 +3806,10 @@ type DPITexture interface {
 	CreateFromString(source String, scale float32, saturation float32, color_map Dictionary) RefDPITexture
 	SetSource(source String)
 	GetSource() String
+	SetFixAlphaBorder(fix_alpha_border bool)
+	GetFixAlphaBorder() bool
+	SetPremultAlpha(premult_alpha bool)
+	GetPremultAlpha() bool
 	SetBaseScale(base_scale float32)
 	GetBaseScale() float32
 	SetSaturation(saturation float32)
@@ -3717,6 +3877,7 @@ type DirAccess interface {
 	GetDirectoriesAt(path String) PackedStringArray
 	GetDriveCount() int32
 	GetDriveName(idx int32) String
+	GetDriveLabel(idx int32) String
 	GetCurrentDrive() int32
 	ChangeDir(to_dir String) Error
 	GetCurrentDir(include_drive bool) String
@@ -3892,9 +4053,12 @@ type DisplayServer interface {
 	WindowSetMode(mode DisplayServerWindowMode, window_id int32)
 	WindowSetFlag(flag DisplayServerWindowFlags, enabled bool, window_id int32)
 	WindowGetFlag(flag DisplayServerWindowFlags, window_id int32) bool
+	WindowSetIcon(icon RefImage, window_id int32)
 	WindowSetWindowButtonsOffset(offset Vector2i, window_id int32)
 	WindowGetSafeTitleMargins(window_id int32) Vector3i
 	WindowRequestAttention(window_id int32)
+	WindowSetTaskbarProgressValue(value float32, window_id int32)
+	WindowSetTaskbarProgressState(state DisplayServerProgressState, window_id int32)
 	WindowMoveToForeground(window_id int32)
 	WindowIsFocused(window_id int32) bool
 	WindowCanDraw(window_id int32) bool
@@ -3904,6 +4068,17 @@ type DisplayServer interface {
 	WindowSetImePosition(position Vector2i, window_id int32)
 	WindowSetVsyncMode(vsync_mode DisplayServerVSyncMode, window_id int32)
 	WindowGetVsyncMode(window_id int32) DisplayServerVSyncMode
+	WindowIsHdrOutputSupported(window_id int32) bool
+	WindowRequestHdrOutput(enable bool, window_id int32)
+	WindowIsHdrOutputRequested(window_id int32) bool
+	WindowIsHdrOutputEnabled(window_id int32) bool
+	WindowSetHdrOutputReferenceLuminance(reference_luminance float32, window_id int32)
+	WindowGetHdrOutputReferenceLuminance(window_id int32) float32
+	WindowGetHdrOutputCurrentReferenceLuminance(window_id int32) float32
+	WindowSetHdrOutputMaxLuminance(max_luminance float32, window_id int32)
+	WindowGetHdrOutputMaxLuminance(window_id int32) float32
+	WindowGetHdrOutputCurrentMaxLuminance(window_id int32) float32
+	WindowGetOutputMaxLinearValue(window_id int32) float32
 	WindowIsMaximizeAllowed(window_id int32) bool
 	WindowMaximizeOnTitleDblClick() bool
 	WindowMinimizeOnTitleDblClick() bool
@@ -3931,7 +4106,7 @@ type DisplayServer interface {
 	AccessibilityUpdateSetDescription(id RID, description String)
 	AccessibilityUpdateSetValue(id RID, value String)
 	AccessibilityUpdateSetTooltip(id RID, tooltip String)
-	AccessibilityUpdateSetBounds(id RID, p_rect Rect2)
+	AccessibilityUpdateSetBounds(id RID, rect Rect2)
 	AccessibilityUpdateSetTransform(id RID, transform Transform2D)
 	AccessibilityUpdateAddChild(id RID, child_id RID)
 	AccessibilityUpdateAddRelatedControls(id RID, related_id RID)
@@ -4031,6 +4206,20 @@ type DisplayServer interface {
 	RegisterAdditionalOutput(object Object)
 	UnregisterAdditionalOutput(object Object)
 	HasAdditionalOutputs() bool
+	IsInPipMode(window_id int32) bool
+	PipModeEnter(window_id int32)
+	PipModeSetAspectRatio(numerator int32, denominator int32, window_id int32)
+	PipModeSetAutoEnterOnBackground(auto_enter_on_background bool, window_id int32)
+}
+type DrawableTexture2D interface {
+	Texture2D
+	SetFormat(format DrawableTexture2DDrawableFormat)
+	SetUseMipmaps(mipmaps bool)
+	GetUseMipmaps() bool
+	Setup(width int32, height int32, format DrawableTexture2DDrawableFormat, color Color, use_mipmaps bool)
+	BlitRect(rect Rect2i, source RefTexture2D, modulate Color, mipmap int32, material RefMaterial)
+	BlitRectMulti(rect Rect2i, sources RefTexture2D, extra_targets RefDrawableTexture2D, modulate Color, mipmap int32, material RefMaterial)
+	GenerateMipmaps()
 }
 type ENetConnection interface {
 	RefCounted
@@ -4162,7 +4351,7 @@ type EditorExportPlatform interface {
 	SaveZipPatch(preset RefEditorExportPreset, debug bool, path String) Dictionary
 	GenExportFlags(flags EditorExportPlatformDebugFlags) PackedStringArray
 	ExportProjectFiles(preset RefEditorExportPreset, debug bool, save_cb Callable, shared_cb Callable) Error
-	ExportProject(preset RefEditorExportPreset, debug bool, path String, flags EditorExportPlatformDebugFlags) Error
+	ExportProject(preset RefEditorExportPreset, debug bool, path String, flags EditorExportPlatformDebugFlags, notify bool) Error
 	ExportPack(preset RefEditorExportPreset, debug bool, path String, flags EditorExportPlatformDebugFlags) Error
 	ExportZip(preset RefEditorExportPreset, debug bool, path String, flags EditorExportPlatformDebugFlags) Error
 	ExportPackPatch(preset RefEditorExportPreset, debug bool, path String, patches PackedStringArray, flags EditorExportPlatformDebugFlags) Error
@@ -4250,6 +4439,7 @@ type EditorExportPlugin interface {
 	// TODO: Implement virtual method: Internal_ExportFile(path String,typeName String,features PackedStringArray,)
 	// TODO: Implement virtual method: Internal_ExportBegin(features PackedStringArray,is_debug bool,path String,flags uint32,)
 	// TODO: Implement virtual method: Internal_ExportEnd()
+	// TODO: Implement virtual method: Internal_EndGenerateAppleEmbeddedProject(path String,will_build_archive bool,)
 	// TODO: Implement virtual method: Internal_BeginCustomizeResources(platform RefEditorExportPlatform,features PackedStringArray,) bool
 	// TODO: Implement virtual method: Internal_CustomizeResource(resource RefResource,path String,) RefResource
 	// TODO: Implement virtual method: Internal_BeginCustomizeScenes(platform RefEditorExportPlatform,features PackedStringArray,) bool
@@ -4346,6 +4536,7 @@ type EditorFileSystem interface {
 	Node
 	GetFilesystem() EditorFileSystemDirectory
 	IsScanning() bool
+	IsImporting() bool
 	GetScanningProgress() float32
 	Scan()
 	ScanSources()
@@ -4401,7 +4592,11 @@ type EditorInspector interface {
 	Edit(object Object)
 	GetSelectedPath() String
 	GetEditedObject() Object
+	CollapseAllFolding()
+	ExpandAllFolding()
+	ExpandRevertable()
 	InstantiatePropertyEditor(object Object, typeName VariantType, path String, hint PropertyHint, hint_text String, usage uint32, wide bool) EditorProperty
+	CreateDefaultInspector(filter_line_edit LineEdit) EditorInspector
 }
 type EditorInspectorPlugin interface {
 	RefCounted
@@ -4471,6 +4666,7 @@ type EditorInterface interface {
 	SetObjectEdited(object Object, edited bool)
 	IsObjectEdited(object Object) bool
 	GetOpenScenes() PackedStringArray
+	GetUnsavedScenes() PackedStringArray
 	GetOpenSceneRoots() Node
 	GetEditedSceneRoot() Node
 	AddRootNode(node Node)
@@ -4524,6 +4720,7 @@ type EditorNode3DGizmoPlugin interface {
 	// TODO: Implement virtual method: Internal_GetPriority() int32
 	// TODO: Implement virtual method: Internal_CanBeHidden() bool
 	// TODO: Implement virtual method: Internal_IsSelectableWhenHidden() bool
+	// TODO: Implement virtual method: Internal_CanCommitHandleOnClick() bool
 	// TODO: Implement virtual method: Internal_Redraw(gizmo RefEditorNode3DGizmo,)
 	// TODO: Implement virtual method: Internal_GetHandleName(gizmo RefEditorNode3DGizmo,handle_id int32,secondary bool,) String
 	// TODO: Implement virtual method: Internal_IsHandleHighlighted(gizmo RefEditorNode3DGizmo,handle_id int32,secondary bool,) bool
@@ -4817,6 +5014,8 @@ type EditorSpinSlider interface {
 	IsHidingSlider() bool
 	SetEditingInteger(editing_integer bool)
 	IsEditingInteger() bool
+	SetDeferredDragModeEnabled(enabled bool)
+	IsDeferredDragModeEnabled() bool
 }
 type EditorSyntaxHighlighter interface {
 	SyntaxHighlighter
@@ -4833,6 +5032,7 @@ type EditorTranslationParserPlugin interface {
 	RefCounted
 	// TODO: Implement virtual method: Internal_ParseFile(path String,) PackedStringArray
 	// TODO: Implement virtual method: Internal_GetRecognizedExtensions() PackedStringArray
+	// TODO: Implement virtual method: Internal_CustomizeStrings(strings PackedStringArray,) PackedStringArray
 
 }
 type EditorUndoRedoManager interface {
@@ -4859,7 +5059,8 @@ type EditorVCSInterface interface {
 	// TODO: Implement virtual method: Internal_StageFile(file_path String,)
 	// TODO: Implement virtual method: Internal_UnstageFile(file_path String,)
 	// TODO: Implement virtual method: Internal_DiscardFile(file_path String,)
-	// TODO: Implement virtual method: Internal_Commit(msg String,)
+	// TODO: Implement virtual method: Internal_Commit(msg String,amend bool,)
+	// TODO: Implement virtual method: Internal_AllowAmends() bool
 	// TODO: Implement virtual method: Internal_GetDiff(identifier String,area int32,) Dictionary
 	// TODO: Implement virtual method: Internal_ShutDown() bool
 	// TODO: Implement virtual method: Internal_GetVcsName() String
@@ -5427,7 +5628,7 @@ type Font interface {
 	Resource
 	SetFallbacks(fallbacks RefFont)
 	GetFallbacks() RefFont
-	FindVariation(variation_coordinates Dictionary, face_index int32, strength float32, transform Transform2D, spacing_top int32, spacing_bottom int32, spacing_space int32, spacing_glyph int32, baseline_offset float32) RID
+	FindVariation(variation_coordinates Dictionary, face_index int32, strength float32, transform Transform2D, spacing_top int32, spacing_bottom int32, spacing_space int32, spacing_glyph int32, baseline_offset float32, palette_index int64, custom_colors PackedColorArray) RID
 	GetRids() RID
 	GetHeight(font_size int32) float32
 	GetAscent(font_size int32) float32
@@ -5440,6 +5641,9 @@ type Font interface {
 	GetFontStyle() TextServerFontStyle
 	GetFontWeight() int32
 	GetFontStretch() int32
+	GetPaletteCount() int64
+	GetPaletteName(index int64) String
+	GetPaletteColors(index int64) PackedColorArray
 	GetSpacing(spacing TextServerSpacingType) int32
 	GetOpentypeFeatures() Dictionary
 	SetCacheCapacity(single_line int32, multi_line int32)
@@ -5585,6 +5789,10 @@ type FontVariation interface {
 	SetSpacing(spacing TextServerSpacingType, value int32)
 	SetBaselineOffset(baseline_offset float32)
 	GetBaselineOffset() float32
+	GetPaletteIndex() int64
+	SetPaletteIndex(palette_index int64)
+	GetPaletteCustomColors() PackedColorArray
+	SetPaletteCustomColors(colors PackedColorArray)
 }
 type FramebufferCacheRD interface {
 	Object
@@ -5609,8 +5817,55 @@ type GDScript interface {
 	Script
 	New(varargs ...Variant) Variant
 }
+type GDScriptLanguageProtocol interface {
+	JSONRPC
+	GetTextDocument() RefGDScriptTextDocument
+	GetWorkspace() RefGDScriptWorkspace
+	IsSmartResolveEnabled() bool
+	IsInitialized() bool
+	Initialize(params Dictionary) Variant
+	Initialized(params Variant)
+	OnClientConnected() Error
+	OnClientDisconnected(client_id int32)
+	NotifyClient(method String, params Variant, client_id int32)
+}
 type GDScriptSyntaxHighlighter interface {
 	EditorSyntaxHighlighter
+}
+type GDScriptTextDocument interface {
+	RefCounted
+	ShowNativeSymbolInEditor(symbol_id String)
+	DidOpen(params Variant)
+	DidClose(params Variant)
+	DidChange(params Variant)
+	WillSaveWaitUntil(params Variant)
+	DidSave(params Variant)
+	NativeSymbol(params Dictionary) Variant
+	DocumentSymbol(params Dictionary) Array
+	Completion(params Dictionary) Array
+	Resolve(params Dictionary) Dictionary
+	Rename(params Dictionary) Dictionary
+	PrepareRename(params Dictionary) Variant
+	References(params Dictionary) Array
+	FoldingRange(params Dictionary) Array
+	CodeLens(params Dictionary) Array
+	DocumentLink(params Dictionary) Array
+	ColorPresentation(params Dictionary) Array
+	Hover(params Dictionary) Variant
+	Definition(params Dictionary) Array
+	Declaration(params Dictionary) Variant
+	SignatureHelp(params Dictionary) Variant
+}
+type GDScriptWorkspace interface {
+	RefCounted
+	ApplyNewSignal(obj Object, function String, args PackedStringArray)
+	GetFilePath(uri String) String
+	GetFileUri(path String) String
+	GenerateScriptApi(path String) Dictionary
+	DidDeleteFiles(params Dictionary)
+	ParseScript(path String, content String) Error
+	ParseLocalScript(path String) Error
+	PublishDiagnostics(path String)
 }
 type GLTFAccessor interface {
 	Resource
@@ -5703,6 +5958,8 @@ type GLTFDocument interface {
 	GetFallbackImageQuality() float32
 	SetRootNodeMode(root_node_mode GLTFDocumentRootNodeMode)
 	GetRootNodeMode() GLTFDocumentRootNodeMode
+	SetTextureMapMode(texture_map_mode GLTFDocumentTextureMapMode)
+	GetTextureMapMode() GLTFDocumentTextureMapMode
 	SetVisibilityMode(visibility_mode GLTFDocumentVisibilityMode)
 	GetVisibilityMode() GLTFDocumentVisibilityMode
 	AppendFromFile(path String, state RefGLTFState, flags uint32, base_path String) Error
@@ -5731,6 +5988,7 @@ type GLTFDocumentExtension interface {
 	// TODO: Implement virtual method: Internal_GenerateSceneNode(state RefGLTFState,gltf_node RefGLTFNode,scene_parent Node,) Node3D
 	// TODO: Implement virtual method: Internal_ImportNode(state RefGLTFState,gltf_node RefGLTFNode,json Dictionary,node Node,) Error
 	// TODO: Implement virtual method: Internal_ImportPost(state RefGLTFState,root Node,) Error
+	// TODO: Implement virtual method: Internal_ExportGetPropertyList(root_node Node,) Dictionary
 	// TODO: Implement virtual method: Internal_ExportPreflight(state RefGLTFState,root Node,) Error
 	// TODO: Implement virtual method: Internal_ConvertSceneNode(state RefGLTFState,gltf_node RefGLTFNode,scene_node Node,)
 	// TODO: Implement virtual method: Internal_ExportPostConvert(state RefGLTFState,root Node,) Error
@@ -6043,7 +6301,7 @@ type GPUParticles2D interface {
 	SetSpeedScale(scale float64)
 	SetCollisionBaseSize(size float32)
 	SetInterpToEnd(interp float32)
-	RequestParticlesProcess(process_time float32)
+	RequestParticlesProcess(process_time float32, process_time_residual float32)
 	IsEmitting() bool
 	GetAmount() int32
 	GetLifetime() float64
@@ -6142,10 +6400,14 @@ type GPUParticles3D interface {
 	GetTrailLifetime() float64
 	SetTransformAlign(align GPUParticles3DTransformAlign)
 	GetTransformAlign() GPUParticles3DTransformAlign
+	SetTransformAlignChannelFilter(channel_filter RenderingServerParticlesTransformAlignCustomSrc)
+	GetTransformAlignChannelFilter() RenderingServerParticlesTransformAlignCustomSrc
+	SetTransformAlignAxis(align RenderingServerParticlesTransformAlignAxis)
+	GetTransformAlignAxis() RenderingServerParticlesTransformAlignAxis
 	ConvertFromParticles(particles Node)
 	SetAmountRatio(ratio float32)
 	GetAmountRatio() float32
-	RequestParticlesProcess(process_time float32)
+	RequestParticlesProcess(process_time float32, process_time_residual float32)
 }
 type GPUParticlesAttractor3D interface {
 	VisualInstance3D
@@ -6548,6 +6810,8 @@ type GridMap interface {
 	GetCollisionLayerValue(layer_number int32) bool
 	SetCollisionPriority(priority float32)
 	GetCollisionPriority() float32
+	SetCollisionVisibilityMode(visibility_mode GridMapDebugVisibilityMode)
+	GetCollisionVisibilityMode() GridMapDebugVisibilityMode
 	SetPhysicsMaterial(material RefPhysicsMaterial)
 	GetPhysicsMaterial() RefPhysicsMaterial
 	SetBakeNavigation(bake_navigation bool)
@@ -6580,6 +6844,13 @@ type GridMap interface {
 	Clear()
 	GetUsedCells() Vector3i
 	GetUsedCellsByItem(item int32) Vector3i
+	GetUsedOctants() Vector3i
+	GetUsedOctantsByItem(item int32) Vector3i
+	GetUsedCellsInOctant(octant_coords Vector3i) Vector3i
+	GetUsedCellsInOctantByItem(octant_coords Vector3i, item int32) Vector3i
+	GetOctantsInBounds(bounds AABB) Vector3i
+	GetUsedOctantsInBounds(bounds AABB) Vector3i
+	GetOctantCoordsFromCellCoords(cell_coords Vector3i) Vector3i
 	GetMeshes() Array
 	GetBakeMeshes() Array
 	GetBakeMeshInstance(idx int32) RID
@@ -6757,8 +7028,8 @@ type Image interface {
 	SavePngToBuffer() PackedByteArray
 	SaveJpg(path String, quality float32) Error
 	SaveJpgToBuffer(quality float32) PackedByteArray
-	SaveExr(path String, grayscale bool) Error
-	SaveExrToBuffer(grayscale bool) PackedByteArray
+	SaveExr(path String, grayscale bool, color_image bool, max_linear_value float32) Error
+	SaveExrToBuffer(grayscale bool, color_image bool, max_linear_value float32) PackedByteArray
 	SaveDds(path String) Error
 	SaveDdsToBuffer() PackedByteArray
 	SaveWebp(path String, lossy bool, quality float32) Error
@@ -6818,7 +7089,6 @@ type ImageFormatLoaderExtension interface {
 type ImageTexture interface {
 	Texture2D
 	CreateFromImage(image RefImage) RefImageTexture
-	GetFormat() ImageFormat
 	SetImage(image RefImage)
 	Update(image RefImage)
 	SetSizeOverride(size Vector2i)
@@ -6848,6 +7118,7 @@ type ImmediateMesh interface {
 }
 type ImporterMesh interface {
 	Resource
+	MergeImporterMeshes(importer_meshes RefImporterMesh, relative_transforms Transform3D, deduplicate_surfaces bool) RefImporterMesh
 	AddBlendShape(name String)
 	GetBlendShapeCount() int32
 	GetBlendShapeName(blend_shape_idx int32) String
@@ -6924,13 +7195,32 @@ type Input interface {
 	GetConnectedJoypads() int64
 	GetJoyVibrationStrength(device int32) Vector2
 	GetJoyVibrationDuration(device int32) float32
+	GetJoyVibrationRemainingDuration(device int32) float32
+	IsJoyVibrating(device int32) bool
+	HasJoyVibration(device int32) bool
 	StartJoyVibration(device int32, weak_magnitude float32, strong_magnitude float32, duration float32)
 	StopJoyVibration(device int32)
 	VibrateHandheld(duration_ms int32, amplitude float32)
+	SetIgnoreJoypadOnUnfocusedApplication(enable bool)
+	IsIgnoringJoypadOnUnfocusedApplication() bool
 	GetGravity() Vector3
 	GetAccelerometer() Vector3
 	GetMagnetometer() Vector3
 	GetGyroscope() Vector3
+	GetJoyAccelerometer(device int32) Vector3
+	GetJoyGravity(device int32) Vector3
+	GetJoyGyroscope(device int32) Vector3
+	GetJoyMotionSensorsRate(device int32) float32
+	IsJoyMotionSensorsEnabled(device int32) bool
+	SetJoyMotionSensorsEnabled(device int32, enable bool)
+	HasJoyMotionSensors(device int32) bool
+	StartJoyMotionSensorsCalibration(device int32)
+	StopJoyMotionSensorsCalibration(device int32)
+	ClearJoyMotionSensorsCalibration(device int32)
+	GetJoyMotionSensorsCalibration(device int32) Dictionary
+	SetJoyMotionSensorsCalibration(device int32, calibration_info Dictionary)
+	IsJoyMotionSensorsCalibrated(device int32) bool
+	IsJoyMotionSensorsCalibrating(device int32) bool
 	SetGravity(value Vector3)
 	SetAccelerometer(value Vector3)
 	SetMagnetometer(value Vector3)
@@ -7251,6 +7541,7 @@ type ItemList interface {
 	IsAnythingSelected() bool
 	GetItemAtPosition(position Vector2, exact bool) int32
 	EnsureCurrentIsVisible()
+	CenterOnCurrent(center_verically bool, center_horizontally bool)
 	GetVScrollBar() VScrollBar
 	GetHScrollBar() HScrollBar
 	SetScrollHintMode(scroll_hint_mode ItemListScrollHintMode)
@@ -7329,6 +7620,8 @@ type JavaClassWrapper interface {
 	Object
 	Wrap(name String) RefJavaClass
 	GetException() RefJavaObject
+	CreateSamCallback(sam_interface String, callable Callable) RefJavaObject
+	CreateProxy(object Object, interfaces PackedStringArray) RefJavaObject
 }
 type JavaObject interface {
 	RefCounted
@@ -8210,6 +8503,7 @@ type MeshLibrary interface {
 	FindItemByName(name String) int32
 	Clear()
 	GetItemList() PackedInt32Array
+	GetItemCount() int32
 	GetLastUnusedItemId() int32
 }
 type MeshTexture interface {
@@ -8384,25 +8678,25 @@ type MultiplayerPeer interface {
 type MultiplayerPeerExtension interface {
 	MultiplayerPeer
 	// TODO: Implement virtual method: Internal_GetPacket(r_buffer **uint8,r_buffer_size *Int32T,) Error
-	// TODO: Implement virtual method: Internal_PutPacket(p_buffer *uint8,p_buffer_size int32,) Error
+	// TODO: Implement virtual method: Internal_PutPacket(buffer *uint8,buffer_size int32,) Error
 	// TODO: Implement virtual method: Internal_GetAvailablePacketCount() int32
 	// TODO: Implement virtual method: Internal_GetMaxPacketSize() int32
 	// TODO: Implement virtual method: Internal_GetPacketScript() PackedByteArray
-	// TODO: Implement virtual method: Internal_PutPacketScript(p_buffer PackedByteArray,) Error
+	// TODO: Implement virtual method: Internal_PutPacketScript(buffer PackedByteArray,) Error
 	// TODO: Implement virtual method: Internal_GetPacketChannel() int32
 	// TODO: Implement virtual method: Internal_GetPacketMode() MultiplayerPeerTransferMode
-	// TODO: Implement virtual method: Internal_SetTransferChannel(p_channel int32,)
+	// TODO: Implement virtual method: Internal_SetTransferChannel(channel int32,)
 	// TODO: Implement virtual method: Internal_GetTransferChannel() int32
-	// TODO: Implement virtual method: Internal_SetTransferMode(p_mode MultiplayerPeerTransferMode,)
+	// TODO: Implement virtual method: Internal_SetTransferMode(mode MultiplayerPeerTransferMode,)
 	// TODO: Implement virtual method: Internal_GetTransferMode() MultiplayerPeerTransferMode
-	// TODO: Implement virtual method: Internal_SetTargetPeer(p_peer int32,)
+	// TODO: Implement virtual method: Internal_SetTargetPeer(peer int32,)
 	// TODO: Implement virtual method: Internal_GetPacketPeer() int32
 	// TODO: Implement virtual method: Internal_IsServer() bool
 	// TODO: Implement virtual method: Internal_Poll()
 	// TODO: Implement virtual method: Internal_Close()
-	// TODO: Implement virtual method: Internal_DisconnectPeer(p_peer int32,p_force bool,)
+	// TODO: Implement virtual method: Internal_DisconnectPeer(peer int32,force bool,)
 	// TODO: Implement virtual method: Internal_GetUniqueId() int32
-	// TODO: Implement virtual method: Internal_SetRefuseNewConnections(p_enable bool,)
+	// TODO: Implement virtual method: Internal_SetRefuseNewConnections(enable bool,)
 	// TODO: Implement virtual method: Internal_IsRefusingNewConnections() bool
 	// TODO: Implement virtual method: Internal_IsServerRelaySupported() bool
 	// TODO: Implement virtual method: Internal_GetConnectionStatus() MultiplayerPeerConnectionStatus
@@ -8514,6 +8808,7 @@ type NativeMenu interface {
 	SetItemMaxStates(rid RID, idx int32, max_states int32)
 	SetItemIcon(rid RID, idx int32, icon RefTexture2D)
 	SetItemIndentationLevel(rid RID, idx int32, level int32)
+	SetItemIndex(rid RID, idx int32, target_idx int32) int32
 	GetItemCount(rid RID) int32
 	IsSystemMenu(rid RID) bool
 	RemoveItem(rid RID, idx int32)
@@ -9799,7 +10094,7 @@ type Object interface {
 	GDExtensionClass
 
 	GetClass() String
-	IsClass(class String) bool
+	IsClass(class StringName) bool
 	Set(property StringName, value Variant)
 	Get(property StringName) Variant
 	SetIndexed(property_path NodePath, value Variant)
@@ -9910,6 +10205,8 @@ type OpenXRAPIExtension interface {
 	BeginDebugLabelRegion(label_name String)
 	EndDebugLabelRegion()
 	InsertDebugLabel(label_name String)
+	GetViewCount() uint32
+	GetViewConfiguration() uint64
 	IsInitialized() bool
 	IsRunning() bool
 	SetCustomPlaySpace(space unsafe.Pointer)
@@ -9926,6 +10223,8 @@ type OpenXRAPIExtension interface {
 	UnregisterProjectionViewsExtension(extension OpenXRExtensionWrapper)
 	RegisterFrameInfoExtension(extension OpenXRExtensionWrapper)
 	UnregisterFrameInfoExtension(extension OpenXRExtensionWrapper)
+	RegisterProjectionLayerExtension(extension OpenXRExtensionWrapper)
+	UnregisterProjectionLayerExtension(extension OpenXRExtensionWrapper)
 	GetRenderStateZNear() float64
 	GetRenderStateZFar() float64
 	SetVelocityTexture(render_target RID)
@@ -10058,6 +10357,8 @@ type OpenXRCompositionLayer interface {
 	GetMaxAnisotropy() float32
 	SetBorderColor(color Color)
 	GetBorderColor() Color
+	SetEyeVisibility(eye_visibility OpenXRCompositionLayerEyeVisibility)
+	GetEyeVisibility() OpenXRCompositionLayerEyeVisibility
 	IntersectsRay(origin Vector3, direction Vector3) Vector2
 }
 type OpenXRCompositionLayerCylinder interface {
@@ -10121,6 +10422,7 @@ type OpenXRExtensionWrapper interface {
 	// TODO: Implement virtual method: Internal_SetProjectionViewsAndGetNextPointer(view_index int32,next_pointer unsafe.Pointer,) uint64
 	// TODO: Implement virtual method: Internal_SetFrameWaitInfoAndGetNextPointer(next_pointer unsafe.Pointer,) uint64
 	// TODO: Implement virtual method: Internal_SetFrameEndInfoAndGetNextPointer(next_pointer unsafe.Pointer,) uint64
+	// TODO: Implement virtual method: Internal_SetProjectionLayerAndGetNextPointer(next_pointer unsafe.Pointer,) uint64
 	// TODO: Implement virtual method: Internal_SetViewLocateInfoAndGetNextPointer(next_pointer unsafe.Pointer,) uint64
 	// TODO: Implement virtual method: Internal_SetReferenceSpaceCreateInfoAndGetNextPointer(reference_space_type int32,next_pointer unsafe.Pointer,) uint64
 	// TODO: Implement virtual method: Internal_PrepareViewConfiguration(view_count int32,)
@@ -10130,7 +10432,7 @@ type OpenXRExtensionWrapper interface {
 	// TODO: Implement virtual method: Internal_GetCompositionLayer(index int32,) uint64
 	// TODO: Implement virtual method: Internal_GetCompositionLayerOrder(index int32,) int32
 	// TODO: Implement virtual method: Internal_GetSuggestedTrackerNames() PackedStringArray
-	// TODO: Implement virtual method: Internal_OnRegisterMetadata()
+	// TODO: Implement virtual method: Internal_OnRegisterMetadata(interaction_profile_metadata OpenXRInteractionProfileMetadata,)
 	// TODO: Implement virtual method: Internal_OnBeforeInstanceCreated()
 	// TODO: Implement virtual method: Internal_OnInstanceCreated(instance uint64,)
 	// TODO: Implement virtual method: Internal_OnInstanceDestroyed()
@@ -10261,6 +10563,8 @@ type OpenXRInteractionProfileMetadata interface {
 type OpenXRInterface interface {
 	XRInterface
 	GetSessionState() OpenXRInterfaceSessionState
+	IsUserPresenceSupported() bool
+	IsUserPresent() bool
 	GetDisplayRefreshRate() float32
 	SetDisplayRefreshRate(refresh_rate float32)
 	GetRenderTargetSizeMultiplier() float64
@@ -10270,6 +10574,8 @@ type OpenXRInterface interface {
 	SetFoveationLevel(foveation_level int32)
 	GetFoveationDynamic() bool
 	SetFoveationDynamic(foveation_dynamic bool)
+	GetFoveationWithSubsampledImages() bool
+	SetFoveationWithSubsampledImages(enabled bool)
 	IsActionSetActive(name String) bool
 	SetActionSetActive(name String, active bool)
 	GetActionSets() Array
@@ -10352,13 +10658,16 @@ type OpenXRSpatialAnchorCapability interface {
 	IsSpatialAnchorSupported() bool
 	IsSpatialPersistenceSupported() bool
 	IsPersistenceScopeSupported(scope OpenXRSpatialAnchorCapabilityPersistenceScope) bool
+	CreateDefaultPersistenceContext(user_callback Callable) RefOpenXRFutureResult
 	CreatePersistenceContext(scope OpenXRSpatialAnchorCapabilityPersistenceScope, user_callback Callable) RefOpenXRFutureResult
 	GetPersistenceContextHandle(persistence_context RID) uint64
 	FreePersistenceContext(persistence_context RID)
-	CreateNewAnchor(transform Transform3D, spatial_context RID) RefOpenXRAnchorTracker
+	CreateNewAnchor(transform Transform3D, spatial_context RID, next RefOpenXRStructureBase) RefOpenXRAnchorTracker
 	RemoveAnchor(anchor_tracker RefOpenXRAnchorTracker)
 	PersistAnchor(anchor_tracker RefOpenXRAnchorTracker, persistence_context RID, user_callback Callable) RefOpenXRFutureResult
 	UnpersistAnchor(anchor_tracker RefOpenXRAnchorTracker, persistence_context RID, user_callback Callable) RefOpenXRFutureResult
+	StartEntityDiscovery(spatial_context RID, component_data RefOpenXRSpatialComponentData, next_snapshot_create RefOpenXRStructureBase, next_snapshot_query RefOpenXRStructureBase, user_callback Callable) RefOpenXRFutureResult
+	DoEntityUpdate(spatial_context RID, component_data RefOpenXRSpatialComponentData, next_snapshot_create RefOpenXRStructureBase, next_snapshot_query RefOpenXRStructureBase)
 }
 type OpenXRSpatialCapabilityConfigurationAnchor interface {
 	OpenXRSpatialCapabilityConfigurationBaseHeader
@@ -10381,6 +10690,7 @@ type OpenXRSpatialCapabilityConfigurationBaseHeader interface {
 	// TODO: Implement virtual method: Internal_HasValidConfiguration() bool
 	// TODO: Implement virtual method: Internal_GetConfiguration() uint64
 	HasValidConfiguration() bool
+	GetConfiguration() uint64
 }
 type OpenXRSpatialCapabilityConfigurationMicroQrCode interface {
 	OpenXRSpatialCapabilityConfigurationBaseHeader
@@ -10417,6 +10727,7 @@ type OpenXRSpatialComponentData interface {
 	// TODO: Implement virtual method: Internal_GetComponentType() uint64
 	// TODO: Implement virtual method: Internal_GetStructureData(next uint64,) uint64
 	SetCapacity(capacity uint32)
+	GetComponentType() int64
 }
 type OpenXRSpatialComponentMarkerList interface {
 	OpenXRSpatialComponentData
@@ -10461,6 +10772,7 @@ type OpenXRSpatialContextPersistenceConfig interface {
 	OpenXRStructureBase
 	AddPersistenceContext(persistence_context RID)
 	RemovePersistenceContext(persistence_context RID)
+	GetPersistenceContexts() Array
 }
 type OpenXRSpatialEntityExtension interface {
 	OpenXRExtensionWrapper
@@ -10470,6 +10782,7 @@ type OpenXRSpatialEntityExtension interface {
 	GetSpatialContextReady(spatial_context RID) bool
 	FreeSpatialContext(spatial_context RID)
 	GetSpatialContextHandle(spatial_context RID) uint64
+	DiscoverSpatialEntitiesWithComponentData(spatial_context RID, component_data RefOpenXRSpatialComponentData, next RefOpenXRStructureBase, user_callback Callable) RefOpenXRFutureResult
 	DiscoverSpatialEntities(spatial_context RID, component_types PackedInt64Array, next RefOpenXRStructureBase, user_callback Callable) RefOpenXRFutureResult
 	UpdateSpatialEntities(spatial_context RID, entities RID, component_types PackedInt64Array, next RefOpenXRStructureBase) RID
 	FreeSpatialSnapshot(spatial_snapshot RID)
@@ -10492,10 +10805,15 @@ type OpenXRSpatialEntityExtension interface {
 }
 type OpenXRSpatialEntityTracker interface {
 	XRPositionalTracker
+	SetSpatialContext(spatial_context RID)
+	GetSpatialContext() RID
 	SetEntity(entity RID)
 	GetEntity() RID
 	SetSpatialTrackingState(spatial_tracking_state OpenXRSpatialEntityTrackerEntityTrackingState)
 	GetSpatialTrackingState() OpenXRSpatialEntityTrackerEntityTrackingState
+	GetNext() RefOpenXRStructureBase
+	AddNext(next RefOpenXRStructureBase)
+	RemoveNext(next RefOpenXRStructureBase)
 }
 type OpenXRSpatialMarkerTrackingCapability interface {
 	OpenXRExtensionWrapper
@@ -10503,10 +10821,13 @@ type OpenXRSpatialMarkerTrackingCapability interface {
 	IsMicroQrcodeSupported() bool
 	IsArucoSupported() bool
 	IsAprilTagSupported() bool
+	StartEntityDiscovery(spatial_context RID, component_data RefOpenXRSpatialComponentData, next_snapshot_create RefOpenXRStructureBase, next_snapshot_query RefOpenXRStructureBase, user_callback Callable) RefOpenXRFutureResult
+	DoEntityUpdate(spatial_context RID, component_data RefOpenXRSpatialComponentData, next_snapshot_create RefOpenXRStructureBase, next_snapshot_query RefOpenXRStructureBase)
 }
 type OpenXRSpatialPlaneTrackingCapability interface {
 	OpenXRExtensionWrapper
 	IsSupported() bool
+	StartEntityDiscovery(spatial_context RID, component_data RefOpenXRSpatialComponentData, next_snapshot_create RefOpenXRStructureBase, next_snapshot_query RefOpenXRStructureBase, user_callback Callable) RefOpenXRFutureResult
 }
 type OpenXRSpatialQueryResultData interface {
 	OpenXRSpatialComponentData
@@ -10526,7 +10847,7 @@ type OpenXRVisibilityMask interface {
 }
 type OptimizedTranslation interface {
 	Translation
-	Generate(from RefTranslation)
+	Generate(from RefTranslation) bool
 }
 type OptionButton interface {
 	Button
@@ -10539,6 +10860,13 @@ type OptionButton interface {
 	SetItemMetadata(idx int32, metadata Variant)
 	SetItemTooltip(idx int32, tooltip String)
 	SetItemAutoTranslateMode(idx int32, mode NodeAutoTranslateMode)
+	SetSearchBarEnabled(enabled bool)
+	SetSearchBarMinItemCount(count int32)
+	GetSearchBarMinItemCount() int32
+	SetSearchBarFuzzySearchEnabled(enabled bool)
+	IsSearchBarFuzzySearchEnabled() bool
+	SetSearchBarFuzzySearchMaxMisses(max_misses int32)
+	GetSearchBarFuzzySearchMaxMisses() int32
 	GetItemText(idx int32) String
 	GetItemIcon(idx int32) RefTexture2D
 	GetItemId(idx int32) int32
@@ -10548,6 +10876,7 @@ type OptionButton interface {
 	GetItemAutoTranslateMode(idx int32) NodeAutoTranslateMode
 	IsItemDisabled(idx int32) bool
 	IsItemSeparator(idx int32) bool
+	IsSearchBarEnabled() bool
 	AddSeparator(text String)
 	Clear()
 	Select(idx int32)
@@ -10571,6 +10900,7 @@ type PCKPacker interface {
 	RefCounted
 	PckStart(pck_path String, alignment int32, key String, encrypt_directory bool) Error
 	AddFile(target_path String, source_path String, encrypt bool) Error
+	AddFileFromBuffer(target_path String, data PackedByteArray, encrypt bool) Error
 	AddFileRemoval(target_path String) Error
 	Flush(verbose bool) Error
 }
@@ -10611,7 +10941,7 @@ type PacketPeerDTLS interface {
 type PacketPeerExtension interface {
 	PacketPeer
 	// TODO: Implement virtual method: Internal_GetPacket(r_buffer **uint8,r_buffer_size *Int32T,) Error
-	// TODO: Implement virtual method: Internal_PutPacket(p_buffer *uint8,p_buffer_size int32,) Error
+	// TODO: Implement virtual method: Internal_PutPacket(buffer *uint8,buffer_size int32,) Error
 	// TODO: Implement virtual method: Internal_GetAvailablePacketCount() int32
 	// TODO: Implement virtual method: Internal_GetMaxPacketSize() int32
 
@@ -10723,6 +11053,18 @@ type ParticleProcessMaterial interface {
 	GetParamTexture(param ParticleProcessMaterialParameter) RefTexture2D
 	SetColor(color Color)
 	GetColor() Color
+	SetUseScale3D(using_scale_3d bool)
+	IsUsingScale3D() bool
+	SetScale3DMin(scale_3d_min Vector3)
+	GetScale3DMin() Vector3
+	SetScale3DMax(scale_3d_max Vector3)
+	GetScale3DMax() Vector3
+	SetUseRotation3D(using_rotation_3d bool)
+	IsUsingRotation3D() bool
+	SetRotation3DMin(rotation_3d_min Vector3)
+	GetRotation3DMin() Vector3
+	SetRotation3DMax(rotation_3d_max Vector3)
+	GetRotation3DMax() Vector3
 	SetColorRamp(ramp RefTexture2D)
 	GetColorRamp() RefTexture2D
 	SetAlphaCurve(curve RefTexture2D)
@@ -10801,6 +11143,14 @@ type ParticleProcessMaterial interface {
 	GetCollisionFriction() float32
 	SetCollisionBounce(bounce float32)
 	GetCollisionBounce() float32
+	SetUsingRotationVelocity3D(use_rotation_velocity_3d bool)
+	IsUsingRotationVelocity3D() bool
+	SetRotationVelocity3DMax(rotation_velocity_3d_max Vector3)
+	GetRotationVelocity3DMax() Vector3
+	SetRotationVelocity3DMin(rotation_velocity_3d_min Vector3)
+	GetRotationVelocity3DMin() Vector3
+	SetRotationVelocity3DCurve(rotation_velocity_3d_curve RefTexture2D)
+	GetRotationVelocity3DCurve() RefTexture2D
 }
 type Path2D interface {
 	Node2D
@@ -11194,12 +11544,12 @@ type PhysicsDirectSpaceState2D interface {
 }
 type PhysicsDirectSpaceState2DExtension interface {
 	PhysicsDirectSpaceState2D
-	// TODO: Implement virtual method: Internal_IntersectRay(from Vector2,to Vector2,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,hit_from_inside bool,result *PhysicsServer2DExtensionRayResult,) bool
-	// TODO: Implement virtual method: Internal_IntersectPoint(position Vector2,canvas_instance_id uint64,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,results *PhysicsServer2DExtensionShapeResult,max_results int32,) int32
-	// TODO: Implement virtual method: Internal_IntersectShape(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,result *PhysicsServer2DExtensionShapeResult,max_results int32,) int32
-	// TODO: Implement virtual method: Internal_CastMotion(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,closest_safe *float32,closest_unsafe *float32,) bool
-	// TODO: Implement virtual method: Internal_CollideShape(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,results unsafe.Pointer,max_results int32,result_count *Int32T,) bool
-	// TODO: Implement virtual method: Internal_RestInfo(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,rest_info *PhysicsServer2DExtensionShapeRestInfo,) bool
+	// TODO: Implement virtual method: Internal_IntersectRay(from Vector2,to Vector2,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,hit_from_inside bool,r_result *PhysicsServer2DExtensionRayResult,) bool
+	// TODO: Implement virtual method: Internal_IntersectPoint(position Vector2,canvas_instance_id uint64,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_results *PhysicsServer2DExtensionShapeResult,max_results int32,) int32
+	// TODO: Implement virtual method: Internal_IntersectShape(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_result *PhysicsServer2DExtensionShapeResult,max_results int32,) int32
+	// TODO: Implement virtual method: Internal_CastMotion(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_closest_safe *float32,r_closest_unsafe *float32,) bool
+	// TODO: Implement virtual method: Internal_CollideShape(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_results unsafe.Pointer,max_results int32,r_result_count *Int32T,) bool
+	// TODO: Implement virtual method: Internal_RestInfo(shape_rid RID,transform Transform2D,motion Vector2,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_rest_info *PhysicsServer2DExtensionShapeRestInfo,) bool
 	IsBodyExcludedFromQuery(body RID) bool
 }
 type PhysicsDirectSpaceState3D interface {
@@ -11213,12 +11563,12 @@ type PhysicsDirectSpaceState3D interface {
 }
 type PhysicsDirectSpaceState3DExtension interface {
 	PhysicsDirectSpaceState3D
-	// TODO: Implement virtual method: Internal_IntersectRay(from Vector3,to Vector3,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,hit_from_inside bool,hit_back_faces bool,pick_ray bool,result *PhysicsServer3DExtensionRayResult,) bool
-	// TODO: Implement virtual method: Internal_IntersectPoint(position Vector3,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,results *PhysicsServer3DExtensionShapeResult,max_results int32,) int32
-	// TODO: Implement virtual method: Internal_IntersectShape(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,result_count *PhysicsServer3DExtensionShapeResult,max_results int32,) int32
-	// TODO: Implement virtual method: Internal_CastMotion(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,closest_safe *float32,closest_unsafe *float32,info *PhysicsServer3DExtensionShapeRestInfo,) bool
-	// TODO: Implement virtual method: Internal_CollideShape(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,results unsafe.Pointer,max_results int32,result_count *Int32T,) bool
-	// TODO: Implement virtual method: Internal_RestInfo(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,rest_info *PhysicsServer3DExtensionShapeRestInfo,) bool
+	// TODO: Implement virtual method: Internal_IntersectRay(from Vector3,to Vector3,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,hit_from_inside bool,hit_back_faces bool,pick_ray bool,r_result *PhysicsServer3DExtensionRayResult,) bool
+	// TODO: Implement virtual method: Internal_IntersectPoint(position Vector3,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_results *PhysicsServer3DExtensionShapeResult,max_results int32,) int32
+	// TODO: Implement virtual method: Internal_IntersectShape(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_result_count *PhysicsServer3DExtensionShapeResult,max_results int32,) int32
+	// TODO: Implement virtual method: Internal_CastMotion(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_closest_safe *float32,r_closest_unsafe *float32,r_info *PhysicsServer3DExtensionShapeRestInfo,) bool
+	// TODO: Implement virtual method: Internal_CollideShape(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_results unsafe.Pointer,max_results int32,r_result_count *Int32T,) bool
+	// TODO: Implement virtual method: Internal_RestInfo(shape_rid RID,transform Transform3D,motion Vector3,margin float32,collision_mask uint32,collide_with_bodies bool,collide_with_areas bool,r_rest_info *PhysicsServer3DExtensionShapeRestInfo,) bool
 	// TODO: Implement virtual method: Internal_GetClosestPointToObjectVolume(object RID,point Vector3,) Vector3
 	IsBodyExcludedFromQuery(body RID) bool
 }
@@ -11359,7 +11709,7 @@ type PhysicsServer2D interface {
 	BodyRemoveShape(body RID, shape_idx int32)
 	BodyClearShapes(body RID)
 	BodySetShapeDisabled(body RID, shape_idx int32, disabled bool)
-	BodySetShapeAsOneWayCollision(body RID, shape_idx int32, enable bool, margin float32)
+	BodySetShapeAsOneWayCollision(body RID, shape_idx int32, enable bool, margin float32, direction Vector2)
 	BodyAttachObjectInstanceId(body RID, id uint64)
 	BodyGetObjectInstanceId(body RID) uint64
 	BodyAttachCanvasInstanceId(body RID, id uint64)
@@ -11436,7 +11786,7 @@ type PhysicsServer2DExtension interface {
 	// TODO: Implement virtual method: Internal_ShapeGetType(shape RID,) PhysicsServer2DShapeType
 	// TODO: Implement virtual method: Internal_ShapeGetData(shape RID,) Variant
 	// TODO: Implement virtual method: Internal_ShapeGetCustomSolverBias(shape RID,) float32
-	// TODO: Implement virtual method: Internal_ShapeCollide(shape_A RID,xform_A Transform2D,motion_A Vector2,shape_B RID,xform_B Transform2D,motion_B Vector2,results unsafe.Pointer,result_max int32,result_count *Int32T,) bool
+	// TODO: Implement virtual method: Internal_ShapeCollide(shape_A RID,xform_A Transform2D,motion_A Vector2,shape_B RID,xform_B Transform2D,motion_B Vector2,r_results unsafe.Pointer,result_max int32,r_result_count *Int32T,) bool
 	// TODO: Implement virtual method: Internal_SpaceCreate() RID
 	// TODO: Implement virtual method: Internal_SpaceSetActive(space RID,active bool,)
 	// TODO: Implement virtual method: Internal_SpaceIsActive(space RID,) bool
@@ -11486,7 +11836,7 @@ type PhysicsServer2DExtension interface {
 	// TODO: Implement virtual method: Internal_BodyGetShape(body RID,shape_idx int32,) RID
 	// TODO: Implement virtual method: Internal_BodyGetShapeTransform(body RID,shape_idx int32,) Transform2D
 	// TODO: Implement virtual method: Internal_BodySetShapeDisabled(body RID,shape_idx int32,disabled bool,)
-	// TODO: Implement virtual method: Internal_BodySetShapeAsOneWayCollision(body RID,shape_idx int32,enable bool,margin float32,)
+	// TODO: Implement virtual method: Internal_BodySetShapeAsOneWayCollision(body RID,shape_idx int32,enable bool,margin float32,direction Vector2,)
 	// TODO: Implement virtual method: Internal_BodyRemoveShape(body RID,shape_idx int32,)
 	// TODO: Implement virtual method: Internal_BodyClearShapes(body RID,)
 	// TODO: Implement virtual method: Internal_BodyAttachObjectInstanceId(body RID,id uint64,)
@@ -11531,10 +11881,10 @@ type PhysicsServer2DExtension interface {
 	// TODO: Implement virtual method: Internal_BodyIsOmittingForceIntegration(body RID,) bool
 	// TODO: Implement virtual method: Internal_BodySetStateSyncCallback(body RID,callable Callable,)
 	// TODO: Implement virtual method: Internal_BodySetForceIntegrationCallback(body RID,callable Callable,userdata Variant,)
-	// TODO: Implement virtual method: Internal_BodyCollideShape(body RID,body_shape int32,shape RID,shape_xform Transform2D,motion Vector2,results unsafe.Pointer,result_max int32,result_count *Int32T,) bool
+	// TODO: Implement virtual method: Internal_BodyCollideShape(body RID,body_shape int32,shape RID,shape_xform Transform2D,motion Vector2,r_results unsafe.Pointer,result_max int32,r_result_count *Int32T,) bool
 	// TODO: Implement virtual method: Internal_BodySetPickable(body RID,pickable bool,)
 	// TODO: Implement virtual method: Internal_BodyGetDirectState(body RID,) PhysicsDirectBodyState2D
-	// TODO: Implement virtual method: Internal_BodyTestMotion(body RID,from Transform2D,motion Vector2,margin float32,collide_separation_ray bool,recovery_as_collision bool,result *PhysicsServer2DExtensionMotionResult,) bool
+	// TODO: Implement virtual method: Internal_BodyTestMotion(body RID,from Transform2D,motion Vector2,margin float32,collide_separation_ray bool,recovery_as_collision bool,r_result *PhysicsServer2DExtensionMotionResult,) bool
 	// TODO: Implement virtual method: Internal_JointCreate() RID
 	// TODO: Implement virtual method: Internal_JointClear(joint RID,)
 	// TODO: Implement virtual method: Internal_JointSetParam(joint RID,param PhysicsServer2DJointParam,value float32,)
@@ -11860,7 +12210,7 @@ type PhysicsServer3DExtension interface {
 	// TODO: Implement virtual method: Internal_BodySetStateSyncCallback(body RID,callable Callable,)
 	// TODO: Implement virtual method: Internal_BodySetForceIntegrationCallback(body RID,callable Callable,userdata Variant,)
 	// TODO: Implement virtual method: Internal_BodySetRayPickable(body RID,enable bool,)
-	// TODO: Implement virtual method: Internal_BodyTestMotion(body RID,from Transform3D,motion Vector3,margin float32,max_collisions int32,collide_separation_ray bool,recovery_as_collision bool,result *PhysicsServer3DExtensionMotionResult,) bool
+	// TODO: Implement virtual method: Internal_BodyTestMotion(body RID,from Transform3D,motion Vector3,margin float32,max_collisions int32,collide_separation_ray bool,recovery_as_collision bool,r_result *PhysicsServer3DExtensionMotionResult,) bool
 	// TODO: Implement virtual method: Internal_BodyGetDirectState(body RID,) PhysicsDirectBodyState3D
 	// TODO: Implement virtual method: Internal_SoftBodyCreate() RID
 	// TODO: Implement virtual method: Internal_SoftBodyUpdateRenderingServer(body RID,rendering_server_handler PhysicsServer3DRenderingServerHandler,)
@@ -12251,6 +12601,7 @@ type PopupMenu interface {
 	SetItemMultistate(index int32, state int32)
 	SetItemMultistateMax(index int32, max_states int32)
 	SetItemShortcutDisabled(index int32, disabled bool)
+	SetItemIndex(index int32, target_index int32)
 	ToggleItemChecked(index int32)
 	ToggleItemMultistate(index int32)
 	GetItemText(index int32) String
@@ -12298,6 +12649,14 @@ type PopupMenu interface {
 	IsSystemMenu() bool
 	SetSystemMenu(system_menu_id NativeMenuSystemMenus)
 	GetSystemMenu() NativeMenuSystemMenus
+	SetSearchBarEnabled(enabled bool)
+	IsSearchBarEnabled() bool
+	SetSearchBarMinItemCount(count int32)
+	GetSearchBarMinItemCount() int32
+	SetSearchBarFuzzySearchEnabled(enabled bool)
+	IsSearchBarFuzzySearchEnabled() bool
+	SetSearchBarFuzzySearchMaxMisses(max_misses int32)
+	GetSearchBarFuzzySearchMaxMisses() int32
 	SetShrinkHeight(shrink bool)
 	GetShrinkHeight() bool
 	SetShrinkWidth(shrink bool)
@@ -12309,7 +12668,6 @@ type PopupPanel interface {
 type PortableCompressedTexture2D interface {
 	Texture2D
 	CreateFromImage(image RefImage, compression_mode PortableCompressedTexture2DCompressionMode, normal_map bool, lossy_quality float32)
-	GetFormat() ImageFormat
 	GetCompressionMode() PortableCompressedTexture2DCompressionMode
 	SetSizeOverride(size Vector2)
 	GetSizeOverride() Vector2
@@ -12432,6 +12790,42 @@ type QuadOccluder3D interface {
 	SetSize(size Vector2)
 	GetSize() Vector2
 }
+type RDAccelerationStructureGeometry interface {
+	RefCounted
+	SetFlags(p_member RenderingDeviceAccelerationStructureGeometryFlagBits)
+	GetFlags() RenderingDeviceAccelerationStructureGeometryFlagBits
+	SetVertexBuffer(p_member RID)
+	GetVertexBuffer() RID
+	SetVertexOffset(p_member uint32)
+	GetVertexOffset() uint32
+	SetVertexStride(p_member uint32)
+	GetVertexStride() uint32
+	SetVertexCount(p_member uint32)
+	GetVertexCount() uint32
+	SetVertexFormat(p_member RenderingDeviceDataFormat)
+	GetVertexFormat() RenderingDeviceDataFormat
+	SetIndexBuffer(p_member RID)
+	GetIndexBuffer() RID
+	SetIndexOffset(p_member uint32)
+	GetIndexOffset() uint32
+	SetIndexCount(p_member uint32)
+	GetIndexCount() uint32
+}
+type RDAccelerationStructureInstance interface {
+	RefCounted
+	SetTransform(p_member Transform3D)
+	GetTransform() Transform3D
+	SetId(p_member uint32)
+	GetId() uint32
+	SetMask(p_member uint8)
+	GetMask() uint8
+	SetHitSbtRange(p_member int64)
+	GetHitSbtRange() int64
+	SetFlags(p_member RenderingDeviceAccelerationStructureInstanceFlagBits)
+	GetFlags() RenderingDeviceAccelerationStructureInstanceFlagBits
+	SetBlas(p_member RID)
+	GetBlas() RID
+}
 type RDAttachmentFormat interface {
 	RefCounted
 	SetFormat(p_member RenderingDeviceDataFormat)
@@ -12453,6 +12847,15 @@ type RDFramebufferPass interface {
 	GetPreserveAttachments() PackedInt32Array
 	SetDepthAttachment(p_member int32)
 	GetDepthAttachment() int32
+}
+type RDHitGroup interface {
+	RefCounted
+	SetClosestHitShader(p_member RefRDPipelineShader)
+	GetClosestHitShader() RefRDPipelineShader
+	SetAnyHitShader(p_member RefRDPipelineShader)
+	GetAnyHitShader() RefRDPipelineShader
+	SetIntersectionShader(p_member RefRDPipelineShader)
+	GetIntersectionShader() RefRDPipelineShader
 }
 type RDPipelineColorBlendState interface {
 	RefCounted
@@ -12575,6 +12978,13 @@ type RDPipelineRasterizationState interface {
 	GetLineWidth() float32
 	SetPatchControlPoints(p_member uint32)
 	GetPatchControlPoints() uint32
+}
+type RDPipelineShader interface {
+	RefCounted
+	SetShader(p_member RID)
+	GetShader() RID
+	SetSpecializationConstants(specialization_constants RefRDPipelineSpecializationConstant)
+	GetSpecializationConstants() RefRDPipelineSpecializationConstant
 }
 type RDPipelineSpecializationConstant interface {
 	RefCounted
@@ -13080,6 +13490,17 @@ type RenderingDevice interface {
 	RenderPipelineIsValid(render_pipeline RID) bool
 	ComputePipelineCreate(shader RID, specialization_constants RefRDPipelineSpecializationConstant) RID
 	ComputePipelineIsValid(compute_pipeline RID) bool
+	RaytracingPipelineCreate(raygen_shaders RefRDPipelineShader, miss_shaders RefRDPipelineShader, hit_groups RefRDHitGroup, max_trace_recursion_depth uint32) RID
+	RaytracingPipelineIsValid(raytracing_pipeline RID) bool
+	BlasCreate(geometries RefRDAccelerationStructureGeometry, flags RenderingDeviceAccelerationStructureFlagBits) RID
+	TlasCreate(max_instance_count uint32, flags RenderingDeviceAccelerationStructureFlagBits) RID
+	BlasBuild(blas RID) Error
+	TlasBuild(tlas RID, instances RefRDAccelerationStructureInstance) Error
+	HitSbtCreate(raytracing_pipeline RID, initial_hit_group_capacity uint32) RID
+	HitSbtSetPipeline(hit_sbt RID, raytracing_pipeline RID) Error
+	HitSbtRangeAlloc(hit_sbt RID, hit_group_count uint32) int64
+	HitSbtRangeFree(hit_sbt RID, valueRange int64) Error
+	HitSbtRangeUpdate(hit_sbt RID, valueRange int64, offset uint32, hit_group_indices PackedInt32Array) Error
 	ScreenGetWidth(screen int32) int32
 	ScreenGetHeight(screen int32) int32
 	ScreenGetFramebufferFormat(screen int32) int64
@@ -13108,6 +13529,12 @@ type RenderingDevice interface {
 	ComputeListDispatchIndirect(compute_list int64, buffer RID, offset uint32)
 	ComputeListAddBarrier(compute_list int64)
 	ComputeListEnd()
+	RaytracingListBegin() int64
+	RaytracingListBindRaytracingPipeline(raytracing_list int64, raytracing_pipeline RID)
+	RaytracingListSetPushConstant(raytracing_list int64, buffer PackedByteArray, size_bytes uint32)
+	RaytracingListBindUniformSet(raytracing_list int64, uniform_set RID, set_index uint32)
+	RaytracingListTraceRays(raytracing_list int64, raygen_shader_index uint32, hit_sbt RID, width uint32, height uint32, depth uint32)
+	RaytracingListEnd()
 	FreeRid(rid RID)
 	CaptureTimestamp(name String)
 	GetCapturedTimestampsCount() uint32
@@ -13152,15 +13579,19 @@ type RenderingServer interface {
 	Texture3DCreate(format ImageFormat, width int32, height int32, depth int32, mipmaps bool, data RefImage) RID
 	TextureProxyCreate(base RID) RID
 	TextureCreateFromNativeHandle(typeName RenderingServerTextureType, format ImageFormat, native_handle uint64, width int32, height int32, depth int32, layers int32, layered_type RenderingServerTextureLayeredType) RID
+	TextureDrawableCreate(width int32, height int32, format RenderingServerTextureDrawableFormat, color Color, with_mipmaps bool) RID
 	Texture2DUpdate(texture RID, image RefImage, layer int32)
 	Texture3DUpdate(texture RID, data RefImage)
 	TextureProxyUpdate(texture RID, proxy_to RID)
+	TextureDrawableBlitRect(textures RID, rect Rect2i, material RID, modulate Color, source_textures RID, to_mipmap int32)
 	Texture2DPlaceholderCreate() RID
 	Texture2DLayeredPlaceholderCreate(layered_type RenderingServerTextureLayeredType) RID
 	Texture3DPlaceholderCreate() RID
 	Texture2DGet(texture RID) RefImage
 	Texture2DLayerGet(texture RID, layer int32) RefImage
 	Texture3DGet(texture RID) RefImage
+	TextureDrawableGenerateMipmaps(texture RID)
+	TextureDrawableGetDefaultMaterial() RID
 	TextureReplace(texture RID, by_texture RID)
 	TextureSetSizeOverride(texture RID, width int32, height int32)
 	TextureSetPath(texture RID, path String)
@@ -13251,6 +13682,7 @@ type RenderingServer interface {
 	DirectionalLightCreate() RID
 	OmniLightCreate() RID
 	SpotLightCreate() RID
+	AreaLightCreate() RID
 	LightSetColor(light RID, color Color)
 	LightSetParam(light RID, param RenderingServerLightParam, value float32)
 	LightSetShadow(light RID, enabled bool)
@@ -13266,6 +13698,8 @@ type RenderingServer interface {
 	LightDirectionalSetShadowMode(light RID, mode RenderingServerLightDirectionalShadowMode)
 	LightDirectionalSetBlendSplits(light RID, enable bool)
 	LightDirectionalSetSkyMode(light RID, mode RenderingServerLightDirectionalSkyMode)
+	LightAreaSetSize(light RID, size Vector2)
+	LightAreaSetNormalizeEnergy(light RID, enable bool)
 	LightProjectorsSetFilter(filter RenderingServerLightProjectorFilter)
 	LightmapsSetBicubicFilter(enable bool)
 	PositionalSoftShadowFilterSetQuality(quality RenderingServerShadowQuality)
@@ -13337,7 +13771,7 @@ type RenderingServer interface {
 	ParticlesSetLifetime(particles RID, lifetime float64)
 	ParticlesSetOneShot(particles RID, one_shot bool)
 	ParticlesSetPreProcessTime(particles RID, time float64)
-	ParticlesRequestProcessTime(particles RID, time float32)
+	ParticlesRequestProcessTime(particles RID, process_time float32, process_time_residual float32)
 	ParticlesSetExplosivenessRatio(particles RID, ratio float32)
 	ParticlesSetRandomnessRatio(particles RID, ratio float32)
 	ParticlesSetInterpToEnd(particles RID, factor float32)
@@ -13351,6 +13785,8 @@ type RenderingServer interface {
 	ParticlesSetFractionalDelta(particles RID, enable bool)
 	ParticlesSetCollisionBaseSize(particles RID, size float32)
 	ParticlesSetTransformAlign(particles RID, align RenderingServerParticlesTransformAlign)
+	ParticlesSetTransformAlignChannelFilter(particles RID, channel_filter RenderingServerParticlesTransformAlignCustomSrc)
+	ParticlesSetTransformAlignAxis(particles RID, rotation_axis RenderingServerParticlesTransformAlignAxis)
 	ParticlesSetTrails(particles RID, enable bool, length_sec float32)
 	ParticlesSetTrailBindPoses(particles RID, bind_poses Transform3D)
 	ParticlesIsInactive(particles RID) bool
@@ -13396,7 +13832,7 @@ type RenderingServer interface {
 	CameraSetUseVerticalAspect(camera RID, enable bool)
 	ViewportCreate() RID
 	ViewportSetUseXr(viewport RID, use_xr bool)
-	ViewportSetSize(viewport RID, width int32, height int32)
+	ViewportSetSize(viewport RID, width int32, height int32, view_count int32)
 	ViewportSetActive(viewport RID, active bool)
 	ViewportSetParentViewport(viewport RID, parent_viewport RID)
 	ViewportAttachToScreen(viewport RID, rect Rect2, screen int32)
@@ -13477,7 +13913,7 @@ type RenderingServer interface {
 	EnvironmentSetFog(env RID, enable bool, light_color Color, light_energy float32, sun_scatter float32, density float32, height float32, height_density float32, aerial_perspective float32, sky_affect float32, fog_mode RenderingServerEnvironmentFogMode)
 	EnvironmentSetFogDepth(env RID, curve float32, begin float32, end float32)
 	EnvironmentSetSdfgi(env RID, enable bool, cascades int32, min_cell_size float32, y_scale RenderingServerEnvironmentSDFGIYScale, use_occlusion bool, bounce_feedback float32, read_sky bool, energy float32, normal_bias float32, probe_bias float32)
-	EnvironmentSetVolumetricFog(env RID, enable bool, density float32, albedo Color, emission Color, emission_energy float32, anisotropy float32, length float32, p_detail_spread float32, gi_inject float32, temporal_reprojection bool, temporal_reprojection_amount float32, ambient_inject float32, sky_affect float32)
+	EnvironmentSetVolumetricFog(env RID, enable bool, density float32, albedo Color, emission Color, emission_energy float32, anisotropy float32, length float32, detail_spread float32, gi_inject float32, temporal_reprojection bool, temporal_reprojection_amount float32, ambient_inject float32, sky_affect float32)
 	EnvironmentGlowSetUseBicubicUpscale(enable bool)
 	EnvironmentSetSsrHalfSize(half_size bool)
 	EnvironmentSetSsrRoughnessQuality(quality RenderingServerEnvironmentSSRRoughnessQuality)
@@ -13701,6 +14137,7 @@ type Resource interface {
 	EmitChanged()
 	Duplicate(deep bool) RefResource
 	DuplicateDeep(deep_subresources_mode ResourceDeepDuplicateMode) RefResource
+	CopyFromResource(resource RefResource) Error
 }
 type ResourceFormatLoader interface {
 	RefCounted
@@ -13872,8 +14309,8 @@ type RichTextLabel interface {
 	AddText(text String)
 	SetText(text String)
 	AddHr(width int32, height int32, color Color, alignment HorizontalAlignment, width_in_percent bool, height_in_percent bool)
-	AddImage(image RefTexture2D, width int32, height int32, color Color, inline_align InlineAlignment, region Rect2, key Variant, pad bool, tooltip String, width_in_percent bool, height_in_percent bool, alt_text String)
-	UpdateImage(key Variant, mask RichTextLabelImageUpdateMask, image RefTexture2D, width int32, height int32, color Color, inline_align InlineAlignment, region Rect2, pad bool, tooltip String, width_in_percent bool, height_in_percent bool)
+	AddImage(image RefTexture2D, width float32, height float32, color Color, inline_align InlineAlignment, region Rect2, key Variant, pad bool, tooltip String, width_unit RichTextLabelImageUnit, height_unit RichTextLabelImageUnit, alt_text String)
+	UpdateImage(key Variant, mask RichTextLabelImageUpdateMask, image RefTexture2D, width float32, height float32, color Color, inline_align InlineAlignment, region Rect2, pad bool, tooltip String, width_unit RichTextLabelImageUnit, height_unit RichTextLabelImageUnit)
 	Newline()
 	RemoveParagraph(paragraph int32, no_invalidate bool) bool
 	InvalidateParagraph(paragraph int32) bool
@@ -14270,7 +14707,6 @@ type SceneTreeTimer interface {
 type Script interface {
 	Resource
 	CanInstantiate() bool
-	InstanceHas(base_object Object) bool
 	HasSourceCode() bool
 	GetSourceCode() String
 	SetSourceCode(source String)
@@ -14278,6 +14714,7 @@ type Script interface {
 	GetBaseScript() RefScript
 	GetInstanceBaseType() StringName
 	GetGlobalName() StringName
+	HasScriptMethod(method_name StringName) bool
 	HasScriptSignal(signal_name StringName) bool
 	GetScriptPropertyList() Dictionary
 	GetScriptMethodList() Dictionary
@@ -14287,6 +14724,7 @@ type Script interface {
 	IsTool() bool
 	IsAbstract() bool
 	GetRpcConfig() Variant
+	InstanceHas(base_object Object) bool
 }
 type ScriptBacktrace interface {
 	RefCounted
@@ -14322,14 +14760,18 @@ type ScriptEditor interface {
 	GetCurrentScript() RefScript
 	GetOpenScripts() RefScript
 	OpenScriptCreateDialog(base_name String, base_path String)
+	ReloadOpenFiles()
 	GotoHelp(topic String)
 	UpdateDocsFromScript(script RefScript)
 	ClearDocsFromScript(script RefScript)
+	GetUnsavedFiles() PackedStringArray
+	SaveAllScripts()
+	CloseFile(path String) Error
 }
 type ScriptEditorBase interface {
 	VBoxContainer
-	GetBaseEditor() Control
 	AddSyntaxHighlighter(highlighter RefEditorSyntaxHighlighter)
+	GetBaseEditor() Control
 }
 type ScriptExtension interface {
 	Script
@@ -14342,7 +14784,6 @@ type ScriptExtension interface {
 	// TODO: Implement virtual method: Internal_GetInstanceBaseType() StringName
 	// TODO: Implement virtual method: Internal_InstanceCreate(for_object Object,) unsafe.Pointer
 	// TODO: Implement virtual method: Internal_PlaceholderInstanceCreate(for_object Object,) unsafe.Pointer
-	// TODO: Implement virtual method: Internal_InstanceHas(object Object,) bool
 	// TODO: Implement virtual method: Internal_HasSourceCode() bool
 	// TODO: Implement virtual method: Internal_GetSourceCode() String
 	// TODO: Implement virtual method: Internal_SetSourceCode(code String,)
@@ -14370,6 +14811,7 @@ type ScriptExtension interface {
 	// TODO: Implement virtual method: Internal_GetMembers() StringName
 	// TODO: Implement virtual method: Internal_IsPlaceholderFallbackEnabled() bool
 	// TODO: Implement virtual method: Internal_GetRpcConfig() Variant
+	// TODO: Implement virtual method: Internal_InstanceHas(object Object,) bool
 
 }
 type ScriptLanguage interface {
@@ -14458,6 +14900,8 @@ type ScrollContainer interface {
 	GetHorizontalScrollMode() ScrollContainerScrollMode
 	SetVerticalScrollMode(enable ScrollContainerScrollMode)
 	GetVerticalScrollMode() ScrollContainerScrollMode
+	SetScrollHorizontalByDefault(enable bool)
+	IsScrollHorizontalByDefault() bool
 	SetDeadzone(deadzone int32)
 	GetDeadzone() int32
 	SetScrollHintMode(scroll_hint_mode ScrollContainerScrollHintMode)
@@ -14812,6 +15256,7 @@ type SkeletonModification2DJiggle interface {
 	GetUseColliders() bool
 	SetCollisionMask(collision_mask int32)
 	GetCollisionMask() int32
+	Reset()
 	SetJiggleJointBone2DNode(joint_idx int32, bone2d_node NodePath)
 	GetJiggleJointBone2DNode(joint_idx int32) NodePath
 	SetJiggleJointBoneIndex(joint_idx int32, bone_idx int32)
@@ -15121,6 +15566,8 @@ type SplitContainer interface {
 	GetDragAreaControls() Control
 	SetTouchDraggerEnabled(enabled bool)
 	IsTouchDraggerEnabled() bool
+	SetDragNestedIntersections(enabled bool)
+	IsDraggingNestedIntersections() bool
 	GetDragAreaControl() Control
 	SetSplitOffset(offset int32)
 	GetSplitOffset() int32
@@ -15357,6 +15804,8 @@ type SpriteFrames interface {
 	GetAnimationSpeed(anim StringName) float64
 	SetAnimationLoop(anim StringName, loop bool)
 	GetAnimationLoop(anim StringName) bool
+	SetAnimationLoopMode(anim StringName, loop_mode SpriteFramesLoopMode)
+	GetAnimationLoopMode(anim StringName) SpriteFramesLoopMode
 	AddFrame(anim StringName, texture RefTexture2D, duration float32, at_position int32)
 	SetFrame(anim StringName, idx int32, texture RefTexture2D, duration float32)
 	RemoveFrame(anim StringName, idx int32)
@@ -15452,8 +15901,8 @@ type StreamPeerExtension interface {
 	StreamPeer
 	// TODO: Implement virtual method: Internal_GetData(r_buffer *uint8,r_bytes int32,r_received *Int32T,) Error
 	// TODO: Implement virtual method: Internal_GetPartialData(r_buffer *uint8,r_bytes int32,r_received *Int32T,) Error
-	// TODO: Implement virtual method: Internal_PutData(p_data *uint8,p_bytes int32,r_sent *Int32T,) Error
-	// TODO: Implement virtual method: Internal_PutPartialData(p_data *uint8,p_bytes int32,r_sent *Int32T,) Error
+	// TODO: Implement virtual method: Internal_PutData(data *uint8,bytes int32,r_sent *Int32T,) Error
+	// TODO: Implement virtual method: Internal_PutPartialData(data *uint8,bytes int32,r_sent *Int32T,) Error
 	// TODO: Implement virtual method: Internal_GetAvailableBytes() int32
 
 }
@@ -15590,6 +16039,8 @@ type SubViewport interface {
 	GetSize2DOverride() Vector2i
 	SetSize2DOverrideStretch(enable bool)
 	IsSize2DOverrideStretchEnabled() bool
+	SetViewCount(view_count int32)
+	GetViewCount() int32
 	SetUpdateMode(mode SubViewportUpdateMode)
 	GetUpdateMode() SubViewportUpdateMode
 	SetClearMode(mode SubViewportClearMode)
@@ -16018,6 +16469,7 @@ type TextEdit interface {
 	GetScrollPosForLine(line int32, wrap_index int32) float64
 	SetLineAsFirstVisible(line int32, wrap_index int32)
 	GetFirstVisibleLine() int32
+	IsLineInViewport(line int32) bool
 	SetLineAsCenterVisible(line int32, wrap_index int32)
 	SetLineAsLastVisible(line int32, wrap_index int32)
 	GetLastFullVisibleLine() int32
@@ -16282,8 +16734,15 @@ type TextServer interface {
 	FontClearSystemFallbackCache()
 	FontSetForceAutohinter(font_rid RID, force_autohinter bool)
 	FontIsForceAutohinter(font_rid RID) bool
-	FontSetModulateColorGlyphs(font_rid RID, force_autohinter bool)
+	FontSetModulateColorGlyphs(font_rid RID, modulate bool)
 	FontIsModulateColorGlyphs(font_rid RID) bool
+	FontGetPaletteCount(font_rid RID) int64
+	FontGetPaletteName(font_rid RID, index int64) String
+	FontGetPaletteColors(font_rid RID, index int64) PackedColorArray
+	FontSetPaletteCustomColors(font_rid RID, colors PackedColorArray)
+	FontGetPaletteCustomColors(font_rid RID) PackedColorArray
+	FontGetUsedPalette(font_rid RID) int64
+	FontSetUsedPalette(font_rid RID, index int64)
 	FontSetHinting(font_rid RID, hinting TextServerHinting)
 	FontGetHinting(font_rid RID) TextServerHinting
 	FontSetSubpixelPositioning(font_rid RID, subpixel_positioning TextServerSubpixelPositioning)
@@ -16531,6 +16990,13 @@ type TextServerExtension interface {
 	// TODO: Implement virtual method: Internal_FontIsForceAutohinter(font_rid RID,) bool
 	// TODO: Implement virtual method: Internal_FontSetModulateColorGlyphs(font_rid RID,modulate bool,)
 	// TODO: Implement virtual method: Internal_FontIsModulateColorGlyphs(font_rid RID,) bool
+	// TODO: Implement virtual method: Internal_FontGetPaletteCount(font_rid RID,) int64
+	// TODO: Implement virtual method: Internal_FontGetPaletteName(font_rid RID,index int64,) String
+	// TODO: Implement virtual method: Internal_FontGetPaletteColors(font_rid RID,index int64,) PackedColorArray
+	// TODO: Implement virtual method: Internal_FontSetPaletteCustomColors(font_rid RID,colors PackedColorArray,)
+	// TODO: Implement virtual method: Internal_FontGetPaletteCustomColors(font_rid RID,) PackedColorArray
+	// TODO: Implement virtual method: Internal_FontGetUsedPalette(font_rid RID,) int64
+	// TODO: Implement virtual method: Internal_FontSetUsedPalette(font_rid RID,index int64,)
 	// TODO: Implement virtual method: Internal_FontSetHinting(font_rid RID,hinting TextServerHinting,)
 	// TODO: Implement virtual method: Internal_FontGetHinting(font_rid RID,) TextServerHinting
 	// TODO: Implement virtual method: Internal_FontSetSubpixelPositioning(font_rid RID,subpixel_positioning TextServerSubpixelPositioning,)
@@ -16690,7 +17156,7 @@ type TextServerExtension interface {
 	// TODO: Implement virtual method: Internal_ShapedTextGetUnderlinePosition(shaped RID,) float64
 	// TODO: Implement virtual method: Internal_ShapedTextGetUnderlineThickness(shaped RID,) float64
 	// TODO: Implement virtual method: Internal_ShapedTextGetDominantDirectionInRange(shaped RID,start int64,end int64,) int64
-	// TODO: Implement virtual method: Internal_ShapedTextGetCarets(shaped RID,position int64,caret *CaretInfo,)
+	// TODO: Implement virtual method: Internal_ShapedTextGetCarets(shaped RID,position int64,r_caret *CaretInfo,)
 	// TODO: Implement virtual method: Internal_ShapedTextGetSelection(shaped RID,start int64,end int64,) PackedVector2Array
 	// TODO: Implement virtual method: Internal_ShapedTextHitTestGrapheme(shaped RID,coord float64,) int64
 	// TODO: Implement virtual method: Internal_ShapedTextHitTestPosition(shaped RID,coord float64,) int64
@@ -16736,17 +17202,24 @@ type Texture interface {
 }
 type Texture2D interface {
 	Texture
+	// TODO: Implement virtual method: Internal_GetImage() RefImage
+	// TODO: Implement virtual method: Internal_GetFormat() ImageFormat
+	// TODO: Implement virtual method: Internal_GetMipmapCount() int32
 	// TODO: Implement virtual method: Internal_GetWidth() int32
 	// TODO: Implement virtual method: Internal_GetHeight() int32
 	// TODO: Implement virtual method: Internal_IsPixelOpaque(x int32,y int32,) bool
 	// TODO: Implement virtual method: Internal_HasAlpha() bool
+	// TODO: Implement virtual method: Internal_HasMipmaps() bool
 	// TODO: Implement virtual method: Internal_Draw(to_canvas_item RID,pos Vector2,modulate Color,transpose bool,)
 	// TODO: Implement virtual method: Internal_DrawRect(to_canvas_item RID,rect Rect2,tile bool,modulate Color,transpose bool,)
 	// TODO: Implement virtual method: Internal_DrawRectRegion(to_canvas_item RID,rect Rect2,src_rect Rect2,modulate Color,transpose bool,clip_uv bool,)
+	GetFormat() ImageFormat
+	GetMipmapCount() int32
 	GetWidth() int32
 	GetHeight() int32
 	GetSize() Vector2
 	HasAlpha() bool
+	HasMipmaps() bool
 	Draw(canvas_item RID, position Vector2, modulate Color, transpose bool)
 	DrawRect(canvas_item RID, rect Rect2, tile bool, modulate Color, transpose bool)
 	DrawRectRegion(canvas_item RID, rect Rect2, src_rect Rect2, modulate Color, transpose bool, clip_uv bool)
@@ -17223,6 +17696,7 @@ type TileSet interface {
 	AddTerrain(terrain_set int32, to_position int32)
 	MoveTerrain(terrain_set int32, terrain_index int32, to_position int32)
 	RemoveTerrain(terrain_set int32, terrain_index int32)
+	ClearTerrains(terrain_set int32)
 	SetTerrainName(terrain_set int32, terrain_index int32, name String)
 	GetTerrainName(terrain_set int32, terrain_index int32) String
 	SetTerrainColor(terrain_set int32, terrain_index int32, color Color)
@@ -17249,7 +17723,7 @@ type TileSet interface {
 	GetSourceLevelTileProxy(source_from int32) int32
 	HasSourceLevelTileProxy(source_from int32) bool
 	RemoveSourceLevelTileProxy(source_from int32)
-	SetCoordsLevelTileProxy(p_source_from int32, coords_from Vector2i, source_to int32, coords_to Vector2i)
+	SetCoordsLevelTileProxy(source_from int32, coords_from Vector2i, source_to int32, coords_to Vector2i)
 	GetCoordsLevelTileProxy(source_from int32, coords_from Vector2i) Array
 	HasCoordsLevelTileProxy(source_from int32, coords_from Vector2i) bool
 	RemoveCoordsLevelTileProxy(source_from int32, coords_from Vector2i)
@@ -17511,6 +17985,7 @@ type Tree interface {
 	IsColumnClippingContent(column int32) bool
 	GetColumnExpandRatio(column int32) int32
 	GetColumnWidth(column int32) int32
+	GetCustomDrawingCanvasItem() RID
 	SetHideRoot(enable bool)
 	IsRootHidden() bool
 	GetNextSelected(from TreeItem) TreeItem
@@ -17593,6 +18068,8 @@ type TreeItem interface {
 	GetTextDirection(column int32) ControlTextDirection
 	SetAutowrapMode(column int32, autowrap_mode TextServerAutowrapMode)
 	GetAutowrapMode(column int32) TextServerAutowrapMode
+	SetAutowrapTrimFlags(column int32, flags TextServerLineBreakFlag)
+	GetAutowrapTrimFlags(column int32) TextServerLineBreakFlag
 	SetTextOverrunBehavior(column int32, overrun_behavior TextServerOverrunBehavior)
 	GetTextOverrunBehavior(column int32) TextServerOverrunBehavior
 	SetStructuredTextBidiOverride(column int32, parser TextServerStructuredTextParser)
@@ -17637,7 +18114,7 @@ type TreeItem interface {
 	SetSelectable(column int32, selectable bool)
 	IsSelectable(column int32) bool
 	IsSelected(column int32) bool
-	Select(column int32)
+	Select(column int32, set_as_cursor bool)
 	Deselect(column int32)
 	SetEditable(column int32, enabled bool)
 	IsEditable(column int32) bool
@@ -17676,6 +18153,8 @@ type TreeItem interface {
 	GetExpandRight(column int32) bool
 	SetDisableFolding(disable bool)
 	IsFoldingDisabled() bool
+	SetAcceptChildren(allowed bool)
+	IsAcceptingChildren() bool
 	CreateChild(index int32) TreeItem
 	AddChild(child TreeItem)
 	RemoveChild(child TreeItem)
@@ -17729,12 +18208,14 @@ type Tween interface {
 	TweenCallback(callback Callable) RefCallbackTweener
 	TweenMethod(method Callable, from Variant, to Variant, duration float64) RefMethodTweener
 	TweenSubtween(subtween RefTween) RefSubtweenTweener
+	TweenAwait(signal Signal) RefAwaitTweener
 	CustomStep(delta float64) bool
 	Stop()
 	Pause()
 	Play()
 	Kill()
 	GetTotalElapsedTime() float64
+	HasTweeners() bool
 	IsRunning() bool
 	IsValid() bool
 	BindNode(node Node) RefTween
@@ -18131,6 +18612,31 @@ type ViewportTexture interface {
 	Texture2D
 	SetViewportPathInScene(path NodePath)
 	GetViewportPathInScene() NodePath
+}
+type VirtualJoystick interface {
+	Control
+	SetJoystickMode(mode VirtualJoystickJoystickMode)
+	GetJoystickMode() VirtualJoystickJoystickMode
+	SetJoystickSize(size float32)
+	GetJoystickSize() float32
+	SetTipSize(size float32)
+	GetTipSize() float32
+	SetDeadzoneRatio(ratio float32)
+	GetDeadzoneRatio() float32
+	SetClampzoneRatio(ratio float32)
+	GetClampzoneRatio() float32
+	SetInitialOffsetRatio(ratio Vector2)
+	GetInitialOffsetRatio() Vector2
+	SetActionLeft(action StringName)
+	GetActionLeft() StringName
+	SetActionRight(action StringName)
+	GetActionRight() StringName
+	SetActionUp(action StringName)
+	GetActionUp() StringName
+	SetActionDown(action StringName)
+	GetActionDown() StringName
+	SetVisibilityMode(mode VirtualJoystickVisibilityMode)
+	GetVisibilityMode() VirtualJoystickVisibilityMode
 }
 type VisibleOnScreenEnabler2D interface {
 	VisibleOnScreenNotifier2D
@@ -18864,12 +19370,12 @@ type WebRTCDataChannel interface {
 type WebRTCDataChannelExtension interface {
 	WebRTCDataChannel
 	// TODO: Implement virtual method: Internal_GetPacket(r_buffer **uint8,r_buffer_size *Int32T,) Error
-	// TODO: Implement virtual method: Internal_PutPacket(p_buffer *uint8,p_buffer_size int32,) Error
+	// TODO: Implement virtual method: Internal_PutPacket(buffer *uint8,buffer_size int32,) Error
 	// TODO: Implement virtual method: Internal_GetAvailablePacketCount() int32
 	// TODO: Implement virtual method: Internal_GetMaxPacketSize() int32
 	// TODO: Implement virtual method: Internal_Poll() Error
 	// TODO: Implement virtual method: Internal_Close()
-	// TODO: Implement virtual method: Internal_SetWriteMode(p_write_mode WebRTCDataChannelWriteMode,)
+	// TODO: Implement virtual method: Internal_SetWriteMode(write_mode WebRTCDataChannelWriteMode,)
 	// TODO: Implement virtual method: Internal_GetWriteMode() WebRTCDataChannelWriteMode
 	// TODO: Implement virtual method: Internal_WasStringPacket() bool
 	// TODO: Implement virtual method: Internal_GetReadyState() WebRTCDataChannelChannelState
@@ -18914,12 +19420,12 @@ type WebRTCPeerConnectionExtension interface {
 	// TODO: Implement virtual method: Internal_GetConnectionState() WebRTCPeerConnectionConnectionState
 	// TODO: Implement virtual method: Internal_GetGatheringState() WebRTCPeerConnectionGatheringState
 	// TODO: Implement virtual method: Internal_GetSignalingState() WebRTCPeerConnectionSignalingState
-	// TODO: Implement virtual method: Internal_Initialize(p_config Dictionary,) Error
-	// TODO: Implement virtual method: Internal_CreateDataChannel(p_label String,p_config Dictionary,) RefWebRTCDataChannel
+	// TODO: Implement virtual method: Internal_Initialize(config Dictionary,) Error
+	// TODO: Implement virtual method: Internal_CreateDataChannel(label String,config Dictionary,) RefWebRTCDataChannel
 	// TODO: Implement virtual method: Internal_CreateOffer() Error
-	// TODO: Implement virtual method: Internal_SetRemoteDescription(p_type String,p_sdp String,) Error
-	// TODO: Implement virtual method: Internal_SetLocalDescription(p_type String,p_sdp String,) Error
-	// TODO: Implement virtual method: Internal_AddIceCandidate(p_sdp_mid_name String,p_sdp_mline_index int32,p_sdp_name String,) Error
+	// TODO: Implement virtual method: Internal_SetRemoteDescription(typeName String,sdp String,) Error
+	// TODO: Implement virtual method: Internal_SetLocalDescription(typeName String,sdp String,) Error
+	// TODO: Implement virtual method: Internal_AddIceCandidate(sdp_mid_name String,sdp_mline_index int32,sdp_name String,) Error
 	// TODO: Implement virtual method: Internal_Poll() Error
 	// TODO: Implement virtual method: Internal_Close()
 
@@ -19021,8 +19527,13 @@ type Window interface {
 	GetMode() WindowMode
 	SetFlag(flag WindowFlags, enabled bool)
 	GetFlag(flag WindowFlags) bool
+	SetHdrOutputRequested(requested bool)
+	IsHdrOutputRequested() bool
+	GetOutputMaxLinearValue() float32
 	IsMaximizeAllowed() bool
 	RequestAttention()
+	SetTaskbarProgressValue(value float32)
+	SetTaskbarProgressState(state DisplayServerProgressState)
 	MoveToForeground()
 	SetVisible(visible bool)
 	IsVisible() bool
@@ -19454,7 +19965,8 @@ type ZIPPacker interface {
 	Open(path String, append ZIPPackerZipAppend) Error
 	SetCompressionLevel(compression_level int32)
 	GetCompressionLevel() int32
-	StartFile(path String) Error
+	AddDirectory(path String, permissions FileAccessUnixPermissionFlags, modified_time uint64) Error
+	StartFile(path String, permissions FileAccessUnixPermissionFlags, modified_time uint64) Error
 	WriteFile(data PackedByteArray) Error
 	CloseFile() Error
 	Close() Error

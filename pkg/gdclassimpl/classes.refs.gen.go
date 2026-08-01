@@ -3917,6 +3917,53 @@ func NewRefAudioStreamWAVGDExtensionIternalConstructor(reference AudioStreamWAV)
 	return NewTypedRefGDExtensionIternalConstructor[AudioStreamWAV](reference)
 }
 
+var _ RefAwaitTweener = &RefAwaitTweenerImpl{}
+var _ Ref = &RefAwaitTweenerImpl{}
+
+type RefAwaitTweenerImpl TypedRef[AwaitTweener]
+
+func (r *RefAwaitTweenerImpl) Ptr() RefCounted {
+	rg := (*TypedRef[AwaitTweener])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefAwaitTweenerImpl) TypedPtr() AwaitTweener {
+	rg := (*TypedRef[AwaitTweener])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefAwaitTweenerImpl) Ref(from Ref) {
+	rg := (*TypedRef[AwaitTweener])(r)
+	rg.Ref(from)
+}
+
+func (r *RefAwaitTweenerImpl) TypedRef(from *RefAwaitTweenerImpl) {
+	rg := (*TypedRef[AwaitTweener])(r)
+	t := (*TypedRef[AwaitTweener])(from)
+	rg.TypedRef((*TypedRef[AwaitTweener])(t))
+}
+
+func (r *RefAwaitTweenerImpl) Unref() {
+	rg := (*TypedRef[AwaitTweener])(r)
+	rg.Unref()
+}
+
+func (r *RefAwaitTweenerImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefAwaitTweener(reference AwaitTweener) RefAwaitTweener {
+	return (RefAwaitTweener)(NewTypedRef[AwaitTweener](reference))
+}
+
+func NewRefAwaitTweenerAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[AwaitTweener](reference.(AwaitTweener)))
+}
+
+func NewRefAwaitTweenerGDExtensionIternalConstructor(reference AwaitTweener) RefAwaitTweener {
+	return NewTypedRefGDExtensionIternalConstructor[AwaitTweener](reference)
+}
+
 var _ RefBaseMaterial3D = &RefBaseMaterial3DImpl{}
 var _ Ref = &RefBaseMaterial3DImpl{}
 
@@ -4009,6 +4056,53 @@ func NewRefBitMapAsRef(reference RefCounted) Ref {
 
 func NewRefBitMapGDExtensionIternalConstructor(reference BitMap) RefBitMap {
 	return NewTypedRefGDExtensionIternalConstructor[BitMap](reference)
+}
+
+var _ RefBlitMaterial = &RefBlitMaterialImpl{}
+var _ Ref = &RefBlitMaterialImpl{}
+
+type RefBlitMaterialImpl TypedRef[BlitMaterial]
+
+func (r *RefBlitMaterialImpl) Ptr() RefCounted {
+	rg := (*TypedRef[BlitMaterial])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefBlitMaterialImpl) TypedPtr() BlitMaterial {
+	rg := (*TypedRef[BlitMaterial])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefBlitMaterialImpl) Ref(from Ref) {
+	rg := (*TypedRef[BlitMaterial])(r)
+	rg.Ref(from)
+}
+
+func (r *RefBlitMaterialImpl) TypedRef(from *RefBlitMaterialImpl) {
+	rg := (*TypedRef[BlitMaterial])(r)
+	t := (*TypedRef[BlitMaterial])(from)
+	rg.TypedRef((*TypedRef[BlitMaterial])(t))
+}
+
+func (r *RefBlitMaterialImpl) Unref() {
+	rg := (*TypedRef[BlitMaterial])(r)
+	rg.Unref()
+}
+
+func (r *RefBlitMaterialImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefBlitMaterial(reference BlitMaterial) RefBlitMaterial {
+	return (RefBlitMaterial)(NewTypedRef[BlitMaterial](reference))
+}
+
+func NewRefBlitMaterialAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[BlitMaterial](reference.(BlitMaterial)))
+}
+
+func NewRefBlitMaterialGDExtensionIternalConstructor(reference BlitMaterial) RefBlitMaterial {
+	return NewTypedRefGDExtensionIternalConstructor[BlitMaterial](reference)
 }
 
 var _ RefBoneMap = &RefBoneMapImpl{}
@@ -6218,6 +6312,53 @@ func NewRefDirAccessAsRef(reference RefCounted) Ref {
 
 func NewRefDirAccessGDExtensionIternalConstructor(reference DirAccess) RefDirAccess {
 	return NewTypedRefGDExtensionIternalConstructor[DirAccess](reference)
+}
+
+var _ RefDrawableTexture2D = &RefDrawableTexture2DImpl{}
+var _ Ref = &RefDrawableTexture2DImpl{}
+
+type RefDrawableTexture2DImpl TypedRef[DrawableTexture2D]
+
+func (r *RefDrawableTexture2DImpl) Ptr() RefCounted {
+	rg := (*TypedRef[DrawableTexture2D])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefDrawableTexture2DImpl) TypedPtr() DrawableTexture2D {
+	rg := (*TypedRef[DrawableTexture2D])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefDrawableTexture2DImpl) Ref(from Ref) {
+	rg := (*TypedRef[DrawableTexture2D])(r)
+	rg.Ref(from)
+}
+
+func (r *RefDrawableTexture2DImpl) TypedRef(from *RefDrawableTexture2DImpl) {
+	rg := (*TypedRef[DrawableTexture2D])(r)
+	t := (*TypedRef[DrawableTexture2D])(from)
+	rg.TypedRef((*TypedRef[DrawableTexture2D])(t))
+}
+
+func (r *RefDrawableTexture2DImpl) Unref() {
+	rg := (*TypedRef[DrawableTexture2D])(r)
+	rg.Unref()
+}
+
+func (r *RefDrawableTexture2DImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefDrawableTexture2D(reference DrawableTexture2D) RefDrawableTexture2D {
+	return (RefDrawableTexture2D)(NewTypedRef[DrawableTexture2D](reference))
+}
+
+func NewRefDrawableTexture2DAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[DrawableTexture2D](reference.(DrawableTexture2D)))
+}
+
+func NewRefDrawableTexture2DGDExtensionIternalConstructor(reference DrawableTexture2D) RefDrawableTexture2D {
+	return NewTypedRefGDExtensionIternalConstructor[DrawableTexture2D](reference)
 }
 
 var _ RefENetConnection = &RefENetConnectionImpl{}
@@ -8850,6 +8991,100 @@ func NewRefGDScriptSyntaxHighlighterAsRef(reference RefCounted) Ref {
 
 func NewRefGDScriptSyntaxHighlighterGDExtensionIternalConstructor(reference GDScriptSyntaxHighlighter) RefGDScriptSyntaxHighlighter {
 	return NewTypedRefGDExtensionIternalConstructor[GDScriptSyntaxHighlighter](reference)
+}
+
+var _ RefGDScriptTextDocument = &RefGDScriptTextDocumentImpl{}
+var _ Ref = &RefGDScriptTextDocumentImpl{}
+
+type RefGDScriptTextDocumentImpl TypedRef[GDScriptTextDocument]
+
+func (r *RefGDScriptTextDocumentImpl) Ptr() RefCounted {
+	rg := (*TypedRef[GDScriptTextDocument])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefGDScriptTextDocumentImpl) TypedPtr() GDScriptTextDocument {
+	rg := (*TypedRef[GDScriptTextDocument])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefGDScriptTextDocumentImpl) Ref(from Ref) {
+	rg := (*TypedRef[GDScriptTextDocument])(r)
+	rg.Ref(from)
+}
+
+func (r *RefGDScriptTextDocumentImpl) TypedRef(from *RefGDScriptTextDocumentImpl) {
+	rg := (*TypedRef[GDScriptTextDocument])(r)
+	t := (*TypedRef[GDScriptTextDocument])(from)
+	rg.TypedRef((*TypedRef[GDScriptTextDocument])(t))
+}
+
+func (r *RefGDScriptTextDocumentImpl) Unref() {
+	rg := (*TypedRef[GDScriptTextDocument])(r)
+	rg.Unref()
+}
+
+func (r *RefGDScriptTextDocumentImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefGDScriptTextDocument(reference GDScriptTextDocument) RefGDScriptTextDocument {
+	return (RefGDScriptTextDocument)(NewTypedRef[GDScriptTextDocument](reference))
+}
+
+func NewRefGDScriptTextDocumentAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GDScriptTextDocument](reference.(GDScriptTextDocument)))
+}
+
+func NewRefGDScriptTextDocumentGDExtensionIternalConstructor(reference GDScriptTextDocument) RefGDScriptTextDocument {
+	return NewTypedRefGDExtensionIternalConstructor[GDScriptTextDocument](reference)
+}
+
+var _ RefGDScriptWorkspace = &RefGDScriptWorkspaceImpl{}
+var _ Ref = &RefGDScriptWorkspaceImpl{}
+
+type RefGDScriptWorkspaceImpl TypedRef[GDScriptWorkspace]
+
+func (r *RefGDScriptWorkspaceImpl) Ptr() RefCounted {
+	rg := (*TypedRef[GDScriptWorkspace])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefGDScriptWorkspaceImpl) TypedPtr() GDScriptWorkspace {
+	rg := (*TypedRef[GDScriptWorkspace])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefGDScriptWorkspaceImpl) Ref(from Ref) {
+	rg := (*TypedRef[GDScriptWorkspace])(r)
+	rg.Ref(from)
+}
+
+func (r *RefGDScriptWorkspaceImpl) TypedRef(from *RefGDScriptWorkspaceImpl) {
+	rg := (*TypedRef[GDScriptWorkspace])(r)
+	t := (*TypedRef[GDScriptWorkspace])(from)
+	rg.TypedRef((*TypedRef[GDScriptWorkspace])(t))
+}
+
+func (r *RefGDScriptWorkspaceImpl) Unref() {
+	rg := (*TypedRef[GDScriptWorkspace])(r)
+	rg.Unref()
+}
+
+func (r *RefGDScriptWorkspaceImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefGDScriptWorkspace(reference GDScriptWorkspace) RefGDScriptWorkspace {
+	return (RefGDScriptWorkspace)(NewTypedRef[GDScriptWorkspace](reference))
+}
+
+func NewRefGDScriptWorkspaceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[GDScriptWorkspace](reference.(GDScriptWorkspace)))
+}
+
+func NewRefGDScriptWorkspaceGDExtensionIternalConstructor(reference GDScriptWorkspace) RefGDScriptWorkspace {
+	return NewTypedRefGDExtensionIternalConstructor[GDScriptWorkspace](reference)
 }
 
 var _ RefGLTFAccessor = &RefGLTFAccessorImpl{}
@@ -17406,6 +17641,100 @@ func NewRefQuadOccluder3DGDExtensionIternalConstructor(reference QuadOccluder3D)
 	return NewTypedRefGDExtensionIternalConstructor[QuadOccluder3D](reference)
 }
 
+var _ RefRDAccelerationStructureGeometry = &RefRDAccelerationStructureGeometryImpl{}
+var _ Ref = &RefRDAccelerationStructureGeometryImpl{}
+
+type RefRDAccelerationStructureGeometryImpl TypedRef[RDAccelerationStructureGeometry]
+
+func (r *RefRDAccelerationStructureGeometryImpl) Ptr() RefCounted {
+	rg := (*TypedRef[RDAccelerationStructureGeometry])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefRDAccelerationStructureGeometryImpl) TypedPtr() RDAccelerationStructureGeometry {
+	rg := (*TypedRef[RDAccelerationStructureGeometry])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefRDAccelerationStructureGeometryImpl) Ref(from Ref) {
+	rg := (*TypedRef[RDAccelerationStructureGeometry])(r)
+	rg.Ref(from)
+}
+
+func (r *RefRDAccelerationStructureGeometryImpl) TypedRef(from *RefRDAccelerationStructureGeometryImpl) {
+	rg := (*TypedRef[RDAccelerationStructureGeometry])(r)
+	t := (*TypedRef[RDAccelerationStructureGeometry])(from)
+	rg.TypedRef((*TypedRef[RDAccelerationStructureGeometry])(t))
+}
+
+func (r *RefRDAccelerationStructureGeometryImpl) Unref() {
+	rg := (*TypedRef[RDAccelerationStructureGeometry])(r)
+	rg.Unref()
+}
+
+func (r *RefRDAccelerationStructureGeometryImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefRDAccelerationStructureGeometry(reference RDAccelerationStructureGeometry) RefRDAccelerationStructureGeometry {
+	return (RefRDAccelerationStructureGeometry)(NewTypedRef[RDAccelerationStructureGeometry](reference))
+}
+
+func NewRefRDAccelerationStructureGeometryAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDAccelerationStructureGeometry](reference.(RDAccelerationStructureGeometry)))
+}
+
+func NewRefRDAccelerationStructureGeometryGDExtensionIternalConstructor(reference RDAccelerationStructureGeometry) RefRDAccelerationStructureGeometry {
+	return NewTypedRefGDExtensionIternalConstructor[RDAccelerationStructureGeometry](reference)
+}
+
+var _ RefRDAccelerationStructureInstance = &RefRDAccelerationStructureInstanceImpl{}
+var _ Ref = &RefRDAccelerationStructureInstanceImpl{}
+
+type RefRDAccelerationStructureInstanceImpl TypedRef[RDAccelerationStructureInstance]
+
+func (r *RefRDAccelerationStructureInstanceImpl) Ptr() RefCounted {
+	rg := (*TypedRef[RDAccelerationStructureInstance])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefRDAccelerationStructureInstanceImpl) TypedPtr() RDAccelerationStructureInstance {
+	rg := (*TypedRef[RDAccelerationStructureInstance])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefRDAccelerationStructureInstanceImpl) Ref(from Ref) {
+	rg := (*TypedRef[RDAccelerationStructureInstance])(r)
+	rg.Ref(from)
+}
+
+func (r *RefRDAccelerationStructureInstanceImpl) TypedRef(from *RefRDAccelerationStructureInstanceImpl) {
+	rg := (*TypedRef[RDAccelerationStructureInstance])(r)
+	t := (*TypedRef[RDAccelerationStructureInstance])(from)
+	rg.TypedRef((*TypedRef[RDAccelerationStructureInstance])(t))
+}
+
+func (r *RefRDAccelerationStructureInstanceImpl) Unref() {
+	rg := (*TypedRef[RDAccelerationStructureInstance])(r)
+	rg.Unref()
+}
+
+func (r *RefRDAccelerationStructureInstanceImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefRDAccelerationStructureInstance(reference RDAccelerationStructureInstance) RefRDAccelerationStructureInstance {
+	return (RefRDAccelerationStructureInstance)(NewTypedRef[RDAccelerationStructureInstance](reference))
+}
+
+func NewRefRDAccelerationStructureInstanceAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDAccelerationStructureInstance](reference.(RDAccelerationStructureInstance)))
+}
+
+func NewRefRDAccelerationStructureInstanceGDExtensionIternalConstructor(reference RDAccelerationStructureInstance) RefRDAccelerationStructureInstance {
+	return NewTypedRefGDExtensionIternalConstructor[RDAccelerationStructureInstance](reference)
+}
+
 var _ RefRDAttachmentFormat = &RefRDAttachmentFormatImpl{}
 var _ Ref = &RefRDAttachmentFormatImpl{}
 
@@ -17498,6 +17827,53 @@ func NewRefRDFramebufferPassAsRef(reference RefCounted) Ref {
 
 func NewRefRDFramebufferPassGDExtensionIternalConstructor(reference RDFramebufferPass) RefRDFramebufferPass {
 	return NewTypedRefGDExtensionIternalConstructor[RDFramebufferPass](reference)
+}
+
+var _ RefRDHitGroup = &RefRDHitGroupImpl{}
+var _ Ref = &RefRDHitGroupImpl{}
+
+type RefRDHitGroupImpl TypedRef[RDHitGroup]
+
+func (r *RefRDHitGroupImpl) Ptr() RefCounted {
+	rg := (*TypedRef[RDHitGroup])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefRDHitGroupImpl) TypedPtr() RDHitGroup {
+	rg := (*TypedRef[RDHitGroup])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefRDHitGroupImpl) Ref(from Ref) {
+	rg := (*TypedRef[RDHitGroup])(r)
+	rg.Ref(from)
+}
+
+func (r *RefRDHitGroupImpl) TypedRef(from *RefRDHitGroupImpl) {
+	rg := (*TypedRef[RDHitGroup])(r)
+	t := (*TypedRef[RDHitGroup])(from)
+	rg.TypedRef((*TypedRef[RDHitGroup])(t))
+}
+
+func (r *RefRDHitGroupImpl) Unref() {
+	rg := (*TypedRef[RDHitGroup])(r)
+	rg.Unref()
+}
+
+func (r *RefRDHitGroupImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefRDHitGroup(reference RDHitGroup) RefRDHitGroup {
+	return (RefRDHitGroup)(NewTypedRef[RDHitGroup](reference))
+}
+
+func NewRefRDHitGroupAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDHitGroup](reference.(RDHitGroup)))
+}
+
+func NewRefRDHitGroupGDExtensionIternalConstructor(reference RDHitGroup) RefRDHitGroup {
+	return NewTypedRefGDExtensionIternalConstructor[RDHitGroup](reference)
 }
 
 var _ RefRDPipelineColorBlendState = &RefRDPipelineColorBlendStateImpl{}
@@ -17733,6 +18109,53 @@ func NewRefRDPipelineRasterizationStateAsRef(reference RefCounted) Ref {
 
 func NewRefRDPipelineRasterizationStateGDExtensionIternalConstructor(reference RDPipelineRasterizationState) RefRDPipelineRasterizationState {
 	return NewTypedRefGDExtensionIternalConstructor[RDPipelineRasterizationState](reference)
+}
+
+var _ RefRDPipelineShader = &RefRDPipelineShaderImpl{}
+var _ Ref = &RefRDPipelineShaderImpl{}
+
+type RefRDPipelineShaderImpl TypedRef[RDPipelineShader]
+
+func (r *RefRDPipelineShaderImpl) Ptr() RefCounted {
+	rg := (*TypedRef[RDPipelineShader])(r)
+	return rg.Ptr().(RefCounted)
+}
+
+func (r *RefRDPipelineShaderImpl) TypedPtr() RDPipelineShader {
+	rg := (*TypedRef[RDPipelineShader])(r)
+	return rg.TypedPtr()
+}
+
+func (r *RefRDPipelineShaderImpl) Ref(from Ref) {
+	rg := (*TypedRef[RDPipelineShader])(r)
+	rg.Ref(from)
+}
+
+func (r *RefRDPipelineShaderImpl) TypedRef(from *RefRDPipelineShaderImpl) {
+	rg := (*TypedRef[RDPipelineShader])(r)
+	t := (*TypedRef[RDPipelineShader])(from)
+	rg.TypedRef((*TypedRef[RDPipelineShader])(t))
+}
+
+func (r *RefRDPipelineShaderImpl) Unref() {
+	rg := (*TypedRef[RDPipelineShader])(r)
+	rg.Unref()
+}
+
+func (r *RefRDPipelineShaderImpl) IsValid() bool {
+	return r != nil && r.Reference != nil
+}
+
+func NewRefRDPipelineShader(reference RDPipelineShader) RefRDPipelineShader {
+	return (RefRDPipelineShader)(NewTypedRef[RDPipelineShader](reference))
+}
+
+func NewRefRDPipelineShaderAsRef(reference RefCounted) Ref {
+	return (Ref)(NewTypedRefGDExtensionIternalConstructor[RDPipelineShader](reference.(RDPipelineShader)))
+}
+
+func NewRefRDPipelineShaderGDExtensionIternalConstructor(reference RDPipelineShader) RefRDPipelineShader {
+	return NewTypedRefGDExtensionIternalConstructor[RDPipelineShader](reference)
 }
 
 var _ RefRDPipelineSpecializationConstant = &RefRDPipelineSpecializationConstantImpl{}

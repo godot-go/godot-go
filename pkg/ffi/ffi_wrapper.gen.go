@@ -350,6 +350,7 @@ type GDExtensionClassUnreference C.GDExtensionClassUnreference
 type GDExtensionClassCallVirtual C.GDExtensionClassCallVirtual
 type GDExtensionClassCreateInstance C.GDExtensionClassCreateInstance
 type GDExtensionClassCreateInstance2 C.GDExtensionClassCreateInstance2
+type GDExtensionClassCreateInstance3 C.GDExtensionClassCreateInstance3
 type GDExtensionClassFreeInstance C.GDExtensionClassFreeInstance
 type GDExtensionClassRecreateInstance C.GDExtensionClassRecreateInstance
 type GDExtensionClassGetVirtual C.GDExtensionClassGetVirtual
@@ -451,6 +452,7 @@ type GDExtensionInterfaceVariantHasMember C.GDExtensionInterfaceVariantHasMember
 type GDExtensionInterfaceVariantHasKey C.GDExtensionInterfaceVariantHasKey
 type GDExtensionInterfaceVariantGetObjectInstanceId C.GDExtensionInterfaceVariantGetObjectInstanceId
 type GDExtensionInterfaceVariantGetTypeName C.GDExtensionInterfaceVariantGetTypeName
+type GDExtensionInterfaceVariantGetTypeByName C.GDExtensionInterfaceVariantGetTypeByName
 type GDExtensionInterfaceVariantCanConvert C.GDExtensionInterfaceVariantCanConvert
 type GDExtensionInterfaceVariantCanConvertStrict C.GDExtensionInterfaceVariantCanConvertStrict
 type GDExtensionInterfaceGetVariantFromTypeConstructor C.GDExtensionInterfaceGetVariantFromTypeConstructor
@@ -560,6 +562,7 @@ type GDExtensionInterfaceCallableCustomCreate2 C.GDExtensionInterfaceCallableCus
 type GDExtensionInterfaceCallableCustomGetUserData C.GDExtensionInterfaceCallableCustomGetUserData
 type GDExtensionInterfaceClassdbConstructObject C.GDExtensionInterfaceClassdbConstructObject
 type GDExtensionInterfaceClassdbConstructObject2 C.GDExtensionInterfaceClassdbConstructObject2
+type GDExtensionInterfaceClassdbConstructObject3 C.GDExtensionInterfaceClassdbConstructObject3
 type GDExtensionInterfaceClassdbGetMethodBind C.GDExtensionInterfaceClassdbGetMethodBind
 type GDExtensionInterfaceClassdbGetClassTag C.GDExtensionInterfaceClassdbGetClassTag
 type GDExtensionInterfaceClassdbRegisterExtensionClass C.GDExtensionInterfaceClassdbRegisterExtensionClass
@@ -567,6 +570,7 @@ type GDExtensionInterfaceClassdbRegisterExtensionClass2 C.GDExtensionInterfaceCl
 type GDExtensionInterfaceClassdbRegisterExtensionClass3 C.GDExtensionInterfaceClassdbRegisterExtensionClass3
 type GDExtensionInterfaceClassdbRegisterExtensionClass4 C.GDExtensionInterfaceClassdbRegisterExtensionClass4
 type GDExtensionInterfaceClassdbRegisterExtensionClass5 C.GDExtensionInterfaceClassdbRegisterExtensionClass5
+type GDExtensionInterfaceClassdbRegisterExtensionClass6 C.GDExtensionInterfaceClassdbRegisterExtensionClass6
 type GDExtensionInterfaceClassdbRegisterExtensionClassMethod C.GDExtensionInterfaceClassdbRegisterExtensionClassMethod
 type GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod C.GDExtensionInterfaceClassdbRegisterExtensionClassVirtualMethod
 type GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant C.GDExtensionInterfaceClassdbRegisterExtensionClassIntegerConstant
@@ -1158,6 +1162,22 @@ func CallFunc_GDExtensionClassCreateInstance2(
 	log.Debug("called C.cgo_callfn_GDExtensionClassCreateInstance2")
 
 	ret := C.cgo_callfn_GDExtensionClassCreateInstance2(arg0, arg1, arg2)
+
+	return (GDExtensionObjectPtr)(ret)
+}
+
+func CallFunc_GDExtensionClassCreateInstance3(
+	fn GDExtensionClassCreateInstance3,
+	p_class_userdata unsafe.Pointer,
+	p_notify_postinitialize GDExtensionBool,
+) GDExtensionObjectPtr {
+	arg0 := (C.GDExtensionClassCreateInstance3)(fn)
+	arg1 := unsafe.Pointer(p_class_userdata)
+	arg2 := (C.GDExtensionBool)(p_notify_postinitialize)
+
+	log.Debug("called C.cgo_callfn_GDExtensionClassCreateInstance3")
+
+	ret := C.cgo_callfn_GDExtensionClassCreateInstance3(arg0, arg1, arg2)
 
 	return (GDExtensionObjectPtr)(ret)
 }
@@ -2854,6 +2874,19 @@ func CallFunc_GDExtensionInterfaceVariantGetTypeName(
 
 	C.cgo_callfn_GDExtensionInterfaceVariantGetTypeName(arg0, arg1, arg2)
 
+}
+
+func CallFunc_GDExtensionInterfaceVariantGetTypeByName(
+	p_type_name GDExtensionConstStringPtr,
+) GDExtensionVariantType {
+	arg0 := (C.GDExtensionInterfaceVariantGetTypeByName)(FFI.VariantGetTypeByName)
+	arg1 := (C.GDExtensionConstStringPtr)(p_type_name)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceVariantGetTypeByName")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceVariantGetTypeByName(arg0, arg1)
+
+	return (GDExtensionVariantType)(ret)
 }
 
 func CallFunc_GDExtensionInterfaceVariantCanConvert(
@@ -4553,6 +4586,19 @@ func CallFunc_GDExtensionInterfaceClassdbConstructObject2(
 	return (GDExtensionObjectPtr)(ret)
 }
 
+func CallFunc_GDExtensionInterfaceClassdbConstructObject3(
+	p_classname GDExtensionConstStringNamePtr,
+) GDExtensionObjectPtr {
+	arg0 := (C.GDExtensionInterfaceClassdbConstructObject3)(FFI.ClassdbConstructObject3)
+	arg1 := (C.GDExtensionConstStringNamePtr)(p_classname)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbConstructObject3")
+
+	ret := C.cgo_callfn_GDExtensionInterfaceClassdbConstructObject3(arg0, arg1)
+
+	return (GDExtensionObjectPtr)(ret)
+}
+
 func CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
 	p_classname GDExtensionConstStringNamePtr,
 	p_methodname GDExtensionConstStringNamePtr,
@@ -4672,6 +4718,24 @@ func CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass5(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass5")
 
 	C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass5(arg0, arg1, arg2, arg3, arg4)
+
+}
+
+func CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClass6(
+	p_library GDExtensionClassLibraryPtr,
+	p_class_name GDExtensionConstStringNamePtr,
+	p_parent_class_name GDExtensionConstStringNamePtr,
+	p_extension_funcs *GDExtensionClassCreationInfo6,
+) {
+	arg0 := (C.GDExtensionInterfaceClassdbRegisterExtensionClass6)(FFI.ClassdbRegisterExtensionClass6)
+	arg1 := (C.GDExtensionClassLibraryPtr)(p_library)
+	arg2 := (C.GDExtensionConstStringNamePtr)(p_class_name)
+	arg3 := (C.GDExtensionConstStringNamePtr)(p_parent_class_name)
+	arg4 := (*C.GDExtensionClassCreationInfo6)(p_extension_funcs)
+
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass6")
+
+	C.cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass6(arg0, arg1, arg2, arg3, arg4)
 
 }
 
@@ -4916,6 +4980,7 @@ type GDExtensionClassCreationInfo C.GDExtensionClassCreationInfo
 type GDExtensionClassCreationInfo2 C.GDExtensionClassCreationInfo2
 type GDExtensionClassCreationInfo3 C.GDExtensionClassCreationInfo3
 type GDExtensionClassCreationInfo4 C.GDExtensionClassCreationInfo4
+type GDExtensionClassCreationInfo6 C.GDExtensionClassCreationInfo6
 type GDExtensionClassMethodInfo C.GDExtensionClassMethodInfo
 type GDExtensionClassVirtualMethodInfo C.GDExtensionClassVirtualMethodInfo
 type GDExtensionCallableCustomInfo C.GDExtensionCallableCustomInfo

@@ -52,7 +52,7 @@ build: goenv ## Build GDExtension library (debug mode)
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
-	CGO_CFLAGS='-fPIC -g -ggdb -O0' \
+	CGO_CFLAGS='-fPIC -g -ggdb -O0 -I$(CWD)' \
 	CGO_LDFLAGS='-g3 -g -O0' \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
@@ -61,7 +61,7 @@ build-full: goenv ## Build GDExtension library with full debug symbols
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
-	CGO_CFLAGS='-g3 -g -gdwarf -DX86=1 -fPIC -O0' \
+	CGO_CFLAGS='-g3 -g -gdwarf -DX86=1 -fPIC -O0 -I$(CWD)' \
 	CGO_LDFLAGS='-g3 -g' \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags="-N -l" -ldflags=-compressdwarf=0 -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)

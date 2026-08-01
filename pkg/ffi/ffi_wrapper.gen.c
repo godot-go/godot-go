@@ -238,6 +238,12 @@ GDExtensionObjectPtr cgo_callfn_GDExtensionClassCreateInstance2(
   printStacktrace();
   return fn(p_class_userdata, p_notify_postinitialize);
 }
+GDExtensionObjectPtr cgo_callfn_GDExtensionClassCreateInstance3(
+    const GDExtensionClassCreateInstance3 fn, void *p_class_userdata,
+    GDExtensionBool p_notify_postinitialize) {
+  printStacktrace();
+  return fn(p_class_userdata, p_notify_postinitialize);
+}
 void cgo_callfn_GDExtensionClassFreeInstance(
     const GDExtensionClassFreeInstance fn, void *p_class_userdata,
     GDExtensionClassInstancePtr p_instance) {
@@ -894,6 +900,12 @@ void cgo_callfn_GDExtensionInterfaceVariantGetTypeName(
     GDExtensionVariantType p_type, GDExtensionUninitializedStringPtr r_name) {
   printStacktrace();
   fn(p_type, r_name);
+}
+GDExtensionVariantType cgo_callfn_GDExtensionInterfaceVariantGetTypeByName(
+    const GDExtensionInterfaceVariantGetTypeByName fn,
+    GDExtensionConstStringPtr p_type_name) {
+  printStacktrace();
+  return fn(p_type_name);
 }
 GDExtensionBool cgo_callfn_GDExtensionInterfaceVariantCanConvert(
     const GDExtensionInterfaceVariantCanConvert fn,
@@ -1629,6 +1641,12 @@ GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceClassdbConstructObject2(
   printStacktrace();
   return fn(p_classname);
 }
+GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceClassdbConstructObject3(
+    const GDExtensionInterfaceClassdbConstructObject3 fn,
+    GDExtensionConstStringNamePtr p_classname) {
+  printStacktrace();
+  return fn(p_classname);
+}
 GDExtensionMethodBindPtr cgo_callfn_GDExtensionInterfaceClassdbGetMethodBind(
     const GDExtensionInterfaceClassdbGetMethodBind fn,
     GDExtensionConstStringNamePtr p_classname,
@@ -1684,6 +1702,15 @@ void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass5(
     GDExtensionConstStringNamePtr p_class_name,
     GDExtensionConstStringNamePtr p_parent_class_name,
     const GDExtensionClassCreationInfo5 *p_extension_funcs) {
+  printStacktrace();
+  fn(p_library, p_class_name, p_parent_class_name, p_extension_funcs);
+}
+void cgo_callfn_GDExtensionInterfaceClassdbRegisterExtensionClass6(
+    const GDExtensionInterfaceClassdbRegisterExtensionClass6 fn,
+    GDExtensionClassLibraryPtr p_library,
+    GDExtensionConstStringNamePtr p_class_name,
+    GDExtensionConstStringNamePtr p_parent_class_name,
+    const GDExtensionClassCreationInfo6 *p_extension_funcs) {
   printStacktrace();
   fn(p_library, p_class_name, p_parent_class_name, p_extension_funcs);
 }

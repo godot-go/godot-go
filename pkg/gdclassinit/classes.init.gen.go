@@ -54,6 +54,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AcceptDialog),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AcceptDialog),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AccessibilityServer",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AccessibilityServer),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AccessibilityServer),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AccessibilityServer),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AimModifier3D",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AimModifier3D),
@@ -257,6 +263,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_Area3D),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_Area3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_Area3D),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AreaLight3D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AreaLight3D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AreaLight3D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AreaLight3D),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ArrayMesh",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -630,6 +642,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AudioStreamWAV),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AudioStreamWAV),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("AwaitTweener",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_AwaitTweener),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_AwaitTweener),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_AwaitTweener),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("BackBufferCopy",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_BackBufferCopy),
@@ -653,6 +671,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_BitMap),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_BitMap),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_BitMap),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("BlitMaterial",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_BlitMaterial),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_BlitMaterial),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_BlitMaterial),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("Bone2D",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -1254,6 +1278,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_DisplayServer),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_DisplayServer),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("DrawableTexture2D",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_DrawableTexture2D),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_DrawableTexture2D),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_DrawableTexture2D),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("ENetConnection",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_ENetConnection),
@@ -1752,11 +1782,29 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GDScript),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GDScript),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GDScriptLanguageProtocol",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GDScriptLanguageProtocol),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GDScriptLanguageProtocol),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GDScriptLanguageProtocol),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GDScriptSyntaxHighlighter",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GDScriptSyntaxHighlighter),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GDScriptSyntaxHighlighter),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GDScriptSyntaxHighlighter),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GDScriptTextDocument",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GDScriptTextDocument),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GDScriptTextDocument),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GDScriptTextDocument),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GDScriptWorkspace",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_GDScriptWorkspace),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_GDScriptWorkspace),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_GDScriptWorkspace),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("GLTFAccessor",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -3804,6 +3852,18 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_QuadOccluder3D),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_QuadOccluder3D),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RDAccelerationStructureGeometry",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RDAccelerationStructureGeometry),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RDAccelerationStructureGeometry),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RDAccelerationStructureGeometry),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RDAccelerationStructureInstance",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RDAccelerationStructureInstance),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RDAccelerationStructureInstance),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RDAccelerationStructureInstance),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RDAttachmentFormat",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RDAttachmentFormat),
@@ -3815,6 +3875,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RDFramebufferPass),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RDFramebufferPass),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RDFramebufferPass),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RDHitGroup",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RDHitGroup),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RDHitGroup),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RDHitGroup),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RDPipelineColorBlendState",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -3845,6 +3911,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RDPipelineRasterizationState),
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RDPipelineRasterizationState),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RDPipelineRasterizationState),
+		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RDPipelineShader",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_RDPipelineShader),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_RDPipelineShader),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_RDPipelineShader),
 		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("RDPipelineSpecializationConstant",
 		NewGDExtensionInstanceBindingCallbacks(
@@ -5214,6 +5286,12 @@ func RegisterEngineClasses() {
 			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_ViewportTexture),
 			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_ViewportTexture),
 		))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VirtualJoystick",
+		NewGDExtensionInstanceBindingCallbacks(
+			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VirtualJoystick),
+			(GDExtensionInstanceBindingFreeCallback)(C.cgo_gdextension_class_binding_free_callback_VirtualJoystick),
+			(GDExtensionInstanceBindingReferenceCallback)(C.cgo_gdextension_class_binding_reference_callback_VirtualJoystick),
+		))
 	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set("VisibleOnScreenEnabler2D",
 		NewGDExtensionInstanceBindingCallbacks(
 			(GDExtensionInstanceBindingCreateCallback)(C.cgo_gdextension_class_binding_create_callback_VisibleOnScreenEnabler2D),
@@ -6168,6 +6246,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("AStar3D", NewGDExtensionClassFromAStar3DOwner)
 	GDNativeConstructors.Set("AStarGrid2D", NewGDExtensionClassFromAStarGrid2DOwner)
 	GDNativeConstructors.Set("AcceptDialog", NewGDExtensionClassFromAcceptDialogOwner)
+	GDNativeConstructors.Set("AccessibilityServer", NewGDExtensionClassFromAccessibilityServerOwner)
 	GDNativeConstructors.Set("AimModifier3D", NewGDExtensionClassFromAimModifier3DOwner)
 	GDNativeConstructors.Set("AnimatableBody2D", NewGDExtensionClassFromAnimatableBody2DOwner)
 	GDNativeConstructors.Set("AnimatableBody3D", NewGDExtensionClassFromAnimatableBody3DOwner)
@@ -6202,6 +6281,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("AnimationTree", NewGDExtensionClassFromAnimationTreeOwner)
 	GDNativeConstructors.Set("Area2D", NewGDExtensionClassFromArea2DOwner)
 	GDNativeConstructors.Set("Area3D", NewGDExtensionClassFromArea3DOwner)
+	GDNativeConstructors.Set("AreaLight3D", NewGDExtensionClassFromAreaLight3DOwner)
 	GDNativeConstructors.Set("ArrayMesh", NewGDExtensionClassFromArrayMeshOwner)
 	GDNativeConstructors.Set("ArrayOccluder3D", NewGDExtensionClassFromArrayOccluder3DOwner)
 	GDNativeConstructors.Set("AspectRatioContainer", NewGDExtensionClassFromAspectRatioContainerOwner)
@@ -6264,10 +6344,12 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("AudioStreamRandomizer", NewGDExtensionClassFromAudioStreamRandomizerOwner)
 	GDNativeConstructors.Set("AudioStreamSynchronized", NewGDExtensionClassFromAudioStreamSynchronizedOwner)
 	GDNativeConstructors.Set("AudioStreamWAV", NewGDExtensionClassFromAudioStreamWAVOwner)
+	GDNativeConstructors.Set("AwaitTweener", NewGDExtensionClassFromAwaitTweenerOwner)
 	GDNativeConstructors.Set("BackBufferCopy", NewGDExtensionClassFromBackBufferCopyOwner)
 	GDNativeConstructors.Set("BaseButton", NewGDExtensionClassFromBaseButtonOwner)
 	GDNativeConstructors.Set("BaseMaterial3D", NewGDExtensionClassFromBaseMaterial3DOwner)
 	GDNativeConstructors.Set("BitMap", NewGDExtensionClassFromBitMapOwner)
+	GDNativeConstructors.Set("BlitMaterial", NewGDExtensionClassFromBlitMaterialOwner)
 	GDNativeConstructors.Set("Bone2D", NewGDExtensionClassFromBone2DOwner)
 	GDNativeConstructors.Set("BoneAttachment3D", NewGDExtensionClassFromBoneAttachment3DOwner)
 	GDNativeConstructors.Set("BoneConstraint3D", NewGDExtensionClassFromBoneConstraint3DOwner)
@@ -6368,6 +6450,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("DirectionalLight2D", NewGDExtensionClassFromDirectionalLight2DOwner)
 	GDNativeConstructors.Set("DirectionalLight3D", NewGDExtensionClassFromDirectionalLight3DOwner)
 	GDNativeConstructors.Set("DisplayServer", NewGDExtensionClassFromDisplayServerOwner)
+	GDNativeConstructors.Set("DrawableTexture2D", NewGDExtensionClassFromDrawableTexture2DOwner)
 	GDNativeConstructors.Set("ENetConnection", NewGDExtensionClassFromENetConnectionOwner)
 	GDNativeConstructors.Set("ENetMultiplayerPeer", NewGDExtensionClassFromENetMultiplayerPeerOwner)
 	GDNativeConstructors.Set("ENetPacketPeer", NewGDExtensionClassFromENetPacketPeerOwner)
@@ -6451,7 +6534,10 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("GDExtension", NewGDExtensionClassFromGDExtensionOwner)
 	GDNativeConstructors.Set("GDExtensionManager", NewGDExtensionClassFromGDExtensionManagerOwner)
 	GDNativeConstructors.Set("GDScript", NewGDExtensionClassFromGDScriptOwner)
+	GDNativeConstructors.Set("GDScriptLanguageProtocol", NewGDExtensionClassFromGDScriptLanguageProtocolOwner)
 	GDNativeConstructors.Set("GDScriptSyntaxHighlighter", NewGDExtensionClassFromGDScriptSyntaxHighlighterOwner)
+	GDNativeConstructors.Set("GDScriptTextDocument", NewGDExtensionClassFromGDScriptTextDocumentOwner)
+	GDNativeConstructors.Set("GDScriptWorkspace", NewGDExtensionClassFromGDScriptWorkspaceOwner)
 	GDNativeConstructors.Set("GLTFAccessor", NewGDExtensionClassFromGLTFAccessorOwner)
 	GDNativeConstructors.Set("GLTFAnimation", NewGDExtensionClassFromGLTFAnimationOwner)
 	GDNativeConstructors.Set("GLTFBufferView", NewGDExtensionClassFromGLTFBufferViewOwner)
@@ -6793,13 +6879,17 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("PropertyTweener", NewGDExtensionClassFromPropertyTweenerOwner)
 	GDNativeConstructors.Set("QuadMesh", NewGDExtensionClassFromQuadMeshOwner)
 	GDNativeConstructors.Set("QuadOccluder3D", NewGDExtensionClassFromQuadOccluder3DOwner)
+	GDNativeConstructors.Set("RDAccelerationStructureGeometry", NewGDExtensionClassFromRDAccelerationStructureGeometryOwner)
+	GDNativeConstructors.Set("RDAccelerationStructureInstance", NewGDExtensionClassFromRDAccelerationStructureInstanceOwner)
 	GDNativeConstructors.Set("RDAttachmentFormat", NewGDExtensionClassFromRDAttachmentFormatOwner)
 	GDNativeConstructors.Set("RDFramebufferPass", NewGDExtensionClassFromRDFramebufferPassOwner)
+	GDNativeConstructors.Set("RDHitGroup", NewGDExtensionClassFromRDHitGroupOwner)
 	GDNativeConstructors.Set("RDPipelineColorBlendState", NewGDExtensionClassFromRDPipelineColorBlendStateOwner)
 	GDNativeConstructors.Set("RDPipelineColorBlendStateAttachment", NewGDExtensionClassFromRDPipelineColorBlendStateAttachmentOwner)
 	GDNativeConstructors.Set("RDPipelineDepthStencilState", NewGDExtensionClassFromRDPipelineDepthStencilStateOwner)
 	GDNativeConstructors.Set("RDPipelineMultisampleState", NewGDExtensionClassFromRDPipelineMultisampleStateOwner)
 	GDNativeConstructors.Set("RDPipelineRasterizationState", NewGDExtensionClassFromRDPipelineRasterizationStateOwner)
+	GDNativeConstructors.Set("RDPipelineShader", NewGDExtensionClassFromRDPipelineShaderOwner)
 	GDNativeConstructors.Set("RDPipelineSpecializationConstant", NewGDExtensionClassFromRDPipelineSpecializationConstantOwner)
 	GDNativeConstructors.Set("RDSamplerState", NewGDExtensionClassFromRDSamplerStateOwner)
 	GDNativeConstructors.Set("RDShaderFile", NewGDExtensionClassFromRDShaderFileOwner)
@@ -7028,6 +7118,7 @@ func RegisterEngineClasses() {
 	GDNativeConstructors.Set("VideoStreamTheora", NewGDExtensionClassFromVideoStreamTheoraOwner)
 	GDNativeConstructors.Set("Viewport", NewGDExtensionClassFromViewportOwner)
 	GDNativeConstructors.Set("ViewportTexture", NewGDExtensionClassFromViewportTextureOwner)
+	GDNativeConstructors.Set("VirtualJoystick", NewGDExtensionClassFromVirtualJoystickOwner)
 	GDNativeConstructors.Set("VisibleOnScreenEnabler2D", NewGDExtensionClassFromVisibleOnScreenEnabler2DOwner)
 	GDNativeConstructors.Set("VisibleOnScreenEnabler3D", NewGDExtensionClassFromVisibleOnScreenEnabler3DOwner)
 	GDNativeConstructors.Set("VisibleOnScreenNotifier2D", NewGDExtensionClassFromVisibleOnScreenNotifier2DOwner)
@@ -7273,8 +7364,10 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("AudioStreamRandomizer", NewRefAudioStreamRandomizerAsRef)
 	GDClassRefConstructors.Set("AudioStreamSynchronized", NewRefAudioStreamSynchronizedAsRef)
 	GDClassRefConstructors.Set("AudioStreamWAV", NewRefAudioStreamWAVAsRef)
+	GDClassRefConstructors.Set("AwaitTweener", NewRefAwaitTweenerAsRef)
 	GDClassRefConstructors.Set("BaseMaterial3D", NewRefBaseMaterial3DAsRef)
 	GDClassRefConstructors.Set("BitMap", NewRefBitMapAsRef)
+	GDClassRefConstructors.Set("BlitMaterial", NewRefBlitMaterialAsRef)
 	GDClassRefConstructors.Set("BoneMap", NewRefBoneMapAsRef)
 	GDClassRefConstructors.Set("BoxMesh", NewRefBoxMeshAsRef)
 	GDClassRefConstructors.Set("BoxOccluder3D", NewRefBoxOccluder3DAsRef)
@@ -7322,6 +7415,7 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("DPITexture", NewRefDPITextureAsRef)
 	GDClassRefConstructors.Set("DTLSServer", NewRefDTLSServerAsRef)
 	GDClassRefConstructors.Set("DirAccess", NewRefDirAccessAsRef)
+	GDClassRefConstructors.Set("DrawableTexture2D", NewRefDrawableTexture2DAsRef)
 	GDClassRefConstructors.Set("ENetConnection", NewRefENetConnectionAsRef)
 	GDClassRefConstructors.Set("ENetMultiplayerPeer", NewRefENetMultiplayerPeerAsRef)
 	GDClassRefConstructors.Set("ENetPacketPeer", NewRefENetPacketPeerAsRef)
@@ -7378,6 +7472,8 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("GDExtension", NewRefGDExtensionAsRef)
 	GDClassRefConstructors.Set("GDScript", NewRefGDScriptAsRef)
 	GDClassRefConstructors.Set("GDScriptSyntaxHighlighter", NewRefGDScriptSyntaxHighlighterAsRef)
+	GDClassRefConstructors.Set("GDScriptTextDocument", NewRefGDScriptTextDocumentAsRef)
+	GDClassRefConstructors.Set("GDScriptWorkspace", NewRefGDScriptWorkspaceAsRef)
 	GDClassRefConstructors.Set("GLTFAccessor", NewRefGLTFAccessorAsRef)
 	GDClassRefConstructors.Set("GLTFAnimation", NewRefGLTFAnimationAsRef)
 	GDClassRefConstructors.Set("GLTFBufferView", NewRefGLTFBufferViewAsRef)
@@ -7560,13 +7656,17 @@ func RegisterEngineClassRefs() {
 	GDClassRefConstructors.Set("PropertyTweener", NewRefPropertyTweenerAsRef)
 	GDClassRefConstructors.Set("QuadMesh", NewRefQuadMeshAsRef)
 	GDClassRefConstructors.Set("QuadOccluder3D", NewRefQuadOccluder3DAsRef)
+	GDClassRefConstructors.Set("RDAccelerationStructureGeometry", NewRefRDAccelerationStructureGeometryAsRef)
+	GDClassRefConstructors.Set("RDAccelerationStructureInstance", NewRefRDAccelerationStructureInstanceAsRef)
 	GDClassRefConstructors.Set("RDAttachmentFormat", NewRefRDAttachmentFormatAsRef)
 	GDClassRefConstructors.Set("RDFramebufferPass", NewRefRDFramebufferPassAsRef)
+	GDClassRefConstructors.Set("RDHitGroup", NewRefRDHitGroupAsRef)
 	GDClassRefConstructors.Set("RDPipelineColorBlendState", NewRefRDPipelineColorBlendStateAsRef)
 	GDClassRefConstructors.Set("RDPipelineColorBlendStateAttachment", NewRefRDPipelineColorBlendStateAttachmentAsRef)
 	GDClassRefConstructors.Set("RDPipelineDepthStencilState", NewRefRDPipelineDepthStencilStateAsRef)
 	GDClassRefConstructors.Set("RDPipelineMultisampleState", NewRefRDPipelineMultisampleStateAsRef)
 	GDClassRefConstructors.Set("RDPipelineRasterizationState", NewRefRDPipelineRasterizationStateAsRef)
+	GDClassRefConstructors.Set("RDPipelineShader", NewRefRDPipelineShaderAsRef)
 	GDClassRefConstructors.Set("RDPipelineSpecializationConstant", NewRefRDPipelineSpecializationConstantAsRef)
 	GDClassRefConstructors.Set("RDSamplerState", NewRefRDSamplerStateAsRef)
 	GDClassRefConstructors.Set("RDShaderFile", NewRefRDShaderFileAsRef)

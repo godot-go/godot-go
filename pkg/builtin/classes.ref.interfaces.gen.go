@@ -344,6 +344,10 @@ type RefAudioStreamWAV interface {
 	Ref
 	TypedPtr() AudioStreamWAV
 }
+type RefAwaitTweener interface {
+	Ref
+	TypedPtr() AwaitTweener
+}
 type RefBaseMaterial3D interface {
 	Ref
 	TypedPtr() BaseMaterial3D
@@ -351,6 +355,10 @@ type RefBaseMaterial3D interface {
 type RefBitMap interface {
 	Ref
 	TypedPtr() BitMap
+}
+type RefBlitMaterial interface {
+	Ref
+	TypedPtr() BlitMaterial
 }
 type RefBoneMap interface {
 	Ref
@@ -539,6 +547,10 @@ type RefDTLSServer interface {
 type RefDirAccess interface {
 	Ref
 	TypedPtr() DirAccess
+}
+type RefDrawableTexture2D interface {
+	Ref
+	TypedPtr() DrawableTexture2D
 }
 type RefENetConnection interface {
 	Ref
@@ -763,6 +775,14 @@ type RefGDScript interface {
 type RefGDScriptSyntaxHighlighter interface {
 	Ref
 	TypedPtr() GDScriptSyntaxHighlighter
+}
+type RefGDScriptTextDocument interface {
+	Ref
+	TypedPtr() GDScriptTextDocument
+}
+type RefGDScriptWorkspace interface {
+	Ref
+	TypedPtr() GDScriptWorkspace
 }
 type RefGLTFAccessor interface {
 	Ref
@@ -1492,6 +1512,14 @@ type RefQuadOccluder3D interface {
 	Ref
 	TypedPtr() QuadOccluder3D
 }
+type RefRDAccelerationStructureGeometry interface {
+	Ref
+	TypedPtr() RDAccelerationStructureGeometry
+}
+type RefRDAccelerationStructureInstance interface {
+	Ref
+	TypedPtr() RDAccelerationStructureInstance
+}
 type RefRDAttachmentFormat interface {
 	Ref
 	TypedPtr() RDAttachmentFormat
@@ -1499,6 +1527,10 @@ type RefRDAttachmentFormat interface {
 type RefRDFramebufferPass interface {
 	Ref
 	TypedPtr() RDFramebufferPass
+}
+type RefRDHitGroup interface {
+	Ref
+	TypedPtr() RDHitGroup
 }
 type RefRDPipelineColorBlendState interface {
 	Ref
@@ -1519,6 +1551,10 @@ type RefRDPipelineMultisampleState interface {
 type RefRDPipelineRasterizationState interface {
 	Ref
 	TypedPtr() RDPipelineRasterizationState
+}
+type RefRDPipelineShader interface {
+	Ref
+	TypedPtr() RDPipelineShader
 }
 type RefRDPipelineSpecializationConstant interface {
 	Ref

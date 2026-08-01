@@ -360,7 +360,12 @@ const (
 	JOY_BUTTON_PADDLE3        JoyButton = 18
 	JOY_BUTTON_PADDLE4        JoyButton = 19
 	JOY_BUTTON_TOUCHPAD       JoyButton = 20
-	JOY_BUTTON_SDL_MAX        JoyButton = 21
+	JOY_BUTTON_MISC2          JoyButton = 21
+	JOY_BUTTON_MISC3          JoyButton = 22
+	JOY_BUTTON_MISC4          JoyButton = 23
+	JOY_BUTTON_MISC5          JoyButton = 24
+	JOY_BUTTON_MISC6          JoyButton = 25
+	JOY_BUTTON_SDL_MAX        JoyButton = 26
 	JOY_BUTTON_MAX            JoyButton = 128
 )
 

@@ -71,6 +71,21 @@ func GoCallback_ClassCreationInfoGetVirtualCallWithData(pUserdata unsafe.Pointer
 	sMethodName := snMethodName.AsString()
 	defer sMethodName.Destroy()
 	methodName := sMethodName.ToUtf8()
+	ci, ok := Internal.GDRegisteredGDClasses.Get(name)
+	if !ok {
+		log.Warn("class not found",
+			zap.String("className", name),
+			zap.String("method_name", methodName),
+		)
+		return nil
+	}
+	if _, ok := ci.VirtualMethodMap[methodName]; !ok {
+		log.Debug("no virtual method found",
+			zap.String("className", name),
+			zap.String("method", methodName),
+		)
+		return nil
+	}
 	log.Info("GoCallback_ClassCreationInfoGetVirtualCallWithData called",
 		zap.String("class_name_from_user_data", name),
 		zap.String("method_name", methodName),

@@ -97,6 +97,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_AcceptDialog(vo
 
 
 
+void *cgo_gdextension_class_binding_create_callback_AccessibilityServer(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("AccessibilityServer", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_AccessibilityServer(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("AccessibilityServer", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_AccessibilityServer(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("AccessibilityServer", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_AimModifier3D(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("AimModifier3D", p_token, p_instance);
@@ -671,6 +688,23 @@ void cgo_gdextension_class_binding_free_callback_Area3D(void *p_token, void *p_i
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_Area3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("Area3D", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_AreaLight3D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("AreaLight3D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_AreaLight3D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("AreaLight3D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_AreaLight3D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("AreaLight3D", p_token, p_instance, p_reference);
 }
 
 
@@ -1729,6 +1763,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_AudioStreamWAV(
 
 
 
+void *cgo_gdextension_class_binding_create_callback_AwaitTweener(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("AwaitTweener", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_AwaitTweener(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("AwaitTweener", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_AwaitTweener(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("AwaitTweener", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_BackBufferCopy(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("BackBufferCopy", p_token, p_instance);
@@ -1793,6 +1844,23 @@ void cgo_gdextension_class_binding_free_callback_BitMap(void *p_token, void *p_i
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_BitMap(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("BitMap", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_BlitMaterial(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("BlitMaterial", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_BlitMaterial(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("BlitMaterial", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_BlitMaterial(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("BlitMaterial", p_token, p_instance, p_reference);
 }
 
 
@@ -3497,6 +3565,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_DisplayServer(v
 
 
 
+void *cgo_gdextension_class_binding_create_callback_DrawableTexture2D(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("DrawableTexture2D", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_DrawableTexture2D(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("DrawableTexture2D", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_DrawableTexture2D(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("DrawableTexture2D", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_ENetConnection(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("ENetConnection", p_token, p_instance);
@@ -4908,6 +4993,23 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_GDScript(void *
 
 
 
+void *cgo_gdextension_class_binding_create_callback_GDScriptLanguageProtocol(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("GDScriptLanguageProtocol", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_GDScriptLanguageProtocol(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("GDScriptLanguageProtocol", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_GDScriptLanguageProtocol(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("GDScriptLanguageProtocol", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_GDScriptSyntaxHighlighter(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("GDScriptSyntaxHighlighter", p_token, p_instance);
@@ -4921,6 +5023,40 @@ void cgo_gdextension_class_binding_free_callback_GDScriptSyntaxHighlighter(void 
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_GDScriptSyntaxHighlighter(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("GDScriptSyntaxHighlighter", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_GDScriptTextDocument(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("GDScriptTextDocument", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_GDScriptTextDocument(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("GDScriptTextDocument", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_GDScriptTextDocument(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("GDScriptTextDocument", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_GDScriptWorkspace(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("GDScriptWorkspace", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_GDScriptWorkspace(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("GDScriptWorkspace", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_GDScriptWorkspace(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("GDScriptWorkspace", p_token, p_instance, p_reference);
 }
 
 
@@ -10722,6 +10858,40 @@ GDExtensionBool cgo_gdextension_class_binding_reference_callback_QuadOccluder3D(
 
 
 
+void *cgo_gdextension_class_binding_create_callback_RDAccelerationStructureGeometry(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("RDAccelerationStructureGeometry", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_RDAccelerationStructureGeometry(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("RDAccelerationStructureGeometry", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_RDAccelerationStructureGeometry(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("RDAccelerationStructureGeometry", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_RDAccelerationStructureInstance(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("RDAccelerationStructureInstance", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_RDAccelerationStructureInstance(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("RDAccelerationStructureInstance", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_RDAccelerationStructureInstance(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("RDAccelerationStructureInstance", p_token, p_instance, p_reference);
+}
+
+
+
 void *cgo_gdextension_class_binding_create_callback_RDAttachmentFormat(void *p_token, void *p_instance) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingCreate("RDAttachmentFormat", p_token, p_instance);
@@ -10752,6 +10922,23 @@ void cgo_gdextension_class_binding_free_callback_RDFramebufferPass(void *p_token
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_RDFramebufferPass(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("RDFramebufferPass", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_RDHitGroup(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("RDHitGroup", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_RDHitGroup(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("RDHitGroup", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_RDHitGroup(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("RDHitGroup", p_token, p_instance, p_reference);
 }
 
 
@@ -10837,6 +11024,23 @@ void cgo_gdextension_class_binding_free_callback_RDPipelineRasterizationState(vo
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_RDPipelineRasterizationState(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("RDPipelineRasterizationState", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_RDPipelineShader(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("RDPipelineShader", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_RDPipelineShader(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("RDPipelineShader", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_RDPipelineShader(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("RDPipelineShader", p_token, p_instance, p_reference);
 }
 
 
@@ -14713,6 +14917,23 @@ void cgo_gdextension_class_binding_free_callback_ViewportTexture(void *p_token, 
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_ViewportTexture(void *p_token, void *p_instance, GDExtensionBool p_reference) {
 	printStacktrace();
 	return GoCallback_GDExtensionBindingReference("ViewportTexture", p_token, p_instance, p_reference);
+}
+
+
+
+void *cgo_gdextension_class_binding_create_callback_VirtualJoystick(void *p_token, void *p_instance) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingCreate("VirtualJoystick", p_token, p_instance);
+}
+
+void cgo_gdextension_class_binding_free_callback_VirtualJoystick(void *p_token, void *p_instance, void *p_binding) {
+	printStacktrace();
+	GoCallback_GDExtensionBindingFree("VirtualJoystick", p_token, p_instance, p_binding);
+}
+
+GDExtensionBool cgo_gdextension_class_binding_reference_callback_VirtualJoystick(void *p_token, void *p_instance, GDExtensionBool p_reference) {
+	printStacktrace();
+	return GoCallback_GDExtensionBindingReference("VirtualJoystick", p_token, p_instance, p_reference);
 }
 
 

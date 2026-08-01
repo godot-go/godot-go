@@ -13565,6 +13565,25 @@ func (cx *Basis) IsFinite() bool {
 	return ret
 }
 
+/* IsOrthonormal : is_orthonormal
+ * is_vararg = false, is_static = false
+ * goReturnType(bool) -> bool
+ */
+func (cx *Basis) IsOrthonormal() bool {
+	mb := globalBasisMethodBindings.method_is_orthonormal
+	if mb == nil {
+		log.Panic("method bind cannot be nil")
+	}
+	bx := cx.NativePtr()
+	pnr.Pin(bx)
+	if bx == nil {
+		log.Panic("object cannot be nil")
+	}
+
+	ret := CallBuiltinMethodPtrRet[bool](mb, bx, nil)
+	return ret
+}
+
 /* GetRotationQuaternion : get_rotation_quaternion
  * is_vararg = false, is_static = false
  * goReturnType(Quaternion) -> Quaternion

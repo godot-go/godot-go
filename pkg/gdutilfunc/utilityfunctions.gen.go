@@ -16,11 +16,10 @@ package gdutilfunc
 // #include <stdlib.h>
 import "C"
 import (
-	"unsafe"
-
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	. "github.com/godot-go/godot-go/pkg/gdclassimpl"
+	"unsafe"
 )
 
 // utility functions

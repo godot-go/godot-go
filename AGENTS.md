@@ -125,6 +125,11 @@ The project includes a test demo at `test/demo/` that:
 - Uses extensive Go runtime debugging flags for development
 - Builds as a GDExtension library that Godot loads
 
+### Commit Conventions
+- Follow Conventional Commits: `type: subject` — use `feat:` for features, `fix:` for bug fixes, `chore:` for maintenance, `docs:` for documentation, `refactor:` for non-behavior changes (the types in this repo's history)
+- When a commit merges a GitHub PR, append `(#NNN)` to the subject (e.g. `feat: update to godot 4.7.2 (#128)`)
+- Keep the subject imperative, lowercase, under ~72 chars
+
 ### Requirements
 - Go 1.25.0+
 - Godot 4.5 binary

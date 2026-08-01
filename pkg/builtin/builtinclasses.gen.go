@@ -186,8 +186,8 @@ func NewStringWithStringName(from StringName) String {
 	args[0] = from.NativeConstPtr()
 	log.Debug("CallBuiltinConstructor before", zap.Uintptr("args[0]", uintptr(args[0])), zap.Any("from", from))
 	pnr.Pin(args[0])
-	CallBuiltinConstructor(globalStringMethodBindings.constructor_1, ptr, args[0])
-	log.Debug("CallBuiltinConstructor after", zap.String("name", "globalStringMethodBindings.constructor_1"), zap.Any("cx", cx))
+	CallBuiltinConstructor(globalStringMethodBindings.constructor_2, ptr, args[0])
+	log.Debug("CallBuiltinConstructor after", zap.String("name", "globalStringMethodBindings.constructor_2"), zap.Any("cx", cx))
 	return cx
 }
 
@@ -202,8 +202,8 @@ func NewStringWithNodePath(from NodePath) String {
 	args[0] = from.NativeConstPtr()
 	log.Debug("CallBuiltinConstructor before", zap.Uintptr("args[0]", uintptr(args[0])), zap.Any("from", from))
 	pnr.Pin(args[0])
-	CallBuiltinConstructor(globalStringMethodBindings.constructor_2, ptr, args[0])
-	log.Debug("CallBuiltinConstructor after", zap.String("name", "globalStringMethodBindings.constructor_2"), zap.Any("cx", cx))
+	CallBuiltinConstructor(globalStringMethodBindings.constructor_3, ptr, args[0])
+	log.Debug("CallBuiltinConstructor after", zap.String("name", "globalStringMethodBindings.constructor_3"), zap.Any("cx", cx))
 	return cx
 }
 

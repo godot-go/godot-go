@@ -73,6 +73,45 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.test_ref_lifecycle(image), 1)
 	assert_equal(example.test_finalizer_release(image), 1)
 
+	# Basic built-in types: String / StringName / NodePath args (ptrcall).
+	assert_equal(example.test_string_arg_echo("hello"), "hello")
+	assert_equal(example.test_string_name_arg_echo(&"my_name"), "my_name")
+	assert_equal(example.test_node_path_arg_echo(NodePath("root/child")), "root/child")
+
+	# Basic built-in types via Variant call (varcall).
+	assert_equal(example.call("test_string_arg_echo", "hello"), "hello")
+	assert_equal(example.call("test_string_name_arg_echo", &"my_name"), "my_name")
+	assert_equal(example.call("test_node_path_arg_echo", NodePath("root/child")), "root/child")
+
+	# StringName / NodePath returns (ptrcall and varcall).
+	assert_equal(example.test_return_string_name(), &"returned_name")
+	assert_equal(example.test_return_node_path(), NodePath("root/child"))
+	assert_equal(example.call("test_return_string_name"), &"returned_name")
+	assert_equal(example.call("test_return_node_path"), NodePath("root/child"))
+
+	# Scalar echo (bool / int64 / float64 / Go string).
+	assert_equal(example.test_scalar_echo(true, 42, 1.5, "scalar"), "true:42:1.5:scalar")
+	assert_equal(example.call("test_scalar_echo", true, 42, 1.5, "scalar"), "true:42:1.5:scalar")
+
+	# Large uint64 preserves its bit pattern.
+	assert_equal(example.test_uint64_echo(1 << 63), 1 << 63)
+	assert_equal(example.call("test_uint64_echo", 1 << 63), 1 << 63)
+
+	# Narrow numeric returns (varcall widening) + ptrcall.
+	assert_equal(example.test_return_int8(), 127)
+	assert_equal(example.call("test_return_int8"), 127)
+	assert_equal(example.test_return_uint16(), 65535)
+	assert_equal(example.call("test_return_uint16"), 65535)
+	assert_equal(example.test_return_float32(), 1.5)
+	assert_equal(example.call("test_return_float32"), 1.5)
+
+	# Repeated Go string returns via varcall (exercise lifecycle).
+	var repeated_count: int = 0
+	for n in range(500):
+		assert_equal(example.call("test_go_string_repeat"), "repeat_me_string_for_leak_check")
+		repeated_count += 1
+	assert_equal(repeated_count, 500)
+
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())

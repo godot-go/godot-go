@@ -5,6 +5,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"sync"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/constant"
@@ -675,11 +676,28 @@ func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 	}
 }
 
+var (
+	examplePropertyInfoOnce  sync.Once
+	examplePropertyClassName StringName
+	examplePropertyNames     [4]StringName
+	examplePropertyHint      String
+)
+
+func initExamplePropertyInfo() {
+	examplePropertyClassName = NewStringNameWithLatin1Chars("Example")
+	examplePropertyHint = NewStringWithUtf8Chars("")
+	examplePropertyNames[0] = NewStringNameWithLatin1Chars("property_from_list")
+	examplePropertyNames[1] = NewStringNameWithLatin1Chars("dproperty_0")
+	examplePropertyNames[2] = NewStringNameWithLatin1Chars("dproperty_1")
+	examplePropertyNames[3] = NewStringNameWithLatin1Chars("dproperty_2")
+}
+
 func GetExamplePropertyList() []GDExtensionPropertyInfo {
+	examplePropertyInfoOnce.Do(initExamplePropertyInfo)
 	props := make([]GDExtensionPropertyInfo, 4)
-	props[0] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR3, "property_from_list")
-	for i := 0; i < 3; i++ {
-		props[i+1] = NewSimpleGDExtensionPropertyInfo("Example", GDEXTENSION_VARIANT_TYPE_VECTOR2, fmt.Sprintf("dproperty_%d", i))
+	props[0] = NewGDExtensionPropertyInfoFromNames(&examplePropertyClassName, GDEXTENSION_VARIANT_TYPE_VECTOR3, &examplePropertyNames[0], &examplePropertyHint)
+	for i := 1; i < 4; i++ {
+		props[i] = NewGDExtensionPropertyInfoFromNames(&examplePropertyClassName, GDEXTENSION_VARIANT_TYPE_VECTOR2, &examplePropertyNames[i], &examplePropertyHint)
 	}
 	return props
 }

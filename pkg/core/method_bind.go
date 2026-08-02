@@ -344,6 +344,14 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			zap.String("resolved_args", VariantSliceToString(callArgs)),
 		)
 		ret := md.Func.Call(args)
+		for _, arg := range args {
+			switch v := arg.Interface().(type) {
+			case StringName:
+				v.Destroy()
+			case NodePath:
+				v.Destroy()
+			}
+		}
 		log.Info("Call",
 			zap.String("bind", md.String()),
 			zap.String("gd_args", VariantSliceToString(gdArgs)),

@@ -315,10 +315,20 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 			return reflect.ValueOf(v), nil
 		case StringName:
 			v := arg.ToStringName()
-			return reflect.ValueOf(v), nil
+			var borrow StringName
+			for i := 0; i < StringNameSize; i++ {
+				borrow[i] = v[i]
+			}
+			v.Destroy()
+			return reflect.ValueOf(borrow), nil
 		case NodePath:
 			v := arg.ToNodePath()
-			return reflect.ValueOf(v), nil
+			var borrow NodePath
+			for i := 0; i < NodePathSize; i++ {
+				borrow[i] = v[i]
+			}
+			v.Destroy()
+			return reflect.ValueOf(borrow), nil
 		default:
 			log.Panic("unsupported array type",
 				zap.Any("type", t),
@@ -765,12 +775,10 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := *(*String)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case StringName:
-				var v StringName
-				StringNameCopyConstructor((GDExtensionUninitializedTypePtr)(&v), (GDExtensionConstTypePtr)(arg))
+				v := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			case NodePath:
-				var v NodePath
-				NodePathCopyConstructor((GDExtensionUninitializedTypePtr)(&v), (GDExtensionConstTypePtr)(arg))
+				v := *(*NodePath)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			default:
 				log.Panic(fmt.Sprintf("MethodBind.Ptrcall reflected as array does not support type: %s", t.Name()))

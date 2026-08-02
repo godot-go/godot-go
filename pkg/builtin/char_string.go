@@ -96,6 +96,16 @@ func GDExtensionStringPtrWithLatin1Chars(ptr GDExtensionStringPtr, content strin
 	CallFunc_GDExtensionInterfaceStringNewWithLatin1Chars((GDExtensionUninitializedStringPtr)(ptr), content)
 }
 
+func StringNameCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	pnr.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_1, out, src)
+}
+
+func NodePathCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	pnr.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_1, out, src)
+}
+
 func NewStringWithLatin1Chars(content string) String {
 	cx := String{}
 	ptr := (GDExtensionUninitializedStringPtr)(cx.NativePtr())

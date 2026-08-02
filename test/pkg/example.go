@@ -577,6 +577,20 @@ func (e *Example) TestGoStringRepeat() string {
 	return "repeat_me_string_for_leak_check"
 }
 
+func (e *Example) TestEchoVector2i(p Vector2i) Vector2i { return p }
+func (e *Example) TestEchoVector3(p Vector3) Vector3     { return p }
+func (e *Example) TestEchoVector3i(p Vector3i) Vector3i  { return p }
+func (e *Example) TestEchoRect2(p Rect2) Rect2           { return p }
+func (e *Example) TestEchoRect2i(p Rect2i) Rect2i        { return p }
+func (e *Example) TestEchoTransform2D(p Transform2D) Transform2D { return p }
+func (e *Example) TestEchoVector4i(p Vector4i) Vector4i  { return p }
+func (e *Example) TestEchoPlane(p Plane) Plane            { return p }
+func (e *Example) TestEchoQuaternion(p Quaternion) Quaternion { return p }
+func (e *Example) TestEchoAABB(p AABB) AABB              { return p }
+func (e *Example) TestEchoBasis(p Basis) Basis            { return p }
+func (e *Example) TestEchoTransform3D(p Transform3D) Transform3D { return p }
+func (e *Example) TestEchoProjection(p Projection) Projection { return p }
+
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
@@ -731,6 +745,19 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestReturnUint16", "test_return_uint16", nil, nil)
 		ClassDBBindMethod(t, "TestReturnFloat32", "test_return_float32", nil, nil)
 		ClassDBBindMethod(t, "TestGoStringRepeat", "test_go_string_repeat", nil, nil)
+		ClassDBBindMethod(t, "TestEchoVector2i", "test_echo_vector2i", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoVector3", "test_echo_vector3", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoVector3i", "test_echo_vector3i", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoRect2", "test_echo_rect2", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoRect2i", "test_echo_rect2i", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoTransform2D", "test_echo_transform2d", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoVector4i", "test_echo_vector4i", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPlane", "test_echo_plane", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoQuaternion", "test_echo_quaternion", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoAABB", "test_echo_aabb", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoBasis", "test_echo_basis", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoTransform3D", "test_echo_transform3d", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoProjection", "test_echo_projection", []string{"v"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

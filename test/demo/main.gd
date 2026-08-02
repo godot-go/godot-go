@@ -112,6 +112,59 @@ func test_suite(i: int, example: Example):
 		repeated_count += 1
 	assert_equal(repeated_count, 500)
 
+	# Vector built-in types: echo round-trips (ptrcall and varcall).
+	var _v2i := Vector2i(1, 2)
+	assert_equal(example.test_echo_vector2i(_v2i), _v2i)
+	assert_equal(example.call("test_echo_vector2i", _v2i), _v2i)
+
+	var _v3 := Vector3(1.0, 2.0, 3.0)
+	assert_equal(example.test_echo_vector3(_v3), _v3)
+	assert_equal(example.call("test_echo_vector3", _v3), _v3)
+
+	var _v3i := Vector3i(1, 2, 3)
+	assert_equal(example.test_echo_vector3i(_v3i), _v3i)
+	assert_equal(example.call("test_echo_vector3i", _v3i), _v3i)
+
+	var _rect2 := Rect2(1.0, 2.0, 3.0, 4.0)
+	assert_equal(example.test_echo_rect2(_rect2), _rect2)
+	assert_equal(example.call("test_echo_rect2", _rect2), _rect2)
+
+	var _rect2i := Rect2i(1, 2, 3, 4)
+	assert_equal(example.test_echo_rect2i(_rect2i), _rect2i)
+	assert_equal(example.call("test_echo_rect2i", _rect2i), _rect2i)
+
+	var _t2d := Transform2D.IDENTITY
+	assert_equal(example.test_echo_transform2d(_t2d), _t2d)
+	assert_equal(example.call("test_echo_transform2d", _t2d), _t2d)
+
+	var _v4i := Vector4i(1, 2, 3, 4)
+	assert_equal(example.test_echo_vector4i(_v4i), _v4i)
+	assert_equal(example.call("test_echo_vector4i", _v4i), _v4i)
+
+	var _plane := Plane(1.0, 0.0, 0.0, 5.0)
+	assert_equal(example.test_echo_plane(_plane), _plane)
+	assert_equal(example.call("test_echo_plane", _plane), _plane)
+
+	var _quat := Quaternion(0.0, 0.0, 0.0, 1.0)
+	assert_equal(example.test_echo_quaternion(_quat), _quat)
+	assert_equal(example.call("test_echo_quaternion", _quat), _quat)
+
+	var _aabb := AABB(Vector3(0, 0, 0), Vector3(10, 10, 10))
+	assert_equal(example.test_echo_aabb(_aabb), _aabb)
+	assert_equal(example.call("test_echo_aabb", _aabb), _aabb)
+
+	var _basis := Basis.IDENTITY
+	assert_equal(example.test_echo_basis(_basis), _basis)
+	assert_equal(example.call("test_echo_basis", _basis), _basis)
+
+	var _t3d := Transform3D.IDENTITY
+	assert_equal(example.test_echo_transform3d(_t3d), _t3d)
+	assert_equal(example.call("test_echo_transform3d", _t3d), _t3d)
+
+	var _proj := Projection(Vector4(1, 0, 0, 0), Vector4(0, 1, 0, 0), Vector4(0, 0, 1, 0), Vector4(0, 0, 0, 1))
+	assert_equal(example.test_echo_projection(_proj), _proj)
+	assert_equal(example.call("test_echo_projection", _proj), _proj)
+
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())

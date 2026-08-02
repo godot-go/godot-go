@@ -105,9 +105,11 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		case Color:
 			ColorEncoder.EncodeTypePtrArg(inst, rOut)
 		case StringName:
-			StringNameEncoder.EncodeTypePtrArg(inst, rOut)
+			StringNameCopyConstructor(rOut, inst.NativeConstPtr())
+			inst.Destroy()
 		case NodePath:
-			NodePathEncoder.EncodeTypePtrArg(inst, rOut)
+			NodePathCopyConstructor(rOut, inst.NativeConstPtr())
+			inst.Destroy()
 		case RID:
 			RIDEncoder.EncodeTypePtrArg(inst, rOut)
 		case Callable:
@@ -191,9 +193,11 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		case Color:
 			ColorEncoder.EncodeTypePtrArg(inst, rOut)
 		case StringName:
-			StringNameEncoder.EncodeTypePtrArg(inst, rOut)
+			StringNameCopyConstructor(rOut, inst.NativeConstPtr())
+			inst.Destroy()
 		case NodePath:
-			NodePathEncoder.EncodeTypePtrArg(inst, rOut)
+			NodePathCopyConstructor(rOut, inst.NativeConstPtr())
+			inst.Destroy()
 		case RID:
 			RIDEncoder.EncodeTypePtrArg(inst, rOut)
 		case Callable:
@@ -332,8 +336,10 @@ func GDExtensionVariantPtrFromReflectValue(value reflect.Value, rOut GDExtension
 			ColorEncoder.EncodeVariantPtrArg(inst, rOut)
 		case StringName:
 			StringNameEncoder.EncodeVariantPtrArg(inst, rOut)
+			inst.Destroy()
 		case NodePath:
 			NodePathEncoder.EncodeVariantPtrArg(inst, rOut)
+			inst.Destroy()
 		case RID:
 			RIDEncoder.EncodeVariantPtrArg(inst, rOut)
 		case Callable:

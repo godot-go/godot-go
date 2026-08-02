@@ -25,6 +25,16 @@ func NewStringNameWithGDExtensionConstStringNamePtr(ptr GDExtensionConstStringNa
 	return cx
 }
 
+func StringNameCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	pnr.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_1, out, src)
+}
+
+func NodePathCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	pnr.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_1, out, src)
+}
+
 func NewStringNameWithLatin1Chars(content string) StringName {
 	cx := String{}
 	defer cx.Destroy()

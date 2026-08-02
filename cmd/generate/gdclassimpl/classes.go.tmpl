@@ -13,6 +13,7 @@ package gdclassimpl
 //revive:disable
 
 import (
+	"sync"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -21,6 +22,31 @@ import (
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
 )
+
+var classNameCache sync.Map
+var classNameCacheMu sync.Mutex
+
+func getCachedClassName(name string) StringName {
+	if v, ok := classNameCache.Load(name); ok {
+		return v.(StringName)
+	}
+	classNameCacheMu.Lock()
+	defer classNameCacheMu.Unlock()
+	if v, ok := classNameCache.Load(name); ok {
+		return v.(StringName)
+	}
+	sn := NewStringNameWithLatin1Chars(name)
+	classNameCache.Store(name, sn)
+	return sn
+}
+
+func DestroyAllCachedClassNames() {
+	classNameCache.Range(func(key, value interface{}) bool {
+		sn := value.(StringName)
+		sn.Destroy()
+		return true
+	})
+}
 
 // classes
 {{ range $i, $c := $view.Classes -}}
@@ -81,8 +107,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 {{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
 ) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end }} {
     {{/* TODO: refactor for static instantiation */}}
-	className := NewStringNameWithLatin1Chars("{{ $c.Name }}")
-	defer className.Destroy()
+	className := getCachedClassName("{{ $c.Name }}")
 	methodName := NewStringNameWithLatin1Chars("{{ $m.Name }}")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(

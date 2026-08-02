@@ -701,7 +701,7 @@ func GetExamplePropertyList() ([]GDExtensionPropertyInfo, func()) {
 			pn.Destroy()
 			hs.Destroy()
 		})
-		return NewGDExtensionPropertyInfoFromNames(&cn, vt, &pn, uint32(PROPERTY_HINT_NONE), &hs, uint32(PROPERTY_USAGE_DEFAULT))
+		return NewGDExtensionPropertyInfoFromNames(&cn, vt, &pn, &hs)
 	}
 
 	props[0] = makeProp("Example", "property_from_list", GDEXTENSION_VARIANT_TYPE_VECTOR3)
@@ -721,6 +721,7 @@ func RegisterClassExample() {
 	props, cleanup := GetExamplePropertyList()
 	defer cleanup()
 	ClassDBRegisterClass(NewExampleFromOwnerObject, props, ValidateExampleProperty, func(t *Example) {
+		// virtuals
 		// virtuals
 		ClassDBBindMethodVirtual(t, "V_ToString", "to_string", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)

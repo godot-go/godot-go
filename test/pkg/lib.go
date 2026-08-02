@@ -10,6 +10,7 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/core"
 	"github.com/godot-go/godot-go/pkg/ffi"
+	. "github.com/godot-go/godot-go/pkg/gdclassimpl"
 	"github.com/godot-go/godot-go/pkg/log"
 	"github.com/godot-go/godot-go/pkg/util"
 )
@@ -23,6 +24,7 @@ func RegisterExampleTypes() {
 func UnregisterExampleTypes() {
 	log.Debug("UnregisterExampleTypes called")
 	UnregisterClassExample()
+	DestroyAllCachedClassNames()
 }
 
 //export TestDemoInit

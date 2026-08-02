@@ -117,8 +117,8 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
         {{ end -}}
 	{{ end -}}
     {{ end -}}
-    CallBuiltinConstructor(global{{ $c.Name }}MethodBindings.constructor_{{ $j }}, ptr, {{range $k, $arg := $con.Arguments -}}args[{{ $k }}],{{- end -}})
-    log.Debug("CallBuiltinConstructor after", zap.String("name", "global{{ $c.Name }}MethodBindings.constructor_{{ $j }}"), zap.Any("cx", cx))
+    CallBuiltinConstructor(global{{ $c.Name }}MethodBindings.constructor_{{ $con.Index }}, ptr, {{range $k, $arg := $con.Arguments -}}args[{{ $k }}],{{- end -}})
+    log.Debug("CallBuiltinConstructor after", zap.String("name", "global{{ $c.Name }}MethodBindings.constructor_{{ $con.Index }}"), zap.Any("cx", cx))
     return cx
 }
 {{ end }}

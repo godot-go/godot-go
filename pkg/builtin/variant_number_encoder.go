@@ -78,7 +78,12 @@ func createNumberEncoder[T Number, E Number](t GDExtensionVariantType) argumentE
 	switch t {
 	case GDEXTENSION_VARIANT_TYPE_INT:
 		encodeReflectTypePtrArg = func(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
-			encodeTypePtrArg((T)(rv.Int()), pOut)
+			switch rv.Kind() {
+			case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+				encodeTypePtrArg((T)(rv.Uint()), pOut)
+			default:
+				encodeTypePtrArg((T)(rv.Int()), pOut)
+			}
 		}
 	case GDEXTENSION_VARIANT_TYPE_FLOAT:
 		encodeReflectTypePtrArg = func(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
@@ -119,11 +124,24 @@ func createNumberEncoder[T Number, E Number](t GDExtensionVariantType) argumentE
 		return reflect.ValueOf(v)
 	}
 	encodeReflectVariantPtrArg := func(rv reflect.Value, pOut GDExtensionUninitializedVariantPtr) {
-		v := rv.Interface().(T)
+		var v T
+		switch rv.Kind() {
+		case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+			v = (T)(rv.Uint())
+		case reflect.Float32, reflect.Float64:
+			v = (T)(rv.Float())
+		case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+			v = (T)(rv.Int())
+		default:
+			v = rv.Interface().(T)
+		}
+		var enc E
+		pEnc := (GDExtensionTypePtr)(unsafe.Pointer(&enc))
+		encodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(pEnc))
 		CallFunc_GDExtensionVariantFromTypeConstructorFunc(
 			vfn,
 			pOut,
-			(GDExtensionTypePtr)(&v),
+			pEnc,
 		)
 	}
 	encodeReflectVariantPtr := func(rv reflect.Value) GDExtensionVariantPtr {

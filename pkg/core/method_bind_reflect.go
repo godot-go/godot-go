@@ -60,91 +60,91 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 	switch t.Kind() {
 	case reflect.Bool:
 		typedValue := arg.ToBool()
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Bool("value", typedValue),
 			zap.String("type", "bool"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Int:
 		typedValue := int(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Int("value", typedValue),
 			zap.String("type", "int"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Int8:
 		typedValue := int8(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Int8("value", typedValue),
 			zap.String("type", "int8"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Int16:
 		typedValue := int16(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Int16("value", typedValue),
 			zap.String("type", "int16"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Int32:
 		typedValue := int32(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Int32("value", typedValue),
 			zap.String("type", "int32"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Int64:
 		typedValue := arg.ToInt64()
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Int64("value", typedValue),
 			zap.String("type", "int64"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Uint:
-		typedValue := uint(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		typedValue := arg.ToUint()
+		log.Debug("varcall arg parsed",
 			zap.Uint("value", typedValue),
 			zap.String("type", "uint"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Uint8:
-		typedValue := uint8(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		typedValue := arg.ToUint8()
+		log.Debug("varcall arg parsed",
 			zap.Uint8("value", typedValue),
 			zap.String("type", "uint8"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Uint16:
-		typedValue := uint16(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		typedValue := arg.ToUint16()
+		log.Debug("varcall arg parsed",
 			zap.Uint16("value", typedValue),
 			zap.String("type", "uint16"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Uint32:
-		typedValue := uint32(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		typedValue := arg.ToUint32()
+		log.Debug("varcall arg parsed",
 			zap.Uint32("value", typedValue),
 			zap.String("type", "uint32"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Uint64:
-		typedValue := uint64(arg.ToInt64())
-		log.Debug("ptrcall arg parsed",
+		typedValue := arg.ToUint64()
+		log.Debug("varcall arg parsed",
 			zap.Uint64("value", typedValue),
 			zap.String("type", "uint64"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Float32:
 		typedValue := float32(arg.ToFloat64())
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Float32("value", typedValue),
 			zap.String("type", "float32"),
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Float64:
 		typedValue := arg.ToFloat64()
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Float64("value", typedValue),
 			zap.String("type", "float64"),
 		)
@@ -152,7 +152,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 	case reflect.String:
 		// TODO: how to support native go strings, StringName, and Godot String?
 		typedValue := arg.ToGoString()
-		log.Debug("ptrcall arg parsed",
+		log.Debug("varcall arg parsed",
 			zap.Any("value", typedValue),
 			zap.String("type", "string"),
 		)
@@ -165,7 +165,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		switch {
 		case t.Implements(refType):
 			obj := arg.ToObject()
-			log.Debug("ptrcall arg parsed",
+			log.Debug("varcall arg parsed",
 				zap.String("value", arg.Stringify()),
 				zap.String("type", t.Name()),
 			)
@@ -213,7 +213,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 				)
 			}
 			inst := constructor(owner).(Object)
-			log.Info("ptrcall arg parsed",
+			log.Info("varcall arg parsed",
 				zap.String("class_name", className),
 			)
 			return reflect.ValueOf(inst), nil
@@ -283,6 +283,15 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		case Callable:
 			v := arg.ToCallable()
 			return reflect.ValueOf(v), nil
+		case String:
+			v := arg.ToString()
+			return reflect.ValueOf(v), nil
+		case StringName:
+			v := arg.ToStringName()
+			return reflect.ValueOf(v), nil
+		case NodePath:
+			v := arg.ToNodePath()
+			return reflect.ValueOf(v), nil
 		default:
 			log.Panic("unsupported array type",
 				zap.Any("type", t),
@@ -299,7 +308,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 					zap.String("value", arg.Stringify()),
 				)
 			}
-			log.Debug("ptrcall arg parsed",
+			log.Debug("varcall arg parsed",
 				zap.String("type", "Ref"),
 			)
 			return reflect.ValueOf(ref), nil
@@ -323,7 +332,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 					zap.String("value", arg.Stringify()),
 				)
 			}
-			log.Debug("ptrcall arg parsed",
+			log.Debug("varcall arg parsed",
 				zap.String("type", "Ref"),
 			)
 			return reflect.ValueOf(ref), nil
@@ -594,6 +603,15 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				}
 				v := NewPackedInt64ArrayWithPackedInt64Array(*pV)
 				log.Debug("reflect PackedInt64Array", zap.Any("v", Stringify(NewVariantPackedInt64Array(v))))
+				args[i+1] = reflect.ValueOf(v)
+			case String:
+				v := *(*String)(arg)
+				args[i+1] = reflect.ValueOf(v)
+			case StringName:
+				v := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(arg))
+				args[i+1] = reflect.ValueOf(v)
+			case NodePath:
+				v := *(*NodePath)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			default:
 				log.Panic(fmt.Sprintf("MethodBind.Ptrcall reflected as array does not support type: %s", t.Name()))

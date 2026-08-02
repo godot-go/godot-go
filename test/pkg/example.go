@@ -515,6 +515,67 @@ func (e *Example) TestFinalizerRelease(ref RefRefCounted) int32 {
 	return 1
 }
 
+// TestStringArgEcho decodes a Godot String argument and returns a fresh
+// String built from its content (avoids aliasing the caller-owned arg).
+func (e *Example) TestStringArgEcho(p_str String) String {
+	return NewStringWithUtf8Chars(p_str.ToUtf8())
+}
+
+// TestStringNameArgEcho decodes a Godot StringName argument and returns its
+// content as a fresh String.
+func (e *Example) TestStringNameArgEcho(p_name StringName) String {
+	return NewStringWithUtf8Chars(p_name.ToUtf8())
+}
+
+// TestNodePathArgEcho decodes a Godot NodePath argument and returns its
+// content as a fresh String.
+func (e *Example) TestNodePathArgEcho(p_path NodePath) String {
+	return NewStringWithUtf8Chars(NewStringWithNodePath(p_path).ToUtf8())
+}
+
+// TestReturnStringName returns a fresh Godot StringName.
+func (e *Example) TestReturnStringName() StringName {
+	return NewStringNameWithUtf8Chars("returned_name")
+}
+
+// TestReturnNodePath returns a fresh Godot NodePath.
+func (e *Example) TestReturnNodePath() NodePath {
+	return NewNodePathWithString(NewStringWithUtf8Chars("root/child"))
+}
+
+// TestScalarEcho decodes bool/int64/float64/string scalars and returns them
+// formatted into a Go string.
+func (e *Example) TestScalarEcho(p_bool bool, p_i64 int64, p_f64 float64, p_str string) string {
+	return fmt.Sprintf("%v:%d:%.1f:%s", p_bool, p_i64, p_f64, p_str)
+}
+
+// TestUint64Echo decodes a uint64 argument and returns it, preserving its
+// bit pattern.
+func (e *Example) TestUint64Echo(p_u64 uint64) uint64 {
+	return p_u64
+}
+
+// TestReturnInt8 returns a narrow numeric (exercises varcall widening).
+func (e *Example) TestReturnInt8() int8 {
+	return 127
+}
+
+// TestReturnUint16 returns a narrow numeric (exercises varcall widening).
+func (e *Example) TestReturnUint16() uint16 {
+	return 65535
+}
+
+// TestReturnFloat32 returns a narrow float (exercises varcall widening).
+func (e *Example) TestReturnFloat32() float32 {
+	return 1.5
+}
+
+// TestGoStringRepeat returns a Go string; called repeatedly to exercise the
+// varcall Go-string return lifecycle.
+func (e *Example) TestGoStringRepeat() string {
+	return "repeat_me_string_for_leak_check"
+}
+
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
@@ -641,6 +702,17 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "ReturnNilRefImage", "return_nil_ref_image", nil, nil)
 		ClassDBBindMethod(t, "TestRefLifecycle", "test_ref_lifecycle", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "TestFinalizerRelease", "test_finalizer_release", []string{"ref"}, nil)
+		ClassDBBindMethod(t, "TestStringArgEcho", "test_string_arg_echo", []string{"str"}, nil)
+		ClassDBBindMethod(t, "TestStringNameArgEcho", "test_string_name_arg_echo", []string{"name"}, nil)
+		ClassDBBindMethod(t, "TestNodePathArgEcho", "test_node_path_arg_echo", []string{"path"}, nil)
+		ClassDBBindMethod(t, "TestReturnStringName", "test_return_string_name", nil, nil)
+		ClassDBBindMethod(t, "TestReturnNodePath", "test_return_node_path", nil, nil)
+		ClassDBBindMethod(t, "TestScalarEcho", "test_scalar_echo", []string{"p_bool", "p_i64", "p_f64", "p_str"}, nil)
+		ClassDBBindMethod(t, "TestUint64Echo", "test_uint64_echo", []string{"u64"}, nil)
+		ClassDBBindMethod(t, "TestReturnInt8", "test_return_int8", nil, nil)
+		ClassDBBindMethod(t, "TestReturnUint16", "test_return_uint16", nil, nil)
+		ClassDBBindMethod(t, "TestReturnFloat32", "test_return_float32", nil, nil)
+		ClassDBBindMethod(t, "TestGoStringRepeat", "test_go_string_repeat", nil, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

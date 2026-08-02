@@ -247,6 +247,33 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		case Vector4i:
 			v := arg.ToVector4i()
 			return reflect.ValueOf(v), nil
+		case Rect2:
+			v := Rect2Encoder.DecodeVariantPtr(arg.NativeConstPtr())
+			return reflect.ValueOf(v), nil
+		case Rect2i:
+			v := Rect2iEncoder.DecodeVariantPtr(arg.NativeConstPtr())
+			return reflect.ValueOf(v), nil
+		case Transform2D:
+			v := arg.ToTransform2D()
+			return reflect.ValueOf(v), nil
+		case Plane:
+			v := arg.ToPlane()
+			return reflect.ValueOf(v), nil
+		case Quaternion:
+			v := arg.ToQuaternion()
+			return reflect.ValueOf(v), nil
+		case AABB:
+			v := arg.ToAABB()
+			return reflect.ValueOf(v), nil
+		case Basis:
+			v := arg.ToBasis()
+			return reflect.ValueOf(v), nil
+		case Transform3D:
+			v := arg.ToTransform3D()
+			return reflect.ValueOf(v), nil
+		case Projection:
+			v := arg.ToProjection()
+			return reflect.ValueOf(v), nil
 		case PackedByteArray:
 			v := arg.ToPackedByteArray()
 			return reflect.ValueOf(v), nil
@@ -590,6 +617,136 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				}
 				v := NewVector2WithVector2(*pV)
 				args[i+1] = reflect.ValueOf(v)
+			case Vector2i:
+				pV := (*Vector2i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector2iWithVector2i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Vector3:
+				pV := (*Vector3)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector3WithVector3(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Vector3i:
+				pV := (*Vector3i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector3iWithVector3i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Rect2:
+				pV := (*Rect2)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewRect2WithRect2(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Rect2i:
+				pV := (*Rect2i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewRect2iWithRect2i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Transform2D:
+				pV := (*Transform2D)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewTransform2DWithTransform2D(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Vector4i:
+				pV := (*Vector4i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector4iWithVector4i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Plane:
+				pV := (*Plane)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPlaneWithPlane(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Quaternion:
+				pV := (*Quaternion)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewQuaternionWithQuaternion(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case AABB:
+				pV := (*AABB)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewAABBWithAABB(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Basis:
+				pV := (*Basis)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewBasisWithBasis(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Transform3D:
+				pV := (*Transform3D)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewTransform3DWithTransform3D(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Projection:
+				pV := (*Projection)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewProjectionWithProjection(*pV)
+				args[i+1] = reflect.ValueOf(v)
 			case Variant:
 				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
@@ -608,10 +765,12 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := *(*String)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case StringName:
-				v := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(arg))
+				var v StringName
+				StringNameCopyConstructor((GDExtensionUninitializedTypePtr)(&v), (GDExtensionConstTypePtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			case NodePath:
-				v := *(*NodePath)(arg)
+				var v NodePath
+				NodePathCopyConstructor((GDExtensionUninitializedTypePtr)(&v), (GDExtensionConstTypePtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			default:
 				log.Panic(fmt.Sprintf("MethodBind.Ptrcall reflected as array does not support type: %s", t.Name()))
@@ -639,6 +798,136 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector2WithVector2(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Vector2i:
+				pV := (*Vector2i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector2iWithVector2i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Vector3:
+				pV := (*Vector3)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector3WithVector3(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Vector3i:
+				pV := (*Vector3i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector3iWithVector3i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Rect2:
+				pV := (*Rect2)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewRect2WithRect2(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Rect2i:
+				pV := (*Rect2i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewRect2iWithRect2i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Transform2D:
+				pV := (*Transform2D)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewTransform2DWithTransform2D(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Vector4i:
+				pV := (*Vector4i)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewVector4iWithVector4i(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Plane:
+				pV := (*Plane)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPlaneWithPlane(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Quaternion:
+				pV := (*Quaternion)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewQuaternionWithQuaternion(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case AABB:
+				pV := (*AABB)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewAABBWithAABB(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Basis:
+				pV := (*Basis)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewBasisWithBasis(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Transform3D:
+				pV := (*Transform3D)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewTransform3DWithTransform3D(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case Projection:
+				pV := (*Projection)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewProjectionWithProjection(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Variant:
 				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))

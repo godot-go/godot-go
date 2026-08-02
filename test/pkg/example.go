@@ -688,19 +688,13 @@ func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 	}
 }
 
-func GetExamplePropertyList() ([]GDExtensionPropertyInfo, func()) {
+func GetExamplePropertyList() []GDExtensionPropertyInfo {
 	props := make([]GDExtensionPropertyInfo, 4)
-	cleanups := make([]func(), 0, 4)
 
 	makeProp := func(className, propName string, vt GDExtensionVariantType) GDExtensionPropertyInfo {
 		cn := NewStringNameWithLatin1Chars(className)
 		pn := NewStringNameWithLatin1Chars(propName)
 		hs := NewStringWithUtf8Chars("")
-		cleanups = append(cleanups, func() {
-			cn.Destroy()
-			pn.Destroy()
-			hs.Destroy()
-		})
 		return NewGDExtensionPropertyInfoFromNames(&cn, vt, &pn, &hs)
 	}
 
@@ -709,17 +703,11 @@ func GetExamplePropertyList() ([]GDExtensionPropertyInfo, func()) {
 		props[i+1] = makeProp("Example", fmt.Sprintf("dproperty_%d", i), GDEXTENSION_VARIANT_TYPE_VECTOR2)
 	}
 
-	cleanup := func() {
-		for _, c := range cleanups {
-			c()
-		}
-	}
-	return props, cleanup
+	return props
 }
 
 func RegisterClassExample() {
-	props, cleanup := GetExamplePropertyList()
-	defer cleanup()
+	props := GetExamplePropertyList()
 	ClassDBRegisterClass(NewExampleFromOwnerObject, props, ValidateExampleProperty, func(t *Example) {
 		// virtuals
 		// virtuals

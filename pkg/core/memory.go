@@ -7,7 +7,6 @@ package core
 */
 import "C"
 import (
-	"reflect"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -116,18 +115,16 @@ func Free(ptr unsafe.Pointer) {
 }
 
 func allocCopyVariantPtrSliceToUnsafePointerArray(ptrs []*Variant) unsafe.Pointer {
-	header := (*reflect.SliceHeader)(unsafe.Pointer(&ptrs))
+	size := len(ptrs) * int(unsafe.Sizeof((*Variant)(nil)))
 
-	return AllocCopy(unsafe.Pointer(header.Data), header.Len)
+	return AllocCopy(unsafe.Pointer(unsafe.SliceData(ptrs)), size)
 }
 
 // AllocCopyVariantPtrSliceAsGDExtensionVariantPtrPtr
 func AllocCopyVariantPtrSliceAsGDExtensionVariantPtrPtr(ptrs []*Variant) *GDExtensionConstVariantPtr {
 	copiedPtrs := allocCopyVariantPtrSliceToUnsafePointerArray(ptrs)
 
-	header := (*reflect.SliceHeader)(unsafe.Pointer(&copiedPtrs))
-
-	return (*GDExtensionConstVariantPtr)(unsafe.Pointer(header.Data))
+	return (*GDExtensionConstVariantPtr)(copiedPtrs)
 }
 
 var _ cgoalloc.Allocator = &GodotAllocator{}

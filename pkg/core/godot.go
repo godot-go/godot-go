@@ -41,6 +41,8 @@ func _GDExtensionBindingInit(
 		zap.Int32("minor", FFI.GodotVersion.GetMinor()),
 	)
 
+	rInitialization.SetUserData(nil)
+
 	rInitialization.SetCallbacks(
 		(*[0]byte)(C.cgo_callfn_GDExtensionBindingInitializeLevel),
 		(*[0]byte)(C.cgo_callfn_GDExtensionBindingDeinitializeLevel),

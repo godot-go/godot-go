@@ -149,35 +149,58 @@ func GoCallback_ClassCreationInfoCallVirtualWithData(pInstance C.GDExtensionClas
 	)
 }
 
-// GoCallback_ClassCreationInfoCreateInstance is registered as a callback when a new GDScript instance is created.
+type ClassUserdata struct {
+	callbacks  GDExtensionInstanceBindingCallbacks
+	className  string
+	createFunc GDClassGoConstructor
+	typeData   reflect.Type
+}
+
+func (d *ClassUserdata) HasError() error {
+	if d == nil {
+		return fmt.Errorf("ClassUserdata is null")
+	}
+	if len(d.className) == 0 {
+		return fmt.Errorf("className is empty")
+	}
+	if d.createFunc == nil {
+		return fmt.Errorf("createFunc is nil")
+	}
+	if d.typeData == nil {
+		return fmt.Errorf("typeData is null")
+	}
+	return nil
+}
+
+// GoCallback_ClassCreationInfoCreateInstance2 is registered as a callback when a new GDScript instance is created.
 //
-//export GoCallback_ClassCreationInfoCreateInstance
-func GoCallback_ClassCreationInfoCreateInstance(data unsafe.Pointer, p_notify_postinitialize C.GDExtensionBool) C.GDExtensionObjectPtr {
+//export GoCallback_ClassCreationInfoCreateInstance2
+func GoCallback_ClassCreationInfoCreateInstance2(data unsafe.Pointer, p_notify_postinitialize C.GDExtensionBool) C.GDExtensionObjectPtr {
 	tn := C.GoString((*C.char)(data))
-	inst := CreateGDClassInstance(tn)
+	inst := CreateGDClassInstance2(tn)
 	return (C.GDExtensionObjectPtr)(unsafe.Pointer(inst.GetGodotObjectOwner()))
 }
 
 //export GoCallback_ClassCreationInfoFreeInstance
 func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExtensionClassInstancePtr) {
-	tn := C.GoString((*C.char)(data))
-	// ptr is assigned in function WrappedPostInitialize as a (*Wrapped)
-	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(ptr))
-	defer inst.Destroy()
-	goStr := inst.ToString()
-	defer goStr.Destroy()
-	log.Info("GoCallback_ClassCreationInfoFreeInstance called",
-		zap.String("type_name", tn),
-		zap.String("ptr", fmt.Sprintf("%p", ptr)),
-		zap.String("to_string", goStr.ToAscii()),
-		zap.String("GodotObjectOwner()", fmt.Sprintf("%p", inst.GetGodotObjectOwner())),
-	)
-	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(unsafe.Pointer(inst.GetGodotObjectOwner())))
+	if ptr == nil {
+		return
+	}
+	ptrHandle := cgo.Handle(unsafe.Pointer(ptr))
+	wrapped := ptrHandle.Value().(*WrappedClassInstance)
+	// Defer Destroy so the SyncMap guard below catches re-entrant calls.
+	defer wrapped.Instance.Destroy()
+	// Intentionally not calling ptrHandle.Delete() — deleting the Handle
+	// invalidates the raw pointer that Godot still holds internally.
+	// If Godot issues any subsequent callback (e.g., during re-entrant
+	// Destroy) with the stale pointer, cgo.Handle lookup returns garbage,
+	// causing heap corruption (glibc "corrupted double-linked list").
+	// Origin/main never deleted Handles; we follow the same pattern.
+	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(unsafe.Pointer(wrapped.Instance.GetGodotObjectOwner())))
 	if _, ok := Internal.GDClassInstances.Get(id); !ok {
 		log.Panic("GDClass instance not found to free", zap.Any("id", id))
 	}
 	Internal.GDClassInstances.Delete(id)
-	log.Info("GDClass instance freed", zap.Any("id", id))
 }
 
 //export GoCallback_ClassCreationInfoGetPropertyList

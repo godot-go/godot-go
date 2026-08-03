@@ -10,7 +10,6 @@ import (
 
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	"github.com/godot-go/godot-go/pkg/log"
-	"github.com/godot-go/godot-go/pkg/util"
 	"go.uber.org/zap"
 )
 
@@ -144,9 +143,9 @@ func getObjectInstanceBinding(engineObject *GodotObject) Object {
 	pnr.Pin(engineObject)
 	pnr.Pin(FFI.Token)
 
-	util.CgoTestCall(unsafe.Pointer(cbsPtr))
-	util.CgoTestCall(unsafe.Pointer(engineObject))
-	util.CgoTestCall(FFI.Token)
+	// util.CgoTestCall(unsafe.Pointer(cbsPtr))
+	// util.CgoTestCall(unsafe.Pointer(engineObject))
+	// util.CgoTestCall(FFI.Token)
 	instPtr = (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 		(GDExtensionObjectPtr)(engineObject),
 		FFI.Token,

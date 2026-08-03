@@ -44,6 +44,51 @@ func (w *WrappedImpl) IsNil() bool {
 func (w *WrappedImpl) Destroy() {
 }
 
+// NewWrapped creates a new WrappedImpl and its underlying GodotObject.
+// Wrapped::Wrapped(const StringName &p_godot_class) in godot-cpp
+// func NewWrappedFromClassName(className string) *WrappedImpl {
+// 	log.Debug("NewWrappedFromClassName called")
+// 	snclassName := NewStringNameWithLatin1Chars(className)
+// 	defer snclassName.Destroy()
+// 	snClassNamePtr := snclassName.AsGDExtensionConstStringNamePtr()
+// 	owner := CallFunc_GDExtensionInterfaceClassdbConstructObject2(snClassNamePtr)
+// 	w := &WrappedImpl{
+// 		Owner: (*GodotObject)(unsafe.Pointer(owner)),
+// 	}
+// 	instHandle := cgo.NewHandle(w)
+
+// 	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
+// 	if !ok {
+// 		log.Warn("unable to find callbacks for Object",
+// 			zap.String("name", className),
+// 		)
+// 		return nil
+// 	}
+
+// 	// Set the extension instance in the native Godot object.
+// 	CallFunc_GDExtensionInterfaceObjectSetInstance(
+// 		(GDExtensionObjectPtr)(owner),
+// 		(GDExtensionConstStringNamePtr)(snClassNamePtr),
+// 		(GDExtensionClassInstancePtr)(instHandle),
+// 	)
+// 	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
+// 		(GDExtensionObjectPtr)(owner),
+// 		unsafe.Pointer(FFI.Token),
+// 		instHandle,
+// 		&cbs,
+// 	)
+// 	return w
+// }
+
+// NewWrappedFromGodotObject creates a new WrappedImpl from an existing GodotObject..
+//
+//	Wrapped::Wrapped(GodotObject *p_godot_object) in godot-cpp
+func NewWrappedFromGodotObject(owner *GodotObject) *WrappedImpl {
+	return &WrappedImpl{
+		Owner: owner,
+	}
+}
+
 func ObjectCastTo(obj Object, className string) Object {
 	if obj == nil {
 		return nil
@@ -99,4 +144,43 @@ func ObjectCastTo(obj Object, className string) Object {
 
 type WrappedClassInstance struct {
 	Instance Object
+}
+
+func (w *WrappedClassInstance) GetClassName() string {
+	return w.Instance.GetClassName()
+}
+
+func (w *WrappedClassInstance) GetParentClassName() string {
+	return w.Instance.GetParentClassName()
+}
+
+func (w *WrappedClassInstance) GetGodotObjectOwner() *GodotObject {
+	return w.Instance.GetGodotObjectOwner()
+}
+
+func (w *WrappedClassInstance) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
+	return (GDExtensionObjectPtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+}
+
+func (w *WrappedClassInstance) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
+	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+}
+
+func (w *WrappedClassInstance) AsGDExtensionTypePtr() GDExtensionTypePtr {
+	return (GDExtensionTypePtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+}
+
+func (w *WrappedClassInstance) AsGDExtensionConstTypePtr() GDExtensionConstTypePtr {
+	return (GDExtensionConstTypePtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+}
+
+func (w *WrappedClassInstance) SetGodotObjectOwner(owner *GodotObject) {
+	w.Instance.SetGodotObjectOwner(owner)
+}
+
+func (w *WrappedClassInstance) IsNil() bool {
+	return w == nil || w.Instance.GetGodotObjectOwner() == nil
+}
+
+func (w *WrappedClassInstance) Destroy() {
 }

@@ -15,16 +15,6 @@ import (
 	"golang.org/x/text/encoding/unicode/utf32"
 )
 
-func NewStringNameWithGDExtensionConstStringNamePtr(ptr GDExtensionConstStringNamePtr) StringName {
-	cx := StringName{}
-	pnr.Pin(&cx)
-	typedSrc := (*[StringNameSize]uint8)(ptr)
-	for i := 0; i < StringNameSize; i++ {
-		cx[i] = typedSrc[i]
-	}
-	return cx
-}
-
 func StringNameCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
 	pnr.Pin(unsafe.Pointer(src))
 	CallBuiltinConstructor(globalStringNameMethodBindings.constructor_1, out, src)
@@ -40,19 +30,7 @@ func NewStringNameWithLatin1Chars(content string) StringName {
 	defer cx.Destroy()
 	ptr := (GDExtensionUninitializedStringPtr)(cx.NativePtr())
 	pnr.Pin(ptr)
-	// log.Debug("create string name",
-	// 	zap.String("ptr", fmt.Sprintf("%p", ptr)),
-	// 	zap.Uintptr("ptr_int", uintptr(ptr)),
-	// 	zap.Any("text", content),
-	// 	zap.Any("cx", cx),
-	// )
 	CallFunc_GDExtensionInterfaceStringNewWithLatin1Chars(ptr, content)
-	// log.Debug("create string name after",
-	// 	zap.String("ptr", fmt.Sprintf("%p", ptr)),
-	// 	zap.Uintptr("ptr_int", uintptr(ptr)),
-	// 	zap.Any("text", content),
-	// 	zap.Any("cx", cx),
-	// )
 	return NewStringNameWithString(cx)
 }
 

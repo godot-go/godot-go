@@ -23,6 +23,7 @@ import (
 	"unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
+	"go.uber.org/zap"
 )
 
 // C type aliases
@@ -3574,7 +3575,7 @@ func CallFunc_GDExtensionInterfaceStringNameNewWithLatin1Chars(
 	arg2 := C.CString(p_contents)
 	arg3 := (C.GDExtensionBool)(p_is_static)
 
-	log.Debug("called C.cgo_callfn_GDExtensionInterfaceStringNameNewWithLatin1Chars")
+	log.Debug("called C.cgo_callfn_GDExtensionInterfaceStringNameNewWithLatin1Chars", zap.String("contents", p_contents))
 
 	C.cgo_callfn_GDExtensionInterfaceStringNameNewWithLatin1Chars(arg0, arg1, arg2, arg3)
 

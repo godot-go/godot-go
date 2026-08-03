@@ -11,6 +11,7 @@ package ffi
 import "C"
 import (
 	"runtime"
+	"unsafe"
 	// "github.com/CannibalVox/cgoalloc"
 )
 
@@ -36,6 +37,12 @@ func (e *GDExtensionInitialization) SetCallbacks(
 ) {
 	e.initialize = initCallback
 	e.deinitialize = deinitCallback
+}
+
+func (e *GDExtensionInitialization) SetUserData(
+	userdata unsafe.Pointer,
+) {
+	e.userdata = userdata
 }
 
 func (e *GDExtensionInitialization) SetInitializationLevel(level GDExtensionInitializationLevel) {

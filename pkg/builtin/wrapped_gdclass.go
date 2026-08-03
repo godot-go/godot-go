@@ -8,6 +8,7 @@ import (
 	"runtime/cgo"
 	"unsafe"
 
+	"github.com/godot-go/godot-go/pkg/ffi"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
@@ -30,6 +31,35 @@ func ObjectClassFromGDExtensionClassInstancePtr(p_instance GDExtensionClassInsta
 		return nil
 	}
 	return wci.Instance
+}
+
+// SetConstructInfo is equivalent to Wrapped::_set_construct_info in godot-cpp
+func SetConstructInfo(w Wrapped, extensionClassName string, cbs ffi.GDExtensionInstanceBindingCallbacks) {
+	log.Debug("SetConstructInfo called", zap.String("extensionClassName", extensionClassName))
+	owner := w.GetGodotObjectOwner()
+	if len(extensionClassName) == 0 {
+		log.Panic("extension class name cannot be empty",
+			zap.String("w", fmt.Sprintf("%p", w)),
+			zap.String("w.GetGodotObjectOwner()", fmt.Sprintf("%p", owner)),
+		)
+	}
+	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
+	defer snExtensionClassName.Destroy()
+	cnPtr := snExtensionClassName.AsGDExtensionConstStringNamePtr()
+	instHandle := cgo.NewHandle(w)
+
+	// Set the extension instance in the native Godot object.
+	CallFunc_GDExtensionInterfaceObjectSetInstance(
+		(GDExtensionObjectPtr)(owner),
+		(GDExtensionConstStringNamePtr)(cnPtr),
+		(GDExtensionClassInstancePtr)(instHandle),
+	)
+	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
+		(GDExtensionObjectPtr)(owner),
+		unsafe.Pointer(FFI.Token),
+		instHandle,
+		&cbs,
+	)
 }
 
 // WrappedPostInitialize is equivalent to Wrapped::_postinitialize in godot-cpp

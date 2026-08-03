@@ -1,6 +1,7 @@
 package core
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -42,6 +43,16 @@ type ClassInfo struct {
 	InheritType               reflect.Type
 	PropertyList              []GDExtensionPropertyInfo
 	ValidateProperty          func(*GDExtensionPropertyInfo)
+}
+
+func (c *ClassInfo) HasError() error {
+	if c == nil {
+		return fmt.Errorf("class info is null")
+	}
+	if len(c.Name) == 0 {
+		return fmt.Errorf("name is empty")
+	}
+	return nil
 }
 
 func (c *ClassInfo) String() string {

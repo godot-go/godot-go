@@ -775,7 +775,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := *(*String)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case StringName:
-				v := NewStringNameWithGDExtensionConstStringNamePtr((GDExtensionConstStringNamePtr)(arg))
+				v := *(*StringName)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case NodePath:
 				v := *(*NodePath)(arg)

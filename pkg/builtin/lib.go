@@ -19,6 +19,7 @@ import (
 type GodotObject unsafe.Pointer
 type GDExtensionBindingCallback func()
 type GDExtensionClassGoConstructorFromOwner func(*GodotObject) GDExtensionClass
+type GDClassGoConstructor func() GDClass
 type GDClassGoConstructorFromOwner func(*GodotObject) GDClass
 type RefCountedConstructor func(reference RefCounted) Ref
 
@@ -32,7 +33,7 @@ var (
 	pnr                                                   = runtime.Pinner{}
 )
 
-func GDClassRegisterInstanceBindingCallbacks(tn string) {
+func GDClassRegisterInstanceBindingCallbacks(className string) GDExtensionInstanceBindingCallbacks {
 	// substitute for:
 	// static constexpr GDExtensionInstanceBindingCallbacks ___binding_callbacks = {
 	// 	___binding_create_callback,
@@ -42,6 +43,11 @@ func GDClassRegisterInstanceBindingCallbacks(tn string) {
 	createPtr := (*[0]byte)(C.cgo_gdclass_binding_create_callback)
 	freePtr := (*[0]byte)(C.cgo_gdclass_binding_free_callback)
 	referencePtr := (*[0]byte)(C.cgo_gdclass_binding_reference_callback)
+	// Pin the callback pointers before passing them to C memory.
+	// These are Go pointers to cgo-generated C thunks; without pinning,
+	// Go 1.25+ cgo checker (cgocheck=1) may flag them as invalid when
+	// stored in the GDExtensionInstanceBindingCallbacks C struct, causing
+	// subtle heap corruption in glibc ("corrupted double-linked list").
 	pnr.Pin(createPtr)
 	pnr.Pin(freePtr)
 	pnr.Pin(referencePtr)
@@ -50,9 +56,10 @@ func GDClassRegisterInstanceBindingCallbacks(tn string) {
 		freePtr,
 		referencePtr,
 	)
-	_, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(tn)
+	_, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
 	if ok {
-		log.Panic("Class with the same name already initialized", zap.String("class", tn))
+		log.Panic("Class with the same name already initialized", zap.String("class", className))
 	}
-	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set(tn, (GDExtensionInstanceBindingCallbacks)(cbs))
+	GDExtensionBindingGDExtensionInstanceBindingCallbacks.Set(className, (GDExtensionInstanceBindingCallbacks)(cbs))
+	return cbs
 }

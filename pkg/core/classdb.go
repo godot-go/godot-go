@@ -327,6 +327,15 @@ func classDBBindMethod[T GDClass](
 		log.Panic("Class doesn't exist.", zap.String("class", className))
 		return
 	}
+	if err := ci.HasError(); err != nil {
+		log.Panic("ClassInfo not valid",
+			zap.String("class", className),
+			zap.Error(err),
+			zap.String("go_name", goMethodName),
+			zap.String("gd_name", gdMethodName),
+		)
+		return
+	}
 	if _, ok = ci.MethodMap[gdMethodName]; ok {
 		log.Panic("Binding duplicate method.",
 			zap.String("go_name", goMethodName),
@@ -346,12 +355,18 @@ func classDBBindMethod[T GDClass](
 	if (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
 		ci.VirtualMethodMap[gdMethodName] = bi
 		log.Info("register class virtual method",
+			zap.String("class", className),
+			zap.String("go_name", goMethodName),
+			zap.String("gd_name", gdMethodName),
 			zap.String("bind", bi.GoMethodMetadata.String()),
 			zap.Bool("has_varargs", hasVarargs),
 		)
 	} else {
 		ci.MethodMap[gdMethodName] = bi
 		log.Info("register class method",
+			zap.String("class", className),
+			zap.String("go_name", goMethodName),
+			zap.String("gd_name", gdMethodName),
 			zap.String("bind", bi.GoMethodMetadata.String()),
 			zap.Bool("has_varargs", hasVarargs),
 		)
@@ -522,7 +537,7 @@ func ClassDBRegisterClass[T Object](
 		(GDExtensionClassToString)(C.cgo_classcreationinfo_tostring),
 		(GDExtensionClassReference)(nil),
 		(GDExtensionClassUnreference)(nil),
-		(GDExtensionClassCreateInstance2)(C.cgo_classcreationinfo_createinstance),
+		(GDExtensionClassCreateInstance2)(C.cgo_classcreationinfo_createinstance2),
 		(GDExtensionClassFreeInstance)(C.cgo_classcreationinfo_freeinstance),
 		(GDExtensionClassRecreateInstance)(nil),
 		(GDExtensionClassGetVirtualCallData2)(C.cgo_classcreationinfo_getvirtualcallwithdata2),

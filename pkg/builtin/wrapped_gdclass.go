@@ -53,7 +53,7 @@ func SetConstructInfo(w Wrapped, extensionClassName string, cbs ffi.GDExtensionI
 	CallFunc_GDExtensionInterfaceObjectSetInstance(
 		(GDExtensionObjectPtr)(owner),
 		(GDExtensionConstStringNamePtr)(cnPtr),
-		(GDExtensionClassInstancePtr)(instHandle),
+		(GDExtensionClassInstancePtr)(unsafe.Pointer(instHandle)),
 	)
 	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
 		(GDExtensionObjectPtr)(owner),
@@ -97,7 +97,7 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 		CallFunc_GDExtensionInterfaceObjectSetInstance(
 			(GDExtensionObjectPtr)(owner),
 			cnPtr,
-			(GDExtensionClassInstancePtr)(instHandle),
+			(GDExtensionClassInstancePtr)(unsafe.Pointer(instHandle)),
 		)
 	}
 	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(

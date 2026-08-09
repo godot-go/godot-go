@@ -47,6 +47,7 @@ func SetConstructInfo(w Wrapped, extensionClassName string, cbs ffi.GDExtensionI
 	defer snExtensionClassName.Destroy()
 	cnPtr := snExtensionClassName.AsGDExtensionConstStringNamePtr()
 	instHandle := cgo.NewHandle(w)
+	pnr.Pin(&cbs)
 
 	// Set the extension instance in the native Godot object.
 	CallFunc_GDExtensionInterfaceObjectSetInstance(
@@ -90,6 +91,7 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 	pnr.Pin(owner)
 	pnr.Pin(inst)
 	pnr.Pin(cnPtr)
+	pnr.Pin(&callbacks)
 	instHandle := cgo.NewHandle(inst)
 	if cnPtr != nil {
 		CallFunc_GDExtensionInterfaceObjectSetInstance(

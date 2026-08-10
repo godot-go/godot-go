@@ -44,42 +44,6 @@ func (w *WrappedImpl) IsNil() bool {
 func (w *WrappedImpl) Destroy() {
 }
 
-// NewWrapped creates a new WrappedImpl and its underlying GodotObject.
-// Wrapped::Wrapped(const StringName &p_godot_class) in godot-cpp
-// func NewWrappedFromClassName(className string) *WrappedImpl {
-// 	log.Debug("NewWrappedFromClassName called")
-// 	snclassName := NewStringNameWithLatin1Chars(className)
-// 	defer snclassName.Destroy()
-// 	snClassNamePtr := snclassName.AsGDExtensionConstStringNamePtr()
-// 	owner := CallFunc_GDExtensionInterfaceClassdbConstructObject2(snClassNamePtr)
-// 	w := &WrappedImpl{
-// 		Owner: (*GodotObject)(unsafe.Pointer(owner)),
-// 	}
-// 	instHandle := cgo.NewHandle(w)
-
-// 	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
-// 	if !ok {
-// 		log.Warn("unable to find callbacks for Object",
-// 			zap.String("name", className),
-// 		)
-// 		return nil
-// 	}
-
-// 	// Set the extension instance in the native Godot object.
-// 	CallFunc_GDExtensionInterfaceObjectSetInstance(
-// 		(GDExtensionObjectPtr)(owner),
-// 		(GDExtensionConstStringNamePtr)(snClassNamePtr),
-// 		(GDExtensionClassInstancePtr)(instHandle),
-// 	)
-// 	CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
-// 		(GDExtensionObjectPtr)(owner),
-// 		unsafe.Pointer(FFI.Token),
-// 		instHandle,
-// 		&cbs,
-// 	)
-// 	return w
-// }
-
 // NewWrappedFromGodotObject creates a new WrappedImpl from an existing GodotObject..
 //
 //	Wrapped::Wrapped(GodotObject *p_godot_object) in godot-cpp

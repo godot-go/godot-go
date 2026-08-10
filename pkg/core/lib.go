@@ -47,12 +47,6 @@ func CreateGDClassInstance[T GDClass]() T {
 	className := inst.GetClassName()
 	parentName := inst.GetParentClassName()
 
-	// ci, ok := Internal.GDRegisteredGDClasses.Get(className)
-	// if !ok {
-	// 	log.Panic("type not found",
-	// 		zap.String("name", className),
-	// 	)
-	// }
 	log.Debug("CreateGDClassInstance called",
 		zap.String("class_name", className),
 		zap.Any("parent_name", parentName),

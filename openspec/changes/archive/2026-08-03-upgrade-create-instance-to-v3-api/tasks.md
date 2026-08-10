@@ -6,7 +6,7 @@
 
 ## 2. Instance Lifecycle Refactor
 
-- [x] 2.1 Add `SetConstructInfo` function in `pkg/builtin/wrapped_gdclass.go` matching godot-cpp pattern (no pnr.Pin calls)
+- [x] 2.1 Add `SetConstructInfo` function in `pkg/builtin/wrapped_gdclass.go` matching godot-cpp pattern (with pnr.Pin on cbs)
 - [x] 2.2 Add generic `CreateGDClassInstance[T GDClass]() T` using `SetConstructInfo`
 - [x] 2.3 Add string-based `CreateGDClassInstance2(tn string) GDClass` using `WrappedPostInitialize`
 - [x] 2.4 Restore `WrappedPostInitialize` with pnr.Pin calls (compat for CreateInstance2 callback)
@@ -22,8 +22,8 @@
 ## 4. Build Configuration
 
 - [x] 4.1 Add `GOAMD64=v3` to build targets (caps Go compiler at AVX2)
-- [x] 4.2 Add `-ldflags="-X runtime.godebugDefault=cpu.avx512f=off"` to disable AVX-512 in Go runtime
-- [x] 4.3 Restore test target (no valgrind), add `build-asan` and `test-asan` targets
+- [ ] 4.2 Add `-ldflags="-X runtime.godebugDefault=cpu.avx512f=off"` to disable AVX-512 in Go runtime (deferred — `GOAMD64=v3` is used instead via CGO_CFLAGS)
+- [ ] 4.3 Add `build-asan` and `test-asan` Makefile targets (deferred)
 - [x] 4.4 Add `vgcore.*` to `.gitignore`
 
 ## 5. Bug Fixes

@@ -70,7 +70,7 @@ During implementation, two blockers were discovered:
 **Resolution:** The implementation uses:
 - `CreationInfo4` + `RegisterExtensionClass4` for registration (available in the binary)
 - C string as `class_userdata` (avoids the g0 crash)
-- String-based `CreateGDClassInstance2(tn string)` called from the callback (avoids the g0 crash by using the origin/main `WrappedPostInitialize2` path which handles `Pinner.Pin` correctly)
+- String-based `CreateGDClassInstance2(tn string)` called from the callback (avoids the g0 crash by using the origin/main `WrappedPostInitialize` path which handles `Pinner.Pin` correctly)
 - `cgo_classcreationinfo_createinstance2` C function cast as `GDExtensionClassCreateInstance2` type
 
 The `NewGDExtensionClassCreationInfo6` constructor, `ClassUserdata` struct, generic `CreateGDClassInstance[T]`, and `SetConstructInfo` are all defined and available for future use when the blockers are resolved.

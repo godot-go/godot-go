@@ -274,6 +274,9 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		case Projection:
 			v := arg.ToProjection()
 			return reflect.ValueOf(v), nil
+		case Array:
+			v := arg.ToArray()
+			return reflect.ValueOf(v), nil
 		case PackedByteArray:
 			v := arg.ToPackedByteArray()
 			return reflect.ValueOf(v), nil
@@ -297,6 +300,9 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 			return reflect.ValueOf(v), nil
 		case PackedVector3Array:
 			v := arg.ToPackedVector3Array()
+			return reflect.ValueOf(v), nil
+		case PackedVector4Array:
+			v := arg.ToPackedVector4Array()
 			return reflect.ValueOf(v), nil
 		case PackedColorArray:
 			v := arg.ToPackedColorArray()
@@ -769,7 +775,106 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewPackedInt64ArrayWithPackedInt64Array(*pV)
-				log.Debug("reflect PackedInt64Array", zap.Any("v", Stringify(NewVariantPackedInt64Array(v))))
+				args[i+1] = reflect.ValueOf(v)
+			case Array:
+				pV := (*Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewArrayWithArray(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedByteArray:
+				pV := (*PackedByteArray)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedByteArrayWithPackedByteArray(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedInt32Array:
+				pV := (*PackedInt32Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedInt32ArrayWithPackedInt32Array(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedFloat32Array:
+				pV := (*PackedFloat32Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedFloat32ArrayWithPackedFloat32Array(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedFloat64Array:
+				pV := (*PackedFloat64Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedFloat64ArrayWithPackedFloat64Array(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedStringArray:
+				pV := (*PackedStringArray)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedStringArrayWithPackedStringArray(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedVector2Array:
+				pV := (*PackedVector2Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedVector2ArrayWithPackedVector2Array(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedVector3Array:
+				pV := (*PackedVector3Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedVector3ArrayWithPackedVector3Array(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedVector4Array:
+				pV := (*PackedVector4Array)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedVector4ArrayWithPackedVector4Array(*pV)
+				args[i+1] = reflect.ValueOf(v)
+			case PackedColorArray:
+				pV := (*PackedColorArray)(unsafe.Pointer(arg))
+				if pV == nil {
+					log.Panic("GDExtensionConstTypePtr is nil",
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				v := NewPackedColorArrayWithPackedColorArray(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case String:
 				v := *(*String)(arg)

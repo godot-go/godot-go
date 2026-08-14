@@ -165,6 +165,51 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.test_echo_projection(_proj), _proj)
 	assert_equal(example.call("test_echo_projection", _proj), _proj)
 
+	# Container built-in types
+	var _arr := Array([1, 2, 3])
+	assert_equal(example.test_echo_array(_arr), _arr)
+	assert_equal(example.call("test_echo_array", _arr), _arr)
+
+	var _pba := PackedByteArray([10, 20, 30])
+	assert_equal(example.test_echo_packed_byte_array(_pba), _pba)
+	assert_equal(example.call("test_echo_packed_byte_array", _pba), _pba)
+
+	var _pi32 := PackedInt32Array([1, 2, 3])
+	assert_equal(example.test_echo_packed_int32_array(_pi32), _pi32)
+	assert_equal(example.call("test_echo_packed_int32_array", _pi32), _pi32)
+
+	var _pi64 := PackedInt64Array([1, 2, 3])
+	assert_equal(example.test_echo_packed_int64_array(_pi64), _pi64)
+	assert_equal(example.call("test_echo_packed_int64_array", _pi64), _pi64)
+
+	var _pf32 := PackedFloat32Array([1.5, 2.5, 3.5])
+	assert_equal(example.test_echo_packed_float32_array(_pf32), _pf32)
+	assert_equal(example.call("test_echo_packed_float32_array", _pf32), _pf32)
+
+	var _pf64 := PackedFloat64Array([1.5, 2.5, 3.5])
+	assert_equal(example.test_echo_packed_float64_array(_pf64), _pf64)
+	assert_equal(example.call("test_echo_packed_float64_array", _pf64), _pf64)
+
+	var _psa := PackedStringArray(["hello", "world"])
+	assert_equal(example.test_echo_packed_string_array(_psa), _psa)
+	assert_equal(example.call("test_echo_packed_string_array", _psa), _psa)
+
+	var _pv2a := PackedVector2Array([Vector2(1, 2), Vector2(3, 4)])
+	assert_equal(example.test_echo_packed_vector2_array(_pv2a), _pv2a)
+	assert_equal(example.call("test_echo_packed_vector2_array", _pv2a), _pv2a)
+
+	var _pv3a := PackedVector3Array([Vector3(1, 2, 3), Vector3(4, 5, 6)])
+	assert_equal(example.test_echo_packed_vector3_array(_pv3a), _pv3a)
+	assert_equal(example.call("test_echo_packed_vector3_array", _pv3a), _pv3a)
+
+	var _pv4a := PackedVector4Array([Vector4(1, 2, 3, 4), Vector4(5, 6, 7, 8)])
+	assert_equal(example.test_echo_packed_vector4_array(_pv4a), _pv4a)
+	assert_equal(example.call("test_echo_packed_vector4_array", _pv4a), _pv4a)
+
+	var _pca := PackedColorArray([Color(1, 0, 0), Color(0, 1, 0)])
+	assert_equal(example.test_echo_packed_color_array(_pca), _pca)
+	assert_equal(example.call("test_echo_packed_color_array", _pca), _pca)
+
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())

@@ -713,6 +713,12 @@ var encoderTypeMap = map[string]encoderTypeMetadata{
 			{"PackedColorArray", "PackedColorArray", "PackedColorArray"},
 		},
 	},
+	"GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY": {
+		IsReference: true,
+		Encodings: []encoding{
+			{"PackedVector4Array", "PackedVector4Array", "PackedVector4Array"},
+		},
+	},
 
 	// variant
 	"GDEXTENSION_VARIANT_TYPE_VARIANT_MAX": {

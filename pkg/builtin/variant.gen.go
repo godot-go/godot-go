@@ -1514,3 +1514,37 @@ func (c Variant) ToPackedColorArray() PackedColorArray {
 	)
 	return v
 }
+
+func NewVariantPackedVector4Array(v PackedVector4Array) Variant {
+	ret := Variant{}
+	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
+	pnr.Pin(ptr)
+	GDExtensionVariantPtrFromPackedVector4Array(v, ptr)
+	return ret
+}
+
+func GDExtensionVariantPtrFromPackedVector4Array(v PackedVector4Array, rOut GDExtensionUninitializedVariantPtr) {
+	var encoded PackedVector4Array
+	encodedPtr := (GDExtensionTypePtr)(&encoded)
+	pnr.Pin(encodedPtr)
+	PackedVector4ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
+	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY]
+	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
+		(GDExtensionVariantFromTypeConstructorFunc)(fn),
+		rOut,
+		encodedPtr,
+	)
+}
+
+func (c Variant) ToPackedVector4Array() PackedVector4Array {
+	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY]
+	var v PackedVector4Array
+	ptr := v.NativePtr()
+	pnr.Pin(ptr)
+	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
+		(GDExtensionTypeFromVariantConstructorFunc)(fn),
+		(GDExtensionUninitializedTypePtr)(ptr),
+		c.NativePtr(),
+	)
+	return v
+}

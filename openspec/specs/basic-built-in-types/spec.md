@@ -16,7 +16,7 @@ The system SHALL decode `bool`, integer (`int`, `uint`, and fixed-width variants
 - **THEN** the Go values match the values passed from GDScript and the call does not panic.
 
 ### Requirement: Godot string-family argument decoding
-The system SHALL decode Godot `String`, `StringName`, and `NodePath` method arguments in both the ptr call and Variant call paths without panicking, producing the corresponding Go built-in value.
+The system SHALL decode Godot `String`, `StringName`, `NodePath`, and `Array` method arguments in both the ptr call and Variant call paths without panicking, producing the corresponding Go built-in value.
 
 #### Scenario: String argument via ptr call
 - **WHEN** a Go method receives a Godot `String` argument via a ptr call
@@ -29,6 +29,10 @@ The system SHALL decode Godot `String`, `StringName`, and `NodePath` method argu
 #### Scenario: NodePath argument via ptr call
 - **WHEN** a Go method receives a `NodePath` argument via a ptr call
 - **THEN** the argument is converted to the Go `NodePath` value and the call does not panic.
+
+#### Scenario: Array argument via Variant call
+- **WHEN** a Go method receives an `Array` argument via a Variant call
+- **THEN** the argument is converted to the Go `Array` value with the same content and the call does not panic.
 
 ### Requirement: Unsigned integer argument fidelity
 The system SHALL decode unsigned integer method arguments in the Variant call path without sign-wrapping, so `uint64` values above `MaxInt64` are preserved exactly.

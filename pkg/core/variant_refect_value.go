@@ -136,6 +136,8 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 			PackedVector2ArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		case PackedVector3Array:
 			PackedVector3ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedVector4Array:
+			PackedVector4ArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		case PackedColorArray:
 			PackedColorArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		default:
@@ -224,6 +226,8 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 			PackedVector2ArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		case PackedVector3Array:
 			PackedVector3ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+		case PackedVector4Array:
+			PackedVector4ArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		case PackedColorArray:
 			PackedColorArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		default:
@@ -366,6 +370,8 @@ func GDExtensionVariantPtrFromReflectValue(value reflect.Value, rOut GDExtension
 			PackedVector2ArrayEncoder.EncodeVariantPtrArg(inst, rOut)
 		case PackedVector3Array:
 			PackedVector3ArrayEncoder.EncodeVariantPtrArg(inst, rOut)
+		case PackedVector4Array:
+			PackedVector4ArrayEncoder.EncodeVariantPtrArg(inst, rOut)
 		case PackedColorArray:
 			PackedColorArrayEncoder.EncodeVariantPtrArg(inst, rOut)
 		default:

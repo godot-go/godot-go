@@ -113,16 +113,17 @@ Go does not support coroutines; this means we do not have access to `await` (or 
 
 | GDScript Type | Go Type | Description |
 | --- | --- | --- |
-| `Array` | `Array` | __(NOT YET IMPLEMENTED)__ `[]Variant`. |
-| `PackedByteArray` | `PackedByteArray` | __(NOT YET IMPLEMENTED)__ `[]byte`. |
-| `PackedInt32Array` | `PackedInt32Array` | __(NOT YET IMPLEMENTED)__ `[]int32`. |
-| `PackedInt64Array` | `PackedInt64Array` | __(NOT YET IMPLEMENTED)__ `[]int64`. |
-| `PackedFloat32Array` | `PackedFloat32Array` | __(NOT YET IMPLEMENTED)__ `[]float32`. |
-| `PackedFloat64Array` | `PackedFloat64Array` | __(NOT YET IMPLEMENTED)__ `[]float64`. |
-| `PackedStringArray` | `PackedStringArray` | __(NOT YET IMPLEMENTED)__ `[]string`. |
-| `PackedVector2Array` | `PackedVector2Array` | __(NOT YET IMPLEMENTED)__ `[]Vector2`. |
-| `PackedVector3Array` | `PackedVector3Array` | __(NOT YET IMPLEMENTED)__ `[]Vector3`. |
-| `PackedColorArray` | `PackedColorArray` | __(NOT YET IMPLEMENTED)__ `[]Color`. |
+| `Array` | `Array` | `[]Variant`. |
+| `PackedByteArray` | `PackedByteArray` | `[]byte`. |
+| `PackedInt32Array` | `PackedInt32Array` | `[]int32`. |
+| `PackedInt64Array` | `PackedInt64Array` | `[]int64`. |
+| `PackedFloat32Array` | `PackedFloat32Array` | `[]float32`. |
+| `PackedFloat64Array` | `PackedFloat64Array` | `[]float64`. |
+| `PackedStringArray` | `PackedStringArray` | `[]string`. |
+| `PackedVector2Array` | `PackedVector2Array` | `[]Vector2`. |
+| `PackedVector3Array` | `PackedVector3Array` | `[]Vector3`. |
+| `PackedVector4Array` | `PackedVector4Array` | `[]Vector4`. |
+| `PackedColorArray` | `PackedColorArray` | `[]Color`. |
 | `Dictionary` | `Dictionary` | No additional work needed. |
 | `Signal` | `Signal` | No additional work needed. |
 | `Callable` | `Callable` | No additional work needed. |

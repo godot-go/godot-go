@@ -2,9 +2,6 @@ package pkg
 
 import (
 	"fmt"
-	"runtime"
-	"strconv"
-	"strings"
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/constant"
 	. "github.com/godot-go/godot-go/pkg/core"
@@ -13,6 +10,9 @@ import (
 	. "github.com/godot-go/godot-go/pkg/gdutilfunc"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
+	"runtime"
+	"strconv"
+	"strings"
 )
 
 type ExampleEnum int64
@@ -575,19 +575,30 @@ func (e *Example) TestGoStringRepeat() string {
 	return "repeat_me_string_for_leak_check"
 }
 
-func (e *Example) TestEchoVector2i(p Vector2i) Vector2i { return p }
-func (e *Example) TestEchoVector3(p Vector3) Vector3     { return p }
-func (e *Example) TestEchoVector3i(p Vector3i) Vector3i  { return p }
-func (e *Example) TestEchoRect2(p Rect2) Rect2           { return p }
-func (e *Example) TestEchoRect2i(p Rect2i) Rect2i        { return p }
-func (e *Example) TestEchoTransform2D(p Transform2D) Transform2D { return p }
-func (e *Example) TestEchoVector4i(p Vector4i) Vector4i  { return p }
-func (e *Example) TestEchoPlane(p Plane) Plane            { return p }
-func (e *Example) TestEchoQuaternion(p Quaternion) Quaternion { return p }
-func (e *Example) TestEchoAABB(p AABB) AABB              { return p }
-func (e *Example) TestEchoBasis(p Basis) Basis            { return p }
-func (e *Example) TestEchoTransform3D(p Transform3D) Transform3D { return p }
-func (e *Example) TestEchoProjection(p Projection) Projection { return p }
+func (e *Example) TestEchoVector2i(p Vector2i) Vector2i                                 { return p }
+func (e *Example) TestEchoVector3(p Vector3) Vector3                                    { return p }
+func (e *Example) TestEchoVector3i(p Vector3i) Vector3i                                 { return p }
+func (e *Example) TestEchoRect2(p Rect2) Rect2                                          { return p }
+func (e *Example) TestEchoRect2i(p Rect2i) Rect2i                                       { return p }
+func (e *Example) TestEchoTransform2D(p Transform2D) Transform2D                        { return p }
+func (e *Example) TestEchoVector4i(p Vector4i) Vector4i                                 { return p }
+func (e *Example) TestEchoPlane(p Plane) Plane                                          { return p }
+func (e *Example) TestEchoQuaternion(p Quaternion) Quaternion                           { return p }
+func (e *Example) TestEchoAABB(p AABB) AABB                                             { return p }
+func (e *Example) TestEchoBasis(p Basis) Basis                                          { return p }
+func (e *Example) TestEchoTransform3D(p Transform3D) Transform3D                        { return p }
+func (e *Example) TestEchoProjection(p Projection) Projection                           { return p }
+func (e *Example) TestEchoArray(arr Array) Array                                        { return arr }
+func (e *Example) TestEchoPackedByteArray(arr PackedByteArray) PackedByteArray          { return arr }
+func (e *Example) TestEchoPackedInt32Array(arr PackedInt32Array) PackedInt32Array       { return arr }
+func (e *Example) TestEchoPackedInt64Array(arr PackedInt64Array) PackedInt64Array       { return arr }
+func (e *Example) TestEchoPackedFloat32Array(arr PackedFloat32Array) PackedFloat32Array { return arr }
+func (e *Example) TestEchoPackedFloat64Array(arr PackedFloat64Array) PackedFloat64Array { return arr }
+func (e *Example) TestEchoPackedStringArray(arr PackedStringArray) PackedStringArray    { return arr }
+func (e *Example) TestEchoPackedVector2Array(arr PackedVector2Array) PackedVector2Array { return arr }
+func (e *Example) TestEchoPackedVector3Array(arr PackedVector3Array) PackedVector3Array { return arr }
+func (e *Example) TestEchoPackedVector4Array(arr PackedVector4Array) PackedVector4Array { return arr }
+func (e *Example) TestEchoPackedColorArray(arr PackedColorArray) PackedColorArray       { return arr }
 
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
@@ -750,6 +761,17 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestEchoBasis", "test_echo_basis", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoTransform3D", "test_echo_transform3d", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoProjection", "test_echo_projection", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoArray", "test_echo_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedByteArray", "test_echo_packed_byte_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedInt32Array", "test_echo_packed_int32_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedInt64Array", "test_echo_packed_int64_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedFloat32Array", "test_echo_packed_float32_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedFloat64Array", "test_echo_packed_float64_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedStringArray", "test_echo_packed_string_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedVector2Array", "test_echo_packed_vector2_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedVector3Array", "test_echo_packed_vector3_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedVector4Array", "test_echo_packed_vector4_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoPackedColorArray", "test_echo_packed_color_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

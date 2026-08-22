@@ -600,6 +600,46 @@ func (e *Example) TestEchoPackedVector3Array(arr PackedVector3Array) PackedVecto
 func (e *Example) TestEchoPackedVector4Array(arr PackedVector4Array) PackedVector4Array { return arr }
 func (e *Example) TestEchoPackedColorArray(arr PackedColorArray) PackedColorArray       { return arr }
 
+func (e *Example) TestConsumeArray(arr Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedByteArray(arr PackedByteArray) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedInt32Array(arr PackedInt32Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedInt64Array(arr PackedInt64Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedFloat32Array(arr PackedFloat32Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedFloat64Array(arr PackedFloat64Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedStringArray(arr PackedStringArray) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedVector2Array(arr PackedVector2Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedVector3Array(arr PackedVector3Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedColorArray(arr PackedColorArray) int64 {
+	return arr.Size()
+}
+
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
@@ -772,6 +812,16 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestEchoPackedVector3Array", "test_echo_packed_vector3_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoPackedVector4Array", "test_echo_packed_vector4_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoPackedColorArray", "test_echo_packed_color_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumeArray", "test_consume_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedByteArray", "test_consume_packed_byte_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedInt32Array", "test_consume_packed_int32_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedInt64Array", "test_consume_packed_int64_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedFloat32Array", "test_consume_packed_float32_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedFloat64Array", "test_consume_packed_float64_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedStringArray", "test_consume_packed_string_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedVector2Array", "test_consume_packed_vector2_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedVector3Array", "test_consume_packed_vector3_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedColorArray", "test_consume_packed_color_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

@@ -52,6 +52,41 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass
 	return args
 }
 
+// destroyOwnedContainerArgs releases container call arguments that
+// convertVariantToGoTypeReflectValue decodes as owned copies. It must run only
+// after any return value that may alias an argument has been encoded, so the
+// encoded return already holds its own reference.
+func destroyOwnedContainerArgs(args []reflect.Value) {
+	for _, arg := range args {
+		switch v := arg.Interface().(type) {
+		case Array:
+			v.Destroy()
+		case Dictionary:
+			v.Destroy()
+		case PackedByteArray:
+			v.Destroy()
+		case PackedInt32Array:
+			v.Destroy()
+		case PackedInt64Array:
+			v.Destroy()
+		case PackedFloat32Array:
+			v.Destroy()
+		case PackedFloat64Array:
+			v.Destroy()
+		case PackedStringArray:
+			v.Destroy()
+		case PackedVector2Array:
+			v.Destroy()
+		case PackedVector3Array:
+			v.Destroy()
+		case PackedVector4Array:
+			v.Destroy()
+		case PackedColorArray:
+			v.Destroy()
+		}
+	}
+}
+
 func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Value, error) {
 	var out reflect.Value
 	if t == nil {
@@ -274,6 +309,16 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		case Projection:
 			v := arg.ToProjection()
 			return reflect.ValueOf(v), nil
+		// Container arguments are decoded as owned copies. The Go side acquires
+		// a reference it releases after the call (see destroyOwnedContainerArgs,
+		// invoked from GoMethodMetadata.Call). A borrowed byte-copy is unsafe
+		// here: when the supplied Variant is a different container type than the
+		// Go parameter (e.g. an Array[int] converted to a PackedInt64Array), the
+		// type-from-variant constructor allocates a fresh buffer that the Variant
+		// does not own, so destroying the constructed copy would leave the caller
+		// reading freed memory. Holding the owned copy for the duration of the
+		// call and releasing it on the way out is correct in both the same-type
+		// and cross-type cases.
 		case Array:
 			v := arg.ToArray()
 			return reflect.ValueOf(v), nil
@@ -767,94 +812,31 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			case PackedInt64Array:
-				pV := (*PackedInt64Array)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedInt64ArrayWithPackedInt64Array(*pV)
+				v := *(*PackedInt64Array)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case Array:
-				pV := (*Array)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewArrayWithArray(*pV)
+				v := *(*Array)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedByteArray:
-				pV := (*PackedByteArray)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedByteArrayWithPackedByteArray(*pV)
+				v := *(*PackedByteArray)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedInt32Array:
-				pV := (*PackedInt32Array)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedInt32ArrayWithPackedInt32Array(*pV)
+				v := *(*PackedInt32Array)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedFloat32Array:
-				pV := (*PackedFloat32Array)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedFloat32ArrayWithPackedFloat32Array(*pV)
+				v := *(*PackedFloat32Array)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedFloat64Array:
-				pV := (*PackedFloat64Array)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedFloat64ArrayWithPackedFloat64Array(*pV)
+				v := *(*PackedFloat64Array)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedStringArray:
-				pV := (*PackedStringArray)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedStringArrayWithPackedStringArray(*pV)
+				v := *(*PackedStringArray)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedVector2Array:
-				pV := (*PackedVector2Array)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedVector2ArrayWithPackedVector2Array(*pV)
+				v := *(*PackedVector2Array)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedVector3Array:
-				pV := (*PackedVector3Array)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedVector3ArrayWithPackedVector3Array(*pV)
+				v := *(*PackedVector3Array)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedVector4Array:
 				pV := (*PackedVector4Array)(unsafe.Pointer(arg))
@@ -867,14 +849,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := NewPackedVector4ArrayWithPackedVector4Array(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case PackedColorArray:
-				pV := (*PackedColorArray)(unsafe.Pointer(arg))
-				if pV == nil {
-					log.Panic("GDExtensionConstTypePtr is nil",
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				v := NewPackedColorArrayWithPackedColorArray(*pV)
+				v := *(*PackedColorArray)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			case String:
 				v := *(*String)(arg)

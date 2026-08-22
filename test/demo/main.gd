@@ -210,6 +210,28 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.test_echo_packed_color_array(_pca), _pca)
 	assert_equal(example.call("test_echo_packed_color_array", _pca), _pca)
 
+	# Container arg consume: correct contents observed, no retained reference.
+	assert_equal(example.test_consume_array(_arr), _arr.size())
+	assert_equal(example.call("test_consume_array", _arr), _arr.size())
+	assert_equal(example.test_consume_packed_byte_array(_pba), _pba.size())
+	assert_equal(example.call("test_consume_packed_byte_array", _pba), _pba.size())
+	assert_equal(example.test_consume_packed_int32_array(_pi32), _pi32.size())
+	assert_equal(example.call("test_consume_packed_int32_array", _pi32), _pi32.size())
+	assert_equal(example.test_consume_packed_int64_array(_pi64), _pi64.size())
+	assert_equal(example.call("test_consume_packed_int64_array", _pi64), _pi64.size())
+	assert_equal(example.test_consume_packed_float32_array(_pf32), _pf32.size())
+	assert_equal(example.call("test_consume_packed_float32_array", _pf32), _pf32.size())
+	assert_equal(example.test_consume_packed_float64_array(_pf64), _pf64.size())
+	assert_equal(example.call("test_consume_packed_float64_array", _pf64), _pf64.size())
+	assert_equal(example.test_consume_packed_string_array(_psa), _psa.size())
+	assert_equal(example.call("test_consume_packed_string_array", _psa), _psa.size())
+	assert_equal(example.test_consume_packed_vector2_array(_pv2a), _pv2a.size())
+	assert_equal(example.call("test_consume_packed_vector2_array", _pv2a), _pv2a.size())
+	assert_equal(example.test_consume_packed_vector3_array(_pv3a), _pv3a.size())
+	assert_equal(example.call("test_consume_packed_vector3_array", _pv3a), _pv3a.size())
+	assert_equal(example.test_consume_packed_color_array(_pca), _pca.size())
+	assert_equal(example.call("test_consume_packed_color_array", _pca), _pca.size())
+
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())

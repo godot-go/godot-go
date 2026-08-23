@@ -419,12 +419,13 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 // borrows holding no refcount of their own, so echoing one back must not release
 // a reference through the return path.
 //
-// The comparison is done on the dynamic values (args[i].Interface() and
-// ret.Interface()), NOT on the reflect.Value wrappers: reflect.DeepEqual on two
-// reflect.Values compares the Value struct fields (type pointer, flag word,
-// data pointer), which differ between a decoded argument and a reflected return
-// value even when the wrapped bytes are identical, so it would never detect an
-// echo and the borrow would be wrongly destroyed.
+// The comparison runs on the wrapped dynamic values (args[i].Interface() and
+// ret.Interface()), not on the reflect.Value wrappers themselves. If
+// reflect.DeepEqual were applied to the two reflect.Values, it would compare
+// the wrapper struct fields — type pointer, flag word, and data pointer — and
+// those differ between a decoded argument slot and a reflected return value
+// even when both wrap identical bytes. Comparing the wrappers would therefore
+// never detect an echo, and the borrow would be wrongly destroyed.
 func isPtrcallBorrowEcho(ret reflect.Value, args []reflect.Value) bool {
 	// Only the container types whose ptrcall return encoding destroys the
 	// source (see GDExtensionTypePtrFromReflectValue) can be borrow echoes.

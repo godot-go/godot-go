@@ -25,7 +25,7 @@ None. (The container decode/encode paths themselves are introduced by the active
 - `pkg/core/variant_refect_value.go` — ptrcall return encoding (`GDExtensionTypePtrFromReflectValue`) container cases.
 - `pkg/builtin/` — new container copy-constructor helpers (following `StringNameCopyConstructor` in `char_string.go`).
 - `test/pkg/example.go`, `test/demo/main.gd` — echo + arg-consume container tests in both call styles.
-- Behavior/contract change: a Go method receives container arguments as borrows valid only for the duration of the call; storing one past the call requires an explicit copy, and mutating a ptrcall-received container is visible to the caller (shared storage — see the `container-lifecycle-management` spec). This matches the existing StringName/NodePath contract. The container decode paths are new and unreleased, so no existing callers are broken.
+- Behavior/contract change: a Go method receives container arguments as borrows valid only for the duration of the call; storing one past the call requires an explicit copy. Mutating an `Array`/`Dictionary` argument is visible to the caller (shared-reference types); borrowed packed arrays are read-only, since mutating one may free or reallocate the caller's buffer (see the `container-lifecycle-management` spec). This matches the existing StringName/NodePath contract. The container decode paths are new and unreleased, so no existing callers are broken.
 
 ## Non-goals
 

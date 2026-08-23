@@ -232,22 +232,17 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.test_consume_packed_color_array(_pca), _pca.size())
 	assert_equal(example.call("test_consume_packed_color_array", _pca), _pca.size())
 
-	# Borrowed ptrcall container arguments share storage with the caller:
-	# a Go-side mutation propagates to the caller's container via ptrcall.
+	# Borrowed ptrcall container arguments share storage with the caller.
 	# Godot Array/Dictionary are shared-reference types (no copy-on-write),
-	# so Array mutations stay visible through varcall's owned decode too;
-	# Packed*Arrays are CoW, so varcall's owned copy isolates the caller.
+	# so a Go-side mutation is visible to the caller through either call
+	# style. Packed*Array borrows are READ-ONLY: the borrow holds no
+	# refcount, so a mutating call may free or reallocate the caller's
+	# buffer (undefined behavior) and is deliberately not exercised here.
 	var _mut_arr := Array([1, 2])
 	example.test_mutate_array(_mut_arr)
 	assert_equal(_mut_arr, [1, 2, 42])
 	example.call("test_mutate_array", _mut_arr)
 	assert_equal(_mut_arr, [1, 2, 42, 42])
-
-	var _mut_pi64 := PackedInt64Array([1, 2])
-	example.test_mutate_packed_int64_array(_mut_pi64)
-	assert_equal(_mut_pi64, PackedInt64Array([1, 2, 42]))
-	example.call("test_mutate_packed_int64_array", _mut_pi64)
-	assert_equal(_mut_pi64, PackedInt64Array([1, 2, 42]))
 
 	# Byte-identical defensive clones are classified as borrow echoes
 	# (contents round-trip in both call styles); a rebuilt array differs from

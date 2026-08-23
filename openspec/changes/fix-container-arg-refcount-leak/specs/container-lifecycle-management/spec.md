@@ -15,16 +15,27 @@ Container values received as arguments from Godot are valid only for the duratio
 - **WHEN** a Godot varcall passes a container argument (`Array`, `Dictionary`, or a `Packed*Array`) to a Go method
 - **THEN** the container is produced via the type-from-variant constructor as an owned copy that stays alive for the duration of the call (correct whether the supplied Variant is the same container type or a convertible one, e.g. `Array[int]` → `PackedInt64Array`), and the copy is released only after the return value has been encoded, so no reference is retained by the Go side after the call
 
-### Requirement: Borrowed Ptrcall Container Arguments Share Storage With The Caller
-A ptrcall container borrow does not increment the refcount, so Godot's copy-on-write cannot isolate subsequent writes: a Go method that mutates a borrowed container argument writes through to the caller's underlying storage (previously the owned-copy decode triggered copy-on-write on first mutation). Callers and callees SHALL treat ptrcall-received containers as aliased with the caller's data, not as private copies. Note that this aliasing applies to varcall as well for `Array` and `Dictionary`: those types are shared-reference containers without copy-on-write, so mutating even an owned decoded copy modifies the caller's data; only the copy-on-write `Packed*Array` types are isolated by varcall's owned decode.
+### Requirement: Shared-Reference Container Arguments Propagate Mutations To The Caller
+`Array` and `Dictionary` are shared-reference containers without copy-on-write: every handle (borrowed or owned) wraps the same underlying container. A Go method that mutates such an argument therefore mutates the GDScript caller's container regardless of call style. Callers and callees SHALL treat received `Array`/`Dictionary` arguments as aliased with the caller's data, not as private copies.
 
 #### Scenario: Mutation of a borrowed argument propagates to the caller
-- **WHEN** a Go method mutates a container argument it received via ptrcall
-- **THEN** the mutation is applied to storage shared with the GDScript caller and the caller observes the mutated contents in its original container
+- **WHEN** a Go method mutates an `Array` or `Dictionary` argument it received via ptrcall
+- **THEN** the caller observes the mutated contents in its original container
 
-#### Scenario: Varcall mutation isolation holds only for copy-on-write types
+#### Scenario: Varcall mutations propagate for shared-reference types only
+- **WHEN** a Go method appends to an `Array` received via varcall
+- **THEN** the caller's array changes too, because `Array` shares one underlying container across all handles
+
+### Requirement: Borrowed Packed Array Arguments Are Read-Only
+A ptrcall packed-array borrow (`Packed*Array`) holds no `CowData` refcount, so Godot considers the caller's buffer exclusively owned: any mutating operation that grows or reallocates the buffer frees storage the caller still references. Go methods SHALL NOT mutate a packed-array argument received via borrow; retaining one beyond the call also requires an explicit copy.
+
+#### Scenario: Mutating a borrowed packed array is unsupported
+- **WHEN** a Go method appends to a packed-array argument it received via ptrcall
+- **THEN** the behavior is undefined and may corrupt or free the caller's buffer; conforming methods must copy before mutating
+
+#### Scenario: Varcall owned decode isolates packed array mutations
 - **WHEN** a GDScript caller passes a `Packed*Array` to a Go method via varcall and the method appends to it
-- **THEN** the owned decode's refcount triggers copy-on-write on first write, the caller's original packed array is unchanged; when the same experiment is performed with an `Array`, the caller's array does change, because `Array` shares one underlying container across all handles
+- **THEN** the owned decode's refcount triggers copy-on-write on first write and the caller's original packed array is unchanged
 
 ### Requirement: Container Ptrcall Return Transfers Ownership
 Container values returned from Go to Godot through the ptrcall path SHALL be written into Godot's output buffer via the GDExtension copy constructor, so Godot receives an owned value. The Go-side source value SHALL be destroyed only when it owns a refcount (i.e. it is not a borrowed argument decoded for this call); destroying a borrow would release a reference Godot's caller still holds.

@@ -119,21 +119,20 @@ styles, confirmed against Godot's CoW internals (`Array::_ref` shares `_p`),
   "Byte-identical return classified as a borrow echo" scenario in the
   capability spec. A precise fix would need ownership tracking rather than
   content comparison.
-- **Mutation propagation through ptrcall borrows (low)** → because the
-  byte-copy borrow does not increment the refcount, first-write copy-on-write
-  does not trigger, so a Go method mutating a received container mutates the
-  GDScript caller's storage (under the previous owned-copy decode the refcount
-  bump isolated the caller). This behavior change was not in the original risk
-  list; it is now explicit contract semantics in the capability spec
-  ("Borrowed Ptrcall Container Arguments Share Storage With The Caller")
-  rather than accidental. Empirical refinement from implementing the tests:
-  `Array`/`Dictionary` are shared-reference containers with no copy-on-write,
-  so mutations propagate through *varcall's owned decode* as well — only the
-  `Packed*Array` types are isolated by varcall ownership. A copy-constructor
-  clone of an `Array` argument aliases the original, so "clone then mutate"
-  also mutates the caller's argument and keeps the return byte-equal to it
-  (echo-classified); tests that need a non-echo return must build a fresh
-  container instead.
+- **Mutation of borrowed containers (initially low, escalated high)** → a
+  byte-copy borrow does not increment the refcount, which has two distinct
+  consequences. For the shared-reference `Array`/`Dictionary` types it means
+  mutations propagate to the GDScript caller in both call styles (`Array` has
+  no copy-on-write; even varcall's owned decode shares the underlying
+  container). For the copy-on-write `Packed*Array` types it is worse: Godot
+  considers the caller's buffer exclusively owned, so a reallocating mutation
+  such as `append` past capacity frees storage the caller still references —
+  use-after-free/double-free (observed as intermittent `double free or
+  corruption` in CI). Resolution: mutation propagation is specified only for
+  `Array`/`Dictionary`; borrowed packed arrays are contractually read-only,
+  the packed-mutation test method was removed, and a copy-constructor clone
+  of an `Array` aliases its source (mutating it keeps the return byte-equal
+  to the borrow), so non-echo test returns build fresh containers instead.
 - **Dictionary arg-level test coverage gap (low)** → the varcall owned-copy
   decode plus `destroyOwnedContainerArgs` release machinery covers
   `Dictionary`, but the demo test project has no Dictionary argument

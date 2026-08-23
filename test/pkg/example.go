@@ -649,14 +649,6 @@ func (e *Example) TestMutateArray(arr Array) {
 	arr.Append(NewVariantInt64(42))
 }
 
-// TestMutatePackedInt64Array is TestMutateArray for PackedInt64Array. Packed
-// arrays are copy-on-write: the ptrcall borrow (no refcount) writes through to
-// the caller, while varcall's owned decode (refcount held until after the
-// return is encoded) CoWs on first write and isolates the caller.
-func (e *Example) TestMutatePackedInt64Array(arr PackedInt64Array) {
-	arr.Append(int64(42))
-}
-
 // TestCloneEchoArray returns an unmutated defensive clone of the received
 // array argument. The clone is byte-identical to the borrow, so
 // isPtrcallBorrowEcho classifies it as an echo and skips destroying it,
@@ -864,7 +856,6 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestConsumePackedVector3Array", "test_consume_packed_vector3_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestConsumePackedColorArray", "test_consume_packed_color_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestMutateArray", "test_mutate_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestMutatePackedInt64Array", "test_mutate_packed_int64_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestCloneEchoArray", "test_clone_echo_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestRebuildArrayPlus", "test_rebuild_array_plus", []string{"v"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)

@@ -640,6 +640,47 @@ func (e *Example) TestConsumePackedColorArray(arr PackedColorArray) int64 {
 	return arr.Size()
 }
 
+// TestMutateArray appends an element to the received array argument in place.
+// Via ptrcall the argument is a borrow sharing caller storage, so the mutation
+// is visible to the GDScript caller. Godot Array/Dictionary are shared-
+// reference types without copy-on-write, so even varcall's owned decode shares
+// the same underlying container and the mutation is visible there as well.
+func (e *Example) TestMutateArray(arr Array) {
+	arr.Append(NewVariantInt64(42))
+}
+
+// TestMutatePackedInt64Array is TestMutateArray for PackedInt64Array. Packed
+// arrays are copy-on-write: the ptrcall borrow (no refcount) writes through to
+// the caller, while varcall's owned decode (refcount held until after the
+// return is encoded) CoWs on first write and isolates the caller.
+func (e *Example) TestMutatePackedInt64Array(arr PackedInt64Array) {
+	arr.Append(int64(42))
+}
+
+// TestCloneEchoArray returns an unmutated defensive clone of the received
+// array argument. The clone is byte-identical to the borrow, so
+// isPtrcallBorrowEcho classifies it as an echo and skips destroying it,
+// retaining one reference per call (documented bounded leak in
+// container-lifecycle-management).
+func (e *Example) TestCloneEchoArray(arr Array) Array {
+	return NewArrayWithArray(arr)
+}
+
+// TestRebuildArrayPlus returns a freshly built Array holding the received
+// argument's elements plus a trailing 7. Unlike a copy-constructor clone, the
+// result shares no storage with the argument (Godot Array is a shared-reference
+// type with no copy-on-write), so its bytes differ from every borrowed
+// argument: isPtrcallBorrowEcho must not classify it as an echo, and its owned
+// reference is destroyed after encoding.
+func (e *Example) TestRebuildArrayPlus(arr Array) Array {
+	out := NewArray()
+	for i := int64(0); i < arr.Size(); i++ {
+		out.Append(arr.Get(i))
+	}
+	out.Append(NewVariantInt64(7))
+	return out
+}
+
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
@@ -822,6 +863,10 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestConsumePackedVector2Array", "test_consume_packed_vector2_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestConsumePackedVector3Array", "test_consume_packed_vector3_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestConsumePackedColorArray", "test_consume_packed_color_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestMutateArray", "test_mutate_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestMutatePackedInt64Array", "test_mutate_packed_int64_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestCloneEchoArray", "test_clone_echo_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestRebuildArrayPlus", "test_rebuild_array_plus", []string{"v"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

@@ -101,6 +101,50 @@ change is required there for this leak.
   one-line wrappers over `CallBuiltinConstructor`, identical in shape to the
   existing two.
 
+## Review Findings (PR #140)
+
+Captured from the post-implementation code review so they survive archiving.
+The core fix was verified sound: refcount accounting traced through both call
+styles, confirmed against Godot's CoW internals (`Array::_ref` shares `_p`),
+`make test` green locally (637 pass) and CI green on linux/windows.
+
+- **Content-based borrow-echo detection (medium)** → `isPtrcallBorrowEcho`
+  (`pkg/core/method_bind.go:428`) classifies echoes by byte equality
+  (`reflect.DeepEqual`), but Godot copy constructors produce byte-identical
+  values differing only in refcount. A Go method returning an *unmutated
+  defensive clone* of a received argument is therefore misclassified as a
+  borrow echo and the clone's refcount is never released: a silent,
+  bounded leak of one reference per such call, no crash. Inherent to
+  content-based heuristics for CoW types; recorded as the
+  "Byte-identical return classified as a borrow echo" scenario in the
+  capability spec. A precise fix would need ownership tracking rather than
+  content comparison.
+- **Mutation propagation through ptrcall borrows (low)** → because the
+  byte-copy borrow does not increment the refcount, first-write copy-on-write
+  does not trigger, so a Go method mutating a received container mutates the
+  GDScript caller's storage (under the previous owned-copy decode the refcount
+  bump isolated the caller). This behavior change was not in the original risk
+  list; it is now explicit contract semantics in the capability spec
+  ("Borrowed Ptrcall Container Arguments Share Storage With The Caller")
+  rather than accidental. Empirical refinement from implementing the tests:
+  `Array`/`Dictionary` are shared-reference containers with no copy-on-write,
+  so mutations propagate through *varcall's owned decode* as well — only the
+  `Packed*Array` types are isolated by varcall ownership. A copy-constructor
+  clone of an `Array` argument aliases the original, so "clone then mutate"
+  also mutates the caller's argument and keeps the return byte-equal to it
+  (echo-classified); tests that need a non-echo return must build a fresh
+  container instead.
+- **Dictionary arg-level test coverage gap (low)** → the varcall owned-copy
+  decode plus `destroyOwnedContainerArgs` release machinery covers
+  `Dictionary`, but the demo test project has no Dictionary argument
+  round-trip assertions exercising them. Follow-up test work.
+- **Same bug class remains for basic refcounted types (observation)** →
+  `StringName`/`NodePath` ptrcall echoes go through CopyConstructor+Destroy
+  without borrow-echo detection, so the destroy-the-borrow bug class this
+  change fixes for containers may still exist there. Candidate sibling
+  change; `String` and `PackedVector4Array` lifecycle remain deferred per
+  proposal Non-goals.
+
 ## Migration Plan
 
 Single commit behind no feature flag; the container decode paths are new and

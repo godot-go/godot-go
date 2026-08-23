@@ -26,3 +26,9 @@
 - [x] 5.1 Run `go vet ./pkg/core/... ./pkg/builtin/...`
 - [x] 5.2 Run `go build ./...`
 - [x] 5.3 Run `GODOT=/path/to/godot make build` and `make test`; fix any failures until the suite is green, confirming no orphaned-object or double-free symptoms for container round-trips
+
+## 6. Tests for review-finding spec scenarios
+
+- [x] 6.1 Add `TestMutateArray`/`TestMutatePackedInt64Array` (in-place `Append` on the received argument) and `TestCloneEchoArray`/`TestRebuildArrayPlus` to `test/pkg/example.go`, register via `ClassDBBindMethod`; assert in `test/demo/main.gd`: ptrcall mutation propagates to the caller's container, Array mutations also propagate through varcall (`Array` is shared-reference, no CoW) while `PackedInt64Array` varcall mutation is isolated by the owned decode's CoW; a byte-identical defensive clone round-trips as a borrow echo and a rebuilt array (bytes differing from every argument) round-trips without mutating or leaking
+- [x] 6.2 Sensitivity-verify the new tests: temporarily reverting the ptrcall `PackedInt64Array` decode to an owned copy fails exactly the ptrcall propagation assertion; temporarily disabling `isPtrcallBorrowEcho` produces `_ref` refcount-underflow errors and a crash on echo round-trips; both temporary mutations reverted afterwards
+- [x] 6.3 Run `GODOT=/path/to/godot make build` and `make test` — suite green (646 passes, 0 failures)

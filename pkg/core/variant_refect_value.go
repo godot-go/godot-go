@@ -10,7 +10,13 @@ import (
 	"go.uber.org/zap"
 )
 
-func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUninitializedTypePtr) {
+// GDExtensionTypePtrFromReflectValue writes value into the caller-provided
+// output buffer rOut. For refcounted built-ins the output receives an owned
+// copy-constructor result. When destroySource is true the Go-side source value
+// owns a refcount that is transferred to the caller and released here; when it
+// is false the source is a borrowed value (e.g. an echoed call argument) that
+// holds no refcount of its own, so it must not be destroyed.
+func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUninitializedTypePtr, destroySource bool) {
 	k := value.Kind()
 	switch k {
 	case reflect.Bool:
@@ -119,27 +125,57 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		case Dictionary:
 			DictionaryEncoder.EncodeTypePtrArg(inst, rOut)
 		case Array:
-			ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedByteArray:
-			PackedByteArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedByteArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedInt32Array:
-			PackedInt32ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedInt32ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedInt64Array:
-			PackedInt64ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedInt64ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedFloat32Array:
-			PackedFloat32ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedFloat32ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedFloat64Array:
-			PackedFloat64ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedFloat64ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedStringArray:
-			PackedStringArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedStringArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedVector2Array:
-			PackedVector2ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedVector2ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedVector3Array:
-			PackedVector3ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedVector3ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedVector4Array:
 			PackedVector4ArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		case PackedColorArray:
-			PackedColorArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedColorArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		default:
 			log.Panic("unhandled go struct to GDExtensionTypePtr",
 				zap.Any("value", value),
@@ -209,27 +245,57 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		case Dictionary:
 			DictionaryEncoder.EncodeTypePtrArg(inst, rOut)
 		case Array:
-			ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedByteArray:
-			PackedByteArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedByteArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedInt32Array:
-			PackedInt32ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedInt32ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedInt64Array:
-			PackedInt64ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedInt64ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedFloat32Array:
-			PackedFloat32ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedFloat32ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedFloat64Array:
-			PackedFloat64ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedFloat64ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedStringArray:
-			PackedStringArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedStringArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedVector2Array:
-			PackedVector2ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedVector2ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedVector3Array:
-			PackedVector3ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedVector3ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedVector4Array:
 			PackedVector4ArrayEncoder.EncodeTypePtrArg(inst, rOut)
 		case PackedColorArray:
-			PackedColorArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedColorArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		default:
 			log.Panic("unhandled array value type to GDExtensionTypePtr",
 				zap.Any("value", value),

@@ -358,6 +358,7 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			zap.String("resolved_args", VariantSliceToString(callArgs)),
 			zap.String("ret", util.ReflectValueSliceToString(ret)),
 		)
+		var retVariant Variant
 		switch md.GoReturnStyle {
 		case NoneReturnStyle:
 		case ValueAndBoolReturnStyle:
@@ -368,14 +369,21 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.NativePtr()))
 			pnr.Pin(ptr)
 			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
-			return v
+			retVariant = v
 		default:
 			log.Panic("unexpected MethodBindReturnStyle",
 				zap.Any("value", ret),
 			)
 		}
+		// Release the owned container arguments now that the return value (which
+		// may encode an echoed container argument into a new Variant) has been
+		// produced; the encoded return holds its own reference.
+		destroyOwnedContainerArgs(args)
+		if md.GoReturnStyle == NoneReturnStyle {
+			return NewVariantNil()
+		}
+		return retVariant
 	}
-	return NewVariantNil()
 }
 
 // Ptrcall is called by GDScript to call into Go
@@ -398,12 +406,42 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 		log.Warn("second return value ignored")
 		fallthrough
 	case ValueReturnStyle:
-		GDExtensionTypePtrFromReflectValue(ret[0], rReturn)
+		GDExtensionTypePtrFromReflectValue(ret[0], rReturn, !isPtrcallBorrowEcho(ret[0], args))
 	default:
 		log.Panic("unexpected MethodBindReturnStyle",
 			zap.Any("value", ret),
 		)
 	}
+}
+
+// isPtrcallBorrowEcho reports whether the ptrcall return value is a byte-for-byte
+// echo of a decoded call argument. Decoded refcounted container arguments are
+// borrows holding no refcount of their own, so echoing one back must not release
+// a reference through the return path.
+//
+// The comparison runs on the wrapped dynamic values (args[i].Interface() and
+// ret.Interface()), not on the reflect.Value wrappers themselves. If
+// reflect.DeepEqual were applied to the two reflect.Values, it would compare
+// the wrapper struct fields — type pointer, flag word, and data pointer — and
+// those differ between a decoded argument slot and a reflected return value
+// even when both wrap identical bytes. Comparing the wrappers would therefore
+// never detect an echo, and the borrow would be wrongly destroyed.
+func isPtrcallBorrowEcho(ret reflect.Value, args []reflect.Value) bool {
+	// Only the container types whose ptrcall return encoding destroys the
+	// source (see GDExtensionTypePtrFromReflectValue) can be borrow echoes.
+	switch ret.Interface().(type) {
+	case Array, PackedByteArray, PackedInt32Array, PackedInt64Array,
+		PackedFloat32Array, PackedFloat64Array, PackedStringArray,
+		PackedVector2Array, PackedVector3Array, PackedColorArray:
+	default:
+		return false
+	}
+	for i := 1; i < len(args); i++ {
+		if args[i].Type() == ret.Type() && reflect.DeepEqual(args[i].Interface(), ret.Interface()) {
+			return true
+		}
+	}
+	return false
 }
 
 func (md *GoMethodMetadata) String() string {

@@ -210,6 +210,51 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.test_echo_packed_color_array(_pca), _pca)
 	assert_equal(example.call("test_echo_packed_color_array", _pca), _pca)
 
+	# Container arg consume: correct contents observed, no retained reference.
+	assert_equal(example.test_consume_array(_arr), _arr.size())
+	assert_equal(example.call("test_consume_array", _arr), _arr.size())
+	assert_equal(example.test_consume_packed_byte_array(_pba), _pba.size())
+	assert_equal(example.call("test_consume_packed_byte_array", _pba), _pba.size())
+	assert_equal(example.test_consume_packed_int32_array(_pi32), _pi32.size())
+	assert_equal(example.call("test_consume_packed_int32_array", _pi32), _pi32.size())
+	assert_equal(example.test_consume_packed_int64_array(_pi64), _pi64.size())
+	assert_equal(example.call("test_consume_packed_int64_array", _pi64), _pi64.size())
+	assert_equal(example.test_consume_packed_float32_array(_pf32), _pf32.size())
+	assert_equal(example.call("test_consume_packed_float32_array", _pf32), _pf32.size())
+	assert_equal(example.test_consume_packed_float64_array(_pf64), _pf64.size())
+	assert_equal(example.call("test_consume_packed_float64_array", _pf64), _pf64.size())
+	assert_equal(example.test_consume_packed_string_array(_psa), _psa.size())
+	assert_equal(example.call("test_consume_packed_string_array", _psa), _psa.size())
+	assert_equal(example.test_consume_packed_vector2_array(_pv2a), _pv2a.size())
+	assert_equal(example.call("test_consume_packed_vector2_array", _pv2a), _pv2a.size())
+	assert_equal(example.test_consume_packed_vector3_array(_pv3a), _pv3a.size())
+	assert_equal(example.call("test_consume_packed_vector3_array", _pv3a), _pv3a.size())
+	assert_equal(example.test_consume_packed_color_array(_pca), _pca.size())
+	assert_equal(example.call("test_consume_packed_color_array", _pca), _pca.size())
+
+	# Borrowed ptrcall container arguments share storage with the caller.
+	# Godot Array/Dictionary are shared-reference types (no copy-on-write),
+	# so a Go-side mutation is visible to the caller through either call
+	# style. Packed*Array borrows are READ-ONLY: the borrow holds no
+	# refcount, so a mutating call may free or reallocate the caller's
+	# buffer (undefined behavior) and is deliberately not exercised here.
+	var _mut_arr := Array([1, 2])
+	example.test_mutate_array(_mut_arr)
+	assert_equal(_mut_arr, [1, 2, 42])
+	example.call("test_mutate_array", _mut_arr)
+	assert_equal(_mut_arr, [1, 2, 42, 42])
+
+	# Byte-identical defensive clones are classified as borrow echoes
+	# (contents round-trip in both call styles); a rebuilt array differs from
+	# every borrowed argument and its owned reference is destroyed by the
+	# return path, leaving the caller's array untouched.
+	var _cl_arr := Array(["a", "b"])
+	assert_equal(example.test_clone_echo_array(_cl_arr), _cl_arr)
+	assert_equal(example.call("test_clone_echo_array", _cl_arr), _cl_arr)
+	assert_equal(example.test_rebuild_array_plus(_cl_arr), Array(["a", "b", 7]))
+	assert_equal(example.call("test_rebuild_array_plus", _cl_arr), Array(["a", "b", 7]))
+	assert_equal(_cl_arr, Array(["a", "b"]))
+
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())

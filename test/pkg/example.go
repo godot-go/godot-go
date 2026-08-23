@@ -600,6 +600,79 @@ func (e *Example) TestEchoPackedVector3Array(arr PackedVector3Array) PackedVecto
 func (e *Example) TestEchoPackedVector4Array(arr PackedVector4Array) PackedVector4Array { return arr }
 func (e *Example) TestEchoPackedColorArray(arr PackedColorArray) PackedColorArray       { return arr }
 
+func (e *Example) TestConsumeArray(arr Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedByteArray(arr PackedByteArray) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedInt32Array(arr PackedInt32Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedInt64Array(arr PackedInt64Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedFloat32Array(arr PackedFloat32Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedFloat64Array(arr PackedFloat64Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedStringArray(arr PackedStringArray) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedVector2Array(arr PackedVector2Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedVector3Array(arr PackedVector3Array) int64 {
+	return arr.Size()
+}
+
+func (e *Example) TestConsumePackedColorArray(arr PackedColorArray) int64 {
+	return arr.Size()
+}
+
+// TestMutateArray appends an element to the received array argument in place.
+// Via ptrcall the argument is a borrow sharing caller storage, so the mutation
+// is visible to the GDScript caller. Godot Array/Dictionary are shared-
+// reference types without copy-on-write, so even varcall's owned decode shares
+// the same underlying container and the mutation is visible there as well.
+func (e *Example) TestMutateArray(arr Array) {
+	arr.Append(NewVariantInt64(42))
+}
+
+// TestCloneEchoArray returns an unmutated defensive clone of the received
+// array argument. The clone is byte-identical to the borrow, so
+// isPtrcallBorrowEcho classifies it as an echo and skips destroying it,
+// retaining one reference per call (documented bounded leak in
+// container-lifecycle-management).
+func (e *Example) TestCloneEchoArray(arr Array) Array {
+	return NewArrayWithArray(arr)
+}
+
+// TestRebuildArrayPlus returns a freshly built Array holding the received
+// argument's elements plus a trailing 7. Unlike a copy-constructor clone, the
+// result shares no storage with the argument (Godot Array is a shared-reference
+// type with no copy-on-write), so its bytes differ from every borrowed
+// argument: isPtrcallBorrowEcho must not classify it as an echo, and its owned
+// reference is destroyed after encoding.
+func (e *Example) TestRebuildArrayPlus(arr Array) Array {
+	out := NewArray()
+	for i := int64(0); i < arr.Size(); i++ {
+		out.Append(arr.Get(i))
+	}
+	out.Append(NewVariantInt64(7))
+	return out
+}
+
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
@@ -772,6 +845,19 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestEchoPackedVector3Array", "test_echo_packed_vector3_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoPackedVector4Array", "test_echo_packed_vector4_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoPackedColorArray", "test_echo_packed_color_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumeArray", "test_consume_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedByteArray", "test_consume_packed_byte_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedInt32Array", "test_consume_packed_int32_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedInt64Array", "test_consume_packed_int64_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedFloat32Array", "test_consume_packed_float32_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedFloat64Array", "test_consume_packed_float64_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedStringArray", "test_consume_packed_string_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedVector2Array", "test_consume_packed_vector2_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedVector3Array", "test_consume_packed_vector3_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestConsumePackedColorArray", "test_consume_packed_color_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestMutateArray", "test_mutate_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestCloneEchoArray", "test_clone_echo_array", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestRebuildArrayPlus", "test_rebuild_array_plus", []string{"v"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

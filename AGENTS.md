@@ -91,7 +91,7 @@ github.com/godot-go/godot-go/pkg/ffi.LoadProcAddress
 ...
 ```
 
-### Helful Source Code
+### Helpful Source Code
 Godot source code is helpful to look through. It exists at `../godot`.
 Godot-cpp source code is helpful to look through for a gdextension reference. It exists at `../godot-cpp`.
 

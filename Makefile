@@ -41,6 +41,9 @@ generate: clean ## Generate Go bindings from Godot API
 		find pkg -name *.gen.go -exec $(GOIMPORTS) -w {} \; ; \
 	fi
 
+fmt: ## Run go fmt
+	go fmt ./...
+
 update_godot_headers_from_binary: ## update godot_headers from the godot binary
 	DISPLAY=:0 "$(GODOT)" --dump-extension-api --headless; \
 	mv extension_api.json godot_headers/extension_api.json; \

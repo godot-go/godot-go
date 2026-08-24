@@ -27,22 +27,22 @@ type MethodBindAndClassMethodInfo struct {
 type StringSet map[string]struct{}
 
 type ClassInfo struct {
-	Name                 string
-	NameStringName       StringName // stored by value — eliminates dangling pointer bug
-	ParentName           string
-	ParentNameStringName StringName // stored by value
-	Level                GDExtensionInitializationLevel
-	MethodMap                 map[string]*MethodBindAndClassMethodInfo
-	VirtualMethodMap          map[string]*MethodBindAndClassMethodInfo
-	SignalNameSet             StringSet
-	SignalNameStringNames     map[string]StringName // signal name → StringName retained by Godot
-	PropertyNameSet           StringSet
-	ConstantNameSet           StringSet
-	ParentPtr                 *ClassInfo
-	ClassType                 reflect.Type
-	InheritType               reflect.Type
-	PropertyList              []GDExtensionPropertyInfo
-	ValidateProperty          func(*GDExtensionPropertyInfo)
+	Name                  string
+	NameStringName        StringName // stored by value — eliminates dangling pointer bug
+	ParentName            string
+	ParentNameStringName  StringName // stored by value
+	Level                 GDExtensionInitializationLevel
+	MethodMap             map[string]*MethodBindAndClassMethodInfo
+	VirtualMethodMap      map[string]*MethodBindAndClassMethodInfo
+	SignalNameSet         StringSet
+	SignalNameStringNames map[string]StringName // signal name → StringName retained by Godot
+	PropertyNameSet       StringSet
+	ConstantNameSet       StringSet
+	ParentPtr             *ClassInfo
+	ClassType             reflect.Type
+	InheritType           reflect.Type
+	PropertyList          []GDExtensionPropertyInfo
+	ValidateProperty      func(*GDExtensionPropertyInfo)
 }
 
 func (c *ClassInfo) HasError() error {
@@ -101,22 +101,22 @@ func NewClassInfo(
 	validateProperty func(*GDExtensionPropertyInfo),
 ) *ClassInfo {
 	ret := &ClassInfo{
-		Name:                    name,
-		NameStringName:          NewStringNameWithLatin1Chars(name),
-		ParentName:              parentName,
-		ParentNameStringName:    NewStringNameWithLatin1Chars(parentName),
-		Level:                   level,
-		MethodMap:               map[string]*MethodBindAndClassMethodInfo{},
-		SignalNameSet:           map[string]struct{}{},
-		SignalNameStringNames:   map[string]StringName{},
-		VirtualMethodMap:        map[string]*MethodBindAndClassMethodInfo{},
-		PropertyNameSet:         map[string]struct{}{},
-		ConstantNameSet:         map[string]struct{}{},
-		ParentPtr:               parentPtr,
-		ClassType:               classType,
-		InheritType:             inheritType,
-		PropertyList:            propertyList,
-		ValidateProperty:        validateProperty,
+		Name:                  name,
+		NameStringName:        NewStringNameWithLatin1Chars(name),
+		ParentName:            parentName,
+		ParentNameStringName:  NewStringNameWithLatin1Chars(parentName),
+		Level:                 level,
+		MethodMap:             map[string]*MethodBindAndClassMethodInfo{},
+		SignalNameSet:         map[string]struct{}{},
+		SignalNameStringNames: map[string]StringName{},
+		VirtualMethodMap:      map[string]*MethodBindAndClassMethodInfo{},
+		PropertyNameSet:       map[string]struct{}{},
+		ConstantNameSet:       map[string]struct{}{},
+		ParentPtr:             parentPtr,
+		ClassType:             classType,
+		InheritType:           inheritType,
+		PropertyList:          propertyList,
+		ValidateProperty:      validateProperty,
 	}
 	pnr.Pin(ret)
 	return ret

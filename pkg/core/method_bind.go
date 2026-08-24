@@ -52,12 +52,12 @@ type GoMethodMetadata struct {
 	// These persist for the lifetime of GoMethodMetadata to prevent
 	// dangling pointers in GDExtensionPropertyInfo.name/class_name fields.
 	// See Task 5.1 in fix-orphan-stringname change.
-	gdeReturnPropNameStringName    StringName
+	gdeReturnPropNameStringName      StringName
 	gdeReturnPropClassNameStringName StringName
-	gdeReturnPropHintString        String
-	gdeArgPropNameStringNames      []StringName
-	gdeArgPropClassNameStringNames []StringName
-	gdeArgPropHintStrings          []String
+	gdeReturnPropHintString          String
+	gdeArgPropNameStringNames        []StringName
+	gdeArgPropClassNameStringNames   []StringName
+	gdeArgPropHintStrings            []String
 	// Lifecycle-managed StringName for the GD method name.
 	gdeMethodNameStringName StringName
 	// Lifecycle-managed StringName/String for variadic (varargs) argument PropertyInfo.
@@ -197,9 +197,9 @@ func NewGoMethodMetadata(
 	// Track StringName objects for return value PropertyInfo lifecycle management.
 	// These persist in GoMethodMetadata to prevent dangling pointers.
 	var (
-		returnPropNameStringName    StringName
+		returnPropNameStringName      StringName
 		returnPropClassNameStringName StringName
-		returnPropHintString        String
+		returnPropHintString          String
 	)
 	if returnType != GDEXTENSION_VARIANT_TYPE_NIL {
 		returnPropClassNameStringName = NewStringNameWithLatin1Chars(className)
@@ -248,30 +248,30 @@ func NewGoMethodMetadata(
 		argumentsMetadata[i] = GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE
 	}
 	ret := &GoMethodMetadata{
-		ClassName:                    className,
-		GdMethodName:                 gdMethodName,
-		GoMethodName:                 goMethodName,
-		Func:                         fn,
-		GoReturnType:                 goReturnType,
-		GoReturnStyle:                returnStyle,
-		GoArgumentTypes:              goArgumentTypes,
-		DefaultArguments:             defaultArguments,
-		IsVariadic:                   isVariadicFlaged,
-		IsVirtual:                    isVirtual,
-		MethodFlags:                  methodFlags,
-		gdeReturnType:                returnType,
-		gdeReturnPropertyInfo:        returnPropertyInfo,
-		gdeArgumentsInfo:             argumentsInfo,
-		gdeArgumentsMetadata:         argumentsMetadata,
-		gdeArgumentTypes:             variantTypes,
-		gdeDefaultArgumentPtrs:       defaultArgumentPtrs,
-		gdeReturnPropNameStringName:  returnPropNameStringName,
+		ClassName:                        className,
+		GdMethodName:                     gdMethodName,
+		GoMethodName:                     goMethodName,
+		Func:                             fn,
+		GoReturnType:                     goReturnType,
+		GoReturnStyle:                    returnStyle,
+		GoArgumentTypes:                  goArgumentTypes,
+		DefaultArguments:                 defaultArguments,
+		IsVariadic:                       isVariadicFlaged,
+		IsVirtual:                        isVirtual,
+		MethodFlags:                      methodFlags,
+		gdeReturnType:                    returnType,
+		gdeReturnPropertyInfo:            returnPropertyInfo,
+		gdeArgumentsInfo:                 argumentsInfo,
+		gdeArgumentsMetadata:             argumentsMetadata,
+		gdeArgumentTypes:                 variantTypes,
+		gdeDefaultArgumentPtrs:           defaultArgumentPtrs,
+		gdeReturnPropNameStringName:      returnPropNameStringName,
 		gdeReturnPropClassNameStringName: returnPropClassNameStringName,
-		gdeReturnPropHintString:      returnPropHintString,
-		gdeArgPropNameStringNames:    argPropNameStringNames,
-		gdeArgPropClassNameStringNames: argPropClassNameStringNames,
-		gdeArgPropHintStrings:        argPropHintStrings,
-		gdeMethodNameStringName:      NewStringNameWithLatin1Chars(gdMethodName),
+		gdeReturnPropHintString:          returnPropHintString,
+		gdeArgPropNameStringNames:        argPropNameStringNames,
+		gdeArgPropClassNameStringNames:   argPropClassNameStringNames,
+		gdeArgPropHintStrings:            argPropHintStrings,
+		gdeMethodNameStringName:          NewStringNameWithLatin1Chars(gdMethodName),
 	}
 	// Create variadic argument PropertyInfo StringNames for variadic methods.
 	// These persist in GoMethodMetadata for lifecycle management.

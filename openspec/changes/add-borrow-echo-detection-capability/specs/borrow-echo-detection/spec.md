@@ -12,10 +12,10 @@ Before any source release on a return path, the returned refcounted built-in SHA
 - **THEN** the output receives a fresh reference and the borrowed source is not released
 
 ### Requirement: Non-Echo Source Release Depends On Type And Return Path
-Where a return path releases Go-created sources after encoding — ptrcall for all covered types, and varcall for `StringName`/`NodePath` — a value classified as owned (not an echo) SHALL be destroyed after encoding. Container values returned through varcall are not released by the return path (their varcall lifecycle is governed by owned-copy argument decoding and post-call release per `container-lifecycle-management`; that Go-created container sources are not released by the return encoder itself is recorded deferred behavior there).
+Where a return path releases Go-created sources after encoding — ptrcall for all covered types except `PackedVector4Array` (whose ptrcall return is a raw byte-copy with no source release), and varcall for `StringName`/`NodePath` — a value classified as owned (not an echo) SHALL be destroyed after encoding. Container values returned through varcall are not released by the return path (their varcall lifecycle is governed by owned-copy argument decoding and post-call release per `container-lifecycle-management`; that Go-created container sources are not released by the return encoder itself is recorded deferred behavior there).
 
 #### Scenario: Distinct value on a releasing path is destroyed after encoding
-- **WHEN** a Go method returns a StringName, NodePath (via either call style), or container (via ptrcall) whose bytes differ from every argument of the call
+- **WHEN** a Go method returns a StringName, NodePath (via either call style), or container other than `PackedVector4Array` (via ptrcall) whose bytes differ from every argument of the call
 - **THEN** the source is classified as owned and destroyed after the output is encoded
 
 #### Scenario: Container returned via varcall has no return-path release
@@ -23,7 +23,7 @@ Where a return path releases Go-created sources after encoding — ptrcall for a
 - **THEN** the output Variant holds its own reference and the return path performs no source release; lifecycle accounting for the source follows the container capability's owned-copy rules
 
 ### Requirement: Same-Content Clones Are Misclassified As Echoes
-Content-based classification cannot distinguish an owned copy from the borrow it was cloned from when their bytes are identical — Godot copy constructors share storage (copy-on-write) and StringName interns data. An unmutated defensive clone returned through a path that would release it (ptrcall for all covered types; varcall for `StringName`/`NodePath`) SHALL be treated as a borrow echo, silently retaining exactly one reference per call; this bounded leak is accepted behavior and SHALL NOT crash or corrupt state. Methods that clone an argument and return it unmutated accept this leak; mutating the clone before returning, or returning a freshly built value, avoids it.
+Content-based classification cannot distinguish an owned copy from the borrow it was cloned from when their bytes are identical — Godot copy constructors share storage (copy-on-write) and StringName interns data. An unmutated defensive clone returned through a path that would release it (ptrcall for all covered types except `PackedVector4Array`, whose ptrcall return performs no source release; varcall for `StringName`/`NodePath`) SHALL be treated as a borrow echo, silently retaining exactly one reference per call; this bounded leak is accepted behavior and SHALL NOT crash or corrupt state. Methods that clone an argument and return it unmutated accept this leak; mutating the clone before returning, or returning a freshly built value, avoids it.
 
 #### Scenario: Unmutated defensive clone leaks one reference per call
 - **WHEN** a Go method clones a borrowed container or interned-type argument without modifying it and returns the clone through a releasing return path

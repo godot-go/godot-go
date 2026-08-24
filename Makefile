@@ -22,7 +22,7 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv installdeps generate update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test interactive_test open_demo_in_editor
+.PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test interactive_test open_demo_in_editor
 
 goenv: ## Print Go environment variables
 	go env

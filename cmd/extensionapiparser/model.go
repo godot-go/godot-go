@@ -54,15 +54,15 @@ type BuiltinClassMemberOffset struct {
 }
 
 type GlobalConstant struct {
-	Name      string `json:"name"`
-	Value     int    `json:"value"`
-	IsBitfield bool  `json:"is_bitfield"`
+	Name       string `json:"name"`
+	Value      int    `json:"value"`
+	IsBitfield bool   `json:"is_bitfield"`
 }
 
 type EnumValue struct {
-	Name      string `json:"name"`
-	Value     int    `json:"value"`
-	IsBitfield bool  `json:"is_bitfield"`
+	Name       string `json:"name"`
+	Value      int    `json:"value"`
+	IsBitfield bool   `json:"is_bitfield"`
 }
 
 type Enum struct {

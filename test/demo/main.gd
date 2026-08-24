@@ -89,6 +89,20 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.call("test_return_string_name"), &"returned_name")
 	assert_equal(example.call("test_return_node_path"), NodePath("root/child"))
 
+	# Borrowed StringName/NodePath echoes must not be destroyed by the return
+	# path in either call style; fresh differently-valued returns exercise the
+	# destroy-after-encode accounting. Repeated iterations surface refcount
+	# drift as orphan warnings or crashes.
+	for _i in range(50):
+		assert_equal(example.test_echo_string_name_arg(&"echo_name"), &"echo_name")
+		assert_equal(example.call("test_echo_string_name_arg", &"echo_name"), &"echo_name")
+		assert_equal(example.test_fresh_string_name(&"echo_name"), &"returned_fresh_name")
+		assert_equal(example.call("test_fresh_string_name", &"echo_name"), &"returned_fresh_name")
+		assert_equal(example.test_echo_node_path_arg(NodePath("echo/path")), NodePath("echo/path"))
+		assert_equal(example.call("test_echo_node_path_arg", NodePath("echo/path")), NodePath("echo/path"))
+		assert_equal(example.test_fresh_node_path(NodePath("echo/path")), NodePath("fresh/path"))
+		assert_equal(example.call("test_fresh_node_path", NodePath("echo/path")), NodePath("fresh/path"))
+
 	# Scalar echo (bool / int64 / float64 / Go string).
 	assert_equal(example.test_scalar_echo(true, 42, 1.5, "scalar"), "true:42:1.5:scalar")
 	assert_equal(example.call("test_scalar_echo", true, 42, 1.5, "scalar"), "true:42:1.5:scalar")

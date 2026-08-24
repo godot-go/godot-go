@@ -52,12 +52,12 @@ type GoMethodMetadata struct {
 	// These persist for the lifetime of GoMethodMetadata to prevent
 	// dangling pointers in GDExtensionPropertyInfo.name/class_name fields.
 	// See Task 5.1 in fix-orphan-stringname change.
-	gdeReturnPropNameStringName    StringName
+	gdeReturnPropNameStringName      StringName
 	gdeReturnPropClassNameStringName StringName
-	gdeReturnPropHintString        String
-	gdeArgPropNameStringNames      []StringName
-	gdeArgPropClassNameStringNames []StringName
-	gdeArgPropHintStrings          []String
+	gdeReturnPropHintString          String
+	gdeArgPropNameStringNames        []StringName
+	gdeArgPropClassNameStringNames   []StringName
+	gdeArgPropHintStrings            []String
 	// Lifecycle-managed StringName for the GD method name.
 	gdeMethodNameStringName StringName
 	// Lifecycle-managed StringName/String for variadic (varargs) argument PropertyInfo.
@@ -197,9 +197,9 @@ func NewGoMethodMetadata(
 	// Track StringName objects for return value PropertyInfo lifecycle management.
 	// These persist in GoMethodMetadata to prevent dangling pointers.
 	var (
-		returnPropNameStringName    StringName
+		returnPropNameStringName      StringName
 		returnPropClassNameStringName StringName
-		returnPropHintString        String
+		returnPropHintString          String
 	)
 	if returnType != GDEXTENSION_VARIANT_TYPE_NIL {
 		returnPropClassNameStringName = NewStringNameWithLatin1Chars(className)
@@ -248,30 +248,30 @@ func NewGoMethodMetadata(
 		argumentsMetadata[i] = GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE
 	}
 	ret := &GoMethodMetadata{
-		ClassName:                    className,
-		GdMethodName:                 gdMethodName,
-		GoMethodName:                 goMethodName,
-		Func:                         fn,
-		GoReturnType:                 goReturnType,
-		GoReturnStyle:                returnStyle,
-		GoArgumentTypes:              goArgumentTypes,
-		DefaultArguments:             defaultArguments,
-		IsVariadic:                   isVariadicFlaged,
-		IsVirtual:                    isVirtual,
-		MethodFlags:                  methodFlags,
-		gdeReturnType:                returnType,
-		gdeReturnPropertyInfo:        returnPropertyInfo,
-		gdeArgumentsInfo:             argumentsInfo,
-		gdeArgumentsMetadata:         argumentsMetadata,
-		gdeArgumentTypes:             variantTypes,
-		gdeDefaultArgumentPtrs:       defaultArgumentPtrs,
-		gdeReturnPropNameStringName:  returnPropNameStringName,
+		ClassName:                        className,
+		GdMethodName:                     gdMethodName,
+		GoMethodName:                     goMethodName,
+		Func:                             fn,
+		GoReturnType:                     goReturnType,
+		GoReturnStyle:                    returnStyle,
+		GoArgumentTypes:                  goArgumentTypes,
+		DefaultArguments:                 defaultArguments,
+		IsVariadic:                       isVariadicFlaged,
+		IsVirtual:                        isVirtual,
+		MethodFlags:                      methodFlags,
+		gdeReturnType:                    returnType,
+		gdeReturnPropertyInfo:            returnPropertyInfo,
+		gdeArgumentsInfo:                 argumentsInfo,
+		gdeArgumentsMetadata:             argumentsMetadata,
+		gdeArgumentTypes:                 variantTypes,
+		gdeDefaultArgumentPtrs:           defaultArgumentPtrs,
+		gdeReturnPropNameStringName:      returnPropNameStringName,
 		gdeReturnPropClassNameStringName: returnPropClassNameStringName,
-		gdeReturnPropHintString:      returnPropHintString,
-		gdeArgPropNameStringNames:    argPropNameStringNames,
-		gdeArgPropClassNameStringNames: argPropClassNameStringNames,
-		gdeArgPropHintStrings:        argPropHintStrings,
-		gdeMethodNameStringName:      NewStringNameWithLatin1Chars(gdMethodName),
+		gdeReturnPropHintString:          returnPropHintString,
+		gdeArgPropNameStringNames:        argPropNameStringNames,
+		gdeArgPropClassNameStringNames:   argPropClassNameStringNames,
+		gdeArgPropHintStrings:            argPropHintStrings,
+		gdeMethodNameStringName:          NewStringNameWithLatin1Chars(gdMethodName),
 	}
 	// Create variadic argument PropertyInfo StringNames for variadic methods.
 	// These persist in GoMethodMetadata for lifecycle management.
@@ -328,7 +328,9 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			// return ret[0].Interface().(Variant)
 			v := Variant{}
 			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.NativePtr()))
-			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
+			// Variadic methods receive raw Variants and never hold borrows,
+			// so any returned StringName/NodePath is Go-created: always destroy.
+			GDExtensionVariantPtrFromReflectValue(ret[0], ptr, true)
 			return v
 		default:
 			log.Panic("unexpected MethodBindReturnStyle",
@@ -344,14 +346,6 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			zap.String("resolved_args", VariantSliceToString(callArgs)),
 		)
 		ret := md.Func.Call(args)
-		for _, arg := range args {
-			switch v := arg.Interface().(type) {
-			case StringName:
-				v.Destroy()
-			case NodePath:
-				v.Destroy()
-			}
-		}
 		log.Info("Call",
 			zap.String("bind", md.String()),
 			zap.String("gd_args", VariantSliceToString(gdArgs)),
@@ -368,7 +362,7 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			v := Variant{}
 			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.NativePtr()))
 			pnr.Pin(ptr)
-			GDExtensionVariantPtrFromReflectValue(ret[0], ptr)
+			GDExtensionVariantPtrFromReflectValue(ret[0], ptr, !isPtrcallBorrowEcho(ret[0], args))
 			retVariant = v
 		default:
 			log.Panic("unexpected MethodBindReturnStyle",
@@ -414,10 +408,10 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 	}
 }
 
-// isPtrcallBorrowEcho reports whether the ptrcall return value is a byte-for-byte
-// echo of a decoded call argument. Decoded refcounted container arguments are
-// borrows holding no refcount of their own, so echoing one back must not release
-// a reference through the return path.
+// isPtrcallBorrowEcho reports whether the return value is a byte-for-byte
+// echo of a decoded call argument. Decoded StringName/NodePath/container
+// arguments are borrows holding no refcount of their own, so echoing one back
+// must not release a reference through either return path.
 //
 // The comparison runs on the wrapped dynamic values (args[i].Interface() and
 // ret.Interface()), not on the reflect.Value wrappers themselves. If
@@ -427,10 +421,12 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 // even when both wrap identical bytes. Comparing the wrappers would therefore
 // never detect an echo, and the borrow would be wrongly destroyed.
 func isPtrcallBorrowEcho(ret reflect.Value, args []reflect.Value) bool {
-	// Only the container types whose ptrcall return encoding destroys the
-	// source (see GDExtensionTypePtrFromReflectValue) can be borrow echoes.
+	// Only the types whose return encoding destroys the source (see
+	// GDExtensionTypePtrFromReflectValue and GDExtensionVariantPtrFromReflectValue)
+	// can be borrow echoes.
 	switch ret.Interface().(type) {
-	case Array, PackedByteArray, PackedInt32Array, PackedInt64Array,
+	case StringName, NodePath,
+		Array, PackedByteArray, PackedInt32Array, PackedInt64Array,
 		PackedFloat32Array, PackedFloat64Array, PackedStringArray,
 		PackedVector2Array, PackedVector3Array, PackedColorArray:
 	default:

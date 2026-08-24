@@ -542,6 +542,33 @@ func (e *Example) TestReturnNodePath() NodePath {
 	return NewNodePathWithString(NewStringWithUtf8Chars("root/child"))
 }
 
+// TestEchoStringNameArg returns the received StringName argument unchanged.
+// The argument is a borrow in both call styles, so the return path must
+// classify it as a borrow echo and leave it undestroyed.
+func (e *Example) TestEchoStringNameArg(p_name StringName) StringName {
+	return p_name
+}
+
+// TestFreshStringName ignores the received argument's value and returns a
+// newly constructed StringName with different contents, guaranteeing a non-
+// echo classification (same-content clones can be interned byte-identical to
+// the borrow) and exercising the destroy-after-encode accounting.
+func (e *Example) TestFreshStringName(p_name StringName) StringName {
+	_ = p_name
+	return NewStringNameWithUtf8Chars("returned_fresh_name")
+}
+
+// TestEchoNodePathArg is TestEchoStringNameArg for NodePath.
+func (e *Example) TestEchoNodePathArg(p_path NodePath) NodePath {
+	return p_path
+}
+
+// TestFreshNodePath is TestFreshStringName for NodePath.
+func (e *Example) TestFreshNodePath(p_path NodePath) NodePath {
+	_ = p_path
+	return NewNodePathWithString(NewStringWithUtf8Chars("fresh/path"))
+}
+
 // TestScalarEcho decodes bool/int64/float64/string scalars and returns them
 // formatted into a Go string.
 func (e *Example) TestScalarEcho(p_bool bool, p_i64 int64, p_f64 float64, p_str string) string {
@@ -815,6 +842,10 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestNodePathArgEcho", "test_node_path_arg_echo", []string{"path"}, nil)
 		ClassDBBindMethod(t, "TestReturnStringName", "test_return_string_name", nil, nil)
 		ClassDBBindMethod(t, "TestReturnNodePath", "test_return_node_path", nil, nil)
+		ClassDBBindMethod(t, "TestEchoStringNameArg", "test_echo_string_name_arg", []string{"name"}, nil)
+		ClassDBBindMethod(t, "TestFreshStringName", "test_fresh_string_name", []string{"name"}, nil)
+		ClassDBBindMethod(t, "TestEchoNodePathArg", "test_echo_node_path_arg", []string{"path"}, nil)
+		ClassDBBindMethod(t, "TestFreshNodePath", "test_fresh_node_path", []string{"path"}, nil)
 		ClassDBBindMethod(t, "TestScalarEcho", "test_scalar_echo", []string{"p_bool", "p_i64", "p_f64", "p_str"}, nil)
 		ClassDBBindMethod(t, "TestUint64Echo", "test_uint64_echo", []string{"u64"}, nil)
 		ClassDBBindMethod(t, "TestReturnInt8", "test_return_int8", nil, nil)

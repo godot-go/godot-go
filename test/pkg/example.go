@@ -700,6 +700,20 @@ func (e *Example) TestRebuildArrayPlus(arr Array) Array {
 	return out
 }
 
+func (e *Example) TestEchoDictionary(d Dictionary) Dictionary { return d }
+
+func (e *Example) TestConsumeDictionary(d Dictionary) int64 {
+	return d.Size()
+}
+
+// TestMutateDictionary adds one known key to the received dictionary argument.
+// Godot Dictionary is a shared-reference type without copy-on-write, so even
+// varcall's owned decode shares the same underlying container and the new key
+// is visible to the GDScript caller.
+func (e *Example) TestMutateDictionary(d Dictionary) {
+	d.SetKeyed("go_added", NewVariantInt64(42))
+}
+
 func (e *Example) TestCharacterBody2D(body CharacterBody2D) {
 	if body == nil {
 		log.Warn("CharacterBody2D was nil")
@@ -889,6 +903,9 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestMutateArray", "test_mutate_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestCloneEchoArray", "test_clone_echo_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestRebuildArrayPlus", "test_rebuild_array_plus", []string{"v"}, nil)
+		ClassDBBindMethod(t, "TestEchoDictionary", "test_echo_dictionary", []string{"d"}, nil)
+		ClassDBBindMethod(t, "TestConsumeDictionary", "test_consume_dictionary", []string{"d"}, nil)
+		ClassDBBindMethod(t, "TestMutateDictionary", "test_mutate_dictionary", []string{"d"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)

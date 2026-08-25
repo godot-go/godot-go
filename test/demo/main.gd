@@ -269,6 +269,29 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.call("test_rebuild_array_plus", _cl_arr), Array(["a", "b", 7]))
 	assert_equal(_cl_arr, Array(["a", "b"]))
 
+	# Dictionary arguments: echo round-trips contents and consume observes
+	# the key count without retaining a Go-side reference.
+	var _dict := {"a": 1, "b": 2}
+	assert_equal(example.call("test_echo_dictionary", _dict), _dict)
+	assert_equal(example.call("test_consume_dictionary", _dict), 2)
+
+	# Shared-reference mutation: Dictionary has no copy-on-write, so a key
+	# added by the Go method must be visible in the caller's original
+	# dictionary after the call.
+	example.call("test_mutate_dictionary", _dict)
+	assert_true(_dict.has("go_added"))
+	assert_equal(_dict["go_added"], 42)
+
+	# Direct ptrcall dispatch with a Dictionary argument is unsupported
+	# today: the ptrcall argument decode has no Dictionary case
+	# (reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs), so a call
+	# like `example.test_echo_dictionary(_dict)` panics deterministically
+	# with "MethodBind.Ptrcall reflected as array does not support type:
+	# Dictionary" and aborts the process. That failure is intentionally NOT
+	# exercised here; varcall (.call) is the only supported style for
+	# Dictionary arguments. If a ptrcall decode case lands later, add echo/
+	# consume assertions for that call style alongside this comment.
+
 	# Return values.
 	assert_equal(example.return_something("some string", 7.0/6, 7.0/6 * 1000, 2147483647, -127, -32768, 2147483647, 9223372036854775807), "1. some string42, 2. %.6f, 3. %f, 4. 2147483647, 5. -127, 6. -32768, 7. 2147483647, 8. 9223372036854775807" % [7.0/6, 7.0/6 * 1000])
 	assert_equal(example.return_something_const(), get_viewport())

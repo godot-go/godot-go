@@ -8,7 +8,7 @@
 
 ## 2. Tests
 
-- [ ] 2.1 In `test/pkg/example.go`, add echo methods taking a StringName/NodePath argument and returning it unchanged, plus fresh-return methods returning a value with different contents than the argument (per design Decision 2); register via `ClassDBBindMethod`
+- [x] 2.1 In `test/pkg/example.go`, add echo methods taking a StringName/NodePath argument and returning it unchanged, plus fresh-return methods returning a value with different contents than the argument (per design Decision 2); register via `ClassDBBindMethod`
 - [x] 2.2 In `test/demo/main.gd`, add ptrcall and varcall assertions for echo round-trips (returned value equals input) and fresh returns (expected different value), repeated enough iterations to surface refcount drift
 - [x] 2.3 Sensitivity check A: temporarily disable the new detection cases, rebuild, and confirm orphaned-reference/double-free symptoms appear on echo round-trips in both call styles; revert and confirm clean
 - [x] 2.4 Sensitivity check B: temporarily re-add a destroy of borrowed varcall args (equivalent to the deleted loop), rebuild, and confirm drift/symptoms on repeated varcall echo calls; revert and confirm clean

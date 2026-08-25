@@ -293,6 +293,8 @@ func test_suite(i: int, example: Example):
 	var hderived := TestHierarchicalDerived.new()
 	assert_equal(hderived.get_maximum_size(), Vector2(111, 22))
 	assert_equal(example.get_maximum_size(), Vector2(-1, -1))
+	_hbase.free()
+	hderived.free()
 
 	# Direct ptrcall dispatch with a Dictionary argument is unsupported
 	# today: the ptrcall argument decode has no Dictionary case

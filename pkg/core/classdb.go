@@ -268,6 +268,68 @@ func ClassDBBindMethodVirtual[T GDClass](
 	classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues)
 }
 
+// pascalFromGdVirtual converts a GDScript virtual name to its Go convention
+// segment: "_ready" -> "Ready", "to_string" -> "ToString",
+// "_property_can_revert" -> "PropertyCanRevert".
+func pascalFromGdVirtual(gdMethodName string) string {
+	trimmed := strings.TrimPrefix(gdMethodName, "_")
+	parts := strings.Split(trimmed, "_")
+	var sb strings.Builder
+	for _, part := range parts {
+		if part == "" {
+			continue
+		}
+		sb.WriteString(strings.ToUpper(part[:1]))
+		sb.WriteString(part[1:])
+	}
+	return sb.String()
+}
+
+// virtualEmbeddedChainTypes returns the receiver type's embedding chain,
+// most-derived first: the type itself (deref'd), then each anonymous field's
+// chain in declaration order.
+func virtualEmbeddedChainTypes(t reflect.Type) []reflect.Type {
+	if t == nil {
+		return nil
+	}
+	typ := t
+	if typ.Kind() == reflect.Pointer {
+		typ = typ.Elem()
+	}
+	if typ.Kind() != reflect.Struct {
+		return []reflect.Type{typ}
+	}
+	types := []reflect.Type{typ}
+	for i := 0; i < typ.NumField(); i++ {
+		field := typ.Field(i)
+		if !field.Anonymous {
+			continue
+		}
+		types = append(types, virtualEmbeddedChainTypes(field.Type)...)
+	}
+	return types
+}
+
+// resolveQualifiedVirtualMethod finds the most-derived implementation of a
+// Godot virtual along T's embedding chain. Each level contributes one
+// candidate named V_<LevelTypeName>_<PascalGdName>; because qualified names
+// embed their declaring type's name they cannot collide across levels, so
+// querying the outermost promoted method set per candidate (levels ordered
+// most-derived first) yields the nearest implementation.
+func resolveQualifiedVirtualMethod(t reflect.Type, gdMethodName string) (m reflect.Method, ok bool, searched []string) {
+	pascal := pascalFromGdVirtual(gdMethodName)
+	chainTypes := virtualEmbeddedChainTypes(t)
+	searched = make([]string, 0, len(chainTypes))
+	for _, level := range chainTypes {
+		candidate := "V_" + level.Name() + "_" + pascal
+		searched = append(searched, candidate)
+		if found, foundOk := t.MethodByName(candidate); foundOk {
+			return found, true, searched
+		}
+	}
+	return reflect.Method{}, false, searched
+}
+
 func ClassDBBindMethodVarargs[T GDClass](
 	inst T,
 	goMethodName string,
@@ -288,6 +350,7 @@ func classDBBindMethod[T GDClass](
 ) {
 	t := reflect.TypeFor[T]()
 	className := inst.GetClassName()
+	isVirtualBind := (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL
 	log.Debug("classDBBindMethod called",
 		zap.Any("inst", inst),
 		zap.String("go_name", goMethodName),
@@ -296,13 +359,37 @@ func classDBBindMethod[T GDClass](
 		zap.Any("t", t),
 		zap.Any("class", className),
 	)
-	m, ok := t.MethodByName(goMethodName)
-	if !ok {
-		log.Panic("unable to find function",
-			zap.String("gdclass", className),
-			zap.String("method_name", goMethodName),
-			zap.String("gd_method_name", gdMethodName),
-		)
+	var m reflect.Method
+	if isVirtualBind {
+		// Clean break: the deprecated flat V_<Method> form must not register.
+		if strings.HasPrefix(goMethodName, "V_") &&
+			!strings.Contains(strings.TrimPrefix(goMethodName, "V_"), "_") {
+			log.Panic("flat virtual method name is no longer supported; use the qualified form",
+				zap.String("gd_method_name", gdMethodName),
+				zap.String("flat_go_name", goMethodName),
+				zap.String("expected_shape", "V_<ClassName>_"+pascalFromGdVirtual(gdMethodName)),
+			)
+		}
+		resolved, ok, searched := resolveQualifiedVirtualMethod(t, gdMethodName)
+		if !ok {
+			log.Panic("no qualified virtual implementation found along the embedding chain",
+				zap.String("gd_method_name", gdMethodName),
+				zap.String("searched_names", strings.Join(searched, ", ")),
+				zap.String("expected_shape", "V_<ClassName>_"+pascalFromGdVirtual(gdMethodName)),
+			)
+		}
+		m = resolved
+		goMethodName = m.Name
+	} else {
+		var ok bool
+		m, ok = t.MethodByName(goMethodName)
+		if !ok {
+			log.Panic("unable to find function",
+				zap.String("gdclass", className),
+				zap.String("method_name", goMethodName),
+				zap.String("gd_method_name", gdMethodName),
+			)
+		}
 	}
 	log.Debug("method found",
 		zap.Reflect("method", m),

@@ -35,21 +35,52 @@ We see that `CharacterBody2DImpl` embeds the `PhysicsBody2DImpl` struct, which i
 
 ## Virtual Methods
 
-Go does not natively support virtual functions or struct methods. Instead, a method name prefix convention is implemented: methods prefixed with `V_` are registered as Godot virtual methods.
+Go does not natively support virtual functions or struct methods. Instead, a method naming convention is implemented: qualified methods named `V_<ClassName>_<MethodName>` are registered as Godot virtual methods.
 
 ```go
-func (e *Example) V_Ready() { ... }
+func (e *Example) V_Example_Ready() { ... }
 
 ...
 
 // register the function with Godot
-ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
+ClassDBBindMethodVirtual(t, "V_Example_Ready", "_ready", nil, nil)
 ```
 
 * `V_` denotes that this is a virtual function.
-* `Ready` matches the `_ready` gdscript method.
+* `Example` is the Go type whose embedding level implements the virtual.
+* `Ready` matches the `_ready` gdscript method (the leading underscore is dropped and the rest is PascalCased).
 
-Virtuals are invoked through the GDExtension `get_virtual_call_data2` / `call_virtual_with_data` path. Unimplemented virtuals return `nil` call data so Godot falls back to its engine default; implemented virtuals are dispatched to the Go method.
+### Qualified names are required
+
+The deprecated flat `V_<MethodName>` form (`V_Ready`) panics at registration time with a diagnostic naming the expected qualified shape. Because Go struct embedding promotes methods across the whole chain, flat names allowed only one implementation slot per virtual: shadowing made base implementations unreachable, and diamond embedding made selectors ambiguous.
+
+### Most-derived-wins resolution
+
+`ClassDBBindMethodVirtual` resolves the implementation by walking the registering type's embedding chain, most-derived type first, looking for `V_<LevelTypeName>_<MethodName>`. The first match binds:
+
+```go
+type PlayerCharacter struct {
+	ControlImpl
+	CharacterBody2DBase // declares V_CharacterBody2DBase_GetMaximumSize
+}
+
+func (p *PlayerCharacter) V_PlayerCharacter_GetMaximumSize() Vector2 { ... }
+```
+
+An instance of `PlayerCharacter` dispatches to `V_PlayerCharacter_GetMaximumSize`; an instance of the base level dispatches to `V_CharacterBody2DBase_GetMaximumSize`.
+
+### Explicit delegation replaces super-calls
+
+Because each level's implementation has a distinct name, a derived implementation can extend rather than replace the base behavior by calling it through the promoted selector:
+
+```go
+func (p *PlayerCharacter) V_PlayerCharacter_GetMaximumSize() Vector2 {
+	base := p.CharacterBody2DBase.V_CharacterBody2DBase_GetMaximumSize()
+	return base.Add(Vector2{X: 100})
+}
+```
+
+Virtuals are invoked through the GDExtension `get_virtual_call_data2` / `call_virtual_with_data` path. Virtuals that no level along the chain implements return `nil` call data so Godot falls back to its engine default; implemented virtuals are dispatched to the resolved Go method.
 
 ## Default Argument Values
 

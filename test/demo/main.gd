@@ -282,6 +282,18 @@ func test_suite(i: int, example: Example):
 	assert_true(_dict.has("go_added"))
 	assert_equal(_dict["go_added"], 42)
 
+	# Hierarchical virtual methods (qualified V_ClassName_Method names).
+	# The base level serves its own instance; the derived instance dispatches
+	# to the most-derived implementation, whose composed value proves explicit
+	# delegation to the base-level implementation. Example never implements
+	# this virtual, so it still receives the engine default (-1, -1),
+	# pinning unimplemented fallback across the migration.
+	var _hbase := TestHierarchicalBase.new()
+	assert_equal(_hbase.get_maximum_size(), Vector2(11, 22))
+	var hderived := TestHierarchicalDerived.new()
+	assert_equal(hderived.get_maximum_size(), Vector2(111, 22))
+	assert_equal(example.get_maximum_size(), Vector2(-1, -1))
+
 	# Direct ptrcall dispatch with a Dictionary argument is unsupported
 	# today: the ptrcall argument decode has no Dictionary case
 	# (reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs), so a call

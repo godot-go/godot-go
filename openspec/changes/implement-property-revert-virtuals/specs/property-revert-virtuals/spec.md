@@ -28,3 +28,10 @@ A Go-registered class that does not implement the revert virtuals SHALL behave a
 #### Scenario: Missing virtuals yield negative answers
 - **WHEN** `property_can_revert` or `property_get_revert` is called on an instance of a class that did not register the corresponding virtual
 - **THEN** the queries complete without error and report no revert support (false / no value)
+
+### Requirement: Revert Callbacks Tolerate Unregistered Instances During Teardown
+When Godot routes a revert query to an instance whose reported class is not a registered GDClass — which occurs when a destructing extension instance presents its parent class name instead — the binding SHALL answer negatively rather than panicking or logging.
+
+#### Scenario: Query under a parent-class presentation reports no revert support
+- **WHEN** a revert query is routed to an instance whose reported class fails the registered-class lookup (e.g. `"Control"` during destruction)
+- **THEN** the query completes and reports no revert support

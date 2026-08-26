@@ -287,14 +287,14 @@ func (e *Example) VarargsFuncNv(args ...Variant) int {
 	return 42 + len(args)
 }
 
-func (e *Example) V_PropertyCanRevert(p_name StringName) bool {
+func (e *Example) V_Example_PropertyCanRevert(p_name StringName) bool {
 	gdSn := NewStringNameWithLatin1Chars("property_from_list")
 	defer gdSn.Destroy()
 	vec3 := NewVector3WithFloat32Float32Float32(42, 42, 42)
 	return p_name.Equal_StringName(gdSn) && !e.propertyFromList.Equal_Vector3(vec3)
 }
 
-func (e *Example) V_Set(name string, value Variant) bool {
+func (e *Example) V_Example_Set(name string, value Variant) bool {
 	if strings.HasPrefix(name, "dproperty") {
 		tokens := strings.SplitN(name, "_", 2)
 		if len(tokens) != 2 {
@@ -318,7 +318,7 @@ func (e *Example) V_Set(name string, value Variant) bool {
 	return false
 }
 
-func (e *Example) V_Get(name string) (Variant, bool) {
+func (e *Example) V_Example_Get(name string) (Variant, bool) {
 	switch {
 	case strings.HasPrefix(name, "dproperty"):
 		tokens := strings.SplitN(name, "_", 2)
@@ -347,7 +347,7 @@ func (e *Example) V_Get(name string) (Variant, bool) {
 	return Variant{}, false
 }
 
-func (e *Example) V_Ready() {
+func (e *Example) V_Example_Ready() {
 	log.Info("Example_Ready called",
 		zap.String("inst", fmt.Sprintf("%p", e)),
 	)
@@ -408,7 +408,7 @@ func (e *Example) V_Ready() {
 	)
 }
 
-func (e *Example) V_Input(refEvent RefInputEvent) {
+func (e *Example) V_Example_Input(refEvent RefInputEvent) {
 	event := refEvent.Ptr()
 	if event == nil {
 		log.Warn("Example.V_Input: null refEvent parameter")
@@ -795,7 +795,7 @@ func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
 	return v.ToVector2i()
 }
 
-func (e *Example) V_ToString() string {
+func (e *Example) V_Example_ToString() string {
 	return fmt.Sprintf("[ GDExtension::Example <--> Instance ID:%d ]", e.GetInstanceId())
 }
 
@@ -836,12 +836,12 @@ func RegisterClassExample() {
 	ClassDBRegisterClass(NewExampleFromOwnerObject, props, ValidateExampleProperty, func(t *Example) {
 		// virtuals
 		// virtuals
-		ClassDBBindMethodVirtual(t, "V_ToString", "to_string", nil, nil)
-		ClassDBBindMethodVirtual(t, "V_Ready", "_ready", nil, nil)
-		ClassDBBindMethodVirtual(t, "V_Input", "_input", []string{"event"}, nil)
-		ClassDBBindMethodVirtual(t, "V_Set", "_set", []string{"name", "value"}, nil)
-		ClassDBBindMethodVirtual(t, "V_Get", "_get", []string{"name"}, nil)
-		ClassDBBindMethodVirtual(t, "V_PropertyCanRevert", "_property_can_revert", []string{"name"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_ToString", "to_string", nil, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_Ready", "_ready", nil, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_Input", "_input", []string{"event"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_Set", "_set", []string{"name", "value"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_Get", "_get", []string{"name"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_PropertyCanRevert", "_property_can_revert", []string{"name"}, nil)
 
 		ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
 		ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)

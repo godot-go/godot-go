@@ -141,7 +141,12 @@ func NewGoMethodMetadata(
 	if recv.Kind() == reflect.Pointer {
 		recv = recv.Elem()
 	}
-	if className != recv.Name() {
+	isVirtual := (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL
+	if className != recv.Name() && !isVirtual {
+		// Virtual methods may be declared at any level of the registering
+		// class's embedding chain (qualified names bind promoted
+		// implementations), so the strict receiver-name equality only
+		// applies to non-virtual binds.
 		log.Panic("class name did not match reciever type",
 			zap.String("class", className),
 			zap.String("method", gdMethodName),
@@ -150,7 +155,6 @@ func NewGoMethodMetadata(
 	}
 	isVariadicTyped := mt.IsVariadic()
 	isVariadicFlaged := (methodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
-	isVirtual := (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL
 	if isVariadicTyped != isVariadicFlaged {
 		log.Panic("go method and method flags are not variadic aligned",
 			zap.Bool("is_variadic_type", isVariadicTyped),

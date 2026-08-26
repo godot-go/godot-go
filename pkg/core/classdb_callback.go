@@ -255,12 +255,79 @@ func GoCallback_ClassCreationInfoFreePropertyList2(pInstance C.GDExtensionClassI
 
 //export GoCallback_ClassCreationInfoPropertyCanRevert
 func GoCallback_ClassCreationInfoPropertyCanRevert(p_instance C.GDExtensionClassInstancePtr, p_name C.GDExtensionConstStringNamePtr) C.GDExtensionBool {
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil {
+		return 0
+	}
+	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
+	className := gdStrClass.ToUtf8()
+	// p_name is Godot-owned — NEVER Destroy() it
+	gdName := (*StringName)(p_name)
+	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
+	if !ok {
+		// During teardown an instance can report its parent class name
+		// (e.g. "Control") which is not a registered GDClass; treat it
+		// as absence of support instead of failing.
+		return 0
+	}
+	mcmi, ok := ci.VirtualMethodMap["_property_can_revert"]
+	if !ok {
+		// Revert queries are frequent (the inspector asks per property);
+		// report absence immediately without logging.
+		return 0
+	}
+	args := []reflect.Value{
+		reflect.ValueOf(wci.Instance),
+		reflect.ValueOf(*gdName),
+	}
+	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
+	if reflectedRet[0].Bool() {
+		return 1
+	}
 	return 0
 }
 
 //export GoCallback_ClassCreationInfoPropertyGetRevert
 func GoCallback_ClassCreationInfoPropertyGetRevert(p_instance C.GDExtensionClassInstancePtr, p_name C.GDExtensionConstStringNamePtr, r_ret C.GDExtensionVariantPtr) C.GDExtensionBool {
-	return 0
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil {
+		return 0
+	}
+	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
+	className := gdStrClass.ToUtf8()
+	// p_name is Godot-owned — NEVER Destroy() it
+	gdName := (*StringName)(p_name)
+	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
+	if !ok {
+		// During teardown an instance can report its parent class name
+		// (e.g. "Control") which is not a registered GDClass; treat it
+		// as absence of support instead of failing.
+		return 0
+	}
+	mcmi, ok := ci.VirtualMethodMap["_property_get_revert"]
+	if !ok {
+		// Revert queries are frequent (the inspector asks per property);
+		// report absence immediately without logging.
+		return 0
+	}
+	args := []reflect.Value{
+		reflect.ValueOf(wci.Instance),
+		reflect.ValueOf(*gdName),
+	}
+	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
+	v, ok := reflectedRet[0].Interface().(Variant)
+	if !ok {
+		log.Panic("invalid return value: expected Variant",
+			zap.String("class", className),
+		)
+	}
+	if !reflectedRet[1].Bool() {
+		return 0
+	}
+	*(*Variant)(unsafe.Pointer(r_ret)) = v
+	return 1
 }
 
 //export GoCallback_ClassCreationInfoValidateProperty
@@ -292,7 +359,32 @@ func GoCallback_ClassCreationInfoValidateProperty(pInstance C.GDExtensionClassIn
 
 //export GoCallback_ClassCreationInfoNotification
 func GoCallback_ClassCreationInfoNotification(p_instance C.GDExtensionClassInstancePtr, p_what C.int32_t, p_reversed C.GDExtensionBool) {
-
+	wci := cgo.Handle(p_instance).Value().(*WrappedClassInstance)
+	if wci == nil {
+		return
+	}
+	gdStrClass := wci.Instance.GetClass()
+	defer gdStrClass.Destroy()
+	className := gdStrClass.ToUtf8()
+	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
+	if !ok {
+		// During teardown an instance can report its parent class name
+		// (e.g. "Control") which is not a registered GDClass; treat it
+		// as a silent no-op instead of failing.
+		return
+	}
+	mcmi, ok := ci.VirtualMethodMap["_notification"]
+	if !ok {
+		// Notifications are high-frequency; missing registration is a
+		// silent no-op without logging.
+		return
+	}
+	args := []reflect.Value{
+		reflect.ValueOf(wci.Instance),
+		reflect.ValueOf(int32(p_what)),
+		reflect.ValueOf(p_reversed != 0),
+	}
+	mcmi.GoMethodMetadata.Func.Call(args)
 }
 
 //export GoCallback_ClassCreationInfoGet

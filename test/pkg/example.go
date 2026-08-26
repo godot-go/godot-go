@@ -38,9 +38,10 @@ var _ GDClass = (*Example)(nil)
 
 type Example struct {
 	ControlImpl
-	customPosition   Vector2
-	propertyFromList Vector3
-	dprop            [3]Vector2
+	customPosition    Vector2
+	propertyFromList  Vector3
+	dprop             [3]Vector2
+	notificationCodes []int32
 }
 
 func (c *Example) GetClassName() string {
@@ -291,7 +292,32 @@ func (e *Example) V_Example_PropertyCanRevert(p_name StringName) bool {
 	gdSn := NewStringNameWithLatin1Chars("property_from_list")
 	defer gdSn.Destroy()
 	vec3 := NewVector3WithFloat32Float32Float32(42, 42, 42)
-	return p_name.Equal_StringName(gdSn) && !e.propertyFromList.Equal_Vector3(vec3)
+	// Copy the field out first: cgo pointer checks forbid passing pointers
+	// into composite objects that hold unpinned Go pointers (e.g. slices).
+	pf := e.propertyFromList
+	return p_name.Equal_StringName(gdSn) && !pf.Equal_Vector3(vec3)
+}
+
+func (e *Example) V_Example_PropertyGetRevert(p_name StringName) (Variant, bool) {
+	gdSn := NewStringNameWithLatin1Chars("property_from_list")
+	defer gdSn.Destroy()
+	if p_name.Equal_StringName(gdSn) {
+		vec3 := NewVector3WithFloat32Float32Float32(42, 42, 42)
+		return NewVariantVector3(vec3), true
+	}
+	return Variant{}, false
+}
+
+func (e *Example) V_Example_Notification(what int32, reversed bool) {
+	e.notificationCodes = append(e.notificationCodes, what)
+}
+
+func (e *Example) GetNotificationCodes() PackedInt32Array {
+	arr := NewPackedInt32Array()
+	for _, code := range e.notificationCodes {
+		arr.Append(int64(code))
+	}
+	return arr
 }
 
 func (e *Example) V_Example_Set(name string, value Variant) bool {
@@ -842,6 +868,8 @@ func RegisterClassExample() {
 		ClassDBBindMethodVirtual(t, "V_Example_Set", "_set", []string{"name", "value"}, nil)
 		ClassDBBindMethodVirtual(t, "V_Example_Get", "_get", []string{"name"}, nil)
 		ClassDBBindMethodVirtual(t, "V_Example_PropertyCanRevert", "_property_can_revert", []string{"name"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_PropertyGetRevert", "_property_get_revert", []string{"name"}, nil)
+		ClassDBBindMethodVirtual(t, "V_Example_Notification", "_notification", []string{"what", "reversed"}, nil)
 
 		ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
 		ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)
@@ -939,6 +967,7 @@ func RegisterClassExample() {
 		ClassDBAddPropertySubgroup(t, "Test subgroup", "group_subgroup_")
 
 		ClassDBBindMethod(t, "GetV4", "get_v4", nil, nil)
+		ClassDBBindMethod(t, "GetNotificationCodes", "get_notification_codes", nil, nil)
 		ClassDBBindMethod(t, "GetCustomPosition", "get_custom_position", nil, nil)
 		ClassDBBindMethod(t, "SetCustomPosition", "set_custom_position", []string{"position"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_VECTOR2, "group_subgroup_custom_position", "set_custom_position", "get_custom_position")

@@ -44,6 +44,15 @@ The creation-info callback receives both `p_what` and `p_reversed`; dropping `re
 - **Deprecated engine API in assertions** → `Object.property_can_revert()`/`property_get_revert()` are deprecated-but-functional in Godot 4.x; if removed upstream, assertions migrate to inspector-equivalent queries. Mitigation: noted here; failure mode is loud.
 - **Variant ownership on the write-back** → mirrors the proven `_get` write-back; if leaks surface, the fix applies to both paths symmetrically.
 
+**Boundary with `implement-generated-virtual-defaults`:** this change's absence semantics (missing `_notification` = silent no-op, unimplemented revert virtuals report no revert support) are pinned by its specs. If that change later extends generated defaults beyond Category A into Categories B/C, such defaults must never auto-register into `VirtualMethodMap` — only via its opt-in hook — or they would turn every absence this change relies on into presence.
+
+## Implementation Pitfalls (regression guards)
+
+These were hit during implementation; the suite pins them, but the reasoning lives here:
+
+- **Go cgo composite-object scan**: builtin calls that pass a pointer *into* a composite Go object (e.g. `e.propertyFromList.Equal_Vector3(...)` taking `&field`) make Go's cgo checker scan the entire containing allocation. Once instances hold unpinned Go references (the `NotificationCodes` slice), such calls abort with "argument of cgo function has Go pointer to unpinned Go pointer". Rule for virtual method bodies: copy scalar/builtin fields to locals before passing them through generated wrappers. Pinned by the revert-assertions running after notification recording.
+- **Godot 4.7 renamed `Object.notify` → `Object.notification`**: calling the removed name on an extension instance triggers a pre-existing engine-side leak (2 ObjectDB instances + 1 CanvasItem RID per call) while assertions still pass — leak warnings do not fail the suite today. Demo coverage uses `notification(what, reversed)`. If leak-sensitive CI is wanted, `make test` would need to fail on `ObjectDB instances were leaked` output (not currently enforced).
+
 ## Migration Plan
 
 Additive; no migration. Rollback is a revert.

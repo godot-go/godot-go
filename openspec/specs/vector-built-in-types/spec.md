@@ -2,6 +2,8 @@
 
 Ensures all Godot built-in vector and matrix types (Vector2, Vector2i, Vector3, Vector3i, Rect2, Rect2i, Vector4, Vector4i, Transform2D, Plane, Quaternion, AABB, Basis, Transform3D, Projection) decode and encode correctly as method arguments across both the ptrcall and varcall call paths.
 
+## Requirements
+
 ### Requirement: Vector-type varcall argument decoding
 The system SHALL decode all vector built-in types from the Variant call path without panicking, producing the correct Go built-in value for each argument.
 

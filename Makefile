@@ -97,12 +97,17 @@ ci_gen_test_project_files: ## Generate test project files for CI
 		echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg; \
 	fi
 
-test: ## Run headless tests
-	CI=1 \
-	LOG_LEVEL=WARN \
-	GOTRACEBACK=single \
-	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
-	"$(GODOT)" --headless --verbose --path test/demo/ --quit
+test: ## Run headless tests (fails on assertion failures or leaked engine objects)
+	@bash -o pipefail -ec ' \
+		CI=1 \
+		LOG_LEVEL=WARN \
+		GOTRACEBACK=single \
+		GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
+		"$(GODOT)" --headless --verbose --path test/demo/ --quit 2>&1 | tee $(CURDIR)/test-output.log; \
+		if grep -qE "ObjectDB instances were leaked|Leaked instance:" $(CURDIR)/test-output.log; then \
+			echo "FAIL: leaked engine objects detected in test output"; \
+			exit 1; \
+		fi'
 
 interactive_test: ## Run Godot editor with debugging for interactive testing
 	LOG_LEVEL=info \

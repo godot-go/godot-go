@@ -511,5 +511,25 @@ func test_suite(i: int, example: Example):
 
 	assert_equal(example.test_parent_is_nil(), null)
 
+	# Property revert virtuals (creation-info callbacks).
+	# property_from_list was set to a non-default value above, so only it is
+	# revertable; dproperty_0 never claims revert support.
+	assert_equal(example.property_can_revert("property_from_list"), true)
+	assert_equal(example.property_can_revert("dproperty_0"), false)
+	assert_equal(example.property_get_revert("property_from_list"), Vector3(42, 42, 42))
+	# A class that never bound the revert virtuals reports no revert support.
+	var _hnoRevert := TestHierarchicalBase.new()
+	assert_equal(_hnoRevert.property_can_revert("property_from_list"), false)
+	assert_equal(_hnoRevert.property_get_revert("property_from_list"), null)
+
+	# Notification dispatch (creation-info callback).
+	var codes_before: int = example.get_notification_codes().size()
+	var probe_code: int = 424242
+	example.notification(probe_code, false)
+	var codes: PackedInt32Array = example.get_notification_codes()
+	assert_equal(codes.size(), codes_before + 1)
+	assert_equal(codes[codes.size() - 1], probe_code)
+	_hnoRevert.free()
+
 func _on_Example_custom_signal(signal_name, value):
 	custom_signal_emitted = [signal_name, value]

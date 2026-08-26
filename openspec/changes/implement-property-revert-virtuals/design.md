@@ -44,6 +44,8 @@ The creation-info callback receives both `p_what` and `p_reversed`; dropping `re
 - **Deprecated engine API in assertions** → `Object.property_can_revert()`/`property_get_revert()` are deprecated-but-functional in Godot 4.x; if removed upstream, assertions migrate to inspector-equivalent queries. Mitigation: noted here; failure mode is loud.
 - **Variant ownership on the write-back** → mirrors the proven `_get` write-back; if leaks surface, the fix applies to both paths symmetrically.
 
+**Boundary with `implement-generated-virtual-defaults`:** this change's absence semantics (missing `_notification` = silent no-op, unimplemented revert virtuals report no revert support) are pinned by its specs. If that change later extends generated defaults beyond Category A into Categories B/C, such defaults must never auto-register into `VirtualMethodMap` — only via its opt-in hook — or they would turn every absence this change relies on into presence.
+
 ## Migration Plan
 
 Additive; no migration. Rollback is a revert.

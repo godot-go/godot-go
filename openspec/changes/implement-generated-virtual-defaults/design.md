@@ -8,7 +8,7 @@ Not all virtuals are alike. Three categories with different "default" semantics:
 |---|---|---|---|
 | A. Engine GDVIRTUAL | `_get_maximum_size`, `_get_minimum_size` | engine C++ body runs (pinned by `gdvirtual-unimplemented-defaults`) | Godot core |
 | B. Extension lifecycle | `_ready`, `_process`, `_input` | nothing runs (implicit no-op) | none |
-| C. Creation-info routed | `_notification`, `_property_can_revert`, `_get`, `_set` | dedicated callback answers negatively/no-op | none |
+| C. Creation-info routed | `_notification`, `_property_can_revert`, `_get`, `_set` | dedicated callback answers negatively/no-op (accurate once `implement-property-revert-virtuals` lands; today the callbacks are unconditional stubs that answer negatively for registered classes too) | none |
 
 **The delegation trap (verified against dispatch architecture):** a leaf override of a Category-A virtual cannot safely reach the engine body today. Plain wrapper → MethodBind → engine C++ → `GDVIRTUAL_CALL(_x)` → extension call-data lookup → VirtualMethodMap → *the leaf override again*: infinite recursion. The only recursion-free route to engine behavior is an Impl-level Go body that calls the plain wrapper exactly once — because no deeper Go level exists below it, the re-entry resolves to the Impl body itself, then descends into the engine. This is the concrete functional hole generated defaults close.
 
@@ -39,9 +39,13 @@ Registration-time resolution already reports absence when no level implements a 
 - **Codegen volume** → Category A only; measured before template work (spike task).
 - **Drift if a generated body ever replicates instead of delegating** → lint-style check: emitted Category-A bodies must contain exactly one wrapper call.
 
+**Constraint on future scope extension:** if generated defaults are ever extended beyond Category A into Categories B/C, they MUST NOT auto-register into `VirtualMethodMap` — the opt-in hook semantics apply there too. The `property-revert-virtuals` and `notification-virtual-dispatch` specs pin absence semantics ("missing `_notification` = silent no-op", "unimplemented revert virtuals report no revert support"); an auto-registered default would violate them by turning every absence into presence.
+
 ## Migration Plan
 
 Additive. Generated files land under `pkg/gdclassimpl/*.gen.go`; existing user classes unaffected until they delegate.
+
+**Implementation order:** land `implement-property-revert-virtuals` first. It is smaller and self-contained, and this change's spike (task 1.1) plus demo assertions benefit from its stabilized `test/demo/main.gd` assertion suite and accurate Category-C behavior column above.
 
 Rollback: regenerate with templates disabled.
 

@@ -10,7 +10,7 @@ Not all virtuals are alike. Three categories with different "default" semantics:
 | B. Extension lifecycle | `_ready`, `_process`, `_input` | nothing runs (implicit no-op) | none |
 | C. Creation-info routed | `_notification`, `_property_can_revert`, `_get`, `_set` | dedicated callback answers negatively/no-op (accurate once `implement-property-revert-virtuals` lands; today the callbacks are unconditional stubs that answer negatively for registered classes too) | none |
 
-**The delegation trap (verified against dispatch architecture):** a leaf override of a Category-A virtual cannot safely reach the engine body today. Plain wrapper → MethodBind → engine C++ → `GDVIRTUAL_CALL(_x)` → extension call-data lookup → VirtualMethodMap → *the leaf override again*: infinite recursion. The only recursion-free route to engine behavior is an Impl-level Go body that calls the plain wrapper exactly once — because no deeper Go level exists below it, the re-entry resolves to the Impl body itself, then descends into the engine. This is the concrete functional hole generated defaults close.
+**The delegation trap (verified against dispatch architecture and Godot 4.7 source):** a leaf override of a Category-A virtual cannot safely reach the engine body today. Plain wrapper → MethodBind → engine C++ → `GDVIRTUAL_CALL(_x)` → extension call-data lookup → VirtualMethodMap → *the leaf override again*: infinite recursion. Note the engine side routes through `_get_extension()->call_virtual_with_data(...)` on **every** `GDVIRTUAL_CALL` (`gdvirtual.gen.h`; e.g. `Control::get_maximum_size()` at `control.cpp:1814`) with no upstream recursion guard — so re-entry resolves to *whatever is registered* (the leaf, or later a generated default), not to "nothing below". Reaching engine behavior therefore requires the binding itself to break the cycle; see Decision 4. This is the concrete functional hole generated defaults close.
 
 ## Goals / Non-Goals
 
@@ -33,6 +33,9 @@ Registration-time resolution already reports absence when no level implements a 
 ### Decision 3: Delegation contract is the promoted selector, documented over new API
 `t.ControlImpl.V_Control_GetMaximumSize()` reaches the generated body; the generated body calls `t.GetMaximumSize()` once. No new public API; the pattern is docs/overview.md material.
 
+### Decision 4: Delegation terminates via a CallVirtualWithData re-entrancy guard
+A generated default (or a leaf override delegating through it) whose body calls the plain wrapper re-enters the engine, and Godot's `GDVIRTUAL_CALL` routes that re-entry back through `call_virtual_with_data` unconditionally — resolving to the *registered* implementation again. Termination therefore cannot come from Go-side call depth; the binding must break the cycle itself: `GoCallback_ClassCreationInfoCallVirtualWithData` tracks in-flight (instance id, method) pairs and treats a re-entrant lookup as **absence**, letting Godot's `GDVIRTUAL_CALL` yield false so the engine's own default body computes the value that unwinds back to the delegating Go frame. This delivers extend-the-engine-default semantics for both the override case and the opted-in no-override case, with one map check per virtual dispatch.
+
 ## Risks / Trade-offs
 
 - **Presence-falsification** (registering defaults makes Godot skip engine fallbacks) → mitigated by Decision 2's conditional binding; sensitivity test asserts unopted-in classes keep engine-default behavior.
@@ -53,3 +56,4 @@ Rollback: regenerate with templates disabled.
 
 - Exact Category-A census (which of the 1437 route through GDVIRTUAL vs creation-info) — spike task 1.1 settles this from `extension_api.json` before templates are written.
 - Whether any Category-B virtual needs an opt-in default for ecosystem reasons (e.g., `_physics_process` bookkeeping) — deferred unless demoed need.
+- Why must an opted-in class *without* overrides serve the generated Go default at all, given the engine answers identically natively at zero cost? The spec's opted-in scenario mandates the generated body runs; if pure delegation is all it ever does, consider relaxing that scenario (or documenting motivating future behavior) before templates are written.

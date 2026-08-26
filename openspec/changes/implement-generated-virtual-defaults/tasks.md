@@ -2,6 +2,7 @@
 
 - [ ] 1.1 Census `extension_api.json`: classify all 1437 virtuals into categories A (engine GDVIRTUAL), B (extension lifecycle), C (creation-info routed); emit the Category-A list (class + method + signature) to a checked-in reference file; record counts in this change's design.md Open Questions resolution
 - [ ] 1.2 Write a failing recursion repro first: a demo class overriding a Category-A virtual that delegates through the plain wrapper; confirm the infinite-recursion trap exists today (guard with a depth counter, expect overflow) — this pins the bug the change fixes
+- [ ] 1.3 Prototype the delegation-termination mechanism (design Decision 4) before any template work: add in-flight (instance id, method) tracking to `GoCallback_ClassCreationInfoCallVirtualWithData` so re-entrant lookups report absence, then demonstrate with a temporary hand-written default body calling the plain wrapper that delegation terminates and returns the engine-equivalent value — this de-risks all codegen work
 
 ## 2. Codegen
 
@@ -13,7 +14,8 @@
 ## 3. Resolution wiring
 
 - [ ] 3.1 Wire registration-time resolution to consult the opt-in hook: no user implementation + opted-in → bind generated shallowest default; otherwise keep absence reporting unchanged
-- [ ] 3.2 Verify `go build ./pkg/core/...` and existing suite green (no behavior change for unopted classes)
+- [ ] 3.2 Promote task 1.3's in-flight re-entrancy guard from prototype to permanent implementation (cleanup, tests for nested distinct methods not colliding, no per-dispatch allocation on the fast path)
+- [ ] 3.3 Verify `go build ./pkg/core/...` and existing suite green (no behavior change for unopted classes)
 
 ## 4. Demo coverage
 

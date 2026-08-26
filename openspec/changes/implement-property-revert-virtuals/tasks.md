@@ -22,3 +22,4 @@
 
 - [x] 4.1 Run `go vet ./pkg/core/... ./test/pkg/...`
 - [x] 4.2 Run `GODOT=/path/to/godot make build` and `make test`; suite green with no orphan StringName warnings or new errors in output
+- [x] 4.3 Make `make test` fail when Godot reports leaked engine objects at exit: tee run output and exit non-zero on `ObjectDB instances were leaked` / `Leaked instance:` lines (currently warnings-only, which let the notify()-era leak slip through a green run); verify the full suite still passes under the stricter gate

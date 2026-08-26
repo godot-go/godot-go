@@ -22,3 +22,5 @@ _debug_parsed_ast.json
 .claude
 CLAUDE.md
 vgcore.*
+
+test-output.log

@@ -1,6 +1,6 @@
 ## Context
 
-The revert callbacks are stubs (`pkg/core/classdb_callback.go:256-264`); their C trampolines, function-pointer types, and creation-info wiring already exist (classdb_callback.c/.h, classdb.go:533-534, ffi/class_create_info.go), so this is purely a Go-side dispatch implementation. The demo `Example` already binds `V_PropertyCanRevert(p_name StringName) bool` as `_property_can_revert` (test/pkg/example.go:290, 844) — its body mirrors godot-cpp's test class (compares against `"property_from_list"`, true only while the stored value differs from `Vector3(42,42,42)`). `_property_get_revert` has no Go counterpart yet.
+The revert callbacks are stubs (`pkg/core/classdb_callback.go:256-264`); their C trampolines, function-pointer types, and creation-info wiring already exist (classdb_callback.c/.h, classdb.go:533-534, ffi/class_create_info.go), so this is purely a Go-side dispatch implementation. The demo `Example` already binds `V_Example_PropertyCanRevert(p_name StringName) bool` as `_property_can_revert` (test/pkg/example.go:290, 844) — its body mirrors godot-cpp's test class (compares against `"property_from_list"`, true only while the stored value differs from `Vector3(42,42,42)`). `_property_get_revert` has no Go counterpart yet.
 
 Working dispatch patterns to mirror live in the same file:
 
@@ -27,13 +27,16 @@ godot-cpp reference semantics (test/src/example.cpp:166-183): `_property_can_rev
 Look up `_property_can_revert` / `_property_get_revert` in `ci.VirtualMethodMap`; when absent, return 0 immediately (no log spam per query). This matches `_get`/`_set` and keeps unimplemented-virtual behavior uniform. Alternative — a dedicated typed registration path — rejected: no benefit over the existing map.
 
 ### Decision 2: Keep StringName-typed virtual signatures; pass a borrowed wrapper
-`V_PropertyCanRevert` already takes `StringName`, so both new-path calls pass `reflect.ValueOf(*(*StringName)(pName))` wrapped from the Godot-owned pointer without copy-construction or destroy (borrow, per the refcount rules that guard StringName handling). `reflect.Call` requires exact parameter types, so the callback must match whatever the bound method declares; binding a `string`-typed variant would also work but would fork the two revert methods' styles for no gain.
+`V_Example_PropertyCanRevert` already takes `StringName`, so both new-path calls pass `reflect.ValueOf(*(*StringName)(pName))` wrapped from the Godot-owned pointer without copy-construction or destroy (borrow, per the refcount rules that guard StringName handling). `reflect.Call` requires exact parameter types, so the callback must match whatever the bound method declares; binding a `string`-typed variant would also work but would fork the two revert methods' styles for no gain.
 
-### Decision 3: `V_PropertyGetRevert(p_name StringName) (Variant, bool)` mirrors V_Get's shape
+### Decision 3: `V_Example_PropertyGetRevert(p_name StringName) (Variant, bool)` mirrors V_Get's shape
 Two return values express "handled + value" naturally in Go and match how `V_Get` is dispatched today (check `reflectedRet[1].Bool()` before writing). Write `*(*Variant)(unsafe.Pointer(r_ret)) = v` only when handled, then return 1; otherwise leave `r_ret` untouched and return 0. Alternative — single `(Variant)` return with nil meaning unhandled — rejected: allocates a Variant on every miss and diverges from the established V_Get pattern.
 
 ### Decision 4: Example implements the godot-cpp test contract
-`V_PropertyGetRevert` returns `(Vector3(42,42,42), true)` for `"property_from_list"` and `(nil-Variant, false)` otherwise, mirroring godot-cpp's example.cpp so behavior is directly comparable across bindings. `V_PropertyCanRevert` stays unchanged.
+`V_Example_PropertyGetRevert` returns `(Vector3(42,42,42), true)` for `"property_from_list"` and `(nil-Variant, false)` otherwise, mirroring godot-cpp's example.cpp so behavior is directly comparable across bindings. `V_Example_PropertyCanRevert` stays unchanged in body; its migration from the flat `V_PropertyCanRevert` name already landed with `implement-hierarchical-virtual-methods`.
+
+### Decision 5: Notification virtual takes `(what int32, reversed bool)`
+The creation-info callback receives both `p_what` and `p_reversed`; dropping `reversed` would discard information Godot already delivered (it distinguishes reversed scene-tree traversal order). GDScript's `_notification(what)` hides it, but Go bindings can afford fidelity here since the reflection dispatch matches whatever the bound method declares — and this change fixes that declaration once, so no per-user ambiguity exists. Missing `_notification` registration is a silent no-op (unlike revert queries, notifications are high-frequency; logging each miss would spam).
 
 ## Risks / Trade-offs
 

@@ -41,7 +41,7 @@ type Example struct {
 	customPosition    Vector2
 	propertyFromList  Vector3
 	dprop             [3]Vector2
-	NotificationCodes []int32
+	notificationCodes []int32
 }
 
 func (c *Example) GetClassName() string {
@@ -309,12 +309,12 @@ func (e *Example) V_Example_PropertyGetRevert(p_name StringName) (Variant, bool)
 }
 
 func (e *Example) V_Example_Notification(what int32, reversed bool) {
-	e.NotificationCodes = append(e.NotificationCodes, what)
+	e.notificationCodes = append(e.notificationCodes, what)
 }
 
 func (e *Example) GetNotificationCodes() PackedInt32Array {
 	arr := NewPackedInt32Array()
-	for _, code := range e.NotificationCodes {
+	for _, code := range e.notificationCodes {
 		arr.Append(int64(code))
 	}
 	return arr

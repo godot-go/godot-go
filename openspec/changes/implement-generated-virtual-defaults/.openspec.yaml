@@ -1,0 +1,4 @@
+schema: spec-driven
+created: 2026-08-25
+goal: Every virtual in extension_api.json has a generated Go implementation path
+  so user classes override rather than rebuild engine behavior

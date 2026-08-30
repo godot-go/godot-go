@@ -1,7 +1,7 @@
 # AGENTS.md
 
 ## Reference Implementations
-- **Before implementing any GDExtension boundary crossing**, always cross-reference godot-cpp at `../godot-cpp`. godot-cpp is the reference GDExtension implementation and its patterns for refcounted types (StringName, NodePath, String) must be followed exactly. Never use raw byte copies (memcpy) for refcounted types — always use the GDExtension copy constructor to transfer ownership.
+- **Before implementing any GDExtension boundary crossing**, always cross-reference godot-cpp at `../godot-cpp`. godot-cpp is the reference GDExtension implementation and its patterns for refcounted types (StringName, NodePath, String) must be followed exactly. Never use raw byte copies (memcpy) for refcounted types — always use the GDExtension copy constructor to transfer ownership. A secondary implementation of godot-rust at `../gdext` is also a good reference for a more modern language binding.
 - **Before implementing**, always read the OpenSpec specs at `openspec/specs/` and the active change's artifacts at `openspec/changes/<name>/` for design docs and task lists.
 
 ## Godot Headers for GDExtension Integration

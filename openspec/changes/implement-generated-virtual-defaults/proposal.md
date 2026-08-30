@@ -1,23 +1,23 @@
 ## Why
 
-`implement-hierarchical-virtual-methods` made multi-level virtual coexistence possible; today it remains manual. Of the 1437 virtual methods declared across 106 classes in `godot_headers/extension_api.json`, every one must be hand-implemented and hand-bound (`ClassDBBindMethodVirtual`) by each user who needs it, with no discoverable Go-side trace of the full virtual surface. Three gaps follow:
+`implement-hierarchical-virtual-methods` made multi-level virtual coexistence possible, but the 1437 virtual methods declared across 106 classes in `godot_headers/extension_api.json` remain invisible to Go developers: there is no typed, greppable counterpart for any of them, no compile-time signature verification when overriding, and no record of which virtuals exist. Three gaps follow:
 
 - **No typed discovery**: users learn overridable virtuals from Godot docs, not from the generated `*Impl` layers they embed.
-- **No safe engine-default delegation**: a leaf overriding an engine-GDVIRTUAL (e.g. `Control._get_maximum_size`) has no correct way to extend the engine default — calling the plain wrapper (`t.GetMaximumSize()`) re-enters the registered virtual chain and recurses infinitely; skipping the wrapper means reimplementing engine logic that drifts upstream.
-- **Partial hierarchies are brittle**: intermediate wrapper levels (the `TestHierarchicalBase` pattern) exist only when users author them.
+- **No override verification**: a typo'd or mis-typed qualified method fails only at registration time (or silently never registers), with no compile-time check against Godot's declared signatures.
+- **Delegation trap is undocumented**: overriding an engine GDVIRTUAL replaces its behavior wholesale — engine-default bodies are unreachable from GDExtension once a virtual is registered (Godot caches presence per instance at first `GDVIRTUAL_CALL`). Both reference bindings confirm this: godot-cpp and godot-rust offer no super-call mechanism either. Without documentation and pinned tests, every contributor risks rediscovering this through infinite recursion.
 
 ## What Changes
 
-- Code generation emits default virtual implementations into `pkg/gdclassimpl` `*Impl` layers using the qualified `V_<ClassName>_<MethodName>` convention, covering the virtual surface declared in `extension_api.json`.
-- Emitted defaults participate in embedding-chain resolution as shallowest-level fallbacks: user overrides win by depth, and delegation to a generated default via its promoted selector reaches engine behavior without re-entering the virtual dispatch cycle.
-- Registration policy distinguishes virtual categories (see design.md): engine-GDVIRTUAL defaults must never *displace* engine fallbacks by falsely reporting presence where absence was meaningful.
-- Update docs/overview.md to describe the generated virtual surface and delegation patterns.
+- Code generation emits **per-class virtual-surface interfaces** (`ControlVirtuals`, …) declaring every Category-A virtual under the qualified `V_<ClassName>_<MethodName>` convention with exact Godot signatures — declaration-only, zero runtime behavior (the Go analog of godot-cpp's header declarations).
+- A checked-in census (`cmd/generate/gdclassimpl/virtual_census.json`) records the full classification of all 1437 virtuals with documented criteria; codegen tests assert emitted-interface completeness against it.
+- docs/overview.md documents that GDExtension virtual overrides replace engine behavior wholesale (delegation to engine defaults is impossible), and the suite pins the recursion trap with a guarded regression test.
+- Compile-time adoption idiom documented: asserting a user struct against a generated interface verifies override signatures at build time.
 
 ## Capabilities
 
 ### New Capabilities
 
-- `generated-virtual-defaults`: Codegen-emitted default virtual bodies across Impl layers, resolvable as chain-shallowest fallbacks and explicitly callable for engine-faithful delegation.
+- `virtual-surface-catalog`: Typed, discoverable catalog of Godot's virtual surface — generated per-class interfaces with exact signatures, a checked-in census, and honest documentation of delegation limits.
 
 ### Modified Capabilities
 
@@ -25,7 +25,7 @@ None. Dispatch mechanics remain pinned by `hierarchical-virtual-methods`; unimpl
 
 ## Non-goals
 
-- Auto-invocation chaining (base runs after derived automatically); delegation stays explicit.
-- Dedicated creation-info callback implementations (revert/notification) — separate change.
-- Callback-layer (`classdb_callback.go`) changes.
-- Multiple unrelated embedded branches beyond Go promotion rules.
+- Engine-default delegation from overrides — **impossible**: Godot resolves virtual presence once per instance and never re-consults; both reference bindings lack it (verified against godot-cpp source, gdext docs/issues, and Godot's `gdvirtual.gen.h`).
+- Generated default bodies, panic bodies, or any runtime behavior attached to generated declarations.
+- Auto-registration or opt-in hooks that change which virtuals dispatch.
+- Category-B/C coverage beyond the census classification.

@@ -81,6 +81,11 @@ func RegisterClassTestHierarchicalDerived() {
 	log.Debug("TestHierarchicalDerived registered")
 }
 
+func UnregisterClassTestDelegationRepro() {
+	ClassDBUnregisterClass[*TestDelegationRepro]()
+	log.Debug("TestDelegationRepro unregistered")
+}
+
 func UnregisterClassTestHierarchicalClasses() {
 	ClassDBUnregisterClass[*TestHierarchicalDerived]()
 	ClassDBUnregisterClass[*TestHierarchicalBase]()

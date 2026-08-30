@@ -21,11 +21,13 @@ func RegisterExampleTypes() {
 	RegisterClassExample()
 	RegisterClassTestHierarchicalBase()
 	RegisterClassTestHierarchicalDerived()
+	RegisterClassTestDelegationRepro()
 }
 
 func UnregisterExampleTypes() {
 	log.Debug("UnregisterExampleTypes called")
 	UnregisterClassExample()
+	UnregisterClassTestDelegationRepro()
 	UnregisterClassTestHierarchicalClasses()
 	DestroyAllCachedClassNames()
 }

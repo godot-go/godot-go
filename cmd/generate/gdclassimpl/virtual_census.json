@@ -1,0 +1,4133 @@
+{
+ "comment": "Census of Godot virtual methods from godot_headers/extension_api.json. Regenerate with the snippet in this change's tasks.md history; criterion documented below. Category C (creation-info routed) never appears in extension_api.json.",
+ "criterion": {
+  "A": "is_virtual AND non-void return AND a non-virtual method named without the leading underscore exists on the class or its ancestors (the engine consumes the result through that wrapper)",
+  "B": "all other is_virtual entries (lifecycle/no-op or void side-effect hooks)",
+  "C": "creation-info routed names not present in extension_api.json: _get, _get_property_list, _notification, _property_can_revert, _property_get_revert, _set, _to_string, _validate_property"
+ },
+ "counts": {
+  "total_virtuals": 1437,
+  "category_a": 524,
+  "category_b": 913
+ },
+ "category_a": [
+  {
+   "class": "AudioStream",
+   "method": "_get_length",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "AudioStream",
+   "method": "_instantiate_playback",
+   "signature": [],
+   "return_type": "AudioStreamPlayback"
+  },
+  {
+   "class": "AudioStream",
+   "method": "_is_monophonic",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "AudioStreamPlayback",
+   "method": "_get_loop_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "AudioStreamPlayback",
+   "method": "_get_playback_position",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "AudioStreamPlayback",
+   "method": "_is_playing",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "CameraFeed",
+   "method": "_get_formats",
+   "signature": [],
+   "return_type": "Array"
+  },
+  {
+   "class": "CameraFeed",
+   "method": "_set_format",
+   "signature": [
+    "int",
+    "Dictionary"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "Control",
+   "method": "_get_cursor_shape",
+   "signature": [
+    "Vector2"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "Control",
+   "method": "_get_maximum_size",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "Control",
+   "method": "_get_minimum_size",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "Control",
+   "method": "_get_tooltip",
+   "signature": [
+    "Vector2"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "EditorExportPlatformExtension",
+   "method": "_export_pack",
+   "signature": [
+    "EditorExportPreset",
+    "bool",
+    "String",
+    "bitfield::EditorExportPlatform.DebugFlags"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "EditorExportPlatformExtension",
+   "method": "_export_pack_patch",
+   "signature": [
+    "EditorExportPreset",
+    "bool",
+    "String",
+    "PackedStringArray",
+    "bitfield::EditorExportPlatform.DebugFlags"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "EditorExportPlatformExtension",
+   "method": "_export_project",
+   "signature": [
+    "EditorExportPreset",
+    "bool",
+    "String",
+    "bitfield::EditorExportPlatform.DebugFlags"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "EditorExportPlatformExtension",
+   "method": "_export_zip",
+   "signature": [
+    "EditorExportPreset",
+    "bool",
+    "String",
+    "bitfield::EditorExportPlatform.DebugFlags"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "EditorExportPlatformExtension",
+   "method": "_export_zip_patch",
+   "signature": [
+    "EditorExportPreset",
+    "bool",
+    "String",
+    "PackedStringArray",
+    "bitfield::EditorExportPlatform.DebugFlags"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "EditorExportPlatformExtension",
+   "method": "_get_os_name",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "EditorSyntaxHighlighter",
+   "method": "_get_name",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "GraphEdit",
+   "method": "_get_connection_line",
+   "signature": [
+    "Vector2",
+    "Vector2"
+   ],
+   "return_type": "PackedVector2Array"
+  },
+  {
+   "class": "Mesh",
+   "method": "_get_aabb",
+   "signature": [],
+   "return_type": "AABB"
+  },
+  {
+   "class": "Mesh",
+   "method": "_get_surface_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "Mesh",
+   "method": "_surface_get_arrays",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Array"
+  },
+  {
+   "class": "Mesh",
+   "method": "_surface_get_blend_shape_arrays",
+   "signature": [
+    "int"
+   ],
+   "return_type": "typedarray::Array"
+  },
+  {
+   "class": "Mesh",
+   "method": "_surface_get_material",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Material"
+  },
+  {
+   "class": "MultiplayerAPIExtension",
+   "method": "_get_multiplayer_peer",
+   "signature": [],
+   "return_type": "MultiplayerPeer"
+  },
+  {
+   "class": "MultiplayerAPIExtension",
+   "method": "_get_remote_sender_id",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "MultiplayerAPIExtension",
+   "method": "_get_unique_id",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "MultiplayerAPIExtension",
+   "method": "_object_configuration_add",
+   "signature": [
+    "Object",
+    "Variant"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "MultiplayerAPIExtension",
+   "method": "_object_configuration_remove",
+   "signature": [
+    "Object",
+    "Variant"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "MultiplayerAPIExtension",
+   "method": "_poll",
+   "signature": [],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "MultiplayerAPIExtension",
+   "method": "_rpc",
+   "signature": [
+    "int",
+    "Object",
+    "StringName",
+    "Array"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_available_packet_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_connection_status",
+   "signature": [],
+   "return_type": "enum::MultiplayerPeer.ConnectionStatus"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_packet",
+   "signature": [
+    "const uint8_t **",
+    "int32_t*"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_packet_channel",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_packet_mode",
+   "signature": [],
+   "return_type": "enum::MultiplayerPeer.TransferMode"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_packet_peer",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_transfer_channel",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_transfer_mode",
+   "signature": [],
+   "return_type": "enum::MultiplayerPeer.TransferMode"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_get_unique_id",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_is_refusing_new_connections",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_is_server_relay_supported",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "MultiplayerPeerExtension",
+   "method": "_put_packet",
+   "signature": [
+    "const uint8_t*",
+    "int"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "OpenXRSpatialCapabilityConfigurationBaseHeader",
+   "method": "_get_configuration",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "OpenXRSpatialCapabilityConfigurationBaseHeader",
+   "method": "_has_valid_configuration",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "OpenXRSpatialComponentData",
+   "method": "_get_component_type",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PacketPeerExtension",
+   "method": "_get_available_packet_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PacketPeerExtension",
+   "method": "_get_packet",
+   "signature": [
+    "const uint8_t **",
+    "int32_t*"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "PacketPeerExtension",
+   "method": "_put_packet",
+   "signature": [
+    "const uint8_t*",
+    "int"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_angular_velocity",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_center_of_mass",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_center_of_mass_local",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_collision_layer",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_collision_mask",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_constant_force",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_constant_torque",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_collider",
+   "signature": [
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_collider_id",
+   "signature": [
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_collider_object",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Object"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_collider_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_collider_shape",
+   "signature": [
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_collider_velocity_at_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_impulse",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_local_normal",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_local_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_local_shape",
+   "signature": [
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_contact_local_velocity_at_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_inverse_inertia",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_inverse_mass",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_linear_velocity",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_space_state",
+   "signature": [],
+   "return_type": "PhysicsDirectSpaceState2D"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_step",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_total_angular_damp",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_total_gravity",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_total_linear_damp",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_transform",
+   "signature": [],
+   "return_type": "Transform2D"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_get_velocity_at_local_position",
+   "signature": [
+    "Vector2"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsDirectBodyState2DExtension",
+   "method": "_is_sleeping",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_angular_velocity",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_center_of_mass",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_center_of_mass_local",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_collision_layer",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_collision_mask",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_constant_force",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_constant_torque",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_collider",
+   "signature": [
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_collider_id",
+   "signature": [
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_collider_object",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Object"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_collider_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_collider_shape",
+   "signature": [
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_collider_velocity_at_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_impulse",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_local_normal",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_local_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_local_shape",
+   "signature": [
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_contact_local_velocity_at_position",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_inverse_inertia",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_inverse_inertia_tensor",
+   "signature": [],
+   "return_type": "Basis"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_inverse_mass",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_linear_velocity",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_principal_inertia_axes",
+   "signature": [],
+   "return_type": "Basis"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_space_state",
+   "signature": [],
+   "return_type": "PhysicsDirectSpaceState3D"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_step",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_total_angular_damp",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_total_gravity",
+   "signature": [],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_total_linear_damp",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_transform",
+   "signature": [],
+   "return_type": "Transform3D"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_get_velocity_at_local_position",
+   "signature": [
+    "Vector3"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsDirectBodyState3DExtension",
+   "method": "_is_sleeping",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectSpaceState2DExtension",
+   "method": "_cast_motion",
+   "signature": [
+    "RID",
+    "Transform2D",
+    "Vector2",
+    "float",
+    "int",
+    "bool",
+    "bool",
+    "float*",
+    "float*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectSpaceState2DExtension",
+   "method": "_collide_shape",
+   "signature": [
+    "RID",
+    "Transform2D",
+    "Vector2",
+    "float",
+    "int",
+    "bool",
+    "bool",
+    "void*",
+    "int",
+    "int32_t*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectSpaceState2DExtension",
+   "method": "_intersect_point",
+   "signature": [
+    "Vector2",
+    "int",
+    "int",
+    "bool",
+    "bool",
+    "PhysicsServer2DExtensionShapeResult*",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectSpaceState2DExtension",
+   "method": "_intersect_ray",
+   "signature": [
+    "Vector2",
+    "Vector2",
+    "int",
+    "bool",
+    "bool",
+    "bool",
+    "PhysicsServer2DExtensionRayResult*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectSpaceState2DExtension",
+   "method": "_intersect_shape",
+   "signature": [
+    "RID",
+    "Transform2D",
+    "Vector2",
+    "float",
+    "int",
+    "bool",
+    "bool",
+    "PhysicsServer2DExtensionShapeResult*",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectSpaceState3DExtension",
+   "method": "_cast_motion",
+   "signature": [
+    "RID",
+    "Transform3D",
+    "Vector3",
+    "float",
+    "int",
+    "bool",
+    "bool",
+    "float*",
+    "float*",
+    "PhysicsServer3DExtensionShapeRestInfo*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectSpaceState3DExtension",
+   "method": "_collide_shape",
+   "signature": [
+    "RID",
+    "Transform3D",
+    "Vector3",
+    "float",
+    "int",
+    "bool",
+    "bool",
+    "void*",
+    "int",
+    "int32_t*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectSpaceState3DExtension",
+   "method": "_intersect_point",
+   "signature": [
+    "Vector3",
+    "int",
+    "bool",
+    "bool",
+    "PhysicsServer3DExtensionShapeResult*",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsDirectSpaceState3DExtension",
+   "method": "_intersect_ray",
+   "signature": [
+    "Vector3",
+    "Vector3",
+    "int",
+    "bool",
+    "bool",
+    "bool",
+    "bool",
+    "bool",
+    "PhysicsServer3DExtensionRayResult*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsDirectSpaceState3DExtension",
+   "method": "_intersect_shape",
+   "signature": [
+    "RID",
+    "Transform3D",
+    "Vector3",
+    "float",
+    "int",
+    "bool",
+    "bool",
+    "PhysicsServer3DExtensionShapeResult*",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_canvas_instance_id",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_collision_layer",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_collision_mask",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_object_instance_id",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.AreaParameter"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_shape",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_shape_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_shape_transform",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Transform2D"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_space",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_area_get_transform",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Transform2D"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_canvas_instance_id",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_collision_layer",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_collision_mask",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_collision_priority",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_constant_force",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_constant_torque",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_continuous_collision_detection_mode",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::PhysicsServer2D.CCDMode"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_direct_state",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PhysicsDirectBodyState2D"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_max_contacts_reported",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_mode",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::PhysicsServer2D.BodyMode"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_object_instance_id",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.BodyParameter"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_shape",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_shape_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_shape_transform",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Transform2D"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_space",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_get_state",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.BodyState"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_is_omitting_force_integration",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_body_test_motion",
+   "signature": [
+    "RID",
+    "Transform2D",
+    "Vector2",
+    "float",
+    "bool",
+    "bool",
+    "PhysicsServer2DExtensionMotionResult*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_capsule_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_circle_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_concave_polygon_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_convex_polygon_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_damped_spring_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.DampedSpringParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_get_process_info",
+   "signature": [
+    "enum::PhysicsServer2D.ProcessInfo"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_joint_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.JointParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_joint_get_type",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::PhysicsServer2D.JointType"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_joint_is_disabled_collisions_between_bodies",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_pin_joint_get_flag",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.PinJointFlag"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_pin_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.PinJointParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_rectangle_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_segment_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_separation_ray_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_shape_get_data",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_shape_get_type",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::PhysicsServer2D.ShapeType"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_space_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_space_get_direct_state",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PhysicsDirectSpaceState2D"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_space_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer2D.SpaceParameter"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_space_is_active",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer2DExtension",
+   "method": "_world_boundary_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_collision_layer",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_collision_mask",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_object_instance_id",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.AreaParameter"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_shape",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_shape_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_shape_transform",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Transform3D"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_space",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_area_get_transform",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Transform3D"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_collision_layer",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_collision_mask",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_collision_priority",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_constant_force",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_constant_torque",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_direct_state",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PhysicsDirectBodyState3D"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_max_contacts_reported",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_mode",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::PhysicsServer3D.BodyMode"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_object_instance_id",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.BodyParameter"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_shape",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_shape_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_shape_transform",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Transform3D"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_space",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_get_state",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.BodyState"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_is_axis_locked",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.BodyAxis"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_is_continuous_collision_detection_enabled",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_is_omitting_force_integration",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_body_test_motion",
+   "signature": [
+    "RID",
+    "Transform3D",
+    "Vector3",
+    "float",
+    "int",
+    "bool",
+    "bool",
+    "PhysicsServer3DExtensionMotionResult*"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_box_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_capsule_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_concave_polygon_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_cone_twist_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.ConeTwistJointParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_convex_polygon_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_custom_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_cylinder_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_generic_6dof_joint_get_flag",
+   "signature": [
+    "RID",
+    "enum::Vector3.Axis",
+    "enum::PhysicsServer3D.G6DOFJointAxisFlag"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_generic_6dof_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::Vector3.Axis",
+    "enum::PhysicsServer3D.G6DOFJointAxisParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_get_process_info",
+   "signature": [
+    "enum::PhysicsServer3D.ProcessInfo"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_heightmap_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_hinge_joint_get_flag",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.HingeJointFlag"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_hinge_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.HingeJointParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_joint_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_joint_get_solver_priority",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_joint_get_type",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::PhysicsServer3D.JointType"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_joint_is_disabled_collisions_between_bodies",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_pin_joint_get_local_a",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_pin_joint_get_local_b",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_pin_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.PinJointParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_separation_ray_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_shape_get_data",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_shape_get_margin",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_shape_get_type",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::PhysicsServer3D.ShapeType"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_slider_joint_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.SliderJointParam"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_bounds",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "AABB"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_collision_layer",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_collision_mask",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_damping_coefficient",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_drag_coefficient",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_linear_stiffness",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_point_global_position",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_pressure_coefficient",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_shrinking_factor",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_simulation_precision",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_space",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_state",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.BodyState"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_get_total_mass",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_soft_body_is_point_pinned",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_space_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_space_get_direct_state",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PhysicsDirectSpaceState3D"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_space_get_param",
+   "signature": [
+    "RID",
+    "enum::PhysicsServer3D.SpaceParameter"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_space_is_active",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_sphere_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "PhysicsServer3DExtension",
+   "method": "_world_boundary_shape_create",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "RenderDataExtension",
+   "method": "_get_camera_attributes",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "RenderDataExtension",
+   "method": "_get_environment",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "RenderDataExtension",
+   "method": "_get_render_scene_buffers",
+   "signature": [],
+   "return_type": "RenderSceneBuffers"
+  },
+  {
+   "class": "RenderDataExtension",
+   "method": "_get_render_scene_data",
+   "signature": [],
+   "return_type": "RenderSceneData"
+  },
+  {
+   "class": "RenderSceneDataExtension",
+   "method": "_get_cam_projection",
+   "signature": [],
+   "return_type": "Projection"
+  },
+  {
+   "class": "RenderSceneDataExtension",
+   "method": "_get_cam_transform",
+   "signature": [],
+   "return_type": "Transform3D"
+  },
+  {
+   "class": "RenderSceneDataExtension",
+   "method": "_get_uniform_buffer",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "RenderSceneDataExtension",
+   "method": "_get_view_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "RenderSceneDataExtension",
+   "method": "_get_view_eye_offset",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Vector3"
+  },
+  {
+   "class": "RenderSceneDataExtension",
+   "method": "_get_view_projection",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Projection"
+  },
+  {
+   "class": "Resource",
+   "method": "_get_rid",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_can_instantiate",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_base_script",
+   "signature": [],
+   "return_type": "Script"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_global_name",
+   "signature": [],
+   "return_type": "StringName"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_instance_base_type",
+   "signature": [],
+   "return_type": "StringName"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_property_default_value",
+   "signature": [
+    "StringName"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_rpc_config",
+   "signature": [],
+   "return_type": "Variant"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_script_method_list",
+   "signature": [],
+   "return_type": "typedarray::Dictionary"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_script_property_list",
+   "signature": [],
+   "return_type": "typedarray::Dictionary"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_script_signal_list",
+   "signature": [],
+   "return_type": "typedarray::Dictionary"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_get_source_code",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_has_method",
+   "signature": [
+    "StringName"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_has_script_signal",
+   "signature": [
+    "StringName"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_has_source_code",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_instance_has",
+   "signature": [
+    "Object"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_is_abstract",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_is_tool",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "ScriptExtension",
+   "method": "_reload",
+   "signature": [
+    "bool"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "StreamPeerExtension",
+   "method": "_get_available_bytes",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "StreamPeerExtension",
+   "method": "_get_data",
+   "signature": [
+    "uint8_t*",
+    "int",
+    "int32_t*"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "StreamPeerExtension",
+   "method": "_get_partial_data",
+   "signature": [
+    "uint8_t*",
+    "int",
+    "int32_t*"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "StreamPeerExtension",
+   "method": "_put_data",
+   "signature": [
+    "const uint8_t*",
+    "int",
+    "int32_t*"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "StreamPeerExtension",
+   "method": "_put_partial_data",
+   "signature": [
+    "const uint8_t*",
+    "int",
+    "int32_t*"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "StyleBox",
+   "method": "_get_minimum_size",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "StyleBox",
+   "method": "_test_mask",
+   "signature": [
+    "Vector2",
+    "Rect2"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "SyntaxHighlighter",
+   "method": "_get_line_syntax_highlighting",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_create_font",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_create_font_linked_variation",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_create_shaped_text",
+   "signature": [
+    "enum::TextServer.Direction",
+    "enum::TextServer.Orientation"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_antialiasing",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::TextServer.FontAntialiasing"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_ascent",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_baseline_offset",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_char_from_glyph_index",
+   "signature": [
+    "RID",
+    "int",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_descent",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_disable_embedded_bitmaps",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_embolden",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_face_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_face_index",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_fixed_size",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_fixed_size_scale_mode",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::TextServer.FixedSizeScaleMode"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_generate_mipmaps",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_global_oversampling",
+   "signature": [],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_advance",
+   "signature": [
+    "RID",
+    "int",
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_contours",
+   "signature": [
+    "RID",
+    "int",
+    "int"
+   ],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_index",
+   "signature": [
+    "RID",
+    "int",
+    "int",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_list",
+   "signature": [
+    "RID",
+    "Vector2i"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_offset",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_size",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_texture_idx",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_texture_rid",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_texture_size",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_glyph_uv_rect",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "Rect2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_hinting",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::TextServer.Hinting"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_keep_rounding_remainders",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_kerning",
+   "signature": [
+    "RID",
+    "int",
+    "Vector2i"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_kerning_list",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "typedarray::Vector2i"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_language_support_override",
+   "signature": [
+    "RID",
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_language_support_overrides",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PackedStringArray"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_msdf_pixel_range",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_msdf_size",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_name",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_opentype_feature_overrides",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_ot_name_strings",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_oversampling",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_palette_colors",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "PackedColorArray"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_palette_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_palette_custom_colors",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PackedColorArray"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_palette_name",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_scale",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_script_support_override",
+   "signature": [
+    "RID",
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_script_support_overrides",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PackedStringArray"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_size_cache_info",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "typedarray::Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_size_cache_list",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "typedarray::Vector2i"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_spacing",
+   "signature": [
+    "RID",
+    "enum::TextServer.SpacingType"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_stretch",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_style",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bitfield::TextServer.FontStyle"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_style_name",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_subpixel_positioning",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::TextServer.SubpixelPositioning"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_supported_chars",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_supported_glyphs",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_texture_count",
+   "signature": [
+    "RID",
+    "Vector2i"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_texture_image",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "Image"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_texture_offsets",
+   "signature": [
+    "RID",
+    "Vector2i",
+    "int"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_transform",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Transform2D"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_underline_position",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_underline_thickness",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_used_palette",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_variation_coordinates",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_get_weight",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_has_char",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_is_allow_system_fallback",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_is_force_autohinter",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_is_language_supported",
+   "signature": [
+    "RID",
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_is_modulate_color_glyphs",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_is_multichannel_signed_distance_field",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_is_script_supported",
+   "signature": [
+    "RID",
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_supported_feature_list",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_font_supported_variation_list",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_format_number",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_get_features",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_get_hex_code_box_size",
+   "signature": [
+    "int",
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_get_name",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_get_support_data",
+   "signature": [],
+   "return_type": "PackedByteArray"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_get_support_data_filename",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_get_support_data_info",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_has",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_has_feature",
+   "signature": [
+    "enum::TextServer.Feature"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_is_confusable",
+   "signature": [
+    "String",
+    "PackedStringArray"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_is_locale_right_to_left",
+   "signature": [
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_is_locale_using_support_data",
+   "signature": [
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_is_valid_identifier",
+   "signature": [
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_is_valid_letter",
+   "signature": [
+    "int"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_load_support_data",
+   "signature": [
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_name_to_tag",
+   "signature": [
+    "String"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_parse_number",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_parse_structured_text",
+   "signature": [
+    "enum::TextServer.StructuredTextParser",
+    "Array",
+    "String"
+   ],
+   "return_type": "typedarray::Vector3i"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_percent_sign",
+   "signature": [
+    "String"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_save_support_data",
+   "signature": [
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_direction",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "enum::TextServer.Direction"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_font_rid",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_font_size",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_glyph_range",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Vector2i"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_language",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_object",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_range",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Vector2i"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_run_text",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_span_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_span_embedded_object",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_span_meta",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_span_object",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_span_text",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_get_text",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_add_object",
+   "signature": [
+    "RID",
+    "Variant",
+    "Vector2",
+    "enum::InlineAlignment",
+    "int",
+    "float"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_add_string",
+   "signature": [
+    "RID",
+    "String",
+    "typedarray::RID",
+    "int",
+    "Dictionary",
+    "String",
+    "Variant"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_closest_character_pos",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_duplicate",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_fit_to_width",
+   "signature": [
+    "RID",
+    "float",
+    "bitfield::TextServer.JustificationFlag"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_ascent",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_character_breaks",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_custom_ellipsis",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_custom_punctuation",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_descent",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_direction",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::TextServer.Direction"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_dominant_direction_in_range",
+   "signature": [
+    "RID",
+    "int",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_ellipsis_glyph_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_ellipsis_glyphs",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "const Glyph*"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_ellipsis_pos",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_glyph_count",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_glyphs",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "const Glyph*"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_grapheme_bounds",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_inferred_direction",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::TextServer.Direction"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_line_breaks",
+   "signature": [
+    "RID",
+    "float",
+    "int",
+    "bitfield::TextServer.LineBreakFlag"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_line_breaks_adv",
+   "signature": [
+    "RID",
+    "PackedFloat32Array",
+    "int",
+    "bool",
+    "bitfield::TextServer.LineBreakFlag"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_object_glyph",
+   "signature": [
+    "RID",
+    "Variant"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_object_range",
+   "signature": [
+    "RID",
+    "Variant"
+   ],
+   "return_type": "Vector2i"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_object_rect",
+   "signature": [
+    "RID",
+    "Variant"
+   ],
+   "return_type": "Rect2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_objects",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_orientation",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "enum::TextServer.Orientation"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_parent",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_preserve_control",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_preserve_invalid",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_range",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Vector2i"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_selection",
+   "signature": [
+    "RID",
+    "int",
+    "int"
+   ],
+   "return_type": "PackedVector2Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_size",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_spacing",
+   "signature": [
+    "RID",
+    "enum::TextServer.SpacingType"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_trim_pos",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_underline_position",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_underline_thickness",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_width",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_get_word_breaks",
+   "signature": [
+    "RID",
+    "bitfield::TextServer.GraphemeFlag",
+    "bitfield::TextServer.GraphemeFlag"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_has_object",
+   "signature": [
+    "RID",
+    "Variant"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_hit_test_grapheme",
+   "signature": [
+    "RID",
+    "float"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_hit_test_position",
+   "signature": [
+    "RID",
+    "float"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_is_ready",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_next_character_pos",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_next_grapheme_pos",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_prev_character_pos",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_prev_grapheme_pos",
+   "signature": [
+    "RID",
+    "int"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_resize_object",
+   "signature": [
+    "RID",
+    "Variant",
+    "Vector2",
+    "enum::InlineAlignment",
+    "float"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_shape",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_sort_logical",
+   "signature": [
+    "RID"
+   ],
+   "return_type": "const Glyph*"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_substr",
+   "signature": [
+    "RID",
+    "int",
+    "int"
+   ],
+   "return_type": "RID"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_shaped_text_tab_align",
+   "signature": [
+    "RID",
+    "PackedFloat32Array"
+   ],
+   "return_type": "float"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_spoof_check",
+   "signature": [
+    "String"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_string_get_character_breaks",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_string_get_word_breaks",
+   "signature": [
+    "String",
+    "String",
+    "int"
+   ],
+   "return_type": "PackedInt32Array"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_string_to_lower",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_string_to_title",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_string_to_upper",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_strip_diacritics",
+   "signature": [
+    "String"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "TextServerExtension",
+   "method": "_tag_to_name",
+   "signature": [
+    "int"
+   ],
+   "return_type": "String"
+  },
+  {
+   "class": "Texture2D",
+   "method": "_get_format",
+   "signature": [],
+   "return_type": "enum::Image.Format"
+  },
+  {
+   "class": "Texture2D",
+   "method": "_get_height",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "Texture2D",
+   "method": "_get_image",
+   "signature": [],
+   "return_type": "Image"
+  },
+  {
+   "class": "Texture2D",
+   "method": "_get_mipmap_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "Texture2D",
+   "method": "_get_width",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "Texture2D",
+   "method": "_has_alpha",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "Texture2D",
+   "method": "_has_mipmaps",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "Texture3D",
+   "method": "_get_data",
+   "signature": [],
+   "return_type": "typedarray::Image"
+  },
+  {
+   "class": "Texture3D",
+   "method": "_get_depth",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "Texture3D",
+   "method": "_get_format",
+   "signature": [],
+   "return_type": "enum::Image.Format"
+  },
+  {
+   "class": "Texture3D",
+   "method": "_get_height",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "Texture3D",
+   "method": "_get_width",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "Texture3D",
+   "method": "_has_mipmaps",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "TextureLayered",
+   "method": "_get_format",
+   "signature": [],
+   "return_type": "enum::Image.Format"
+  },
+  {
+   "class": "TextureLayered",
+   "method": "_get_height",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "TextureLayered",
+   "method": "_get_layer_data",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Image"
+  },
+  {
+   "class": "TextureLayered",
+   "method": "_get_layered_type",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "TextureLayered",
+   "method": "_get_layers",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "TextureLayered",
+   "method": "_get_width",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "TextureLayered",
+   "method": "_has_mipmaps",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "Translation",
+   "method": "_get_message",
+   "signature": [
+    "StringName",
+    "StringName"
+   ],
+   "return_type": "StringName"
+  },
+  {
+   "class": "Translation",
+   "method": "_get_plural_message",
+   "signature": [
+    "StringName",
+    "StringName",
+    "int",
+    "StringName"
+   ],
+   "return_type": "StringName"
+  },
+  {
+   "class": "VisualInstance3D",
+   "method": "_get_aabb",
+   "signature": [],
+   "return_type": "AABB"
+  },
+  {
+   "class": "VisualShaderNodeCustom",
+   "method": "_get_default_input_port",
+   "signature": [
+    "enum::VisualShaderNode.PortType"
+   ],
+   "return_type": "int"
+  },
+  {
+   "class": "VisualShaderNodeCustom",
+   "method": "_get_input_port_default_value",
+   "signature": [
+    "int"
+   ],
+   "return_type": "Variant"
+  },
+  {
+   "class": "VisualShaderNodeCustom",
+   "method": "_get_name",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_available_packet_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_buffered_amount",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_id",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_label",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_max_packet_life_time",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_max_retransmits",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_packet",
+   "signature": [
+    "const uint8_t **",
+    "int32_t*"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_protocol",
+   "signature": [],
+   "return_type": "String"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_ready_state",
+   "signature": [],
+   "return_type": "enum::WebRTCDataChannel.ChannelState"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_get_write_mode",
+   "signature": [],
+   "return_type": "enum::WebRTCDataChannel.WriteMode"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_is_negotiated",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_is_ordered",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_poll",
+   "signature": [],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_put_packet",
+   "signature": [
+    "const uint8_t*",
+    "int"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCDataChannelExtension",
+   "method": "_was_string_packet",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_add_ice_candidate",
+   "signature": [
+    "String",
+    "int",
+    "String"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_create_data_channel",
+   "signature": [
+    "String",
+    "Dictionary"
+   ],
+   "return_type": "WebRTCDataChannel"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_create_offer",
+   "signature": [],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_get_connection_state",
+   "signature": [],
+   "return_type": "enum::WebRTCPeerConnection.ConnectionState"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_get_gathering_state",
+   "signature": [],
+   "return_type": "enum::WebRTCPeerConnection.GatheringState"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_get_signaling_state",
+   "signature": [],
+   "return_type": "enum::WebRTCPeerConnection.SignalingState"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_initialize",
+   "signature": [
+    "Dictionary"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_poll",
+   "signature": [],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_set_local_description",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "WebRTCPeerConnectionExtension",
+   "method": "_set_remote_description",
+   "signature": [
+    "String",
+    "String"
+   ],
+   "return_type": "enum::Error"
+  },
+  {
+   "class": "Window",
+   "method": "_get_contents_minimum_size",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_anchor_detection_is_enabled",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_camera_feed_id",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_capabilities",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_color_texture",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_depth_texture",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_name",
+   "signature": [],
+   "return_type": "StringName"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_play_area",
+   "signature": [],
+   "return_type": "PackedVector3Array"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_play_area_mode",
+   "signature": [],
+   "return_type": "enum::XRInterface.PlayAreaMode"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_projection_for_view",
+   "signature": [
+    "int",
+    "float",
+    "float",
+    "float"
+   ],
+   "return_type": "PackedFloat64Array"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_render_target_size",
+   "signature": [],
+   "return_type": "Vector2"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_system_info",
+   "signature": [],
+   "return_type": "Dictionary"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_tracking_status",
+   "signature": [],
+   "return_type": "enum::XRInterface.TrackingStatus"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_transform_for_view",
+   "signature": [
+    "int",
+    "Transform3D"
+   ],
+   "return_type": "Transform3D"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_velocity_texture",
+   "signature": [],
+   "return_type": "RID"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_get_view_count",
+   "signature": [],
+   "return_type": "int"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_initialize",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_is_initialized",
+   "signature": [],
+   "return_type": "bool"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_set_play_area_mode",
+   "signature": [
+    "enum::XRInterface.PlayAreaMode"
+   ],
+   "return_type": "bool"
+  },
+  {
+   "class": "XRInterfaceExtension",
+   "method": "_supports_play_area_mode",
+   "signature": [
+    "enum::XRInterface.PlayAreaMode"
+   ],
+   "return_type": "bool"
+  }
+ ]
+}

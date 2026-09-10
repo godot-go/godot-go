@@ -9,5 +9,5 @@ func _ready() -> void:
 	var repro := TestDelegationRepro.new()
 	add_child(repro)
 	repro.get_maximum_size()
-	repro.free()
+	repro.queue_free()
 	get_tree().quit(0)

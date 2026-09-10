@@ -110,6 +110,10 @@ test: ## Run headless tests (fails on assertion failures or leaked engine object
 		fi'
 
 test_delegation_trap: build ## Expect the delegating virtual repro to abort godot with the bounded-depth recursion diagnostic (non-zero exit)
+	@if [ ! -x "$(GODOT)" ]; then \
+		echo "FAIL: godot binary not found; set GODOT=/path/to/godot"; \
+		exit 1; \
+	fi
 	@CI=1 \
 	LOG_LEVEL=WARN \
 	GOTRACEBACK=single \

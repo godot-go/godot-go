@@ -4,12 +4,8 @@
 #include <godot/gdextension_interface.h>
 #include <stdint.h>
 
-// Packs a Go cgo.Handle into the void* instance slot that Godot stores for the
-// lifetime of the bound instance. The cast lives in C so that go vet's
-// unsafeptr analyzer (which cannot know a Handle is pointer-stable) stays
-// silent; the value round-trips unchanged and is unpacked on the callback side
-// as a cgo.Handle.
-void *cgo_wrapped_instance_ptr(uintptr_t handle);
+// cgo_handle_to_ptr is the shared handle-packing shim in pkg/log/cgo_ptr.h.
+#include "cgo_ptr.h"
 
 void *cgo_gdclass_binding_create_callback(void *p_token, void *p_instance);
 void cgo_gdclass_binding_free_callback(void *p_token, void *p_instance, void *p_binding);

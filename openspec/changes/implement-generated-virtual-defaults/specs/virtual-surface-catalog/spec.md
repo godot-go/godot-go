@@ -5,11 +5,11 @@ Makes Godot's virtual-method surface typed, discoverable, and compile-time verif
 ## ADDED Requirements
 
 ### Requirement: Virtual Surface Census Is Complete And Classified
-The repository SHALL contain a checked-in census derived from `extension_api.json` classifying every declared virtual into Category A (non-void return with a plain wrapper on the same hierarchy), B (remaining lifecycle/side-effect hooks), or C (creation-info routed names, which never appear in the API surface), with the classification criterion documented in the census file itself.
+The repository SHALL contain a checked-in census derived from `extension_api.json` classifying every declared virtual into Category A (non-void return with a plain wrapper on the same hierarchy), B (remaining lifecycle/side-effect hooks), or C (creation-info routed names, which never appear in the API surface), with the classification criterion documented in the census file itself. Category A SHALL be enumerated entry-by-entry as the codegen fixture; Category B, which is never code-genned, SHALL be recorded as an aggregate count under the documented criterion.
 
 #### Scenario: Census counts match the API surface
-- **WHEN** the census is regenerated from `godot_headers/extension_api.json`
-- **THEN** the total equals the number of `is_virtual` entries (1437 today) and every entry appears in exactly one category
+- **WHEN** the codegen completeness test re-derives the classification from `godot_headers/extension_api.json`
+- **THEN** the census total equals the number of `is_virtual` entries (1437 today) and every entry appears in exactly one category
 
 ### Requirement: Generated Interfaces Declare The Virtual Surface With Exact Signatures
 For every class in `extension_api.json` declaring Category-A virtuals, code generation SHALL emit an interface on that class's generated layer declaring each virtual under the qualified convention (`V_<ClassName>_<MethodName>`) with Godot's exact parameter and return types.

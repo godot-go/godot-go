@@ -82,6 +82,44 @@ func (p *PlayerCharacter) V_PlayerCharacter_GetMaximumSize() Vector2 {
 
 Virtuals are invoked through the GDExtension `get_virtual_call_data2` / `call_virtual_with_data` path. Virtuals that no level along the chain implements return `nil` call data so Godot falls back to its engine default; implemented virtuals are dispatched to the resolved Go method.
 
+### Generated virtual surface catalog
+
+`extension_api.json` declares 1437 virtual methods across 106 classes. Code generation emits a declaration-only interface for each class with Category-A virtuals (non-void return and a plain wrapper on the same class hierarchy — the subset whose result the engine consumes through that wrapper):
+
+```go
+// pkg/gdclassimpl/virtuals.gen.go
+type ControlVirtuals interface {
+	V_Control_GetMaximumSize() Vector2
+	V_Control_GetMinimumSize() Vector2
+	V_Control_GetTooltip(at_position Vector2) String
+	V_Control_GetCursorShape(at_position Vector2) int32
+}
+```
+
+These interfaces are a catalog: greppable, godoc-visible, zero runtime cost. Nothing is registered or dispatched from them, and satisfying one changes no behavior. The checked-in classification of the full virtual surface (`cmd/generate/gdclassimpl/virtual_census.json`) is a codegen test fixture whose criterion is documented in the file itself; a codegen test fails loudly if the generated surface and the census drift.
+
+### Compile-time signature verification
+
+Go interface satisfaction is all-or-nothing, and the class-wide `<Class>Virtuals` interfaces carry the Godot class-level names, so they do not serve per-override checking. Instead, verify one overridden virtual's exact signature with a per-method anonymous interface:
+
+```go
+// Compiles only if TestVirtualsConformance declares that exact method.
+var _ interface{ V_TestVirtualsConformance_GetMinimumSize() Vector2 } = (*TestVirtualsConformance)(nil)
+```
+
+Take the parameter and return types from the generated catalog (for `_get_minimum_size`, `ControlVirtuals` says `Vector2`), name the method per the qualified convention, and a mismatch surfaces at build time instead of registration time. See `test/pkg/virtuals_conformance.go`.
+
+### Delegation to engine defaults is impossible
+
+Once a virtual is registered, an override of an engine GDVIRTUAL replaces its behavior wholesale: Godot resolves virtual presence once per object instance into a cached member pointer (`gdvirtual.gen.h` — absence caches as an INVALID sentinel) and never re-consults, so the engine-default body is unreachable from GDExtension for that instance. A plain-wrapper call from inside the override (e.g. a `_get_maximum_size` override calling `GetMaximumSize()`) re-enters the registered implementation forever:
+
+| Reference binding | Override mechanism | Engine-default reach |
+|---|---|---|
+| godot-cpp | C++ inheritance; compile-time override detection via `if constexpr (!std::is_same_v<decltype(&B::_x), decltype(&T::_x)>)` | none |
+| godot-rust | `I<Class>` capability traits; unimplemented trait methods are never registered | none ("No access to `super` methods", book) |
+
+The constraint is pinned, not just documented: `TestDelegationRepro` (`test/pkg/delegation_repro.go`) registers a `_get_maximum_size` override that delegates through the plain wrapper, caps the re-entry depth, and panics with a `delegation recursion confirmed` diagnostic; `make test_delegation_trap` runs it in a separate godot invocation and fails unless the process aborts non-zero with that diagnostic. To extend engine or base behavior, delegate explicitly to a named level implementation (see Explicit delegation replaces super-calls above) — do not call the plain wrapper from inside an override.
+
 ## Default Argument Values
 
 Go does not support default parameter values in its syntax. Default argument values are instead passed through the `defaultValues` parameter of `ClassDBBindMethod` (and the `ClassDBBindMethodVirtual`/`ClassDBBindMethodVarargs` variants). GDScript callers can then omit trailing arguments.

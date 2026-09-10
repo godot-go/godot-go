@@ -1,6 +1,11 @@
 #include <godot/gdextension_interface.h>
+#include <stdint.h>
 #include "wrapped.h"
 #include "stacktrace.h"
+
+void *cgo_wrapped_instance_ptr(uintptr_t handle) {
+	return (void *)handle;
+}
 
 // GDClass
 extern void *GoCallback_GDClassBindingCreate(void *p_token, void *p_instance);

@@ -22,7 +22,7 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-.PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test interactive_test open_demo_in_editor
+.PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_delegation_trap interactive_test open_demo_in_editor
 
 goenv: ## Print Go environment variables
 	go env
@@ -108,6 +108,25 @@ test: ## Run headless tests (fails on assertion failures or leaked engine object
 			echo "FAIL: leaked engine objects detected in test output"; \
 			exit 1; \
 		fi'
+
+test_delegation_trap: build ## Expect the delegating virtual repro to abort godot with the bounded-depth recursion diagnostic (non-zero exit)
+	@CI=1 \
+	LOG_LEVEL=WARN \
+	GOTRACEBACK=single \
+	GODEBUG=asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
+	"$(GODOT)" --headless --verbose --path test/demo/ res://delegation_trap.tscn > $(CURDIR)/delegation-trap-output.log 2>&1; \
+	status=$$?; \
+	if [ $$status -eq 0 ]; then \
+		echo "FAIL: expected non-zero exit from the delegation repro (trap no longer aborts)"; \
+		exit 1; \
+	fi; \
+	if grep -q "delegation recursion confirmed" $(CURDIR)/delegation-trap-output.log; then \
+		echo "PASS: bounded-depth recursion trap pinned"; \
+	else \
+		echo "FAIL: recursion diagnostic missing from delegation-trap-output.log"; \
+		tail -30 $(CURDIR)/delegation-trap-output.log; \
+		exit 1; \
+	fi
 
 interactive_test: ## Run Godot editor with debugging for interactive testing
 	LOG_LEVEL=info \

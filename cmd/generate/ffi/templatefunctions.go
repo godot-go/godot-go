@@ -197,6 +197,12 @@ func cgoCastArgument(a clang.Argument, defaultName string) string {
 		switch n {
 		case "void":
 			if t.IsPointer {
+				// goArgumentType types the p_binding slot as cgo.Handle; pack
+				// it through C so go vet's unsafeptr analyzer stays silent on
+				// the integer-to-pointer cast (see pkg/ffi/cgo_handle.h).
+				if goVarName == "p_binding" {
+					return fmt.Sprintf("C.cgo_handle_to_ptr(C.uintptr_t(%s))", goVarName)
+				}
 				return fmt.Sprintf("unsafe.Pointer(%s)", goVarName)
 			} else {
 				panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))

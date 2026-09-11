@@ -1,0 +1,26 @@
+## 1. Investigation spike
+
+- [x] 1.1 Census `extension_api.json`: classify all 1437 virtuals into categories A (engine GDVIRTUAL with plain wrapper), B (remaining lifecycle/side-effect hooks), C (creation-info routed); emit the Category-A list to a checked-in reference file; record counts in this change's design.md Open Questions resolution
+- [x] 1.2 Write a failing recursion repro first: a demo class overriding a Category-A virtual that delegates through the plain wrapper; confirm the infinite-recursion trap exists today (guard with a depth counter, expect overflow) — this pins the bug the change fixes
+- [x] 1.3 Prototype the delegation-termination mechanism before any template work — prototype falsified both variants (callback-layer guard yields zero values because Godot freezes presence per instance; suppression windows cannot reach the per-instance cache). Findings drove the pivot to declaration-only scope (design Context/Decision 3); `SuppressVirtualWhile` prototype reverted
+
+## 2. Codegen
+
+- [x] 2.1 Extend `cmd/generate` gdclassimpl templates to derive the Category-A classification directly from `extension_api.json` (same criterion as the census fixture) and emit per-class virtual-surface interfaces: one interface per class, qualified names, exact signatures, declaration-only — done in 3d6e1fa: `DeriveCategoryA` (generate.go) + `virtuals.go.tmpl`; an independent re-derivation from the documented criterion matches the census exactly (524 entries / 37 classes)
+- [x] 2.2 Run `make generate`; verify `go build ./pkg/gdclassimpl/...` compiles and emitted output contains declarations only (lint: no function bodies generated for virtual-surface interfaces) — `pkg/gdclassimpl/virtuals.gen.go` committed with 524 declarations across 37 interfaces and zero `func` bodies; `go build ./pkg/gdclassimpl/...` green
+- [x] 2.3 Verify generated surface completeness against the census fixture (`cmd/generate/gdclassimpl/virtual_census.json`): every Category-A entry has a declared counterpart with matching signature, and vice versa (scripted assertion in codegen tests) — `cmd/generate/gdclassimpl/generate_test.go` pins counts vs the API, criterion set vs census, emitted declarations vs census signatures, and declaration-only-ness; the first run exposed fixture drift (numeric widths recorded from raw `type` instead of the `typeOrMeta`-resolved form, e.g. `uint32` recorded as `int`) — fixture corrected via the test's `UPDATE_CENSUS=1` regeneration mode and now pinned
+
+## 3. Resolution wiring
+
+- [x] 3.1 Verify unbound catalog leaves behavior untouched: full suite green with regenerated interfaces present and no additional virtuals registered — `make build` + `make test` green (1058 passes / 0 failures) with `virtuals.gen.go` in the tree; generated surface is declaration-only (zero `func` bodies, no registration calls)
+- [x] 3.2 Pin the recursion trap as a make-target expectation test — a normal suite test cannot observe a cgo-callback panic: separate godot invocation exercising the delegating repro, expecting non-zero exit and grepping for the bounded-depth recursion diagnostic — `make test_delegation_trap` runs `res://delegation_trap.tscn` in its own godot invocation and fails unless the run aborts non-zero with the `delegation recursion confirmed` bounded-depth diagnostic (observed: depth 26 panic, process abort)
+
+## 4. Demo coverage & docs
+
+- [x] 4.1 Add a compile-time conformance example: a demo struct with a convention-correct qualified override verified by a per-method anonymous-interface assertion (design Decision 2 idiom; the class-wide `<Class>Virtuals` interfaces name the Godot class level and are catalog-only), proving the signature-verification idiom builds — `test/pkg/virtuals_conformance.go`: `TestVirtualsConformance` embeds `ControlImpl`, overrides `_get_minimum_size` convention-correctly, and asserts `var _ interface{ V_TestVirtualsConformance_GetMinimumSize() Vector2 } = (*TestVirtualsConformance)(nil)`; compiles into the test binary with no registration
+- [x] 4.2 Update docs/overview.md virtual-methods section: generated catalog, conformance idiom, and the delegation-impossibility constraint with evidence trail — three new subsections under Virtual Methods: generated virtual surface catalog, compile-time signature verification, and delegation-to-engine-defaults impossibility (per-instance presence caching in `gdvirtual.gen.h`, godot-cpp/godot-rust parity table, `TestDelegationRepro` + `make test_delegation_trap` as the pinned behavior)
+
+## 5. Validate
+
+- [x] 5.1 Run `go vet ./pkg/... ./test/pkg/...` — exit 0 (fresh run, `-a`); the previously failing `unsafeptr` findings are fixed in-code: `pkg/core/method_bind.go`, `pkg/builtin/wrapped_gdclass.go`, and the generated `pkg/ffi/ffi_wrapper.gen.go` now pack `cgo.Handle` values into `void*` slots through small C shims (`cgo_handle_to_ptr` / `cgo_method_bind_userdata` / `cgo_wrapped_instance_ptr`), since go vet cannot know a Handle is pointer-stable
+- [x] 5.2 Run `GODOT=/path/to/godot make build` and `make test`; full suite green including new assertions — godot 4.7.3: `make build` exit 0; `make test` 1058 passes / 0 failures; `make test_delegation_trap` PASS (bounded-depth abort pinned); `go test ./cmd/generate/gdclassimpl/` ok; `openspec validate` pass

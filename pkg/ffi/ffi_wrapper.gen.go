@@ -14,6 +14,7 @@ package ffi
 
 // #include <godot/gdextension_interface.h>
 // #include "ffi_wrapper.gen.h"
+// #include "cgo_ptr.h"
 // #include <stdint.h>
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -870,7 +871,7 @@ func CallFunc_GDExtensionInstanceBindingFreeCallback(
 	arg0 := (C.GDExtensionInstanceBindingFreeCallback)(fn)
 	arg1 := unsafe.Pointer(p_token)
 	arg2 := unsafe.Pointer(p_instance)
-	arg3 := unsafe.Pointer(p_binding)
+	arg3 := C.cgo_handle_to_ptr(C.uintptr_t(p_binding))
 
 	log.Debug("called C.cgo_callfn_GDExtensionInstanceBindingFreeCallback")
 
@@ -886,7 +887,7 @@ func CallFunc_GDExtensionInstanceBindingReferenceCallback(
 ) GDExtensionBool {
 	arg0 := (C.GDExtensionInstanceBindingReferenceCallback)(fn)
 	arg1 := unsafe.Pointer(p_token)
-	arg2 := unsafe.Pointer(p_binding)
+	arg2 := C.cgo_handle_to_ptr(C.uintptr_t(p_binding))
 	arg3 := (C.GDExtensionBool)(p_reference)
 
 	log.Debug("called C.cgo_callfn_GDExtensionInstanceBindingReferenceCallback")
@@ -4247,7 +4248,7 @@ func CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
 	arg0 := (C.GDExtensionInterfaceObjectSetInstanceBinding)(FFI.ObjectSetInstanceBinding)
 	arg1 := (C.GDExtensionObjectPtr)(p_o)
 	arg2 := unsafe.Pointer(p_token)
-	arg3 := unsafe.Pointer(p_binding)
+	arg3 := C.cgo_handle_to_ptr(C.uintptr_t(p_binding))
 	arg4 := (*C.GDExtensionInstanceBindingCallbacks)(p_callbacks)
 
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceObjectSetInstanceBinding")

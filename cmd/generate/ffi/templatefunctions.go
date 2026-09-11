@@ -20,6 +20,11 @@ func goArgumentType(t clang.PrimativeType, name string) string {
 
 	switch n {
 	case "void":
+		// Coupled to gdextension_interface.h's naming convention: every
+		// void* parameter called p_binding is a cgo.Handle slot, not a raw
+		// C pointer. If a future interface function introduces a p_binding
+		// carrying a real pointer, this typing (and cgoCastArgument's pack
+		// through C.cgo_handle_to_ptr) would silently lie.
 		if name == "p_binding" {
 			return "cgo.Handle"
 		} else if t.IsPointer {
@@ -197,6 +202,13 @@ func cgoCastArgument(a clang.Argument, defaultName string) string {
 		switch n {
 		case "void":
 			if t.IsPointer {
+				// goArgumentType types the p_binding slot as cgo.Handle; pack
+				// it through C so go vet's unsafeptr analyzer stays silent on
+				// the integer-to-pointer cast (see pkg/log/cgo_ptr.h). This
+				// name-matches p_binding in lockstep with goArgumentType.
+				if goVarName == "p_binding" {
+					return fmt.Sprintf("C.cgo_handle_to_ptr(C.uintptr_t(%s))", goVarName)
+				}
 				return fmt.Sprintf("unsafe.Pointer(%s)", goVarName)
 			} else {
 				panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))

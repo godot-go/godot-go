@@ -1,4 +1,5 @@
 #include <godot/gdextension_interface.h>
+#include <stdint.h>
 #include "wrapped.h"
 #include "stacktrace.h"
 

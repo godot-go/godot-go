@@ -2,6 +2,10 @@
 #define CGO_GODOT_GO_WRAPPED_H
 
 #include <godot/gdextension_interface.h>
+#include <stdint.h>
+
+// cgo_handle_to_ptr is the shared handle-packing shim in pkg/log/cgo_ptr.h.
+#include "cgo_ptr.h"
 
 void *cgo_gdclass_binding_create_callback(void *p_token, void *p_instance);
 void cgo_gdclass_binding_free_callback(void *p_token, void *p_instance, void *p_binding);

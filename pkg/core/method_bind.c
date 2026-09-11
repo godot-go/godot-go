@@ -1,4 +1,5 @@
 #include <godot/gdextension_interface.h>
+#include <stdint.h>
 #include "method_bind.h"
 #include "stacktrace.h"
 

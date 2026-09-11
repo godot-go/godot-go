@@ -1,17 +1,17 @@
 package gdextensionparser
 
 import (
-	"os"
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/stretchr/testify/require"
 )
 
+// projectRoot is the repository root relative to this package directory.
+const projectRoot = "../.."
+
 func TestGenerateGDExtensionInterfaceAST(t *testing.T) {
-	projectPath := os.Getenv("VSCODE_WORKSPACE_FOLDER")
-	require.NotEmpty(t, projectPath)
-	f, err := GenerateGDExtensionInterfaceAST(projectPath, "")
+	ast, err := GenerateGDExtensionInterfaceAST(projectRoot, "")
 	require.NoError(t, err)
-	spew.Dump(f)
+	spew.Dump(ast)
 }

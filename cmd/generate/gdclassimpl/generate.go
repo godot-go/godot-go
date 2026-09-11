@@ -140,9 +140,39 @@ type virtualsView struct {
 	VirtualClasses []VirtualClassInfo
 }
 
-// GenerateVirtuals emits pkg/gdclassimpl/virtuals.gen.go: per-class
-// declaration-only interfaces cataloging the Category-A virtual surface.
-func GenerateVirtuals(projectPath string, eapi extensionapiparser.ExtensionApi) error {
+// virtualMethodDecl renders one interface method declaration line for the
+// given Category-A virtual: qualified name, exact Godot parameter and return
+// types mapped to their Go counterparts. Shared by the template and the
+// codegen completeness test so the two can never drift.
+func virtualMethodDecl(view virtualsView, m VirtualMethodInfo) string {
+	var b strings.Builder
+	b.WriteString(m.QualifiedName)
+	b.WriteString("(")
+	for i, a := range m.Arguments {
+		if i > 0 {
+			b.WriteString(", ")
+		}
+		at := goArgumentType(typeOrMeta(a.Meta, a.Type))
+		b.WriteString(goArgumentName(a.Name))
+		b.WriteString(" ")
+		if view.IsRefcountedClassName(at) {
+			b.WriteString("Ref")
+		}
+		b.WriteString(at)
+	}
+	b.WriteString(") ")
+	rt := goReturnType(typeOrMeta(m.ReturnValue.Meta, m.ReturnValue.Type))
+	if view.IsRefcountedClassName(rt) {
+		b.WriteString("Ref")
+	}
+	b.WriteString(rt)
+	return b.String()
+}
+
+// renderVirtuals executes the virtuals template against the API and returns
+// the full generated file contents.
+func renderVirtuals(eapi extensionapiparser.ExtensionApi) ([]byte, error) {
+	view := virtualsView{ExtensionApi: eapi, VirtualClasses: buildVirtualClassesView(eapi)}
 	tmpl, err := template.New("virtuals.gen.go").
 		Funcs(template.FuncMap{
 			"isSetterMethodName":   isSetterMethodName,
@@ -159,14 +189,24 @@ func GenerateVirtuals(projectPath string, eapi extensionapiparser.ExtensionApi) 
 			"goEncodeIsReference":  goEncodeIsReference,
 			"coalesce":             coalesce,
 			"typeOrMeta":           typeOrMeta,
+			"virtualMethodDecl":    virtualMethodDecl,
 		}).
 		Parse(virtualsText)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	var b bytes.Buffer
-	err = tmpl.Execute(&b, virtualsView{ExtensionApi: eapi, VirtualClasses: buildVirtualClassesView(eapi)})
+	if err := tmpl.Execute(&b, view); err != nil {
+		return nil, err
+	}
+	return b.Bytes(), nil
+}
+
+// GenerateVirtuals emits pkg/gdclassimpl/virtuals.gen.go: per-class
+// declaration-only interfaces cataloging the Category-A virtual surface.
+func GenerateVirtuals(projectPath string, eapi extensionapiparser.ExtensionApi) error {
+	b, err := renderVirtuals(eapi)
 	if err != nil {
 		return err
 	}
@@ -177,7 +217,7 @@ func GenerateVirtuals(projectPath string, eapi extensionapiparser.ExtensionApi) 
 		return err
 	}
 	defer f.Close()
-	_, err = f.Write(b.Bytes())
+	_, err = f.Write(b)
 	return err
 }
 

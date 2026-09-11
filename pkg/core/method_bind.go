@@ -535,9 +535,10 @@ func NewGDExtensionClassMethodInfoFromMethodBind(md *GoMethodMetadata) *GDExtens
 	// Use the tracked method name StringName from GoMethodMetadata.
 	// Its lifecycle is managed by GoMethodMetadata.Destroy().
 	pnr.Pin(&md.gdeMethodNameStringName)
+	mdHandle := cgo.NewHandle(md)
 	ret := NewGDExtensionClassMethodInfo(
 		md.gdeMethodNameStringName.AsGDExtensionConstStringNamePtr(),
-		unsafe.Pointer(cgo.NewHandle(md)),
+		C.cgo_handle_to_ptr(C.uintptr_t(mdHandle)),
 		(GDExtensionClassMethodCall)(C.cgo_method_bind_method_call),
 		(GDExtensionClassMethodPtrCall)(C.cgo_method_bind_method_ptrcall),
 		(uint32)(md.MethodFlags),

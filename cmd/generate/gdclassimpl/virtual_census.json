@@ -1,5 +1,5 @@
 {
- "comment": "Census of Godot virtual methods from godot_headers/extension_api.json. Regenerate with the snippet in this change's tasks.md history; criterion documented below. Category C (creation-info routed) never appears in extension_api.json.",
+ "comment": "Census of Godot virtual methods from godot_headers/extension_api.json. The classification is re-derived from the API by DeriveCategoryA in cmd/generate/gdclassimpl/generate.go and kept in sync by the codegen completeness test in cmd/generate/gdclassimpl/generate_test.go; criterion documented below. Category C (creation-info routed) never appears in extension_api.json.",
  "criterion": {
   "A": "is_virtual AND non-void return AND a non-virtual method named without the leading underscore exists on the class or its ancestors (the engine consumes the result through that wrapper)",
   "B": "all other is_virtual entries (lifecycle/no-op or void side-effect hooks)",
@@ -15,7 +15,7 @@
    "class": "AudioStream",
    "method": "_get_length",
    "signature": [],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "AudioStream",
@@ -33,13 +33,13 @@
    "class": "AudioStreamPlayback",
    "method": "_get_loop_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "AudioStreamPlayback",
    "method": "_get_playback_position",
    "signature": [],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "AudioStreamPlayback",
@@ -57,7 +57,7 @@
    "class": "CameraFeed",
    "method": "_set_format",
    "signature": [
-    "int",
+    "int32",
     "Dictionary"
    ],
    "return_type": "bool"
@@ -68,7 +68,7 @@
    "signature": [
     "Vector2"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Control",
@@ -178,13 +178,13 @@
    "class": "Mesh",
    "method": "_get_surface_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Mesh",
    "method": "_surface_get_arrays",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Array"
   },
@@ -192,7 +192,7 @@
    "class": "Mesh",
    "method": "_surface_get_blend_shape_arrays",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "typedarray::Array"
   },
@@ -200,7 +200,7 @@
    "class": "Mesh",
    "method": "_surface_get_material",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Material"
   },
@@ -214,13 +214,13 @@
    "class": "MultiplayerAPIExtension",
    "method": "_get_remote_sender_id",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "MultiplayerAPIExtension",
    "method": "_get_unique_id",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "MultiplayerAPIExtension",
@@ -250,7 +250,7 @@
    "class": "MultiplayerAPIExtension",
    "method": "_rpc",
    "signature": [
-    "int",
+    "int32",
     "Object",
     "StringName",
     "Array"
@@ -261,7 +261,7 @@
    "class": "MultiplayerPeerExtension",
    "method": "_get_available_packet_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "MultiplayerPeerExtension",
@@ -282,7 +282,7 @@
    "class": "MultiplayerPeerExtension",
    "method": "_get_packet_channel",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "MultiplayerPeerExtension",
@@ -294,13 +294,13 @@
    "class": "MultiplayerPeerExtension",
    "method": "_get_packet_peer",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "MultiplayerPeerExtension",
    "method": "_get_transfer_channel",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "MultiplayerPeerExtension",
@@ -312,7 +312,7 @@
    "class": "MultiplayerPeerExtension",
    "method": "_get_unique_id",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "MultiplayerPeerExtension",
@@ -331,7 +331,7 @@
    "method": "_put_packet",
    "signature": [
     "const uint8_t*",
-    "int"
+    "int32"
    ],
    "return_type": "enum::Error"
   },
@@ -339,7 +339,7 @@
    "class": "OpenXRSpatialCapabilityConfigurationBaseHeader",
    "method": "_get_configuration",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "OpenXRSpatialCapabilityConfigurationBaseHeader",
@@ -351,13 +351,13 @@
    "class": "OpenXRSpatialComponentData",
    "method": "_get_component_type",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PacketPeerExtension",
    "method": "_get_available_packet_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PacketPeerExtension",
@@ -373,7 +373,7 @@
    "method": "_put_packet",
    "signature": [
     "const uint8_t*",
-    "int"
+    "int32"
    ],
    "return_type": "enum::Error"
   },
@@ -399,13 +399,13 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_collision_layer",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_collision_mask",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsDirectBodyState2DExtension",
@@ -423,7 +423,7 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_collider",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "RID"
   },
@@ -431,15 +431,15 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_collider_id",
    "signature": [
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_collider_object",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Object"
   },
@@ -447,7 +447,7 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_collider_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector2"
   },
@@ -455,15 +455,15 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_collider_shape",
    "signature": [
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_collider_velocity_at_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector2"
   },
@@ -471,13 +471,13 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_impulse",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector2"
   },
@@ -485,7 +485,7 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_local_normal",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector2"
   },
@@ -493,7 +493,7 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_local_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector2"
   },
@@ -501,15 +501,15 @@
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_local_shape",
    "signature": [
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectBodyState2DExtension",
    "method": "_get_contact_local_velocity_at_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector2"
   },
@@ -603,13 +603,13 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_collision_layer",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_collision_mask",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsDirectBodyState3DExtension",
@@ -627,7 +627,7 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_collider",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "RID"
   },
@@ -635,15 +635,15 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_collider_id",
    "signature": [
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_collider_object",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Object"
   },
@@ -651,7 +651,7 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_collider_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector3"
   },
@@ -659,15 +659,15 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_collider_shape",
    "signature": [
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_collider_velocity_at_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector3"
   },
@@ -675,13 +675,13 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_impulse",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector3"
   },
@@ -689,7 +689,7 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_local_normal",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector3"
   },
@@ -697,7 +697,7 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_local_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector3"
   },
@@ -705,15 +705,15 @@
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_local_shape",
    "signature": [
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectBodyState3DExtension",
    "method": "_get_contact_local_velocity_at_position",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Vector3"
   },
@@ -805,7 +805,7 @@
     "Transform2D",
     "Vector2",
     "float",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "float*",
@@ -821,11 +821,11 @@
     "Transform2D",
     "Vector2",
     "float",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "void*",
-    "int",
+    "int32",
     "int32_t*"
    ],
    "return_type": "bool"
@@ -835,14 +835,14 @@
    "method": "_intersect_point",
    "signature": [
     "Vector2",
-    "int",
-    "int",
+    "uint64",
+    "uint32",
     "bool",
     "bool",
     "PhysicsServer2DExtensionShapeResult*",
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectSpaceState2DExtension",
@@ -850,7 +850,7 @@
    "signature": [
     "Vector2",
     "Vector2",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "bool",
@@ -866,13 +866,13 @@
     "Transform2D",
     "Vector2",
     "float",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "PhysicsServer2DExtensionShapeResult*",
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectSpaceState3DExtension",
@@ -882,7 +882,7 @@
     "Transform3D",
     "Vector3",
     "float",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "float*",
@@ -899,11 +899,11 @@
     "Transform3D",
     "Vector3",
     "float",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "void*",
-    "int",
+    "int32",
     "int32_t*"
    ],
    "return_type": "bool"
@@ -913,13 +913,13 @@
    "method": "_intersect_point",
    "signature": [
     "Vector3",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "PhysicsServer3DExtensionShapeResult*",
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsDirectSpaceState3DExtension",
@@ -927,7 +927,7 @@
    "signature": [
     "Vector3",
     "Vector3",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "bool",
@@ -945,13 +945,13 @@
     "Transform3D",
     "Vector3",
     "float",
-    "int",
+    "uint32",
     "bool",
     "bool",
     "PhysicsServer3DExtensionShapeResult*",
-    "int"
+    "int32"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -965,7 +965,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -973,7 +973,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -981,7 +981,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -989,7 +989,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -1005,7 +1005,7 @@
    "method": "_area_get_shape",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "RID"
   },
@@ -1015,14 +1015,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer2DExtension",
    "method": "_area_get_shape_transform",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "Transform2D"
   },
@@ -1054,7 +1054,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -1062,7 +1062,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -1070,7 +1070,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -1118,7 +1118,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -1134,7 +1134,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -1150,7 +1150,7 @@
    "method": "_body_get_shape",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "RID"
   },
@@ -1160,14 +1160,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer2DExtension",
    "method": "_body_get_shape_transform",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "Transform2D"
   },
@@ -1249,7 +1249,7 @@
    "signature": [
     "enum::PhysicsServer2D.ProcessInfo"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer2DExtension",
@@ -1383,7 +1383,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1391,7 +1391,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1399,7 +1399,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1415,7 +1415,7 @@
    "method": "_area_get_shape",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "RID"
   },
@@ -1425,14 +1425,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer3DExtension",
    "method": "_area_get_shape_transform",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "Transform3D"
   },
@@ -1464,7 +1464,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1472,7 +1472,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1512,7 +1512,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1528,7 +1528,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint64"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1544,7 +1544,7 @@
    "method": "_body_get_shape",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "RID"
   },
@@ -1554,14 +1554,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer3DExtension",
    "method": "_body_get_shape_transform",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "Transform3D"
   },
@@ -1615,7 +1615,7 @@
     "Transform3D",
     "Vector3",
     "float",
-    "int",
+    "int32",
     "bool",
     "bool",
     "PhysicsServer3DExtensionMotionResult*"
@@ -1693,7 +1693,7 @@
    "signature": [
     "enum::PhysicsServer3D.ProcessInfo"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1731,7 +1731,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1833,7 +1833,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1841,7 +1841,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1872,7 +1872,7 @@
    "method": "_soft_body_get_point_global_position",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "Vector3"
   },
@@ -1898,7 +1898,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "PhysicsServer3DExtension",
@@ -1930,7 +1930,7 @@
    "method": "_soft_body_is_point_pinned",
    "signature": [
     "RID",
-    "int"
+    "int32"
    ],
    "return_type": "bool"
   },
@@ -2023,13 +2023,13 @@
    "class": "RenderSceneDataExtension",
    "method": "_get_view_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "RenderSceneDataExtension",
    "method": "_get_view_eye_offset",
    "signature": [
-    "int"
+    "uint32"
    ],
    "return_type": "Vector3"
   },
@@ -2037,7 +2037,7 @@
    "class": "RenderSceneDataExtension",
    "method": "_get_view_projection",
    "signature": [
-    "int"
+    "uint32"
    ],
    "return_type": "Projection"
   },
@@ -2163,14 +2163,14 @@
    "class": "StreamPeerExtension",
    "method": "_get_available_bytes",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "StreamPeerExtension",
    "method": "_get_data",
    "signature": [
     "uint8_t*",
-    "int",
+    "int32",
     "int32_t*"
    ],
    "return_type": "enum::Error"
@@ -2180,7 +2180,7 @@
    "method": "_get_partial_data",
    "signature": [
     "uint8_t*",
-    "int",
+    "int32",
     "int32_t*"
    ],
    "return_type": "enum::Error"
@@ -2190,7 +2190,7 @@
    "method": "_put_data",
    "signature": [
     "const uint8_t*",
-    "int",
+    "int32",
     "int32_t*"
    ],
    "return_type": "enum::Error"
@@ -2200,7 +2200,7 @@
    "method": "_put_partial_data",
    "signature": [
     "const uint8_t*",
-    "int",
+    "int32",
     "int32_t*"
    ],
    "return_type": "enum::Error"
@@ -2224,7 +2224,7 @@
    "class": "SyntaxHighlighter",
    "method": "_get_line_syntax_highlighting",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Dictionary"
   },
@@ -2264,9 +2264,9 @@
    "method": "_font_get_ascent",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -2274,26 +2274,26 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
    "method": "_font_get_char_from_glyph_index",
    "signature": [
     "RID",
-    "int",
-    "int"
+    "int64",
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_font_get_descent",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -2309,7 +2309,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -2317,7 +2317,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2325,7 +2325,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2333,7 +2333,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2355,15 +2355,15 @@
    "class": "TextServerExtension",
    "method": "_font_get_global_oversampling",
    "signature": [],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
    "method": "_font_get_glyph_advance",
    "signature": [
     "RID",
-    "int",
-    "int"
+    "int64",
+    "int64"
    ],
    "return_type": "Vector2"
   },
@@ -2372,8 +2372,8 @@
    "method": "_font_get_glyph_contours",
    "signature": [
     "RID",
-    "int",
-    "int"
+    "int64",
+    "int64"
    ],
    "return_type": "Dictionary"
   },
@@ -2382,11 +2382,11 @@
    "method": "_font_get_glyph_index",
    "signature": [
     "RID",
-    "int",
-    "int",
-    "int"
+    "int64",
+    "int64",
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2403,7 +2403,7 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
    "return_type": "Vector2"
   },
@@ -2413,7 +2413,7 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
    "return_type": "Vector2"
   },
@@ -2423,9 +2423,9 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2433,7 +2433,7 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
    "return_type": "RID"
   },
@@ -2443,7 +2443,7 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
    "return_type": "Vector2"
   },
@@ -2453,7 +2453,7 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
    "return_type": "Rect2"
   },
@@ -2478,7 +2478,7 @@
    "method": "_font_get_kerning",
    "signature": [
     "RID",
-    "int",
+    "int64",
     "Vector2i"
    ],
    "return_type": "Vector2"
@@ -2488,7 +2488,7 @@
    "method": "_font_get_kerning_list",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "typedarray::Vector2i"
   },
@@ -2515,7 +2515,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2523,7 +2523,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2555,14 +2555,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
    "method": "_font_get_palette_colors",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "PackedColorArray"
   },
@@ -2572,7 +2572,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2587,7 +2587,7 @@
    "method": "_font_get_palette_name",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "String"
   },
@@ -2596,9 +2596,9 @@
    "method": "_font_get_scale",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -2640,7 +2640,7 @@
     "RID",
     "enum::TextServer.SpacingType"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2648,7 +2648,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2697,7 +2697,7 @@
     "RID",
     "Vector2i"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2705,7 +2705,7 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
    "return_type": "Image"
   },
@@ -2715,7 +2715,7 @@
    "signature": [
     "RID",
     "Vector2i",
-    "int"
+    "int64"
    ],
    "return_type": "PackedInt32Array"
   },
@@ -2732,18 +2732,18 @@
    "method": "_font_get_underline_position",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
    "method": "_font_get_underline_thickness",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -2751,7 +2751,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2767,14 +2767,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_font_has_char",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "bool"
   },
@@ -2857,14 +2857,14 @@
    "class": "TextServerExtension",
    "method": "_get_features",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_get_hex_code_box_size",
    "signature": [
-    "int",
-    "int"
+    "int64",
+    "int64"
    ],
    "return_type": "Vector2"
   },
@@ -2915,7 +2915,7 @@
     "String",
     "PackedStringArray"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -2945,7 +2945,7 @@
    "class": "TextServerExtension",
    "method": "_is_valid_letter",
    "signature": [
-    "int"
+    "uint64"
    ],
    "return_type": "bool"
   },
@@ -2963,7 +2963,7 @@
    "signature": [
     "String"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3006,14 +3006,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_shaped_get_run_direction",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "enum::TextServer.Direction"
   },
@@ -3022,7 +3022,7 @@
    "method": "_shaped_get_run_font_rid",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "RID"
   },
@@ -3031,16 +3031,16 @@
    "method": "_shaped_get_run_font_size",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "TextServerExtension",
    "method": "_shaped_get_run_glyph_range",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "Vector2i"
   },
@@ -3049,7 +3049,7 @@
    "method": "_shaped_get_run_language",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "String"
   },
@@ -3058,7 +3058,7 @@
    "method": "_shaped_get_run_object",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "Variant"
   },
@@ -3067,7 +3067,7 @@
    "method": "_shaped_get_run_range",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "Vector2i"
   },
@@ -3076,7 +3076,7 @@
    "method": "_shaped_get_run_text",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "String"
   },
@@ -3086,14 +3086,14 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_shaped_get_span_embedded_object",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "Variant"
   },
@@ -3102,7 +3102,7 @@
    "method": "_shaped_get_span_meta",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "Variant"
   },
@@ -3111,7 +3111,7 @@
    "method": "_shaped_get_span_object",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "Variant"
   },
@@ -3120,7 +3120,7 @@
    "method": "_shaped_get_span_text",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "String"
   },
@@ -3140,8 +3140,8 @@
     "Variant",
     "Vector2",
     "enum::InlineAlignment",
-    "int",
-    "float"
+    "int64",
+    "double"
    ],
    "return_type": "bool"
   },
@@ -3152,7 +3152,7 @@
     "RID",
     "String",
     "typedarray::RID",
-    "int",
+    "int64",
     "Dictionary",
     "String",
     "Variant"
@@ -3164,9 +3164,9 @@
    "method": "_shaped_text_closest_character_pos",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3181,10 +3181,10 @@
    "method": "_shaped_text_fit_to_width",
    "signature": [
     "RID",
-    "float",
+    "double",
     "bitfield::TextServer.JustificationFlag"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -3192,7 +3192,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -3208,7 +3208,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3224,7 +3224,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -3239,10 +3239,10 @@
    "method": "_shaped_text_get_dominant_direction_in_range",
    "signature": [
     "RID",
-    "int",
-    "int"
+    "int64",
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3250,7 +3250,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3266,7 +3266,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3274,7 +3274,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3289,7 +3289,7 @@
    "method": "_shaped_text_get_grapheme_bounds",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
    "return_type": "Vector2"
   },
@@ -3306,8 +3306,8 @@
    "method": "_shaped_text_get_line_breaks",
    "signature": [
     "RID",
-    "float",
-    "int",
+    "double",
+    "int64",
     "bitfield::TextServer.LineBreakFlag"
    ],
    "return_type": "PackedInt32Array"
@@ -3318,7 +3318,7 @@
    "signature": [
     "RID",
     "PackedFloat32Array",
-    "int",
+    "int64",
     "bool",
     "bitfield::TextServer.LineBreakFlag"
    ],
@@ -3331,7 +3331,7 @@
     "RID",
     "Variant"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3404,8 +3404,8 @@
    "method": "_shaped_text_get_selection",
    "signature": [
     "RID",
-    "int",
-    "int"
+    "int64",
+    "int64"
    ],
    "return_type": "PackedVector2Array"
   },
@@ -3424,7 +3424,7 @@
     "RID",
     "enum::TextServer.SpacingType"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3432,7 +3432,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3440,7 +3440,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -3448,7 +3448,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -3456,7 +3456,7 @@
    "signature": [
     "RID"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -3482,18 +3482,18 @@
    "method": "_shaped_text_hit_test_grapheme",
    "signature": [
     "RID",
-    "float"
+    "double"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_shaped_text_hit_test_position",
    "signature": [
     "RID",
-    "float"
+    "double"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3508,36 +3508,36 @@
    "method": "_shaped_text_next_character_pos",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_shaped_text_next_grapheme_pos",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_shaped_text_prev_character_pos",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
    "method": "_shaped_text_prev_grapheme_pos",
    "signature": [
     "RID",
-    "int"
+    "int64"
    ],
-   "return_type": "int"
+   "return_type": "int64"
   },
   {
    "class": "TextServerExtension",
@@ -3547,7 +3547,7 @@
     "Variant",
     "Vector2",
     "enum::InlineAlignment",
-    "float"
+    "double"
    ],
    "return_type": "bool"
   },
@@ -3572,8 +3572,8 @@
    "method": "_shaped_text_substr",
    "signature": [
     "RID",
-    "int",
-    "int"
+    "int64",
+    "int64"
    ],
    "return_type": "RID"
   },
@@ -3584,7 +3584,7 @@
     "RID",
     "PackedFloat32Array"
    ],
-   "return_type": "float"
+   "return_type": "double"
   },
   {
    "class": "TextServerExtension",
@@ -3609,7 +3609,7 @@
    "signature": [
     "String",
     "String",
-    "int"
+    "int64"
    ],
    "return_type": "PackedInt32Array"
   },
@@ -3652,7 +3652,7 @@
    "class": "TextServerExtension",
    "method": "_tag_to_name",
    "signature": [
-    "int"
+    "int64"
    ],
    "return_type": "String"
   },
@@ -3666,7 +3666,7 @@
    "class": "Texture2D",
    "method": "_get_height",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Texture2D",
@@ -3678,13 +3678,13 @@
    "class": "Texture2D",
    "method": "_get_mipmap_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Texture2D",
    "method": "_get_width",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Texture2D",
@@ -3708,7 +3708,7 @@
    "class": "Texture3D",
    "method": "_get_depth",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Texture3D",
@@ -3720,13 +3720,13 @@
    "class": "Texture3D",
    "method": "_get_height",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Texture3D",
    "method": "_get_width",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "Texture3D",
@@ -3744,13 +3744,13 @@
    "class": "TextureLayered",
    "method": "_get_height",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "TextureLayered",
    "method": "_get_layer_data",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Image"
   },
@@ -3758,19 +3758,19 @@
    "class": "TextureLayered",
    "method": "_get_layered_type",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "TextureLayered",
    "method": "_get_layers",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "TextureLayered",
    "method": "_get_width",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "TextureLayered",
@@ -3793,7 +3793,7 @@
    "signature": [
     "StringName",
     "StringName",
-    "int",
+    "int32",
     "StringName"
    ],
    "return_type": "StringName"
@@ -3810,13 +3810,13 @@
    "signature": [
     "enum::VisualShaderNode.PortType"
    ],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "VisualShaderNodeCustom",
    "method": "_get_input_port_default_value",
    "signature": [
-    "int"
+    "int32"
    ],
    "return_type": "Variant"
   },
@@ -3830,19 +3830,19 @@
    "class": "WebRTCDataChannelExtension",
    "method": "_get_available_packet_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "WebRTCDataChannelExtension",
    "method": "_get_buffered_amount",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "WebRTCDataChannelExtension",
    "method": "_get_id",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "WebRTCDataChannelExtension",
@@ -3854,13 +3854,13 @@
    "class": "WebRTCDataChannelExtension",
    "method": "_get_max_packet_life_time",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "WebRTCDataChannelExtension",
    "method": "_get_max_retransmits",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "WebRTCDataChannelExtension",
@@ -3912,7 +3912,7 @@
    "method": "_put_packet",
    "signature": [
     "const uint8_t*",
-    "int"
+    "int32"
    ],
    "return_type": "enum::Error"
   },
@@ -3927,7 +3927,7 @@
    "method": "_add_ice_candidate",
    "signature": [
     "String",
-    "int",
+    "int32",
     "String"
    ],
    "return_type": "enum::Error"
@@ -4013,13 +4013,13 @@
    "class": "XRInterfaceExtension",
    "method": "_get_camera_feed_id",
    "signature": [],
-   "return_type": "int"
+   "return_type": "int32"
   },
   {
    "class": "XRInterfaceExtension",
    "method": "_get_capabilities",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "XRInterfaceExtension",
@@ -4055,10 +4055,10 @@
    "class": "XRInterfaceExtension",
    "method": "_get_projection_for_view",
    "signature": [
-    "int",
-    "float",
-    "float",
-    "float"
+    "uint32",
+    "double",
+    "double",
+    "double"
    ],
    "return_type": "PackedFloat64Array"
   },
@@ -4084,7 +4084,7 @@
    "class": "XRInterfaceExtension",
    "method": "_get_transform_for_view",
    "signature": [
-    "int",
+    "uint32",
     "Transform3D"
    ],
    "return_type": "Transform3D"
@@ -4099,7 +4099,7 @@
    "class": "XRInterfaceExtension",
    "method": "_get_view_count",
    "signature": [],
-   "return_type": "int"
+   "return_type": "uint32"
   },
   {
    "class": "XRInterfaceExtension",

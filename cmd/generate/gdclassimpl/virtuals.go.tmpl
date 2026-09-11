@@ -36,8 +36,7 @@ import (
 // {{ $c.StructName }}Virtuals declares the Category-A virtual surface of Godot class {{ $c.Name }}.
 type {{ $c.StructName }}Virtuals interface {
 {{- range $m := $c.Methods }}
-	{{- $rt := goReturnType (typeOrMeta $m.ReturnValue.Meta $m.ReturnValue.Type) }}
-	{{ $m.QualifiedName }}({{ range $i, $a := $m.Arguments }}{{ if $i }}, {{ end }}{{ $at := goArgumentType (typeOrMeta $a.Meta $a.Type) }}{{ goArgumentName $a.Name }} {{ if $view.IsRefcountedClassName $at }}Ref{{ $at }}{{ else }}{{ $at }}{{ end }}{{ end }}) {{ if $view.IsRefcountedClassName $rt }}Ref{{ $rt }}{{ else }}{{ $rt }}{{ end }}
+	{{ virtualMethodDecl $view $m }}
 {{- end }}
 }
 {{ end -}}

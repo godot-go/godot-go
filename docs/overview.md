@@ -124,6 +124,16 @@ The constraint is pinned, not just documented: `TestDelegationRepro` (`test/pkg/
 
 Go does not support default parameter values in its syntax. Default argument values are instead passed through the `defaultValues` parameter of `ClassDBBindMethod` (and the `ClassDBBindMethodVirtual`/`ClassDBBindMethodVarargs` variants). GDScript callers can then omit trailing arguments.
 
+## Call Error Reporting
+
+When GDScript calls a bound method through the dynamic varcall path, the engine hands the call to Go together with a `GDExtensionCallError` slot. godot-go validates the call against the bound signature **before** invoking the method and reports a mismatch through that slot rather than aborting:
+
+- **Too many arguments** → `GDEXTENSION_CALL_ERROR_TOO_MANY_ARGUMENTS` (`expected` = declared count). Variadic (`varargs`) methods accept any argument count and are never rejected here.
+- **Too few arguments** → `GDEXTENSION_CALL_ERROR_TOO_FEW_ARGUMENTS`, only when the call cannot be satisfied even after applying bound default arguments. The required count is derived from the same rule used to fill defaults, so validation and default application never disagree.
+- **Non-convertible argument type** → `GDEXTENSION_CALL_ERROR_INVALID_ARGUMENT` with the failing argument index and the expected variant type. Convertibility uses the engine's `variant_can_convert_strict` predicate (the same one godot-cpp uses), so Godot's own valid conversions — numeric/string inter-conversion, `nil` into an object parameter — still pass; only genuinely non-convertible pairings are rejected.
+
+A rejected call leaves a nil return, never runs the bound Go method body, and keeps the process alive; the engine surfaces the call error to the caller as normal. Only faults a caller cannot induce (absent method user data, null instance) remain fatal. This applies to the varcall path only: the `ptrcall` fast path has no error slot in its GDExtension typedef.
+
 ## Static Methods
 
 Go does not support static methods in structs. Registering static methods is not supported.

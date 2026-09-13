@@ -302,13 +302,10 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			callArgs[i] = gdArgs[i]
 		} else if i < defArgsCount {
 			callArgs[i] = md.DefaultArguments[i]
-		} else {
-			log.Panic("too few arguments",
-				zap.String("bind", md.String()),
-				zap.String("gd_args", VariantSliceToString(gdArgs)),
-				zap.String("defaults", VariantSliceToString(md.DefaultArguments)),
-			)
 		}
+		// A slot reached by neither branch means the call had too few arguments.
+		// The varcall callback rejects that via classifyVarcallArity before
+		// reaching Call, so this case is unreachable and is no longer fatal.
 	}
 	exepctedTypes := md.GoArgumentTypes
 	if md.IsVariadic {

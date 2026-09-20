@@ -161,6 +161,24 @@ func NewGoMethodMetadata(
 			zap.Bool("is_variadic_flag", isVariadicFlaged),
 		)
 	}
+	// Validate input arity before any engine-dependent setup so these bind-time
+	// preconditions are cheap and testable. The trailing-default fill maps
+	// DefaultArguments[k] to parameter (argumentCount - defaults + k), which
+	// requires defaults <= argumentCount; reject excess rather than misalign.
+	argumentCount := mt.NumIn() - 1
+	if len(argumentNames) > argumentCount {
+		log.Panic(`Method definition has more arguments than the actual method.`,
+			zap.String("method", gdMethodName),
+			zap.Int("argument_count", argumentCount),
+		)
+	}
+	if len(defaultArguments) > argumentCount {
+		log.Panic(`Method definition has more default arguments than the actual method.`,
+			zap.String("method", gdMethodName),
+			zap.Int("argument_count", argumentCount),
+			zap.Int("default_count", len(defaultArguments)),
+		)
+	}
 	returnCount := mt.NumOut()
 	if returnCount > 2 {
 		log.Panic("method cannot return more than 1 type",
@@ -214,13 +232,6 @@ func NewGoMethodMetadata(
 			returnType,
 			&returnPropNameStringName,
 			&returnPropHintString,
-		)
-	}
-	argumentCount := mt.NumIn() - 1
-	if len(argumentNames) > argumentCount {
-		log.Panic(`Method definition has more arguments than the actual method.`,
-			zap.String("method", gdMethodName),
-			zap.Int("argument_count", argumentCount),
 		)
 	}
 	defaultArgumentPtrs := make([]GDExtensionVariantPtr, len(defaultArguments))
@@ -296,16 +307,33 @@ type VarargCallFunc func(GDClass, ...Variant) Variant
 func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 	gdArgsCount := len(gdArgs)
 	defArgsCount := len(md.gdeDefaultArgumentPtrs)
-	callArgs := make([]Variant, len(md.gdeArgumentTypes))
+	declared := len(md.gdeArgumentTypes)
+	// Trailing-default convention (godot-cpp call_with_variant_args_dv): the
+	// bound defaults array maps to the LAST defArgsCount parameters, so
+	// DefaultArguments[k] fills parameter (declared - defArgsCount + k).
+	// The bind-time guard ensures defArgsCount <= declared, so defaultStart >= 0.
+	defaultStart := declared - defArgsCount
+	callArgs := make([]Variant, declared)
 	for i := range callArgs {
-		if i < gdArgsCount {
+		switch {
+		case i < gdArgsCount:
 			callArgs[i] = gdArgs[i]
-		} else if i < defArgsCount {
-			callArgs[i] = md.DefaultArguments[i]
+		case i >= defaultStart:
+			callArgs[i] = md.DefaultArguments[i-defaultStart]
+		default:
+			// Unfilled slot. The varcall callback pre-validates via
+			// classifyVarcallArity, so the engine path never reaches here.
+			// A direct Go caller of this exported method that under-supplies
+			// arguments is a misuse: report it loudly instead of silently
+			// delivering a zero-value Variant.
+			log.Panic("Call invoked with too few arguments to fill the signature",
+				zap.String("method", md.GdMethodName),
+				zap.Int("unfilled_slot", i),
+				zap.Int("declared", declared),
+				zap.Int("supplied", gdArgsCount),
+				zap.Int("defaults", defArgsCount),
+			)
 		}
-		// A slot reached by neither branch means the call had too few arguments.
-		// The varcall callback rejects that via classifyVarcallArity before
-		// reaching Call, so this case is unreachable and is no longer fatal.
 	}
 	exepctedTypes := md.GoArgumentTypes
 	if md.IsVariadic {

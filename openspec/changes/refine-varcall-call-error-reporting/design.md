@@ -7,7 +7,7 @@ PR #147 added varcall call-error reporting (capability `method-call-error-report
 Reference facts verified against sources:
 
 - godot-cpp `call_with_variant_args_dv` (`include/godot_cpp/core/binder_common.hpp`) sets `expected = sizeof...(P)` (the declared count) for **both** too-many and too-few, and fills defaults trailing: `args[i] = default_values[i - p_argcount + (dvs - missing)]`, rejecting only when `missing > dvs`.
-- The engine's `Variant::can_convert_strict` (`core/variant/variant.cpp`) lists BOOL/INT/FLOAT as mutually strict-convertible, STRING as a valid target from many types, but **not** STRING as a strict source for INT/FLOAT/BOOL (commented out), and NIL converts strictly only to OBJECT.
+- The engine's `Variant::can_convert_strict` (`core/variant/variant.cpp`) lists BOOL/INT/FLOAT as mutually strict-convertible, STRING as a strict target **only** from STRING_NAME and NODE_PATH (numeric→STRING is not strict-convertible — "many types → STRING" is the loose `can_convert` table), **not** STRING as a strict source for INT/FLOAT/BOOL (commented out), and NIL converts strictly only to OBJECT.
 - The engine passes the caller's raw argument count to the extension varcall callback and performs no pre-validation (`GDExtensionMethodBind::call`, `core/extension/gdextension.cpp`), so the extension owns arity/type reporting.
 
 ## Goals / Non-Goals
@@ -51,7 +51,7 @@ Emit `log.Debug` inside `rejectVarcallArity` and `rejectVarcallInvalidArgument` 
 
 ### D5 — Documentation corrections
 
-- `docs/overview.md`: replace the ambiguous "numeric/string inter-conversion ... still pass" phrasing with the precise set: numeric inter-conversion (int/float/bool) passes, any→STRING passes, `nil`→object passes; STRING→number and `nil`→scalar are rejected as `INVALID_ARGUMENT`.
+- `docs/overview.md`: replace the ambiguous "numeric/string inter-conversion ... still pass" phrasing with the precise set: numeric inter-conversion (int/float/bool), STRING↔STRING_NAME/NODE_PATH, and `nil`→object pass; STRING→number, number→STRING, and `nil`→scalar are rejected as `INVALID_ARGUMENT`.
 - Archived `openspec/changes/archive/2026-09-11-surface-method-call-errors/design.md`: correct the sentence "`defaultArguments` is `nil` for every existing binding" with a dated correction note — `DefArgs` is bound with two defaults (all-arguments-defaulted), which is exercised by the defaults-satisfy-short-call path. The surrounding reasoning remains valid for that case.
 
 Alternative considered: leave the archive untouched and record the correction only in this design — rejected because the misleading sentence sits in the most-quotable place; a minimal dated correction preserves the historical record while stopping the error's spread.

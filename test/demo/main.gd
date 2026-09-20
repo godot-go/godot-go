@@ -331,6 +331,12 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.def_args(50), 250)
 	assert_equal(example.def_args(50, 100), 150)
 
+	# Partial trailing default: a supplied, b defaults to 200.
+	assert_equal(example.partial_def_args(5), 205)
+	assert_equal(example.partial_def_args(5, 7), 12)
+	# Zero args is unsatisfiable (missing 2 > 1 default) and must be rejected.
+	assert_equal(example.test_partial_def_args_rejects_short(), 0)
+
 	# Varcall argument validation: too-few/too-many/non-convertible calls must be
 	# reported to the engine (not abort the process) and must never run the bound
 	# body; a correct call must dispatch. Returning 0 means all held; reaching the

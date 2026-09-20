@@ -1,8 +1,11 @@
 package core
 
 import (
+	"reflect"
+	"strings"
 	"testing"
 
+	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
 
@@ -31,7 +34,9 @@ func TestClassifyVarcallArity(t *testing.T) {
 		{"too few zero args", 1, 0, false, 0, varcallArityTooFew, 1},
 		{"all defaults satisfied by short call", 2, 2, false, 0, varcallArityOK, 0},
 		{"all defaults partial supplied", 2, 2, false, 1, varcallArityOK, 0},
-		{"partial defaults still too few", 3, 1, false, 1, varcallArityTooFew, 2},
+		{"partial defaults still too few", 3, 1, false, 1, varcallArityTooFew, 3},
+		{"partial defaults satisfied by leading args", 3, 1, false, 2, varcallArityOK, 0},
+		{"two defaults one supplied ok", 3, 2, false, 1, varcallArityOK, 0},
 		{"variadic ignores too few", 1, 0, true, 0, varcallArityOK, 0},
 	}
 	for _, tc := range cases {
@@ -50,17 +55,18 @@ func TestClassifyVarcallArity(t *testing.T) {
 
 func TestClassifyVarcallArityMatchesCallFill(t *testing.T) {
 	// classifyVarcallArity must reject exactly the calls that GoMethodMetadata.Call
-	// would otherwise fail to fill: an unsatisfiable slot exists iff
-	// max(supplied, defaults) < declared (for non-variadic methods).
+	// would otherwise fail to fill under the trailing-default model: an unfilled
+	// slot exists iff declared - supplied > defaults (for non-variadic methods).
 	for declared := 0; declared <= 4; declared++ {
 		for defaults := 0; defaults <= declared; defaults++ {
 			for supplied := 0; supplied <= declared+2; supplied++ {
 				md := arityFixture(declared, defaults, false)
 				got, _ := md.classifyVarcallArity(supplied)
-				// Call fills slot i iff i<supplied || i<defaults.
+				// Call fills slot i iff i<supplied || i>=declared-defaults.
+				defaultStart := declared - defaults
 				callFillable := true
 				for i := 0; i < declared; i++ {
-					if !(i < supplied || i < defaults) {
+					if !(i < supplied || i >= defaultStart) {
 						callFillable = false
 						break
 					}
@@ -73,5 +79,56 @@ func TestClassifyVarcallArityMatchesCallFill(t *testing.T) {
 				}
 			}
 		}
+	}
+}
+
+// TestCallPanicsOnUnfilledSlot verifies that a direct Go caller of the exported
+// Call that under-supplies arguments (bypassing the varcall pre-validation) gets
+// a loud panic naming the method, instead of the old silent zero-value fill.
+func TestCallPanicsOnUnfilledSlot(t *testing.T) {
+	md := &GoMethodMetadata{
+		GdMethodName:           "too_short_method",
+		gdeArgumentTypes:       make([]GDExtensionVariantType, 2),
+		gdeDefaultArgumentPtrs: make([]GDExtensionVariantPtr, 0),
+	}
+	var recovered any
+	func() {
+		defer func() { recovered = recover() }()
+		md.Call(nil)
+	}()
+	if recovered == nil {
+		t.Fatal("expected a panic for an unfilled slot, got none")
+	}
+	msg, ok := recovered.(string)
+	if !ok || !strings.Contains(msg, "too few arguments") {
+		t.Fatalf("expected panic message about too few arguments, got: %v", recovered)
+	}
+}
+
+// bindGuardFixture provides a real reflect.Method with two parameters so the
+// bind-time default-count guard can be exercised before any engine-dependent setup.
+type bindGuardFixture struct{}
+
+func (bindGuardFixture) TwoArgs(a, b int32) int32 { return a + b }
+
+// TestBindRejectsExcessDefaults verifies that registering a method with more
+// defaults than declared parameters panics at bind time.
+func TestBindRejectsExcessDefaults(t *testing.T) {
+	m, ok := reflect.TypeOf(&bindGuardFixture{}).MethodByName("TwoArgs")
+	if !ok {
+		t.Fatal("TwoArgs method not found")
+	}
+	excessDefaults := []Variant{{}, {}, {}} // 3 defaults for a 2-arg method
+	var recovered any
+	func() {
+		defer func() { recovered = recover() }()
+		NewGoMethodMetadata(m, "bindGuardFixture", "two_args", "TwoArgs", nil, excessDefaults, 0)
+	}()
+	if recovered == nil {
+		t.Fatal("expected a panic for excess defaults, got none")
+	}
+	msg, ok := recovered.(string)
+	if !ok || !strings.Contains(msg, "more default arguments") {
+		t.Fatalf("expected panic about excess default arguments, got: %v", recovered)
 	}
 }

@@ -331,6 +331,12 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.def_args(50), 250)
 	assert_equal(example.def_args(50, 100), 150)
 
+	# Varcall argument validation: too-few/too-many/non-convertible calls must be
+	# reported to the engine (not abort the process) and must never run the bound
+	# body; a correct call must dispatch. Returning 0 means all held; reaching the
+	# next assertion proves the process survived every rejected call.
+	assert_equal(example.test_call_error_reporting(), 0)
+
 	# Array and Dictionary
 	assert_equal(example.test_array(), [1, 2])
 	assert_equal(example.test_tarray(), [ Vector2(1, 2), Vector2(2, 3) ])

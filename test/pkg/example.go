@@ -121,6 +121,73 @@ func (e *Example) DefArgs(p_a, p_b int32) int32 {
 	return ret
 }
 
+// callErrorProbeRan records whether the CallErrorProbe method body executed, so
+// the harness can confirm a rejected varcall never invokes the bound Go method.
+var callErrorProbeRan bool
+
+// CallErrorProbe is a sentinel bound to a single required int64 parameter. Its
+// body flipping the package flag is the observable signal that a call was
+// accepted and dispatched through the varcall callback.
+func (e *Example) CallErrorProbe(p1 int64) int64 {
+	callErrorProbeRan = true
+	return p1
+}
+
+// TestCallErrorReporting drives the varcall argument-validation paths through the
+// engine call API and returns the number of failed expectations (0 == all pass).
+// Rejected calls must leave callErrorProbeRan false (body never runs); an
+// accepted call must set it. The engine reports a call error for rejects, which
+// the generated Object.Call surfaces as a Go panic; we recover because the
+// assertion is on the body-ran flag, not the panic itself. main.gd only needs
+// this to return 0, and its continuation proves the process survived every
+// rejected call.
+func (e *Example) TestCallErrorReporting() int64 {
+	var failures int64
+
+	probe := func(method string, args ...Variant) (ran bool) {
+		callErrorProbeRan = false
+		func() {
+			defer func() { _ = recover() }()
+			sn := NewStringNameWithLatin1Chars(method)
+			defer sn.Destroy()
+			e.Call(sn, args...)
+		}()
+		for _, a := range args {
+			a.Destroy()
+		}
+		return callErrorProbeRan
+	}
+
+	// Rejected: too few arguments for the single required int64.
+	if probe("call_error_probe") {
+		failures++
+	}
+	// Rejected: too many arguments.
+	if probe("call_error_probe", NewVariantInt64(1), NewVariantInt64(2)) {
+		failures++
+	}
+	// Rejected: non-convertible argument type (Array into an int64 parameter).
+	// Exercises a refcounted container argument on the reject path; the marshalled
+	// view is a non-owning copy and the reject frees nothing, so the leak gate
+	// stays green. We still release the variants we own.
+	arr := NewArray()
+	arrRef := NewVariantArray(arr)
+	if probe("call_error_probe", arrRef) {
+		failures++
+	}
+	arr.Destroy()
+	// Rejected: non-convertible argument type (Vector2 into an int64 parameter).
+	if probe("call_error_probe", NewVariantVector2(NewVector2())) {
+		failures++
+	}
+	// Accepted: correct arity and type dispatches and runs the body.
+	if !probe("call_error_probe", NewVariantInt64(5)) {
+		failures++
+	}
+
+	return failures
+}
+
 func (e *Example) TestArray() Array {
 	arr := NewArray()
 	arr.Insert(0, NewVariantInt64(1))
@@ -954,6 +1021,8 @@ func RegisterClassExample() {
 		ClassDBBindMethodVarargs(t, "VarargsFuncVoid", "varargs_func_void", nil, nil)
 
 		ClassDBBindMethod(t, "DefArgs", "def_args", []string{"a", "b"}, []Variant{NewVariantInt64(100), NewVariantInt64(200)})
+		ClassDBBindMethod(t, "CallErrorProbe", "call_error_probe", []string{"p1"}, nil)
+		ClassDBBindMethod(t, "TestCallErrorReporting", "test_call_error_reporting", nil, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
 

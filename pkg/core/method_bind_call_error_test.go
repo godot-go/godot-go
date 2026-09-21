@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
+	. "github.com/godot-go/godot-go/pkg/constant"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
 
@@ -111,6 +112,8 @@ type bindGuardFixture struct{}
 
 func (bindGuardFixture) TwoArgs(a, b int32) int32 { return a + b }
 
+func (bindGuardFixture) Varargs(a ...Variant) {}
+
 // TestBindRejectsExcessDefaults verifies that registering a method with more
 // defaults than declared parameters panics at bind time.
 func TestBindRejectsExcessDefaults(t *testing.T) {
@@ -135,19 +138,17 @@ func TestBindRejectsExcessDefaults(t *testing.T) {
 
 // TestFillCallArgsVariadicSkipsFill verifies the D5 review fix: a variadic
 // binding's declared slot is the slice itself, so the default fill (and its
-// unfilled-slot panic) must not apply. fillCallArgs returns nil for variadic
-// bindings even when they carry defaults; without the skip a zero-argument
-// call would panic on the unfilled slice slot. The end-to-end dispatch with
-// an empty slice is pinned by the engine demo (varargs_func with 0, 1 and 4
-// args), since Call's return path requires live engine FFI pointers that bare
-// unit tests lack.
+// unfilled-slot panic) must not apply. With the real variadic shape
+// (declared=1, defaults=0), removing the skip would panic on the unfilled
+// slice slot for a zero-argument call. The end-to-end dispatch with an empty
+// slice is pinned by the engine demo (varargs_func with 0, 1 and 4 args),
+// since Call's return path requires live engine FFI pointers that bare unit
+// tests lack.
 func TestFillCallArgsVariadicSkipsFill(t *testing.T) {
 	md := &GoMethodMetadata{
-		GdMethodName:           "variadic_with_defaults",
-		IsVariadic:             true,
-		gdeArgumentTypes:       make([]GDExtensionVariantType, 1),
-		DefaultArguments:       []Variant{{}},
-		gdeDefaultArgumentPtrs: make([]GDExtensionVariantPtr, 1),
+		GdMethodName:     "variadic_no_defaults",
+		IsVariadic:       true,
+		gdeArgumentTypes: make([]GDExtensionVariantType, 1),
 	}
 	var got []Variant
 	var recovered any
@@ -160,5 +161,29 @@ func TestFillCallArgsVariadicSkipsFill(t *testing.T) {
 	}
 	if got != nil {
 		t.Fatalf("variadic fillCallArgs must return nil (dispatch uses gdArgs), got %v", got)
+	}
+}
+
+// TestBindRejectsVariadicDefaults verifies the D5 third-layer guard: a
+// variadic binding registered with bound defaults is rejected at bind time,
+// because the zero-named-argument registration would make the engine's
+// parse-time required-count computation underflow and the fill is skipped
+// anyway.
+func TestBindRejectsVariadicDefaults(t *testing.T) {
+	m, ok := reflect.TypeOf(&bindGuardFixture{}).MethodByName("Varargs")
+	if !ok {
+		t.Fatal("Varargs method not found")
+	}
+	var recovered any
+	func() {
+		defer func() { recovered = recover() }()
+		NewGoMethodMetadata(m, "bindGuardFixture", "varargs_method", "Varargs", nil, []Variant{{}}, METHOD_FLAG_VARARG)
+	}()
+	if recovered == nil {
+		t.Fatal("expected a panic for variadic binding with defaults, got none")
+	}
+	msg, ok := recovered.(string)
+	if !ok || !strings.Contains(msg, "cannot have default arguments") {
+		t.Fatalf("expected panic about variadic default arguments, got: %v", recovered)
 	}
 }

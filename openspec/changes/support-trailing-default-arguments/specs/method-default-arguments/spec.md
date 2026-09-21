@@ -61,7 +61,12 @@ A direct call to the exported call entry that leaves a parameter slot unfilled â
 
 ### Requirement: Variadic Bindings Bypass The Default Fill
 
-A variadic binding's declared slot is the variadic slice itself, not a positional parameter. The default-argument fill and its unfilled-slot report SHALL NOT apply to variadic bindings; the bound method receives the caller's raw argument slice directly. A variadic binding SHALL be registered with zero named arguments plus the vararg flag, so a caller may supply any number of arguments (including zero) without a parse-time arity error. A call to a variadic method that supplies zero arguments SHALL dispatch with an empty slice rather than raising the unfilled-slot report.
+A variadic binding's declared slot is the variadic slice itself, not a positional parameter. The default-argument fill and its unfilled-slot report SHALL NOT apply to variadic bindings; the bound method receives the caller's raw argument slice directly. A variadic binding SHALL be registered with zero named arguments plus the vararg flag, so a caller may supply any number of arguments (including zero) without a parse-time arity error. A call to a variadic method that supplies zero arguments SHALL dispatch with an empty slice rather than raising the unfilled-slot report. A variadic binding SHALL NOT carry bound default arguments: registering a variadic method with a non-empty default-argument array SHALL be rejected at bind time with a clear diagnostic, since the fill is skipped and the engine's parse-time required-count computation would miscompute from the default count against zero named arguments.
+
+#### Scenario: Variadic binding with defaults rejected at registration
+
+- **WHEN** a variadic method is registered with one or more bound default arguments
+- **THEN** registration fails with a diagnostic naming the offending method
 
 #### Scenario: Zero-argument call to a variadic method dispatches
 

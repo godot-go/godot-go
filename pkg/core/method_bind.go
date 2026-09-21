@@ -60,11 +60,6 @@ type GoMethodMetadata struct {
 	gdeArgPropHintStrings            []String
 	// Lifecycle-managed StringName for the GD method name.
 	gdeMethodNameStringName StringName
-	// Lifecycle-managed StringName/String for variadic (varargs) argument PropertyInfo.
-	// Only set when IsVariadic is true.
-	gdeVarArgPropClassNameStringName StringName
-	gdeVarArgPropNameStringName      StringName
-	gdeVarArgPropHintString          String
 }
 
 // Destroy cleans up all StringName and String objects stored in this metadata.
@@ -111,19 +106,6 @@ func (md *GoMethodMetadata) Destroy() {
 	methodName := md.gdeMethodNameStringName
 	pnr.Pin(&methodName)
 	methodName.Destroy()
-
-	// Destroy variadic argument StringName/String objects (if variadic method).
-	if md.IsVariadic {
-		varClassName := md.gdeVarArgPropClassNameStringName
-		varName := md.gdeVarArgPropNameStringName
-		varHint := md.gdeVarArgPropHintString
-		pnr.Pin(&varClassName)
-		pnr.Pin(&varName)
-		pnr.Pin(&varHint)
-		varClassName.Destroy()
-		varName.Destroy()
-		varHint.Destroy()
-	}
 }
 
 func NewGoMethodMetadata(
@@ -176,6 +158,17 @@ func NewGoMethodMetadata(
 		log.Panic(`Method definition has more default arguments than the actual method.`,
 			zap.String("method", gdMethodName),
 			zap.Int("argument_count", argumentCount),
+			zap.Int("default_count", len(defaultArguments)),
+		)
+	}
+	// Variadic bindings register with zero named arguments and skip the
+	// default fill, so bound defaults are meaningless there and a nonzero
+	// default count would underflow the engine's parse-time required-count
+	// computation (0 - defaults) into an uncallable signature. Reject the
+	// combination at bind time instead.
+	if isVariadicFlaged && len(defaultArguments) > 0 {
+		log.Panic(`Variadic method definition cannot have default arguments.`,
+			zap.String("method", gdMethodName),
 			zap.Int("default_count", len(defaultArguments)),
 		)
 	}
@@ -287,13 +280,6 @@ func NewGoMethodMetadata(
 		gdeArgPropClassNameStringNames:   argPropClassNameStringNames,
 		gdeArgPropHintStrings:            argPropHintStrings,
 		gdeMethodNameStringName:          NewStringNameWithLatin1Chars(gdMethodName),
-	}
-	// Create variadic argument PropertyInfo StringNames for variadic methods.
-	// These persist in GoMethodMetadata for lifecycle management.
-	if isVariadicFlaged {
-		ret.gdeVarArgPropClassNameStringName = NewStringNameWithLatin1Chars(className)
-		ret.gdeVarArgPropNameStringName = NewStringNameWithLatin1Chars("varargs")
-		ret.gdeVarArgPropHintString = NewStringWithUtf8Chars("")
 	}
 	pnr.Pin(&returnPropertyInfo)
 	pnr.Pin(ret)

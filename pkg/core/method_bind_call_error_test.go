@@ -132,3 +132,33 @@ func TestBindRejectsExcessDefaults(t *testing.T) {
 		t.Fatalf("expected panic about excess default arguments, got: %v", recovered)
 	}
 }
+
+// TestFillCallArgsVariadicSkipsFill verifies the D5 review fix: a variadic
+// binding's declared slot is the slice itself, so the default fill (and its
+// unfilled-slot panic) must not apply. fillCallArgs returns nil for variadic
+// bindings even when they carry defaults; without the skip a zero-argument
+// call would panic on the unfilled slice slot. The end-to-end dispatch with
+// an empty slice is pinned by the engine demo (varargs_func with 0, 1 and 4
+// args), since Call's return path requires live engine FFI pointers that bare
+// unit tests lack.
+func TestFillCallArgsVariadicSkipsFill(t *testing.T) {
+	md := &GoMethodMetadata{
+		GdMethodName:           "variadic_with_defaults",
+		IsVariadic:             true,
+		gdeArgumentTypes:       make([]GDExtensionVariantType, 1),
+		DefaultArguments:       []Variant{{}},
+		gdeDefaultArgumentPtrs: make([]GDExtensionVariantPtr, 1),
+	}
+	var got []Variant
+	var recovered any
+	func() {
+		defer func() { recovered = recover() }()
+		got = md.fillCallArgs(nil)
+	}()
+	if recovered != nil {
+		t.Fatalf("variadic fillCallArgs with zero args must not panic, got: %v", recovered)
+	}
+	if got != nil {
+		t.Fatalf("variadic fillCallArgs must return nil (dispatch uses gdArgs), got %v", got)
+	}
+}

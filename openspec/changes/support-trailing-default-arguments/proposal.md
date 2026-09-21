@@ -10,6 +10,7 @@ The varcall default-fill uses a leading-index model (`slot i ← DefaultArgument
 - Change the too-few arity gate to `declared - supplied > defaults` (missing exceeds available defaults), matching the trailing fill's satisfiability.
 - Add a **bind-time guard**: binding more defaults than declared parameters is rejected with a clear panic.
 - Add **direct-Go validation**: a direct call to the exported `Call` that leaves a slot unfilled (bypassing varcall pre-validation) now panics with the method name and unfilled index instead of silently zero-filling.
+- Skip the default fill for **variadic bindings**: a variadic binding's declared slot is the slice itself, so the fill and the unfilled-slot panic must not apply — a zero-argument varargs call (valid in Godot) would otherwise panic through the cgo boundary and abort the process.
 - Backward compatible: the all-defaulted `DefArgs` binding keeps identical behavior.
 
 ## Capabilities

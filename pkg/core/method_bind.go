@@ -303,15 +303,23 @@ func NewGoMethodMetadata(
 // VarargCallFunc is the function signature that can be called from GDScript
 type VarargCallFunc func(GDClass, ...Variant) Variant
 
-// Call is called by GDScript to call into Go
-func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
+// fillCallArgs builds the positional argument slice for a call under the
+// trailing-default convention (godot-cpp call_with_variant_args_dv): the bound
+// defaults array maps to the LAST defArgsCount parameters, so DefaultArguments[k]
+// fills parameter (declared - defArgsCount + k). The bind-time guard ensures
+// defArgsCount <= declared, so defaultStart >= 0.
+//
+// Variadic bindings return nil: their declared slot is the variadic slice
+// itself, and the dispatch branch passes gdArgs directly to CallSlice without
+// reading callArgs. Filling would panic on the unfilled slice slot for a
+// zero-argument varargs call.
+func (md *GoMethodMetadata) fillCallArgs(gdArgs []Variant) []Variant {
+	if md.IsVariadic {
+		return nil
+	}
 	gdArgsCount := len(gdArgs)
 	defArgsCount := len(md.gdeDefaultArgumentPtrs)
 	declared := len(md.gdeArgumentTypes)
-	// Trailing-default convention (godot-cpp call_with_variant_args_dv): the
-	// bound defaults array maps to the LAST defArgsCount parameters, so
-	// DefaultArguments[k] fills parameter (declared - defArgsCount + k).
-	// The bind-time guard ensures defArgsCount <= declared, so defaultStart >= 0.
 	defaultStart := declared - defArgsCount
 	callArgs := make([]Variant, declared)
 	for i := range callArgs {
@@ -335,6 +343,12 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			)
 		}
 	}
+	return callArgs
+}
+
+// Call is called by GDScript to call into Go
+func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
+	callArgs := md.fillCallArgs(gdArgs)
 	exepctedTypes := md.GoArgumentTypes
 	if md.IsVariadic {
 		args := []reflect.Value{
@@ -345,7 +359,7 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 		log.Info("Call Variadic",
 			zap.String("bind", md.String()),
 			zap.String("gd_args", VariantSliceToString(gdArgs)),
-			zap.String("resolved_args", VariantSliceToString(callArgs)),
+			zap.String("resolved_args", VariantSliceToString(gdArgs)),
 			zap.String("ret", util.ReflectValueSliceToString(ret)),
 		)
 		switch md.GoReturnStyle {
@@ -519,20 +533,17 @@ func NewGDExtensionClassMethodInfoFromMethodBind(md *GoMethodMetadata) *GDExtens
 	}
 
 	if md.IsVariadic {
-		// Use variadic argument PropertyInfo StringNames from GoMethodMetadata.
-		// Their lifecycle is managed by GoMethodMetadata.Destroy().
-		pnr.Pin(&md.gdeVarArgPropClassNameStringName)
-		pnr.Pin(&md.gdeVarArgPropNameStringName)
-		pnr.Pin(&md.gdeVarArgPropHintString)
-		argumentsInfo := []GDExtensionPropertyInfo{
-			NewGDExtensionPropertyInfoFromNames(&md.gdeVarArgPropClassNameStringName, GDEXTENSION_VARIANT_TYPE_NIL, &md.gdeVarArgPropNameStringName, &md.gdeVarArgPropHintString),
-		}
-		argumentInfoCount = (uint32)(len(argumentsInfo))
-		argumentInfosPtr = unsafe.SliceData(argumentsInfo)
-		argumentsMetadata := []GDExtensionClassMethodArgumentMetadata{
-			GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE,
-		}
-		argumentsMetadataPtr = unsafe.SliceData(argumentsMetadata)
+		// Register zero named arguments for pure-varargs bindings. The engine
+		// counts every registered argument_info entry as a required named
+		// parameter when validating calls at GDScript parse time (the vararg
+		// flag only relaxes the too-many bound), so registering the slice slot
+		// as a "varargs" argument made zero-argument calls a parse error.
+		// The engine's own zero-arg varargs methods (e.g. GDScript.new)
+		// register zero named arguments; the varcall callback receives the
+		// caller's raw argument array regardless of argument_count.
+		argumentInfoCount = 0
+		argumentInfosPtr = nil
+		argumentsMetadataPtr = nil
 		defaultArgumentCount = (uint32)(len(md.gdeDefaultArgumentPtrs))
 		defaultArgumentPtrsPtr = unsafe.SliceData(md.gdeDefaultArgumentPtrs)
 		log.Debug("Create Variadic ClassMethodInfoFromMethodBind",

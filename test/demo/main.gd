@@ -322,6 +322,7 @@ func test_suite(i: int, example: Example):
 	# assert_not_equal(example.extended_ref_checks(var_ref).get_instance_id(), var_ref.get_instance_id())
 	assert_equal(example.varargs_func("some", "arguments", "to", "test"), 4)
 	assert_equal(example.varargs_func("some"), 1)
+	assert_equal(example.varargs_func(), 0)
 	assert_equal(example.varargs_func_nv("some", "arguments", "to", "test"), 46)
 	example.varargs_func_void("some", "arguments", "to", "test")
 	assert_equal(custom_signal_emitted, ["varargs_func_void", 5])

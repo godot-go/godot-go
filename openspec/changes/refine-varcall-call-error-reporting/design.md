@@ -41,6 +41,8 @@ Alternative considered: fix the fill model to the trailing convention now — re
 
 ### D3 — Comment caveat on `Call`, no re-added panic
 
+**Superseded (2026-09-20) by `support-trailing-default-arguments` D3/D5:** the unfilled-slot case is now a `log.Panic` naming the bound method and slot index, not a silent zero-value fill. The variadic fill skip (D5 of that change) keeps the panic unreachable for valid zero-argument variadic calls. The reasoning below is retained for the historical record.
+
 `GoMethodMetadata.Call` is exported; the varcall callback is its only in-repo caller and is arity-guarded, but a direct Go caller passing too few arguments now silently fills remaining slots with zero-value `Variant`s (all-zero bytes ≈ NIL variant, coercing to 0/nil downstream) instead of the removed `log.Panic`. Decision: extend the existing comment to document this exported-surface caveat rather than re-adding a panic, keeping panics reserved for internal faults per the capability's requirement.
 
 Alternative considered: a defensive `log.Panic` on unfilled slots — rejected because it reintroduces the fatal path the capability deliberately removed, and direct-call validation is a distinct concern that can be scoped separately if demand appears.

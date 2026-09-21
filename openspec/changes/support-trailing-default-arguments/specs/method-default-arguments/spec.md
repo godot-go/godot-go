@@ -58,3 +58,18 @@ A direct call to the exported call entry that leaves a parameter slot unfilled â
 
 - **WHEN** the engine varcall path dispatches a call that passed arity validation
 - **THEN** no unfilled-slot report is raised, because every slot is fillable
+
+### Requirement: Variadic Bindings Bypass The Default Fill
+
+A variadic binding's declared slot is the variadic slice itself, not a positional parameter. The default-argument fill and its unfilled-slot report SHALL NOT apply to variadic bindings; the bound method receives the caller's raw argument slice directly. A variadic binding SHALL be registered with zero named arguments plus the vararg flag, so a caller may supply any number of arguments (including zero) without a parse-time arity error. A call to a variadic method that supplies zero arguments SHALL dispatch with an empty slice rather than raising the unfilled-slot report.
+
+#### Scenario: Zero-argument call to a variadic method dispatches
+
+- **WHEN** a variadic-bound method is called with zero arguments (via the engine varcall path or a direct Go call)
+- **THEN** the bound method runs with an empty variadic slice
+- **AND** no unfilled-slot report is raised
+
+#### Scenario: Variadic call with arguments is unaffected by the fill
+
+- **WHEN** a variadic-bound method is called with one or more arguments
+- **THEN** the bound method receives exactly the caller's arguments, with no default values injected

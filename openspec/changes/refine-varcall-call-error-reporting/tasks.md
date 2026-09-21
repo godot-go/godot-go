@@ -9,7 +9,7 @@
 ## 2. Lockstep and caveat comments
 
 - [x] 2.1 In `classifyVarcallArity`, add a comment stating the condition must equal `GoMethodMetadata.Call`'s fill satisfiability, that partial trailing-default bindings (`0 < defaults < declared`) are rejected under the leading-index model, and that moving the fill model to the trailing convention requires changing the check to `declared - supplied > defaults` and updating `TestClassifyVarcallArityMatchesCallFill` in the same commit
-- [x] 2.2 In `GoMethodMetadata.Call`'s argument-fill loop (`pkg/core/method_bind.go`), extend the unfilled-slot comment to note the exported-surface caveat: direct Go callers bypass varcall validation and receive zero-value `Variant`s (≈ NIL) in unfilled slots instead of the removed panic
+- [x] 2.2 In `GoMethodMetadata.Call`'s argument-fill loop (`pkg/core/method_bind.go`), extend the unfilled-slot comment to note the exported-surface caveat: direct Go callers bypass varcall validation and receive zero-value `Variant`s (≈ NIL) in unfilled slots instead of the removed panic *(Superseded 2026-09-20 by `support-trailing-default-arguments` D3: the unfilled-slot case is now a `log.Panic` naming the method and slot; variadic calls skip the fill per D5)*
 
 ## 3. Debug diagnostic on reject paths
 

@@ -46,6 +46,12 @@ Alternative considered: a separate `CallChecked(inst, args) (Variant, error)` en
 
 The trailing formula needs `defaultStart >= 0`. Reject `len(defaultArguments) > argumentCount` at method-registration time with a clear panic naming the method. Under the old leading fill this case was silently ignored (extra defaults unreachable); making it fatal prevents a negative-index crash in the new fill.
 
+### D5 — Variadic bindings skip the fill loop (review follow-up)
+
+Review of the shipped fill found a variadic edge case: a variadic binding has `declared = 1` (the variadic slice slot) and `defaults = 0`, so a zero-argument varcall — which `classifyVarcallArity` accepts by skipping both bounds — fell into D3's new unfilled-slot panic. The varcall callback has no `recover`, so the panic unwinds through the cgo frame and aborts the process. The variadic dispatch branch never reads `callArgs`: it passes `gdArgs` straight to `CallSlice`. Decision: guard the fill loop with `if !md.IsVariadic`, keeping the fill/unfilled-slot model strictly for positional parameters. Zero-argument varargs calls then dispatch with an empty slice, matching Godot semantics, and D3's panic stays reachable only for genuine positional misuse.
+
+A second layer surfaced when pinning the case in the engine demo: the binding registered the slice slot as a named `"varargs"` argument (`argument_count = 1`), and the engine counts every registered `argument_info` entry as a required named parameter at GDScript parse time (the vararg flag only relaxes the too-many bound), so `varargs_func()` was a parse error before ever reaching Go. The engine's own zero-arg varargs methods (e.g. `GDScript.new`) register zero named arguments, and the varcall callback receives the caller's raw argument array regardless of `argument_count` (`GDExtensionMethodBind::call`). Decision: register pure-varargs bindings with `argument_count = 0` plus the vararg flag. The dynamic-call layer (e.g. `Object.call("varargs_func")` with zero args) is covered by the fill skip regardless; the registration fix makes the static GDScript path accept the call too.
+
 ## Risks / Trade-offs
 
 - **[Fill-model change touches the hot dispatch path]** → Mitigation: the change is a bounded index remap in one loop; the all-defaulted path is provably identical and covered by the existing `DefArgs` engine trio.

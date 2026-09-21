@@ -524,9 +524,10 @@ func NewGDExtensionClassMethodInfoFromMethodBind(md *GoMethodMetadata) *GDExtens
 		// parameter when validating calls at GDScript parse time (the vararg
 		// flag only relaxes the too-many bound), so registering the slice slot
 		// as a "varargs" argument made zero-argument calls a parse error.
-		// The engine's own zero-arg varargs methods (e.g. GDScript.new)
-		// register zero named arguments; the varcall callback receives the
-		// caller's raw argument array regardless of argument_count.
+		// Native vararg binds (e.g. Object.call) register only their required
+		// leading named arguments — the vararg tail is never a registered
+		// argument; the varcall callback receives the caller's raw argument
+		// array regardless of argument_count.
 		argumentInfoCount = 0
 		argumentInfosPtr = nil
 		argumentsMetadataPtr = nil

@@ -11,7 +11,7 @@ Code review of the varcall call-error reporting (PR #147, capability `method-cal
 - Extend the `Call` unfilled-slot comment to note the exported-surface caveat: direct Go callers bypass varcall validation and would receive zero-value `Variant`s (≈ NIL) in unfilled slots instead of the removed panic.
 - Emit a debug-level log on every varcall rejection (method name, error code, `argument`, `expected`) so rejects are visible in debug logs; today only the engine sees them.
 - Documentation corrections:
-  - `docs/overview.md`: clarify that string→number and `nil`→scalar arguments are **rejected** (STRING is not in the engine's strict-convert source list for INT/FLOAT/BOOL; NIL converts only to OBJECT), while numeric inter-conversion, any→STRING, and `nil`→object still pass.
+  - `docs/overview.md`: clarify that string→number, number→string and `nil`→scalar arguments are **rejected** (STRING is not in the engine's strict-convert source list for INT/FLOAT/BOOL, and numeric types are not in STRING's strict-convert source list; NIL converts only to OBJECT), while numeric inter-conversion, STRING↔STRING_NAME/NODE_PATH, and `nil`→object still pass.
   - Correct the archived `surface-method-call-errors` design.md statement that "`defaultArguments` is nil for every existing binding" — `DefArgs` is bound with two defaults.
 
 ## Capabilities

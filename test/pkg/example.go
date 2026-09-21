@@ -121,6 +121,35 @@ func (e *Example) DefArgs(p_a, p_b int32) int32 {
 	return ret
 }
 
+// PartialDefArgs has a single trailing default (b=200), exercising the
+// trailing-default fill for a 0 < defaults < declared binding.
+var partialDefArgsRan bool
+
+func (e *Example) PartialDefArgs(p_a, p_b int32) int32 {
+	partialDefArgsRan = true
+	ret := p_a + p_b
+	log.Info("PartialDefArgs called", zap.Int32("sum", ret))
+	return ret
+}
+
+// TestPartialDefArgsRejectsShort drives a zero-argument call to partial_def_args
+// (which declares two params with one trailing default) through the engine call
+// API. The call is unsatisfiable (missing 2 > 1 default) and must be rejected
+// without running the body. Returns 0 when the body correctly did not run.
+func (e *Example) TestPartialDefArgsRejectsShort() int64 {
+	partialDefArgsRan = false
+	func() {
+		defer func() { _ = recover() }()
+		sn := NewStringNameWithLatin1Chars("partial_def_args")
+		defer sn.Destroy()
+		e.Call(sn)
+	}()
+	if partialDefArgsRan {
+		return 1
+	}
+	return 0
+}
+
 // callErrorProbeRan records whether the CallErrorProbe method body executed, so
 // the harness can confirm a rejected varcall never invokes the bound Go method.
 var callErrorProbeRan bool
@@ -1021,6 +1050,8 @@ func RegisterClassExample() {
 		ClassDBBindMethodVarargs(t, "VarargsFuncVoid", "varargs_func_void", nil, nil)
 
 		ClassDBBindMethod(t, "DefArgs", "def_args", []string{"a", "b"}, []Variant{NewVariantInt64(100), NewVariantInt64(200)})
+		ClassDBBindMethod(t, "PartialDefArgs", "partial_def_args", []string{"a", "b"}, []Variant{NewVariantInt64(200)})
+		ClassDBBindMethod(t, "TestPartialDefArgsRejectsShort", "test_partial_def_args_rejects_short", nil, nil)
 		ClassDBBindMethod(t, "CallErrorProbe", "call_error_probe", []string{"p1"}, nil)
 		ClassDBBindMethod(t, "TestCallErrorReporting", "test_call_error_reporting", nil, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)

@@ -60,11 +60,6 @@ type GoMethodMetadata struct {
 	gdeArgPropHintStrings            []String
 	// Lifecycle-managed StringName for the GD method name.
 	gdeMethodNameStringName StringName
-	// Lifecycle-managed StringName/String for variadic (varargs) argument PropertyInfo.
-	// Only set when IsVariadic is true.
-	gdeVarArgPropClassNameStringName StringName
-	gdeVarArgPropNameStringName      StringName
-	gdeVarArgPropHintString          String
 }
 
 // Destroy cleans up all StringName and String objects stored in this metadata.
@@ -111,19 +106,6 @@ func (md *GoMethodMetadata) Destroy() {
 	methodName := md.gdeMethodNameStringName
 	pnr.Pin(&methodName)
 	methodName.Destroy()
-
-	// Destroy variadic argument StringName/String objects (if variadic method).
-	if md.IsVariadic {
-		varClassName := md.gdeVarArgPropClassNameStringName
-		varName := md.gdeVarArgPropNameStringName
-		varHint := md.gdeVarArgPropHintString
-		pnr.Pin(&varClassName)
-		pnr.Pin(&varName)
-		pnr.Pin(&varHint)
-		varClassName.Destroy()
-		varName.Destroy()
-		varHint.Destroy()
-	}
 }
 
 func NewGoMethodMetadata(
@@ -159,6 +141,35 @@ func NewGoMethodMetadata(
 		log.Panic("go method and method flags are not variadic aligned",
 			zap.Bool("is_variadic_type", isVariadicTyped),
 			zap.Bool("is_variadic_flag", isVariadicFlaged),
+		)
+	}
+	// Validate input arity before any engine-dependent setup so these bind-time
+	// preconditions are cheap and testable. The trailing-default fill maps
+	// DefaultArguments[k] to parameter (argumentCount - defaults + k), which
+	// requires defaults <= argumentCount; reject excess rather than misalign.
+	argumentCount := mt.NumIn() - 1
+	if len(argumentNames) > argumentCount {
+		log.Panic(`Method definition has more arguments than the actual method.`,
+			zap.String("method", gdMethodName),
+			zap.Int("argument_count", argumentCount),
+		)
+	}
+	if len(defaultArguments) > argumentCount {
+		log.Panic(`Method definition has more default arguments than the actual method.`,
+			zap.String("method", gdMethodName),
+			zap.Int("argument_count", argumentCount),
+			zap.Int("default_count", len(defaultArguments)),
+		)
+	}
+	// Variadic bindings register with zero named arguments and skip the
+	// default fill, so bound defaults are meaningless there and a nonzero
+	// default count would underflow the engine's parse-time required-count
+	// computation (0 - defaults) into an uncallable signature. Reject the
+	// combination at bind time instead.
+	if isVariadicFlaged && len(defaultArguments) > 0 {
+		log.Panic(`Variadic method definition cannot have default arguments.`,
+			zap.String("method", gdMethodName),
+			zap.Int("default_count", len(defaultArguments)),
 		)
 	}
 	returnCount := mt.NumOut()
@@ -216,13 +227,6 @@ func NewGoMethodMetadata(
 			&returnPropHintString,
 		)
 	}
-	argumentCount := mt.NumIn() - 1
-	if len(argumentNames) > argumentCount {
-		log.Panic(`Method definition has more arguments than the actual method.`,
-			zap.String("method", gdMethodName),
-			zap.Int("argument_count", argumentCount),
-		)
-	}
 	defaultArgumentPtrs := make([]GDExtensionVariantPtr, len(defaultArguments))
 	for i := range defaultArgumentPtrs {
 		defaultArgumentPtrs[i] = (GDExtensionVariantPtr)(defaultArguments[i].NativePtr())
@@ -277,13 +281,6 @@ func NewGoMethodMetadata(
 		gdeArgPropHintStrings:            argPropHintStrings,
 		gdeMethodNameStringName:          NewStringNameWithLatin1Chars(gdMethodName),
 	}
-	// Create variadic argument PropertyInfo StringNames for variadic methods.
-	// These persist in GoMethodMetadata for lifecycle management.
-	if isVariadicFlaged {
-		ret.gdeVarArgPropClassNameStringName = NewStringNameWithLatin1Chars(className)
-		ret.gdeVarArgPropNameStringName = NewStringNameWithLatin1Chars("varargs")
-		ret.gdeVarArgPropHintString = NewStringWithUtf8Chars("")
-	}
 	pnr.Pin(&returnPropertyInfo)
 	pnr.Pin(ret)
 	return ret
@@ -292,21 +289,52 @@ func NewGoMethodMetadata(
 // VarargCallFunc is the function signature that can be called from GDScript
 type VarargCallFunc func(GDClass, ...Variant) Variant
 
-// Call is called by GDScript to call into Go
-func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
+// fillCallArgs builds the positional argument slice for a call under the
+// trailing-default convention (godot-cpp call_with_variant_args_dv): the bound
+// defaults array maps to the LAST defArgsCount parameters, so DefaultArguments[k]
+// fills parameter (declared - defArgsCount + k). The bind-time guard ensures
+// defArgsCount <= declared, so defaultStart >= 0.
+//
+// Variadic bindings return nil: their declared slot is the variadic slice
+// itself, and the dispatch branch passes gdArgs directly to CallSlice without
+// reading callArgs. Filling would panic on the unfilled slice slot for a
+// zero-argument varargs call.
+func (md *GoMethodMetadata) fillCallArgs(gdArgs []Variant) []Variant {
+	if md.IsVariadic {
+		return nil
+	}
 	gdArgsCount := len(gdArgs)
 	defArgsCount := len(md.gdeDefaultArgumentPtrs)
-	callArgs := make([]Variant, len(md.gdeArgumentTypes))
+	declared := len(md.gdeArgumentTypes)
+	defaultStart := declared - defArgsCount
+	callArgs := make([]Variant, declared)
 	for i := range callArgs {
-		if i < gdArgsCount {
+		switch {
+		case i < gdArgsCount:
 			callArgs[i] = gdArgs[i]
-		} else if i < defArgsCount {
-			callArgs[i] = md.DefaultArguments[i]
+		case i >= defaultStart:
+			callArgs[i] = md.DefaultArguments[i-defaultStart]
+		default:
+			// Unfilled slot. The varcall callback pre-validates via
+			// classifyVarcallArity, so the engine path never reaches here.
+			// A direct Go caller of this exported method that under-supplies
+			// arguments is a misuse: report it loudly instead of silently
+			// delivering a zero-value Variant.
+			log.Panic("Call invoked with too few arguments to fill the signature",
+				zap.String("method", md.GdMethodName),
+				zap.Int("unfilled_slot", i),
+				zap.Int("declared", declared),
+				zap.Int("supplied", gdArgsCount),
+				zap.Int("defaults", defArgsCount),
+			)
 		}
-		// A slot reached by neither branch means the call had too few arguments.
-		// The varcall callback rejects that via classifyVarcallArity before
-		// reaching Call, so this case is unreachable and is no longer fatal.
 	}
+	return callArgs
+}
+
+// Call is called by GDScript to call into Go
+func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
+	callArgs := md.fillCallArgs(gdArgs)
 	exepctedTypes := md.GoArgumentTypes
 	if md.IsVariadic {
 		args := []reflect.Value{
@@ -317,7 +345,7 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 		log.Info("Call Variadic",
 			zap.String("bind", md.String()),
 			zap.String("gd_args", VariantSliceToString(gdArgs)),
-			zap.String("resolved_args", VariantSliceToString(callArgs)),
+			zap.String("resolved_args", VariantSliceToString(gdArgs)),
 			zap.String("ret", util.ReflectValueSliceToString(ret)),
 		)
 		switch md.GoReturnStyle {
@@ -491,20 +519,18 @@ func NewGDExtensionClassMethodInfoFromMethodBind(md *GoMethodMetadata) *GDExtens
 	}
 
 	if md.IsVariadic {
-		// Use variadic argument PropertyInfo StringNames from GoMethodMetadata.
-		// Their lifecycle is managed by GoMethodMetadata.Destroy().
-		pnr.Pin(&md.gdeVarArgPropClassNameStringName)
-		pnr.Pin(&md.gdeVarArgPropNameStringName)
-		pnr.Pin(&md.gdeVarArgPropHintString)
-		argumentsInfo := []GDExtensionPropertyInfo{
-			NewGDExtensionPropertyInfoFromNames(&md.gdeVarArgPropClassNameStringName, GDEXTENSION_VARIANT_TYPE_NIL, &md.gdeVarArgPropNameStringName, &md.gdeVarArgPropHintString),
-		}
-		argumentInfoCount = (uint32)(len(argumentsInfo))
-		argumentInfosPtr = unsafe.SliceData(argumentsInfo)
-		argumentsMetadata := []GDExtensionClassMethodArgumentMetadata{
-			GDEXTENSION_METHOD_ARGUMENT_METADATA_NONE,
-		}
-		argumentsMetadataPtr = unsafe.SliceData(argumentsMetadata)
+		// Register zero named arguments for pure-varargs bindings. The engine
+		// counts every registered argument_info entry as a required named
+		// parameter when validating calls at GDScript parse time (the vararg
+		// flag only relaxes the too-many bound), so registering the slice slot
+		// as a "varargs" argument made zero-argument calls a parse error.
+		// Native vararg binds (e.g. Object.call) register only their required
+		// leading named arguments — the vararg tail is never a registered
+		// argument; the varcall callback receives the caller's raw argument
+		// array regardless of argument_count.
+		argumentInfoCount = 0
+		argumentInfosPtr = nil
+		argumentsMetadataPtr = nil
 		defaultArgumentCount = (uint32)(len(md.gdeDefaultArgumentPtrs))
 		defaultArgumentPtrsPtr = unsafe.SliceData(md.gdeDefaultArgumentPtrs)
 		log.Debug("Create Variadic ClassMethodInfoFromMethodBind",

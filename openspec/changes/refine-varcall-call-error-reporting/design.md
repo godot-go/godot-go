@@ -7,7 +7,7 @@ PR #147 added varcall call-error reporting (capability `method-call-error-report
 Reference facts verified against sources:
 
 - godot-cpp `call_with_variant_args_dv` (`include/godot_cpp/core/binder_common.hpp`) sets `expected = sizeof...(P)` (the declared count) for **both** too-many and too-few, and fills defaults trailing: `args[i] = default_values[i - p_argcount + (dvs - missing)]`, rejecting only when `missing > dvs`.
-- The engine's `Variant::can_convert_strict` (`core/variant/variant.cpp`) lists BOOL/INT/FLOAT as mutually strict-convertible, STRING as a valid target from many types, but **not** STRING as a strict source for INT/FLOAT/BOOL (commented out), and NIL converts strictly only to OBJECT.
+- The engine's `Variant::can_convert_strict` (`core/variant/variant.cpp`) lists BOOL/INT/FLOAT as mutually strict-convertible, STRING as a strict target **only** from STRING_NAME and NODE_PATH (numeric→STRING is not strict-convertible — "many types → STRING" is the loose `can_convert` table), **not** STRING as a strict source for INT/FLOAT/BOOL (commented out), and NIL converts strictly only to OBJECT.
 - The engine passes the caller's raw argument count to the extension varcall callback and performs no pre-validation (`GDExtensionMethodBind::call`, `core/extension/gdextension.cpp`), so the extension owns arity/type reporting.
 
 ## Goals / Non-Goals
@@ -41,6 +41,8 @@ Alternative considered: fix the fill model to the trailing convention now — re
 
 ### D3 — Comment caveat on `Call`, no re-added panic
 
+**Superseded (2026-09-20) by `support-trailing-default-arguments` D3/D5:** the unfilled-slot case is now a `log.Panic` naming the bound method and slot index, not a silent zero-value fill. The variadic fill skip (D5 of that change) keeps the panic unreachable for valid zero-argument variadic calls. The reasoning below is retained for the historical record.
+
 `GoMethodMetadata.Call` is exported; the varcall callback is its only in-repo caller and is arity-guarded, but a direct Go caller passing too few arguments now silently fills remaining slots with zero-value `Variant`s (all-zero bytes ≈ NIL variant, coercing to 0/nil downstream) instead of the removed `log.Panic`. Decision: extend the existing comment to document this exported-surface caveat rather than re-adding a panic, keeping panics reserved for internal faults per the capability's requirement.
 
 Alternative considered: a defensive `log.Panic` on unfilled slots — rejected because it reintroduces the fatal path the capability deliberately removed, and direct-call validation is a distinct concern that can be scoped separately if demand appears.
@@ -51,7 +53,7 @@ Emit `log.Debug` inside `rejectVarcallArity` and `rejectVarcallInvalidArgument` 
 
 ### D5 — Documentation corrections
 
-- `docs/overview.md`: replace the ambiguous "numeric/string inter-conversion ... still pass" phrasing with the precise set: numeric inter-conversion (int/float/bool) passes, any→STRING passes, `nil`→object passes; STRING→number and `nil`→scalar are rejected as `INVALID_ARGUMENT`.
+- `docs/overview.md`: replace the ambiguous "numeric/string inter-conversion ... still pass" phrasing with the precise set: numeric inter-conversion (int/float/bool), STRING↔STRING_NAME/NODE_PATH, and `nil`→object pass; STRING→number, number→STRING, and `nil`→scalar are rejected as `INVALID_ARGUMENT`.
 - Archived `openspec/changes/archive/2026-09-11-surface-method-call-errors/design.md`: correct the sentence "`defaultArguments` is `nil` for every existing binding" with a dated correction note — `DefArgs` is bound with two defaults (all-arguments-defaulted), which is exercised by the defaults-satisfy-short-call path. The surrounding reasoning remains valid for that case.
 
 Alternative considered: leave the archive untouched and record the correction only in this design — rejected because the misleading sentence sits in the most-quotable place; a minimal dated correction preserves the historical record while stopping the error's spread.

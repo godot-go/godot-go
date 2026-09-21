@@ -17,14 +17,26 @@ const (
 )
 
 // classifyVarcallArity reports whether the supplied argument count satisfies
-// the bound signature and, when it does not, the argument count the caller must
-// supply (the value written to GDExtensionCallError.expected).
+// the bound signature and, when it does not, the argument count reported to the
+// caller via GDExtensionCallError.expected.
 //
-// The too-few decision reproduces the exact slot-fill condition used by
-// GoMethodMetadata.Call, which fills slot i iff i < supplied || i < defaults.
-// Therefore an unsatisfiable slot exists iff max(supplied, defaults) < declared,
-// so arity validation and default application can never disagree. Variadic
-// methods skip both bounds: the declared count is the single variadic slice slot.
+// Both arity errors report the declared argument count, matching godot-cpp's
+// call_with_variant_args_dv, which sets expected = sizeof...(P) for too-many and
+// too-few alike; the required minimum stays derivable from the registered
+// default-argument count.
+//
+// The too-few decision mirrors the exact slot-fill satisfiability of
+// GoMethodMetadata.Call's trailing-default fill, which fills slot i iff
+// i < supplied || i >= declared - defaults. An unfilled slot exists iff
+// supplied < declared - defaults, i.e. declared - supplied > defaults, so arity
+// validation and default application can never disagree. This coupling is
+// deliberate: the condition must equal Call's fill satisfiability. Under the
+// trailing convention a partial-default binding (0 < defaults < declared) is
+// satisfiable as long as the caller supplies the leading (declared - defaults)
+// arguments. Moving the fill model away from the trailing convention requires
+// changing this check and TestClassifyVarcallArityMatchesCallFill in the same
+// commit. Variadic methods skip both bounds: the declared count is the single
+// variadic slice slot.
 func (md *GoMethodMetadata) classifyVarcallArity(supplied int) (varcallArity, int) {
 	if md.IsVariadic {
 		return varcallArityOK, 0
@@ -34,16 +46,8 @@ func (md *GoMethodMetadata) classifyVarcallArity(supplied int) (varcallArity, in
 	if supplied > declared {
 		return varcallArityTooMany, declared
 	}
-	fill := supplied
-	if defArgs > fill {
-		fill = defArgs
-	}
-	if fill < declared {
-		required := declared - defArgs
-		if required < 0 {
-			required = 0
-		}
-		return varcallArityTooFew, required
+	if declared-supplied > defArgs {
+		return varcallArityTooFew, declared
 	}
 	return varcallArityOK, 0
 }

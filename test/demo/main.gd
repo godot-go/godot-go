@@ -322,6 +322,7 @@ func test_suite(i: int, example: Example):
 	# assert_not_equal(example.extended_ref_checks(var_ref).get_instance_id(), var_ref.get_instance_id())
 	assert_equal(example.varargs_func("some", "arguments", "to", "test"), 4)
 	assert_equal(example.varargs_func("some"), 1)
+	assert_equal(example.varargs_func(), 0)
 	assert_equal(example.varargs_func_nv("some", "arguments", "to", "test"), 46)
 	example.varargs_func_void("some", "arguments", "to", "test")
 	assert_equal(custom_signal_emitted, ["varargs_func_void", 5])
@@ -330,6 +331,12 @@ func test_suite(i: int, example: Example):
 	assert_equal(example.def_args(), 300)
 	assert_equal(example.def_args(50), 250)
 	assert_equal(example.def_args(50, 100), 150)
+
+	# Partial trailing default: a supplied, b defaults to 200.
+	assert_equal(example.partial_def_args(5), 205)
+	assert_equal(example.partial_def_args(5, 7), 12)
+	# Zero args is unsatisfiable (missing 2 > 1 default) and must be rejected.
+	assert_equal(example.test_partial_def_args_rejects_short(), 0)
 
 	# Varcall argument validation: too-few/too-many/non-convertible calls must be
 	# reported to the engine (not abort the process) and must never run the bound

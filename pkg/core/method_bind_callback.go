@@ -45,7 +45,7 @@ func GoCallback_MethodBindMethodCall(
 
 	// Reject argument-count mismatches before marshalling any arguments.
 	if arity, expected := bind.classifyVarcallArity(int(argumentCount)); arity != varcallArityOK {
-		rejectVarcallArity(rError, rReturn, arity, expected)
+		rejectVarcallArity(bind, rError, rReturn, arity, expected)
 		return
 	}
 
@@ -71,7 +71,7 @@ func GoCallback_MethodBindMethodCall(
 	if !bind.IsVariadic {
 		for i := range args {
 			if !bind.varcallArgumentConvertible(args[i], i) {
-				rejectVarcallInvalidArgument(rError, rReturn, i, int(bind.gdeArgumentTypes[i]))
+				rejectVarcallInvalidArgument(bind, rError, rReturn, i, int(bind.gdeArgumentTypes[i]))
 				return
 			}
 		}
@@ -98,26 +98,38 @@ func setCallErrorOK(rError *C.GDExtensionCallError) {
 }
 
 // rejectVarcallArity reports an argument-count mismatch and leaves a nil return.
+// Every rejection is logged at debug level so it is observable in the extension's
+// own logs, not only through the engine's caller.
 func rejectVarcallArity(
+	md *GoMethodMetadata,
 	rError *C.GDExtensionCallError,
 	rReturn C.GDExtensionVariantPtr,
 	arity varcallArity,
 	expected int,
 ) {
 	writeNilCallReturn(rReturn)
+	kind := "too_few_arguments"
 	if arity == varcallArityTooMany {
 		rError.error = C.GDEXTENSION_CALL_ERROR_TOO_MANY_ARGUMENTS
+		kind = "too_many_arguments"
 	} else {
 		rError.error = C.GDEXTENSION_CALL_ERROR_TOO_FEW_ARGUMENTS
 	}
 	rError.argument = -1
 	rError.expected = C.int32_t(expected)
+	log.Debug("varcall rejected: arity mismatch",
+		zap.String("method", md.GdMethodName),
+		zap.String("error", kind),
+		zap.Int32("expected", int32(expected)),
+	)
 }
 
 // rejectVarcallInvalidArgument reports a non-convertible argument and leaves a
 // nil return. argument is the failing zero-based index; expected is the bound
-// parameter's GDExtensionVariantType.
+// parameter's GDExtensionVariantType. Every rejection is logged at debug level
+// so it is observable in the extension's own logs.
 func rejectVarcallInvalidArgument(
+	md *GoMethodMetadata,
 	rError *C.GDExtensionCallError,
 	rReturn C.GDExtensionVariantPtr,
 	argument int,
@@ -127,6 +139,12 @@ func rejectVarcallInvalidArgument(
 	rError.error = C.GDEXTENSION_CALL_ERROR_INVALID_ARGUMENT
 	rError.argument = C.int32_t(argument)
 	rError.expected = C.int32_t(expected)
+	log.Debug("varcall rejected: invalid argument",
+		zap.String("method", md.GdMethodName),
+		zap.String("error", "invalid_argument"),
+		zap.Int32("argument", int32(argument)),
+		zap.Int32("expectedType", int32(expected)),
+	)
 }
 
 // writeNilCallReturn initializes the engine's return slot to nil so a rejected

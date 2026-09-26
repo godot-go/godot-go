@@ -1,6 +1,5 @@
-theme: jekyll-theme-cayman
-
-readme_index:
-  enabled:          true
-  remove_originals: false
-  with_frontmatter: false
+# godot-go GitHub Pages — hand-crafted static site (no Jekyll theme).
+# Static files are served as-is; planning docs are excluded from the published site.
+exclude:
+  - openspec
+  - node_modules

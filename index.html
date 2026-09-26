@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <!-- Ambient background -->
@@ -90,9 +90,72 @@
     <!-- Get started -->
     <section id="get-started" class="section reveal" aria-labelledby="gs-title">
       <h2 class="section-title" id="gs-title">Get Started</h2>
-      <p class="section-sub">Prerequisites: <code>clang-format</code> and <code>gcc</code>. Then pull the module.</p>
+      <p class="section-sub">Linux and Windows prerequisites verified against the project's CI (Go&nbsp;1.26.x · Godot&nbsp;4.7-stable); macOS follows the Makefile.</p>
+
+      <div class="os-tabs" role="tablist" aria-label="Operating system">
+        <button class="os-tab" type="button" id="os-tab-linux" role="tab" aria-selected="true" aria-controls="os-panel-linux" data-os="linux">Linux</button>
+        <button class="os-tab" type="button" id="os-tab-windows" role="tab" aria-selected="false" aria-controls="os-panel-windows" tabindex="-1" data-os="windows">Windows</button>
+        <button class="os-tab" type="button" id="os-tab-macos" role="tab" aria-selected="false" aria-controls="os-panel-macos" tabindex="-1" data-os="macos">macOS</button>
+      </div>
+
+      <div class="os-panel" role="tabpanel" id="os-panel-linux" aria-labelledby="os-tab-linux">
+        <div class="os-panel-head"><span class="tag tag-linux">Linux</span><h3>Prerequisites</h3></div>
+        <ul class="dep-list">
+          <li><strong>Go ≥ 1.26</strong> — compiler and toolchain for the bindings. CI pins 1.26.5.</li>
+          <li><strong>C compiler (cgo)</strong> — <code>build-essential</code> (gcc).</li>
+          <li><strong>GNU make</strong> — drives <code>generate</code>, <code>build</code>, and <code>test</code>.</li>
+          <li><strong>Godot 4.7-stable</strong> — header dumps and headless tests; on <code>PATH</code> or via <code>GODOT</code>.</li>
+          <li><strong>clang-format</strong> <span class="tag tag-optional">optional</span> — formats the generated C/H bindings; the build skips it silently when absent.</li>
+          <li><strong>goimports</strong> <span class="tag tag-optional">optional</span> — tidies the generated Go sources; install with <code>make installdeps</code>.</li>
+        </ul>
+        <div class="codeblock">
+          <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="code-title">debian / ubuntu</span><button class="copy-btn" type="button" data-copy="sudo apt-get install -y build-essential clang-format">Copy</button></div>
+          <pre><code><span class="prompt">$</span> sudo apt-get install -y build-essential clang-format</code></pre>
+        </div>
+      </div>
+
+      <div class="os-panel" role="tabpanel" id="os-panel-windows" aria-labelledby="os-tab-windows" hidden>
+        <div class="os-panel-head"><span class="tag tag-windows">Windows</span><h3>Prerequisites</h3></div>
+        <ul class="dep-list">
+          <li><strong>Go ≥ 1.26</strong> — compiler and toolchain for the bindings. CI pins 1.26.5.</li>
+          <li><strong>C compiler (cgo)</strong> — mingw-w64 (gcc), from your dev environment.</li>
+          <li><strong>GNU make + bash</strong> — all targets run under bash (Git Bash).</li>
+          <li><strong>Godot 4.7-stable win64</strong> — point <code>GODOT</code> at the <code>.exe</code>.</li>
+          <li><strong>clang-format</strong> <span class="tag tag-optional">optional</span> — formats the generated C/H bindings; the build skips it silently when absent.</li>
+          <li><strong>goimports</strong> <span class="tag tag-optional">optional</span> — tidies the generated Go sources; install with <code>make installdeps</code>.</li>
+        </ul>
+        <div class="codeblock">
+          <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="code-title">scoop</span><button class="copy-btn" type="button" data-copy="scoop install wget unzip">Copy</button></div>
+          <pre><code><span class="prompt">$</span> scoop install wget unzip</code></pre>
+        </div>
+        <p class="install-note">mingw-w64 gcc and make come with your dev environment (runner-provided in CI).</p>
+      </div>
+
+      <div class="os-panel" role="tabpanel" id="os-panel-macos" aria-labelledby="os-tab-macos" hidden>
+        <div class="os-panel-head"><span class="tag tag-macos">macOS</span><h3>Prerequisites</h3><span class="tag tag-note">Makefile-derived · no upstream CI</span></div>
+        <ul class="dep-list">
+          <li><strong>Go ≥ 1.26</strong> — compiler and toolchain for the bindings.</li>
+          <li><strong>C compiler (cgo)</strong> — Xcode Command Line Tools (clang).</li>
+          <li><strong>GNU make</strong> — drives <code>generate</code>, <code>build</code>, and <code>test</code>.</li>
+          <li><strong>Godot 4.7-stable macOS</strong> — on <code>PATH</code> or via <code>GODOT</code>.</li>
+          <li><strong>clang-format</strong> <span class="tag tag-optional">optional</span> — formats the generated C/H bindings; the build skips it silently when absent.</li>
+          <li><strong>goimports</strong> <span class="tag tag-optional">optional</span> — tidies the generated Go sources; install with <code>make installdeps</code>.</li>
+        </ul>
+        <div class="codeblock">
+          <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="code-title">homebrew</span><button class="copy-btn" type="button" data-copy="brew install go clang-format
+brew install --cask godot">Copy</button></div>
+          <pre><code><span class="prompt">$</span> brew install go clang-format
+<span class="prompt">$</span> brew install --cask godot</code></pre>
+        </div>
+        <div class="codeblock">
+          <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="code-title">xcode tools · one-time</span><button class="copy-btn" type="button" data-copy="xcode-select --install">Copy</button></div>
+          <pre><code><span class="prompt">$</span> xcode-select --install</code></pre>
+        </div>
+        <p class="install-note">Homebrew can't install the Xcode Command Line Tools (clang) — run <code>xcode-select --install</code> once; Homebrew itself needs them. The <code>godot</code> cask symlinks the binary onto your <code>PATH</code>.</p>
+      </div>
+
       <div class="codeblock">
-        <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="code-title">install</span><button class="copy-btn" type="button" data-copy="go get github.com/godot-go/godot-go">Copy</button></div>
+        <div class="code-head"><span class="dots"><i></i><i></i><i></i></span><span class="code-title">go module · all platforms</span><button class="copy-btn" type="button" data-copy="go get github.com/godot-go/godot-go">Copy</button></div>
         <pre><code><span class="prompt">$</span> go get github.com/godot-go/godot-go</code></pre>
       </div>
     </section>
@@ -154,6 +217,6 @@
     </div>
   </footer>
 
-  <script src="js/site.js?v=2"></script>
+  <script src="js/site.js?v=4"></script>
 </body>
 </html>

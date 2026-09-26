@@ -251,6 +251,64 @@ code {
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 0 0 10px; }
 .card p { margin: 0; color: var(--muted); font-size: 0.96rem; }
 
+/* ---------- Build-dependency OS tabs (Get Started) ---------- */
+.os-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 0 auto 30px; }
+.os-tab {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 9px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.os-tab:hover { color: var(--ink); border-color: rgba(34, 211, 238, 0.4); }
+.os-tab[aria-selected="true"] {
+  color: #050510;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  border-color: transparent;
+  box-shadow: 0 4px 18px rgba(34, 211, 238, 0.3);
+}
+.os-panel { max-width: 760px; margin: 0 auto 34px; }
+.os-panel-head { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.os-panel-head h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 0; }
+.dep-list {
+  list-style: none;
+  margin: 0 auto 26px;
+  padding: 0;
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dep-list li {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.dep-list strong { color: var(--ink); font-weight: 600; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.tag-linux { border-color: rgba(34, 211, 238, 0.45); color: #a5f3fc; }
+.tag-windows { border-color: rgba(96, 165, 250, 0.45); color: #bfdbfe; }
+.tag-macos { border-color: rgba(226, 232, 240, 0.4); color: #e2e8f0; }
+.tag-optional { border-color: rgba(139, 92, 246, 0.55); color: #c4b5fd; }
+.tag-note { border-color: rgba(254, 188, 46, 0.5); color: #febc2e; }
+.install-note { max-width: 720px; margin: -10px auto 22px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
 /* ---------- Code blocks ---------- */
 .codeblock {
   max-width: 720px;

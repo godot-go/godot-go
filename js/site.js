@@ -183,9 +183,60 @@
     });
   }
 
+  /* ---------- OS tabs (Get Started) ---------- */
+  function initOsTabs() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".os-tab"));
+    if (!tabs.length) return;
+
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var selected = t === tab;
+        t.setAttribute("aria-selected", selected ? "true" : "false");
+        t.tabIndex = selected ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !selected;
+      });
+      if (focus) tab.focus();
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () {
+        select(tab, false);
+      });
+      tab.addEventListener("keydown", function (e) {
+        var idx = null;
+        if (e.key === "ArrowRight") idx = (i + 1) % tabs.length;
+        else if (e.key === "ArrowLeft") idx = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === "Home") idx = 0;
+        else if (e.key === "End") idx = tabs.length - 1;
+        if (idx !== null) {
+          e.preventDefault();
+          select(tabs[idx], true);
+        }
+      });
+    });
+
+    // Auto-select the visitor's own OS when detectable.
+    var platform =
+      (navigator.userAgentData && navigator.userAgentData.platform) ||
+      navigator.platform ||
+      navigator.userAgent ||
+      "";
+    var guess = /win/i.test(platform)
+      ? "windows"
+      : /mac|iphone|ipad/i.test(platform)
+        ? "macos"
+        : "linux";
+    var match = tabs.filter(function (t) {
+      return t.getAttribute("data-os") === guess;
+    })[0];
+    if (match) select(match, false);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initParticles();
     initReveal();
     initCopyButtons();
+    initOsTabs();
   });
 })();

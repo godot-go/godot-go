@@ -10,6 +10,7 @@ func _ready():
 	var example: Example = $Example
 	test_suite(1, example)
 	test_object_args(example)
+	test_pin_scratch_stays_flat(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -618,3 +619,17 @@ func test_object_args(example: Example):
 	# (NewRef sets no Unref finalizer), so 200 returns leak 200 references and
 	# trip the engine's exit check. That is the object-return ownership defect,
 	# not the call-pinning one; readback of refcounted resources stays in Godot.
+
+
+func test_pin_scratch_stays_flat(example: Example):
+	print("test pin scratch stays flat")
+
+	# Every generated call pins a return slot, an owner cell, an argument slice
+	# and its argument cells. Those pins used to be taken on a package-global
+	# pinner that was never released, so live Go heap climbed with the number of
+	# calls and never came back down. Driving thousands of real generated calls
+	# through the engine and sampling heap after a forced GC must land in a
+	# constant band regardless of how many calls ran.
+	#
+	# Value-returning calls only, so nothing here touches refcount ownership.
+	assert_equal(example.test_pin_scratch_stays_flat(2000, 10000), 1)

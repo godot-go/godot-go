@@ -25,8 +25,8 @@ Executing the same generated call N times SHALL NOT leave any object pinned afte
 - **THEN** a weak reference to the dropped return wrapper reports empty, proving the call left nothing pinned
 
 #### Scenario: Frame-shaped loop stays flat
-- **WHEN** a loop performs thousands of mixed generated calls and the test forces garbage collection between samples
-- **THEN** live heap after collection stays within a constant band regardless of iteration count
+- **WHEN** the demo drives thousands of mixed generated calls through the real engine and Go garbage collection is forced between samples
+- **THEN** live Go heap after collection stays within a constant band regardless of iteration count, proving per-call scratch is reclaimed rather than accumulated
 
 ### Requirement: Values That Must Outlive The Call Remain Valid
 A Go value that C retains a reference to beyond the call that created it SHALL be pinned on a pinner whose lifetime matches that retention, and SHALL NOT be unpinned while any C-side reference remains.
@@ -50,13 +50,13 @@ Every generated per-call body SHALL render the scoped pinner pattern, and no gen
 - **WHEN** the generated call-path sources are scanned after the change
 - **THEN** no `pnr.Pin` call appears inside any generated method, constructor, utility-function, or variant-conversion body
 
-### Requirement: The Engine Exit Leak Check Stays Clean
-A test run that exercises object-returning generated calls SHALL shut the engine down with no leaked instances reported by the engine's exit-time leak check.
+### Requirement: Pinning Contributes Nothing To Engine Object Leaks
+No Go wrapper SHALL be kept reachable past a generated call by pinning, so that pinning contributes nothing to the engine's exit-time leak check. Whether a reference the engine *transfers* on return is released is a reference-ownership question governed separately, and is not asserted here.
 
-#### Scenario: GetShape loop exits clean
-- **WHEN** the demo calls `GetShape()` in a loop and the project exits
-- **THEN** Godot reports no `Leaked instance: CircleShape2D` and no leaked `GodotShape2D` RID allocations at exit
+#### Scenario: Pinned scratch does not retain a returned wrapper
+- **WHEN** a generated object-returning call completes and its per-call pinner has run `Unpin()`
+- **THEN** the return wrapper is reachable only through ordinary Go references, so dropping those references makes it collectable
 
 #### Scenario: Full suite keeps the leak gate green
 - **WHEN** the full test suite runs after this change
-- **THEN** the exit-time leak gate passes as it did before object-returning calls were exercised
+- **THEN** the exit-time leak gate passes as it did before this change

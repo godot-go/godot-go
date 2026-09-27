@@ -19,6 +19,7 @@ import (
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	. "github.com/godot-go/godot-go/pkg/gdclassimpl"
+	"runtime"
 	"unsafe"
 )
 
@@ -26,9 +27,13 @@ import (
 
 // Sin is under the category "math".
 func Sin(angle_rad float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("sin")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function sin (2140049587)")
 	}
@@ -36,13 +41,13 @@ func Sin(angle_rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(angle_rad))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -50,9 +55,13 @@ func Sin(angle_rad float32) float32 {
 
 // Cos is under the category "math".
 func Cos(angle_rad float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("cos")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function cos (2140049587)")
 	}
@@ -60,13 +69,13 @@ func Cos(angle_rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(angle_rad))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -74,9 +83,13 @@ func Cos(angle_rad float32) float32 {
 
 // Tan is under the category "math".
 func Tan(angle_rad float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("tan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function tan (2140049587)")
 	}
@@ -84,13 +97,13 @@ func Tan(angle_rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(angle_rad))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -98,9 +111,13 @@ func Tan(angle_rad float32) float32 {
 
 // Sinh is under the category "math".
 func Sinh(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("sinh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function sinh (2140049587)")
 	}
@@ -108,13 +125,13 @@ func Sinh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -122,9 +139,13 @@ func Sinh(x float32) float32 {
 
 // Cosh is under the category "math".
 func Cosh(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("cosh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function cosh (2140049587)")
 	}
@@ -132,13 +153,13 @@ func Cosh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -146,9 +167,13 @@ func Cosh(x float32) float32 {
 
 // Tanh is under the category "math".
 func Tanh(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("tanh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function tanh (2140049587)")
 	}
@@ -156,13 +181,13 @@ func Tanh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -170,9 +195,13 @@ func Tanh(x float32) float32 {
 
 // Asin is under the category "math".
 func Asin(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("asin")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function asin (2140049587)")
 	}
@@ -180,13 +209,13 @@ func Asin(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -194,9 +223,13 @@ func Asin(x float32) float32 {
 
 // Acos is under the category "math".
 func Acos(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("acos")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function acos (2140049587)")
 	}
@@ -204,13 +237,13 @@ func Acos(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -218,9 +251,13 @@ func Acos(x float32) float32 {
 
 // Atan is under the category "math".
 func Atan(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("atan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function atan (2140049587)")
 	}
@@ -228,13 +265,13 @@ func Atan(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -242,9 +279,13 @@ func Atan(x float32) float32 {
 
 // Atan2 is under the category "math".
 func Atan2(y float32, x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("atan2")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function atan2 (92296394)")
 	}
@@ -252,15 +293,15 @@ func Atan2(y float32, x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(y))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -268,9 +309,13 @@ func Atan2(y float32, x float32) float32 {
 
 // Asinh is under the category "math".
 func Asinh(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("asinh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function asinh (2140049587)")
 	}
@@ -278,13 +323,13 @@ func Asinh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -292,9 +337,13 @@ func Asinh(x float32) float32 {
 
 // Acosh is under the category "math".
 func Acosh(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("acosh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function acosh (2140049587)")
 	}
@@ -302,13 +351,13 @@ func Acosh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -316,9 +365,13 @@ func Acosh(x float32) float32 {
 
 // Atanh is under the category "math".
 func Atanh(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("atanh")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function atanh (2140049587)")
 	}
@@ -326,13 +379,13 @@ func Atanh(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -340,9 +393,13 @@ func Atanh(x float32) float32 {
 
 // Sqrt is under the category "math".
 func Sqrt(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("sqrt")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function sqrt (2140049587)")
 	}
@@ -350,13 +407,13 @@ func Sqrt(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -364,9 +421,13 @@ func Sqrt(x float32) float32 {
 
 // Fmod is under the category "math".
 func Fmod(x float32, y float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("fmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function fmod (92296394)")
 	}
@@ -374,15 +435,15 @@ func Fmod(x float32, y float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(y))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -390,9 +451,13 @@ func Fmod(x float32, y float32) float32 {
 
 // Fposmod is under the category "math".
 func Fposmod(x float32, y float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("fposmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function fposmod (92296394)")
 	}
@@ -400,15 +465,15 @@ func Fposmod(x float32, y float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(y))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -416,9 +481,13 @@ func Fposmod(x float32, y float32) float32 {
 
 // Posmod is under the category "math".
 func Posmod(x int64, y int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("posmod")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3133453818)
 	if fn == nil {
 		panic("could not find utility function posmod (3133453818)")
 	}
@@ -426,15 +495,15 @@ func Posmod(x int64, y int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(y))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -442,9 +511,13 @@ func Posmod(x int64, y int64) int64 {
 
 // Floor is under the category "math".
 func Floor(x Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("floor")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4776452)
 	if fn == nil {
 		panic("could not find utility function floor (4776452)")
 	}
@@ -452,13 +525,13 @@ func Floor(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -466,9 +539,13 @@ func Floor(x Variant) Variant {
 
 // Floorf is under the category "math".
 func Floorf(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("floorf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function floorf (2140049587)")
 	}
@@ -476,13 +553,13 @@ func Floorf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -490,9 +567,13 @@ func Floorf(x float32) float32 {
 
 // Floori is under the category "math".
 func Floori(x float32) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("floori")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2780425386)
 	if fn == nil {
 		panic("could not find utility function floori (2780425386)")
 	}
@@ -500,13 +581,13 @@ func Floori(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -514,9 +595,13 @@ func Floori(x float32) int64 {
 
 // Ceil is under the category "math".
 func Ceil(x Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("ceil")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4776452)
 	if fn == nil {
 		panic("could not find utility function ceil (4776452)")
 	}
@@ -524,13 +609,13 @@ func Ceil(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -538,9 +623,13 @@ func Ceil(x Variant) Variant {
 
 // Ceilf is under the category "math".
 func Ceilf(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("ceilf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function ceilf (2140049587)")
 	}
@@ -548,13 +637,13 @@ func Ceilf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -562,9 +651,13 @@ func Ceilf(x float32) float32 {
 
 // Ceili is under the category "math".
 func Ceili(x float32) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("ceili")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2780425386)
 	if fn == nil {
 		panic("could not find utility function ceili (2780425386)")
 	}
@@ -572,13 +665,13 @@ func Ceili(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -586,9 +679,13 @@ func Ceili(x float32) int64 {
 
 // Round is under the category "math".
 func Round(x Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("round")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4776452)
 	if fn == nil {
 		panic("could not find utility function round (4776452)")
 	}
@@ -596,13 +693,13 @@ func Round(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -610,9 +707,13 @@ func Round(x Variant) Variant {
 
 // Roundf is under the category "math".
 func Roundf(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("roundf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function roundf (2140049587)")
 	}
@@ -620,13 +721,13 @@ func Roundf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -634,9 +735,13 @@ func Roundf(x float32) float32 {
 
 // Roundi is under the category "math".
 func Roundi(x float32) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("roundi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2780425386)
 	if fn == nil {
 		panic("could not find utility function roundi (2780425386)")
 	}
@@ -644,13 +749,13 @@ func Roundi(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -658,9 +763,13 @@ func Roundi(x float32) int64 {
 
 // Abs is under the category "math".
 func Abs(x Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("abs")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4776452)
 	if fn == nil {
 		panic("could not find utility function abs (4776452)")
 	}
@@ -668,13 +777,13 @@ func Abs(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -682,9 +791,13 @@ func Abs(x Variant) Variant {
 
 // Absf is under the category "math".
 func Absf(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("absf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function absf (2140049587)")
 	}
@@ -692,13 +805,13 @@ func Absf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -706,9 +819,13 @@ func Absf(x float32) float32 {
 
 // Absi is under the category "math".
 func Absi(x int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("absi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2157319888)
 	if fn == nil {
 		panic("could not find utility function absi (2157319888)")
 	}
@@ -716,13 +833,13 @@ func Absi(x int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -730,9 +847,13 @@ func Absi(x int64) int64 {
 
 // Sign is under the category "math".
 func Sign(x Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("sign")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4776452)
 	if fn == nil {
 		panic("could not find utility function sign (4776452)")
 	}
@@ -740,13 +861,13 @@ func Sign(x Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -754,9 +875,13 @@ func Sign(x Variant) Variant {
 
 // Signf is under the category "math".
 func Signf(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("signf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function signf (2140049587)")
 	}
@@ -764,13 +889,13 @@ func Signf(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -778,9 +903,13 @@ func Signf(x float32) float32 {
 
 // Signi is under the category "math".
 func Signi(x int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("signi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2157319888)
 	if fn == nil {
 		panic("could not find utility function signi (2157319888)")
 	}
@@ -788,13 +917,13 @@ func Signi(x int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -802,9 +931,13 @@ func Signi(x int64) int64 {
 
 // Snapped is under the category "math".
 func Snapped(x Variant, step Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("snapped")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 459914704)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 459914704)
 	if fn == nil {
 		panic("could not find utility function snapped (459914704)")
 	}
@@ -812,15 +945,15 @@ func Snapped(x Variant, step Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(step))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -828,9 +961,13 @@ func Snapped(x Variant, step Variant) Variant {
 
 // Snappedf is under the category "math".
 func Snappedf(x float32, step float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("snappedf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function snappedf (92296394)")
 	}
@@ -838,15 +975,15 @@ func Snappedf(x float32, step float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(step))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -854,9 +991,13 @@ func Snappedf(x float32, step float32) float32 {
 
 // Snappedi is under the category "math".
 func Snappedi(x float32, step int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("snappedi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3570758393)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3570758393)
 	if fn == nil {
 		panic("could not find utility function snappedi (3570758393)")
 	}
@@ -864,15 +1005,15 @@ func Snappedi(x float32, step int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(step))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -880,9 +1021,13 @@ func Snappedi(x float32, step int64) int64 {
 
 // Pow is under the category "math".
 func Pow(base float32, exp float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("pow")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function pow (92296394)")
 	}
@@ -890,15 +1035,15 @@ func Pow(base float32, exp float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(base))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(exp))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -906,9 +1051,13 @@ func Pow(base float32, exp float32) float32 {
 
 // Log is under the category "math".
 func Log(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("log")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function log (2140049587)")
 	}
@@ -916,13 +1065,13 @@ func Log(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -930,9 +1079,13 @@ func Log(x float32) float32 {
 
 // Exp is under the category "math".
 func Exp(x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("exp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function exp (2140049587)")
 	}
@@ -940,13 +1093,13 @@ func Exp(x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -954,9 +1107,13 @@ func Exp(x float32) float32 {
 
 // IsNan is under the category "math".
 func IsNan(x float32) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_nan")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3569215213)
 	if fn == nil {
 		panic("could not find utility function is_nan (3569215213)")
 	}
@@ -964,13 +1121,13 @@ func IsNan(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -978,9 +1135,13 @@ func IsNan(x float32) bool {
 
 // IsInf is under the category "math".
 func IsInf(x float32) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_inf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3569215213)
 	if fn == nil {
 		panic("could not find utility function is_inf (3569215213)")
 	}
@@ -988,13 +1149,13 @@ func IsInf(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1002,9 +1163,13 @@ func IsInf(x float32) bool {
 
 // IsEqualApprox is under the category "math".
 func IsEqualApprox(a float32, b float32) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_equal_approx")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1400789633)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1400789633)
 	if fn == nil {
 		panic("could not find utility function is_equal_approx (1400789633)")
 	}
@@ -1012,15 +1177,15 @@ func IsEqualApprox(a float32, b float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(b))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1028,9 +1193,13 @@ func IsEqualApprox(a float32, b float32) bool {
 
 // IsZeroApprox is under the category "math".
 func IsZeroApprox(x float32) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_zero_approx")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3569215213)
 	if fn == nil {
 		panic("could not find utility function is_zero_approx (3569215213)")
 	}
@@ -1038,13 +1207,13 @@ func IsZeroApprox(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1052,9 +1221,13 @@ func IsZeroApprox(x float32) bool {
 
 // IsFinite is under the category "math".
 func IsFinite(x float32) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_finite")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3569215213)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3569215213)
 	if fn == nil {
 		panic("could not find utility function is_finite (3569215213)")
 	}
@@ -1062,13 +1235,13 @@ func IsFinite(x float32) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1076,9 +1249,13 @@ func IsFinite(x float32) bool {
 
 // Ease is under the category "math".
 func Ease(x float32, curve float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("ease")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function ease (92296394)")
 	}
@@ -1086,15 +1263,15 @@ func Ease(x float32, curve float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(curve))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1102,9 +1279,13 @@ func Ease(x float32, curve float32) float32 {
 
 // StepDecimals is under the category "math".
 func StepDecimals(x float32) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("step_decimals")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2780425386)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2780425386)
 	if fn == nil {
 		panic("could not find utility function step_decimals (2780425386)")
 	}
@@ -1112,13 +1293,13 @@ func StepDecimals(x float32) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1126,9 +1307,13 @@ func StepDecimals(x float32) int64 {
 
 // Lerp is under the category "math".
 func Lerp(from Variant, to Variant, weight Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("lerp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3389874542)
 	if fn == nil {
 		panic("could not find utility function lerp (3389874542)")
 	}
@@ -1136,17 +1321,17 @@ func Lerp(from Variant, to Variant, weight Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(weight))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1154,9 +1339,13 @@ func Lerp(from Variant, to Variant, weight Variant) Variant {
 
 // Lerpf is under the category "math".
 func Lerpf(from float32, to float32, weight float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("lerpf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function lerpf (998901048)")
 	}
@@ -1164,17 +1353,17 @@ func Lerpf(from float32, to float32, weight float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1182,9 +1371,13 @@ func Lerpf(from float32, to float32, weight float32) float32 {
 
 // CubicInterpolate is under the category "math".
 func CubicInterpolate(from float32, to float32, pre float32, post float32, weight float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1090965791)
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate (1090965791)")
 	}
@@ -1192,7 +1385,7 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1200,13 +1393,13 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
-	pnr.Pin(args[3])
-	pnr.Pin(args[4])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
+	pinner.Pin(args[3])
+	pinner.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1214,9 +1407,13 @@ func CubicInterpolate(from float32, to float32, pre float32, post float32, weigh
 
 // CubicInterpolateAngle is under the category "math".
 func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, weight float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate_angle")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1090965791)
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle (1090965791)")
 	}
@@ -1224,7 +1421,7 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1232,13 +1429,13 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
-	pnr.Pin(args[3])
-	pnr.Pin(args[4])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
+	pinner.Pin(args[3])
+	pinner.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1246,9 +1443,13 @@ func CubicInterpolateAngle(from float32, to float32, pre float32, post float32, 
 
 // CubicInterpolateInTime is under the category "math".
 func CubicInterpolateInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate_in_time")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 388121036)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 388121036)
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_in_time (388121036)")
 	}
@@ -1256,7 +1457,7 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [8]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1267,16 +1468,16 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(pre_t))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post_t))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
-	pnr.Pin(args[3])
-	pnr.Pin(args[4])
-	pnr.Pin(args[5])
-	pnr.Pin(args[6])
-	pnr.Pin(args[7])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
+	pinner.Pin(args[3])
+	pinner.Pin(args[4])
+	pinner.Pin(args[5])
+	pinner.Pin(args[6])
+	pinner.Pin(args[7])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(8)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1284,9 +1485,13 @@ func CubicInterpolateInTime(from float32, to float32, pre float32, post float32,
 
 // CubicInterpolateAngleInTime is under the category "math".
 func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post float32, weight float32, to_t float32, pre_t float32, post_t float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("cubic_interpolate_angle_in_time")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 388121036)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 388121036)
 	if fn == nil {
 		panic("could not find utility function cubic_interpolate_angle_in_time (388121036)")
 	}
@@ -1294,7 +1499,7 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [8]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
@@ -1305,16 +1510,16 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(pre_t))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(post_t))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
-	pnr.Pin(args[3])
-	pnr.Pin(args[4])
-	pnr.Pin(args[5])
-	pnr.Pin(args[6])
-	pnr.Pin(args[7])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
+	pinner.Pin(args[3])
+	pinner.Pin(args[4])
+	pinner.Pin(args[5])
+	pinner.Pin(args[6])
+	pinner.Pin(args[7])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(8)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1322,9 +1527,13 @@ func CubicInterpolateAngleInTime(from float32, to float32, pre float32, post flo
 
 // BezierInterpolate is under the category "math".
 func BezierInterpolate(start float32, control_1 float32, control_2 float32, end float32, t float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("bezier_interpolate")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1090965791)
 	if fn == nil {
 		panic("could not find utility function bezier_interpolate (1090965791)")
 	}
@@ -1332,7 +1541,7 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(start))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(control_1))),
@@ -1340,13 +1549,13 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(end))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(t))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
-	pnr.Pin(args[3])
-	pnr.Pin(args[4])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
+	pinner.Pin(args[3])
+	pinner.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1354,9 +1563,13 @@ func BezierInterpolate(start float32, control_1 float32, control_2 float32, end 
 
 // BezierDerivative is under the category "math".
 func BezierDerivative(start float32, control_1 float32, control_2 float32, end float32, t float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("bezier_derivative")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1090965791)
 	if fn == nil {
 		panic("could not find utility function bezier_derivative (1090965791)")
 	}
@@ -1364,7 +1577,7 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(start))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(control_1))),
@@ -1372,13 +1585,13 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(end))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(t))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
-	pnr.Pin(args[3])
-	pnr.Pin(args[4])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
+	pinner.Pin(args[3])
+	pinner.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1386,9 +1599,13 @@ func BezierDerivative(start float32, control_1 float32, control_2 float32, end f
 
 // AngleDifference is under the category "math".
 func AngleDifference(from float32, to float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("angle_difference")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function angle_difference (92296394)")
 	}
@@ -1396,15 +1613,15 @@ func AngleDifference(from float32, to float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1412,9 +1629,13 @@ func AngleDifference(from float32, to float32) float32 {
 
 // LerpAngle is under the category "math".
 func LerpAngle(from float32, to float32, weight float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("lerp_angle")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function lerp_angle (998901048)")
 	}
@@ -1422,17 +1643,17 @@ func LerpAngle(from float32, to float32, weight float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1440,9 +1661,13 @@ func LerpAngle(from float32, to float32, weight float32) float32 {
 
 // InverseLerp is under the category "math".
 func InverseLerp(from float32, to float32, weight float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("inverse_lerp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function inverse_lerp (998901048)")
 	}
@@ -1450,17 +1675,17 @@ func InverseLerp(from float32, to float32, weight float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(weight))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1468,9 +1693,13 @@ func InverseLerp(from float32, to float32, weight float32) float32 {
 
 // Remap is under the category "math".
 func Remap(value float32, istart float32, istop float32, ostart float32, ostop float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("remap")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1090965791)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1090965791)
 	if fn == nil {
 		panic("could not find utility function remap (1090965791)")
 	}
@@ -1478,7 +1707,7 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [5]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(istart))),
@@ -1486,13 +1715,13 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(ostart))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(ostop))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
-	pnr.Pin(args[3])
-	pnr.Pin(args[4])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
+	pinner.Pin(args[3])
+	pinner.Pin(args[4])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(5)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1500,9 +1729,13 @@ func Remap(value float32, istart float32, istop float32, ostart float32, ostop f
 
 // Smoothstep is under the category "math".
 func Smoothstep(from float32, to float32, x float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("smoothstep")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function smoothstep (998901048)")
 	}
@@ -1510,17 +1743,17 @@ func Smoothstep(from float32, to float32, x float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(x))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1528,9 +1761,13 @@ func Smoothstep(from float32, to float32, x float32) float32 {
 
 // MoveToward is under the category "math".
 func MoveToward(from float32, to float32, delta float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("move_toward")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function move_toward (998901048)")
 	}
@@ -1538,17 +1775,17 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(delta))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1556,9 +1793,13 @@ func MoveToward(from float32, to float32, delta float32) float32 {
 
 // RotateToward is under the category "math".
 func RotateToward(from float32, to float32, delta float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("rotate_toward")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function rotate_toward (998901048)")
 	}
@@ -1566,17 +1807,17 @@ func RotateToward(from float32, to float32, delta float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(delta))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1584,9 +1825,13 @@ func RotateToward(from float32, to float32, delta float32) float32 {
 
 // DegToRad is under the category "math".
 func DegToRad(deg float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("deg_to_rad")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function deg_to_rad (2140049587)")
 	}
@@ -1594,13 +1839,13 @@ func DegToRad(deg float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(deg))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1608,9 +1853,13 @@ func DegToRad(deg float32) float32 {
 
 // RadToDeg is under the category "math".
 func RadToDeg(rad float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("rad_to_deg")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function rad_to_deg (2140049587)")
 	}
@@ -1618,13 +1867,13 @@ func RadToDeg(rad float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(rad))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1632,9 +1881,13 @@ func RadToDeg(rad float32) float32 {
 
 // LinearToDb is under the category "math".
 func LinearToDb(lin float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("linear_to_db")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function linear_to_db (2140049587)")
 	}
@@ -1642,13 +1895,13 @@ func LinearToDb(lin float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(lin))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1656,9 +1909,13 @@ func LinearToDb(lin float32) float32 {
 
 // DbToLinear is under the category "math".
 func DbToLinear(db float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("db_to_linear")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2140049587)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2140049587)
 	if fn == nil {
 		panic("could not find utility function db_to_linear (2140049587)")
 	}
@@ -1666,13 +1923,13 @@ func DbToLinear(db float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(db))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1680,9 +1937,13 @@ func DbToLinear(db float32) float32 {
 
 // Wrap is under the category "math".
 func Wrap(value Variant, min Variant, max Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("wrap")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3389874542)
 	if fn == nil {
 		panic("could not find utility function wrap (3389874542)")
 	}
@@ -1690,17 +1951,17 @@ func Wrap(value Variant, min Variant, max Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(max))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1708,9 +1969,13 @@ func Wrap(value Variant, min Variant, max Variant) Variant {
 
 // Wrapi is under the category "math".
 func Wrapi(value int64, min int64, max int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("wrapi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 650295447)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 650295447)
 	if fn == nil {
 		panic("could not find utility function wrapi (650295447)")
 	}
@@ -1718,17 +1983,17 @@ func Wrapi(value int64, min int64, max int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(max))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1736,9 +2001,13 @@ func Wrapi(value int64, min int64, max int64) int64 {
 
 // Wrapf is under the category "math".
 func Wrapf(value float32, min float32, max float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("wrapf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function wrapf (998901048)")
 	}
@@ -1746,17 +2015,17 @@ func Wrapf(value float32, min float32, max float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(max))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1764,9 +2033,13 @@ func Wrapf(value float32, min float32, max float32) float32 {
 
 // Max is under the category "math".
 func Max(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("max")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3896050336)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3896050336)
 	if fn == nil {
 		panic("could not find utility function max (3896050336)")
 	}
@@ -1774,19 +2047,19 @@ func Max(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 2
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	args[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg2)))
-	pnr.Pin(args[1])
+	pinner.Pin(args[1])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1794,9 +2067,13 @@ func Max(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
 
 // Maxi is under the category "math".
 func Maxi(a int64, b int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("maxi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3133453818)
 	if fn == nil {
 		panic("could not find utility function maxi (3133453818)")
 	}
@@ -1804,15 +2081,15 @@ func Maxi(a int64, b int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(b))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1820,9 +2097,13 @@ func Maxi(a int64, b int64) int64 {
 
 // Maxf is under the category "math".
 func Maxf(a float32, b float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("maxf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function maxf (92296394)")
 	}
@@ -1830,15 +2111,15 @@ func Maxf(a float32, b float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(b))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1846,9 +2127,13 @@ func Maxf(a float32, b float32) float32 {
 
 // Min is under the category "math".
 func Min(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("min")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3896050336)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3896050336)
 	if fn == nil {
 		panic("could not find utility function min (3896050336)")
 	}
@@ -1856,19 +2141,19 @@ func Min(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 2
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	args[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg2)))
-	pnr.Pin(args[1])
+	pinner.Pin(args[1])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1876,9 +2161,13 @@ func Min(arg1 Variant, arg2 Variant, varargs ...Variant) Variant {
 
 // Mini is under the category "math".
 func Mini(a int64, b int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("mini")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3133453818)
 	if fn == nil {
 		panic("could not find utility function mini (3133453818)")
 	}
@@ -1886,15 +2175,15 @@ func Mini(a int64, b int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(b))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1902,9 +2191,13 @@ func Mini(a int64, b int64) int64 {
 
 // Minf is under the category "math".
 func Minf(a float32, b float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("minf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function minf (92296394)")
 	}
@@ -1912,15 +2205,15 @@ func Minf(a float32, b float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(b))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1928,9 +2221,13 @@ func Minf(a float32, b float32) float32 {
 
 // Clamp is under the category "math".
 func Clamp(value Variant, min Variant, max Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("clamp")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3389874542)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3389874542)
 	if fn == nil {
 		panic("could not find utility function clamp (3389874542)")
 	}
@@ -1938,17 +2235,17 @@ func Clamp(value Variant, min Variant, max Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(max))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1956,9 +2253,13 @@ func Clamp(value Variant, min Variant, max Variant) Variant {
 
 // Clampi is under the category "math".
 func Clampi(value int64, min int64, max int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("clampi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 650295447)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 650295447)
 	if fn == nil {
 		panic("could not find utility function clampi (650295447)")
 	}
@@ -1966,17 +2267,17 @@ func Clampi(value int64, min int64, max int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(max))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -1984,9 +2285,13 @@ func Clampi(value int64, min int64, max int64) int64 {
 
 // Clampf is under the category "math".
 func Clampf(value float32, min float32, max float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("clampf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 998901048)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 998901048)
 	if fn == nil {
 		panic("could not find utility function clampf (998901048)")
 	}
@@ -1994,17 +2299,17 @@ func Clampf(value float32, min float32, max float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [3]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(min))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(max))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
-	pnr.Pin(args[2])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
+	pinner.Pin(args[2])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(3)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2012,9 +2317,13 @@ func Clampf(value float32, min float32, max float32) float32 {
 
 // NearestPo2 is under the category "math".
 func NearestPo2(value int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("nearest_po2")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2157319888)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2157319888)
 	if fn == nil {
 		panic("could not find utility function nearest_po2 (2157319888)")
 	}
@@ -2022,13 +2331,13 @@ func NearestPo2(value int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(value))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2036,9 +2345,13 @@ func NearestPo2(value int64) int64 {
 
 // Pingpong is under the category "math".
 func Pingpong(value float32, length float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("pingpong")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function pingpong (92296394)")
 	}
@@ -2046,15 +2359,15 @@ func Pingpong(value float32, length float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(value))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(length))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2062,25 +2375,33 @@ func Pingpong(value float32, length float32) float32 {
 
 // Randomize is under the category "random".
 func Randomize() {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("randomize")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1691721052)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1691721052)
 	if fn == nil {
 		panic("could not find utility function randomize (1691721052)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // Randi is under the category "random".
 func Randi() int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("randi")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 701202648)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 701202648)
 	if fn == nil {
 		panic("could not find utility function randi (701202648)")
 	}
@@ -2088,9 +2409,9 @@ func Randi() int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2098,9 +2419,13 @@ func Randi() int64 {
 
 // Randf is under the category "random".
 func Randf() float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("randf")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2086227845)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2086227845)
 	if fn == nil {
 		panic("could not find utility function randf (2086227845)")
 	}
@@ -2108,9 +2433,9 @@ func Randf() float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2118,9 +2443,13 @@ func Randf() float32 {
 
 // RandiRange is under the category "random".
 func RandiRange(from int64, to int64) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("randi_range")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3133453818)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3133453818)
 	if fn == nil {
 		panic("could not find utility function randi_range (3133453818)")
 	}
@@ -2128,15 +2457,15 @@ func RandiRange(from int64, to int64) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(to))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2144,9 +2473,13 @@ func RandiRange(from int64, to int64) int64 {
 
 // RandfRange is under the category "random".
 func RandfRange(from float32, to float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("randf_range")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function randf_range (92296394)")
 	}
@@ -2154,15 +2487,15 @@ func RandfRange(from float32, to float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(from))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(to))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2170,9 +2503,13 @@ func RandfRange(from float32, to float32) float32 {
 
 // Randfn is under the category "random".
 func Randfn(mean float32, deviation float32) float32 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("randfn")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 92296394)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 92296394)
 	if fn == nil {
 		panic("could not find utility function randfn (92296394)")
 	}
@@ -2180,15 +2517,15 @@ func Randfn(mean float32, deviation float32) float32 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(mean))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Float32Encoder.EncodeTypePtr(deviation))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2196,29 +2533,37 @@ func Randfn(mean float32, deviation float32) float32 {
 
 // Seed is under the category "random".
 func Seed(base int64) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("seed")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 382931173)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 382931173)
 	if fn == nil {
 		panic("could not find utility function seed (382931173)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(base))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // RandFromSeed is under the category "random".
 func RandFromSeed(seed int64) PackedInt64Array {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("rand_from_seed")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1391063685)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1391063685)
 	if fn == nil {
 		panic("could not find utility function rand_from_seed (1391063685)")
 	}
@@ -2226,13 +2571,13 @@ func RandFromSeed(seed int64) PackedInt64Array {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(seed))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2240,9 +2585,13 @@ func RandFromSeed(seed int64) PackedInt64Array {
 
 // Weakref is under the category "general".
 func Weakref(obj Variant) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("weakref")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4776452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4776452)
 	if fn == nil {
 		panic("could not find utility function weakref (4776452)")
 	}
@@ -2250,13 +2599,13 @@ func Weakref(obj Variant) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(obj))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2264,9 +2613,13 @@ func Weakref(obj Variant) Variant {
 
 // Typeof is under the category "general".
 func Typeof(variable Variant) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("typeof")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 326422594)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 326422594)
 	if fn == nil {
 		panic("could not find utility function typeof (326422594)")
 	}
@@ -2274,13 +2627,13 @@ func Typeof(variable Variant) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2288,9 +2641,13 @@ func Typeof(variable Variant) int64 {
 
 // TypeConvert is under the category "general".
 func TypeConvert(variant Variant, typeName int64) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("type_convert")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2453062746)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2453062746)
 	if fn == nil {
 		panic("could not find utility function type_convert (2453062746)")
 	}
@@ -2298,15 +2655,15 @@ func TypeConvert(variant Variant, typeName int64) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variant))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(typeName))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2314,9 +2671,13 @@ func TypeConvert(variant Variant, typeName int64) Variant {
 
 // Str is under the category "general".
 func Str(arg1 Variant, varargs ...Variant) String {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("str")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 32569176)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 32569176)
 	if fn == nil {
 		panic("could not find utility function str (32569176)")
 	}
@@ -2324,17 +2685,17 @@ func Str(arg1 Variant, varargs ...Variant) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2342,9 +2703,13 @@ func Str(arg1 Variant, varargs ...Variant) String {
 
 // ErrorString is under the category "general".
 func ErrorString(error int64) String {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("error_string")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 942708242)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 942708242)
 	if fn == nil {
 		panic("could not find utility function error_string (942708242)")
 	}
@@ -2352,13 +2717,13 @@ func ErrorString(error int64) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(error))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2366,9 +2731,13 @@ func ErrorString(error int64) String {
 
 // TypeString is under the category "general".
 func TypeString(typeName int64) String {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("type_string")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 942708242)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 942708242)
 	if fn == nil {
 		panic("could not find utility function type_string (942708242)")
 	}
@@ -2376,13 +2745,13 @@ func TypeString(typeName int64) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(typeName))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2390,225 +2759,265 @@ func TypeString(typeName int64) String {
 
 // Print is under the category "general".
 func Print(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("print")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function print (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // PrintRich is under the category "general".
 func PrintRich(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("print_rich")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function print_rich (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // Printerr is under the category "general".
 func Printerr(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("printerr")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function printerr (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // Printt is under the category "general".
 func Printt(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("printt")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function printt (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // Prints is under the category "general".
 func Prints(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("prints")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function prints (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // Printraw is under the category "general".
 func Printraw(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("printraw")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function printraw (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // PrintVerbose is under the category "general".
 func PrintVerbose(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("print_verbose")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function print_verbose (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // PushError is under the category "general".
 func PushError(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("push_error")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function push_error (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // PushWarning is under the category "general".
 func PushWarning(arg1 Variant, varargs ...Variant) {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("push_warning")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2648703342)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2648703342)
 	if fn == nil {
 		panic("could not find utility function push_warning (2648703342)")
 	}
 	retPtr := (GDExtensionTypePtr)(nullptr)
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	sz := 1
 	args := make([]GDExtensionConstTypePtr, sz+len(varargs))
 	args[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(arg1)))
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	for i := range varargs {
 		args[sz+i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz+i])
+		pinner.Pin(args[sz+i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1 + len(varargs))
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 }
 
 // VarToStr is under the category "general".
 func VarToStr(variable Variant) String {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("var_to_str")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 866625479)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 866625479)
 	if fn == nil {
 		panic("could not find utility function var_to_str (866625479)")
 	}
@@ -2616,13 +3025,13 @@ func VarToStr(variable Variant) String {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2630,9 +3039,13 @@ func VarToStr(variable Variant) String {
 
 // StrToVar is under the category "general".
 func StrToVar(strValue String) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("str_to_var")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1891498491)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1891498491)
 	if fn == nil {
 		panic("could not find utility function str_to_var (1891498491)")
 	}
@@ -2640,13 +3053,13 @@ func StrToVar(strValue String) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(StringEncoder.EncodeTypePtr(strValue))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2654,9 +3067,13 @@ func StrToVar(strValue String) Variant {
 
 // VarToBytes is under the category "general".
 func VarToBytes(variable Variant) PackedByteArray {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("var_to_bytes")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2947269930)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2947269930)
 	if fn == nil {
 		panic("could not find utility function var_to_bytes (2947269930)")
 	}
@@ -2664,13 +3081,13 @@ func VarToBytes(variable Variant) PackedByteArray {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2678,9 +3095,13 @@ func VarToBytes(variable Variant) PackedByteArray {
 
 // BytesToVar is under the category "general".
 func BytesToVar(bytes PackedByteArray) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("bytes_to_var")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4249819452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4249819452)
 	if fn == nil {
 		panic("could not find utility function bytes_to_var (4249819452)")
 	}
@@ -2688,13 +3109,13 @@ func BytesToVar(bytes PackedByteArray) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(PackedByteArrayEncoder.EncodeTypePtr(bytes))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2702,9 +3123,13 @@ func BytesToVar(bytes PackedByteArray) Variant {
 
 // VarToBytesWithObjects is under the category "general".
 func VarToBytesWithObjects(variable Variant) PackedByteArray {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("var_to_bytes_with_objects")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2947269930)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2947269930)
 	if fn == nil {
 		panic("could not find utility function var_to_bytes_with_objects (2947269930)")
 	}
@@ -2712,13 +3137,13 @@ func VarToBytesWithObjects(variable Variant) PackedByteArray {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2726,9 +3151,13 @@ func VarToBytesWithObjects(variable Variant) PackedByteArray {
 
 // BytesToVarWithObjects is under the category "general".
 func BytesToVarWithObjects(bytes PackedByteArray) Variant {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("bytes_to_var_with_objects")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 4249819452)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 4249819452)
 	if fn == nil {
 		panic("could not find utility function bytes_to_var_with_objects (4249819452)")
 	}
@@ -2736,13 +3165,13 @@ func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(PackedByteArrayEncoder.EncodeTypePtr(bytes))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2750,9 +3179,13 @@ func BytesToVarWithObjects(bytes PackedByteArray) Variant {
 
 // Hash is under the category "general".
 func Hash(variable Variant) int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("hash")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 326422594)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 326422594)
 	if fn == nil {
 		panic("could not find utility function hash (326422594)")
 	}
@@ -2760,13 +3193,13 @@ func Hash(variable Variant) int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(variable))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2774,9 +3207,13 @@ func Hash(variable Variant) int64 {
 
 // InstanceFromId is under the category "general".
 func InstanceFromId(instance_id int64) Object {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("instance_from_id")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1156694636)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1156694636)
 	if fn == nil {
 		panic("could not find utility function instance_from_id (1156694636)")
 	}
@@ -2785,13 +3222,13 @@ func InstanceFromId(instance_id int64) Object {
 	ret = &ObjectImpl{}
 	retPtr := ret.AsGDExtensionTypePtr()
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(instance_id))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2799,9 +3236,13 @@ func InstanceFromId(instance_id int64) Object {
 
 // IsInstanceIdValid is under the category "general".
 func IsInstanceIdValid(id int64) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_instance_id_valid")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 2232439758)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 2232439758)
 	if fn == nil {
 		panic("could not find utility function is_instance_id_valid (2232439758)")
 	}
@@ -2809,13 +3250,13 @@ func IsInstanceIdValid(id int64) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(id))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2823,9 +3264,13 @@ func IsInstanceIdValid(id int64) bool {
 
 // IsInstanceValid is under the category "general".
 func IsInstanceValid(instance Variant) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_instance_valid")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 996128841)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 996128841)
 	if fn == nil {
 		panic("could not find utility function is_instance_valid (996128841)")
 	}
@@ -2833,13 +3278,13 @@ func IsInstanceValid(instance Variant) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(instance))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2847,9 +3292,13 @@ func IsInstanceValid(instance Variant) bool {
 
 // RidAllocateId is under the category "general".
 func RidAllocateId() int64 {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("rid_allocate_id")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 701202648)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 701202648)
 	if fn == nil {
 		panic("could not find utility function rid_allocate_id (701202648)")
 	}
@@ -2857,9 +3306,9 @@ func RidAllocateId() int64 {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(0)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2867,9 +3316,13 @@ func RidAllocateId() int64 {
 
 // RidFromInt64 is under the category "general".
 func RidFromInt64(base int64) RID {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("rid_from_int64")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 3426892196)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 3426892196)
 	if fn == nil {
 		panic("could not find utility function rid_from_int64 (3426892196)")
 	}
@@ -2877,13 +3330,13 @@ func RidFromInt64(base int64) RID {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(ret.NativePtr()))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [1]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(Int64Encoder.EncodeTypePtr(base))),
 	}
-	pnr.Pin(args[0])
+	pinner.Pin(args[0])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(1)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret
@@ -2891,9 +3344,13 @@ func RidFromInt64(base int64) RID {
 
 // IsSame is under the category "general".
 func IsSame(a Variant, b Variant) bool {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fName := NewStringNameWithLatin1Chars("is_same")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), 1409423524)
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), 1409423524)
 	if fn == nil {
 		panic("could not find utility function is_same (1409423524)")
 	}
@@ -2901,15 +3358,15 @@ func IsSame(a Variant, b Variant) bool {
 
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
 
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	args := [2]GDExtensionConstTypePtr{
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(a))),
 		(GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(b))),
 	}
-	pnr.Pin(args[0])
-	pnr.Pin(args[1])
+	pinner.Pin(args[0])
+	pinner.Pin(args[1])
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)(2)
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	return ret

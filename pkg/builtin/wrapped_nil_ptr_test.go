@@ -37,7 +37,7 @@ type fakeRef struct {
 
 func (f *fakeRef) ToObject() RefCounted { return f.obj }
 func (f *fakeRef) Ref(from Ref)         {}
-func (f *fakeRef) Unref()              {}
+func (f *fakeRef) Unref()               {}
 
 // IsValid mirrors RefBase.IsValid's nil-receiver safety (`r != nil && r.m_ref != zero`)
 // rather than dereferencing unconditionally.

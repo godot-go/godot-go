@@ -87,9 +87,13 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
 		{{ goArgumentName $arg.Name }} {{ goArgumentType $arg.Type }},
 	{{- end -}}
 ) {{ $c.Name }} {
+    // Call-scoped pinner: the constructor reads these pointer values
+    // synchronously and retains no reference to the Go cells behind them.
+    var pinner runtime.Pinner
+    defer pinner.Unpin()
     cx := {{ $c.Name }}{}
     ptr := (GDExtensionUninitializedTypePtr)(cx.NativePtr())
-    pnr.Pin(ptr)
+    pinner.Pin(ptr)
     {{ if $con.Arguments -}}
     var args [{{ len $con.Arguments }}]GDExtensionConstTypePtr
     {{ range $k, $arg := $con.Arguments -}}
@@ -113,7 +117,7 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
         {{ else -}}
         args[{{ $k }}] = (GDExtensionConstTypePtr)({{ goEncoder $argType }}.EncodeTypePtr({{ $argName }}))
         {{ end -}}
-        pnr.Pin(args[{{ $k }}])
+        pinner.Pin(args[{{ $k }}])
         {{ end -}}
 	{{ end -}}
     {{ end -}}
@@ -125,9 +129,11 @@ func New{{ $c.Name }}{{ with $con.Arguments }}With{{- range $k, $arg := $con.Arg
 
 {{ if $c.HasDestructor -}}
 func (cx *{{ $c.Name }}) Destroy() {
+    var pinner runtime.Pinner
+    defer pinner.Unpin()
     md := (GDExtensionPtrDestructor)(global{{ $c.Name }}MethodBindings.destructor)
     bx := cx.NativePtr()
-    pnr.Pin(bx)
+    pinner.Pin(bx)
     CallFunc_GDExtensionPtrDestructor(md, bx)
 }
 {{ end }}
@@ -148,6 +154,10 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
         varargs ...Variant
     {{- end -}}
 ) {{ $fnReturnType }} {
+    // Call-scoped pinner: the builtin call reads these pointer values
+    // synchronously and retains no reference to the Go cells behind them.
+    var pinner runtime.Pinner
+    defer pinner.Unpin()
     mb := global{{ $c.Name }}MethodBindings.method_{{ $m.Name }}
     if mb == nil {
         log.Panic("method bind cannot be nil")
@@ -157,7 +167,7 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ else -}}
     bx := cx.NativePtr()
     {{ end -}}
-    pnr.Pin(bx)
+    pinner.Pin(bx)
     if bx == nil {
         log.Panic("object cannot be nil")
     }
@@ -179,13 +189,13 @@ func (cx *{{ $c.Name }}) {{ goMethodName $m.Name }}(
     {{ else -}}
     args[{{ $j }}] = (GDExtensionTypePtr)(&{{ goArgumentName $arg.Name }})
     {{ end }}
-    pnr.Pin(args[{{ $j }}])
+    pinner.Pin(args[{{ $j }}])
     {{ end -}}{{/* range $m.Arguments */}}
 
     {{ if $m.IsVararg -}}
     for i := range varargs {
         args[i + {{ len $m.Arguments }}] = (GDExtensionTypePtr)(&varargs[i])
-        pnr.Pin(args[i + {{ len $m.Arguments }}])
+        pinner.Pin(args[i + {{ len $m.Arguments }}])
     }
     {{ end -}}
 

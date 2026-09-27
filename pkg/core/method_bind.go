@@ -7,6 +7,7 @@ package core
 import "C"
 import (
 	"reflect"
+	"runtime"
 	"runtime/cgo"
 	"strings"
 	"unsafe"
@@ -334,6 +335,8 @@ func (md *GoMethodMetadata) fillCallArgs(gdArgs []Variant) []Variant {
 
 // Call is called by GDScript to call into Go
 func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	callArgs := md.fillCallArgs(gdArgs)
 	exepctedTypes := md.GoArgumentTypes
 	if md.IsVariadic {
@@ -390,7 +393,7 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 		case ValueReturnStyle:
 			v := Variant{}
 			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.NativePtr()))
-			pnr.Pin(ptr)
+			pinner.Pin(ptr)
 			GDExtensionVariantPtrFromReflectValue(ret[0], ptr, !isPtrcallBorrowEcho(ret[0], args))
 			retVariant = v
 		default:

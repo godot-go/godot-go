@@ -612,3 +612,9 @@ func test_object_args(example: Example):
 	# Let Go run the finalizers on Ref values decoded from the calls above, so no
 	# Go-held reference survives into the engine's leak check.
 	assert_equal(example.test_object_arg_release(), 1)
+
+	# A Go-side get_shape() loop is deliberately NOT exercised here. The
+	# object-return path hands Go a Ref whose +1 the wrapper never releases
+	# (NewRef sets no Unref finalizer), so 200 returns leak 200 references and
+	# trip the engine's exit check. That is the object-return ownership defect,
+	# not the call-pinning one; readback of refcounted resources stays in Godot.

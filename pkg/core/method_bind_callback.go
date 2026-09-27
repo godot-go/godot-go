@@ -6,6 +6,7 @@ package core
 // #include <stdlib.h>
 import "C"
 import (
+	"runtime"
 	"runtime/cgo"
 	"unsafe"
 
@@ -31,17 +32,19 @@ func GoCallback_MethodBindMethodCall(
 	// count, argument type) is caller-induced and reported through rError
 	// instead of a panic that would abort the process from inside a cgo
 	// callback. This mirrors godot-cpp's call_with_variant_args validation.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ud := (cgo.Handle)(methodUserData)
 	bind, ok := ud.Value().(*GoMethodMetadata)
 	if !ok || bind == nil {
 		log.Panic("unable to retrieve methodUserData")
 	}
-	pnr.Pin(instPtr)
+	pinner.Pin(instPtr)
 	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
 	if inst == nil {
 		log.Panic("GDExtensionClassInstancePtr canoot be null")
 	}
-	pnr.Pin(inst)
+	pinner.Pin(inst)
 
 	// Reject argument-count mismatches before marshalling any arguments.
 	if arity, expected := bind.classifyVarcallArity(int(argumentCount)); arity != varcallArityOK {
@@ -55,7 +58,7 @@ func GoCallback_MethodBindMethodCall(
 	// call Destroy on them (that would free engine-owned memory).
 	args := make([]Variant, argumentCount)
 	for i := range argPtrSlice {
-		pnr.Pin(argPtrSlice[i])
+		pinner.Pin(argPtrSlice[i])
 		args[i] = NewVariantCopyWithGDExtensionConstVariantPtr(argPtrSlice[i])
 	}
 
@@ -86,7 +89,7 @@ func GoCallback_MethodBindMethodCall(
 	)
 	retCall := bind.Call(inst, args...)
 	*(*Variant)(unsafe.Pointer(rReturn)) = retCall
-	pnr.Pin(rReturn)
+	pinner.Pin(rReturn)
 	setCallErrorOK(rError)
 }
 
@@ -150,9 +153,11 @@ func rejectVarcallInvalidArgument(
 // writeNilCallReturn initializes the engine's return slot to nil so a rejected
 // call is well-formed, matching the nil default godot-cpp assigns on error.
 func writeNilCallReturn(rReturn C.GDExtensionVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	nilReturn := NewVariantNil()
 	*(*Variant)(unsafe.Pointer(rReturn)) = nilReturn
-	pnr.Pin(rReturn)
+	pinner.Pin(rReturn)
 }
 
 // called when godot calls into golang code
@@ -164,6 +169,8 @@ func GoCallback_MethodBindMethodPtrcall(
 	argPtrs *C.GDExtensionConstTypePtr,
 	rReturn C.GDExtensionTypePtr,
 ) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ud := (cgo.Handle)(methodUserData)
 	bind, ok := ud.Value().(*GoMethodMetadata)
 	if !ok || bind == nil {
@@ -186,5 +193,5 @@ func GoCallback_MethodBindMethodPtrcall(
 		argsSlice,
 		(GDExtensionUninitializedTypePtr)(rReturn),
 	)
-	pnr.Pin(rReturn)
+	pinner.Pin(rReturn)
 }

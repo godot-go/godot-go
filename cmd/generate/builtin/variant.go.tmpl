@@ -4,6 +4,8 @@ package builtin
 // #include <godot/gdextension_interface.h>
 import "C"
 import (
+	"runtime"
+
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
 
@@ -17,18 +19,24 @@ import (
 {{ $md := astVariantMetadata $v.Name }}
 {{ range $j, $e := $md.Encodings }}
 func NewVariant{{ $e.Name }}(v {{ $e.NativeType }}) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFrom{{ $e.Name }}(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFrom{{ $e.Name }}(v {{ $e.NativeType }}, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	{{ if $md.IsReference -}}
 	var encoded {{ $e.EncodeType }}
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	{{ $e.Name }}Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[{{ $v.Name }}]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -50,11 +58,13 @@ func GDExtensionVariantPtrFrom{{ $e.Name }}(v {{ $e.NativeType }}, rOut GDExtens
 }
 
 func (c Variant) To{{ $e.Name }}() {{ $e.NativeType }} {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[{{ $v.Name }}]
 	var v {{ $e.EncodeType }}
 	{{ if $md.IsReference -}}
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -63,7 +73,7 @@ func (c Variant) To{{ $e.Name }}() {{ $e.NativeType }} {
 	return v
 	{{ else -}}
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),

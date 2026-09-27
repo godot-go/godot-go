@@ -83,3 +83,13 @@ The package `pnr` variables remain, documented as "program-lifetime retention on
 - **R4 — Runtime "leaking pinned pointer" panic** fires if a pinner is finalized with pins still held. Prevented by body-scoped `defer Unpin()`; the pinner never escapes the body.
 - **R5 — Double-unpin throws** (`object already unpinned`). Avoided because `Unpin` is called only once via `defer` and per-call pinners are never reused across calls.
 - **Trade-off — permanent registration pins remain.** They are intentional, bounded by registered class/method count, and required by the engine's retention of metadata pointers. This change bounds the *per-call* leak; it does not make the process pin-free.
+
+## Corrections found during implementation
+
+Two premises above did not survive contact with the running engine. Both are recorded here rather than quietly patched around.
+
+**D2's leak mechanism was wrong.** The `GetShape()` exit leak was attributed to the pin retaining the return wrapper so its finalizer could not run. With every pin scoped, a 200-round `get_shape()` loop still leaked `Reference count: 200` — one per call. The real cause is `NewRef` in `pkg/builtin/ref_generic.go`, which deliberately sets no `Unref` finalizer because it models transfer semantics ("the other side already holds a reference"). The engine adds +1 on each returned `Ref<Shape2D>` and nothing ever releases it. Scoping pins makes the wrapper collectable but does not unref it. That is the object-return-ownership defect, a separate change with its own premature-free risk surface; task 6.2 is left open against it.
+
+**D1's blanket rule cannot cover the `As*Ptr` accessors.** Removing the pin from `AsGDExtensionConstStringNamePtr` / `AsGDExtensionConstStringPtr` — which looked like ordinary call scratch — panicked at startup under `cgocheck=1` with `argument of cgo function has Go pointer to unpinned Go pointer`. Registration code stores these pointers *inside* Go structs (`GDExtensionPropertyInfo`, argument-info arrays) that are then passed to C, so the pointee of the cgo argument contains Go pointers that must themselves be pinned. The accessors keep their package pin; the generated per-call path uses the new `AsGDExtensionConstStringNamePtrPinned(*runtime.Pinner)` / `AsGDExtensionConstStringPtrPinned`, where the pointer is a direct argument to a synchronous call that copies it, so the caller's pinner owns the lifetime.
+
+The generalisation worth keeping: **the pinning question is not "is this value short-lived" but "what does C do with the pointer, and is it reachable through another Go pointer at the moment of the crossing."** Nested-in-struct crossings have strictly stricter requirements than direct-argument crossings.

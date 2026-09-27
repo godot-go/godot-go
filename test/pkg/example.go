@@ -984,6 +984,16 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestFreshStringName", "test_fresh_string_name", []string{"name"}, nil)
 		ClassDBBindMethod(t, "TestEchoNodePathArg", "test_echo_node_path_arg", []string{"path"}, nil)
 		ClassDBBindMethod(t, "TestFreshNodePath", "test_fresh_node_path", []string{"path"}, nil)
+		// Object-argument encoding (openspec: fix-object-arg-ptrcall-encoding).
+		ClassDBBindMethod(t, "TestObjectArgAddChild", "test_object_arg_add_child", []string{"child"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgIdentity", "test_object_arg_identity", []string{"parent", "child"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgSetShape", "test_object_arg_set_shape", []string{"owner", "shape"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgSetShapeTypedNil", "test_object_arg_set_shape_typed_nil", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgSetShapeInvalidRef", "test_object_arg_set_shape_invalid_ref", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgNilPlainObject", "test_object_arg_nil_plain_object", []string{"node"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgRefcountStability", "test_object_arg_refcount_stability", []string{"owner", "shape"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgRelease", "test_object_arg_release", nil, nil)
+
 		ClassDBBindMethod(t, "TestScalarEcho", "test_scalar_echo", []string{"p_bool", "p_i64", "p_f64", "p_str"}, nil)
 		ClassDBBindMethod(t, "TestUint64Echo", "test_uint64_echo", []string{"u64"}, nil)
 		ClassDBBindMethod(t, "TestReturnInt8", "test_return_int8", nil, nil)

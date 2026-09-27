@@ -9,6 +9,7 @@ class TestClass:
 func _ready():
 	var example: Example = $Example
 	test_suite(1, example)
+	test_object_args(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -546,3 +547,68 @@ func test_suite(i: int, example: Example):
 
 func _on_Example_custom_signal(signal_name, value):
 	custom_signal_emitted = [signal_name, value]
+
+# Object-argument encoding tests (openspec: fix-object-arg-ptrcall-encoding).
+# Each Go method returns 1 on success, a negative code on a failed assertion, or
+# -900 if the Go side panicked. Nodes are freed here so the ObjectDB leak check
+# in `make test` stays clean; freeing a parent frees its children.
+func test_object_args(example: Example):
+	print("test object args")
+
+	# Object arguments are declared untyped, the same way the existing ref tests
+	# declare `var image = Image.new()`. The binder reports every object-typed
+	# parameter's class as the owning class (Example), so a typed GDScript
+	# variable fails static checking. That metadata bug is separate from the
+	# ptrcall encoding under test here.
+	#
+	# Readback of refcounted resources happens here in Godot rather than in Go:
+	# the generated object-return path pins a wrapper per call, which would leave
+	# resources reachable at shutdown and trip the leak check.
+
+	# AddChild: the call shape that used to segfault.
+	var child = Node.new()
+	assert_equal(example.test_object_arg_add_child(child), 1)
+	assert_equal(child.get_parent(), example)
+
+	# Identity carried through two object arguments.
+	var parent = Node.new()
+	var kid = Node.new()
+	assert_equal(example.test_object_arg_identity(parent, kid), 1)
+	assert_equal(kid.get_parent(), parent)
+	assert_equal(parent.get_child_count(), 1)
+
+	# Ref<Shape2D> argument: the engine must hold the very object we passed.
+	var cs = CollisionShape2D.new()
+	var circle = CircleShape2D.new()
+	assert_equal(example.test_object_arg_set_shape(cs, circle), 1)
+	assert_equal(cs.shape, circle)
+
+	# A typed-nil Ref clears it.
+	assert_equal(example.test_object_arg_set_shape_typed_nil(cs), 1)
+	assert_equal(cs.shape, null)
+
+	# A live Ref holding no object clears it too.
+	assert_equal(example.test_object_arg_set_shape_invalid_ref(cs), 1)
+	assert_equal(cs.shape, null)
+
+	# Nil non-refcounted (plain engine class) argument.
+	var owned = Node.new()
+	assert_equal(example.test_object_arg_nil_plain_object(owned), 1)
+	assert_equal(owned.get_owner(), null)
+
+	# Repeated object arguments must not drift the reference count.
+	var cs3 = CollisionShape2D.new()
+	var shape3 = CircleShape2D.new()
+	assert_equal(example.test_object_arg_refcount_stability(cs3, shape3), 1)
+
+	child.free()
+	parent.free()
+	cs.free()
+	cs3.free()
+	owned.free()
+	circle = null
+	shape3 = null
+
+	# Let Go run the finalizers on Ref values decoded from the calls above, so no
+	# Go-held reference survives into the engine's leak check.
+	assert_equal(example.test_object_arg_release(), 1)

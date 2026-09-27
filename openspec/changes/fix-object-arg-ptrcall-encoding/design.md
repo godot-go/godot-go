@@ -50,13 +50,31 @@ The slot must point at a cell whose *contents* are the object pointer. Binding a
 
 `Ref` exposes `ToObject() RefCounted`, which returns the held value with no refcount side effect, and `RefCounted` reaches `Wrapped` and so `AsGDExtensionObjectPtr()`. `Ptr()` is deliberately not used: it is absent from the `Ref` interface, so the template cannot rely on it for a generically-typed argument.
 
-### Harden `AsGDExtensionObjectPtr()` against a nil receiver rather than guarding in the template
+### Nil safety requires a shared reflect-based helper, not receiver hardening
 
-A nil interface value cannot have a method called on it at all, and a *typed* nil — an interface holding a nil `*WrappedImpl` — passes an `== nil` check and then panics on field access inside the accessor. Guarding both cases in the template would mean emitting reflection or `recover()` into every one of 794 wrappers.
+Receiver hardening alone **cannot** cover the types that matter, and this was discovered by test, not assumed. Generated Impl types embed `WrappedImpl` by value (`NodeImpl` → `ObjectImpl` → `WrappedImpl`). Calling a promoted method on a typed nil faults while Go computes `&p.WrappedImpl`, before the hardened method body runs. Measured against every call form:
 
-Instead, make the accessor itself nil-receiver-safe (`if w == nil { return nil }`) and have the template emit a single nil-interface check. Invalid references are already covered: `RefBase.IsValid()` reports false for a zero-valued held reference, and the resulting owner pointer is nil, which is the null Godot wants.
+| Call form on a typed-nil generated type | Result |
+|---|---|
+| `p.AsGDExtensionObjectPtr()` direct | faults |
+| `if w != nil { w.AsGDExtensionObjectPtr() }` | faults — typed nil satisfies `!= nil` |
+| reflect-based helper | returns null correctly |
 
-**Rejected — `recover()` in generated code:** hides real nil dereferences behind a catch-all, in generated code nobody reads.
+So the template's nil-interface check is necessary but not sufficient.
+
+**Adopted:** one non-generated helper, `ObjectArgPtr(Wrapped) GDExtensionObjectPtr` in `pkg/builtin`, which returns null for a nil interface, uses `reflect.ValueOf(...).IsNil()` to catch a typed nil, and otherwise delegates to the hardened accessor. The template calls this helper at every object-argument site.
+
+Measured cost on this machine: **6.694 ns/op** for the helper versus **0.466 ns/op** for the plain accessor — **+6.2 ns per object argument**. Against a cgo boundary crossing measured at roughly 50–110 µs, that is about **0.1%**, and it buys the spec's no-panic guarantee for every shape a caller can produce.
+
+Receiver hardening is retained as the inner layer: it makes a nil `*WrappedImpl`, a nil `Owner`, and a nil `WrappedClassInstance.Instance` return null rather than panicking, and the helper delegates into it for live objects.
+
+**Rejected — reflection inlined into 794 wrappers:** the original rejection still stands for that form. A single shared helper is the opposite: one place to read, test, and cost-account.
+
+**Rejected — `recover()` in the helper:** swallows every panic inside the helper rather than distinguishing a nil reference from a genuine bug, and is not measurably cheaper than the reflect check.
+
+### `Ref` arguments need `IsValid()` before `ToObject()`
+
+`RefBase.ToObject()` returns `r.m_ref` directly, so it dereferences and panics on a nil `*RefBase`. The generated `Ref`-argument path must call `IsValid()` first and emit a null slot when it reports false. `IsValid()` is nil-receiver-safe by construction (`r != nil && r.m_ref != zero`) and is declared directly on `*RefBase[T]` rather than promoted, so it survives a nil receiver.
 
 ### Do not add reference counting
 

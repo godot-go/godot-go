@@ -166,11 +166,25 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 	{{ range $j, $a := $m.Arguments -}}
-		{{ if $view.ContainsClassName (goArgumentType (typeOrMeta $a.Meta $a.Type)) -}}
-		{{ if and (eq $j 0) (and (isSetterMethodName (goMethodName $m.Name)) ($view.IsRefcountedClassName (goArgumentType (typeOrMeta $a.Meta $a.Type)))) -}}
-		{{/* {{ goArgumentName $a.Name }}.Reference() */}}
+		{{ $argType := goArgumentType (typeOrMeta $a.Meta $a.Type) -}}
+		{{ if $view.ContainsClassName $argType -}}
+		{{/*
+		  Engine-class argument. Godot's PtrToArg<T*>::convert dereferences this slot
+		  (*reinterpret_cast<T*const*>(p_ptr)), so it must point at a cell whose
+		  contents are the object pointer -- never the address of the Go interface,
+		  whose first word is the itab.
+
+		  Arguments are borrowed. For Ref<T>, PtrToArg<Ref<T>>::convert builds
+		  Ref<T>(ptr) on the receiving side and takes its own reference, so a
+		  Reference() here would leak one reference per call.
+		*/}}
+		var argObj_{{ $j }} GDExtensionObjectPtr
+		{{ if $view.IsRefcountedClassName $argType -}}
+		argObj_{{ $j }} = RefArgPtr({{ goArgumentName $a.Name }})
+		{{ else -}}
+		argObj_{{ $j }} = ObjectArgPtr({{ goArgumentName $a.Name }})
 		{{ end -}}
-		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
+		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_{{ $j }}))
 		{{ else -}}
 		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
 		{{ end -}}

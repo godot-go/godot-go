@@ -17,11 +17,23 @@ func (w *WrappedImpl) GetGodotObjectOwner() *GodotObject {
 	return w.Owner
 }
 
+// AsGDExtensionObjectPtr returns the wrapped Godot object pointer. A nil receiver
+// or a nil Owner yields a null pointer rather than panicking, so callers can pass a
+// nil or typed-nil object straight into a call argument slot. Godot reads a null
+// object pointer as null.
 func (w *WrappedImpl) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
+	if w == nil || w.Owner == nil {
+		return nil
+	}
 	return (GDExtensionObjectPtr)(unsafe.Pointer(w.Owner))
 }
 
+// AsGDExtensionConstObjectPtr is the const form of AsGDExtensionObjectPtr and
+// shares its nil-receiver behaviour.
 func (w *WrappedImpl) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
+	if w == nil || w.Owner == nil {
+		return nil
+	}
 	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.Owner))
 }
 
@@ -122,12 +134,27 @@ func (w *WrappedClassInstance) GetGodotObjectOwner() *GodotObject {
 	return w.Instance.GetGodotObjectOwner()
 }
 
-func (w *WrappedClassInstance) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
-	return (GDExtensionObjectPtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+// godotObjectOwner returns the wrapped owner, or nil when the receiver or its
+// Instance is nil. Shared by the object-pointer accessors so a nil or typed-nil
+// instance never panics at the boundary.
+func (w *WrappedClassInstance) godotObjectOwner() *GodotObject {
+	if w == nil || w.Instance == nil {
+		return nil
+	}
+	return w.Instance.GetGodotObjectOwner()
 }
 
+// AsGDExtensionObjectPtr returns the wrapped Godot object pointer. A nil receiver
+// or nil Instance yields a null pointer rather than panicking, matching
+// WrappedImpl.AsGDExtensionObjectPtr.
+func (w *WrappedClassInstance) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
+	return (GDExtensionObjectPtr)(unsafe.Pointer(w.godotObjectOwner()))
+}
+
+// AsGDExtensionConstObjectPtr is the const form of AsGDExtensionObjectPtr and
+// shares its nil-receiver behaviour.
 func (w *WrappedClassInstance) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
-	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.godotObjectOwner()))
 }
 
 func (w *WrappedClassInstance) AsGDExtensionTypePtr() GDExtensionTypePtr {

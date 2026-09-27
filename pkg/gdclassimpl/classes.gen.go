@@ -3532,7 +3532,10 @@ func (cx *AcceptDialogImpl) RemoveButton(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&button))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(button)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -3565,7 +3568,10 @@ func (cx *AcceptDialogImpl) RegisterTextEnter(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&line_edit))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(line_edit)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -7175,7 +7181,9 @@ func (cx *AnimatedSprite2DImpl) SetSpriteFrames(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&sprite_frames))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(sprite_frames)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -8083,7 +8091,9 @@ func (cx *AnimatedSprite3DImpl) SetSpriteFrames(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&sprite_frames))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(sprite_frames)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -9058,7 +9068,10 @@ func (cx *AnimatedTextureImpl) SetFrameTexture(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&frame))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -11239,7 +11252,10 @@ func (cx *AnimationImpl) AudioTrackInsertKey(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&time))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(stream)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&start_offset))
 	pnr.Pin(argPtrSlice[3])
@@ -11283,7 +11299,10 @@ func (cx *AnimationImpl) AudioTrackSetKeyStream(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key_idx))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(stream)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -12283,7 +12302,10 @@ func (cx *AnimationImpl) CopyTrack(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&track_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&to_animation))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(to_animation)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -12458,7 +12480,10 @@ func (cx *AnimationLibraryImpl) AddAnimation(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&animation))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(animation)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -12729,7 +12754,10 @@ func (cx *AnimationMixerImpl) AddAnimationLibrary(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&library))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(library)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -13988,7 +14016,10 @@ func (cx *AnimationMixerImpl) FindAnimation(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&animation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(animation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -14024,7 +14055,10 @@ func (cx *AnimationMixerImpl) FindAnimationLibrary(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&animation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(animation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -14561,7 +14595,10 @@ func (cx *AnimationNodeImpl) BlendNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&time))
 	pnr.Pin(argPtrSlice[2])
@@ -15387,7 +15424,10 @@ func (cx *AnimationNodeBlendSpace1DImpl) AddBlendPoint(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -15501,7 +15541,10 @@ func (cx *AnimationNodeBlendSpace1DImpl) SetBlendPointNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&point))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -16329,7 +16372,10 @@ func (cx *AnimationNodeBlendSpace2DImpl) AddBlendPoint(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -16443,7 +16489,10 @@ func (cx *AnimationNodeBlendSpace2DImpl) SetBlendPointNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&point))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -17548,7 +17597,10 @@ func (cx *AnimationNodeBlendTreeImpl) AddNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
 	pnr.Pin(argPtrSlice[2])
@@ -18163,7 +18215,9 @@ func (cx *AnimationNodeOneShotImpl) SetFadeinCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -18294,7 +18348,9 @@ func (cx *AnimationNodeOneShotImpl) SetFadeoutCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -18798,7 +18854,10 @@ func (cx *AnimationNodeStateMachineImpl) AddNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
 	pnr.Pin(argPtrSlice[2])
@@ -18836,7 +18895,10 @@ func (cx *AnimationNodeStateMachineImpl) ReplaceNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -19012,7 +19074,10 @@ func (cx *AnimationNodeStateMachineImpl) GetNodeName(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -19195,7 +19260,10 @@ func (cx *AnimationNodeStateMachineImpl) AddTransition(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&to))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transition))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(transition)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -20462,7 +20530,9 @@ func (cx *AnimationNodeStateMachineTransitionImpl) SetXfadeCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -21349,7 +21419,9 @@ func (cx *AnimationNodeTransitionImpl) SetXfadeCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -23408,7 +23480,9 @@ func (cx *AnimationTreeImpl) SetTreeRoot(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&animation_node))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(animation_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -24670,7 +24744,10 @@ func (cx *Area2DImpl) OverlapsBody(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -24706,7 +24783,10 @@ func (cx *Area2DImpl) OverlapsArea(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&area))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(area)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -26067,7 +26147,10 @@ func (cx *Area3DImpl) OverlapsBody(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -26103,7 +26186,10 @@ func (cx *Area3DImpl) OverlapsArea(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&area))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(area)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -26555,7 +26641,9 @@ func (cx *AreaLight3DImpl) SetAreaTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -27618,7 +27706,9 @@ func (cx *ArrayMeshImpl) SetShadowMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -28127,7 +28217,9 @@ func (cx *AtlasTextureImpl) SetAtlas(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&atlas))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(atlas)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -35395,7 +35487,10 @@ func (cx *AudioServerImpl) AddBusEffect(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bus_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&effect))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(effect)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&at_position))
 	pnr.Pin(argPtrSlice[2])
@@ -36456,7 +36551,9 @@ func (cx *AudioServerImpl) SetBusLayout(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bus_layout))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(bus_layout)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -36556,7 +36653,10 @@ func (cx *AudioServerImpl) IsStreamRegisteredAsSample(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -36590,7 +36690,10 @@ func (cx *AudioServerImpl) RegisterStreamAsSample(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -37524,7 +37627,10 @@ func (cx *AudioStreamInteractiveImpl) SetClipStream(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&clip_index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(stream)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -38781,7 +38887,9 @@ func (cx *AudioStreamOggVorbisImpl) SetPacketSequence(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&packet_sequence))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(packet_sequence)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -39264,7 +39372,9 @@ func (cx *AudioStreamPlaybackImpl) SetSamplePlayback(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&playback_sample))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(playback_sample)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -39754,7 +39864,10 @@ func (cx *AudioStreamPlaybackPolyphonicImpl) PlayStream(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from_offset))
 	pnr.Pin(argPtrSlice[1])
@@ -40041,7 +40154,9 @@ func (cx *AudioStreamPlayerImpl) SetStream(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -40975,7 +41090,9 @@ func (cx *AudioStreamPlayer2DImpl) SetStream(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -42104,7 +42221,9 @@ func (cx *AudioStreamPlayer3DImpl) SetStream(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -43852,7 +43971,10 @@ func (cx *AudioStreamPlaylistImpl) SetListStream(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream_index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&audio_stream))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(audio_stream)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -44239,7 +44361,10 @@ func (cx *AudioStreamRandomizerImpl) AddStream(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(stream)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&weight))
 	pnr.Pin(argPtrSlice[2])
@@ -44346,7 +44471,10 @@ func (cx *AudioStreamRandomizerImpl) SetStream(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(stream)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -44907,7 +45035,10 @@ func (cx *AudioStreamSynchronizedImpl) SetSyncStream(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream_index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&audio_stream))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(audio_stream)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -46574,7 +46705,9 @@ func (cx *BaseButtonImpl) SetShortcut(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shortcut)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -46640,7 +46773,9 @@ func (cx *BaseButtonImpl) SetButtonGroup(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&button_group))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(button_group)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -49024,7 +49159,10 @@ func (cx *BaseMaterial3DImpl) SetTexture(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -51819,7 +51957,10 @@ func (cx *BitMapImpl) CreateFromImageAlpha(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&threshold))
 	pnr.Pin(argPtrSlice[1])
@@ -53814,7 +53955,9 @@ func (cx *BoneMapImpl) SetProfile(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&profile))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(profile)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -54936,7 +55079,10 @@ func (cx *BoneTwistDisperser3DImpl) SetDampingCurve(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(curve)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -56279,7 +56425,9 @@ func (cx *ButtonImpl) SetButtonIcon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -57947,7 +58095,9 @@ func (cx *CPUParticles2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -58322,7 +58472,10 @@ func (cx *CPUParticles2DImpl) SetParamCurve(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(curve)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -58457,7 +58610,9 @@ func (cx *CPUParticles2DImpl) SetColorRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ramp))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(ramp)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -58523,7 +58678,9 @@ func (cx *CPUParticles2DImpl) SetColorInitialRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ramp))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(ramp)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -59343,7 +59500,9 @@ func (cx *CPUParticles2DImpl) SetScaleCurveX(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scale_curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scale_curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -59409,7 +59568,9 @@ func (cx *CPUParticles2DImpl) SetScaleCurveY(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scale_curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scale_curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -59442,7 +59603,10 @@ func (cx *CPUParticles2DImpl) ConvertFromParticles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&particles))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(particles)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -60413,7 +60577,9 @@ func (cx *CPUParticles3DImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -61051,7 +61217,10 @@ func (cx *CPUParticles3DImpl) SetParamCurve(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(curve)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -61186,7 +61355,9 @@ func (cx *CPUParticles3DImpl) SetColorRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ramp))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(ramp)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -61252,7 +61423,9 @@ func (cx *CPUParticles3DImpl) SetColorInitialRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ramp))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(ramp)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -62267,7 +62440,9 @@ func (cx *CPUParticles3DImpl) SetScaleCurveX(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scale_curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scale_curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -62333,7 +62508,9 @@ func (cx *CPUParticles3DImpl) SetScaleCurveY(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scale_curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scale_curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -62399,7 +62576,9 @@ func (cx *CPUParticles3DImpl) SetScaleCurveZ(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scale_curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scale_curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -62432,7 +62611,10 @@ func (cx *CPUParticles3DImpl) ConvertFromParticles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&particles))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(particles)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -62558,7 +62740,9 @@ func (cx *CSGBox3DImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -62929,7 +63113,9 @@ func (cx *CSGCylinder3DImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -63087,7 +63273,9 @@ func (cx *CSGMesh3DImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -63153,7 +63341,9 @@ func (cx *CSGMesh3DImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -64221,7 +64411,9 @@ func (cx *CSGPolygon3DImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -65615,7 +65807,9 @@ func (cx *CSGSphere3DImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -65968,7 +66162,9 @@ func (cx *CSGTorus3DImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -67269,7 +67465,10 @@ func (cx *Camera2DImpl) SetCustomViewport(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&viewport))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(viewport)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -69019,7 +69218,9 @@ func (cx *Camera3DImpl) SetEnvironment(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&env))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(env)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -69085,7 +69286,9 @@ func (cx *Camera3DImpl) SetAttributes(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&env))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(env)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -69151,7 +69354,9 @@ func (cx *Camera3DImpl) SetCompositor(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&compositor))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(compositor)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -71413,7 +71618,9 @@ func (cx *CameraFeedImpl) SetRgbImage(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rgb_image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(rgb_image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -71447,7 +71654,9 @@ func (cx *CameraFeedImpl) SetYcbcrImage(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ycbcr_image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(ycbcr_image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -71482,9 +71691,14 @@ func (cx *CameraFeedImpl) SetYcbcrImages(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&y_image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(y_image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&cbcr_image))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(cbcr_image)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -71884,7 +72098,10 @@ func (cx *CameraServerImpl) AddFeed(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&feed))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(feed)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -71917,7 +72134,10 @@ func (cx *CameraServerImpl) RemoveFeed(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&feed))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(feed)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -73707,7 +73927,10 @@ func (cx *CanvasItemImpl) DrawTexture(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
 	pnr.Pin(argPtrSlice[1])
@@ -73748,7 +73971,10 @@ func (cx *CanvasItemImpl) DrawTextureRect(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -73794,7 +74020,10 @@ func (cx *CanvasItemImpl) DrawTextureRectRegion(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -73843,7 +74072,10 @@ func (cx *CanvasItemImpl) DrawMsdfTextureRectRegion(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -73891,7 +74123,10 @@ func (cx *CanvasItemImpl) DrawLcdTextureRectRegion(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -73931,7 +74166,10 @@ func (cx *CanvasItemImpl) DrawStyleBox(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&style_box))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(style_box)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -73975,7 +74213,10 @@ func (cx *CanvasItemImpl) DrawPrimitive(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&uvs))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(texture)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -74017,7 +74258,10 @@ func (cx *CanvasItemImpl) DrawPolygon(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&uvs))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(texture)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -74059,7 +74303,10 @@ func (cx *CanvasItemImpl) DrawColoredPolygon(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&uvs))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(texture)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -74102,7 +74349,10 @@ func (cx *CanvasItemImpl) DrawString(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -74167,7 +74417,10 @@ func (cx *CanvasItemImpl) DrawMultilineString(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -74235,7 +74488,10 @@ func (cx *CanvasItemImpl) DrawStringOutline(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -74303,7 +74559,10 @@ func (cx *CanvasItemImpl) DrawMultilineStringOutline(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -74367,7 +74626,10 @@ func (cx *CanvasItemImpl) DrawChar(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -74416,7 +74678,10 @@ func (cx *CanvasItemImpl) DrawCharOutline(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pos))
 	pnr.Pin(argPtrSlice[1])
@@ -74464,9 +74729,15 @@ func (cx *CanvasItemImpl) DrawMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transform))
 	pnr.Pin(argPtrSlice[2])
@@ -74504,9 +74775,15 @@ func (cx *CanvasItemImpl) DrawMultimesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&multimesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(multimesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -75067,7 +75344,9 @@ func (cx *CanvasItemImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -75466,7 +75745,10 @@ func (cx *CanvasItemImpl) MakeInputLocal(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefInputEventGDExtensionIternalConstructor(&ret)
@@ -76951,7 +77233,10 @@ func (cx *CanvasLayerImpl) SetCustomViewport(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&viewport))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(viewport)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -77168,7 +77453,9 @@ func (cx *CanvasTextureImpl) SetDiffuseTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -77234,7 +77521,9 @@ func (cx *CanvasTextureImpl) SetNormalTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -77300,7 +77589,9 @@ func (cx *CanvasTextureImpl) SetSpecularTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -83842,7 +84133,10 @@ func (cx *ClassDBImpl) ClassGetProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -83882,7 +84176,10 @@ func (cx *ClassDBImpl) ClassSetProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -87430,7 +87727,10 @@ func (cx *CodeEditImpl) AddCodeCompletionOption(
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&text_color))
 	pnr.Pin(argPtrSlice[3])
-	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_4 GDExtensionObjectPtr
+	argObj_4 = RefArgPtr(icon)
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_4))
 	pnr.Pin(argPtrSlice[4])
 	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
 	pnr.Pin(argPtrSlice[5])
@@ -89794,7 +90094,10 @@ func (cx *CollisionObject2DImpl) CreateShapeOwner(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(owner)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -90292,7 +90595,10 @@ func (cx *CollisionObject2DImpl) ShapeOwnerAddShape(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner_id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shape)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -91139,7 +91445,10 @@ func (cx *CollisionObject3DImpl) CreateShapeOwner(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(owner)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -91421,7 +91730,10 @@ func (cx *CollisionObject3DImpl) ShapeOwnerAddShape(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner_id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shape)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -92535,7 +92847,9 @@ func (cx *CollisionShape2DImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -92952,7 +93266,10 @@ func (cx *CollisionShape3DImpl) ResourceChanged(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -92986,7 +93303,9 @@ func (cx *CollisionShape3DImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -94776,7 +95095,9 @@ func (cx *CompositorImpl) SetCompositorEffects(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&compositor_effects))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(compositor_effects)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -96836,7 +97157,10 @@ func (cx *ContainerImpl) FitChildInRect(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&child))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(child)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -99577,7 +99901,9 @@ func (cx *ControlImpl) SetTheme(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(theme)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -99768,7 +100094,10 @@ func (cx *ControlImpl) AddThemeIconOverride(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -99804,7 +100133,10 @@ func (cx *ControlImpl) AddThemeStyleboxOverride(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stylebox))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(stylebox)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -99840,7 +100172,10 @@ func (cx *ControlImpl) AddThemeFontOverride(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(font)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -101658,7 +101993,10 @@ func (cx *ControlImpl) ForceDrag(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preview))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(preview)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -102564,7 +102902,10 @@ func (cx *ControlImpl) SetDragPreview(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -102662,7 +103003,10 @@ func (cx *ControlImpl) SetShortcutContext(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -105115,7 +105459,10 @@ func (cx *CryptoImpl) GenerateSelfSignedCertificate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(key)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&issuer_name))
 	pnr.Pin(argPtrSlice[1])
@@ -105163,7 +105510,10 @@ func (cx *CryptoImpl) Sign(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&hash))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(key)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -105208,7 +105558,10 @@ func (cx *CryptoImpl) Verify(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&signature))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(key)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -105245,7 +105598,10 @@ func (cx *CryptoImpl) Encrypt(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(key)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plaintext))
 	pnr.Pin(argPtrSlice[1])
@@ -105284,7 +105640,10 @@ func (cx *CryptoImpl) Decrypt(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(key)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ciphertext))
 	pnr.Pin(argPtrSlice[1])
@@ -108908,7 +109267,9 @@ func (cx *CurveTextureImpl) SetCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -109099,7 +109460,9 @@ func (cx *CurveXYZTextureImpl) SetCurveX(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -109165,7 +109528,9 @@ func (cx *CurveXYZTextureImpl) SetCurveY(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -109231,7 +109596,9 @@ func (cx *CurveXYZTextureImpl) SetCurveZ(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -110492,7 +110859,9 @@ func (cx *DTLSServerImpl) Setup(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&server_options))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(server_options)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -110528,7 +110897,10 @@ func (cx *DTLSServerImpl) TakeConnection(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&udp_peer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(udp_peer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefPacketPeerDTLSGDExtensionIternalConstructor(&ret)
@@ -110944,7 +111316,10 @@ func (cx *DecalImpl) SetTexture(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -113816,7 +114191,10 @@ func (cx *DisplayServerImpl) GlobalMenuAddIconItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu_root))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[2])
@@ -113873,7 +114251,10 @@ func (cx *DisplayServerImpl) GlobalMenuAddIconCheckItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu_root))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[2])
@@ -113984,7 +114365,10 @@ func (cx *DisplayServerImpl) GlobalMenuAddIconRadioCheckItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu_root))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[2])
@@ -115422,7 +115806,10 @@ func (cx *DisplayServerImpl) GlobalMenuSetItemIcon(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(icon)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -118328,7 +118715,10 @@ func (cx *DisplayServerImpl) WindowSetIcon(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(icon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&window_id))
 	pnr.Pin(argPtrSlice[1])
@@ -122541,7 +122931,10 @@ func (cx *DisplayServerImpl) CursorSetCustomImage(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&cursor))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(cursor)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
 	pnr.Pin(argPtrSlice[1])
@@ -123280,7 +123673,9 @@ func (cx *DisplayServerImpl) SetIcon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -123317,7 +123712,10 @@ func (cx *DisplayServerImpl) CreateStatusIndicator(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(icon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tooltip))
 	pnr.Pin(argPtrSlice[1])
@@ -123358,7 +123756,10 @@ func (cx *DisplayServerImpl) StatusIndicatorSetIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -123733,7 +124134,10 @@ func (cx *DisplayServerImpl) RegisterAdditionalOutput(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -123766,7 +124170,10 @@ func (cx *DisplayServerImpl) UnregisterAdditionalOutput(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -124151,13 +124558,19 @@ func (cx *DrawableTexture2DImpl) BlitRect(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&modulate))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mipmap))
 	pnr.Pin(argPtrSlice[3])
-	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_4 GDExtensionObjectPtr
+	argObj_4 = RefArgPtr(material)
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_4))
 	pnr.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -124197,15 +124610,24 @@ func (cx *DrawableTexture2DImpl) BlitRectMulti(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&sources))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(sources)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extra_targets))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(extra_targets)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&modulate))
 	pnr.Pin(argPtrSlice[3])
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mipmap))
 	pnr.Pin(argPtrSlice[4])
-	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_5 GDExtensionObjectPtr
+	argObj_5 = RefArgPtr(material)
+	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_5))
 	pnr.Pin(argPtrSlice[5])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -124672,7 +125094,10 @@ func (cx *ENetConnectionImpl) DtlsServerSetup(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&server_options))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(server_options)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -124711,7 +125136,10 @@ func (cx *ENetConnectionImpl) DtlsClientSetup(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&hostname))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&client_options))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(client_options)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -125116,7 +125544,10 @@ func (cx *ENetMultiplayerPeerImpl) AddMeshPeer(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&peer_id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&host))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(host)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -125946,7 +126377,10 @@ func (cx *EditorContextMenuPluginImpl) AddMenuShortcut(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shortcut)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[1])
@@ -125987,7 +126421,10 @@ func (cx *EditorContextMenuPluginImpl) AddContextMenuItem(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(icon)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -126024,9 +126461,15 @@ func (cx *EditorContextMenuPluginImpl) AddContextMenuItemFromShortcut(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shortcut)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(icon)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -126063,9 +126506,15 @@ func (cx *EditorContextMenuPluginImpl) AddContextSubmenuItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(menu)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(icon)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -126391,7 +126840,10 @@ func (cx *EditorDebuggerSessionImpl) AddSessionTab(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -126424,7 +126876,10 @@ func (cx *EditorDebuggerSessionImpl) RemoveSessionTab(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -127001,7 +127456,9 @@ func (cx *EditorDockImpl) SetDockIcon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(icon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -127197,7 +127654,9 @@ func (cx *EditorDockImpl) SetDockShortcut(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shortcut)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -127556,7 +128015,10 @@ func (cx *EditorExportPlatformImpl) SavePack(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127600,7 +128062,10 @@ func (cx *EditorExportPlatformImpl) SaveZip(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127642,7 +128107,10 @@ func (cx *EditorExportPlatformImpl) SavePackPatch(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127684,7 +128152,10 @@ func (cx *EditorExportPlatformImpl) SaveZipPatch(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127763,7 +128234,10 @@ func (cx *EditorExportPlatformImpl) ExportProjectFiles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127809,7 +128283,10 @@ func (cx *EditorExportPlatformImpl) ExportProject(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127856,7 +128333,10 @@ func (cx *EditorExportPlatformImpl) ExportPack(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127901,7 +128381,10 @@ func (cx *EditorExportPlatformImpl) ExportZip(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127947,7 +128430,10 @@ func (cx *EditorExportPlatformImpl) ExportPackPatch(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -127995,7 +128481,10 @@ func (cx *EditorExportPlatformImpl) ExportZipPatch(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -128427,7 +128916,10 @@ func (cx *EditorExportPlatformImpl) GetInternalExportFiles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&debug))
 	pnr.Pin(argPtrSlice[1])
@@ -128465,7 +128957,10 @@ func (cx *EditorExportPlatformImpl) GetForcedExportFiles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preset))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(preset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -130864,7 +131359,10 @@ func (cx *EditorFileDialogImpl) AddSideMenu(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(menu)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
 	pnr.Pin(argPtrSlice[1])
@@ -131952,7 +132450,10 @@ func (cx *EditorInspectorImpl) Edit(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -132144,7 +132645,10 @@ func (cx *EditorInspectorImpl) InstantiatePropertyEditor(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
 	pnr.Pin(argPtrSlice[1])
@@ -132192,7 +132696,10 @@ func (cx *EditorInspectorImpl) CreateDefaultInspector(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&filter_line_edit))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(filter_line_edit)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
@@ -132253,7 +132760,10 @@ func (cx *EditorInspectorPluginImpl) AddCustomControl(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -132291,7 +132801,10 @@ func (cx *EditorInspectorPluginImpl) AddPropertyEditor(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&editor))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(editor)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&add_to_end))
 	pnr.Pin(argPtrSlice[2])
@@ -132334,7 +132847,10 @@ func (cx *EditorInspectorPluginImpl) AddPropertyEditorForMultipleProperties(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&properties))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&editor))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = ObjectArgPtr(editor)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -132686,7 +133202,10 @@ func (cx *EditorInterfaceImpl) MakeMeshPreviews(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&meshes))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(meshes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preview_size))
 	pnr.Pin(argPtrSlice[1])
@@ -133313,7 +133832,10 @@ func (cx *EditorInterfaceImpl) PopupDialog(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dialog))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(dialog)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -133349,7 +133871,10 @@ func (cx *EditorInterfaceImpl) PopupDialogCentered(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dialog))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(dialog)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&minsize))
 	pnr.Pin(argPtrSlice[1])
@@ -133385,7 +133910,10 @@ func (cx *EditorInterfaceImpl) PopupDialogCenteredRatio(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dialog))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(dialog)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ratio))
 	pnr.Pin(argPtrSlice[1])
@@ -133422,7 +133950,10 @@ func (cx *EditorInterfaceImpl) PopupDialogCenteredClamped(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dialog))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(dialog)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&minsize))
 	pnr.Pin(argPtrSlice[1])
@@ -133530,7 +134061,10 @@ func (cx *EditorInterfaceImpl) PopupNodeSelector(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&valid_types))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&current_value))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = ObjectArgPtr(current_value)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -133566,7 +134100,10 @@ func (cx *EditorInterfaceImpl) PopupPropertySelector(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[1])
@@ -133607,7 +134144,10 @@ func (cx *EditorInterfaceImpl) PopupMethodSelector(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[1])
@@ -133920,7 +134460,10 @@ func (cx *EditorInterfaceImpl) InspectObject(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&for_property))
 	pnr.Pin(argPtrSlice[1])
@@ -133957,7 +134500,10 @@ func (cx *EditorInterfaceImpl) EditResource(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -133990,7 +134536,10 @@ func (cx *EditorInterfaceImpl) EditNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -134026,7 +134575,10 @@ func (cx *EditorInterfaceImpl) EditScript(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(script)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&line))
 	pnr.Pin(argPtrSlice[1])
@@ -134135,7 +134687,10 @@ func (cx *EditorInterfaceImpl) SetObjectEdited(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&edited))
 	pnr.Pin(argPtrSlice[1])
@@ -134172,7 +134727,10 @@ func (cx *EditorInterfaceImpl) IsObjectEdited(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -134334,7 +134892,10 @@ func (cx *EditorInterfaceImpl) AddRootNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -134806,7 +135367,10 @@ func (cx *EditorNode3DGizmoImpl) AddLines(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&lines))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&billboard))
 	pnr.Pin(argPtrSlice[2])
@@ -134846,13 +135410,22 @@ func (cx *EditorNode3DGizmoImpl) AddMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transform))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skeleton))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(skeleton)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -134918,7 +135491,10 @@ func (cx *EditorNode3DGizmoImpl) AddCollisionTriangles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&triangles))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(triangles)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -134953,7 +135529,10 @@ func (cx *EditorNode3DGizmoImpl) AddUnscaledBillboard(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&default_scale))
 	pnr.Pin(argPtrSlice[1])
@@ -134996,7 +135575,10 @@ func (cx *EditorNode3DGizmoImpl) AddHandles(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&handles))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ids))
 	pnr.Pin(argPtrSlice[2])
@@ -135035,7 +135617,10 @@ func (cx *EditorNode3DGizmoImpl) SetNode3D(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -135339,7 +135924,10 @@ func (cx *EditorNode3DGizmoPluginImpl) CreateIconMaterial(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&on_top))
 	pnr.Pin(argPtrSlice[2])
@@ -135382,7 +135970,10 @@ func (cx *EditorNode3DGizmoPluginImpl) CreateHandleMaterial(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&billboard))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(texture)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -135418,7 +136009,10 @@ func (cx *EditorNode3DGizmoPluginImpl) AddMaterial(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -135456,7 +136050,10 @@ func (cx *EditorNode3DGizmoPluginImpl) GetMaterial(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gizmo))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(gizmo)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefStandardMaterial3DGDExtensionIternalConstructor(&ret)
@@ -135736,7 +136333,10 @@ func (cx *EditorPluginImpl) AddDock(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dock))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(dock)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -135769,7 +136369,10 @@ func (cx *EditorPluginImpl) RemoveDock(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dock))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(dock)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -135805,7 +136408,10 @@ func (cx *EditorPluginImpl) AddControlToContainer(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&container))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(control)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -135841,7 +136447,10 @@ func (cx *EditorPluginImpl) RemoveControlFromContainer(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&container))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(control)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -135913,7 +136522,10 @@ func (cx *EditorPluginImpl) AddToolSubmenuItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&submenu))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(submenu)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136018,9 +136630,15 @@ func (cx *EditorPluginImpl) AddCustomType(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&base))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(script)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(icon)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136090,9 +136708,15 @@ func (cx *EditorPluginImpl) AddControlToDock(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(control)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(shortcut)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136125,7 +136749,10 @@ func (cx *EditorPluginImpl) RemoveControlFromDocks(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136159,9 +136786,15 @@ func (cx *EditorPluginImpl) SetDockTabIcon(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136198,11 +136831,17 @@ func (cx *EditorPluginImpl) AddControlToBottomPanel(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(shortcut)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
@@ -136236,7 +136875,10 @@ func (cx *EditorPluginImpl) RemoveControlFromBottomPanel(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136370,7 +137012,10 @@ func (cx *EditorPluginImpl) MakeBottomPanelItemVisible(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&item))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(item)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136559,7 +137204,10 @@ func (cx *EditorPluginImpl) AddTranslationParserPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parser))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parser)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136592,7 +137240,10 @@ func (cx *EditorPluginImpl) RemoveTranslationParserPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parser))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parser)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136626,7 +137277,10 @@ func (cx *EditorPluginImpl) AddImportPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&importer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(importer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&first_priority))
 	pnr.Pin(argPtrSlice[1])
@@ -136661,7 +137315,10 @@ func (cx *EditorPluginImpl) RemoveImportPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&importer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(importer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136695,7 +137352,10 @@ func (cx *EditorPluginImpl) AddSceneFormatImporterPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scene_format_importer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scene_format_importer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&first_priority))
 	pnr.Pin(argPtrSlice[1])
@@ -136730,7 +137390,10 @@ func (cx *EditorPluginImpl) RemoveSceneFormatImporterPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scene_format_importer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scene_format_importer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136764,7 +137427,10 @@ func (cx *EditorPluginImpl) AddScenePostImportPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scene_import_plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scene_import_plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&first_priority))
 	pnr.Pin(argPtrSlice[1])
@@ -136799,7 +137465,10 @@ func (cx *EditorPluginImpl) RemoveScenePostImportPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scene_import_plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(scene_import_plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136832,7 +137501,10 @@ func (cx *EditorPluginImpl) AddExportPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136865,7 +137537,10 @@ func (cx *EditorPluginImpl) RemoveExportPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136898,7 +137573,10 @@ func (cx *EditorPluginImpl) AddExportPlatform(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&platform))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(platform)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136931,7 +137609,10 @@ func (cx *EditorPluginImpl) RemoveExportPlatform(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&platform))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(platform)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136964,7 +137645,10 @@ func (cx *EditorPluginImpl) AddNode3DGizmoPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -136997,7 +137681,10 @@ func (cx *EditorPluginImpl) RemoveNode3DGizmoPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137030,7 +137717,10 @@ func (cx *EditorPluginImpl) AddInspectorPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137063,7 +137753,10 @@ func (cx *EditorPluginImpl) RemoveInspectorPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137096,7 +137789,10 @@ func (cx *EditorPluginImpl) AddResourceConversionPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137129,7 +137825,10 @@ func (cx *EditorPluginImpl) RemoveResourceConversionPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137223,7 +137922,10 @@ func (cx *EditorPluginImpl) AddContextMenuPlugin(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(plugin)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137256,7 +137958,10 @@ func (cx *EditorPluginImpl) RemoveContextMenuPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137353,7 +138058,10 @@ func (cx *EditorPluginImpl) AddDebuggerPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(script)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -137386,7 +138094,10 @@ func (cx *EditorPluginImpl) RemoveDebuggerPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(script)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -138156,7 +138867,10 @@ func (cx *EditorPropertyImpl) AddFocusable(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -138189,7 +138903,10 @@ func (cx *EditorPropertyImpl) SetBottomEditor(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&editor))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(editor)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -138512,7 +139229,10 @@ func (cx *EditorPropertyImpl) SetObjectAndProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -138547,7 +139267,10 @@ func (cx *EditorPropertyImpl) SetLabelReference(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -138774,7 +139497,9 @@ func (cx *EditorResourcePickerImpl) SetEditedResource(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -139034,7 +139759,10 @@ func (cx *EditorResourcePreviewImpl) QueueResourcePreview(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&receiver))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(receiver)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&receiver_func))
 	pnr.Pin(argPtrSlice[2])
@@ -139074,9 +139802,15 @@ func (cx *EditorResourcePreviewImpl) QueueEditedResourcePreview(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&receiver))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(receiver)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&receiver_func))
 	pnr.Pin(argPtrSlice[2])
@@ -139113,7 +139847,10 @@ func (cx *EditorResourcePreviewImpl) AddPreviewGenerator(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&generator))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(generator)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -139146,7 +139883,10 @@ func (cx *EditorResourcePreviewImpl) RemovePreviewGenerator(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&generator))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(generator)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -139302,7 +140042,10 @@ func (cx *EditorResourceTooltipPluginImpl) RequestThumbnail(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(control)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -139751,7 +140494,10 @@ func (cx *EditorScriptImpl) AddRootNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -139875,7 +140621,10 @@ func (cx *EditorScriptPickerImpl) SetScriptOwner(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(owner_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -139996,7 +140745,10 @@ func (cx *EditorSelectionImpl) AddNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -140029,7 +140781,10 @@ func (cx *EditorSelectionImpl) RemoveNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -140612,7 +141367,10 @@ func (cx *EditorSettingsImpl) SetBuiltinActionOverride(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&actions_list))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(actions_list)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -140648,7 +141406,10 @@ func (cx *EditorSettingsImpl) AddShortcut(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shortcut)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -140719,7 +141480,10 @@ func (cx *EditorSettingsImpl) IsShortcut(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(event)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -141660,7 +142424,10 @@ func (cx *EditorUndoRedoManagerImpl) CreateAction(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&merge_mode))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&custom_context))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = ObjectArgPtr(custom_context)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&backward_undo_ops))
 	pnr.Pin(argPtrSlice[3])
@@ -141889,7 +142656,10 @@ func (cx *EditorUndoRedoManagerImpl) AddDoProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -141928,7 +142698,10 @@ func (cx *EditorUndoRedoManagerImpl) AddUndoProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -141965,7 +142738,10 @@ func (cx *EditorUndoRedoManagerImpl) AddDoReference(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -141998,7 +142774,10 @@ func (cx *EditorUndoRedoManagerImpl) AddUndoReference(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -142033,7 +142812,10 @@ func (cx *EditorUndoRedoManagerImpl) GetObjectHistoryId(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -143463,7 +144245,10 @@ func (cx *EngineImpl) RegisterSingleton(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&instance))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(instance)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -143563,7 +144348,10 @@ func (cx *EngineImpl) RegisterScriptLanguage(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&language))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(language)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -143599,7 +144387,10 @@ func (cx *EngineImpl) UnregisterScriptLanguage(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&language))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(language)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -144025,7 +144816,10 @@ func (cx *EngineDebuggerImpl) RegisterProfiler(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&profiler))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(profiler)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -144446,7 +145240,10 @@ func (cx *EngineDebuggerImpl) ScriptDebug(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&language))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(language)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&can_continue))
 	pnr.Pin(argPtrSlice[1])
@@ -144905,7 +145702,9 @@ func (cx *EnvironmentImpl) SetSky(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&sky))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(sky)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -148878,7 +149677,9 @@ func (cx *EnvironmentImpl) SetGlowMap(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mode))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mode)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -150894,7 +151695,9 @@ func (cx *EnvironmentImpl) SetAdjustmentColorCorrection(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color_correction))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(color_correction)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -151032,7 +151835,10 @@ func (cx *ExpressionImpl) Execute(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&inputs))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&base_instance))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(base_instance)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&show_error))
 	pnr.Pin(argPtrSlice[2])
@@ -156955,7 +157761,10 @@ func (cx *FileSystemDockImpl) AddResourceTooltipPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -156988,7 +157797,10 @@ func (cx *FileSystemDockImpl) RemoveResourceTooltipPlugin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&plugin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(plugin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -157693,7 +158505,9 @@ func (cx *FogMaterialImpl) SetDensityTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&density_texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(density_texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -157916,7 +158730,9 @@ func (cx *FogVolumeImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -158132,7 +158948,9 @@ func (cx *FoldableContainerImpl) SetFoldableGroup(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&button_group))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(button_group)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -158587,7 +159405,10 @@ func (cx *FoldableContainerImpl) AddTitleBarControl(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -158620,7 +159441,10 @@ func (cx *FoldableContainerImpl) RemoveTitleBarControl(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -158837,7 +159661,9 @@ func (cx *FontImpl) SetFallbacks(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&fallbacks))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(fallbacks)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -162798,7 +163624,10 @@ func (cx *FontFileImpl) SetTextureImage(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture_index))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(image)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -164218,7 +165047,9 @@ func (cx *FontVariationImpl) SetBaseFont(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -164840,7 +165671,10 @@ func (cx *FramebufferCacheRDImpl) GetCacheMultipass(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&textures))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&passes))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(passes)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&views))
 	pnr.Pin(argPtrSlice[2])
@@ -166454,7 +167288,10 @@ func (cx *GDScriptWorkspaceImpl) ApplyNewSignal(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&obj))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(obj)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&function))
 	pnr.Pin(argPtrSlice[1])
@@ -168068,7 +168905,10 @@ func (cx *GLTFBufferViewImpl) LoadBufferViewData(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -168589,7 +169429,10 @@ func (cx *GLTFCameraImpl) FromNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&camera_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(camera_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefGLTFCameraGDExtensionIternalConstructor(&ret)
@@ -169537,7 +170380,10 @@ func (cx *GLTFDocumentImpl) AppendFromFile(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(state)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pnr.Pin(argPtrSlice[2])
@@ -169584,7 +170430,10 @@ func (cx *GLTFDocumentImpl) AppendFromBuffer(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&base_path))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(state)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pnr.Pin(argPtrSlice[3])
@@ -169624,9 +170473,15 @@ func (cx *GLTFDocumentImpl) AppendFromScene(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(state)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pnr.Pin(argPtrSlice[2])
@@ -169667,7 +170522,10 @@ func (cx *GLTFDocumentImpl) GenerateScene(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bake_fps))
 	pnr.Pin(argPtrSlice[1])
@@ -169709,7 +170567,10 @@ func (cx *GLTFDocumentImpl) GenerateBuffer(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -169746,7 +170607,10 @@ func (cx *GLTFDocumentImpl) WriteToFilesystem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pnr.Pin(argPtrSlice[1])
@@ -169785,7 +170649,10 @@ func (cx *GLTFDocumentImpl) ImportObjectModelProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&json_pointer))
 	pnr.Pin(argPtrSlice[1])
@@ -169826,11 +170693,17 @@ func (cx *GLTFDocumentImpl) ExportObjectModelProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node_path))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&godot_node))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = ObjectArgPtr(godot_node)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gltf_node_index))
 	pnr.Pin(argPtrSlice[3])
@@ -169867,7 +170740,10 @@ func (cx *GLTFDocumentImpl) RegisterGltfDocumentExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&first_priority))
 	pnr.Pin(argPtrSlice[1])
@@ -169902,7 +170778,10 @@ func (cx *GLTFDocumentImpl) UnregisterGltfDocumentExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -170041,7 +170920,10 @@ func (cx *GLTFLightImpl) FromNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&light_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(light_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefGLTFLightGDExtensionIternalConstructor(&ret)
@@ -170762,7 +171644,9 @@ func (cx *GLTFMeshImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -170893,7 +171777,9 @@ func (cx *GLTFMeshImpl) SetInstanceMaterials(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&instance_materials))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(instance_materials)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -172043,7 +172929,10 @@ func (cx *GLTFNodeImpl) GetSceneNodePath(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gltf_state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gltf_state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&handle_skeletons))
 	pnr.Pin(argPtrSlice[1])
@@ -172240,7 +173129,9 @@ func (cx *GLTFObjectModelPropertyImpl) SetGltfToGodotExpression(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gltf_to_godot_expr))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gltf_to_godot_expr)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -172306,7 +173197,9 @@ func (cx *GLTFObjectModelPropertyImpl) SetGodotToGltfExpression(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&godot_to_gltf_expr))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(godot_to_gltf_expr)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -172728,7 +173621,10 @@ func (cx *GLTFPhysicsBodyImpl) FromNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefGLTFPhysicsBodyGDExtensionIternalConstructor(&ret)
@@ -173411,7 +174307,10 @@ func (cx *GLTFPhysicsShapeImpl) FromNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(shape_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefGLTFPhysicsShapeGDExtensionIternalConstructor(&ret)
@@ -173483,7 +174382,10 @@ func (cx *GLTFPhysicsShapeImpl) FromResource(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape_resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefGLTFPhysicsShapeGDExtensionIternalConstructor(&ret)
@@ -174044,7 +174946,9 @@ func (cx *GLTFPhysicsShapeImpl) SetImporterMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&importer_mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(importer_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -175109,7 +176013,9 @@ func (cx *GLTFSkinImpl) SetGodotSkin(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&godot_skin))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(godot_skin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -175202,7 +176108,9 @@ func (cx *GLTFSpecGlossImpl) SetDiffuseImg(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&diffuse_img))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(diffuse_img)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -175463,7 +176371,9 @@ func (cx *GLTFSpecGlossImpl) SetSpecGlossImg(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spec_gloss_img))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(spec_gloss_img)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -175602,9 +176512,15 @@ func (cx *GLTFStateImpl) AppendGltfNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gltf_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gltf_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&godot_scene_node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(godot_scene_node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parent_node_index))
 	pnr.Pin(argPtrSlice[2])
@@ -176063,7 +176979,9 @@ func (cx *GLTFStateImpl) SetNodes(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&nodes))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(nodes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176194,7 +177112,9 @@ func (cx *GLTFStateImpl) SetBufferViews(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&buffer_views))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(buffer_views)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176260,7 +177180,9 @@ func (cx *GLTFStateImpl) SetAccessors(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&accessors))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(accessors)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176326,7 +177248,9 @@ func (cx *GLTFStateImpl) SetMeshes(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&meshes))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(meshes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176464,7 +177388,9 @@ func (cx *GLTFStateImpl) SetMaterials(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&materials))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(materials)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176790,7 +177716,9 @@ func (cx *GLTFStateImpl) SetTextures(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&textures))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(textures)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176856,7 +177784,9 @@ func (cx *GLTFStateImpl) SetTextureSamplers(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture_samplers))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture_samplers)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176922,7 +177852,9 @@ func (cx *GLTFStateImpl) SetImages(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&images))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(images)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -176988,7 +177920,9 @@ func (cx *GLTFStateImpl) SetSkins(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skins))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(skins)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -177054,7 +177988,9 @@ func (cx *GLTFStateImpl) SetCameras(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&cameras))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(cameras)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -177120,7 +178056,9 @@ func (cx *GLTFStateImpl) SetLights(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&lights))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(lights)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -177316,7 +178254,9 @@ func (cx *GLTFStateImpl) SetSkeletons(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skeletons))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(skeletons)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -177512,7 +178452,9 @@ func (cx *GLTFStateImpl) SetAnimations(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&animations))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(animations)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -177583,7 +178525,10 @@ func (cx *GLTFStateImpl) GetNodeIndex(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scene_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(scene_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -178752,7 +179697,9 @@ func (cx *GPUParticles2DImpl) SetProcessMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -179498,7 +180445,9 @@ func (cx *GPUParticles2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -179998,7 +180947,10 @@ func (cx *GPUParticles2DImpl) ConvertFromParticles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&particles))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(particles)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -180650,7 +181602,9 @@ func (cx *GPUParticles3DImpl) SetProcessMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -181525,7 +182479,10 @@ func (cx *GPUParticles3DImpl) SetDrawPassMesh(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pass))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(mesh)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -181627,7 +182584,9 @@ func (cx *GPUParticles3DImpl) SetSkin(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skin))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(skin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -182192,7 +183151,10 @@ func (cx *GPUParticles3DImpl) ConvertFromParticles(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&particles))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(particles)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -182890,7 +183852,9 @@ func (cx *GPUParticlesAttractorVectorField3DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -183721,7 +184685,9 @@ func (cx *GPUParticlesCollisionSDF3DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -186229,7 +187195,9 @@ func (cx *GeometryInstance3DImpl) SetMaterialOverride(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -186295,7 +187263,9 @@ func (cx *GeometryInstance3DImpl) SetMaterialOverlay(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -188206,7 +189176,9 @@ func (cx *GradientTexture1DImpl) SetGradient(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gradient))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gradient)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -188397,7 +189369,9 @@ func (cx *GradientTexture2DImpl) SetGradient(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gradient))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gradient)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -191377,7 +192351,10 @@ func (cx *GraphEditImpl) SetSelected(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -192423,9 +193400,15 @@ func (cx *GraphNodeImpl) SetSlot(
 	pnr.Pin(argPtrSlice[5])
 	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color_right))
 	pnr.Pin(argPtrSlice[6])
-	argPtrSlice[7] = (GDExtensionConstTypePtr)(unsafe.Pointer(&custom_icon_left))
+
+	var argObj_7 GDExtensionObjectPtr
+	argObj_7 = RefArgPtr(custom_icon_left)
+	argPtrSlice[7] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_7))
 	pnr.Pin(argPtrSlice[7])
-	argPtrSlice[8] = (GDExtensionConstTypePtr)(unsafe.Pointer(&custom_icon_right))
+
+	var argObj_8 GDExtensionObjectPtr
+	argObj_8 = RefArgPtr(custom_icon_right)
+	argPtrSlice[8] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_8))
 	pnr.Pin(argPtrSlice[8])
 	argPtrSlice[9] = (GDExtensionConstTypePtr)(unsafe.Pointer(&draw_stylebox))
 	pnr.Pin(argPtrSlice[9])
@@ -192741,7 +193724,10 @@ func (cx *GraphNodeImpl) SetSlotCustomIconLeft(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&custom_icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(custom_icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -193101,7 +194087,10 @@ func (cx *GraphNodeImpl) SetSlotCustomIconRight(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&custom_icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(custom_icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -194320,7 +195309,9 @@ func (cx *GridMapImpl) SetPhysicsMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -194516,7 +195507,9 @@ func (cx *GridMapImpl) SetMeshLibrary(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh_library))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh_library)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -195067,7 +196060,10 @@ func (cx *GridMapImpl) ResourceChanged(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -196527,7 +197523,10 @@ func (cx *HTTPClientImpl) ConnectToHost(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&port))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tls_options))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(tls_options)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -196562,7 +197561,9 @@ func (cx *HTTPClientImpl) SetConnection(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&connection))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(connection)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -197419,7 +198420,9 @@ func (cx *HTTPRequestImpl) SetTlsOptions(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&client_options))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(client_options)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -198494,7 +199497,10 @@ func (cx *HeightMapShape3DImpl) UpdateMapDataFromImage(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&height_min))
 	pnr.Pin(argPtrSlice[1])
@@ -201103,7 +202109,10 @@ func (cx *ImageImpl) ComputeImageMetrics(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&compared_image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(compared_image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&use_luma))
 	pnr.Pin(argPtrSlice[1])
@@ -201141,7 +202150,10 @@ func (cx *ImageImpl) BlitRect(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(src)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src_rect))
 	pnr.Pin(argPtrSlice[1])
@@ -201181,9 +202193,15 @@ func (cx *ImageImpl) BlitRectMask(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(src)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mask))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(mask)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src_rect))
 	pnr.Pin(argPtrSlice[2])
@@ -201222,7 +202240,10 @@ func (cx *ImageImpl) BlendRect(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(src)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src_rect))
 	pnr.Pin(argPtrSlice[1])
@@ -201262,9 +202283,15 @@ func (cx *ImageImpl) BlendRectMask(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(src)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mask))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(mask)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src_rect))
 	pnr.Pin(argPtrSlice[2])
@@ -201438,7 +202465,10 @@ func (cx *ImageImpl) CopyFrom(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&src))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(src)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -202158,7 +203188,10 @@ func (cx *ImageTextureImpl) CreateFromImage(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefImageTextureGDExtensionIternalConstructor(&ret)
@@ -202193,7 +203226,9 @@ func (cx *ImageTextureImpl) SetImage(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -202226,7 +203261,10 @@ func (cx *ImageTextureImpl) Update(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -202336,7 +203374,10 @@ func (cx *ImageTexture3DImpl) Create(
 	pnr.Pin(argPtrSlice[3])
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&use_mipmaps))
 	pnr.Pin(argPtrSlice[4])
-	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+
+	var argObj_5 GDExtensionObjectPtr
+	argObj_5 = RefArgPtr(data)
+	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_5))
 	pnr.Pin(argPtrSlice[5])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -202370,7 +203411,10 @@ func (cx *ImageTexture3DImpl) Update(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(data)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -202432,7 +203476,10 @@ func (cx *ImageTextureLayeredImpl) CreateFromImages(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&images))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(images)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -202467,7 +203514,10 @@ func (cx *ImageTextureLayeredImpl) UpdateLayer(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer))
 	pnr.Pin(argPtrSlice[1])
@@ -202532,7 +203582,10 @@ func (cx *ImmediateMeshImpl) SurfaceBegin(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&primitive))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -202885,7 +203938,10 @@ func (cx *ImporterMeshImpl) MergeImporterMeshes(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&importer_meshes))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(importer_meshes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&relative_transforms))
 	pnr.Pin(argPtrSlice[1])
@@ -203103,7 +204159,10 @@ func (cx *ImporterMeshImpl) AddSurface(
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&lods))
 	pnr.Pin(argPtrSlice[3])
-	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_4 GDExtensionObjectPtr
+	argObj_4 = RefArgPtr(material)
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_4))
 	pnr.Pin(argPtrSlice[4])
 	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[5])
@@ -203544,7 +204603,10 @@ func (cx *ImporterMeshImpl) SetSurfaceMaterial(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -203618,7 +204680,10 @@ func (cx *ImporterMeshImpl) GetMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&base_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(base_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefArrayMeshGDExtensionIternalConstructor(&ret)
@@ -203654,7 +204719,10 @@ func (cx *ImporterMeshImpl) FromMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefImporterMeshGDExtensionIternalConstructor(&ret)
@@ -203810,7 +204878,9 @@ func (cx *ImporterMeshInstance3DImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -203876,7 +204946,9 @@ func (cx *ImporterMeshInstance3DImpl) SetSkin(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skin))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(skin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -204826,7 +205898,10 @@ func (cx *InputImpl) IsActionJustPressedByEvent(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(event)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact_match))
 	pnr.Pin(argPtrSlice[2])
@@ -204868,7 +205943,10 @@ func (cx *InputImpl) IsActionJustReleasedByEvent(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(event)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact_match))
 	pnr.Pin(argPtrSlice[2])
@@ -206906,7 +207984,9 @@ func (cx *InputImpl) SetCustomMouseCursor(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
 	pnr.Pin(argPtrSlice[1])
@@ -206943,7 +208023,10 @@ func (cx *InputImpl) ParseInputEvent(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -207614,7 +208697,10 @@ func (cx *InputEventImpl) IsMatch(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact_match))
 	pnr.Pin(argPtrSlice[1])
@@ -207684,7 +208770,10 @@ func (cx *InputEventImpl) Accumulate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with_event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(with_event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -211836,7 +212925,9 @@ func (cx *InputEventShortcutImpl) SetShortcut(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shortcut)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -212592,7 +213683,10 @@ func (cx *InputMapImpl) ActionAddEvent(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(event)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -212630,7 +213724,10 @@ func (cx *InputMapImpl) ActionHasEvent(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(event)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -212667,7 +213764,10 @@ func (cx *InputMapImpl) ActionEraseEvent(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(event)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -212773,7 +213873,10 @@ func (cx *InputMapImpl) EventIsAction(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pnr.Pin(argPtrSlice[1])
@@ -212908,7 +214011,10 @@ func (cx *InstancePlaceholderImpl) CreateInstance(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&replace))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&custom_scene))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(custom_scene)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
@@ -213025,7 +214131,10 @@ func (cx *ItemListImpl) AddItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&text))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&selectable))
 	pnr.Pin(argPtrSlice[2])
@@ -213064,7 +214173,10 @@ func (cx *ItemListImpl) AddIconItem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(icon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&selectable))
 	pnr.Pin(argPtrSlice[1])
@@ -213175,7 +214287,10 @@ func (cx *ItemListImpl) SetItemIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -216432,7 +217547,10 @@ func (cx *IterateIK3DImpl) SetJointLimitation(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&limitation))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(limitation)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -217801,7 +218919,10 @@ func (cx *JavaClassWrapperImpl) CreateProxy(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaces))
 	pnr.Pin(argPtrSlice[1])
@@ -218072,7 +219193,10 @@ func (cx *JavaScriptBridgeImpl) IsJsBuffer(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&javascript_object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(javascript_object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -218108,7 +219232,10 @@ func (cx *JavaScriptBridgeImpl) JsBufferToPackedByteArray(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&javascript_buffer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(javascript_buffer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -220275,7 +221402,9 @@ func (cx *LabelImpl) SetLabelSettings(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&settings))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(settings)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -222486,7 +223615,9 @@ func (cx *Label3DImpl) SetFont(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -223853,7 +224984,9 @@ func (cx *LabelSettingsImpl) SetFont(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -227014,7 +228147,9 @@ func (cx *Light3DImpl) SetProjector(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&projector))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(projector)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -227204,7 +228339,9 @@ func (cx *LightOccluder2DImpl) SetOccluderPolygon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&polygon))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(polygon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -227427,7 +228564,9 @@ func (cx *LightmapGIImpl) SetLightData(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(data)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -227883,7 +229022,9 @@ func (cx *LightmapGIImpl) SetEnvironmentCustomSky(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&sky))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(sky)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -228794,7 +229935,9 @@ func (cx *LightmapGIImpl) SetCameraAttributes(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&camera_attributes))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(camera_attributes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -228887,7 +230030,9 @@ func (cx *LightmapGIDataImpl) SetLightmapTextures(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&light_textures))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(light_textures)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -228953,7 +230098,9 @@ func (cx *LightmapGIDataImpl) SetShadowmaskTextures(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shadowmask_textures))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shadowmask_textures)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -229223,7 +230370,9 @@ func (cx *LightmapGIDataImpl) SetLightTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&light_texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(light_texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -230335,7 +231484,9 @@ func (cx *Line2DImpl) SetCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -230466,7 +231617,9 @@ func (cx *Line2DImpl) SetGradient(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(color)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -230532,7 +231685,9 @@ func (cx *Line2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -233893,7 +235048,9 @@ func (cx *LineEditImpl) SetRightIcon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(icon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -237436,7 +238593,9 @@ func (cx *MaterialImpl) SetNextPass(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_pass))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(next_pass)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -238979,7 +240138,10 @@ func (cx *MeshImpl) SurfaceSetMaterial(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surf_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -240150,7 +241312,10 @@ func (cx *MeshDataToolImpl) CreateFromSurface(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface))
 	pnr.Pin(argPtrSlice[1])
@@ -240189,7 +241354,10 @@ func (cx *MeshDataToolImpl) CommitToSurface(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&compression_flags))
 	pnr.Pin(argPtrSlice[1])
@@ -241407,7 +242575,9 @@ func (cx *MeshDataToolImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -241500,7 +242670,9 @@ func (cx *MeshInstance2DImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -241566,7 +242738,9 @@ func (cx *MeshInstance2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -241659,7 +242833,9 @@ func (cx *MeshInstance3DImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -241790,7 +242966,9 @@ func (cx *MeshInstance3DImpl) SetSkin(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skin))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(skin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -241922,7 +243100,10 @@ func (cx *MeshInstance3DImpl) SetSurfaceOverrideMaterial(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -242092,7 +243273,10 @@ func (cx *MeshInstance3DImpl) CreateMultipleConvexCollisions(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&settings))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(settings)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -242296,7 +243480,10 @@ func (cx *MeshInstance3DImpl) BakeMeshFromCurrentBlendShapeMix(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&existing))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(existing)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefArrayMeshGDExtensionIternalConstructor(&ret)
@@ -242332,7 +243519,10 @@ func (cx *MeshInstance3DImpl) BakeMeshFromCurrentSkeletonPose(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&existing))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(existing)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefArrayMeshGDExtensionIternalConstructor(&ret)
@@ -242465,7 +243655,10 @@ func (cx *MeshLibraryImpl) SetItemMesh(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(mesh)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -242573,7 +243766,10 @@ func (cx *MeshLibraryImpl) SetItemNavigationMesh(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(navigation_mesh)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -242717,7 +243913,10 @@ func (cx *MeshLibraryImpl) SetItemPreview(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -243296,7 +244495,9 @@ func (cx *MeshTextureImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -243427,7 +244628,9 @@ func (cx *MeshTextureImpl) SetBaseTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -244932,7 +246135,10 @@ func (cx *MovieWriterImpl) AddWriter(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&writer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(writer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -244993,7 +246199,9 @@ func (cx *MultiMeshImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -246024,7 +247232,9 @@ func (cx *MultiMeshInstance2DImpl) SetMultimesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&multimesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(multimesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -246090,7 +247300,9 @@ func (cx *MultiMeshInstance2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -246183,7 +247395,9 @@ func (cx *MultiMeshInstance3DImpl) SetMultimesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&multimesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(multimesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -246340,7 +247554,9 @@ func (cx *MultiplayerAPIImpl) SetMultiplayerPeer(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&peer))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(peer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -246508,7 +247724,10 @@ func (cx *MultiplayerAPIImpl) Rpc(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&peer))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(object)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&method))
 	pnr.Pin(argPtrSlice[2])
@@ -246549,7 +247768,10 @@ func (cx *MultiplayerAPIImpl) ObjectConfigurationAdd(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&configuration))
 	pnr.Pin(argPtrSlice[1])
@@ -246588,7 +247810,10 @@ func (cx *MultiplayerAPIImpl) ObjectConfigurationRemove(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&configuration))
 	pnr.Pin(argPtrSlice[1])
@@ -247991,7 +249216,9 @@ func (cx *MultiplayerSynchronizerImpl) SetReplicationConfig(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&config))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(config)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -249345,7 +250572,10 @@ func (cx *NativeMenuImpl) AddIconItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rid))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[2])
@@ -249402,7 +250632,10 @@ func (cx *NativeMenuImpl) AddIconCheckItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rid))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[2])
@@ -249513,7 +250746,10 @@ func (cx *NativeMenuImpl) AddIconRadioCheckItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rid))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[2])
@@ -250990,7 +252226,10 @@ func (cx *NativeMenuImpl) SetItemIcon(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(icon)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -260142,7 +261381,10 @@ func (cx *NavigationMeshImpl) CreateFromMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -260232,9 +261474,15 @@ func (cx *NavigationMeshGeneratorImpl) Bake(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&root_node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(root_node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -260267,7 +261515,10 @@ func (cx *NavigationMeshGeneratorImpl) Clear(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -260303,11 +261554,20 @@ func (cx *NavigationMeshGeneratorImpl) ParseSourceGeometryData(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&root_node))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = ObjectArgPtr(root_node)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[3])
@@ -260344,9 +261604,15 @@ func (cx *NavigationMeshGeneratorImpl) BakeFromSourceGeometryData(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -260731,7 +261997,10 @@ func (cx *NavigationMeshSourceGeometryData2DImpl) Merge(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&other_geometry))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(other_geometry)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -261181,7 +262450,10 @@ func (cx *NavigationMeshSourceGeometryData3DImpl) AddMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&xform))
 	pnr.Pin(argPtrSlice[1])
@@ -261288,7 +262560,10 @@ func (cx *NavigationMeshSourceGeometryData3DImpl) Merge(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&other_geometry))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(other_geometry)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -267016,7 +268291,9 @@ func (cx *NavigationRegion2DImpl) SetNavigationPolygon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_polygon))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_polygon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -267732,7 +269009,9 @@ func (cx *NavigationRegion3DImpl) SetNavigationMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -269366,9 +270645,15 @@ func (cx *NavigationServer2DImpl) QueryPath(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&result))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(result)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -270161,7 +271446,10 @@ func (cx *NavigationServer2DImpl) RegionSetNavigationPolygon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&region))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_polygon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(navigation_polygon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -272936,11 +274224,20 @@ func (cx *NavigationServer2DImpl) ParseSourceGeometryData(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_polygon))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_polygon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&root_node))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = ObjectArgPtr(root_node)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[3])
@@ -272977,9 +274274,15 @@ func (cx *NavigationServer2DImpl) BakeFromSourceGeometryData(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_polygon))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_polygon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -273016,9 +274319,15 @@ func (cx *NavigationServer2DImpl) BakeFromSourceGeometryDataAsync(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_polygon))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_polygon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -273055,7 +274364,10 @@ func (cx *NavigationServer2DImpl) IsBakingNavigationPolygon(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_polygon))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_polygon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -274668,9 +275980,15 @@ func (cx *NavigationServer3DImpl) QueryPath(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&result))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(result)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -275463,7 +276781,10 @@ func (cx *NavigationServer3DImpl) RegionSetNavigationMesh(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&region))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(navigation_mesh)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -275497,9 +276818,15 @@ func (cx *NavigationServer3DImpl) RegionBakeNavigationMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&root_node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(root_node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -278646,11 +279973,20 @@ func (cx *NavigationServer3DImpl) ParseSourceGeometryData(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&root_node))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = ObjectArgPtr(root_node)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[3])
@@ -278687,9 +280023,15 @@ func (cx *NavigationServer3DImpl) BakeFromSourceGeometryData(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -278726,9 +280068,15 @@ func (cx *NavigationServer3DImpl) BakeFromSourceGeometryDataAsync(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_geometry_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(source_geometry_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -278765,7 +280113,10 @@ func (cx *NavigationServer3DImpl) IsBakingNavigationMesh(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_mesh))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(navigation_mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -279200,7 +280551,9 @@ func (cx *NinePatchRectImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -279686,7 +281039,10 @@ func (cx *NodeImpl) AddSibling(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&sibling))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(sibling)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&force_readable_name))
 	pnr.Pin(argPtrSlice[1])
@@ -279788,7 +281144,10 @@ func (cx *NodeImpl) AddChild(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&force_readable_name))
 	pnr.Pin(argPtrSlice[1])
@@ -279825,7 +281184,10 @@ func (cx *NodeImpl) RemoveChild(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -279859,7 +281221,10 @@ func (cx *NodeImpl) Reparent(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&new_parent))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(new_parent)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&keep_global_transform))
 	pnr.Pin(argPtrSlice[1])
@@ -280406,7 +281771,10 @@ func (cx *NodeImpl) IsAncestorOf(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -280442,7 +281810,10 @@ func (cx *NodeImpl) IsGreaterThan(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -280511,7 +281882,10 @@ func (cx *NodeImpl) GetPathTo(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&use_unique_path))
 	pnr.Pin(argPtrSlice[1])
@@ -280653,7 +282027,10 @@ func (cx *NodeImpl) MoveChild(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&child_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(child_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&to_index))
 	pnr.Pin(argPtrSlice[1])
@@ -280720,7 +282097,10 @@ func (cx *NodeImpl) SetOwner(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(owner)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -282661,7 +284041,10 @@ func (cx *NodeImpl) ReplaceBy(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&keep_groups))
 	pnr.Pin(argPtrSlice[1])
@@ -282762,7 +284145,10 @@ func (cx *NodeImpl) SetEditableInstance(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&is_editable))
 	pnr.Pin(argPtrSlice[1])
@@ -282799,7 +284185,10 @@ func (cx *NodeImpl) IsEditableInstance(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -284819,7 +286208,10 @@ func (cx *Node2DImpl) GetRelativeTransformToParent(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parent))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(parent)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -286172,7 +287564,10 @@ func (cx *Node3DImpl) AddGizmo(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gizmo))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gizmo)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -286269,7 +287664,9 @@ func (cx *Node3DImpl) SetSubgizmoSelection(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gizmo))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gizmo)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[1])
@@ -287794,7 +289191,9 @@ func (cx *NoiseTexture2DImpl) SetNoise(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&noise))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(noise)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -287860,7 +289259,9 @@ func (cx *NoiseTexture2DImpl) SetColorRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gradient))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gradient)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -288507,7 +289908,9 @@ func (cx *NoiseTexture3DImpl) SetNoise(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&noise))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(noise)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -288573,7 +289976,9 @@ func (cx *NoiseTexture3DImpl) SetColorRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gradient))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(gradient)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -291706,7 +293111,10 @@ func (cx *OSImpl) AddLogger(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&logger))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(logger)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -291739,7 +293147,10 @@ func (cx *OSImpl) RemoveLogger(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&logger))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(logger)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -293860,7 +295271,9 @@ func (cx *OccluderInstance3DImpl) SetOccluder(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&occluder))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(occluder)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295440,7 +296853,10 @@ func (cx *OpenXRAPIExtensionImpl) RegisterCompositionLayerProvider(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295473,7 +296889,10 @@ func (cx *OpenXRAPIExtensionImpl) UnregisterCompositionLayerProvider(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295506,7 +296925,10 @@ func (cx *OpenXRAPIExtensionImpl) RegisterProjectionViewsExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295539,7 +296961,10 @@ func (cx *OpenXRAPIExtensionImpl) UnregisterProjectionViewsExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295572,7 +296997,10 @@ func (cx *OpenXRAPIExtensionImpl) RegisterFrameInfoExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295605,7 +297033,10 @@ func (cx *OpenXRAPIExtensionImpl) UnregisterFrameInfoExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295638,7 +297069,10 @@ func (cx *OpenXRAPIExtensionImpl) RegisterProjectionLayerExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -295671,7 +297105,10 @@ func (cx *OpenXRAPIExtensionImpl) UnregisterProjectionLayerExtension(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&extension))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(extension)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -296719,7 +298156,10 @@ func (cx *OpenXRActionMapImpl) AddActionSet(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action_set))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action_set)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -296752,7 +298192,10 @@ func (cx *OpenXRActionMapImpl) RemoveActionSet(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action_set))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action_set)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -296954,7 +298397,10 @@ func (cx *OpenXRActionMapImpl) AddInteractionProfile(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interaction_profile))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(interaction_profile)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -296987,7 +298433,10 @@ func (cx *OpenXRActionMapImpl) RemoveInteractionProfile(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interaction_profile))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(interaction_profile)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -297303,7 +298752,10 @@ func (cx *OpenXRActionSetImpl) AddAction(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -297336,7 +298788,10 @@ func (cx *OpenXRActionSetImpl) RemoveAction(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -297527,7 +298982,9 @@ func (cx *OpenXRAnalogThresholdModifierImpl) SetOnHaptic(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&haptic))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(haptic)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -297593,7 +299050,9 @@ func (cx *OpenXRAnalogThresholdModifierImpl) SetOffHaptic(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&haptic))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(haptic)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -297936,9 +299395,14 @@ func (cx *OpenXRBindingModifierEditorImpl) Setup(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action_map))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action_map)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&binding_modifier))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(binding_modifier)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -297998,7 +299462,10 @@ func (cx *OpenXRCompositionLayerImpl) SetLayerViewport(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&viewport))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(viewport)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -300095,7 +301562,9 @@ func (cx *OpenXRDpadBindingModifierImpl) SetActionSet(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action_set))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action_set)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -300551,7 +302020,9 @@ func (cx *OpenXRDpadBindingModifierImpl) SetOnHaptic(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&haptic))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(haptic)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -300617,7 +302088,9 @@ func (cx *OpenXRDpadBindingModifierImpl) SetOffHaptic(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&haptic))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(haptic)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -301942,7 +303415,9 @@ func (cx *OpenXRIPBindingImpl) SetAction(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -302827,9 +304302,14 @@ func (cx *OpenXRInteractionProfileEditorBaseImpl) Setup(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action_map))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(action_map)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interaction_profile))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(interaction_profile)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -306067,7 +307547,10 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) CreateNewAnchor(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefOpenXRAnchorTrackerGDExtensionIternalConstructor(&ret)
@@ -306101,7 +307584,10 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) RemoveAnchor(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anchor_tracker))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(anchor_tracker)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -306138,7 +307624,10 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) PersistAnchor(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anchor_tracker))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(anchor_tracker)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
 	pnr.Pin(argPtrSlice[1])
@@ -306180,7 +307669,10 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) UnpersistAnchor(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anchor_tracker))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(anchor_tracker)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&persistence_context))
 	pnr.Pin(argPtrSlice[1])
@@ -306226,11 +307718,20 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) StartEntityDiscovery(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(component_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_create))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next_snapshot_create)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_query))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(next_snapshot_query)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pnr.Pin(argPtrSlice[4])
@@ -306271,11 +307772,20 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) DoEntityUpdate(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(component_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_create))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next_snapshot_create)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_query))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(next_snapshot_query)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -308331,9 +309841,15 @@ func (cx *OpenXRSpatialEntityExtensionImpl) CreateSpatialContext(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&capability_configurations))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(capability_configurations)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(next)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pnr.Pin(argPtrSlice[2])
@@ -308481,9 +309997,15 @@ func (cx *OpenXRSpatialEntityExtensionImpl) DiscoverSpatialEntitiesWithComponent
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(component_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pnr.Pin(argPtrSlice[3])
@@ -308528,7 +310050,10 @@ func (cx *OpenXRSpatialEntityExtensionImpl) DiscoverSpatialEntities(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_types))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pnr.Pin(argPtrSlice[3])
@@ -308575,7 +310100,10 @@ func (cx *OpenXRSpatialEntityExtensionImpl) UpdateSpatialEntities(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_types))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(next)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -308720,9 +310248,15 @@ func (cx *OpenXRSpatialEntityExtensionImpl) QuerySnapshot(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_snapshot))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(component_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -309505,7 +311039,10 @@ func (cx *OpenXRSpatialEntityTrackerImpl) AddNext(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(next)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -309538,7 +311075,10 @@ func (cx *OpenXRSpatialEntityTrackerImpl) RemoveNext(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(next)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -309734,11 +311274,20 @@ func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) StartEntityDiscovery(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(component_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_create))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next_snapshot_create)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_query))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(next_snapshot_query)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pnr.Pin(argPtrSlice[4])
@@ -309779,11 +311328,20 @@ func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) DoEntityUpdate(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(component_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_create))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next_snapshot_create)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_query))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(next_snapshot_query)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -309883,11 +311441,20 @@ func (cx *OpenXRSpatialPlaneTrackingCapabilityImpl) StartEntityDiscovery(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spatial_context))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&component_data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(component_data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_create))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(next_snapshot_create)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&next_snapshot_query))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(next_snapshot_query)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pnr.Pin(argPtrSlice[4])
@@ -310114,7 +311681,9 @@ func (cx *OpenXRStructureBaseImpl) SetNext(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&entity))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(entity)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -310226,7 +311795,10 @@ func (cx *OptimizedTranslationImpl) Generate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(from)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -310325,7 +311897,10 @@ func (cx *OptionButtonImpl) AddIconItem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[1])
@@ -310401,7 +311976,10 @@ func (cx *OptionButtonImpl) SetItemIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -312190,7 +313768,10 @@ func (cx *PackedSceneImpl) Pack(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(path)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -312683,11 +314264,17 @@ func (cx *PacketPeerDTLSImpl) ConnectToPeer(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&packet_peer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(packet_peer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&hostname))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&client_options))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(client_options)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -312837,7 +314424,9 @@ func (cx *PacketPeerStreamImpl) SetStreamPeer(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&peer))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(peer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -313575,7 +315164,9 @@ func (cx *PanoramaSkyMaterialImpl) SetPanorama(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -315592,7 +317183,10 @@ func (cx *ParticleProcessMaterialImpl) SetParamTexture(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316117,7 +317711,9 @@ func (cx *ParticleProcessMaterialImpl) SetColorRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ramp))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(ramp)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316183,7 +317779,9 @@ func (cx *ParticleProcessMaterialImpl) SetAlphaCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316249,7 +317847,9 @@ func (cx *ParticleProcessMaterialImpl) SetEmissionCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316315,7 +317915,9 @@ func (cx *ParticleProcessMaterialImpl) SetColorInitialRamp(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ramp))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(ramp)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316381,7 +317983,9 @@ func (cx *ParticleProcessMaterialImpl) SetVelocityLimitCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316779,7 +318383,9 @@ func (cx *ParticleProcessMaterialImpl) SetEmissionPointTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316845,7 +318451,9 @@ func (cx *ParticleProcessMaterialImpl) SetEmissionNormalTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -316911,7 +318519,9 @@ func (cx *ParticleProcessMaterialImpl) SetEmissionColorTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -318862,7 +320472,9 @@ func (cx *ParticleProcessMaterialImpl) SetRotationVelocity3DCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rotation_velocity_3d_curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(rotation_velocity_3d_curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -318955,7 +320567,9 @@ func (cx *Path2DImpl) SetCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -319048,7 +320662,9 @@ func (cx *Path3DImpl) SetCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -323130,7 +324746,9 @@ func (cx *PhysicalSkyMaterialImpl) SetNightSky(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&night_sky))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(night_sky)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -323277,7 +324895,10 @@ func (cx *PhysicsBody2DImpl) TestMove(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&motion))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&collision))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(collision)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&safe_margin))
 	pnr.Pin(argPtrSlice[3])
@@ -323379,7 +325000,10 @@ func (cx *PhysicsBody2DImpl) AddCollisionExceptionWith(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -323412,7 +325036,10 @@ func (cx *PhysicsBody2DImpl) RemoveCollisionExceptionWith(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -323531,7 +325158,10 @@ func (cx *PhysicsBody3DImpl) TestMove(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&motion))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&collision))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(collision)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&safe_margin))
 	pnr.Pin(argPtrSlice[3])
@@ -323707,7 +325337,10 @@ func (cx *PhysicsBody3DImpl) AddCollisionExceptionWith(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -323740,7 +325373,10 @@ func (cx *PhysicsBody3DImpl) RemoveCollisionExceptionWith(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -327189,7 +328825,10 @@ func (cx *PhysicsDirectSpaceState2DImpl) IntersectPoint(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_results))
 	pnr.Pin(argPtrSlice[1])
@@ -327227,7 +328866,10 @@ func (cx *PhysicsDirectSpaceState2DImpl) IntersectRay(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -327264,7 +328906,10 @@ func (cx *PhysicsDirectSpaceState2DImpl) IntersectShape(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_results))
 	pnr.Pin(argPtrSlice[1])
@@ -327302,7 +328947,10 @@ func (cx *PhysicsDirectSpaceState2DImpl) CastMotion(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -327339,7 +328987,10 @@ func (cx *PhysicsDirectSpaceState2DImpl) CollideShape(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_results))
 	pnr.Pin(argPtrSlice[1])
@@ -327377,7 +329028,10 @@ func (cx *PhysicsDirectSpaceState2DImpl) GetRestInfo(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -327504,7 +329158,10 @@ func (cx *PhysicsDirectSpaceState3DImpl) IntersectPoint(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_results))
 	pnr.Pin(argPtrSlice[1])
@@ -327542,7 +329199,10 @@ func (cx *PhysicsDirectSpaceState3DImpl) IntersectRay(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -327579,7 +329239,10 @@ func (cx *PhysicsDirectSpaceState3DImpl) IntersectShape(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_results))
 	pnr.Pin(argPtrSlice[1])
@@ -327617,7 +329280,10 @@ func (cx *PhysicsDirectSpaceState3DImpl) CastMotion(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -327654,7 +329320,10 @@ func (cx *PhysicsDirectSpaceState3DImpl) CollideShape(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_results))
 	pnr.Pin(argPtrSlice[1])
@@ -327692,7 +329361,10 @@ func (cx *PhysicsDirectSpaceState3DImpl) GetRestInfo(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(parameters)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -333559,9 +335231,15 @@ func (cx *PhysicsServer2DImpl) BodyTestMotion(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(parameters)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&result))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(result)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -338243,9 +339921,15 @@ func (cx *PhysicsServer3DImpl) BodyTestMotion(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parameters))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(parameters)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&result))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(result)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -338350,7 +340034,10 @@ func (cx *PhysicsServer3DImpl) SoftBodyUpdateRenderingServer(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rendering_server_handler))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(rendering_server_handler)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -341368,7 +343055,9 @@ func (cx *PhysicsShapeQueryParameters2DImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -341981,7 +343670,9 @@ func (cx *PhysicsShapeQueryParameters3DImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -345854,7 +347545,9 @@ func (cx *PointLight2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -346420,7 +348113,9 @@ func (cx *Polygon2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -347801,7 +349496,10 @@ func (cx *PopupMenuImpl) ActivateItemByEvent(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&for_global_only))
 	pnr.Pin(argPtrSlice[1])
@@ -347976,7 +349674,10 @@ func (cx *PopupMenuImpl) AddIconItem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[1])
@@ -348057,7 +349758,10 @@ func (cx *PopupMenuImpl) AddIconCheckItem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[1])
@@ -348138,7 +349842,10 @@ func (cx *PopupMenuImpl) AddIconRadioCheckItem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[1])
@@ -348225,7 +349932,10 @@ func (cx *PopupMenuImpl) AddShortcut(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shortcut)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[1])
@@ -348268,9 +349978,15 @@ func (cx *PopupMenuImpl) AddIconShortcut(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shortcut)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[2])
@@ -348311,7 +350027,10 @@ func (cx *PopupMenuImpl) AddCheckShortcut(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shortcut)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[1])
@@ -348351,9 +350070,15 @@ func (cx *PopupMenuImpl) AddIconCheckShortcut(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shortcut)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[2])
@@ -348392,7 +350117,10 @@ func (cx *PopupMenuImpl) AddRadioCheckShortcut(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shortcut)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[1])
@@ -348432,9 +350160,15 @@ func (cx *PopupMenuImpl) AddIconRadioCheckShortcut(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shortcut)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[2])
@@ -348514,7 +350248,10 @@ func (cx *PopupMenuImpl) AddSubmenuNodeItem(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&label))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&submenu))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(submenu)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[2])
@@ -348696,7 +350433,10 @@ func (cx *PopupMenuImpl) SetItemIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -349020,7 +350760,10 @@ func (cx *PopupMenuImpl) SetItemSubmenuNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&submenu))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(submenu)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -349201,7 +350944,10 @@ func (cx *PopupMenuImpl) SetItemShortcut(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shortcut))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(shortcut)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&global))
 	pnr.Pin(argPtrSlice[2])
@@ -351471,7 +353217,10 @@ func (cx *PortableCompressedTexture2DImpl) CreateFromImage(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&compression_mode))
 	pnr.Pin(argPtrSlice[1])
@@ -351801,7 +353550,9 @@ func (cx *PrimitiveMeshImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -352827,7 +354578,9 @@ func (cx *ProceduralSkyMaterialImpl) SetSkyCover(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&sky_cover))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(sky_cover)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -356553,7 +358306,9 @@ func (cx *RDHitGroupImpl) SetClosestHitShader(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&p_member))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(p_member)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -356619,7 +358374,9 @@ func (cx *RDHitGroupImpl) SetAnyHitShader(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&p_member))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(p_member)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -356685,7 +358442,9 @@ func (cx *RDHitGroupImpl) SetIntersectionShader(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&p_member))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(p_member)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -356973,7 +358732,9 @@ func (cx *RDPipelineColorBlendStateImpl) SetAttachments(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attachments))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(attachments)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -360453,7 +362214,9 @@ func (cx *RDPipelineShaderImpl) SetSpecializationConstants(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&specialization_constants))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(specialization_constants)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -361706,7 +363469,9 @@ func (cx *RDShaderFileImpl) SetBytecode(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bytecode))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(bytecode)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&version))
 	pnr.Pin(argPtrSlice[1])
@@ -365150,7 +366915,10 @@ func (cx *RangeImpl) Share(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(with)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -365623,7 +367391,10 @@ func (cx *RayCast2DImpl) AddException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -365689,7 +367460,10 @@ func (cx *RayCast2DImpl) RemoveException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -366591,7 +368365,10 @@ func (cx *RayCast3DImpl) AddException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -366657,7 +368434,10 @@ func (cx *RayCast3DImpl) RemoveException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -370428,7 +372208,10 @@ func (cx *RenderSceneBuffersImpl) Configure(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&config))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(config)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -371304,9 +373087,15 @@ func (cx *RenderSceneBuffersRDImpl) CreateTextureFromFormat(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(format)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(view)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&unique))
 	pnr.Pin(argPtrSlice[4])
@@ -371353,7 +373142,10 @@ func (cx *RenderSceneBuffersRDImpl) CreateTextureView(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view_name))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(view)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -371536,7 +373328,10 @@ func (cx *RenderSceneBuffersRDImpl) GetTextureSliceView(
 	pnr.Pin(argPtrSlice[4])
 	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mipmaps))
 	pnr.Pin(argPtrSlice[5])
-	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view))
+
+	var argObj_6 GDExtensionObjectPtr
+	argObj_6 = RefArgPtr(view)
+	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_6))
 	pnr.Pin(argPtrSlice[6])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -372525,9 +374320,15 @@ func (cx *RenderingDeviceImpl) TextureCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(format)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(view)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
 	pnr.Pin(argPtrSlice[2])
@@ -372566,7 +374367,10 @@ func (cx *RenderingDeviceImpl) TextureCreateShared(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(view)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with_texture))
 	pnr.Pin(argPtrSlice[1])
@@ -372609,7 +374413,10 @@ func (cx *RenderingDeviceImpl) TextureCreateSharedFromSlice(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(view)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with_texture))
 	pnr.Pin(argPtrSlice[1])
@@ -373247,7 +375054,10 @@ func (cx *RenderingDeviceImpl) FramebufferFormatCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attachments))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(attachments)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view_count))
 	pnr.Pin(argPtrSlice[1])
@@ -373287,9 +375097,15 @@ func (cx *RenderingDeviceImpl) FramebufferFormatCreateMultipass(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attachments))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(attachments)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&passes))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(passes)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&view_count))
 	pnr.Pin(argPtrSlice[2])
@@ -373449,7 +375265,10 @@ func (cx *RenderingDeviceImpl) FramebufferCreateMultipass(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&textures))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&passes))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(passes)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&validate_with_format))
 	pnr.Pin(argPtrSlice[2])
@@ -373603,7 +375422,10 @@ func (cx *RenderingDeviceImpl) SamplerCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&state))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(state)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -373720,7 +375542,10 @@ func (cx *RenderingDeviceImpl) VertexFormatCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&vertex_descriptions))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(vertex_descriptions)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -373892,7 +375717,10 @@ func (cx *RenderingDeviceImpl) ShaderCompileSpirvFromSource(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shader_source))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shader_source)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&allow_cache))
 	pnr.Pin(argPtrSlice[1])
@@ -373931,7 +375759,10 @@ func (cx *RenderingDeviceImpl) ShaderCompileBinaryFromSpirv(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spirv_data))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(spirv_data)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[1])
@@ -373970,7 +375801,10 @@ func (cx *RenderingDeviceImpl) ShaderCreateFromSpirv(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&spirv_data))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(spirv_data)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[1])
@@ -374246,7 +376080,10 @@ func (cx *RenderingDeviceImpl) UniformSetCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&uniforms))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(uniforms)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shader))
 	pnr.Pin(argPtrSlice[1])
@@ -374598,19 +376435,34 @@ func (cx *RenderingDeviceImpl) RenderPipelineCreate(
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&primitive))
 	pnr.Pin(argPtrSlice[3])
-	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rasterization_state))
+
+	var argObj_4 GDExtensionObjectPtr
+	argObj_4 = RefArgPtr(rasterization_state)
+	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_4))
 	pnr.Pin(argPtrSlice[4])
-	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&multisample_state))
+
+	var argObj_5 GDExtensionObjectPtr
+	argObj_5 = RefArgPtr(multisample_state)
+	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_5))
 	pnr.Pin(argPtrSlice[5])
-	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stencil_state))
+
+	var argObj_6 GDExtensionObjectPtr
+	argObj_6 = RefArgPtr(stencil_state)
+	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_6))
 	pnr.Pin(argPtrSlice[6])
-	argPtrSlice[7] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color_blend_state))
+
+	var argObj_7 GDExtensionObjectPtr
+	argObj_7 = RefArgPtr(color_blend_state)
+	argPtrSlice[7] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_7))
 	pnr.Pin(argPtrSlice[7])
 	argPtrSlice[8] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dynamic_state_flags))
 	pnr.Pin(argPtrSlice[8])
 	argPtrSlice[9] = (GDExtensionConstTypePtr)(unsafe.Pointer(&for_render_pass))
 	pnr.Pin(argPtrSlice[9])
-	argPtrSlice[10] = (GDExtensionConstTypePtr)(unsafe.Pointer(&specialization_constants))
+
+	var argObj_10 GDExtensionObjectPtr
+	argObj_10 = RefArgPtr(specialization_constants)
+	argPtrSlice[10] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_10))
 	pnr.Pin(argPtrSlice[10])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -374685,7 +376537,10 @@ func (cx *RenderingDeviceImpl) ComputePipelineCreate(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shader))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&specialization_constants))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(specialization_constants)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -374760,11 +376615,20 @@ func (cx *RenderingDeviceImpl) RaytracingPipelineCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&raygen_shaders))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(raygen_shaders)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&miss_shaders))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(miss_shaders)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&hit_groups))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(hit_groups)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_trace_recursion_depth))
 	pnr.Pin(argPtrSlice[3])
@@ -374839,7 +376703,10 @@ func (cx *RenderingDeviceImpl) BlasCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&geometries))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(geometries)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pnr.Pin(argPtrSlice[1])
@@ -374955,7 +376822,10 @@ func (cx *RenderingDeviceImpl) TlasBuild(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tlas))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&instances))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(instances)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -377733,7 +379603,10 @@ func (cx *RenderingServerImpl) Texture2DCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -377770,7 +379643,10 @@ func (cx *RenderingServerImpl) Texture2DLayeredCreate(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layers))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(layers)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layered_type))
 	pnr.Pin(argPtrSlice[1])
@@ -377823,7 +379699,10 @@ func (cx *RenderingServerImpl) Texture3DCreate(
 	pnr.Pin(argPtrSlice[3])
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mipmaps))
 	pnr.Pin(argPtrSlice[4])
-	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+
+	var argObj_5 GDExtensionObjectPtr
+	argObj_5 = RefArgPtr(data)
+	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_5))
 	pnr.Pin(argPtrSlice[5])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -378002,7 +379881,10 @@ func (cx *RenderingServerImpl) Texture2DUpdate(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(image)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer))
 	pnr.Pin(argPtrSlice[2])
@@ -378040,7 +379922,10 @@ func (cx *RenderingServerImpl) Texture3DUpdate(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(data)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -397095,7 +398980,9 @@ func (cx *RenderingServerImpl) SetBootImageWithStretch(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
 	pnr.Pin(argPtrSlice[1])
@@ -397138,7 +399025,9 @@ func (cx *RenderingServerImpl) SetBootImage(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color))
 	pnr.Pin(argPtrSlice[1])
@@ -398352,7 +400241,10 @@ func (cx *ResourceImpl) CopyFromResource(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -399062,7 +400954,10 @@ func (cx *ResourceLoaderImpl) AddResourceFormatLoader(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format_loader))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(format_loader)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&at_front))
 	pnr.Pin(argPtrSlice[1])
@@ -399097,7 +400992,10 @@ func (cx *ResourceLoaderImpl) RemoveResourceFormatLoader(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format_loader))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(format_loader)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -399412,7 +401310,10 @@ func (cx *ResourcePreloaderImpl) AddResource(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(resource)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -399649,7 +401550,10 @@ func (cx *ResourceSaverImpl) Save(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pnr.Pin(argPtrSlice[1])
@@ -399728,7 +401632,10 @@ func (cx *ResourceSaverImpl) GetRecognizedExtensions(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(typeName)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -399763,7 +401670,10 @@ func (cx *ResourceSaverImpl) AddResourceFormatSaver(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format_saver))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(format_saver)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&at_front))
 	pnr.Pin(argPtrSlice[1])
@@ -399798,7 +401708,10 @@ func (cx *ResourceSaverImpl) RemoveResourceFormatSaver(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format_saver))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(format_saver)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -400350,7 +402263,9 @@ func (cx *RetargetModifier3DImpl) SetProfile(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&profile))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(profile)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -401028,7 +402943,9 @@ func (cx *RibbonTrailMeshImpl) SetCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -401369,7 +403286,10 @@ func (cx *RichTextLabelImpl) AddImage(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(image)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&width))
 	pnr.Pin(argPtrSlice[1])
@@ -401439,7 +403359,10 @@ func (cx *RichTextLabelImpl) UpdateImage(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mask))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(image)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&width))
 	pnr.Pin(argPtrSlice[3])
@@ -401595,7 +403518,10 @@ func (cx *RichTextLabelImpl) PushFont(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font_size))
 	pnr.Pin(argPtrSlice[1])
@@ -402251,7 +404177,10 @@ func (cx *RichTextLabelImpl) PushDropcap(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&strValue))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(font)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&size))
 	pnr.Pin(argPtrSlice[2])
@@ -402606,7 +404535,10 @@ func (cx *RichTextLabelImpl) PushCustomfx(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&effect))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(effect)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&env))
 	pnr.Pin(argPtrSlice[1])
@@ -406137,7 +408069,9 @@ func (cx *RigidBody2DImpl) SetPhysicsMaterialOverride(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&physics_material_override))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(physics_material_override)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -408063,7 +409997,9 @@ func (cx *RigidBody3DImpl) SetPhysicsMaterialOverride(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&physics_material_override))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(physics_material_override)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -412666,7 +414602,10 @@ func (cx *SceneTreeImpl) SetEditedSceneRoot(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&scene))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(scene)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -413067,7 +415006,10 @@ func (cx *SceneTreeImpl) QueueDelete(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&obj))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(obj)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -413465,7 +415407,10 @@ func (cx *SceneTreeImpl) SetCurrentScene(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&child_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(child_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -413568,7 +415513,10 @@ func (cx *SceneTreeImpl) ChangeSceneToPacked(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&packed_scene))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(packed_scene)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -413604,7 +415552,10 @@ func (cx *SceneTreeImpl) ChangeSceneToNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -413701,7 +415652,9 @@ func (cx *SceneTreeImpl) SetMultiplayer(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&multiplayer))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(multiplayer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&root_path))
 	pnr.Pin(argPtrSlice[1])
@@ -414551,7 +416504,10 @@ func (cx *ScriptImpl) InstanceHas(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&base_object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(base_object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -415379,7 +417335,10 @@ func (cx *ScriptEditorImpl) RegisterSyntaxHighlighter(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&syntax_highlighter))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(syntax_highlighter)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -415412,7 +417371,10 @@ func (cx *ScriptEditorImpl) UnregisterSyntaxHighlighter(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&syntax_highlighter))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(syntax_highlighter)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -415640,7 +417602,10 @@ func (cx *ScriptEditorImpl) UpdateDocsFromScript(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(script)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -415673,7 +417638,10 @@ func (cx *ScriptEditorImpl) ClearDocsFromScript(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&script))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(script)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -415830,7 +417798,10 @@ func (cx *ScriptEditorBaseImpl) AddSyntaxHighlighter(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&highlighter))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(highlighter)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -416865,7 +418836,10 @@ func (cx *ScrollContainerImpl) EnsureControlVisible(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -417701,7 +419675,10 @@ func (cx *ShaderImpl) SetDefaultTextureParameter(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[2])
@@ -418109,7 +420086,9 @@ func (cx *ShaderMaterialImpl) SetShader(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shader))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shader)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -418344,7 +420323,10 @@ func (cx *Shape2DImpl) Collide(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&local_xform))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with_shape))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(with_shape)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_xform))
 	pnr.Pin(argPtrSlice[2])
@@ -418390,7 +420372,10 @@ func (cx *Shape2DImpl) CollideWithMotion(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&local_motion))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with_shape))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(with_shape)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_xform))
 	pnr.Pin(argPtrSlice[3])
@@ -418434,7 +420419,10 @@ func (cx *Shape2DImpl) CollideAndGetContacts(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&local_xform))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with_shape))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(with_shape)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_xform))
 	pnr.Pin(argPtrSlice[2])
@@ -418480,7 +420468,10 @@ func (cx *Shape2DImpl) CollideWithMotionAndGetContacts(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&local_motion))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&with_shape))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(with_shape)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_xform))
 	pnr.Pin(argPtrSlice[3])
@@ -418868,7 +420859,9 @@ func (cx *ShapeCast2DImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -419498,7 +421491,10 @@ func (cx *ShapeCast2DImpl) AddException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -419564,7 +421560,10 @@ func (cx *ShapeCast2DImpl) RemoveException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -420017,7 +422016,10 @@ func (cx *ShapeCast3DImpl) ResourceChanged(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&resource))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(resource)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -420116,7 +422118,9 @@ func (cx *ShapeCast3DImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -420746,7 +422750,10 @@ func (cx *ShapeCast3DImpl) AddException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -420812,7 +422819,10 @@ func (cx *ShapeCast3DImpl) RemoveException(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -421429,7 +423439,10 @@ func (cx *ShortcutImpl) MatchesEvent(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -421623,7 +423636,9 @@ func (cx *Skeleton2DImpl) SetModificationStack(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&modification_stack))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(modification_stack)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -422537,7 +424552,10 @@ func (cx *Skeleton3DImpl) RegisterSkin(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&skin))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(skin)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefSkinReferenceGDExtensionIternalConstructor(&ret)
@@ -428138,7 +430156,9 @@ func (cx *SkeletonModification2DStackHolderImpl) SetHeldModificationStack(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&held_modification_stack))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(held_modification_stack)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -428911,7 +430931,10 @@ func (cx *SkeletonModificationStack2DImpl) AddModification(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&modification))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(modification)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -428980,7 +431003,10 @@ func (cx *SkeletonModificationStack2DImpl) SetModification(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mod_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&modification))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(modification)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -429794,7 +431820,10 @@ func (cx *SkeletonProfileImpl) SetTexture(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&group_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -431180,7 +433209,9 @@ func (cx *SkyImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -432343,7 +434374,10 @@ func (cx *SoftBody3DImpl) AddCollisionExceptionWith(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -432376,7 +434410,10 @@ func (cx *SoftBody3DImpl) RemoveCollisionExceptionWith(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(body)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -435687,7 +437724,9 @@ func (cx *SpringArm3DImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -437799,7 +439838,10 @@ func (cx *SpringBoneSimulator3DImpl) SetRadiusDampingCurve(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(curve)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -437943,7 +439985,10 @@ func (cx *SpringBoneSimulator3DImpl) SetStiffnessDampingCurve(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(curve)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -438087,7 +440132,10 @@ func (cx *SpringBoneSimulator3DImpl) SetDragDampingCurve(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(curve)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -438231,7 +440279,10 @@ func (cx *SpringBoneSimulator3DImpl) SetGravityDampingCurve(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(curve)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -439823,7 +441874,9 @@ func (cx *Sprite2DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -440699,7 +442752,9 @@ func (cx *Sprite3DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -442746,7 +444801,10 @@ func (cx *SpriteFramesImpl) AddFrame(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anim))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&duration))
 	pnr.Pin(argPtrSlice[2])
@@ -442790,7 +444848,10 @@ func (cx *SpriteFramesImpl) SetFrame(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(texture)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&duration))
 	pnr.Pin(argPtrSlice[3])
@@ -443213,7 +445274,9 @@ func (cx *StaticBody2DImpl) SetPhysicsMaterialOverride(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&physics_material_override))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(physics_material_override)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -443436,7 +445499,9 @@ func (cx *StaticBody3DImpl) SetPhysicsMaterialOverride(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&physics_material_override))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(physics_material_override)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -443594,7 +445659,9 @@ func (cx *StatusIndicatorImpl) SetIcon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -445903,9 +447970,15 @@ func (cx *StreamPeerTLSImpl) AcceptStream(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&server_options))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(server_options)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -445943,11 +448016,17 @@ func (cx *StreamPeerTLSImpl) ConnectToStream(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&common_name))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&client_options))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(client_options)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -448031,7 +450110,9 @@ func (cx *StyleBoxTextureImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -450165,7 +452246,9 @@ func (cx *SurfaceToolImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -450260,7 +452343,10 @@ func (cx *SurfaceToolImpl) CreateFrom(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&existing))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(existing)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface))
 	pnr.Pin(argPtrSlice[1])
@@ -450333,7 +452419,10 @@ func (cx *SurfaceToolImpl) CreateFromBlendShape(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&existing))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(existing)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface))
 	pnr.Pin(argPtrSlice[1])
@@ -450372,7 +452461,10 @@ func (cx *SurfaceToolImpl) AppendFrom(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&existing))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(existing)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface))
 	pnr.Pin(argPtrSlice[1])
@@ -450412,7 +452504,10 @@ func (cx *SurfaceToolImpl) Commit(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&existing))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(existing)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pnr.Pin(argPtrSlice[1])
@@ -451861,7 +453956,10 @@ func (cx *TLSOptionsImpl) Client(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&trusted_chain))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(trusted_chain)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&common_name_override))
 	pnr.Pin(argPtrSlice[1])
@@ -451899,7 +453997,10 @@ func (cx *TLSOptionsImpl) ClientUnsafe(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&trusted_chain))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(trusted_chain)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefTLSOptionsGDExtensionIternalConstructor(&ret)
@@ -451936,9 +454037,15 @@ func (cx *TLSOptionsImpl) Server(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(key)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&certificate))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(certificate)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefTLSOptionsGDExtensionIternalConstructor(&ret)
@@ -452708,7 +454815,10 @@ func (cx *TabBarImpl) SetTabIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -452852,7 +454962,10 @@ func (cx *TabBarImpl) SetTabButtonIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -453173,7 +455286,10 @@ func (cx *TabBarImpl) AddTab(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&title))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -455012,7 +457128,10 @@ func (cx *TabContainerImpl) SetTabIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -455372,7 +457491,10 @@ func (cx *TabContainerImpl) SetTabButtonIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(icon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -455479,7 +457601,10 @@ func (cx *TabContainerImpl) GetTabIdxFromControl(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&control))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(control)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -455513,7 +457638,10 @@ func (cx *TabContainerImpl) SetPopup(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&popup))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(popup)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -463553,7 +465681,10 @@ func (cx *TextEditImpl) SetLineGutterIcon(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gutter))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(icon)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -463854,7 +465985,9 @@ func (cx *TextEditImpl) SetSyntaxHighlighter(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&syntax_highlighter))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(syntax_highlighter)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -464911,7 +467044,10 @@ func (cx *TextLineImpl) AddString(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&text))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(font)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font_size))
 	pnr.Pin(argPtrSlice[2])
@@ -466076,7 +468212,9 @@ func (cx *TextMeshImpl) SetFont(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -467537,7 +469675,10 @@ func (cx *TextParagraphImpl) SetDropcap(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&text))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(font)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font_size))
 	pnr.Pin(argPtrSlice[2])
@@ -467614,7 +469755,10 @@ func (cx *TextParagraphImpl) AddString(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&text))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(font)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font_size))
 	pnr.Pin(argPtrSlice[2])
@@ -472767,7 +474911,10 @@ func (cx *TextServerImpl) FontSetTextureImage(
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture_index))
 	pnr.Pin(argPtrSlice[2])
-	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image))
+
+	var argObj_3 GDExtensionObjectPtr
+	argObj_3 = RefArgPtr(image)
+	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_3))
 	pnr.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -478643,7 +480790,10 @@ func (cx *TextServerManagerImpl) AddInterface(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaceName))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(interfaceName)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -478708,7 +480858,10 @@ func (cx *TextServerManagerImpl) RemoveInterface(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaceName))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(interfaceName)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -478846,7 +480999,9 @@ func (cx *TextServerManagerImpl) SetPrimaryInterface(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(index)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -479919,7 +482074,9 @@ func (cx *TextureButtonImpl) SetTextureNormal(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -479953,7 +482110,9 @@ func (cx *TextureButtonImpl) SetTexturePressed(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -479987,7 +482146,9 @@ func (cx *TextureButtonImpl) SetTextureHover(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -480021,7 +482182,9 @@ func (cx *TextureButtonImpl) SetTextureDisabled(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -480055,7 +482218,9 @@ func (cx *TextureButtonImpl) SetTextureFocused(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -480089,7 +482254,9 @@ func (cx *TextureButtonImpl) SetClickMask(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mask))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mask)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -480985,7 +483152,9 @@ func (cx *TextureProgressBarImpl) SetUnderTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tex))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(tex)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -481051,7 +483220,9 @@ func (cx *TextureProgressBarImpl) SetProgressTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tex))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(tex)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -481117,7 +483288,9 @@ func (cx *TextureProgressBarImpl) SetOverTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tex))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(tex)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -481867,7 +484040,9 @@ func (cx *TextureRectImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -482225,7 +484400,10 @@ func (cx *ThemeImpl) SetIcon(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(texture)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -482485,7 +484663,10 @@ func (cx *ThemeImpl) SetStylebox(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(texture)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -482745,7 +484926,10 @@ func (cx *ThemeImpl) SetFont(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(font)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -483877,7 +486061,9 @@ func (cx *ThemeImpl) SetDefaultFont(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -484667,7 +486853,10 @@ func (cx *ThemeImpl) MergeWith(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&other))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(other)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -484886,7 +487075,9 @@ func (cx *ThemeDBImpl) SetFallbackFont(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(font)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -485017,7 +487208,9 @@ func (cx *ThemeDBImpl) SetFallbackIcon(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&icon))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(icon)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -485083,7 +487276,9 @@ func (cx *ThemeDBImpl) SetFallbackStylebox(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stylebox))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stylebox)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -485630,7 +487825,9 @@ func (cx *TileDataImpl) SetMaterial(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&material))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(material)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -486102,7 +488299,10 @@ func (cx *TileDataImpl) SetOccluderPolygon(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&polygon_index))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&polygon))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(polygon)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -486186,7 +488386,10 @@ func (cx *TileDataImpl) SetOccluder(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer_id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&occluder_polygon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(occluder_polygon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -487024,7 +489227,10 @@ func (cx *TileDataImpl) SetNavigationPolygon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer_id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&navigation_polygon))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(navigation_polygon)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -487480,7 +489686,9 @@ func (cx *TileMapImpl) SetTileset(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tileset))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(tileset)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -489009,7 +491217,10 @@ func (cx *TileMapImpl) MapPattern(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&coords_in_pattern))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pattern))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(pattern)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -489049,7 +491260,10 @@ func (cx *TileMapImpl) SetPattern(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pattern))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(pattern)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -490142,7 +492356,10 @@ func (cx *TileMapLayerImpl) SetPattern(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pattern))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(pattern)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -490397,7 +492614,10 @@ func (cx *TileMapLayerImpl) MapPattern(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&coords_in_pattern))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pattern))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(pattern)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -490709,7 +492929,9 @@ func (cx *TileMapLayerImpl) SetTileSet(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tile_set))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(tile_set)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -491929,7 +494151,10 @@ func (cx *TileSetImpl) AddSource(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(source)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&atlas_source_id_override))
 	pnr.Pin(argPtrSlice[1])
@@ -493130,7 +495355,10 @@ func (cx *TileSetImpl) SetPhysicsLayerPhysicsMaterial(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer_index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&physics_material))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(physics_material)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -494946,7 +497174,10 @@ func (cx *TileSetImpl) AddPattern(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pattern))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(pattern)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[1])
@@ -495111,7 +497342,9 @@ func (cx *TileSetAtlasSourceImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -495636,7 +497869,10 @@ func (cx *TileSetAtlasSourceImpl) GetTilesToBeRemovedOnChange(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&margins))
 	pnr.Pin(argPtrSlice[1])
@@ -496712,7 +498948,10 @@ func (cx *TileSetScenesCollectionSourceImpl) CreateSceneTile(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&packed_scene))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(packed_scene)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id_override))
 	pnr.Pin(argPtrSlice[1])
@@ -496787,7 +499026,10 @@ func (cx *TileSetScenesCollectionSourceImpl) SetSceneTileScene(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&packed_scene))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(packed_scene)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -498875,7 +501117,9 @@ func (cx *TouchScreenButtonImpl) SetTextureNormal(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -498941,7 +501185,9 @@ func (cx *TouchScreenButtonImpl) SetTexturePressed(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -499007,7 +501253,9 @@ func (cx *TouchScreenButtonImpl) SetBitmask(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bitmask))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(bitmask)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -499073,7 +501321,9 @@ func (cx *TouchScreenButtonImpl) SetShape(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(shape)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -500009,7 +502259,10 @@ func (cx *TranslationDomainImpl) AddTranslation(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(translation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -500042,7 +502295,10 @@ func (cx *TranslationDomainImpl) RemoveTranslation(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(translation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -500177,7 +502433,10 @@ func (cx *TranslationDomainImpl) HasTranslation(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(translation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -501647,7 +503906,10 @@ func (cx *TranslationServerImpl) AddTranslation(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(translation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -501680,7 +503942,10 @@ func (cx *TranslationServerImpl) RemoveTranslation(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(translation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -501861,7 +504126,10 @@ func (cx *TranslationServerImpl) HasTranslation(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&translation))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(translation)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -502364,7 +504632,10 @@ func (cx *TreeImpl) CreateItem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parent))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(parent)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[1])
@@ -502819,7 +505090,10 @@ func (cx *TreeImpl) GetNextSelected(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(from)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return &ret
@@ -502886,7 +505160,10 @@ func (cx *TreeImpl) SetSelected(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&item))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(item)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[1])
@@ -503280,7 +505557,10 @@ func (cx *TreeImpl) GetItemAreaRect(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&item))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(item)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[1])
@@ -503949,7 +506229,10 @@ func (cx *TreeImpl) ScrollToItem(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&item))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(item)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&center_on_item))
 	pnr.Pin(argPtrSlice[1])
@@ -505910,7 +508193,10 @@ func (cx *TreeItemImpl) SetIcon(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -505982,7 +508268,10 @@ func (cx *TreeItemImpl) SetIconOverlay(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -506496,7 +508785,10 @@ func (cx *TreeItemImpl) SetCustomDraw(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = ObjectArgPtr(object)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pnr.Pin(argPtrSlice[2])
@@ -506606,7 +508898,10 @@ func (cx *TreeItemImpl) SetCustomStylebox(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stylebox))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(stylebox)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -507357,7 +509652,10 @@ func (cx *TreeItemImpl) SetCustomFont(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(font)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -507714,7 +510012,10 @@ func (cx *TreeItemImpl) AddButton(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&button))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(button)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pnr.Pin(argPtrSlice[2])
@@ -508031,7 +510332,10 @@ func (cx *TreeItemImpl) SetButton(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&button_index))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&button))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(button)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -508638,7 +510942,10 @@ func (cx *TreeItemImpl) AddChild(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&child))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(child)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -508671,7 +510978,10 @@ func (cx *TreeItemImpl) RemoveChild(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&child))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(child)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -509140,7 +511450,10 @@ func (cx *TreeItemImpl) MoveBefore(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&item))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(item)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -509173,7 +511486,10 @@ func (cx *TreeItemImpl) MoveAfter(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&item))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(item)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -509905,7 +512221,9 @@ func (cx *TubeTrailMeshImpl) SetCurve(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&curve))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(curve)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -510002,7 +512320,10 @@ func (cx *TweenImpl) TweenProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -510161,7 +512482,10 @@ func (cx *TweenImpl) TweenSubtween(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&subtween))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(subtween)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefSubtweenTweenerGDExtensionIternalConstructor(&ret)
@@ -510513,7 +512837,10 @@ func (cx *TweenImpl) BindNode(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return NewRefTweenGDExtensionIternalConstructor(&ret)
@@ -512545,7 +514872,10 @@ func (cx *UPNPImpl) AddDevice(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&device))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(device)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -512581,7 +514911,10 @@ func (cx *UPNPImpl) SetDevice(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&device))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(device)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -513831,7 +516164,10 @@ func (cx *UndoRedoImpl) AddDoProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -513870,7 +516206,10 @@ func (cx *UndoRedoImpl) AddUndoProperty(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&property))
 	pnr.Pin(argPtrSlice[1])
@@ -513907,7 +516246,10 @@ func (cx *UndoRedoImpl) AddDoReference(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -513940,7 +516282,10 @@ func (cx *UndoRedoImpl) AddUndoReference(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&object))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(object)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -514456,7 +516801,10 @@ func (cx *UniformSetCacheRDImpl) GetCache(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&set))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&uniforms))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(uniforms)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -516138,7 +518486,9 @@ func (cx *VideoStreamPlayerImpl) SetStream(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -517150,7 +519500,9 @@ func (cx *ViewportImpl) SetWorld2D(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&world_2d))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(world_2d)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -518584,7 +520936,10 @@ func (cx *ViewportImpl) PushInput(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&in_local_coords))
 	pnr.Pin(argPtrSlice[1])
@@ -518620,7 +520975,10 @@ func (cx *ViewportImpl) PushUnhandledInput(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&event))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(event)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&in_local_coords))
 	pnr.Pin(argPtrSlice[1])
@@ -520432,7 +522790,9 @@ func (cx *ViewportImpl) SetWorld3D(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&world_3d))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(world_3d)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -521309,7 +523669,9 @@ func (cx *ViewportImpl) SetVrsTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -523291,7 +525653,10 @@ func (cx *VisualShaderImpl) AddNode(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&node))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(node)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
 	pnr.Pin(argPtrSlice[2])
@@ -525861,7 +528226,9 @@ func (cx *VisualShaderNodeCubemapImpl) SetCubeMap(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(value)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -526037,7 +528404,9 @@ func (cx *VisualShaderNodeCurveTextureImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -526130,7 +528499,9 @@ func (cx *VisualShaderNodeCurveXYZTextureImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(texture)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -530414,7 +532785,9 @@ func (cx *VisualShaderNodeParticleMeshEmitterImpl) SetMesh(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mesh))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(mesh)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -531677,7 +534050,9 @@ func (cx *VisualShaderNodeTextureImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(value)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -531835,7 +534210,9 @@ func (cx *VisualShaderNodeTexture2DArrayImpl) SetTextureArray(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(value)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -531964,7 +534341,9 @@ func (cx *VisualShaderNodeTexture3DImpl) SetTexture(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(value)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -534909,7 +537288,9 @@ func (cx *VoxelGIImpl) SetProbeData(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(data)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -535105,7 +537486,9 @@ func (cx *VoxelGIImpl) SetCameraAttributes(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&camera_attributes))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(camera_attributes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -535171,7 +537554,10 @@ func (cx *VoxelGIImpl) Bake(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(from_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&create_visual_debug))
 	pnr.Pin(argPtrSlice[1])
@@ -536664,7 +539050,10 @@ func (cx *WebRTCMultiplayerPeerImpl) AddPeer(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&peer))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(peer)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&peer_id))
 	pnr.Pin(argPtrSlice[1])
@@ -537342,7 +539731,10 @@ func (cx *WebSocketMultiplayerPeerImpl) CreateClient(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&url))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tls_client_options))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(tls_client_options)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -537384,7 +539776,10 @@ func (cx *WebSocketMultiplayerPeerImpl) CreateServer(
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&bind_address))
 	pnr.Pin(argPtrSlice[1])
-	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tls_server_options))
+
+	var argObj_2 GDExtensionObjectPtr
+	argObj_2 = RefArgPtr(tls_server_options)
+	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pnr.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -537948,7 +540343,10 @@ func (cx *WebSocketPeerImpl) ConnectToUrl(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&url))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tls_client_options))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(tls_client_options)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -537984,7 +540382,10 @@ func (cx *WebSocketPeerImpl) AcceptStream(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(stream)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	return ret
@@ -541800,7 +544201,9 @@ func (cx *WindowImpl) SetTheme(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(theme)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -541991,7 +544394,10 @@ func (cx *WindowImpl) AddThemeIconOverride(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(texture)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -542027,7 +544433,10 @@ func (cx *WindowImpl) AddThemeStyleboxOverride(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stylebox))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(stylebox)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -542063,7 +544472,10 @@ func (cx *WindowImpl) AddThemeFontOverride(
 	pnr.Pin(cArgs)
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pnr.Pin(argPtrSlice[0])
-	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&font))
+
+	var argObj_1 GDExtensionObjectPtr
+	argObj_1 = RefArgPtr(font)
+	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pnr.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -543772,7 +546184,10 @@ func (cx *WindowImpl) PopupExclusive(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(from_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pnr.Pin(argPtrSlice[1])
@@ -543808,7 +546223,10 @@ func (cx *WindowImpl) PopupExclusiveOnParent(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(from_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parent_rect))
 	pnr.Pin(argPtrSlice[1])
@@ -543844,7 +546262,10 @@ func (cx *WindowImpl) PopupExclusiveCentered(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(from_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&minsize))
 	pnr.Pin(argPtrSlice[1])
@@ -543880,7 +546301,10 @@ func (cx *WindowImpl) PopupExclusiveCenteredRatio(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(from_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ratio))
 	pnr.Pin(argPtrSlice[1])
@@ -543917,7 +546341,10 @@ func (cx *WindowImpl) PopupExclusiveCenteredClamped(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&from_node))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = ObjectArgPtr(from_node)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&minsize))
 	pnr.Pin(argPtrSlice[1])
@@ -544591,7 +547018,9 @@ func (cx *World3DImpl) SetEnvironment(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&env))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(env)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -544657,7 +547086,9 @@ func (cx *World3DImpl) SetFallbackEnvironment(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&env))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(env)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -544723,7 +547154,9 @@ func (cx *World3DImpl) SetCameraAttributes(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&attributes))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(attributes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -545097,7 +547530,9 @@ func (cx *WorldEnvironmentImpl) SetEnvironment(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&env))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(env)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -545163,7 +547598,9 @@ func (cx *WorldEnvironmentImpl) SetCameraAttributes(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&camera_attributes))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(camera_attributes)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -545229,7 +547666,9 @@ func (cx *WorldEnvironmentImpl) SetCompositor(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&compositor))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(compositor)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -550797,7 +553236,10 @@ func (cx *XRServerImpl) AddInterface(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaceName))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(interfaceName)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -550862,7 +553304,10 @@ func (cx *XRServerImpl) RemoveInterface(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaceName))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(interfaceName)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -550999,7 +553444,10 @@ func (cx *XRServerImpl) AddTracker(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tracker))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(tracker)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -551032,7 +553480,10 @@ func (cx *XRServerImpl) RemoveTracker(
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tracker))
+
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(tracker)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }
@@ -551170,7 +553621,9 @@ func (cx *XRServerImpl) SetPrimaryInterface(
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pnr.Pin(cArgs)
 
-	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaceName))
+	var argObj_0 GDExtensionObjectPtr
+	argObj_0 = RefArgPtr(interfaceName)
+	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pnr.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 }

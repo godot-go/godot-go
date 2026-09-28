@@ -61,7 +61,29 @@ func GDExtensionVariantPtrWithNil(rOut GDExtensionUninitializedVariantPtr) {
 	CallFunc_GDExtensionInterfaceVariantNewNil(rOut)
 }
 
-func NewVariantCopyWithGDExtensionConstVariantPtr(ptr GDExtensionConstVariantPtr) Variant {
+// VariantViewFromConstPtr returns a non-owning view of the Variant at ptr.
+//
+// The result is a bitwise copy of the Variant's storage. It is not a copy of
+// what the Variant refers to, and it takes no reference: for a heap-backed
+// Variant (String, Array, Dictionary, or an object) the view and the source
+// alias the same allocation.
+//
+// Never call Destroy on the result. Doing so frees storage the source still
+// points at. That is the whole difference between this and NewVariantCopy,
+// which calls variant_new_copy and returns a value the caller owns and must
+// release. The absence of a New prefix is deliberate: nothing new is made here.
+//
+// Value Variants -- bool, int, float, Vector2 and the other inline types -- are
+// the only case where a view and a copy behave alike, because there is nothing
+// behind them to alias. That exception is what makes the hazard easy to miss: a
+// view of an int survives everything a view of an Array does not.
+//
+// The byte loop is deliberate, not a shortcut around variant_new_copy. Varcall
+// argument marshalling depends on producing these views without allocating, so
+// that a rejection after marshalling has nothing to unwind. Making this own
+// would put an engine call on every marshalled argument and break that
+// invariant elsewhere.
+func VariantViewFromConstPtr(ptr GDExtensionConstVariantPtr) Variant {
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 	ret := Variant{}

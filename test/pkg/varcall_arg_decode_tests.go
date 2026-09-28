@@ -115,10 +115,10 @@ func (e *Example) TestVarcallDecodeOwnedPrefixReleased(arr Array, label Label) i
 		}
 		objV := objectVariant(label)
 		defer objV.Destroy()
-		// Built with the real Variant constructor, not the raw byte-copying
-		// NewVariantCopyWithGDExtensionConstVariantPtr: that helper copies the
-		// Variant's bytes without taking a reference, so destroying one leaves
-		// the original pointing at freed memory.
+		// Built with the real Variant constructor, not the non-owning
+		// VariantViewFromConstPtr: that helper copies the Variant's bytes
+		// without taking a reference, so destroying one leaves the original
+		// pointing at freed memory.
 		arrV := NewVariantArray(arr)
 		defer arrV.Destroy()
 

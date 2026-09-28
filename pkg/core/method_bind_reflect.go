@@ -288,7 +288,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		inst := v.Interface()
 		switch inst.(type) {
 		case Variant:
-			v := NewVariantCopyWithGDExtensionConstVariantPtr(arg.NativeConstPtr())
+			v := VariantViewFromConstPtr(arg.NativeConstPtr())
 			return reflect.ValueOf(v), nil
 		case Vector2:
 			v := arg.ToVector2()
@@ -854,7 +854,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := NewProjectionWithProjection(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Variant:
-				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
+				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			case PackedInt64Array:
 				v := *(*PackedInt64Array)(arg)
@@ -1063,7 +1063,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := NewProjectionWithProjection(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Variant:
-				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
+				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			default:
 				if strings.HasPrefix(t.String(), "gdextension.Ref") {

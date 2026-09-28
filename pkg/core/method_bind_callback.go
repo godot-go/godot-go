@@ -60,7 +60,7 @@ func GoCallback_MethodBindMethodCall(
 	args := make([]Variant, argumentCount)
 	for i := range argPtrSlice {
 		pinner.Pin(argPtrSlice[i])
-		args[i] = NewVariantCopyWithGDExtensionConstVariantPtr(argPtrSlice[i])
+		args[i] = VariantViewFromConstPtr(argPtrSlice[i])
 	}
 
 	// Reject the first argument whose variant type is not strictly convertible

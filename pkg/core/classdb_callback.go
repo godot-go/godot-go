@@ -455,7 +455,7 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 	// pName is Godot-owned — safe to read via ToUtf8(), NEVER Destroy() pName itself
 	gdName := (*StringName)(pName)
 	name := gdName.ToUtf8()
-	v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(pValue))
+	v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(pValue))
 	log.Info("GoCallback_ClassCreationInfoSet called",
 		zap.String("class", className),
 		zap.String("name", name),

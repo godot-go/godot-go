@@ -67,3 +67,11 @@ Distinct exit codes per mode were considered and rejected: callers (make, CI) on
 - **`test: build` adds build time to every test run.** Incremental Go builds make this negligible in the common case; correctness outweighs the seconds.
 - **Fixture logs can drift from real Godot output.** Mitigation: tasks verify the script against real runs (missing-library negative case, current baseline positive-parse case), not only fixtures.
 - **Marker-based detection is heuristic** (a new Godot version could reword errors). Mitigation: the banner/zero-count checks are the structural backstop — even if every marker string changed, a no-banner run still fails loudly.
+
+## Corrections found during implementation
+
+**Acceptance criterion 3.1 is unreachable through `make test`, by construction.** It read "remove the library, then `make test` exits non-zero with the extension-load message." But D1 makes `test` depend on `build`, so the library is rebuilt and never absent when the gate runs. The two requirements cancel each other's demonstration. Verified the gate against the real condition by running the Godot pipeline directly with the library removed: godot exited 0 — reproducing the original silent-green bug — and the gate reported `FAIL[extension-not-loaded]` with the actual error lines as evidence. The requirement still holds and is still tested; only the route to it changed.
+
+**Acceptance criterion 3.2 was overtaken by another change.** It expected the target to stay red on the known `to_string` failure so the no-allowlist decision (D6) could be seen reading clearly. `fix-to-string-virtual-dispatch` landed first, so the run is green. The D6 decision is unchanged and remains unexercised by the live suite, so the failure-reporting path was falsified directly instead by injecting a failing assertion: `FAIL[driver-reported-failures]: the driver reported 1 failure(s) out of 1080 assertions`, `make` exit 2.
+
+**D6's value is now prospective, not demonstrated.** With no known failure in the suite, nothing currently proves the gate distinguishes "one tracked assertion failed" from "the harness broke". The fixture covers it. If a future known-failure is ever added, D6's reasoning should be re-read rather than assumed.

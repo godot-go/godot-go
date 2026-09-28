@@ -41,6 +41,10 @@ func assert_not_equal(actual, expected):
 		__assert_fail()
 		print ("    |-> Expected '%s' NOT to equal '%s'" % [expected, actual])
 
+# The banner below is machine-consumed: test/check_test_output.sh parses
+# "TESTS FINISHED", "PASSES: <n>" and "FAILURES: <n>" to decide whether the
+# suite genuinely ran. Do not reword these without updating that gate -- a
+# mismatch fails loudly as "no driver summary", never as a false pass.
 func exit_with_status() -> void:
 	var success: bool = (test_failures == 0)
 	print ("")

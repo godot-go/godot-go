@@ -1,0 +1,5 @@
+Godot Engine v4.5.stable.official
+ERROR: Can't open dynamic library: /home/pcting/workspace/godot-go/test/demo/lib/libgodotgo_linux_x86_64.so. Error: Cannot open shared object file.
+ERROR: GDExtension dynamic library not found: res://lib/libgodotgo_linux_x86_64.so (res://example.gdextension)
+ERROR: Failed to load script "res://main.gd" with error "Parse error".
+ERROR: Cannot get class 'Example'.

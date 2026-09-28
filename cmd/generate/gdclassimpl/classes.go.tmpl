@@ -203,7 +203,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ end -}}
 	{{ with $fnReturnType -}}
 	{{ if $view.IsRefcountedClassName $fnReturnType -}}
-	return NewRef{{ $fnReturnType }}GDExtensionIternalConstructor(&ret)
+	return NewRef{{ $fnReturnType }}GDExtensionReturnOwner(&ret)
 	{{ else if $view.ContainsClassName $fnReturnType -}}
 	return &ret
 	{{ else -}}

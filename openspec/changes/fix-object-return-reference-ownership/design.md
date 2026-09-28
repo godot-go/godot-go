@@ -47,3 +47,28 @@ Rejected — option (a), a finalizer on `NewRef` itself: it changes the contract
 - **`WithGodotOwnerObject` semantics.** If the engine does not transfer a reference in that path, using the transfer constructor there would over-release. Mitigated by explicit verification (task 1.2) before the template change lands.
 - **Finalizer timing is non-deterministic.** Release happens at GC, not at scope exit; the acceptance gates are the refcount-stability tests and the engine exit leak check, not mid-run determinism. Same trade-off the existing copy/finalizer path already accepts.
 - **Finalizers vs engine shutdown.** Finalizers run in the Go process; if the engine tears down first, releases could race. The existing `Ref()` copy path already relies on this ordering and the sibling pin change surfaced no such issue; the exit test covers the new scale.
+
+## Corrections found during implementation
+
+**The classification table was wrong for half of the `IternalConstructor` sites, and Decision 3 was unsafe because of it.** The table recorded `NewRefXGDExtensionIternalConstructor` as uniformly engine-transferred. It is shared by two callers that pass it completely different things:
+
+```go
+// classes.go.tmpl:207 — ptrcall return. The engine filled &ret through
+// PtrToArg<Ref<T>>::convert, which constructs a Ref and so calls
+// reference(). The +1 is ours.
+return NewRefShape2DGDExtensionIternalConstructor(&ret)
+
+// classes.go.tmpl:75 — WithGodotOwnerObject. A Go-built struct wrapping an
+// object someone else supplied. No engine write, no convert, no +1.
+return NewRefXxxGDExtensionIternalConstructor(inst)
+```
+
+Decision 3 said the return lines would be unchanged and only the factory body would flip. Flipping the shared factory would have made `WithGodotOwnerObject` release a reference it never acquired — the premature-free risk this change was supposed to avoid, arriving through the factory rather than through rejected option (a). Resolved by adding `NewRefXGDExtensionReturnOwner` for the return line only and leaving `IternalConstructor` borrowing, which does mean the return line changes after all.
+
+**A null return needs the finalizer suppressed.** `Unref` is not a field write; it issues a live `unreference` ptrcall against the wrapper's owner. A `get_shape()` on an empty collision shape hands back a wrapper over no engine object, so an unconditional finalizer would dereference a null owner during collection. `NewRefTransfer` checks `ObjectArgPtr(obj) != nil` before installing. This was not anticipated anywhere in the design.
+
+**Finalizer timing made the first version of the tests flaky, and the flakiness was not in the binding.** `runtime.GC()` does not guarantee the finalizer goroutine has drained, so a single collection can read a count that has not settled: the same build produced `3 -> 3` on one run and `3 -> 45` on the next. Worse, the baseline handle itself became garbage. `held` is dead after its last use under Go's liveness analysis, so its own finalizer fired mid-test and the count dropped by one that had nothing to do with the wrapper under observation — `base=3, dropped=2`, which looks exactly like a double-release in the code under test. Fixed with `defer runtime.KeepAlive(held)` in each test and polling toward the target rather than sampling once.
+
+Worth separating cleanly, because both looked like binding bugs and neither was: the drift above baseline was real scheduling, the drift below baseline was the test releasing its own observer.
+
+**The proposal's call-site count was off by two.** 1,325 call sites, not 1,323; the extra grep hits are the `func NewRef[T ...]` definition itself.

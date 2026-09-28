@@ -999,6 +999,12 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestObjectArgRefcountStability", "test_object_arg_refcount_stability", []string{"owner", "shape"}, nil)
 		ClassDBBindMethod(t, "TestPinScratchStaysFlat", "test_pin_scratch_stays_flat", []string{"small", "large"}, nil)
 		ClassDBBindMethod(t, "TestObjectArgRelease", "test_object_arg_release", nil, nil)
+		ClassDBBindMethod(t, "TestReturnRefcountStability", "test_return_refcount_stability", []string{"owner", "iterations"}, nil)
+		ClassDBBindMethod(t, "TestReturnDroppedReleases", "test_return_dropped_releases", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestReturnUnrefIdempotence", "test_return_unref_idempotence", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestBorrowedRefNeverReleases", "test_borrowed_ref_never_releases", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestNullReturnSchedulesNoRelease", "test_null_return_schedules_no_release", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestReturnOwnershipRelease", "test_return_ownership_release", nil, nil)
 
 		ClassDBBindMethod(t, "TestScalarEcho", "test_scalar_echo", []string{"p_bool", "p_i64", "p_f64", "p_str"}, nil)
 		ClassDBBindMethod(t, "TestUint64Echo", "test_uint64_echo", []string{"u64"}, nil)

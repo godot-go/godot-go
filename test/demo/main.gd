@@ -11,6 +11,7 @@ func _ready():
 	test_suite(1, example)
 	test_object_args(example)
 	test_pin_scratch_stays_flat(example)
+	test_return_ownership(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -616,11 +617,33 @@ func test_object_args(example: Example):
 	# Go-held reference survives into the engine's leak check.
 	assert_equal(example.test_object_arg_release(), 1)
 
-	# A Go-side get_shape() loop is deliberately NOT exercised here. The
-	# object-return path hands Go a Ref whose +1 the wrapper never releases
-	# (NewRef sets no Unref finalizer), so 200 returns leak 200 references and
-	# trip the engine's exit check. That is the object-return ownership defect,
-	# not the call-pinning one; readback of refcounted resources stays in Godot.
+	# A Go-side get_shape() loop is exercised by test_return_ownership below.
+	# It was withheld here while the object-return path leaked one engine reference
+	# per call; that is now fixed, so the loop runs and the exit leak check gates it.
+
+
+func test_return_ownership(example: Example):
+	print("test return ownership")
+
+	# Every generated method returning a refcounted object receives a reference
+	# the engine already counted and transferred into the Go return slot. The
+	# wrapper must own it and release it exactly once.
+	var cs = CollisionShape2D.new()
+	var circle = CircleShape2D.new()
+	cs.shape = circle
+
+	assert_equal(example.test_return_refcount_stability(cs, 200), 1)
+	assert_equal(example.test_return_dropped_releases(cs), 1)
+	assert_equal(example.test_return_unref_idempotence(cs), 1)
+	assert_equal(example.test_borrowed_ref_never_releases(cs), 1)
+	assert_equal(example.test_null_return_schedules_no_release(cs), 1)
+
+	cs.free()
+	circle = null
+
+	# Collect while the engine is still running so no Go-held reference survives
+	# into the exit leak check and no finalizer races engine teardown.
+	assert_equal(example.test_return_ownership_release(), 1)
 
 
 func test_pin_scratch_stays_flat(example: Example):

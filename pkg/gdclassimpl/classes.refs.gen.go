@@ -31,8 +31,20 @@ func NewRefAESContextAsRef(reference RefCounted) Ref {
 	return NewRef[AESContext](reference.(AESContext))
 }
 
+// NewRefAESContextGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAESContextWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAESContextGDExtensionIternalConstructor(reference AESContext) RefAESContext {
 	return &RefAESContextImpl{RefBase: NewRef[AESContext](reference)}
+}
+
+// NewRefAESContextGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAESContextGDExtensionReturnOwner(reference AESContext) RefAESContext {
+	return &RefAESContextImpl{RefBase: NewRefTransfer[AESContext](reference)}
 }
 
 var _ RefAStar2D = &RefAStar2DImpl{}
@@ -50,8 +62,20 @@ func NewRefAStar2DAsRef(reference RefCounted) Ref {
 	return NewRef[AStar2D](reference.(AStar2D))
 }
 
+// NewRefAStar2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAStar2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAStar2DGDExtensionIternalConstructor(reference AStar2D) RefAStar2D {
 	return &RefAStar2DImpl{RefBase: NewRef[AStar2D](reference)}
+}
+
+// NewRefAStar2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAStar2DGDExtensionReturnOwner(reference AStar2D) RefAStar2D {
+	return &RefAStar2DImpl{RefBase: NewRefTransfer[AStar2D](reference)}
 }
 
 var _ RefAStar3D = &RefAStar3DImpl{}
@@ -69,8 +93,20 @@ func NewRefAStar3DAsRef(reference RefCounted) Ref {
 	return NewRef[AStar3D](reference.(AStar3D))
 }
 
+// NewRefAStar3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAStar3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAStar3DGDExtensionIternalConstructor(reference AStar3D) RefAStar3D {
 	return &RefAStar3DImpl{RefBase: NewRef[AStar3D](reference)}
+}
+
+// NewRefAStar3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAStar3DGDExtensionReturnOwner(reference AStar3D) RefAStar3D {
+	return &RefAStar3DImpl{RefBase: NewRefTransfer[AStar3D](reference)}
 }
 
 var _ RefAStarGrid2D = &RefAStarGrid2DImpl{}
@@ -88,8 +124,20 @@ func NewRefAStarGrid2DAsRef(reference RefCounted) Ref {
 	return NewRef[AStarGrid2D](reference.(AStarGrid2D))
 }
 
+// NewRefAStarGrid2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAStarGrid2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAStarGrid2DGDExtensionIternalConstructor(reference AStarGrid2D) RefAStarGrid2D {
 	return &RefAStarGrid2DImpl{RefBase: NewRef[AStarGrid2D](reference)}
+}
+
+// NewRefAStarGrid2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAStarGrid2DGDExtensionReturnOwner(reference AStarGrid2D) RefAStarGrid2D {
+	return &RefAStarGrid2DImpl{RefBase: NewRefTransfer[AStarGrid2D](reference)}
 }
 
 var _ RefAnimatedTexture = &RefAnimatedTextureImpl{}
@@ -107,8 +155,20 @@ func NewRefAnimatedTextureAsRef(reference RefCounted) Ref {
 	return NewRef[AnimatedTexture](reference.(AnimatedTexture))
 }
 
+// NewRefAnimatedTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimatedTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimatedTextureGDExtensionIternalConstructor(reference AnimatedTexture) RefAnimatedTexture {
 	return &RefAnimatedTextureImpl{RefBase: NewRef[AnimatedTexture](reference)}
+}
+
+// NewRefAnimatedTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimatedTextureGDExtensionReturnOwner(reference AnimatedTexture) RefAnimatedTexture {
+	return &RefAnimatedTextureImpl{RefBase: NewRefTransfer[AnimatedTexture](reference)}
 }
 
 var _ RefAnimation = &RefAnimationImpl{}
@@ -126,8 +186,20 @@ func NewRefAnimationAsRef(reference RefCounted) Ref {
 	return NewRef[Animation](reference.(Animation))
 }
 
+// NewRefAnimationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationGDExtensionIternalConstructor(reference Animation) RefAnimation {
 	return &RefAnimationImpl{RefBase: NewRef[Animation](reference)}
+}
+
+// NewRefAnimationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationGDExtensionReturnOwner(reference Animation) RefAnimation {
+	return &RefAnimationImpl{RefBase: NewRefTransfer[Animation](reference)}
 }
 
 var _ RefAnimationLibrary = &RefAnimationLibraryImpl{}
@@ -145,8 +217,20 @@ func NewRefAnimationLibraryAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationLibrary](reference.(AnimationLibrary))
 }
 
+// NewRefAnimationLibraryGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationLibraryWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationLibraryGDExtensionIternalConstructor(reference AnimationLibrary) RefAnimationLibrary {
 	return &RefAnimationLibraryImpl{RefBase: NewRef[AnimationLibrary](reference)}
+}
+
+// NewRefAnimationLibraryGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationLibraryGDExtensionReturnOwner(reference AnimationLibrary) RefAnimationLibrary {
+	return &RefAnimationLibraryImpl{RefBase: NewRefTransfer[AnimationLibrary](reference)}
 }
 
 var _ RefAnimationNode = &RefAnimationNodeImpl{}
@@ -164,8 +248,20 @@ func NewRefAnimationNodeAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNode](reference.(AnimationNode))
 }
 
+// NewRefAnimationNodeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeGDExtensionIternalConstructor(reference AnimationNode) RefAnimationNode {
 	return &RefAnimationNodeImpl{RefBase: NewRef[AnimationNode](reference)}
+}
+
+// NewRefAnimationNodeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeGDExtensionReturnOwner(reference AnimationNode) RefAnimationNode {
+	return &RefAnimationNodeImpl{RefBase: NewRefTransfer[AnimationNode](reference)}
 }
 
 var _ RefAnimationNodeAdd2 = &RefAnimationNodeAdd2Impl{}
@@ -183,8 +279,20 @@ func NewRefAnimationNodeAdd2AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeAdd2](reference.(AnimationNodeAdd2))
 }
 
+// NewRefAnimationNodeAdd2GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeAdd2WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeAdd2GDExtensionIternalConstructor(reference AnimationNodeAdd2) RefAnimationNodeAdd2 {
 	return &RefAnimationNodeAdd2Impl{RefBase: NewRef[AnimationNodeAdd2](reference)}
+}
+
+// NewRefAnimationNodeAdd2GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeAdd2GDExtensionReturnOwner(reference AnimationNodeAdd2) RefAnimationNodeAdd2 {
+	return &RefAnimationNodeAdd2Impl{RefBase: NewRefTransfer[AnimationNodeAdd2](reference)}
 }
 
 var _ RefAnimationNodeAdd3 = &RefAnimationNodeAdd3Impl{}
@@ -202,8 +310,20 @@ func NewRefAnimationNodeAdd3AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeAdd3](reference.(AnimationNodeAdd3))
 }
 
+// NewRefAnimationNodeAdd3GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeAdd3WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeAdd3GDExtensionIternalConstructor(reference AnimationNodeAdd3) RefAnimationNodeAdd3 {
 	return &RefAnimationNodeAdd3Impl{RefBase: NewRef[AnimationNodeAdd3](reference)}
+}
+
+// NewRefAnimationNodeAdd3GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeAdd3GDExtensionReturnOwner(reference AnimationNodeAdd3) RefAnimationNodeAdd3 {
+	return &RefAnimationNodeAdd3Impl{RefBase: NewRefTransfer[AnimationNodeAdd3](reference)}
 }
 
 var _ RefAnimationNodeAnimation = &RefAnimationNodeAnimationImpl{}
@@ -221,8 +341,20 @@ func NewRefAnimationNodeAnimationAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeAnimation](reference.(AnimationNodeAnimation))
 }
 
+// NewRefAnimationNodeAnimationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeAnimationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeAnimationGDExtensionIternalConstructor(reference AnimationNodeAnimation) RefAnimationNodeAnimation {
 	return &RefAnimationNodeAnimationImpl{RefBase: NewRef[AnimationNodeAnimation](reference)}
+}
+
+// NewRefAnimationNodeAnimationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeAnimationGDExtensionReturnOwner(reference AnimationNodeAnimation) RefAnimationNodeAnimation {
+	return &RefAnimationNodeAnimationImpl{RefBase: NewRefTransfer[AnimationNodeAnimation](reference)}
 }
 
 var _ RefAnimationNodeBlend2 = &RefAnimationNodeBlend2Impl{}
@@ -240,8 +372,20 @@ func NewRefAnimationNodeBlend2AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlend2](reference.(AnimationNodeBlend2))
 }
 
+// NewRefAnimationNodeBlend2GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeBlend2WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeBlend2GDExtensionIternalConstructor(reference AnimationNodeBlend2) RefAnimationNodeBlend2 {
 	return &RefAnimationNodeBlend2Impl{RefBase: NewRef[AnimationNodeBlend2](reference)}
+}
+
+// NewRefAnimationNodeBlend2GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeBlend2GDExtensionReturnOwner(reference AnimationNodeBlend2) RefAnimationNodeBlend2 {
+	return &RefAnimationNodeBlend2Impl{RefBase: NewRefTransfer[AnimationNodeBlend2](reference)}
 }
 
 var _ RefAnimationNodeBlend3 = &RefAnimationNodeBlend3Impl{}
@@ -259,8 +403,20 @@ func NewRefAnimationNodeBlend3AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlend3](reference.(AnimationNodeBlend3))
 }
 
+// NewRefAnimationNodeBlend3GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeBlend3WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeBlend3GDExtensionIternalConstructor(reference AnimationNodeBlend3) RefAnimationNodeBlend3 {
 	return &RefAnimationNodeBlend3Impl{RefBase: NewRef[AnimationNodeBlend3](reference)}
+}
+
+// NewRefAnimationNodeBlend3GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeBlend3GDExtensionReturnOwner(reference AnimationNodeBlend3) RefAnimationNodeBlend3 {
+	return &RefAnimationNodeBlend3Impl{RefBase: NewRefTransfer[AnimationNodeBlend3](reference)}
 }
 
 var _ RefAnimationNodeBlendSpace1D = &RefAnimationNodeBlendSpace1DImpl{}
@@ -278,8 +434,20 @@ func NewRefAnimationNodeBlendSpace1DAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlendSpace1D](reference.(AnimationNodeBlendSpace1D))
 }
 
+// NewRefAnimationNodeBlendSpace1DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeBlendSpace1DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeBlendSpace1DGDExtensionIternalConstructor(reference AnimationNodeBlendSpace1D) RefAnimationNodeBlendSpace1D {
 	return &RefAnimationNodeBlendSpace1DImpl{RefBase: NewRef[AnimationNodeBlendSpace1D](reference)}
+}
+
+// NewRefAnimationNodeBlendSpace1DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeBlendSpace1DGDExtensionReturnOwner(reference AnimationNodeBlendSpace1D) RefAnimationNodeBlendSpace1D {
+	return &RefAnimationNodeBlendSpace1DImpl{RefBase: NewRefTransfer[AnimationNodeBlendSpace1D](reference)}
 }
 
 var _ RefAnimationNodeBlendSpace2D = &RefAnimationNodeBlendSpace2DImpl{}
@@ -297,8 +465,20 @@ func NewRefAnimationNodeBlendSpace2DAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlendSpace2D](reference.(AnimationNodeBlendSpace2D))
 }
 
+// NewRefAnimationNodeBlendSpace2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeBlendSpace2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeBlendSpace2DGDExtensionIternalConstructor(reference AnimationNodeBlendSpace2D) RefAnimationNodeBlendSpace2D {
 	return &RefAnimationNodeBlendSpace2DImpl{RefBase: NewRef[AnimationNodeBlendSpace2D](reference)}
+}
+
+// NewRefAnimationNodeBlendSpace2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeBlendSpace2DGDExtensionReturnOwner(reference AnimationNodeBlendSpace2D) RefAnimationNodeBlendSpace2D {
+	return &RefAnimationNodeBlendSpace2DImpl{RefBase: NewRefTransfer[AnimationNodeBlendSpace2D](reference)}
 }
 
 var _ RefAnimationNodeBlendTree = &RefAnimationNodeBlendTreeImpl{}
@@ -316,8 +496,20 @@ func NewRefAnimationNodeBlendTreeAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlendTree](reference.(AnimationNodeBlendTree))
 }
 
+// NewRefAnimationNodeBlendTreeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeBlendTreeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeBlendTreeGDExtensionIternalConstructor(reference AnimationNodeBlendTree) RefAnimationNodeBlendTree {
 	return &RefAnimationNodeBlendTreeImpl{RefBase: NewRef[AnimationNodeBlendTree](reference)}
+}
+
+// NewRefAnimationNodeBlendTreeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeBlendTreeGDExtensionReturnOwner(reference AnimationNodeBlendTree) RefAnimationNodeBlendTree {
+	return &RefAnimationNodeBlendTreeImpl{RefBase: NewRefTransfer[AnimationNodeBlendTree](reference)}
 }
 
 var _ RefAnimationNodeExtension = &RefAnimationNodeExtensionImpl{}
@@ -335,8 +527,20 @@ func NewRefAnimationNodeExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeExtension](reference.(AnimationNodeExtension))
 }
 
+// NewRefAnimationNodeExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeExtensionGDExtensionIternalConstructor(reference AnimationNodeExtension) RefAnimationNodeExtension {
 	return &RefAnimationNodeExtensionImpl{RefBase: NewRef[AnimationNodeExtension](reference)}
+}
+
+// NewRefAnimationNodeExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeExtensionGDExtensionReturnOwner(reference AnimationNodeExtension) RefAnimationNodeExtension {
+	return &RefAnimationNodeExtensionImpl{RefBase: NewRefTransfer[AnimationNodeExtension](reference)}
 }
 
 var _ RefAnimationNodeOneShot = &RefAnimationNodeOneShotImpl{}
@@ -354,8 +558,20 @@ func NewRefAnimationNodeOneShotAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeOneShot](reference.(AnimationNodeOneShot))
 }
 
+// NewRefAnimationNodeOneShotGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeOneShotWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeOneShotGDExtensionIternalConstructor(reference AnimationNodeOneShot) RefAnimationNodeOneShot {
 	return &RefAnimationNodeOneShotImpl{RefBase: NewRef[AnimationNodeOneShot](reference)}
+}
+
+// NewRefAnimationNodeOneShotGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeOneShotGDExtensionReturnOwner(reference AnimationNodeOneShot) RefAnimationNodeOneShot {
+	return &RefAnimationNodeOneShotImpl{RefBase: NewRefTransfer[AnimationNodeOneShot](reference)}
 }
 
 var _ RefAnimationNodeOutput = &RefAnimationNodeOutputImpl{}
@@ -373,8 +589,20 @@ func NewRefAnimationNodeOutputAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeOutput](reference.(AnimationNodeOutput))
 }
 
+// NewRefAnimationNodeOutputGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeOutputWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeOutputGDExtensionIternalConstructor(reference AnimationNodeOutput) RefAnimationNodeOutput {
 	return &RefAnimationNodeOutputImpl{RefBase: NewRef[AnimationNodeOutput](reference)}
+}
+
+// NewRefAnimationNodeOutputGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeOutputGDExtensionReturnOwner(reference AnimationNodeOutput) RefAnimationNodeOutput {
+	return &RefAnimationNodeOutputImpl{RefBase: NewRefTransfer[AnimationNodeOutput](reference)}
 }
 
 var _ RefAnimationNodeStateMachine = &RefAnimationNodeStateMachineImpl{}
@@ -392,8 +620,20 @@ func NewRefAnimationNodeStateMachineAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeStateMachine](reference.(AnimationNodeStateMachine))
 }
 
+// NewRefAnimationNodeStateMachineGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeStateMachineWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeStateMachineGDExtensionIternalConstructor(reference AnimationNodeStateMachine) RefAnimationNodeStateMachine {
 	return &RefAnimationNodeStateMachineImpl{RefBase: NewRef[AnimationNodeStateMachine](reference)}
+}
+
+// NewRefAnimationNodeStateMachineGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeStateMachineGDExtensionReturnOwner(reference AnimationNodeStateMachine) RefAnimationNodeStateMachine {
+	return &RefAnimationNodeStateMachineImpl{RefBase: NewRefTransfer[AnimationNodeStateMachine](reference)}
 }
 
 var _ RefAnimationNodeStateMachinePlayback = &RefAnimationNodeStateMachinePlaybackImpl{}
@@ -411,8 +651,20 @@ func NewRefAnimationNodeStateMachinePlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeStateMachinePlayback](reference.(AnimationNodeStateMachinePlayback))
 }
 
+// NewRefAnimationNodeStateMachinePlaybackGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeStateMachinePlaybackWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeStateMachinePlaybackGDExtensionIternalConstructor(reference AnimationNodeStateMachinePlayback) RefAnimationNodeStateMachinePlayback {
 	return &RefAnimationNodeStateMachinePlaybackImpl{RefBase: NewRef[AnimationNodeStateMachinePlayback](reference)}
+}
+
+// NewRefAnimationNodeStateMachinePlaybackGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeStateMachinePlaybackGDExtensionReturnOwner(reference AnimationNodeStateMachinePlayback) RefAnimationNodeStateMachinePlayback {
+	return &RefAnimationNodeStateMachinePlaybackImpl{RefBase: NewRefTransfer[AnimationNodeStateMachinePlayback](reference)}
 }
 
 var _ RefAnimationNodeStateMachineTransition = &RefAnimationNodeStateMachineTransitionImpl{}
@@ -430,8 +682,20 @@ func NewRefAnimationNodeStateMachineTransitionAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeStateMachineTransition](reference.(AnimationNodeStateMachineTransition))
 }
 
+// NewRefAnimationNodeStateMachineTransitionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeStateMachineTransitionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeStateMachineTransitionGDExtensionIternalConstructor(reference AnimationNodeStateMachineTransition) RefAnimationNodeStateMachineTransition {
 	return &RefAnimationNodeStateMachineTransitionImpl{RefBase: NewRef[AnimationNodeStateMachineTransition](reference)}
+}
+
+// NewRefAnimationNodeStateMachineTransitionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeStateMachineTransitionGDExtensionReturnOwner(reference AnimationNodeStateMachineTransition) RefAnimationNodeStateMachineTransition {
+	return &RefAnimationNodeStateMachineTransitionImpl{RefBase: NewRefTransfer[AnimationNodeStateMachineTransition](reference)}
 }
 
 var _ RefAnimationNodeSub2 = &RefAnimationNodeSub2Impl{}
@@ -449,8 +713,20 @@ func NewRefAnimationNodeSub2AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeSub2](reference.(AnimationNodeSub2))
 }
 
+// NewRefAnimationNodeSub2GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeSub2WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeSub2GDExtensionIternalConstructor(reference AnimationNodeSub2) RefAnimationNodeSub2 {
 	return &RefAnimationNodeSub2Impl{RefBase: NewRef[AnimationNodeSub2](reference)}
+}
+
+// NewRefAnimationNodeSub2GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeSub2GDExtensionReturnOwner(reference AnimationNodeSub2) RefAnimationNodeSub2 {
+	return &RefAnimationNodeSub2Impl{RefBase: NewRefTransfer[AnimationNodeSub2](reference)}
 }
 
 var _ RefAnimationNodeSync = &RefAnimationNodeSyncImpl{}
@@ -468,8 +744,20 @@ func NewRefAnimationNodeSyncAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeSync](reference.(AnimationNodeSync))
 }
 
+// NewRefAnimationNodeSyncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeSyncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeSyncGDExtensionIternalConstructor(reference AnimationNodeSync) RefAnimationNodeSync {
 	return &RefAnimationNodeSyncImpl{RefBase: NewRef[AnimationNodeSync](reference)}
+}
+
+// NewRefAnimationNodeSyncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeSyncGDExtensionReturnOwner(reference AnimationNodeSync) RefAnimationNodeSync {
+	return &RefAnimationNodeSyncImpl{RefBase: NewRefTransfer[AnimationNodeSync](reference)}
 }
 
 var _ RefAnimationNodeTimeScale = &RefAnimationNodeTimeScaleImpl{}
@@ -487,8 +775,20 @@ func NewRefAnimationNodeTimeScaleAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeTimeScale](reference.(AnimationNodeTimeScale))
 }
 
+// NewRefAnimationNodeTimeScaleGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeTimeScaleWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeTimeScaleGDExtensionIternalConstructor(reference AnimationNodeTimeScale) RefAnimationNodeTimeScale {
 	return &RefAnimationNodeTimeScaleImpl{RefBase: NewRef[AnimationNodeTimeScale](reference)}
+}
+
+// NewRefAnimationNodeTimeScaleGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeTimeScaleGDExtensionReturnOwner(reference AnimationNodeTimeScale) RefAnimationNodeTimeScale {
+	return &RefAnimationNodeTimeScaleImpl{RefBase: NewRefTransfer[AnimationNodeTimeScale](reference)}
 }
 
 var _ RefAnimationNodeTimeSeek = &RefAnimationNodeTimeSeekImpl{}
@@ -506,8 +806,20 @@ func NewRefAnimationNodeTimeSeekAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeTimeSeek](reference.(AnimationNodeTimeSeek))
 }
 
+// NewRefAnimationNodeTimeSeekGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeTimeSeekWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeTimeSeekGDExtensionIternalConstructor(reference AnimationNodeTimeSeek) RefAnimationNodeTimeSeek {
 	return &RefAnimationNodeTimeSeekImpl{RefBase: NewRef[AnimationNodeTimeSeek](reference)}
+}
+
+// NewRefAnimationNodeTimeSeekGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeTimeSeekGDExtensionReturnOwner(reference AnimationNodeTimeSeek) RefAnimationNodeTimeSeek {
+	return &RefAnimationNodeTimeSeekImpl{RefBase: NewRefTransfer[AnimationNodeTimeSeek](reference)}
 }
 
 var _ RefAnimationNodeTransition = &RefAnimationNodeTransitionImpl{}
@@ -525,8 +837,20 @@ func NewRefAnimationNodeTransitionAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeTransition](reference.(AnimationNodeTransition))
 }
 
+// NewRefAnimationNodeTransitionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationNodeTransitionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationNodeTransitionGDExtensionIternalConstructor(reference AnimationNodeTransition) RefAnimationNodeTransition {
 	return &RefAnimationNodeTransitionImpl{RefBase: NewRef[AnimationNodeTransition](reference)}
+}
+
+// NewRefAnimationNodeTransitionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationNodeTransitionGDExtensionReturnOwner(reference AnimationNodeTransition) RefAnimationNodeTransition {
+	return &RefAnimationNodeTransitionImpl{RefBase: NewRefTransfer[AnimationNodeTransition](reference)}
 }
 
 var _ RefAnimationRootNode = &RefAnimationRootNodeImpl{}
@@ -544,8 +868,20 @@ func NewRefAnimationRootNodeAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationRootNode](reference.(AnimationRootNode))
 }
 
+// NewRefAnimationRootNodeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAnimationRootNodeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAnimationRootNodeGDExtensionIternalConstructor(reference AnimationRootNode) RefAnimationRootNode {
 	return &RefAnimationRootNodeImpl{RefBase: NewRef[AnimationRootNode](reference)}
+}
+
+// NewRefAnimationRootNodeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAnimationRootNodeGDExtensionReturnOwner(reference AnimationRootNode) RefAnimationRootNode {
+	return &RefAnimationRootNodeImpl{RefBase: NewRefTransfer[AnimationRootNode](reference)}
 }
 
 var _ RefArrayMesh = &RefArrayMeshImpl{}
@@ -563,8 +899,20 @@ func NewRefArrayMeshAsRef(reference RefCounted) Ref {
 	return NewRef[ArrayMesh](reference.(ArrayMesh))
 }
 
+// NewRefArrayMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewArrayMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefArrayMeshGDExtensionIternalConstructor(reference ArrayMesh) RefArrayMesh {
 	return &RefArrayMeshImpl{RefBase: NewRef[ArrayMesh](reference)}
+}
+
+// NewRefArrayMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefArrayMeshGDExtensionReturnOwner(reference ArrayMesh) RefArrayMesh {
+	return &RefArrayMeshImpl{RefBase: NewRefTransfer[ArrayMesh](reference)}
 }
 
 var _ RefArrayOccluder3D = &RefArrayOccluder3DImpl{}
@@ -582,8 +930,20 @@ func NewRefArrayOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[ArrayOccluder3D](reference.(ArrayOccluder3D))
 }
 
+// NewRefArrayOccluder3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewArrayOccluder3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefArrayOccluder3DGDExtensionIternalConstructor(reference ArrayOccluder3D) RefArrayOccluder3D {
 	return &RefArrayOccluder3DImpl{RefBase: NewRef[ArrayOccluder3D](reference)}
+}
+
+// NewRefArrayOccluder3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefArrayOccluder3DGDExtensionReturnOwner(reference ArrayOccluder3D) RefArrayOccluder3D {
+	return &RefArrayOccluder3DImpl{RefBase: NewRefTransfer[ArrayOccluder3D](reference)}
 }
 
 var _ RefAtlasTexture = &RefAtlasTextureImpl{}
@@ -601,8 +961,20 @@ func NewRefAtlasTextureAsRef(reference RefCounted) Ref {
 	return NewRef[AtlasTexture](reference.(AtlasTexture))
 }
 
+// NewRefAtlasTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAtlasTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAtlasTextureGDExtensionIternalConstructor(reference AtlasTexture) RefAtlasTexture {
 	return &RefAtlasTextureImpl{RefBase: NewRef[AtlasTexture](reference)}
+}
+
+// NewRefAtlasTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAtlasTextureGDExtensionReturnOwner(reference AtlasTexture) RefAtlasTexture {
+	return &RefAtlasTextureImpl{RefBase: NewRefTransfer[AtlasTexture](reference)}
 }
 
 var _ RefAudioBusLayout = &RefAudioBusLayoutImpl{}
@@ -620,8 +992,20 @@ func NewRefAudioBusLayoutAsRef(reference RefCounted) Ref {
 	return NewRef[AudioBusLayout](reference.(AudioBusLayout))
 }
 
+// NewRefAudioBusLayoutGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioBusLayoutWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioBusLayoutGDExtensionIternalConstructor(reference AudioBusLayout) RefAudioBusLayout {
 	return &RefAudioBusLayoutImpl{RefBase: NewRef[AudioBusLayout](reference)}
+}
+
+// NewRefAudioBusLayoutGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioBusLayoutGDExtensionReturnOwner(reference AudioBusLayout) RefAudioBusLayout {
+	return &RefAudioBusLayoutImpl{RefBase: NewRefTransfer[AudioBusLayout](reference)}
 }
 
 var _ RefAudioEffect = &RefAudioEffectImpl{}
@@ -639,8 +1023,20 @@ func NewRefAudioEffectAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffect](reference.(AudioEffect))
 }
 
+// NewRefAudioEffectGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectGDExtensionIternalConstructor(reference AudioEffect) RefAudioEffect {
 	return &RefAudioEffectImpl{RefBase: NewRef[AudioEffect](reference)}
+}
+
+// NewRefAudioEffectGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectGDExtensionReturnOwner(reference AudioEffect) RefAudioEffect {
+	return &RefAudioEffectImpl{RefBase: NewRefTransfer[AudioEffect](reference)}
 }
 
 var _ RefAudioEffectAmplify = &RefAudioEffectAmplifyImpl{}
@@ -658,8 +1054,20 @@ func NewRefAudioEffectAmplifyAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectAmplify](reference.(AudioEffectAmplify))
 }
 
+// NewRefAudioEffectAmplifyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectAmplifyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectAmplifyGDExtensionIternalConstructor(reference AudioEffectAmplify) RefAudioEffectAmplify {
 	return &RefAudioEffectAmplifyImpl{RefBase: NewRef[AudioEffectAmplify](reference)}
+}
+
+// NewRefAudioEffectAmplifyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectAmplifyGDExtensionReturnOwner(reference AudioEffectAmplify) RefAudioEffectAmplify {
+	return &RefAudioEffectAmplifyImpl{RefBase: NewRefTransfer[AudioEffectAmplify](reference)}
 }
 
 var _ RefAudioEffectBandLimitFilter = &RefAudioEffectBandLimitFilterImpl{}
@@ -677,8 +1085,20 @@ func NewRefAudioEffectBandLimitFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectBandLimitFilter](reference.(AudioEffectBandLimitFilter))
 }
 
+// NewRefAudioEffectBandLimitFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectBandLimitFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectBandLimitFilterGDExtensionIternalConstructor(reference AudioEffectBandLimitFilter) RefAudioEffectBandLimitFilter {
 	return &RefAudioEffectBandLimitFilterImpl{RefBase: NewRef[AudioEffectBandLimitFilter](reference)}
+}
+
+// NewRefAudioEffectBandLimitFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectBandLimitFilterGDExtensionReturnOwner(reference AudioEffectBandLimitFilter) RefAudioEffectBandLimitFilter {
+	return &RefAudioEffectBandLimitFilterImpl{RefBase: NewRefTransfer[AudioEffectBandLimitFilter](reference)}
 }
 
 var _ RefAudioEffectBandPassFilter = &RefAudioEffectBandPassFilterImpl{}
@@ -696,8 +1116,20 @@ func NewRefAudioEffectBandPassFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectBandPassFilter](reference.(AudioEffectBandPassFilter))
 }
 
+// NewRefAudioEffectBandPassFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectBandPassFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectBandPassFilterGDExtensionIternalConstructor(reference AudioEffectBandPassFilter) RefAudioEffectBandPassFilter {
 	return &RefAudioEffectBandPassFilterImpl{RefBase: NewRef[AudioEffectBandPassFilter](reference)}
+}
+
+// NewRefAudioEffectBandPassFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectBandPassFilterGDExtensionReturnOwner(reference AudioEffectBandPassFilter) RefAudioEffectBandPassFilter {
+	return &RefAudioEffectBandPassFilterImpl{RefBase: NewRefTransfer[AudioEffectBandPassFilter](reference)}
 }
 
 var _ RefAudioEffectCapture = &RefAudioEffectCaptureImpl{}
@@ -715,8 +1147,20 @@ func NewRefAudioEffectCaptureAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectCapture](reference.(AudioEffectCapture))
 }
 
+// NewRefAudioEffectCaptureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectCaptureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectCaptureGDExtensionIternalConstructor(reference AudioEffectCapture) RefAudioEffectCapture {
 	return &RefAudioEffectCaptureImpl{RefBase: NewRef[AudioEffectCapture](reference)}
+}
+
+// NewRefAudioEffectCaptureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectCaptureGDExtensionReturnOwner(reference AudioEffectCapture) RefAudioEffectCapture {
+	return &RefAudioEffectCaptureImpl{RefBase: NewRefTransfer[AudioEffectCapture](reference)}
 }
 
 var _ RefAudioEffectChorus = &RefAudioEffectChorusImpl{}
@@ -734,8 +1178,20 @@ func NewRefAudioEffectChorusAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectChorus](reference.(AudioEffectChorus))
 }
 
+// NewRefAudioEffectChorusGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectChorusWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectChorusGDExtensionIternalConstructor(reference AudioEffectChorus) RefAudioEffectChorus {
 	return &RefAudioEffectChorusImpl{RefBase: NewRef[AudioEffectChorus](reference)}
+}
+
+// NewRefAudioEffectChorusGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectChorusGDExtensionReturnOwner(reference AudioEffectChorus) RefAudioEffectChorus {
+	return &RefAudioEffectChorusImpl{RefBase: NewRefTransfer[AudioEffectChorus](reference)}
 }
 
 var _ RefAudioEffectCompressor = &RefAudioEffectCompressorImpl{}
@@ -753,8 +1209,20 @@ func NewRefAudioEffectCompressorAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectCompressor](reference.(AudioEffectCompressor))
 }
 
+// NewRefAudioEffectCompressorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectCompressorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectCompressorGDExtensionIternalConstructor(reference AudioEffectCompressor) RefAudioEffectCompressor {
 	return &RefAudioEffectCompressorImpl{RefBase: NewRef[AudioEffectCompressor](reference)}
+}
+
+// NewRefAudioEffectCompressorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectCompressorGDExtensionReturnOwner(reference AudioEffectCompressor) RefAudioEffectCompressor {
+	return &RefAudioEffectCompressorImpl{RefBase: NewRefTransfer[AudioEffectCompressor](reference)}
 }
 
 var _ RefAudioEffectDelay = &RefAudioEffectDelayImpl{}
@@ -772,8 +1240,20 @@ func NewRefAudioEffectDelayAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectDelay](reference.(AudioEffectDelay))
 }
 
+// NewRefAudioEffectDelayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectDelayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectDelayGDExtensionIternalConstructor(reference AudioEffectDelay) RefAudioEffectDelay {
 	return &RefAudioEffectDelayImpl{RefBase: NewRef[AudioEffectDelay](reference)}
+}
+
+// NewRefAudioEffectDelayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectDelayGDExtensionReturnOwner(reference AudioEffectDelay) RefAudioEffectDelay {
+	return &RefAudioEffectDelayImpl{RefBase: NewRefTransfer[AudioEffectDelay](reference)}
 }
 
 var _ RefAudioEffectDistortion = &RefAudioEffectDistortionImpl{}
@@ -791,8 +1271,20 @@ func NewRefAudioEffectDistortionAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectDistortion](reference.(AudioEffectDistortion))
 }
 
+// NewRefAudioEffectDistortionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectDistortionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectDistortionGDExtensionIternalConstructor(reference AudioEffectDistortion) RefAudioEffectDistortion {
 	return &RefAudioEffectDistortionImpl{RefBase: NewRef[AudioEffectDistortion](reference)}
+}
+
+// NewRefAudioEffectDistortionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectDistortionGDExtensionReturnOwner(reference AudioEffectDistortion) RefAudioEffectDistortion {
+	return &RefAudioEffectDistortionImpl{RefBase: NewRefTransfer[AudioEffectDistortion](reference)}
 }
 
 var _ RefAudioEffectEQ = &RefAudioEffectEQImpl{}
@@ -810,8 +1302,20 @@ func NewRefAudioEffectEQAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ](reference.(AudioEffectEQ))
 }
 
+// NewRefAudioEffectEQGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectEQWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectEQGDExtensionIternalConstructor(reference AudioEffectEQ) RefAudioEffectEQ {
 	return &RefAudioEffectEQImpl{RefBase: NewRef[AudioEffectEQ](reference)}
+}
+
+// NewRefAudioEffectEQGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectEQGDExtensionReturnOwner(reference AudioEffectEQ) RefAudioEffectEQ {
+	return &RefAudioEffectEQImpl{RefBase: NewRefTransfer[AudioEffectEQ](reference)}
 }
 
 var _ RefAudioEffectEQ10 = &RefAudioEffectEQ10Impl{}
@@ -829,8 +1333,20 @@ func NewRefAudioEffectEQ10AsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ10](reference.(AudioEffectEQ10))
 }
 
+// NewRefAudioEffectEQ10GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectEQ10WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectEQ10GDExtensionIternalConstructor(reference AudioEffectEQ10) RefAudioEffectEQ10 {
 	return &RefAudioEffectEQ10Impl{RefBase: NewRef[AudioEffectEQ10](reference)}
+}
+
+// NewRefAudioEffectEQ10GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectEQ10GDExtensionReturnOwner(reference AudioEffectEQ10) RefAudioEffectEQ10 {
+	return &RefAudioEffectEQ10Impl{RefBase: NewRefTransfer[AudioEffectEQ10](reference)}
 }
 
 var _ RefAudioEffectEQ21 = &RefAudioEffectEQ21Impl{}
@@ -848,8 +1364,20 @@ func NewRefAudioEffectEQ21AsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ21](reference.(AudioEffectEQ21))
 }
 
+// NewRefAudioEffectEQ21GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectEQ21WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectEQ21GDExtensionIternalConstructor(reference AudioEffectEQ21) RefAudioEffectEQ21 {
 	return &RefAudioEffectEQ21Impl{RefBase: NewRef[AudioEffectEQ21](reference)}
+}
+
+// NewRefAudioEffectEQ21GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectEQ21GDExtensionReturnOwner(reference AudioEffectEQ21) RefAudioEffectEQ21 {
+	return &RefAudioEffectEQ21Impl{RefBase: NewRefTransfer[AudioEffectEQ21](reference)}
 }
 
 var _ RefAudioEffectEQ6 = &RefAudioEffectEQ6Impl{}
@@ -867,8 +1395,20 @@ func NewRefAudioEffectEQ6AsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ6](reference.(AudioEffectEQ6))
 }
 
+// NewRefAudioEffectEQ6GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectEQ6WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectEQ6GDExtensionIternalConstructor(reference AudioEffectEQ6) RefAudioEffectEQ6 {
 	return &RefAudioEffectEQ6Impl{RefBase: NewRef[AudioEffectEQ6](reference)}
+}
+
+// NewRefAudioEffectEQ6GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectEQ6GDExtensionReturnOwner(reference AudioEffectEQ6) RefAudioEffectEQ6 {
+	return &RefAudioEffectEQ6Impl{RefBase: NewRefTransfer[AudioEffectEQ6](reference)}
 }
 
 var _ RefAudioEffectFilter = &RefAudioEffectFilterImpl{}
@@ -886,8 +1426,20 @@ func NewRefAudioEffectFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectFilter](reference.(AudioEffectFilter))
 }
 
+// NewRefAudioEffectFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectFilterGDExtensionIternalConstructor(reference AudioEffectFilter) RefAudioEffectFilter {
 	return &RefAudioEffectFilterImpl{RefBase: NewRef[AudioEffectFilter](reference)}
+}
+
+// NewRefAudioEffectFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectFilterGDExtensionReturnOwner(reference AudioEffectFilter) RefAudioEffectFilter {
+	return &RefAudioEffectFilterImpl{RefBase: NewRefTransfer[AudioEffectFilter](reference)}
 }
 
 var _ RefAudioEffectHardLimiter = &RefAudioEffectHardLimiterImpl{}
@@ -905,8 +1457,20 @@ func NewRefAudioEffectHardLimiterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectHardLimiter](reference.(AudioEffectHardLimiter))
 }
 
+// NewRefAudioEffectHardLimiterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectHardLimiterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectHardLimiterGDExtensionIternalConstructor(reference AudioEffectHardLimiter) RefAudioEffectHardLimiter {
 	return &RefAudioEffectHardLimiterImpl{RefBase: NewRef[AudioEffectHardLimiter](reference)}
+}
+
+// NewRefAudioEffectHardLimiterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectHardLimiterGDExtensionReturnOwner(reference AudioEffectHardLimiter) RefAudioEffectHardLimiter {
+	return &RefAudioEffectHardLimiterImpl{RefBase: NewRefTransfer[AudioEffectHardLimiter](reference)}
 }
 
 var _ RefAudioEffectHighPassFilter = &RefAudioEffectHighPassFilterImpl{}
@@ -924,8 +1488,20 @@ func NewRefAudioEffectHighPassFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectHighPassFilter](reference.(AudioEffectHighPassFilter))
 }
 
+// NewRefAudioEffectHighPassFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectHighPassFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectHighPassFilterGDExtensionIternalConstructor(reference AudioEffectHighPassFilter) RefAudioEffectHighPassFilter {
 	return &RefAudioEffectHighPassFilterImpl{RefBase: NewRef[AudioEffectHighPassFilter](reference)}
+}
+
+// NewRefAudioEffectHighPassFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectHighPassFilterGDExtensionReturnOwner(reference AudioEffectHighPassFilter) RefAudioEffectHighPassFilter {
+	return &RefAudioEffectHighPassFilterImpl{RefBase: NewRefTransfer[AudioEffectHighPassFilter](reference)}
 }
 
 var _ RefAudioEffectHighShelfFilter = &RefAudioEffectHighShelfFilterImpl{}
@@ -943,8 +1519,20 @@ func NewRefAudioEffectHighShelfFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectHighShelfFilter](reference.(AudioEffectHighShelfFilter))
 }
 
+// NewRefAudioEffectHighShelfFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectHighShelfFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectHighShelfFilterGDExtensionIternalConstructor(reference AudioEffectHighShelfFilter) RefAudioEffectHighShelfFilter {
 	return &RefAudioEffectHighShelfFilterImpl{RefBase: NewRef[AudioEffectHighShelfFilter](reference)}
+}
+
+// NewRefAudioEffectHighShelfFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectHighShelfFilterGDExtensionReturnOwner(reference AudioEffectHighShelfFilter) RefAudioEffectHighShelfFilter {
+	return &RefAudioEffectHighShelfFilterImpl{RefBase: NewRefTransfer[AudioEffectHighShelfFilter](reference)}
 }
 
 var _ RefAudioEffectInstance = &RefAudioEffectInstanceImpl{}
@@ -962,8 +1550,20 @@ func NewRefAudioEffectInstanceAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectInstance](reference.(AudioEffectInstance))
 }
 
+// NewRefAudioEffectInstanceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectInstanceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectInstanceGDExtensionIternalConstructor(reference AudioEffectInstance) RefAudioEffectInstance {
 	return &RefAudioEffectInstanceImpl{RefBase: NewRef[AudioEffectInstance](reference)}
+}
+
+// NewRefAudioEffectInstanceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectInstanceGDExtensionReturnOwner(reference AudioEffectInstance) RefAudioEffectInstance {
+	return &RefAudioEffectInstanceImpl{RefBase: NewRefTransfer[AudioEffectInstance](reference)}
 }
 
 var _ RefAudioEffectLimiter = &RefAudioEffectLimiterImpl{}
@@ -981,8 +1581,20 @@ func NewRefAudioEffectLimiterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectLimiter](reference.(AudioEffectLimiter))
 }
 
+// NewRefAudioEffectLimiterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectLimiterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectLimiterGDExtensionIternalConstructor(reference AudioEffectLimiter) RefAudioEffectLimiter {
 	return &RefAudioEffectLimiterImpl{RefBase: NewRef[AudioEffectLimiter](reference)}
+}
+
+// NewRefAudioEffectLimiterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectLimiterGDExtensionReturnOwner(reference AudioEffectLimiter) RefAudioEffectLimiter {
+	return &RefAudioEffectLimiterImpl{RefBase: NewRefTransfer[AudioEffectLimiter](reference)}
 }
 
 var _ RefAudioEffectLowPassFilter = &RefAudioEffectLowPassFilterImpl{}
@@ -1000,8 +1612,20 @@ func NewRefAudioEffectLowPassFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectLowPassFilter](reference.(AudioEffectLowPassFilter))
 }
 
+// NewRefAudioEffectLowPassFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectLowPassFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectLowPassFilterGDExtensionIternalConstructor(reference AudioEffectLowPassFilter) RefAudioEffectLowPassFilter {
 	return &RefAudioEffectLowPassFilterImpl{RefBase: NewRef[AudioEffectLowPassFilter](reference)}
+}
+
+// NewRefAudioEffectLowPassFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectLowPassFilterGDExtensionReturnOwner(reference AudioEffectLowPassFilter) RefAudioEffectLowPassFilter {
+	return &RefAudioEffectLowPassFilterImpl{RefBase: NewRefTransfer[AudioEffectLowPassFilter](reference)}
 }
 
 var _ RefAudioEffectLowShelfFilter = &RefAudioEffectLowShelfFilterImpl{}
@@ -1019,8 +1643,20 @@ func NewRefAudioEffectLowShelfFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectLowShelfFilter](reference.(AudioEffectLowShelfFilter))
 }
 
+// NewRefAudioEffectLowShelfFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectLowShelfFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectLowShelfFilterGDExtensionIternalConstructor(reference AudioEffectLowShelfFilter) RefAudioEffectLowShelfFilter {
 	return &RefAudioEffectLowShelfFilterImpl{RefBase: NewRef[AudioEffectLowShelfFilter](reference)}
+}
+
+// NewRefAudioEffectLowShelfFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectLowShelfFilterGDExtensionReturnOwner(reference AudioEffectLowShelfFilter) RefAudioEffectLowShelfFilter {
+	return &RefAudioEffectLowShelfFilterImpl{RefBase: NewRefTransfer[AudioEffectLowShelfFilter](reference)}
 }
 
 var _ RefAudioEffectNotchFilter = &RefAudioEffectNotchFilterImpl{}
@@ -1038,8 +1674,20 @@ func NewRefAudioEffectNotchFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectNotchFilter](reference.(AudioEffectNotchFilter))
 }
 
+// NewRefAudioEffectNotchFilterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectNotchFilterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectNotchFilterGDExtensionIternalConstructor(reference AudioEffectNotchFilter) RefAudioEffectNotchFilter {
 	return &RefAudioEffectNotchFilterImpl{RefBase: NewRef[AudioEffectNotchFilter](reference)}
+}
+
+// NewRefAudioEffectNotchFilterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectNotchFilterGDExtensionReturnOwner(reference AudioEffectNotchFilter) RefAudioEffectNotchFilter {
+	return &RefAudioEffectNotchFilterImpl{RefBase: NewRefTransfer[AudioEffectNotchFilter](reference)}
 }
 
 var _ RefAudioEffectPanner = &RefAudioEffectPannerImpl{}
@@ -1057,8 +1705,20 @@ func NewRefAudioEffectPannerAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectPanner](reference.(AudioEffectPanner))
 }
 
+// NewRefAudioEffectPannerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectPannerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectPannerGDExtensionIternalConstructor(reference AudioEffectPanner) RefAudioEffectPanner {
 	return &RefAudioEffectPannerImpl{RefBase: NewRef[AudioEffectPanner](reference)}
+}
+
+// NewRefAudioEffectPannerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectPannerGDExtensionReturnOwner(reference AudioEffectPanner) RefAudioEffectPanner {
+	return &RefAudioEffectPannerImpl{RefBase: NewRefTransfer[AudioEffectPanner](reference)}
 }
 
 var _ RefAudioEffectPhaser = &RefAudioEffectPhaserImpl{}
@@ -1076,8 +1736,20 @@ func NewRefAudioEffectPhaserAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectPhaser](reference.(AudioEffectPhaser))
 }
 
+// NewRefAudioEffectPhaserGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectPhaserWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectPhaserGDExtensionIternalConstructor(reference AudioEffectPhaser) RefAudioEffectPhaser {
 	return &RefAudioEffectPhaserImpl{RefBase: NewRef[AudioEffectPhaser](reference)}
+}
+
+// NewRefAudioEffectPhaserGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectPhaserGDExtensionReturnOwner(reference AudioEffectPhaser) RefAudioEffectPhaser {
+	return &RefAudioEffectPhaserImpl{RefBase: NewRefTransfer[AudioEffectPhaser](reference)}
 }
 
 var _ RefAudioEffectPitchShift = &RefAudioEffectPitchShiftImpl{}
@@ -1095,8 +1767,20 @@ func NewRefAudioEffectPitchShiftAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectPitchShift](reference.(AudioEffectPitchShift))
 }
 
+// NewRefAudioEffectPitchShiftGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectPitchShiftWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectPitchShiftGDExtensionIternalConstructor(reference AudioEffectPitchShift) RefAudioEffectPitchShift {
 	return &RefAudioEffectPitchShiftImpl{RefBase: NewRef[AudioEffectPitchShift](reference)}
+}
+
+// NewRefAudioEffectPitchShiftGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectPitchShiftGDExtensionReturnOwner(reference AudioEffectPitchShift) RefAudioEffectPitchShift {
+	return &RefAudioEffectPitchShiftImpl{RefBase: NewRefTransfer[AudioEffectPitchShift](reference)}
 }
 
 var _ RefAudioEffectRecord = &RefAudioEffectRecordImpl{}
@@ -1114,8 +1798,20 @@ func NewRefAudioEffectRecordAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectRecord](reference.(AudioEffectRecord))
 }
 
+// NewRefAudioEffectRecordGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectRecordWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectRecordGDExtensionIternalConstructor(reference AudioEffectRecord) RefAudioEffectRecord {
 	return &RefAudioEffectRecordImpl{RefBase: NewRef[AudioEffectRecord](reference)}
+}
+
+// NewRefAudioEffectRecordGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectRecordGDExtensionReturnOwner(reference AudioEffectRecord) RefAudioEffectRecord {
+	return &RefAudioEffectRecordImpl{RefBase: NewRefTransfer[AudioEffectRecord](reference)}
 }
 
 var _ RefAudioEffectReverb = &RefAudioEffectReverbImpl{}
@@ -1133,8 +1829,20 @@ func NewRefAudioEffectReverbAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectReverb](reference.(AudioEffectReverb))
 }
 
+// NewRefAudioEffectReverbGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectReverbWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectReverbGDExtensionIternalConstructor(reference AudioEffectReverb) RefAudioEffectReverb {
 	return &RefAudioEffectReverbImpl{RefBase: NewRef[AudioEffectReverb](reference)}
+}
+
+// NewRefAudioEffectReverbGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectReverbGDExtensionReturnOwner(reference AudioEffectReverb) RefAudioEffectReverb {
+	return &RefAudioEffectReverbImpl{RefBase: NewRefTransfer[AudioEffectReverb](reference)}
 }
 
 var _ RefAudioEffectSpectrumAnalyzer = &RefAudioEffectSpectrumAnalyzerImpl{}
@@ -1152,8 +1860,20 @@ func NewRefAudioEffectSpectrumAnalyzerAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectSpectrumAnalyzer](reference.(AudioEffectSpectrumAnalyzer))
 }
 
+// NewRefAudioEffectSpectrumAnalyzerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectSpectrumAnalyzerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectSpectrumAnalyzerGDExtensionIternalConstructor(reference AudioEffectSpectrumAnalyzer) RefAudioEffectSpectrumAnalyzer {
 	return &RefAudioEffectSpectrumAnalyzerImpl{RefBase: NewRef[AudioEffectSpectrumAnalyzer](reference)}
+}
+
+// NewRefAudioEffectSpectrumAnalyzerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectSpectrumAnalyzerGDExtensionReturnOwner(reference AudioEffectSpectrumAnalyzer) RefAudioEffectSpectrumAnalyzer {
+	return &RefAudioEffectSpectrumAnalyzerImpl{RefBase: NewRefTransfer[AudioEffectSpectrumAnalyzer](reference)}
 }
 
 var _ RefAudioEffectSpectrumAnalyzerInstance = &RefAudioEffectSpectrumAnalyzerInstanceImpl{}
@@ -1171,8 +1891,20 @@ func NewRefAudioEffectSpectrumAnalyzerInstanceAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectSpectrumAnalyzerInstance](reference.(AudioEffectSpectrumAnalyzerInstance))
 }
 
+// NewRefAudioEffectSpectrumAnalyzerInstanceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectSpectrumAnalyzerInstanceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectSpectrumAnalyzerInstanceGDExtensionIternalConstructor(reference AudioEffectSpectrumAnalyzerInstance) RefAudioEffectSpectrumAnalyzerInstance {
 	return &RefAudioEffectSpectrumAnalyzerInstanceImpl{RefBase: NewRef[AudioEffectSpectrumAnalyzerInstance](reference)}
+}
+
+// NewRefAudioEffectSpectrumAnalyzerInstanceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectSpectrumAnalyzerInstanceGDExtensionReturnOwner(reference AudioEffectSpectrumAnalyzerInstance) RefAudioEffectSpectrumAnalyzerInstance {
+	return &RefAudioEffectSpectrumAnalyzerInstanceImpl{RefBase: NewRefTransfer[AudioEffectSpectrumAnalyzerInstance](reference)}
 }
 
 var _ RefAudioEffectStereoEnhance = &RefAudioEffectStereoEnhanceImpl{}
@@ -1190,8 +1922,20 @@ func NewRefAudioEffectStereoEnhanceAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectStereoEnhance](reference.(AudioEffectStereoEnhance))
 }
 
+// NewRefAudioEffectStereoEnhanceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioEffectStereoEnhanceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioEffectStereoEnhanceGDExtensionIternalConstructor(reference AudioEffectStereoEnhance) RefAudioEffectStereoEnhance {
 	return &RefAudioEffectStereoEnhanceImpl{RefBase: NewRef[AudioEffectStereoEnhance](reference)}
+}
+
+// NewRefAudioEffectStereoEnhanceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioEffectStereoEnhanceGDExtensionReturnOwner(reference AudioEffectStereoEnhance) RefAudioEffectStereoEnhance {
+	return &RefAudioEffectStereoEnhanceImpl{RefBase: NewRefTransfer[AudioEffectStereoEnhance](reference)}
 }
 
 var _ RefAudioSample = &RefAudioSampleImpl{}
@@ -1209,8 +1953,20 @@ func NewRefAudioSampleAsRef(reference RefCounted) Ref {
 	return NewRef[AudioSample](reference.(AudioSample))
 }
 
+// NewRefAudioSampleGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioSampleWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioSampleGDExtensionIternalConstructor(reference AudioSample) RefAudioSample {
 	return &RefAudioSampleImpl{RefBase: NewRef[AudioSample](reference)}
+}
+
+// NewRefAudioSampleGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioSampleGDExtensionReturnOwner(reference AudioSample) RefAudioSample {
+	return &RefAudioSampleImpl{RefBase: NewRefTransfer[AudioSample](reference)}
 }
 
 var _ RefAudioSamplePlayback = &RefAudioSamplePlaybackImpl{}
@@ -1228,8 +1984,20 @@ func NewRefAudioSamplePlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AudioSamplePlayback](reference.(AudioSamplePlayback))
 }
 
+// NewRefAudioSamplePlaybackGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioSamplePlaybackWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioSamplePlaybackGDExtensionIternalConstructor(reference AudioSamplePlayback) RefAudioSamplePlayback {
 	return &RefAudioSamplePlaybackImpl{RefBase: NewRef[AudioSamplePlayback](reference)}
+}
+
+// NewRefAudioSamplePlaybackGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioSamplePlaybackGDExtensionReturnOwner(reference AudioSamplePlayback) RefAudioSamplePlayback {
+	return &RefAudioSamplePlaybackImpl{RefBase: NewRefTransfer[AudioSamplePlayback](reference)}
 }
 
 var _ RefAudioStream = &RefAudioStreamImpl{}
@@ -1247,8 +2015,20 @@ func NewRefAudioStreamAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStream](reference.(AudioStream))
 }
 
+// NewRefAudioStreamGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamGDExtensionIternalConstructor(reference AudioStream) RefAudioStream {
 	return &RefAudioStreamImpl{RefBase: NewRef[AudioStream](reference)}
+}
+
+// NewRefAudioStreamGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamGDExtensionReturnOwner(reference AudioStream) RefAudioStream {
+	return &RefAudioStreamImpl{RefBase: NewRefTransfer[AudioStream](reference)}
 }
 
 var _ RefAudioStreamGenerator = &RefAudioStreamGeneratorImpl{}
@@ -1266,8 +2046,20 @@ func NewRefAudioStreamGeneratorAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamGenerator](reference.(AudioStreamGenerator))
 }
 
+// NewRefAudioStreamGeneratorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamGeneratorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamGeneratorGDExtensionIternalConstructor(reference AudioStreamGenerator) RefAudioStreamGenerator {
 	return &RefAudioStreamGeneratorImpl{RefBase: NewRef[AudioStreamGenerator](reference)}
+}
+
+// NewRefAudioStreamGeneratorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamGeneratorGDExtensionReturnOwner(reference AudioStreamGenerator) RefAudioStreamGenerator {
+	return &RefAudioStreamGeneratorImpl{RefBase: NewRefTransfer[AudioStreamGenerator](reference)}
 }
 
 var _ RefAudioStreamGeneratorPlayback = &RefAudioStreamGeneratorPlaybackImpl{}
@@ -1285,8 +2077,20 @@ func NewRefAudioStreamGeneratorPlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamGeneratorPlayback](reference.(AudioStreamGeneratorPlayback))
 }
 
+// NewRefAudioStreamGeneratorPlaybackGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamGeneratorPlaybackWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamGeneratorPlaybackGDExtensionIternalConstructor(reference AudioStreamGeneratorPlayback) RefAudioStreamGeneratorPlayback {
 	return &RefAudioStreamGeneratorPlaybackImpl{RefBase: NewRef[AudioStreamGeneratorPlayback](reference)}
+}
+
+// NewRefAudioStreamGeneratorPlaybackGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamGeneratorPlaybackGDExtensionReturnOwner(reference AudioStreamGeneratorPlayback) RefAudioStreamGeneratorPlayback {
+	return &RefAudioStreamGeneratorPlaybackImpl{RefBase: NewRefTransfer[AudioStreamGeneratorPlayback](reference)}
 }
 
 var _ RefAudioStreamInteractive = &RefAudioStreamInteractiveImpl{}
@@ -1304,8 +2108,20 @@ func NewRefAudioStreamInteractiveAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamInteractive](reference.(AudioStreamInteractive))
 }
 
+// NewRefAudioStreamInteractiveGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamInteractiveWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamInteractiveGDExtensionIternalConstructor(reference AudioStreamInteractive) RefAudioStreamInteractive {
 	return &RefAudioStreamInteractiveImpl{RefBase: NewRef[AudioStreamInteractive](reference)}
+}
+
+// NewRefAudioStreamInteractiveGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamInteractiveGDExtensionReturnOwner(reference AudioStreamInteractive) RefAudioStreamInteractive {
+	return &RefAudioStreamInteractiveImpl{RefBase: NewRefTransfer[AudioStreamInteractive](reference)}
 }
 
 var _ RefAudioStreamMP3 = &RefAudioStreamMP3Impl{}
@@ -1323,8 +2139,20 @@ func NewRefAudioStreamMP3AsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamMP3](reference.(AudioStreamMP3))
 }
 
+// NewRefAudioStreamMP3GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamMP3WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamMP3GDExtensionIternalConstructor(reference AudioStreamMP3) RefAudioStreamMP3 {
 	return &RefAudioStreamMP3Impl{RefBase: NewRef[AudioStreamMP3](reference)}
+}
+
+// NewRefAudioStreamMP3GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamMP3GDExtensionReturnOwner(reference AudioStreamMP3) RefAudioStreamMP3 {
+	return &RefAudioStreamMP3Impl{RefBase: NewRefTransfer[AudioStreamMP3](reference)}
 }
 
 var _ RefAudioStreamMicrophone = &RefAudioStreamMicrophoneImpl{}
@@ -1342,8 +2170,20 @@ func NewRefAudioStreamMicrophoneAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamMicrophone](reference.(AudioStreamMicrophone))
 }
 
+// NewRefAudioStreamMicrophoneGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamMicrophoneWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamMicrophoneGDExtensionIternalConstructor(reference AudioStreamMicrophone) RefAudioStreamMicrophone {
 	return &RefAudioStreamMicrophoneImpl{RefBase: NewRef[AudioStreamMicrophone](reference)}
+}
+
+// NewRefAudioStreamMicrophoneGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamMicrophoneGDExtensionReturnOwner(reference AudioStreamMicrophone) RefAudioStreamMicrophone {
+	return &RefAudioStreamMicrophoneImpl{RefBase: NewRefTransfer[AudioStreamMicrophone](reference)}
 }
 
 var _ RefAudioStreamOggVorbis = &RefAudioStreamOggVorbisImpl{}
@@ -1361,8 +2201,20 @@ func NewRefAudioStreamOggVorbisAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamOggVorbis](reference.(AudioStreamOggVorbis))
 }
 
+// NewRefAudioStreamOggVorbisGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamOggVorbisWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamOggVorbisGDExtensionIternalConstructor(reference AudioStreamOggVorbis) RefAudioStreamOggVorbis {
 	return &RefAudioStreamOggVorbisImpl{RefBase: NewRef[AudioStreamOggVorbis](reference)}
+}
+
+// NewRefAudioStreamOggVorbisGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamOggVorbisGDExtensionReturnOwner(reference AudioStreamOggVorbis) RefAudioStreamOggVorbis {
+	return &RefAudioStreamOggVorbisImpl{RefBase: NewRefTransfer[AudioStreamOggVorbis](reference)}
 }
 
 var _ RefAudioStreamPlayback = &RefAudioStreamPlaybackImpl{}
@@ -1380,8 +2232,20 @@ func NewRefAudioStreamPlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlayback](reference.(AudioStreamPlayback))
 }
 
+// NewRefAudioStreamPlaybackGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaybackWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaybackGDExtensionIternalConstructor(reference AudioStreamPlayback) RefAudioStreamPlayback {
 	return &RefAudioStreamPlaybackImpl{RefBase: NewRef[AudioStreamPlayback](reference)}
+}
+
+// NewRefAudioStreamPlaybackGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaybackGDExtensionReturnOwner(reference AudioStreamPlayback) RefAudioStreamPlayback {
+	return &RefAudioStreamPlaybackImpl{RefBase: NewRefTransfer[AudioStreamPlayback](reference)}
 }
 
 var _ RefAudioStreamPlaybackInteractive = &RefAudioStreamPlaybackInteractiveImpl{}
@@ -1399,8 +2263,20 @@ func NewRefAudioStreamPlaybackInteractiveAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackInteractive](reference.(AudioStreamPlaybackInteractive))
 }
 
+// NewRefAudioStreamPlaybackInteractiveGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaybackInteractiveWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaybackInteractiveGDExtensionIternalConstructor(reference AudioStreamPlaybackInteractive) RefAudioStreamPlaybackInteractive {
 	return &RefAudioStreamPlaybackInteractiveImpl{RefBase: NewRef[AudioStreamPlaybackInteractive](reference)}
+}
+
+// NewRefAudioStreamPlaybackInteractiveGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaybackInteractiveGDExtensionReturnOwner(reference AudioStreamPlaybackInteractive) RefAudioStreamPlaybackInteractive {
+	return &RefAudioStreamPlaybackInteractiveImpl{RefBase: NewRefTransfer[AudioStreamPlaybackInteractive](reference)}
 }
 
 var _ RefAudioStreamPlaybackOggVorbis = &RefAudioStreamPlaybackOggVorbisImpl{}
@@ -1418,8 +2294,20 @@ func NewRefAudioStreamPlaybackOggVorbisAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackOggVorbis](reference.(AudioStreamPlaybackOggVorbis))
 }
 
+// NewRefAudioStreamPlaybackOggVorbisGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaybackOggVorbisWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaybackOggVorbisGDExtensionIternalConstructor(reference AudioStreamPlaybackOggVorbis) RefAudioStreamPlaybackOggVorbis {
 	return &RefAudioStreamPlaybackOggVorbisImpl{RefBase: NewRef[AudioStreamPlaybackOggVorbis](reference)}
+}
+
+// NewRefAudioStreamPlaybackOggVorbisGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaybackOggVorbisGDExtensionReturnOwner(reference AudioStreamPlaybackOggVorbis) RefAudioStreamPlaybackOggVorbis {
+	return &RefAudioStreamPlaybackOggVorbisImpl{RefBase: NewRefTransfer[AudioStreamPlaybackOggVorbis](reference)}
 }
 
 var _ RefAudioStreamPlaybackPlaylist = &RefAudioStreamPlaybackPlaylistImpl{}
@@ -1437,8 +2325,20 @@ func NewRefAudioStreamPlaybackPlaylistAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackPlaylist](reference.(AudioStreamPlaybackPlaylist))
 }
 
+// NewRefAudioStreamPlaybackPlaylistGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaybackPlaylistWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaybackPlaylistGDExtensionIternalConstructor(reference AudioStreamPlaybackPlaylist) RefAudioStreamPlaybackPlaylist {
 	return &RefAudioStreamPlaybackPlaylistImpl{RefBase: NewRef[AudioStreamPlaybackPlaylist](reference)}
+}
+
+// NewRefAudioStreamPlaybackPlaylistGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaybackPlaylistGDExtensionReturnOwner(reference AudioStreamPlaybackPlaylist) RefAudioStreamPlaybackPlaylist {
+	return &RefAudioStreamPlaybackPlaylistImpl{RefBase: NewRefTransfer[AudioStreamPlaybackPlaylist](reference)}
 }
 
 var _ RefAudioStreamPlaybackPolyphonic = &RefAudioStreamPlaybackPolyphonicImpl{}
@@ -1456,8 +2356,20 @@ func NewRefAudioStreamPlaybackPolyphonicAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackPolyphonic](reference.(AudioStreamPlaybackPolyphonic))
 }
 
+// NewRefAudioStreamPlaybackPolyphonicGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaybackPolyphonicWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaybackPolyphonicGDExtensionIternalConstructor(reference AudioStreamPlaybackPolyphonic) RefAudioStreamPlaybackPolyphonic {
 	return &RefAudioStreamPlaybackPolyphonicImpl{RefBase: NewRef[AudioStreamPlaybackPolyphonic](reference)}
+}
+
+// NewRefAudioStreamPlaybackPolyphonicGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaybackPolyphonicGDExtensionReturnOwner(reference AudioStreamPlaybackPolyphonic) RefAudioStreamPlaybackPolyphonic {
+	return &RefAudioStreamPlaybackPolyphonicImpl{RefBase: NewRefTransfer[AudioStreamPlaybackPolyphonic](reference)}
 }
 
 var _ RefAudioStreamPlaybackResampled = &RefAudioStreamPlaybackResampledImpl{}
@@ -1475,8 +2387,20 @@ func NewRefAudioStreamPlaybackResampledAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackResampled](reference.(AudioStreamPlaybackResampled))
 }
 
+// NewRefAudioStreamPlaybackResampledGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaybackResampledWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaybackResampledGDExtensionIternalConstructor(reference AudioStreamPlaybackResampled) RefAudioStreamPlaybackResampled {
 	return &RefAudioStreamPlaybackResampledImpl{RefBase: NewRef[AudioStreamPlaybackResampled](reference)}
+}
+
+// NewRefAudioStreamPlaybackResampledGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaybackResampledGDExtensionReturnOwner(reference AudioStreamPlaybackResampled) RefAudioStreamPlaybackResampled {
+	return &RefAudioStreamPlaybackResampledImpl{RefBase: NewRefTransfer[AudioStreamPlaybackResampled](reference)}
 }
 
 var _ RefAudioStreamPlaybackSynchronized = &RefAudioStreamPlaybackSynchronizedImpl{}
@@ -1494,8 +2418,20 @@ func NewRefAudioStreamPlaybackSynchronizedAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackSynchronized](reference.(AudioStreamPlaybackSynchronized))
 }
 
+// NewRefAudioStreamPlaybackSynchronizedGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaybackSynchronizedWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaybackSynchronizedGDExtensionIternalConstructor(reference AudioStreamPlaybackSynchronized) RefAudioStreamPlaybackSynchronized {
 	return &RefAudioStreamPlaybackSynchronizedImpl{RefBase: NewRef[AudioStreamPlaybackSynchronized](reference)}
+}
+
+// NewRefAudioStreamPlaybackSynchronizedGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaybackSynchronizedGDExtensionReturnOwner(reference AudioStreamPlaybackSynchronized) RefAudioStreamPlaybackSynchronized {
+	return &RefAudioStreamPlaybackSynchronizedImpl{RefBase: NewRefTransfer[AudioStreamPlaybackSynchronized](reference)}
 }
 
 var _ RefAudioStreamPlaylist = &RefAudioStreamPlaylistImpl{}
@@ -1513,8 +2449,20 @@ func NewRefAudioStreamPlaylistAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaylist](reference.(AudioStreamPlaylist))
 }
 
+// NewRefAudioStreamPlaylistGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPlaylistWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPlaylistGDExtensionIternalConstructor(reference AudioStreamPlaylist) RefAudioStreamPlaylist {
 	return &RefAudioStreamPlaylistImpl{RefBase: NewRef[AudioStreamPlaylist](reference)}
+}
+
+// NewRefAudioStreamPlaylistGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPlaylistGDExtensionReturnOwner(reference AudioStreamPlaylist) RefAudioStreamPlaylist {
+	return &RefAudioStreamPlaylistImpl{RefBase: NewRefTransfer[AudioStreamPlaylist](reference)}
 }
 
 var _ RefAudioStreamPolyphonic = &RefAudioStreamPolyphonicImpl{}
@@ -1532,8 +2480,20 @@ func NewRefAudioStreamPolyphonicAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPolyphonic](reference.(AudioStreamPolyphonic))
 }
 
+// NewRefAudioStreamPolyphonicGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamPolyphonicWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamPolyphonicGDExtensionIternalConstructor(reference AudioStreamPolyphonic) RefAudioStreamPolyphonic {
 	return &RefAudioStreamPolyphonicImpl{RefBase: NewRef[AudioStreamPolyphonic](reference)}
+}
+
+// NewRefAudioStreamPolyphonicGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamPolyphonicGDExtensionReturnOwner(reference AudioStreamPolyphonic) RefAudioStreamPolyphonic {
+	return &RefAudioStreamPolyphonicImpl{RefBase: NewRefTransfer[AudioStreamPolyphonic](reference)}
 }
 
 var _ RefAudioStreamRandomizer = &RefAudioStreamRandomizerImpl{}
@@ -1551,8 +2511,20 @@ func NewRefAudioStreamRandomizerAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamRandomizer](reference.(AudioStreamRandomizer))
 }
 
+// NewRefAudioStreamRandomizerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamRandomizerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamRandomizerGDExtensionIternalConstructor(reference AudioStreamRandomizer) RefAudioStreamRandomizer {
 	return &RefAudioStreamRandomizerImpl{RefBase: NewRef[AudioStreamRandomizer](reference)}
+}
+
+// NewRefAudioStreamRandomizerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamRandomizerGDExtensionReturnOwner(reference AudioStreamRandomizer) RefAudioStreamRandomizer {
+	return &RefAudioStreamRandomizerImpl{RefBase: NewRefTransfer[AudioStreamRandomizer](reference)}
 }
 
 var _ RefAudioStreamSynchronized = &RefAudioStreamSynchronizedImpl{}
@@ -1570,8 +2542,20 @@ func NewRefAudioStreamSynchronizedAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamSynchronized](reference.(AudioStreamSynchronized))
 }
 
+// NewRefAudioStreamSynchronizedGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamSynchronizedWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamSynchronizedGDExtensionIternalConstructor(reference AudioStreamSynchronized) RefAudioStreamSynchronized {
 	return &RefAudioStreamSynchronizedImpl{RefBase: NewRef[AudioStreamSynchronized](reference)}
+}
+
+// NewRefAudioStreamSynchronizedGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamSynchronizedGDExtensionReturnOwner(reference AudioStreamSynchronized) RefAudioStreamSynchronized {
+	return &RefAudioStreamSynchronizedImpl{RefBase: NewRefTransfer[AudioStreamSynchronized](reference)}
 }
 
 var _ RefAudioStreamWAV = &RefAudioStreamWAVImpl{}
@@ -1589,8 +2573,20 @@ func NewRefAudioStreamWAVAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamWAV](reference.(AudioStreamWAV))
 }
 
+// NewRefAudioStreamWAVGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAudioStreamWAVWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAudioStreamWAVGDExtensionIternalConstructor(reference AudioStreamWAV) RefAudioStreamWAV {
 	return &RefAudioStreamWAVImpl{RefBase: NewRef[AudioStreamWAV](reference)}
+}
+
+// NewRefAudioStreamWAVGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAudioStreamWAVGDExtensionReturnOwner(reference AudioStreamWAV) RefAudioStreamWAV {
+	return &RefAudioStreamWAVImpl{RefBase: NewRefTransfer[AudioStreamWAV](reference)}
 }
 
 var _ RefAwaitTweener = &RefAwaitTweenerImpl{}
@@ -1608,8 +2604,20 @@ func NewRefAwaitTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[AwaitTweener](reference.(AwaitTweener))
 }
 
+// NewRefAwaitTweenerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewAwaitTweenerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefAwaitTweenerGDExtensionIternalConstructor(reference AwaitTweener) RefAwaitTweener {
 	return &RefAwaitTweenerImpl{RefBase: NewRef[AwaitTweener](reference)}
+}
+
+// NewRefAwaitTweenerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefAwaitTweenerGDExtensionReturnOwner(reference AwaitTweener) RefAwaitTweener {
+	return &RefAwaitTweenerImpl{RefBase: NewRefTransfer[AwaitTweener](reference)}
 }
 
 var _ RefBaseMaterial3D = &RefBaseMaterial3DImpl{}
@@ -1627,8 +2635,20 @@ func NewRefBaseMaterial3DAsRef(reference RefCounted) Ref {
 	return NewRef[BaseMaterial3D](reference.(BaseMaterial3D))
 }
 
+// NewRefBaseMaterial3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewBaseMaterial3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefBaseMaterial3DGDExtensionIternalConstructor(reference BaseMaterial3D) RefBaseMaterial3D {
 	return &RefBaseMaterial3DImpl{RefBase: NewRef[BaseMaterial3D](reference)}
+}
+
+// NewRefBaseMaterial3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefBaseMaterial3DGDExtensionReturnOwner(reference BaseMaterial3D) RefBaseMaterial3D {
+	return &RefBaseMaterial3DImpl{RefBase: NewRefTransfer[BaseMaterial3D](reference)}
 }
 
 var _ RefBitMap = &RefBitMapImpl{}
@@ -1646,8 +2666,20 @@ func NewRefBitMapAsRef(reference RefCounted) Ref {
 	return NewRef[BitMap](reference.(BitMap))
 }
 
+// NewRefBitMapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewBitMapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefBitMapGDExtensionIternalConstructor(reference BitMap) RefBitMap {
 	return &RefBitMapImpl{RefBase: NewRef[BitMap](reference)}
+}
+
+// NewRefBitMapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefBitMapGDExtensionReturnOwner(reference BitMap) RefBitMap {
+	return &RefBitMapImpl{RefBase: NewRefTransfer[BitMap](reference)}
 }
 
 var _ RefBlitMaterial = &RefBlitMaterialImpl{}
@@ -1665,8 +2697,20 @@ func NewRefBlitMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[BlitMaterial](reference.(BlitMaterial))
 }
 
+// NewRefBlitMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewBlitMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefBlitMaterialGDExtensionIternalConstructor(reference BlitMaterial) RefBlitMaterial {
 	return &RefBlitMaterialImpl{RefBase: NewRef[BlitMaterial](reference)}
+}
+
+// NewRefBlitMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefBlitMaterialGDExtensionReturnOwner(reference BlitMaterial) RefBlitMaterial {
+	return &RefBlitMaterialImpl{RefBase: NewRefTransfer[BlitMaterial](reference)}
 }
 
 var _ RefBoneMap = &RefBoneMapImpl{}
@@ -1684,8 +2728,20 @@ func NewRefBoneMapAsRef(reference RefCounted) Ref {
 	return NewRef[BoneMap](reference.(BoneMap))
 }
 
+// NewRefBoneMapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewBoneMapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefBoneMapGDExtensionIternalConstructor(reference BoneMap) RefBoneMap {
 	return &RefBoneMapImpl{RefBase: NewRef[BoneMap](reference)}
+}
+
+// NewRefBoneMapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefBoneMapGDExtensionReturnOwner(reference BoneMap) RefBoneMap {
+	return &RefBoneMapImpl{RefBase: NewRefTransfer[BoneMap](reference)}
 }
 
 var _ RefBoxMesh = &RefBoxMeshImpl{}
@@ -1703,8 +2759,20 @@ func NewRefBoxMeshAsRef(reference RefCounted) Ref {
 	return NewRef[BoxMesh](reference.(BoxMesh))
 }
 
+// NewRefBoxMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewBoxMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefBoxMeshGDExtensionIternalConstructor(reference BoxMesh) RefBoxMesh {
 	return &RefBoxMeshImpl{RefBase: NewRef[BoxMesh](reference)}
+}
+
+// NewRefBoxMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefBoxMeshGDExtensionReturnOwner(reference BoxMesh) RefBoxMesh {
+	return &RefBoxMeshImpl{RefBase: NewRefTransfer[BoxMesh](reference)}
 }
 
 var _ RefBoxOccluder3D = &RefBoxOccluder3DImpl{}
@@ -1722,8 +2790,20 @@ func NewRefBoxOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[BoxOccluder3D](reference.(BoxOccluder3D))
 }
 
+// NewRefBoxOccluder3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewBoxOccluder3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefBoxOccluder3DGDExtensionIternalConstructor(reference BoxOccluder3D) RefBoxOccluder3D {
 	return &RefBoxOccluder3DImpl{RefBase: NewRef[BoxOccluder3D](reference)}
+}
+
+// NewRefBoxOccluder3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefBoxOccluder3DGDExtensionReturnOwner(reference BoxOccluder3D) RefBoxOccluder3D {
+	return &RefBoxOccluder3DImpl{RefBase: NewRefTransfer[BoxOccluder3D](reference)}
 }
 
 var _ RefBoxShape3D = &RefBoxShape3DImpl{}
@@ -1741,8 +2821,20 @@ func NewRefBoxShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[BoxShape3D](reference.(BoxShape3D))
 }
 
+// NewRefBoxShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewBoxShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefBoxShape3DGDExtensionIternalConstructor(reference BoxShape3D) RefBoxShape3D {
 	return &RefBoxShape3DImpl{RefBase: NewRef[BoxShape3D](reference)}
+}
+
+// NewRefBoxShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefBoxShape3DGDExtensionReturnOwner(reference BoxShape3D) RefBoxShape3D {
+	return &RefBoxShape3DImpl{RefBase: NewRefTransfer[BoxShape3D](reference)}
 }
 
 var _ RefButtonGroup = &RefButtonGroupImpl{}
@@ -1760,8 +2852,20 @@ func NewRefButtonGroupAsRef(reference RefCounted) Ref {
 	return NewRef[ButtonGroup](reference.(ButtonGroup))
 }
 
+// NewRefButtonGroupGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewButtonGroupWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefButtonGroupGDExtensionIternalConstructor(reference ButtonGroup) RefButtonGroup {
 	return &RefButtonGroupImpl{RefBase: NewRef[ButtonGroup](reference)}
+}
+
+// NewRefButtonGroupGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefButtonGroupGDExtensionReturnOwner(reference ButtonGroup) RefButtonGroup {
+	return &RefButtonGroupImpl{RefBase: NewRefTransfer[ButtonGroup](reference)}
 }
 
 var _ RefCallbackTweener = &RefCallbackTweenerImpl{}
@@ -1779,8 +2883,20 @@ func NewRefCallbackTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[CallbackTweener](reference.(CallbackTweener))
 }
 
+// NewRefCallbackTweenerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCallbackTweenerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCallbackTweenerGDExtensionIternalConstructor(reference CallbackTweener) RefCallbackTweener {
 	return &RefCallbackTweenerImpl{RefBase: NewRef[CallbackTweener](reference)}
+}
+
+// NewRefCallbackTweenerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCallbackTweenerGDExtensionReturnOwner(reference CallbackTweener) RefCallbackTweener {
+	return &RefCallbackTweenerImpl{RefBase: NewRefTransfer[CallbackTweener](reference)}
 }
 
 var _ RefCameraAttributes = &RefCameraAttributesImpl{}
@@ -1798,8 +2914,20 @@ func NewRefCameraAttributesAsRef(reference RefCounted) Ref {
 	return NewRef[CameraAttributes](reference.(CameraAttributes))
 }
 
+// NewRefCameraAttributesGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCameraAttributesWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCameraAttributesGDExtensionIternalConstructor(reference CameraAttributes) RefCameraAttributes {
 	return &RefCameraAttributesImpl{RefBase: NewRef[CameraAttributes](reference)}
+}
+
+// NewRefCameraAttributesGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCameraAttributesGDExtensionReturnOwner(reference CameraAttributes) RefCameraAttributes {
+	return &RefCameraAttributesImpl{RefBase: NewRefTransfer[CameraAttributes](reference)}
 }
 
 var _ RefCameraAttributesPhysical = &RefCameraAttributesPhysicalImpl{}
@@ -1817,8 +2945,20 @@ func NewRefCameraAttributesPhysicalAsRef(reference RefCounted) Ref {
 	return NewRef[CameraAttributesPhysical](reference.(CameraAttributesPhysical))
 }
 
+// NewRefCameraAttributesPhysicalGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCameraAttributesPhysicalWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCameraAttributesPhysicalGDExtensionIternalConstructor(reference CameraAttributesPhysical) RefCameraAttributesPhysical {
 	return &RefCameraAttributesPhysicalImpl{RefBase: NewRef[CameraAttributesPhysical](reference)}
+}
+
+// NewRefCameraAttributesPhysicalGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCameraAttributesPhysicalGDExtensionReturnOwner(reference CameraAttributesPhysical) RefCameraAttributesPhysical {
+	return &RefCameraAttributesPhysicalImpl{RefBase: NewRefTransfer[CameraAttributesPhysical](reference)}
 }
 
 var _ RefCameraAttributesPractical = &RefCameraAttributesPracticalImpl{}
@@ -1836,8 +2976,20 @@ func NewRefCameraAttributesPracticalAsRef(reference RefCounted) Ref {
 	return NewRef[CameraAttributesPractical](reference.(CameraAttributesPractical))
 }
 
+// NewRefCameraAttributesPracticalGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCameraAttributesPracticalWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCameraAttributesPracticalGDExtensionIternalConstructor(reference CameraAttributesPractical) RefCameraAttributesPractical {
 	return &RefCameraAttributesPracticalImpl{RefBase: NewRef[CameraAttributesPractical](reference)}
+}
+
+// NewRefCameraAttributesPracticalGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCameraAttributesPracticalGDExtensionReturnOwner(reference CameraAttributesPractical) RefCameraAttributesPractical {
+	return &RefCameraAttributesPracticalImpl{RefBase: NewRefTransfer[CameraAttributesPractical](reference)}
 }
 
 var _ RefCameraFeed = &RefCameraFeedImpl{}
@@ -1855,8 +3007,20 @@ func NewRefCameraFeedAsRef(reference RefCounted) Ref {
 	return NewRef[CameraFeed](reference.(CameraFeed))
 }
 
+// NewRefCameraFeedGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCameraFeedWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCameraFeedGDExtensionIternalConstructor(reference CameraFeed) RefCameraFeed {
 	return &RefCameraFeedImpl{RefBase: NewRef[CameraFeed](reference)}
+}
+
+// NewRefCameraFeedGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCameraFeedGDExtensionReturnOwner(reference CameraFeed) RefCameraFeed {
+	return &RefCameraFeedImpl{RefBase: NewRefTransfer[CameraFeed](reference)}
 }
 
 var _ RefCameraTexture = &RefCameraTextureImpl{}
@@ -1874,8 +3038,20 @@ func NewRefCameraTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CameraTexture](reference.(CameraTexture))
 }
 
+// NewRefCameraTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCameraTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCameraTextureGDExtensionIternalConstructor(reference CameraTexture) RefCameraTexture {
 	return &RefCameraTextureImpl{RefBase: NewRef[CameraTexture](reference)}
+}
+
+// NewRefCameraTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCameraTextureGDExtensionReturnOwner(reference CameraTexture) RefCameraTexture {
+	return &RefCameraTextureImpl{RefBase: NewRefTransfer[CameraTexture](reference)}
 }
 
 var _ RefCanvasItemMaterial = &RefCanvasItemMaterialImpl{}
@@ -1893,8 +3069,20 @@ func NewRefCanvasItemMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[CanvasItemMaterial](reference.(CanvasItemMaterial))
 }
 
+// NewRefCanvasItemMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCanvasItemMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCanvasItemMaterialGDExtensionIternalConstructor(reference CanvasItemMaterial) RefCanvasItemMaterial {
 	return &RefCanvasItemMaterialImpl{RefBase: NewRef[CanvasItemMaterial](reference)}
+}
+
+// NewRefCanvasItemMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCanvasItemMaterialGDExtensionReturnOwner(reference CanvasItemMaterial) RefCanvasItemMaterial {
+	return &RefCanvasItemMaterialImpl{RefBase: NewRefTransfer[CanvasItemMaterial](reference)}
 }
 
 var _ RefCanvasTexture = &RefCanvasTextureImpl{}
@@ -1912,8 +3100,20 @@ func NewRefCanvasTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CanvasTexture](reference.(CanvasTexture))
 }
 
+// NewRefCanvasTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCanvasTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCanvasTextureGDExtensionIternalConstructor(reference CanvasTexture) RefCanvasTexture {
 	return &RefCanvasTextureImpl{RefBase: NewRef[CanvasTexture](reference)}
+}
+
+// NewRefCanvasTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCanvasTextureGDExtensionReturnOwner(reference CanvasTexture) RefCanvasTexture {
+	return &RefCanvasTextureImpl{RefBase: NewRefTransfer[CanvasTexture](reference)}
 }
 
 var _ RefCapsuleMesh = &RefCapsuleMeshImpl{}
@@ -1931,8 +3131,20 @@ func NewRefCapsuleMeshAsRef(reference RefCounted) Ref {
 	return NewRef[CapsuleMesh](reference.(CapsuleMesh))
 }
 
+// NewRefCapsuleMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCapsuleMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCapsuleMeshGDExtensionIternalConstructor(reference CapsuleMesh) RefCapsuleMesh {
 	return &RefCapsuleMeshImpl{RefBase: NewRef[CapsuleMesh](reference)}
+}
+
+// NewRefCapsuleMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCapsuleMeshGDExtensionReturnOwner(reference CapsuleMesh) RefCapsuleMesh {
+	return &RefCapsuleMeshImpl{RefBase: NewRefTransfer[CapsuleMesh](reference)}
 }
 
 var _ RefCapsuleShape2D = &RefCapsuleShape2DImpl{}
@@ -1950,8 +3162,20 @@ func NewRefCapsuleShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[CapsuleShape2D](reference.(CapsuleShape2D))
 }
 
+// NewRefCapsuleShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCapsuleShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCapsuleShape2DGDExtensionIternalConstructor(reference CapsuleShape2D) RefCapsuleShape2D {
 	return &RefCapsuleShape2DImpl{RefBase: NewRef[CapsuleShape2D](reference)}
+}
+
+// NewRefCapsuleShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCapsuleShape2DGDExtensionReturnOwner(reference CapsuleShape2D) RefCapsuleShape2D {
+	return &RefCapsuleShape2DImpl{RefBase: NewRefTransfer[CapsuleShape2D](reference)}
 }
 
 var _ RefCapsuleShape3D = &RefCapsuleShape3DImpl{}
@@ -1969,8 +3193,20 @@ func NewRefCapsuleShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[CapsuleShape3D](reference.(CapsuleShape3D))
 }
 
+// NewRefCapsuleShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCapsuleShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCapsuleShape3DGDExtensionIternalConstructor(reference CapsuleShape3D) RefCapsuleShape3D {
 	return &RefCapsuleShape3DImpl{RefBase: NewRef[CapsuleShape3D](reference)}
+}
+
+// NewRefCapsuleShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCapsuleShape3DGDExtensionReturnOwner(reference CapsuleShape3D) RefCapsuleShape3D {
+	return &RefCapsuleShape3DImpl{RefBase: NewRefTransfer[CapsuleShape3D](reference)}
 }
 
 var _ RefCharFXTransform = &RefCharFXTransformImpl{}
@@ -1988,8 +3224,20 @@ func NewRefCharFXTransformAsRef(reference RefCounted) Ref {
 	return NewRef[CharFXTransform](reference.(CharFXTransform))
 }
 
+// NewRefCharFXTransformGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCharFXTransformWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCharFXTransformGDExtensionIternalConstructor(reference CharFXTransform) RefCharFXTransform {
 	return &RefCharFXTransformImpl{RefBase: NewRef[CharFXTransform](reference)}
+}
+
+// NewRefCharFXTransformGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCharFXTransformGDExtensionReturnOwner(reference CharFXTransform) RefCharFXTransform {
+	return &RefCharFXTransformImpl{RefBase: NewRefTransfer[CharFXTransform](reference)}
 }
 
 var _ RefCircleShape2D = &RefCircleShape2DImpl{}
@@ -2007,8 +3255,20 @@ func NewRefCircleShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[CircleShape2D](reference.(CircleShape2D))
 }
 
+// NewRefCircleShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCircleShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCircleShape2DGDExtensionIternalConstructor(reference CircleShape2D) RefCircleShape2D {
 	return &RefCircleShape2DImpl{RefBase: NewRef[CircleShape2D](reference)}
+}
+
+// NewRefCircleShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCircleShape2DGDExtensionReturnOwner(reference CircleShape2D) RefCircleShape2D {
+	return &RefCircleShape2DImpl{RefBase: NewRefTransfer[CircleShape2D](reference)}
 }
 
 var _ RefCodeHighlighter = &RefCodeHighlighterImpl{}
@@ -2026,8 +3286,20 @@ func NewRefCodeHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[CodeHighlighter](reference.(CodeHighlighter))
 }
 
+// NewRefCodeHighlighterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCodeHighlighterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCodeHighlighterGDExtensionIternalConstructor(reference CodeHighlighter) RefCodeHighlighter {
 	return &RefCodeHighlighterImpl{RefBase: NewRef[CodeHighlighter](reference)}
+}
+
+// NewRefCodeHighlighterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCodeHighlighterGDExtensionReturnOwner(reference CodeHighlighter) RefCodeHighlighter {
+	return &RefCodeHighlighterImpl{RefBase: NewRefTransfer[CodeHighlighter](reference)}
 }
 
 var _ RefColorPalette = &RefColorPaletteImpl{}
@@ -2045,8 +3317,20 @@ func NewRefColorPaletteAsRef(reference RefCounted) Ref {
 	return NewRef[ColorPalette](reference.(ColorPalette))
 }
 
+// NewRefColorPaletteGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewColorPaletteWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefColorPaletteGDExtensionIternalConstructor(reference ColorPalette) RefColorPalette {
 	return &RefColorPaletteImpl{RefBase: NewRef[ColorPalette](reference)}
+}
+
+// NewRefColorPaletteGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefColorPaletteGDExtensionReturnOwner(reference ColorPalette) RefColorPalette {
+	return &RefColorPaletteImpl{RefBase: NewRefTransfer[ColorPalette](reference)}
 }
 
 var _ RefCompositor = &RefCompositorImpl{}
@@ -2064,8 +3348,20 @@ func NewRefCompositorAsRef(reference RefCounted) Ref {
 	return NewRef[Compositor](reference.(Compositor))
 }
 
+// NewRefCompositorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompositorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompositorGDExtensionIternalConstructor(reference Compositor) RefCompositor {
 	return &RefCompositorImpl{RefBase: NewRef[Compositor](reference)}
+}
+
+// NewRefCompositorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompositorGDExtensionReturnOwner(reference Compositor) RefCompositor {
+	return &RefCompositorImpl{RefBase: NewRefTransfer[Compositor](reference)}
 }
 
 var _ RefCompositorEffect = &RefCompositorEffectImpl{}
@@ -2083,8 +3379,20 @@ func NewRefCompositorEffectAsRef(reference RefCounted) Ref {
 	return NewRef[CompositorEffect](reference.(CompositorEffect))
 }
 
+// NewRefCompositorEffectGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompositorEffectWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompositorEffectGDExtensionIternalConstructor(reference CompositorEffect) RefCompositorEffect {
 	return &RefCompositorEffectImpl{RefBase: NewRef[CompositorEffect](reference)}
+}
+
+// NewRefCompositorEffectGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompositorEffectGDExtensionReturnOwner(reference CompositorEffect) RefCompositorEffect {
+	return &RefCompositorEffectImpl{RefBase: NewRefTransfer[CompositorEffect](reference)}
 }
 
 var _ RefCompressedCubemap = &RefCompressedCubemapImpl{}
@@ -2102,8 +3410,20 @@ func NewRefCompressedCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedCubemap](reference.(CompressedCubemap))
 }
 
+// NewRefCompressedCubemapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompressedCubemapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompressedCubemapGDExtensionIternalConstructor(reference CompressedCubemap) RefCompressedCubemap {
 	return &RefCompressedCubemapImpl{RefBase: NewRef[CompressedCubemap](reference)}
+}
+
+// NewRefCompressedCubemapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompressedCubemapGDExtensionReturnOwner(reference CompressedCubemap) RefCompressedCubemap {
+	return &RefCompressedCubemapImpl{RefBase: NewRefTransfer[CompressedCubemap](reference)}
 }
 
 var _ RefCompressedCubemapArray = &RefCompressedCubemapArrayImpl{}
@@ -2121,8 +3441,20 @@ func NewRefCompressedCubemapArrayAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedCubemapArray](reference.(CompressedCubemapArray))
 }
 
+// NewRefCompressedCubemapArrayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompressedCubemapArrayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompressedCubemapArrayGDExtensionIternalConstructor(reference CompressedCubemapArray) RefCompressedCubemapArray {
 	return &RefCompressedCubemapArrayImpl{RefBase: NewRef[CompressedCubemapArray](reference)}
+}
+
+// NewRefCompressedCubemapArrayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompressedCubemapArrayGDExtensionReturnOwner(reference CompressedCubemapArray) RefCompressedCubemapArray {
+	return &RefCompressedCubemapArrayImpl{RefBase: NewRefTransfer[CompressedCubemapArray](reference)}
 }
 
 var _ RefCompressedTexture2D = &RefCompressedTexture2DImpl{}
@@ -2140,8 +3472,20 @@ func NewRefCompressedTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTexture2D](reference.(CompressedTexture2D))
 }
 
+// NewRefCompressedTexture2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompressedTexture2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompressedTexture2DGDExtensionIternalConstructor(reference CompressedTexture2D) RefCompressedTexture2D {
 	return &RefCompressedTexture2DImpl{RefBase: NewRef[CompressedTexture2D](reference)}
+}
+
+// NewRefCompressedTexture2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompressedTexture2DGDExtensionReturnOwner(reference CompressedTexture2D) RefCompressedTexture2D {
+	return &RefCompressedTexture2DImpl{RefBase: NewRefTransfer[CompressedTexture2D](reference)}
 }
 
 var _ RefCompressedTexture2DArray = &RefCompressedTexture2DArrayImpl{}
@@ -2159,8 +3503,20 @@ func NewRefCompressedTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTexture2DArray](reference.(CompressedTexture2DArray))
 }
 
+// NewRefCompressedTexture2DArrayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompressedTexture2DArrayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompressedTexture2DArrayGDExtensionIternalConstructor(reference CompressedTexture2DArray) RefCompressedTexture2DArray {
 	return &RefCompressedTexture2DArrayImpl{RefBase: NewRef[CompressedTexture2DArray](reference)}
+}
+
+// NewRefCompressedTexture2DArrayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompressedTexture2DArrayGDExtensionReturnOwner(reference CompressedTexture2DArray) RefCompressedTexture2DArray {
+	return &RefCompressedTexture2DArrayImpl{RefBase: NewRefTransfer[CompressedTexture2DArray](reference)}
 }
 
 var _ RefCompressedTexture3D = &RefCompressedTexture3DImpl{}
@@ -2178,8 +3534,20 @@ func NewRefCompressedTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTexture3D](reference.(CompressedTexture3D))
 }
 
+// NewRefCompressedTexture3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompressedTexture3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompressedTexture3DGDExtensionIternalConstructor(reference CompressedTexture3D) RefCompressedTexture3D {
 	return &RefCompressedTexture3DImpl{RefBase: NewRef[CompressedTexture3D](reference)}
+}
+
+// NewRefCompressedTexture3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompressedTexture3DGDExtensionReturnOwner(reference CompressedTexture3D) RefCompressedTexture3D {
+	return &RefCompressedTexture3DImpl{RefBase: NewRefTransfer[CompressedTexture3D](reference)}
 }
 
 var _ RefCompressedTextureLayered = &RefCompressedTextureLayeredImpl{}
@@ -2197,8 +3565,20 @@ func NewRefCompressedTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTextureLayered](reference.(CompressedTextureLayered))
 }
 
+// NewRefCompressedTextureLayeredGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCompressedTextureLayeredWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCompressedTextureLayeredGDExtensionIternalConstructor(reference CompressedTextureLayered) RefCompressedTextureLayered {
 	return &RefCompressedTextureLayeredImpl{RefBase: NewRef[CompressedTextureLayered](reference)}
+}
+
+// NewRefCompressedTextureLayeredGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCompressedTextureLayeredGDExtensionReturnOwner(reference CompressedTextureLayered) RefCompressedTextureLayered {
+	return &RefCompressedTextureLayeredImpl{RefBase: NewRefTransfer[CompressedTextureLayered](reference)}
 }
 
 var _ RefConcavePolygonShape2D = &RefConcavePolygonShape2DImpl{}
@@ -2216,8 +3596,20 @@ func NewRefConcavePolygonShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[ConcavePolygonShape2D](reference.(ConcavePolygonShape2D))
 }
 
+// NewRefConcavePolygonShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewConcavePolygonShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefConcavePolygonShape2DGDExtensionIternalConstructor(reference ConcavePolygonShape2D) RefConcavePolygonShape2D {
 	return &RefConcavePolygonShape2DImpl{RefBase: NewRef[ConcavePolygonShape2D](reference)}
+}
+
+// NewRefConcavePolygonShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefConcavePolygonShape2DGDExtensionReturnOwner(reference ConcavePolygonShape2D) RefConcavePolygonShape2D {
+	return &RefConcavePolygonShape2DImpl{RefBase: NewRefTransfer[ConcavePolygonShape2D](reference)}
 }
 
 var _ RefConcavePolygonShape3D = &RefConcavePolygonShape3DImpl{}
@@ -2235,8 +3627,20 @@ func NewRefConcavePolygonShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[ConcavePolygonShape3D](reference.(ConcavePolygonShape3D))
 }
 
+// NewRefConcavePolygonShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewConcavePolygonShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefConcavePolygonShape3DGDExtensionIternalConstructor(reference ConcavePolygonShape3D) RefConcavePolygonShape3D {
 	return &RefConcavePolygonShape3DImpl{RefBase: NewRef[ConcavePolygonShape3D](reference)}
+}
+
+// NewRefConcavePolygonShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefConcavePolygonShape3DGDExtensionReturnOwner(reference ConcavePolygonShape3D) RefConcavePolygonShape3D {
+	return &RefConcavePolygonShape3DImpl{RefBase: NewRefTransfer[ConcavePolygonShape3D](reference)}
 }
 
 var _ RefConfigFile = &RefConfigFileImpl{}
@@ -2254,8 +3658,20 @@ func NewRefConfigFileAsRef(reference RefCounted) Ref {
 	return NewRef[ConfigFile](reference.(ConfigFile))
 }
 
+// NewRefConfigFileGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewConfigFileWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefConfigFileGDExtensionIternalConstructor(reference ConfigFile) RefConfigFile {
 	return &RefConfigFileImpl{RefBase: NewRef[ConfigFile](reference)}
+}
+
+// NewRefConfigFileGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefConfigFileGDExtensionReturnOwner(reference ConfigFile) RefConfigFile {
+	return &RefConfigFileImpl{RefBase: NewRefTransfer[ConfigFile](reference)}
 }
 
 var _ RefConvexPolygonShape2D = &RefConvexPolygonShape2DImpl{}
@@ -2273,8 +3689,20 @@ func NewRefConvexPolygonShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[ConvexPolygonShape2D](reference.(ConvexPolygonShape2D))
 }
 
+// NewRefConvexPolygonShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewConvexPolygonShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefConvexPolygonShape2DGDExtensionIternalConstructor(reference ConvexPolygonShape2D) RefConvexPolygonShape2D {
 	return &RefConvexPolygonShape2DImpl{RefBase: NewRef[ConvexPolygonShape2D](reference)}
+}
+
+// NewRefConvexPolygonShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefConvexPolygonShape2DGDExtensionReturnOwner(reference ConvexPolygonShape2D) RefConvexPolygonShape2D {
+	return &RefConvexPolygonShape2DImpl{RefBase: NewRefTransfer[ConvexPolygonShape2D](reference)}
 }
 
 var _ RefConvexPolygonShape3D = &RefConvexPolygonShape3DImpl{}
@@ -2292,8 +3720,20 @@ func NewRefConvexPolygonShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[ConvexPolygonShape3D](reference.(ConvexPolygonShape3D))
 }
 
+// NewRefConvexPolygonShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewConvexPolygonShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefConvexPolygonShape3DGDExtensionIternalConstructor(reference ConvexPolygonShape3D) RefConvexPolygonShape3D {
 	return &RefConvexPolygonShape3DImpl{RefBase: NewRef[ConvexPolygonShape3D](reference)}
+}
+
+// NewRefConvexPolygonShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefConvexPolygonShape3DGDExtensionReturnOwner(reference ConvexPolygonShape3D) RefConvexPolygonShape3D {
+	return &RefConvexPolygonShape3DImpl{RefBase: NewRefTransfer[ConvexPolygonShape3D](reference)}
 }
 
 var _ RefCrypto = &RefCryptoImpl{}
@@ -2311,8 +3751,20 @@ func NewRefCryptoAsRef(reference RefCounted) Ref {
 	return NewRef[Crypto](reference.(Crypto))
 }
 
+// NewRefCryptoGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCryptoWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCryptoGDExtensionIternalConstructor(reference Crypto) RefCrypto {
 	return &RefCryptoImpl{RefBase: NewRef[Crypto](reference)}
+}
+
+// NewRefCryptoGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCryptoGDExtensionReturnOwner(reference Crypto) RefCrypto {
+	return &RefCryptoImpl{RefBase: NewRefTransfer[Crypto](reference)}
 }
 
 var _ RefCryptoKey = &RefCryptoKeyImpl{}
@@ -2330,8 +3782,20 @@ func NewRefCryptoKeyAsRef(reference RefCounted) Ref {
 	return NewRef[CryptoKey](reference.(CryptoKey))
 }
 
+// NewRefCryptoKeyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCryptoKeyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCryptoKeyGDExtensionIternalConstructor(reference CryptoKey) RefCryptoKey {
 	return &RefCryptoKeyImpl{RefBase: NewRef[CryptoKey](reference)}
+}
+
+// NewRefCryptoKeyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCryptoKeyGDExtensionReturnOwner(reference CryptoKey) RefCryptoKey {
+	return &RefCryptoKeyImpl{RefBase: NewRefTransfer[CryptoKey](reference)}
 }
 
 var _ RefCubemap = &RefCubemapImpl{}
@@ -2349,8 +3813,20 @@ func NewRefCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[Cubemap](reference.(Cubemap))
 }
 
+// NewRefCubemapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCubemapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCubemapGDExtensionIternalConstructor(reference Cubemap) RefCubemap {
 	return &RefCubemapImpl{RefBase: NewRef[Cubemap](reference)}
+}
+
+// NewRefCubemapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCubemapGDExtensionReturnOwner(reference Cubemap) RefCubemap {
+	return &RefCubemapImpl{RefBase: NewRefTransfer[Cubemap](reference)}
 }
 
 var _ RefCubemapArray = &RefCubemapArrayImpl{}
@@ -2368,8 +3844,20 @@ func NewRefCubemapArrayAsRef(reference RefCounted) Ref {
 	return NewRef[CubemapArray](reference.(CubemapArray))
 }
 
+// NewRefCubemapArrayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCubemapArrayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCubemapArrayGDExtensionIternalConstructor(reference CubemapArray) RefCubemapArray {
 	return &RefCubemapArrayImpl{RefBase: NewRef[CubemapArray](reference)}
+}
+
+// NewRefCubemapArrayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCubemapArrayGDExtensionReturnOwner(reference CubemapArray) RefCubemapArray {
+	return &RefCubemapArrayImpl{RefBase: NewRefTransfer[CubemapArray](reference)}
 }
 
 var _ RefCurve = &RefCurveImpl{}
@@ -2387,8 +3875,20 @@ func NewRefCurveAsRef(reference RefCounted) Ref {
 	return NewRef[Curve](reference.(Curve))
 }
 
+// NewRefCurveGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCurveWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCurveGDExtensionIternalConstructor(reference Curve) RefCurve {
 	return &RefCurveImpl{RefBase: NewRef[Curve](reference)}
+}
+
+// NewRefCurveGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCurveGDExtensionReturnOwner(reference Curve) RefCurve {
+	return &RefCurveImpl{RefBase: NewRefTransfer[Curve](reference)}
 }
 
 var _ RefCurve2D = &RefCurve2DImpl{}
@@ -2406,8 +3906,20 @@ func NewRefCurve2DAsRef(reference RefCounted) Ref {
 	return NewRef[Curve2D](reference.(Curve2D))
 }
 
+// NewRefCurve2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCurve2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCurve2DGDExtensionIternalConstructor(reference Curve2D) RefCurve2D {
 	return &RefCurve2DImpl{RefBase: NewRef[Curve2D](reference)}
+}
+
+// NewRefCurve2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCurve2DGDExtensionReturnOwner(reference Curve2D) RefCurve2D {
+	return &RefCurve2DImpl{RefBase: NewRefTransfer[Curve2D](reference)}
 }
 
 var _ RefCurve3D = &RefCurve3DImpl{}
@@ -2425,8 +3937,20 @@ func NewRefCurve3DAsRef(reference RefCounted) Ref {
 	return NewRef[Curve3D](reference.(Curve3D))
 }
 
+// NewRefCurve3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCurve3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCurve3DGDExtensionIternalConstructor(reference Curve3D) RefCurve3D {
 	return &RefCurve3DImpl{RefBase: NewRef[Curve3D](reference)}
+}
+
+// NewRefCurve3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCurve3DGDExtensionReturnOwner(reference Curve3D) RefCurve3D {
+	return &RefCurve3DImpl{RefBase: NewRefTransfer[Curve3D](reference)}
 }
 
 var _ RefCurveTexture = &RefCurveTextureImpl{}
@@ -2444,8 +3968,20 @@ func NewRefCurveTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CurveTexture](reference.(CurveTexture))
 }
 
+// NewRefCurveTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCurveTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCurveTextureGDExtensionIternalConstructor(reference CurveTexture) RefCurveTexture {
 	return &RefCurveTextureImpl{RefBase: NewRef[CurveTexture](reference)}
+}
+
+// NewRefCurveTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCurveTextureGDExtensionReturnOwner(reference CurveTexture) RefCurveTexture {
+	return &RefCurveTextureImpl{RefBase: NewRefTransfer[CurveTexture](reference)}
 }
 
 var _ RefCurveXYZTexture = &RefCurveXYZTextureImpl{}
@@ -2463,8 +3999,20 @@ func NewRefCurveXYZTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CurveXYZTexture](reference.(CurveXYZTexture))
 }
 
+// NewRefCurveXYZTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCurveXYZTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCurveXYZTextureGDExtensionIternalConstructor(reference CurveXYZTexture) RefCurveXYZTexture {
 	return &RefCurveXYZTextureImpl{RefBase: NewRef[CurveXYZTexture](reference)}
+}
+
+// NewRefCurveXYZTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCurveXYZTextureGDExtensionReturnOwner(reference CurveXYZTexture) RefCurveXYZTexture {
+	return &RefCurveXYZTextureImpl{RefBase: NewRefTransfer[CurveXYZTexture](reference)}
 }
 
 var _ RefCylinderMesh = &RefCylinderMeshImpl{}
@@ -2482,8 +4030,20 @@ func NewRefCylinderMeshAsRef(reference RefCounted) Ref {
 	return NewRef[CylinderMesh](reference.(CylinderMesh))
 }
 
+// NewRefCylinderMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCylinderMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCylinderMeshGDExtensionIternalConstructor(reference CylinderMesh) RefCylinderMesh {
 	return &RefCylinderMeshImpl{RefBase: NewRef[CylinderMesh](reference)}
+}
+
+// NewRefCylinderMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCylinderMeshGDExtensionReturnOwner(reference CylinderMesh) RefCylinderMesh {
+	return &RefCylinderMeshImpl{RefBase: NewRefTransfer[CylinderMesh](reference)}
 }
 
 var _ RefCylinderShape3D = &RefCylinderShape3DImpl{}
@@ -2501,8 +4061,20 @@ func NewRefCylinderShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[CylinderShape3D](reference.(CylinderShape3D))
 }
 
+// NewRefCylinderShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewCylinderShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefCylinderShape3DGDExtensionIternalConstructor(reference CylinderShape3D) RefCylinderShape3D {
 	return &RefCylinderShape3DImpl{RefBase: NewRef[CylinderShape3D](reference)}
+}
+
+// NewRefCylinderShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefCylinderShape3DGDExtensionReturnOwner(reference CylinderShape3D) RefCylinderShape3D {
+	return &RefCylinderShape3DImpl{RefBase: NewRefTransfer[CylinderShape3D](reference)}
 }
 
 var _ RefDPITexture = &RefDPITextureImpl{}
@@ -2520,8 +4092,20 @@ func NewRefDPITextureAsRef(reference RefCounted) Ref {
 	return NewRef[DPITexture](reference.(DPITexture))
 }
 
+// NewRefDPITextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewDPITextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefDPITextureGDExtensionIternalConstructor(reference DPITexture) RefDPITexture {
 	return &RefDPITextureImpl{RefBase: NewRef[DPITexture](reference)}
+}
+
+// NewRefDPITextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefDPITextureGDExtensionReturnOwner(reference DPITexture) RefDPITexture {
+	return &RefDPITextureImpl{RefBase: NewRefTransfer[DPITexture](reference)}
 }
 
 var _ RefDTLSServer = &RefDTLSServerImpl{}
@@ -2539,8 +4123,20 @@ func NewRefDTLSServerAsRef(reference RefCounted) Ref {
 	return NewRef[DTLSServer](reference.(DTLSServer))
 }
 
+// NewRefDTLSServerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewDTLSServerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefDTLSServerGDExtensionIternalConstructor(reference DTLSServer) RefDTLSServer {
 	return &RefDTLSServerImpl{RefBase: NewRef[DTLSServer](reference)}
+}
+
+// NewRefDTLSServerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefDTLSServerGDExtensionReturnOwner(reference DTLSServer) RefDTLSServer {
+	return &RefDTLSServerImpl{RefBase: NewRefTransfer[DTLSServer](reference)}
 }
 
 var _ RefDirAccess = &RefDirAccessImpl{}
@@ -2558,8 +4154,20 @@ func NewRefDirAccessAsRef(reference RefCounted) Ref {
 	return NewRef[DirAccess](reference.(DirAccess))
 }
 
+// NewRefDirAccessGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewDirAccessWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefDirAccessGDExtensionIternalConstructor(reference DirAccess) RefDirAccess {
 	return &RefDirAccessImpl{RefBase: NewRef[DirAccess](reference)}
+}
+
+// NewRefDirAccessGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefDirAccessGDExtensionReturnOwner(reference DirAccess) RefDirAccess {
+	return &RefDirAccessImpl{RefBase: NewRefTransfer[DirAccess](reference)}
 }
 
 var _ RefDrawableTexture2D = &RefDrawableTexture2DImpl{}
@@ -2577,8 +4185,20 @@ func NewRefDrawableTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[DrawableTexture2D](reference.(DrawableTexture2D))
 }
 
+// NewRefDrawableTexture2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewDrawableTexture2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefDrawableTexture2DGDExtensionIternalConstructor(reference DrawableTexture2D) RefDrawableTexture2D {
 	return &RefDrawableTexture2DImpl{RefBase: NewRef[DrawableTexture2D](reference)}
+}
+
+// NewRefDrawableTexture2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefDrawableTexture2DGDExtensionReturnOwner(reference DrawableTexture2D) RefDrawableTexture2D {
+	return &RefDrawableTexture2DImpl{RefBase: NewRefTransfer[DrawableTexture2D](reference)}
 }
 
 var _ RefENetConnection = &RefENetConnectionImpl{}
@@ -2596,8 +4216,20 @@ func NewRefENetConnectionAsRef(reference RefCounted) Ref {
 	return NewRef[ENetConnection](reference.(ENetConnection))
 }
 
+// NewRefENetConnectionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewENetConnectionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefENetConnectionGDExtensionIternalConstructor(reference ENetConnection) RefENetConnection {
 	return &RefENetConnectionImpl{RefBase: NewRef[ENetConnection](reference)}
+}
+
+// NewRefENetConnectionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefENetConnectionGDExtensionReturnOwner(reference ENetConnection) RefENetConnection {
+	return &RefENetConnectionImpl{RefBase: NewRefTransfer[ENetConnection](reference)}
 }
 
 var _ RefENetMultiplayerPeer = &RefENetMultiplayerPeerImpl{}
@@ -2615,8 +4247,20 @@ func NewRefENetMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[ENetMultiplayerPeer](reference.(ENetMultiplayerPeer))
 }
 
+// NewRefENetMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewENetMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefENetMultiplayerPeerGDExtensionIternalConstructor(reference ENetMultiplayerPeer) RefENetMultiplayerPeer {
 	return &RefENetMultiplayerPeerImpl{RefBase: NewRef[ENetMultiplayerPeer](reference)}
+}
+
+// NewRefENetMultiplayerPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefENetMultiplayerPeerGDExtensionReturnOwner(reference ENetMultiplayerPeer) RefENetMultiplayerPeer {
+	return &RefENetMultiplayerPeerImpl{RefBase: NewRefTransfer[ENetMultiplayerPeer](reference)}
 }
 
 var _ RefENetPacketPeer = &RefENetPacketPeerImpl{}
@@ -2634,8 +4278,20 @@ func NewRefENetPacketPeerAsRef(reference RefCounted) Ref {
 	return NewRef[ENetPacketPeer](reference.(ENetPacketPeer))
 }
 
+// NewRefENetPacketPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewENetPacketPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefENetPacketPeerGDExtensionIternalConstructor(reference ENetPacketPeer) RefENetPacketPeer {
 	return &RefENetPacketPeerImpl{RefBase: NewRef[ENetPacketPeer](reference)}
+}
+
+// NewRefENetPacketPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefENetPacketPeerGDExtensionReturnOwner(reference ENetPacketPeer) RefENetPacketPeer {
+	return &RefENetPacketPeerImpl{RefBase: NewRefTransfer[ENetPacketPeer](reference)}
 }
 
 var _ RefEditorContextMenuPlugin = &RefEditorContextMenuPluginImpl{}
@@ -2653,8 +4309,20 @@ func NewRefEditorContextMenuPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorContextMenuPlugin](reference.(EditorContextMenuPlugin))
 }
 
+// NewRefEditorContextMenuPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorContextMenuPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorContextMenuPluginGDExtensionIternalConstructor(reference EditorContextMenuPlugin) RefEditorContextMenuPlugin {
 	return &RefEditorContextMenuPluginImpl{RefBase: NewRef[EditorContextMenuPlugin](reference)}
+}
+
+// NewRefEditorContextMenuPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorContextMenuPluginGDExtensionReturnOwner(reference EditorContextMenuPlugin) RefEditorContextMenuPlugin {
+	return &RefEditorContextMenuPluginImpl{RefBase: NewRefTransfer[EditorContextMenuPlugin](reference)}
 }
 
 var _ RefEditorDebuggerPlugin = &RefEditorDebuggerPluginImpl{}
@@ -2672,8 +4340,20 @@ func NewRefEditorDebuggerPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorDebuggerPlugin](reference.(EditorDebuggerPlugin))
 }
 
+// NewRefEditorDebuggerPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorDebuggerPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorDebuggerPluginGDExtensionIternalConstructor(reference EditorDebuggerPlugin) RefEditorDebuggerPlugin {
 	return &RefEditorDebuggerPluginImpl{RefBase: NewRef[EditorDebuggerPlugin](reference)}
+}
+
+// NewRefEditorDebuggerPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorDebuggerPluginGDExtensionReturnOwner(reference EditorDebuggerPlugin) RefEditorDebuggerPlugin {
+	return &RefEditorDebuggerPluginImpl{RefBase: NewRefTransfer[EditorDebuggerPlugin](reference)}
 }
 
 var _ RefEditorDebuggerSession = &RefEditorDebuggerSessionImpl{}
@@ -2691,8 +4371,20 @@ func NewRefEditorDebuggerSessionAsRef(reference RefCounted) Ref {
 	return NewRef[EditorDebuggerSession](reference.(EditorDebuggerSession))
 }
 
+// NewRefEditorDebuggerSessionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorDebuggerSessionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorDebuggerSessionGDExtensionIternalConstructor(reference EditorDebuggerSession) RefEditorDebuggerSession {
 	return &RefEditorDebuggerSessionImpl{RefBase: NewRef[EditorDebuggerSession](reference)}
+}
+
+// NewRefEditorDebuggerSessionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorDebuggerSessionGDExtensionReturnOwner(reference EditorDebuggerSession) RefEditorDebuggerSession {
+	return &RefEditorDebuggerSessionImpl{RefBase: NewRefTransfer[EditorDebuggerSession](reference)}
 }
 
 var _ RefEditorExportPlatform = &RefEditorExportPlatformImpl{}
@@ -2710,8 +4402,20 @@ func NewRefEditorExportPlatformAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatform](reference.(EditorExportPlatform))
 }
 
+// NewRefEditorExportPlatformGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformGDExtensionIternalConstructor(reference EditorExportPlatform) RefEditorExportPlatform {
 	return &RefEditorExportPlatformImpl{RefBase: NewRef[EditorExportPlatform](reference)}
+}
+
+// NewRefEditorExportPlatformGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformGDExtensionReturnOwner(reference EditorExportPlatform) RefEditorExportPlatform {
+	return &RefEditorExportPlatformImpl{RefBase: NewRefTransfer[EditorExportPlatform](reference)}
 }
 
 var _ RefEditorExportPlatformAndroid = &RefEditorExportPlatformAndroidImpl{}
@@ -2729,8 +4433,20 @@ func NewRefEditorExportPlatformAndroidAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformAndroid](reference.(EditorExportPlatformAndroid))
 }
 
+// NewRefEditorExportPlatformAndroidGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformAndroidWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformAndroidGDExtensionIternalConstructor(reference EditorExportPlatformAndroid) RefEditorExportPlatformAndroid {
 	return &RefEditorExportPlatformAndroidImpl{RefBase: NewRef[EditorExportPlatformAndroid](reference)}
+}
+
+// NewRefEditorExportPlatformAndroidGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformAndroidGDExtensionReturnOwner(reference EditorExportPlatformAndroid) RefEditorExportPlatformAndroid {
+	return &RefEditorExportPlatformAndroidImpl{RefBase: NewRefTransfer[EditorExportPlatformAndroid](reference)}
 }
 
 var _ RefEditorExportPlatformAppleEmbedded = &RefEditorExportPlatformAppleEmbeddedImpl{}
@@ -2748,8 +4464,20 @@ func NewRefEditorExportPlatformAppleEmbeddedAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformAppleEmbedded](reference.(EditorExportPlatformAppleEmbedded))
 }
 
+// NewRefEditorExportPlatformAppleEmbeddedGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformAppleEmbeddedWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformAppleEmbeddedGDExtensionIternalConstructor(reference EditorExportPlatformAppleEmbedded) RefEditorExportPlatformAppleEmbedded {
 	return &RefEditorExportPlatformAppleEmbeddedImpl{RefBase: NewRef[EditorExportPlatformAppleEmbedded](reference)}
+}
+
+// NewRefEditorExportPlatformAppleEmbeddedGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformAppleEmbeddedGDExtensionReturnOwner(reference EditorExportPlatformAppleEmbedded) RefEditorExportPlatformAppleEmbedded {
+	return &RefEditorExportPlatformAppleEmbeddedImpl{RefBase: NewRefTransfer[EditorExportPlatformAppleEmbedded](reference)}
 }
 
 var _ RefEditorExportPlatformExtension = &RefEditorExportPlatformExtensionImpl{}
@@ -2767,8 +4495,20 @@ func NewRefEditorExportPlatformExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformExtension](reference.(EditorExportPlatformExtension))
 }
 
+// NewRefEditorExportPlatformExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformExtensionGDExtensionIternalConstructor(reference EditorExportPlatformExtension) RefEditorExportPlatformExtension {
 	return &RefEditorExportPlatformExtensionImpl{RefBase: NewRef[EditorExportPlatformExtension](reference)}
+}
+
+// NewRefEditorExportPlatformExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformExtensionGDExtensionReturnOwner(reference EditorExportPlatformExtension) RefEditorExportPlatformExtension {
+	return &RefEditorExportPlatformExtensionImpl{RefBase: NewRefTransfer[EditorExportPlatformExtension](reference)}
 }
 
 var _ RefEditorExportPlatformIOS = &RefEditorExportPlatformIOSImpl{}
@@ -2786,8 +4526,20 @@ func NewRefEditorExportPlatformIOSAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformIOS](reference.(EditorExportPlatformIOS))
 }
 
+// NewRefEditorExportPlatformIOSGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformIOSWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformIOSGDExtensionIternalConstructor(reference EditorExportPlatformIOS) RefEditorExportPlatformIOS {
 	return &RefEditorExportPlatformIOSImpl{RefBase: NewRef[EditorExportPlatformIOS](reference)}
+}
+
+// NewRefEditorExportPlatformIOSGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformIOSGDExtensionReturnOwner(reference EditorExportPlatformIOS) RefEditorExportPlatformIOS {
+	return &RefEditorExportPlatformIOSImpl{RefBase: NewRefTransfer[EditorExportPlatformIOS](reference)}
 }
 
 var _ RefEditorExportPlatformLinuxBSD = &RefEditorExportPlatformLinuxBSDImpl{}
@@ -2805,8 +4557,20 @@ func NewRefEditorExportPlatformLinuxBSDAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformLinuxBSD](reference.(EditorExportPlatformLinuxBSD))
 }
 
+// NewRefEditorExportPlatformLinuxBSDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformLinuxBSDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformLinuxBSDGDExtensionIternalConstructor(reference EditorExportPlatformLinuxBSD) RefEditorExportPlatformLinuxBSD {
 	return &RefEditorExportPlatformLinuxBSDImpl{RefBase: NewRef[EditorExportPlatformLinuxBSD](reference)}
+}
+
+// NewRefEditorExportPlatformLinuxBSDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformLinuxBSDGDExtensionReturnOwner(reference EditorExportPlatformLinuxBSD) RefEditorExportPlatformLinuxBSD {
+	return &RefEditorExportPlatformLinuxBSDImpl{RefBase: NewRefTransfer[EditorExportPlatformLinuxBSD](reference)}
 }
 
 var _ RefEditorExportPlatformMacOS = &RefEditorExportPlatformMacOSImpl{}
@@ -2824,8 +4588,20 @@ func NewRefEditorExportPlatformMacOSAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformMacOS](reference.(EditorExportPlatformMacOS))
 }
 
+// NewRefEditorExportPlatformMacOSGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformMacOSWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformMacOSGDExtensionIternalConstructor(reference EditorExportPlatformMacOS) RefEditorExportPlatformMacOS {
 	return &RefEditorExportPlatformMacOSImpl{RefBase: NewRef[EditorExportPlatformMacOS](reference)}
+}
+
+// NewRefEditorExportPlatformMacOSGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformMacOSGDExtensionReturnOwner(reference EditorExportPlatformMacOS) RefEditorExportPlatformMacOS {
+	return &RefEditorExportPlatformMacOSImpl{RefBase: NewRefTransfer[EditorExportPlatformMacOS](reference)}
 }
 
 var _ RefEditorExportPlatformPC = &RefEditorExportPlatformPCImpl{}
@@ -2843,8 +4619,20 @@ func NewRefEditorExportPlatformPCAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformPC](reference.(EditorExportPlatformPC))
 }
 
+// NewRefEditorExportPlatformPCGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformPCWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformPCGDExtensionIternalConstructor(reference EditorExportPlatformPC) RefEditorExportPlatformPC {
 	return &RefEditorExportPlatformPCImpl{RefBase: NewRef[EditorExportPlatformPC](reference)}
+}
+
+// NewRefEditorExportPlatformPCGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformPCGDExtensionReturnOwner(reference EditorExportPlatformPC) RefEditorExportPlatformPC {
+	return &RefEditorExportPlatformPCImpl{RefBase: NewRefTransfer[EditorExportPlatformPC](reference)}
 }
 
 var _ RefEditorExportPlatformVisionOS = &RefEditorExportPlatformVisionOSImpl{}
@@ -2862,8 +4650,20 @@ func NewRefEditorExportPlatformVisionOSAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformVisionOS](reference.(EditorExportPlatformVisionOS))
 }
 
+// NewRefEditorExportPlatformVisionOSGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformVisionOSWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformVisionOSGDExtensionIternalConstructor(reference EditorExportPlatformVisionOS) RefEditorExportPlatformVisionOS {
 	return &RefEditorExportPlatformVisionOSImpl{RefBase: NewRef[EditorExportPlatformVisionOS](reference)}
+}
+
+// NewRefEditorExportPlatformVisionOSGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformVisionOSGDExtensionReturnOwner(reference EditorExportPlatformVisionOS) RefEditorExportPlatformVisionOS {
+	return &RefEditorExportPlatformVisionOSImpl{RefBase: NewRefTransfer[EditorExportPlatformVisionOS](reference)}
 }
 
 var _ RefEditorExportPlatformWeb = &RefEditorExportPlatformWebImpl{}
@@ -2881,8 +4681,20 @@ func NewRefEditorExportPlatformWebAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformWeb](reference.(EditorExportPlatformWeb))
 }
 
+// NewRefEditorExportPlatformWebGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformWebWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformWebGDExtensionIternalConstructor(reference EditorExportPlatformWeb) RefEditorExportPlatformWeb {
 	return &RefEditorExportPlatformWebImpl{RefBase: NewRef[EditorExportPlatformWeb](reference)}
+}
+
+// NewRefEditorExportPlatformWebGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformWebGDExtensionReturnOwner(reference EditorExportPlatformWeb) RefEditorExportPlatformWeb {
+	return &RefEditorExportPlatformWebImpl{RefBase: NewRefTransfer[EditorExportPlatformWeb](reference)}
 }
 
 var _ RefEditorExportPlatformWindows = &RefEditorExportPlatformWindowsImpl{}
@@ -2900,8 +4712,20 @@ func NewRefEditorExportPlatformWindowsAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformWindows](reference.(EditorExportPlatformWindows))
 }
 
+// NewRefEditorExportPlatformWindowsGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPlatformWindowsWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPlatformWindowsGDExtensionIternalConstructor(reference EditorExportPlatformWindows) RefEditorExportPlatformWindows {
 	return &RefEditorExportPlatformWindowsImpl{RefBase: NewRef[EditorExportPlatformWindows](reference)}
+}
+
+// NewRefEditorExportPlatformWindowsGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPlatformWindowsGDExtensionReturnOwner(reference EditorExportPlatformWindows) RefEditorExportPlatformWindows {
+	return &RefEditorExportPlatformWindowsImpl{RefBase: NewRefTransfer[EditorExportPlatformWindows](reference)}
 }
 
 var _ RefEditorExportPlugin = &RefEditorExportPluginImpl{}
@@ -2919,8 +4743,20 @@ func NewRefEditorExportPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlugin](reference.(EditorExportPlugin))
 }
 
+// NewRefEditorExportPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPluginGDExtensionIternalConstructor(reference EditorExportPlugin) RefEditorExportPlugin {
 	return &RefEditorExportPluginImpl{RefBase: NewRef[EditorExportPlugin](reference)}
+}
+
+// NewRefEditorExportPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPluginGDExtensionReturnOwner(reference EditorExportPlugin) RefEditorExportPlugin {
+	return &RefEditorExportPluginImpl{RefBase: NewRefTransfer[EditorExportPlugin](reference)}
 }
 
 var _ RefEditorExportPreset = &RefEditorExportPresetImpl{}
@@ -2938,8 +4774,20 @@ func NewRefEditorExportPresetAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPreset](reference.(EditorExportPreset))
 }
 
+// NewRefEditorExportPresetGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorExportPresetWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorExportPresetGDExtensionIternalConstructor(reference EditorExportPreset) RefEditorExportPreset {
 	return &RefEditorExportPresetImpl{RefBase: NewRef[EditorExportPreset](reference)}
+}
+
+// NewRefEditorExportPresetGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorExportPresetGDExtensionReturnOwner(reference EditorExportPreset) RefEditorExportPreset {
+	return &RefEditorExportPresetImpl{RefBase: NewRefTransfer[EditorExportPreset](reference)}
 }
 
 var _ RefEditorFeatureProfile = &RefEditorFeatureProfileImpl{}
@@ -2957,8 +4805,20 @@ func NewRefEditorFeatureProfileAsRef(reference RefCounted) Ref {
 	return NewRef[EditorFeatureProfile](reference.(EditorFeatureProfile))
 }
 
+// NewRefEditorFeatureProfileGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorFeatureProfileWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorFeatureProfileGDExtensionIternalConstructor(reference EditorFeatureProfile) RefEditorFeatureProfile {
 	return &RefEditorFeatureProfileImpl{RefBase: NewRef[EditorFeatureProfile](reference)}
+}
+
+// NewRefEditorFeatureProfileGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorFeatureProfileGDExtensionReturnOwner(reference EditorFeatureProfile) RefEditorFeatureProfile {
+	return &RefEditorFeatureProfileImpl{RefBase: NewRefTransfer[EditorFeatureProfile](reference)}
 }
 
 var _ RefEditorFileSystemImportFormatSupportQuery = &RefEditorFileSystemImportFormatSupportQueryImpl{}
@@ -2976,8 +4836,20 @@ func NewRefEditorFileSystemImportFormatSupportQueryAsRef(reference RefCounted) R
 	return NewRef[EditorFileSystemImportFormatSupportQuery](reference.(EditorFileSystemImportFormatSupportQuery))
 }
 
+// NewRefEditorFileSystemImportFormatSupportQueryGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorFileSystemImportFormatSupportQueryWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorFileSystemImportFormatSupportQueryGDExtensionIternalConstructor(reference EditorFileSystemImportFormatSupportQuery) RefEditorFileSystemImportFormatSupportQuery {
 	return &RefEditorFileSystemImportFormatSupportQueryImpl{RefBase: NewRef[EditorFileSystemImportFormatSupportQuery](reference)}
+}
+
+// NewRefEditorFileSystemImportFormatSupportQueryGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorFileSystemImportFormatSupportQueryGDExtensionReturnOwner(reference EditorFileSystemImportFormatSupportQuery) RefEditorFileSystemImportFormatSupportQuery {
+	return &RefEditorFileSystemImportFormatSupportQueryImpl{RefBase: NewRefTransfer[EditorFileSystemImportFormatSupportQuery](reference)}
 }
 
 var _ RefEditorImportPlugin = &RefEditorImportPluginImpl{}
@@ -2995,8 +4867,20 @@ func NewRefEditorImportPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorImportPlugin](reference.(EditorImportPlugin))
 }
 
+// NewRefEditorImportPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorImportPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorImportPluginGDExtensionIternalConstructor(reference EditorImportPlugin) RefEditorImportPlugin {
 	return &RefEditorImportPluginImpl{RefBase: NewRef[EditorImportPlugin](reference)}
+}
+
+// NewRefEditorImportPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorImportPluginGDExtensionReturnOwner(reference EditorImportPlugin) RefEditorImportPlugin {
+	return &RefEditorImportPluginImpl{RefBase: NewRefTransfer[EditorImportPlugin](reference)}
 }
 
 var _ RefEditorInspectorPlugin = &RefEditorInspectorPluginImpl{}
@@ -3014,8 +4898,20 @@ func NewRefEditorInspectorPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorInspectorPlugin](reference.(EditorInspectorPlugin))
 }
 
+// NewRefEditorInspectorPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorInspectorPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorInspectorPluginGDExtensionIternalConstructor(reference EditorInspectorPlugin) RefEditorInspectorPlugin {
 	return &RefEditorInspectorPluginImpl{RefBase: NewRef[EditorInspectorPlugin](reference)}
+}
+
+// NewRefEditorInspectorPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorInspectorPluginGDExtensionReturnOwner(reference EditorInspectorPlugin) RefEditorInspectorPlugin {
+	return &RefEditorInspectorPluginImpl{RefBase: NewRefTransfer[EditorInspectorPlugin](reference)}
 }
 
 var _ RefEditorNode3DGizmo = &RefEditorNode3DGizmoImpl{}
@@ -3033,8 +4929,20 @@ func NewRefEditorNode3DGizmoAsRef(reference RefCounted) Ref {
 	return NewRef[EditorNode3DGizmo](reference.(EditorNode3DGizmo))
 }
 
+// NewRefEditorNode3DGizmoGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorNode3DGizmoWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorNode3DGizmoGDExtensionIternalConstructor(reference EditorNode3DGizmo) RefEditorNode3DGizmo {
 	return &RefEditorNode3DGizmoImpl{RefBase: NewRef[EditorNode3DGizmo](reference)}
+}
+
+// NewRefEditorNode3DGizmoGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorNode3DGizmoGDExtensionReturnOwner(reference EditorNode3DGizmo) RefEditorNode3DGizmo {
+	return &RefEditorNode3DGizmoImpl{RefBase: NewRefTransfer[EditorNode3DGizmo](reference)}
 }
 
 var _ RefEditorNode3DGizmoPlugin = &RefEditorNode3DGizmoPluginImpl{}
@@ -3052,8 +4960,20 @@ func NewRefEditorNode3DGizmoPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorNode3DGizmoPlugin](reference.(EditorNode3DGizmoPlugin))
 }
 
+// NewRefEditorNode3DGizmoPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorNode3DGizmoPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorNode3DGizmoPluginGDExtensionIternalConstructor(reference EditorNode3DGizmoPlugin) RefEditorNode3DGizmoPlugin {
 	return &RefEditorNode3DGizmoPluginImpl{RefBase: NewRef[EditorNode3DGizmoPlugin](reference)}
+}
+
+// NewRefEditorNode3DGizmoPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorNode3DGizmoPluginGDExtensionReturnOwner(reference EditorNode3DGizmoPlugin) RefEditorNode3DGizmoPlugin {
+	return &RefEditorNode3DGizmoPluginImpl{RefBase: NewRefTransfer[EditorNode3DGizmoPlugin](reference)}
 }
 
 var _ RefEditorResourceConversionPlugin = &RefEditorResourceConversionPluginImpl{}
@@ -3071,8 +4991,20 @@ func NewRefEditorResourceConversionPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorResourceConversionPlugin](reference.(EditorResourceConversionPlugin))
 }
 
+// NewRefEditorResourceConversionPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorResourceConversionPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorResourceConversionPluginGDExtensionIternalConstructor(reference EditorResourceConversionPlugin) RefEditorResourceConversionPlugin {
 	return &RefEditorResourceConversionPluginImpl{RefBase: NewRef[EditorResourceConversionPlugin](reference)}
+}
+
+// NewRefEditorResourceConversionPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorResourceConversionPluginGDExtensionReturnOwner(reference EditorResourceConversionPlugin) RefEditorResourceConversionPlugin {
+	return &RefEditorResourceConversionPluginImpl{RefBase: NewRefTransfer[EditorResourceConversionPlugin](reference)}
 }
 
 var _ RefEditorResourcePreviewGenerator = &RefEditorResourcePreviewGeneratorImpl{}
@@ -3090,8 +5022,20 @@ func NewRefEditorResourcePreviewGeneratorAsRef(reference RefCounted) Ref {
 	return NewRef[EditorResourcePreviewGenerator](reference.(EditorResourcePreviewGenerator))
 }
 
+// NewRefEditorResourcePreviewGeneratorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorResourcePreviewGeneratorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorResourcePreviewGeneratorGDExtensionIternalConstructor(reference EditorResourcePreviewGenerator) RefEditorResourcePreviewGenerator {
 	return &RefEditorResourcePreviewGeneratorImpl{RefBase: NewRef[EditorResourcePreviewGenerator](reference)}
+}
+
+// NewRefEditorResourcePreviewGeneratorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorResourcePreviewGeneratorGDExtensionReturnOwner(reference EditorResourcePreviewGenerator) RefEditorResourcePreviewGenerator {
+	return &RefEditorResourcePreviewGeneratorImpl{RefBase: NewRefTransfer[EditorResourcePreviewGenerator](reference)}
 }
 
 var _ RefEditorResourceTooltipPlugin = &RefEditorResourceTooltipPluginImpl{}
@@ -3109,8 +5053,20 @@ func NewRefEditorResourceTooltipPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorResourceTooltipPlugin](reference.(EditorResourceTooltipPlugin))
 }
 
+// NewRefEditorResourceTooltipPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorResourceTooltipPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorResourceTooltipPluginGDExtensionIternalConstructor(reference EditorResourceTooltipPlugin) RefEditorResourceTooltipPlugin {
 	return &RefEditorResourceTooltipPluginImpl{RefBase: NewRef[EditorResourceTooltipPlugin](reference)}
+}
+
+// NewRefEditorResourceTooltipPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorResourceTooltipPluginGDExtensionReturnOwner(reference EditorResourceTooltipPlugin) RefEditorResourceTooltipPlugin {
+	return &RefEditorResourceTooltipPluginImpl{RefBase: NewRefTransfer[EditorResourceTooltipPlugin](reference)}
 }
 
 var _ RefEditorSceneFormatImporter = &RefEditorSceneFormatImporterImpl{}
@@ -3128,8 +5084,20 @@ func NewRefEditorSceneFormatImporterAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporter](reference.(EditorSceneFormatImporter))
 }
 
+// NewRefEditorSceneFormatImporterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorSceneFormatImporterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorSceneFormatImporterGDExtensionIternalConstructor(reference EditorSceneFormatImporter) RefEditorSceneFormatImporter {
 	return &RefEditorSceneFormatImporterImpl{RefBase: NewRef[EditorSceneFormatImporter](reference)}
+}
+
+// NewRefEditorSceneFormatImporterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorSceneFormatImporterGDExtensionReturnOwner(reference EditorSceneFormatImporter) RefEditorSceneFormatImporter {
+	return &RefEditorSceneFormatImporterImpl{RefBase: NewRefTransfer[EditorSceneFormatImporter](reference)}
 }
 
 var _ RefEditorSceneFormatImporterBlend = &RefEditorSceneFormatImporterBlendImpl{}
@@ -3147,8 +5115,20 @@ func NewRefEditorSceneFormatImporterBlendAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterBlend](reference.(EditorSceneFormatImporterBlend))
 }
 
+// NewRefEditorSceneFormatImporterBlendGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorSceneFormatImporterBlendWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorSceneFormatImporterBlendGDExtensionIternalConstructor(reference EditorSceneFormatImporterBlend) RefEditorSceneFormatImporterBlend {
 	return &RefEditorSceneFormatImporterBlendImpl{RefBase: NewRef[EditorSceneFormatImporterBlend](reference)}
+}
+
+// NewRefEditorSceneFormatImporterBlendGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorSceneFormatImporterBlendGDExtensionReturnOwner(reference EditorSceneFormatImporterBlend) RefEditorSceneFormatImporterBlend {
+	return &RefEditorSceneFormatImporterBlendImpl{RefBase: NewRefTransfer[EditorSceneFormatImporterBlend](reference)}
 }
 
 var _ RefEditorSceneFormatImporterFBX2GLTF = &RefEditorSceneFormatImporterFBX2GLTFImpl{}
@@ -3166,8 +5146,20 @@ func NewRefEditorSceneFormatImporterFBX2GLTFAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterFBX2GLTF](reference.(EditorSceneFormatImporterFBX2GLTF))
 }
 
+// NewRefEditorSceneFormatImporterFBX2GLTFGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorSceneFormatImporterFBX2GLTFWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorSceneFormatImporterFBX2GLTFGDExtensionIternalConstructor(reference EditorSceneFormatImporterFBX2GLTF) RefEditorSceneFormatImporterFBX2GLTF {
 	return &RefEditorSceneFormatImporterFBX2GLTFImpl{RefBase: NewRef[EditorSceneFormatImporterFBX2GLTF](reference)}
+}
+
+// NewRefEditorSceneFormatImporterFBX2GLTFGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorSceneFormatImporterFBX2GLTFGDExtensionReturnOwner(reference EditorSceneFormatImporterFBX2GLTF) RefEditorSceneFormatImporterFBX2GLTF {
+	return &RefEditorSceneFormatImporterFBX2GLTFImpl{RefBase: NewRefTransfer[EditorSceneFormatImporterFBX2GLTF](reference)}
 }
 
 var _ RefEditorSceneFormatImporterGLTF = &RefEditorSceneFormatImporterGLTFImpl{}
@@ -3185,8 +5177,20 @@ func NewRefEditorSceneFormatImporterGLTFAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterGLTF](reference.(EditorSceneFormatImporterGLTF))
 }
 
+// NewRefEditorSceneFormatImporterGLTFGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorSceneFormatImporterGLTFWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorSceneFormatImporterGLTFGDExtensionIternalConstructor(reference EditorSceneFormatImporterGLTF) RefEditorSceneFormatImporterGLTF {
 	return &RefEditorSceneFormatImporterGLTFImpl{RefBase: NewRef[EditorSceneFormatImporterGLTF](reference)}
+}
+
+// NewRefEditorSceneFormatImporterGLTFGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorSceneFormatImporterGLTFGDExtensionReturnOwner(reference EditorSceneFormatImporterGLTF) RefEditorSceneFormatImporterGLTF {
+	return &RefEditorSceneFormatImporterGLTFImpl{RefBase: NewRefTransfer[EditorSceneFormatImporterGLTF](reference)}
 }
 
 var _ RefEditorSceneFormatImporterUFBX = &RefEditorSceneFormatImporterUFBXImpl{}
@@ -3204,8 +5208,20 @@ func NewRefEditorSceneFormatImporterUFBXAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterUFBX](reference.(EditorSceneFormatImporterUFBX))
 }
 
+// NewRefEditorSceneFormatImporterUFBXGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorSceneFormatImporterUFBXWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorSceneFormatImporterUFBXGDExtensionIternalConstructor(reference EditorSceneFormatImporterUFBX) RefEditorSceneFormatImporterUFBX {
 	return &RefEditorSceneFormatImporterUFBXImpl{RefBase: NewRef[EditorSceneFormatImporterUFBX](reference)}
+}
+
+// NewRefEditorSceneFormatImporterUFBXGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorSceneFormatImporterUFBXGDExtensionReturnOwner(reference EditorSceneFormatImporterUFBX) RefEditorSceneFormatImporterUFBX {
+	return &RefEditorSceneFormatImporterUFBXImpl{RefBase: NewRefTransfer[EditorSceneFormatImporterUFBX](reference)}
 }
 
 var _ RefEditorScenePostImport = &RefEditorScenePostImportImpl{}
@@ -3223,8 +5239,20 @@ func NewRefEditorScenePostImportAsRef(reference RefCounted) Ref {
 	return NewRef[EditorScenePostImport](reference.(EditorScenePostImport))
 }
 
+// NewRefEditorScenePostImportGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorScenePostImportWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorScenePostImportGDExtensionIternalConstructor(reference EditorScenePostImport) RefEditorScenePostImport {
 	return &RefEditorScenePostImportImpl{RefBase: NewRef[EditorScenePostImport](reference)}
+}
+
+// NewRefEditorScenePostImportGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorScenePostImportGDExtensionReturnOwner(reference EditorScenePostImport) RefEditorScenePostImport {
+	return &RefEditorScenePostImportImpl{RefBase: NewRefTransfer[EditorScenePostImport](reference)}
 }
 
 var _ RefEditorScenePostImportPlugin = &RefEditorScenePostImportPluginImpl{}
@@ -3242,8 +5270,20 @@ func NewRefEditorScenePostImportPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorScenePostImportPlugin](reference.(EditorScenePostImportPlugin))
 }
 
+// NewRefEditorScenePostImportPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorScenePostImportPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorScenePostImportPluginGDExtensionIternalConstructor(reference EditorScenePostImportPlugin) RefEditorScenePostImportPlugin {
 	return &RefEditorScenePostImportPluginImpl{RefBase: NewRef[EditorScenePostImportPlugin](reference)}
+}
+
+// NewRefEditorScenePostImportPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorScenePostImportPluginGDExtensionReturnOwner(reference EditorScenePostImportPlugin) RefEditorScenePostImportPlugin {
+	return &RefEditorScenePostImportPluginImpl{RefBase: NewRefTransfer[EditorScenePostImportPlugin](reference)}
 }
 
 var _ RefEditorScript = &RefEditorScriptImpl{}
@@ -3261,8 +5301,20 @@ func NewRefEditorScriptAsRef(reference RefCounted) Ref {
 	return NewRef[EditorScript](reference.(EditorScript))
 }
 
+// NewRefEditorScriptGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorScriptWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorScriptGDExtensionIternalConstructor(reference EditorScript) RefEditorScript {
 	return &RefEditorScriptImpl{RefBase: NewRef[EditorScript](reference)}
+}
+
+// NewRefEditorScriptGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorScriptGDExtensionReturnOwner(reference EditorScript) RefEditorScript {
+	return &RefEditorScriptImpl{RefBase: NewRefTransfer[EditorScript](reference)}
 }
 
 var _ RefEditorSettings = &RefEditorSettingsImpl{}
@@ -3280,8 +5332,20 @@ func NewRefEditorSettingsAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSettings](reference.(EditorSettings))
 }
 
+// NewRefEditorSettingsGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorSettingsWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorSettingsGDExtensionIternalConstructor(reference EditorSettings) RefEditorSettings {
 	return &RefEditorSettingsImpl{RefBase: NewRef[EditorSettings](reference)}
+}
+
+// NewRefEditorSettingsGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorSettingsGDExtensionReturnOwner(reference EditorSettings) RefEditorSettings {
+	return &RefEditorSettingsImpl{RefBase: NewRefTransfer[EditorSettings](reference)}
 }
 
 var _ RefEditorSyntaxHighlighter = &RefEditorSyntaxHighlighterImpl{}
@@ -3299,8 +5363,20 @@ func NewRefEditorSyntaxHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSyntaxHighlighter](reference.(EditorSyntaxHighlighter))
 }
 
+// NewRefEditorSyntaxHighlighterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorSyntaxHighlighterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorSyntaxHighlighterGDExtensionIternalConstructor(reference EditorSyntaxHighlighter) RefEditorSyntaxHighlighter {
 	return &RefEditorSyntaxHighlighterImpl{RefBase: NewRef[EditorSyntaxHighlighter](reference)}
+}
+
+// NewRefEditorSyntaxHighlighterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorSyntaxHighlighterGDExtensionReturnOwner(reference EditorSyntaxHighlighter) RefEditorSyntaxHighlighter {
+	return &RefEditorSyntaxHighlighterImpl{RefBase: NewRefTransfer[EditorSyntaxHighlighter](reference)}
 }
 
 var _ RefEditorTranslationParserPlugin = &RefEditorTranslationParserPluginImpl{}
@@ -3318,8 +5394,20 @@ func NewRefEditorTranslationParserPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorTranslationParserPlugin](reference.(EditorTranslationParserPlugin))
 }
 
+// NewRefEditorTranslationParserPluginGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEditorTranslationParserPluginWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEditorTranslationParserPluginGDExtensionIternalConstructor(reference EditorTranslationParserPlugin) RefEditorTranslationParserPlugin {
 	return &RefEditorTranslationParserPluginImpl{RefBase: NewRef[EditorTranslationParserPlugin](reference)}
+}
+
+// NewRefEditorTranslationParserPluginGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEditorTranslationParserPluginGDExtensionReturnOwner(reference EditorTranslationParserPlugin) RefEditorTranslationParserPlugin {
+	return &RefEditorTranslationParserPluginImpl{RefBase: NewRefTransfer[EditorTranslationParserPlugin](reference)}
 }
 
 var _ RefEncodedObjectAsID = &RefEncodedObjectAsIDImpl{}
@@ -3337,8 +5425,20 @@ func NewRefEncodedObjectAsIDAsRef(reference RefCounted) Ref {
 	return NewRef[EncodedObjectAsID](reference.(EncodedObjectAsID))
 }
 
+// NewRefEncodedObjectAsIDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEncodedObjectAsIDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEncodedObjectAsIDGDExtensionIternalConstructor(reference EncodedObjectAsID) RefEncodedObjectAsID {
 	return &RefEncodedObjectAsIDImpl{RefBase: NewRef[EncodedObjectAsID](reference)}
+}
+
+// NewRefEncodedObjectAsIDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEncodedObjectAsIDGDExtensionReturnOwner(reference EncodedObjectAsID) RefEncodedObjectAsID {
+	return &RefEncodedObjectAsIDImpl{RefBase: NewRefTransfer[EncodedObjectAsID](reference)}
 }
 
 var _ RefEngineProfiler = &RefEngineProfilerImpl{}
@@ -3356,8 +5456,20 @@ func NewRefEngineProfilerAsRef(reference RefCounted) Ref {
 	return NewRef[EngineProfiler](reference.(EngineProfiler))
 }
 
+// NewRefEngineProfilerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEngineProfilerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEngineProfilerGDExtensionIternalConstructor(reference EngineProfiler) RefEngineProfiler {
 	return &RefEngineProfilerImpl{RefBase: NewRef[EngineProfiler](reference)}
+}
+
+// NewRefEngineProfilerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEngineProfilerGDExtensionReturnOwner(reference EngineProfiler) RefEngineProfiler {
+	return &RefEngineProfilerImpl{RefBase: NewRefTransfer[EngineProfiler](reference)}
 }
 
 var _ RefEnvironment = &RefEnvironmentImpl{}
@@ -3375,8 +5487,20 @@ func NewRefEnvironmentAsRef(reference RefCounted) Ref {
 	return NewRef[Environment](reference.(Environment))
 }
 
+// NewRefEnvironmentGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewEnvironmentWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefEnvironmentGDExtensionIternalConstructor(reference Environment) RefEnvironment {
 	return &RefEnvironmentImpl{RefBase: NewRef[Environment](reference)}
+}
+
+// NewRefEnvironmentGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefEnvironmentGDExtensionReturnOwner(reference Environment) RefEnvironment {
+	return &RefEnvironmentImpl{RefBase: NewRefTransfer[Environment](reference)}
 }
 
 var _ RefExpression = &RefExpressionImpl{}
@@ -3394,8 +5518,20 @@ func NewRefExpressionAsRef(reference RefCounted) Ref {
 	return NewRef[Expression](reference.(Expression))
 }
 
+// NewRefExpressionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewExpressionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefExpressionGDExtensionIternalConstructor(reference Expression) RefExpression {
 	return &RefExpressionImpl{RefBase: NewRef[Expression](reference)}
+}
+
+// NewRefExpressionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefExpressionGDExtensionReturnOwner(reference Expression) RefExpression {
+	return &RefExpressionImpl{RefBase: NewRefTransfer[Expression](reference)}
 }
 
 var _ RefExternalTexture = &RefExternalTextureImpl{}
@@ -3413,8 +5549,20 @@ func NewRefExternalTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ExternalTexture](reference.(ExternalTexture))
 }
 
+// NewRefExternalTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewExternalTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefExternalTextureGDExtensionIternalConstructor(reference ExternalTexture) RefExternalTexture {
 	return &RefExternalTextureImpl{RefBase: NewRef[ExternalTexture](reference)}
+}
+
+// NewRefExternalTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefExternalTextureGDExtensionReturnOwner(reference ExternalTexture) RefExternalTexture {
+	return &RefExternalTextureImpl{RefBase: NewRefTransfer[ExternalTexture](reference)}
 }
 
 var _ RefFBXDocument = &RefFBXDocumentImpl{}
@@ -3432,8 +5580,20 @@ func NewRefFBXDocumentAsRef(reference RefCounted) Ref {
 	return NewRef[FBXDocument](reference.(FBXDocument))
 }
 
+// NewRefFBXDocumentGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFBXDocumentWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFBXDocumentGDExtensionIternalConstructor(reference FBXDocument) RefFBXDocument {
 	return &RefFBXDocumentImpl{RefBase: NewRef[FBXDocument](reference)}
+}
+
+// NewRefFBXDocumentGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFBXDocumentGDExtensionReturnOwner(reference FBXDocument) RefFBXDocument {
+	return &RefFBXDocumentImpl{RefBase: NewRefTransfer[FBXDocument](reference)}
 }
 
 var _ RefFBXState = &RefFBXStateImpl{}
@@ -3451,8 +5611,20 @@ func NewRefFBXStateAsRef(reference RefCounted) Ref {
 	return NewRef[FBXState](reference.(FBXState))
 }
 
+// NewRefFBXStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFBXStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFBXStateGDExtensionIternalConstructor(reference FBXState) RefFBXState {
 	return &RefFBXStateImpl{RefBase: NewRef[FBXState](reference)}
+}
+
+// NewRefFBXStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFBXStateGDExtensionReturnOwner(reference FBXState) RefFBXState {
+	return &RefFBXStateImpl{RefBase: NewRefTransfer[FBXState](reference)}
 }
 
 var _ RefFastNoiseLite = &RefFastNoiseLiteImpl{}
@@ -3470,8 +5642,20 @@ func NewRefFastNoiseLiteAsRef(reference RefCounted) Ref {
 	return NewRef[FastNoiseLite](reference.(FastNoiseLite))
 }
 
+// NewRefFastNoiseLiteGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFastNoiseLiteWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFastNoiseLiteGDExtensionIternalConstructor(reference FastNoiseLite) RefFastNoiseLite {
 	return &RefFastNoiseLiteImpl{RefBase: NewRef[FastNoiseLite](reference)}
+}
+
+// NewRefFastNoiseLiteGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFastNoiseLiteGDExtensionReturnOwner(reference FastNoiseLite) RefFastNoiseLite {
+	return &RefFastNoiseLiteImpl{RefBase: NewRefTransfer[FastNoiseLite](reference)}
 }
 
 var _ RefFileAccess = &RefFileAccessImpl{}
@@ -3489,8 +5673,20 @@ func NewRefFileAccessAsRef(reference RefCounted) Ref {
 	return NewRef[FileAccess](reference.(FileAccess))
 }
 
+// NewRefFileAccessGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFileAccessWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFileAccessGDExtensionIternalConstructor(reference FileAccess) RefFileAccess {
 	return &RefFileAccessImpl{RefBase: NewRef[FileAccess](reference)}
+}
+
+// NewRefFileAccessGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFileAccessGDExtensionReturnOwner(reference FileAccess) RefFileAccess {
+	return &RefFileAccessImpl{RefBase: NewRefTransfer[FileAccess](reference)}
 }
 
 var _ RefFogMaterial = &RefFogMaterialImpl{}
@@ -3508,8 +5704,20 @@ func NewRefFogMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[FogMaterial](reference.(FogMaterial))
 }
 
+// NewRefFogMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFogMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFogMaterialGDExtensionIternalConstructor(reference FogMaterial) RefFogMaterial {
 	return &RefFogMaterialImpl{RefBase: NewRef[FogMaterial](reference)}
+}
+
+// NewRefFogMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFogMaterialGDExtensionReturnOwner(reference FogMaterial) RefFogMaterial {
+	return &RefFogMaterialImpl{RefBase: NewRefTransfer[FogMaterial](reference)}
 }
 
 var _ RefFoldableGroup = &RefFoldableGroupImpl{}
@@ -3527,8 +5735,20 @@ func NewRefFoldableGroupAsRef(reference RefCounted) Ref {
 	return NewRef[FoldableGroup](reference.(FoldableGroup))
 }
 
+// NewRefFoldableGroupGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFoldableGroupWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFoldableGroupGDExtensionIternalConstructor(reference FoldableGroup) RefFoldableGroup {
 	return &RefFoldableGroupImpl{RefBase: NewRef[FoldableGroup](reference)}
+}
+
+// NewRefFoldableGroupGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFoldableGroupGDExtensionReturnOwner(reference FoldableGroup) RefFoldableGroup {
+	return &RefFoldableGroupImpl{RefBase: NewRefTransfer[FoldableGroup](reference)}
 }
 
 var _ RefFont = &RefFontImpl{}
@@ -3546,8 +5766,20 @@ func NewRefFontAsRef(reference RefCounted) Ref {
 	return NewRef[Font](reference.(Font))
 }
 
+// NewRefFontGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFontWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFontGDExtensionIternalConstructor(reference Font) RefFont {
 	return &RefFontImpl{RefBase: NewRef[Font](reference)}
+}
+
+// NewRefFontGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFontGDExtensionReturnOwner(reference Font) RefFont {
+	return &RefFontImpl{RefBase: NewRefTransfer[Font](reference)}
 }
 
 var _ RefFontFile = &RefFontFileImpl{}
@@ -3565,8 +5797,20 @@ func NewRefFontFileAsRef(reference RefCounted) Ref {
 	return NewRef[FontFile](reference.(FontFile))
 }
 
+// NewRefFontFileGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFontFileWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFontFileGDExtensionIternalConstructor(reference FontFile) RefFontFile {
 	return &RefFontFileImpl{RefBase: NewRef[FontFile](reference)}
+}
+
+// NewRefFontFileGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFontFileGDExtensionReturnOwner(reference FontFile) RefFontFile {
+	return &RefFontFileImpl{RefBase: NewRefTransfer[FontFile](reference)}
 }
 
 var _ RefFontVariation = &RefFontVariationImpl{}
@@ -3584,8 +5828,20 @@ func NewRefFontVariationAsRef(reference RefCounted) Ref {
 	return NewRef[FontVariation](reference.(FontVariation))
 }
 
+// NewRefFontVariationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewFontVariationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefFontVariationGDExtensionIternalConstructor(reference FontVariation) RefFontVariation {
 	return &RefFontVariationImpl{RefBase: NewRef[FontVariation](reference)}
+}
+
+// NewRefFontVariationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefFontVariationGDExtensionReturnOwner(reference FontVariation) RefFontVariation {
+	return &RefFontVariationImpl{RefBase: NewRefTransfer[FontVariation](reference)}
 }
 
 var _ RefGDExtension = &RefGDExtensionImpl{}
@@ -3603,8 +5859,20 @@ func NewRefGDExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[GDExtension](reference.(GDExtension))
 }
 
+// NewRefGDExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGDExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGDExtensionGDExtensionIternalConstructor(reference GDExtension) RefGDExtension {
 	return &RefGDExtensionImpl{RefBase: NewRef[GDExtension](reference)}
+}
+
+// NewRefGDExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGDExtensionGDExtensionReturnOwner(reference GDExtension) RefGDExtension {
+	return &RefGDExtensionImpl{RefBase: NewRefTransfer[GDExtension](reference)}
 }
 
 var _ RefGDScript = &RefGDScriptImpl{}
@@ -3622,8 +5890,20 @@ func NewRefGDScriptAsRef(reference RefCounted) Ref {
 	return NewRef[GDScript](reference.(GDScript))
 }
 
+// NewRefGDScriptGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGDScriptWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGDScriptGDExtensionIternalConstructor(reference GDScript) RefGDScript {
 	return &RefGDScriptImpl{RefBase: NewRef[GDScript](reference)}
+}
+
+// NewRefGDScriptGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGDScriptGDExtensionReturnOwner(reference GDScript) RefGDScript {
+	return &RefGDScriptImpl{RefBase: NewRefTransfer[GDScript](reference)}
 }
 
 var _ RefGDScriptSyntaxHighlighter = &RefGDScriptSyntaxHighlighterImpl{}
@@ -3641,8 +5921,20 @@ func NewRefGDScriptSyntaxHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[GDScriptSyntaxHighlighter](reference.(GDScriptSyntaxHighlighter))
 }
 
+// NewRefGDScriptSyntaxHighlighterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGDScriptSyntaxHighlighterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGDScriptSyntaxHighlighterGDExtensionIternalConstructor(reference GDScriptSyntaxHighlighter) RefGDScriptSyntaxHighlighter {
 	return &RefGDScriptSyntaxHighlighterImpl{RefBase: NewRef[GDScriptSyntaxHighlighter](reference)}
+}
+
+// NewRefGDScriptSyntaxHighlighterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGDScriptSyntaxHighlighterGDExtensionReturnOwner(reference GDScriptSyntaxHighlighter) RefGDScriptSyntaxHighlighter {
+	return &RefGDScriptSyntaxHighlighterImpl{RefBase: NewRefTransfer[GDScriptSyntaxHighlighter](reference)}
 }
 
 var _ RefGDScriptTextDocument = &RefGDScriptTextDocumentImpl{}
@@ -3660,8 +5952,20 @@ func NewRefGDScriptTextDocumentAsRef(reference RefCounted) Ref {
 	return NewRef[GDScriptTextDocument](reference.(GDScriptTextDocument))
 }
 
+// NewRefGDScriptTextDocumentGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGDScriptTextDocumentWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGDScriptTextDocumentGDExtensionIternalConstructor(reference GDScriptTextDocument) RefGDScriptTextDocument {
 	return &RefGDScriptTextDocumentImpl{RefBase: NewRef[GDScriptTextDocument](reference)}
+}
+
+// NewRefGDScriptTextDocumentGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGDScriptTextDocumentGDExtensionReturnOwner(reference GDScriptTextDocument) RefGDScriptTextDocument {
+	return &RefGDScriptTextDocumentImpl{RefBase: NewRefTransfer[GDScriptTextDocument](reference)}
 }
 
 var _ RefGDScriptWorkspace = &RefGDScriptWorkspaceImpl{}
@@ -3679,8 +5983,20 @@ func NewRefGDScriptWorkspaceAsRef(reference RefCounted) Ref {
 	return NewRef[GDScriptWorkspace](reference.(GDScriptWorkspace))
 }
 
+// NewRefGDScriptWorkspaceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGDScriptWorkspaceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGDScriptWorkspaceGDExtensionIternalConstructor(reference GDScriptWorkspace) RefGDScriptWorkspace {
 	return &RefGDScriptWorkspaceImpl{RefBase: NewRef[GDScriptWorkspace](reference)}
+}
+
+// NewRefGDScriptWorkspaceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGDScriptWorkspaceGDExtensionReturnOwner(reference GDScriptWorkspace) RefGDScriptWorkspace {
+	return &RefGDScriptWorkspaceImpl{RefBase: NewRefTransfer[GDScriptWorkspace](reference)}
 }
 
 var _ RefGLTFAccessor = &RefGLTFAccessorImpl{}
@@ -3698,8 +6014,20 @@ func NewRefGLTFAccessorAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFAccessor](reference.(GLTFAccessor))
 }
 
+// NewRefGLTFAccessorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFAccessorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFAccessorGDExtensionIternalConstructor(reference GLTFAccessor) RefGLTFAccessor {
 	return &RefGLTFAccessorImpl{RefBase: NewRef[GLTFAccessor](reference)}
+}
+
+// NewRefGLTFAccessorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFAccessorGDExtensionReturnOwner(reference GLTFAccessor) RefGLTFAccessor {
+	return &RefGLTFAccessorImpl{RefBase: NewRefTransfer[GLTFAccessor](reference)}
 }
 
 var _ RefGLTFAnimation = &RefGLTFAnimationImpl{}
@@ -3717,8 +6045,20 @@ func NewRefGLTFAnimationAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFAnimation](reference.(GLTFAnimation))
 }
 
+// NewRefGLTFAnimationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFAnimationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFAnimationGDExtensionIternalConstructor(reference GLTFAnimation) RefGLTFAnimation {
 	return &RefGLTFAnimationImpl{RefBase: NewRef[GLTFAnimation](reference)}
+}
+
+// NewRefGLTFAnimationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFAnimationGDExtensionReturnOwner(reference GLTFAnimation) RefGLTFAnimation {
+	return &RefGLTFAnimationImpl{RefBase: NewRefTransfer[GLTFAnimation](reference)}
 }
 
 var _ RefGLTFBufferView = &RefGLTFBufferViewImpl{}
@@ -3736,8 +6076,20 @@ func NewRefGLTFBufferViewAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFBufferView](reference.(GLTFBufferView))
 }
 
+// NewRefGLTFBufferViewGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFBufferViewWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFBufferViewGDExtensionIternalConstructor(reference GLTFBufferView) RefGLTFBufferView {
 	return &RefGLTFBufferViewImpl{RefBase: NewRef[GLTFBufferView](reference)}
+}
+
+// NewRefGLTFBufferViewGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFBufferViewGDExtensionReturnOwner(reference GLTFBufferView) RefGLTFBufferView {
+	return &RefGLTFBufferViewImpl{RefBase: NewRefTransfer[GLTFBufferView](reference)}
 }
 
 var _ RefGLTFCamera = &RefGLTFCameraImpl{}
@@ -3755,8 +6107,20 @@ func NewRefGLTFCameraAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFCamera](reference.(GLTFCamera))
 }
 
+// NewRefGLTFCameraGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFCameraWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFCameraGDExtensionIternalConstructor(reference GLTFCamera) RefGLTFCamera {
 	return &RefGLTFCameraImpl{RefBase: NewRef[GLTFCamera](reference)}
+}
+
+// NewRefGLTFCameraGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFCameraGDExtensionReturnOwner(reference GLTFCamera) RefGLTFCamera {
+	return &RefGLTFCameraImpl{RefBase: NewRefTransfer[GLTFCamera](reference)}
 }
 
 var _ RefGLTFDocument = &RefGLTFDocumentImpl{}
@@ -3774,8 +6138,20 @@ func NewRefGLTFDocumentAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFDocument](reference.(GLTFDocument))
 }
 
+// NewRefGLTFDocumentGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFDocumentWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFDocumentGDExtensionIternalConstructor(reference GLTFDocument) RefGLTFDocument {
 	return &RefGLTFDocumentImpl{RefBase: NewRef[GLTFDocument](reference)}
+}
+
+// NewRefGLTFDocumentGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFDocumentGDExtensionReturnOwner(reference GLTFDocument) RefGLTFDocument {
+	return &RefGLTFDocumentImpl{RefBase: NewRefTransfer[GLTFDocument](reference)}
 }
 
 var _ RefGLTFDocumentExtension = &RefGLTFDocumentExtensionImpl{}
@@ -3793,8 +6169,20 @@ func NewRefGLTFDocumentExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFDocumentExtension](reference.(GLTFDocumentExtension))
 }
 
+// NewRefGLTFDocumentExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFDocumentExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFDocumentExtensionGDExtensionIternalConstructor(reference GLTFDocumentExtension) RefGLTFDocumentExtension {
 	return &RefGLTFDocumentExtensionImpl{RefBase: NewRef[GLTFDocumentExtension](reference)}
+}
+
+// NewRefGLTFDocumentExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFDocumentExtensionGDExtensionReturnOwner(reference GLTFDocumentExtension) RefGLTFDocumentExtension {
+	return &RefGLTFDocumentExtensionImpl{RefBase: NewRefTransfer[GLTFDocumentExtension](reference)}
 }
 
 var _ RefGLTFDocumentExtensionConvertImporterMesh = &RefGLTFDocumentExtensionConvertImporterMeshImpl{}
@@ -3812,8 +6200,20 @@ func NewRefGLTFDocumentExtensionConvertImporterMeshAsRef(reference RefCounted) R
 	return NewRef[GLTFDocumentExtensionConvertImporterMesh](reference.(GLTFDocumentExtensionConvertImporterMesh))
 }
 
+// NewRefGLTFDocumentExtensionConvertImporterMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFDocumentExtensionConvertImporterMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFDocumentExtensionConvertImporterMeshGDExtensionIternalConstructor(reference GLTFDocumentExtensionConvertImporterMesh) RefGLTFDocumentExtensionConvertImporterMesh {
 	return &RefGLTFDocumentExtensionConvertImporterMeshImpl{RefBase: NewRef[GLTFDocumentExtensionConvertImporterMesh](reference)}
+}
+
+// NewRefGLTFDocumentExtensionConvertImporterMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFDocumentExtensionConvertImporterMeshGDExtensionReturnOwner(reference GLTFDocumentExtensionConvertImporterMesh) RefGLTFDocumentExtensionConvertImporterMesh {
+	return &RefGLTFDocumentExtensionConvertImporterMeshImpl{RefBase: NewRefTransfer[GLTFDocumentExtensionConvertImporterMesh](reference)}
 }
 
 var _ RefGLTFLight = &RefGLTFLightImpl{}
@@ -3831,8 +6231,20 @@ func NewRefGLTFLightAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFLight](reference.(GLTFLight))
 }
 
+// NewRefGLTFLightGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFLightWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFLightGDExtensionIternalConstructor(reference GLTFLight) RefGLTFLight {
 	return &RefGLTFLightImpl{RefBase: NewRef[GLTFLight](reference)}
+}
+
+// NewRefGLTFLightGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFLightGDExtensionReturnOwner(reference GLTFLight) RefGLTFLight {
+	return &RefGLTFLightImpl{RefBase: NewRefTransfer[GLTFLight](reference)}
 }
 
 var _ RefGLTFMesh = &RefGLTFMeshImpl{}
@@ -3850,8 +6262,20 @@ func NewRefGLTFMeshAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFMesh](reference.(GLTFMesh))
 }
 
+// NewRefGLTFMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFMeshGDExtensionIternalConstructor(reference GLTFMesh) RefGLTFMesh {
 	return &RefGLTFMeshImpl{RefBase: NewRef[GLTFMesh](reference)}
+}
+
+// NewRefGLTFMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFMeshGDExtensionReturnOwner(reference GLTFMesh) RefGLTFMesh {
+	return &RefGLTFMeshImpl{RefBase: NewRefTransfer[GLTFMesh](reference)}
 }
 
 var _ RefGLTFNode = &RefGLTFNodeImpl{}
@@ -3869,8 +6293,20 @@ func NewRefGLTFNodeAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFNode](reference.(GLTFNode))
 }
 
+// NewRefGLTFNodeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFNodeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFNodeGDExtensionIternalConstructor(reference GLTFNode) RefGLTFNode {
 	return &RefGLTFNodeImpl{RefBase: NewRef[GLTFNode](reference)}
+}
+
+// NewRefGLTFNodeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFNodeGDExtensionReturnOwner(reference GLTFNode) RefGLTFNode {
+	return &RefGLTFNodeImpl{RefBase: NewRefTransfer[GLTFNode](reference)}
 }
 
 var _ RefGLTFObjectModelProperty = &RefGLTFObjectModelPropertyImpl{}
@@ -3888,8 +6324,20 @@ func NewRefGLTFObjectModelPropertyAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFObjectModelProperty](reference.(GLTFObjectModelProperty))
 }
 
+// NewRefGLTFObjectModelPropertyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFObjectModelPropertyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFObjectModelPropertyGDExtensionIternalConstructor(reference GLTFObjectModelProperty) RefGLTFObjectModelProperty {
 	return &RefGLTFObjectModelPropertyImpl{RefBase: NewRef[GLTFObjectModelProperty](reference)}
+}
+
+// NewRefGLTFObjectModelPropertyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFObjectModelPropertyGDExtensionReturnOwner(reference GLTFObjectModelProperty) RefGLTFObjectModelProperty {
+	return &RefGLTFObjectModelPropertyImpl{RefBase: NewRefTransfer[GLTFObjectModelProperty](reference)}
 }
 
 var _ RefGLTFPhysicsBody = &RefGLTFPhysicsBodyImpl{}
@@ -3907,8 +6355,20 @@ func NewRefGLTFPhysicsBodyAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFPhysicsBody](reference.(GLTFPhysicsBody))
 }
 
+// NewRefGLTFPhysicsBodyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFPhysicsBodyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFPhysicsBodyGDExtensionIternalConstructor(reference GLTFPhysicsBody) RefGLTFPhysicsBody {
 	return &RefGLTFPhysicsBodyImpl{RefBase: NewRef[GLTFPhysicsBody](reference)}
+}
+
+// NewRefGLTFPhysicsBodyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFPhysicsBodyGDExtensionReturnOwner(reference GLTFPhysicsBody) RefGLTFPhysicsBody {
+	return &RefGLTFPhysicsBodyImpl{RefBase: NewRefTransfer[GLTFPhysicsBody](reference)}
 }
 
 var _ RefGLTFPhysicsShape = &RefGLTFPhysicsShapeImpl{}
@@ -3926,8 +6386,20 @@ func NewRefGLTFPhysicsShapeAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFPhysicsShape](reference.(GLTFPhysicsShape))
 }
 
+// NewRefGLTFPhysicsShapeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFPhysicsShapeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFPhysicsShapeGDExtensionIternalConstructor(reference GLTFPhysicsShape) RefGLTFPhysicsShape {
 	return &RefGLTFPhysicsShapeImpl{RefBase: NewRef[GLTFPhysicsShape](reference)}
+}
+
+// NewRefGLTFPhysicsShapeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFPhysicsShapeGDExtensionReturnOwner(reference GLTFPhysicsShape) RefGLTFPhysicsShape {
+	return &RefGLTFPhysicsShapeImpl{RefBase: NewRefTransfer[GLTFPhysicsShape](reference)}
 }
 
 var _ RefGLTFSkeleton = &RefGLTFSkeletonImpl{}
@@ -3945,8 +6417,20 @@ func NewRefGLTFSkeletonAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFSkeleton](reference.(GLTFSkeleton))
 }
 
+// NewRefGLTFSkeletonGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFSkeletonWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFSkeletonGDExtensionIternalConstructor(reference GLTFSkeleton) RefGLTFSkeleton {
 	return &RefGLTFSkeletonImpl{RefBase: NewRef[GLTFSkeleton](reference)}
+}
+
+// NewRefGLTFSkeletonGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFSkeletonGDExtensionReturnOwner(reference GLTFSkeleton) RefGLTFSkeleton {
+	return &RefGLTFSkeletonImpl{RefBase: NewRefTransfer[GLTFSkeleton](reference)}
 }
 
 var _ RefGLTFSkin = &RefGLTFSkinImpl{}
@@ -3964,8 +6448,20 @@ func NewRefGLTFSkinAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFSkin](reference.(GLTFSkin))
 }
 
+// NewRefGLTFSkinGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFSkinWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFSkinGDExtensionIternalConstructor(reference GLTFSkin) RefGLTFSkin {
 	return &RefGLTFSkinImpl{RefBase: NewRef[GLTFSkin](reference)}
+}
+
+// NewRefGLTFSkinGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFSkinGDExtensionReturnOwner(reference GLTFSkin) RefGLTFSkin {
+	return &RefGLTFSkinImpl{RefBase: NewRefTransfer[GLTFSkin](reference)}
 }
 
 var _ RefGLTFSpecGloss = &RefGLTFSpecGlossImpl{}
@@ -3983,8 +6479,20 @@ func NewRefGLTFSpecGlossAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFSpecGloss](reference.(GLTFSpecGloss))
 }
 
+// NewRefGLTFSpecGlossGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFSpecGlossWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFSpecGlossGDExtensionIternalConstructor(reference GLTFSpecGloss) RefGLTFSpecGloss {
 	return &RefGLTFSpecGlossImpl{RefBase: NewRef[GLTFSpecGloss](reference)}
+}
+
+// NewRefGLTFSpecGlossGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFSpecGlossGDExtensionReturnOwner(reference GLTFSpecGloss) RefGLTFSpecGloss {
+	return &RefGLTFSpecGlossImpl{RefBase: NewRefTransfer[GLTFSpecGloss](reference)}
 }
 
 var _ RefGLTFState = &RefGLTFStateImpl{}
@@ -4002,8 +6510,20 @@ func NewRefGLTFStateAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFState](reference.(GLTFState))
 }
 
+// NewRefGLTFStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFStateGDExtensionIternalConstructor(reference GLTFState) RefGLTFState {
 	return &RefGLTFStateImpl{RefBase: NewRef[GLTFState](reference)}
+}
+
+// NewRefGLTFStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFStateGDExtensionReturnOwner(reference GLTFState) RefGLTFState {
+	return &RefGLTFStateImpl{RefBase: NewRefTransfer[GLTFState](reference)}
 }
 
 var _ RefGLTFTexture = &RefGLTFTextureImpl{}
@@ -4021,8 +6541,20 @@ func NewRefGLTFTextureAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFTexture](reference.(GLTFTexture))
 }
 
+// NewRefGLTFTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFTextureGDExtensionIternalConstructor(reference GLTFTexture) RefGLTFTexture {
 	return &RefGLTFTextureImpl{RefBase: NewRef[GLTFTexture](reference)}
+}
+
+// NewRefGLTFTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFTextureGDExtensionReturnOwner(reference GLTFTexture) RefGLTFTexture {
+	return &RefGLTFTextureImpl{RefBase: NewRefTransfer[GLTFTexture](reference)}
 }
 
 var _ RefGLTFTextureSampler = &RefGLTFTextureSamplerImpl{}
@@ -4040,8 +6572,20 @@ func NewRefGLTFTextureSamplerAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFTextureSampler](reference.(GLTFTextureSampler))
 }
 
+// NewRefGLTFTextureSamplerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGLTFTextureSamplerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGLTFTextureSamplerGDExtensionIternalConstructor(reference GLTFTextureSampler) RefGLTFTextureSampler {
 	return &RefGLTFTextureSamplerImpl{RefBase: NewRef[GLTFTextureSampler](reference)}
+}
+
+// NewRefGLTFTextureSamplerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGLTFTextureSamplerGDExtensionReturnOwner(reference GLTFTextureSampler) RefGLTFTextureSampler {
+	return &RefGLTFTextureSamplerImpl{RefBase: NewRefTransfer[GLTFTextureSampler](reference)}
 }
 
 var _ RefGradient = &RefGradientImpl{}
@@ -4059,8 +6603,20 @@ func NewRefGradientAsRef(reference RefCounted) Ref {
 	return NewRef[Gradient](reference.(Gradient))
 }
 
+// NewRefGradientGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGradientWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGradientGDExtensionIternalConstructor(reference Gradient) RefGradient {
 	return &RefGradientImpl{RefBase: NewRef[Gradient](reference)}
+}
+
+// NewRefGradientGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGradientGDExtensionReturnOwner(reference Gradient) RefGradient {
+	return &RefGradientImpl{RefBase: NewRefTransfer[Gradient](reference)}
 }
 
 var _ RefGradientTexture1D = &RefGradientTexture1DImpl{}
@@ -4078,8 +6634,20 @@ func NewRefGradientTexture1DAsRef(reference RefCounted) Ref {
 	return NewRef[GradientTexture1D](reference.(GradientTexture1D))
 }
 
+// NewRefGradientTexture1DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGradientTexture1DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGradientTexture1DGDExtensionIternalConstructor(reference GradientTexture1D) RefGradientTexture1D {
 	return &RefGradientTexture1DImpl{RefBase: NewRef[GradientTexture1D](reference)}
+}
+
+// NewRefGradientTexture1DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGradientTexture1DGDExtensionReturnOwner(reference GradientTexture1D) RefGradientTexture1D {
+	return &RefGradientTexture1DImpl{RefBase: NewRefTransfer[GradientTexture1D](reference)}
 }
 
 var _ RefGradientTexture2D = &RefGradientTexture2DImpl{}
@@ -4097,8 +6665,20 @@ func NewRefGradientTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[GradientTexture2D](reference.(GradientTexture2D))
 }
 
+// NewRefGradientTexture2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewGradientTexture2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefGradientTexture2DGDExtensionIternalConstructor(reference GradientTexture2D) RefGradientTexture2D {
 	return &RefGradientTexture2DImpl{RefBase: NewRef[GradientTexture2D](reference)}
+}
+
+// NewRefGradientTexture2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefGradientTexture2DGDExtensionReturnOwner(reference GradientTexture2D) RefGradientTexture2D {
+	return &RefGradientTexture2DImpl{RefBase: NewRefTransfer[GradientTexture2D](reference)}
 }
 
 var _ RefHMACContext = &RefHMACContextImpl{}
@@ -4116,8 +6696,20 @@ func NewRefHMACContextAsRef(reference RefCounted) Ref {
 	return NewRef[HMACContext](reference.(HMACContext))
 }
 
+// NewRefHMACContextGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewHMACContextWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefHMACContextGDExtensionIternalConstructor(reference HMACContext) RefHMACContext {
 	return &RefHMACContextImpl{RefBase: NewRef[HMACContext](reference)}
+}
+
+// NewRefHMACContextGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefHMACContextGDExtensionReturnOwner(reference HMACContext) RefHMACContext {
+	return &RefHMACContextImpl{RefBase: NewRefTransfer[HMACContext](reference)}
 }
 
 var _ RefHTTPClient = &RefHTTPClientImpl{}
@@ -4135,8 +6727,20 @@ func NewRefHTTPClientAsRef(reference RefCounted) Ref {
 	return NewRef[HTTPClient](reference.(HTTPClient))
 }
 
+// NewRefHTTPClientGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewHTTPClientWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefHTTPClientGDExtensionIternalConstructor(reference HTTPClient) RefHTTPClient {
 	return &RefHTTPClientImpl{RefBase: NewRef[HTTPClient](reference)}
+}
+
+// NewRefHTTPClientGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefHTTPClientGDExtensionReturnOwner(reference HTTPClient) RefHTTPClient {
+	return &RefHTTPClientImpl{RefBase: NewRefTransfer[HTTPClient](reference)}
 }
 
 var _ RefHashingContext = &RefHashingContextImpl{}
@@ -4154,8 +6758,20 @@ func NewRefHashingContextAsRef(reference RefCounted) Ref {
 	return NewRef[HashingContext](reference.(HashingContext))
 }
 
+// NewRefHashingContextGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewHashingContextWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefHashingContextGDExtensionIternalConstructor(reference HashingContext) RefHashingContext {
 	return &RefHashingContextImpl{RefBase: NewRef[HashingContext](reference)}
+}
+
+// NewRefHashingContextGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefHashingContextGDExtensionReturnOwner(reference HashingContext) RefHashingContext {
+	return &RefHashingContextImpl{RefBase: NewRefTransfer[HashingContext](reference)}
 }
 
 var _ RefHeightMapShape3D = &RefHeightMapShape3DImpl{}
@@ -4173,8 +6789,20 @@ func NewRefHeightMapShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[HeightMapShape3D](reference.(HeightMapShape3D))
 }
 
+// NewRefHeightMapShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewHeightMapShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefHeightMapShape3DGDExtensionIternalConstructor(reference HeightMapShape3D) RefHeightMapShape3D {
 	return &RefHeightMapShape3DImpl{RefBase: NewRef[HeightMapShape3D](reference)}
+}
+
+// NewRefHeightMapShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefHeightMapShape3DGDExtensionReturnOwner(reference HeightMapShape3D) RefHeightMapShape3D {
+	return &RefHeightMapShape3DImpl{RefBase: NewRefTransfer[HeightMapShape3D](reference)}
 }
 
 var _ RefImage = &RefImageImpl{}
@@ -4192,8 +6820,20 @@ func NewRefImageAsRef(reference RefCounted) Ref {
 	return NewRef[Image](reference.(Image))
 }
 
+// NewRefImageGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImageWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImageGDExtensionIternalConstructor(reference Image) RefImage {
 	return &RefImageImpl{RefBase: NewRef[Image](reference)}
+}
+
+// NewRefImageGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImageGDExtensionReturnOwner(reference Image) RefImage {
+	return &RefImageImpl{RefBase: NewRefTransfer[Image](reference)}
 }
 
 var _ RefImageFormatLoader = &RefImageFormatLoaderImpl{}
@@ -4211,8 +6851,20 @@ func NewRefImageFormatLoaderAsRef(reference RefCounted) Ref {
 	return NewRef[ImageFormatLoader](reference.(ImageFormatLoader))
 }
 
+// NewRefImageFormatLoaderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImageFormatLoaderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImageFormatLoaderGDExtensionIternalConstructor(reference ImageFormatLoader) RefImageFormatLoader {
 	return &RefImageFormatLoaderImpl{RefBase: NewRef[ImageFormatLoader](reference)}
+}
+
+// NewRefImageFormatLoaderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImageFormatLoaderGDExtensionReturnOwner(reference ImageFormatLoader) RefImageFormatLoader {
+	return &RefImageFormatLoaderImpl{RefBase: NewRefTransfer[ImageFormatLoader](reference)}
 }
 
 var _ RefImageFormatLoaderExtension = &RefImageFormatLoaderExtensionImpl{}
@@ -4230,8 +6882,20 @@ func NewRefImageFormatLoaderExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[ImageFormatLoaderExtension](reference.(ImageFormatLoaderExtension))
 }
 
+// NewRefImageFormatLoaderExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImageFormatLoaderExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImageFormatLoaderExtensionGDExtensionIternalConstructor(reference ImageFormatLoaderExtension) RefImageFormatLoaderExtension {
 	return &RefImageFormatLoaderExtensionImpl{RefBase: NewRef[ImageFormatLoaderExtension](reference)}
+}
+
+// NewRefImageFormatLoaderExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImageFormatLoaderExtensionGDExtensionReturnOwner(reference ImageFormatLoaderExtension) RefImageFormatLoaderExtension {
+	return &RefImageFormatLoaderExtensionImpl{RefBase: NewRefTransfer[ImageFormatLoaderExtension](reference)}
 }
 
 var _ RefImageTexture = &RefImageTextureImpl{}
@@ -4249,8 +6913,20 @@ func NewRefImageTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ImageTexture](reference.(ImageTexture))
 }
 
+// NewRefImageTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImageTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImageTextureGDExtensionIternalConstructor(reference ImageTexture) RefImageTexture {
 	return &RefImageTextureImpl{RefBase: NewRef[ImageTexture](reference)}
+}
+
+// NewRefImageTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImageTextureGDExtensionReturnOwner(reference ImageTexture) RefImageTexture {
+	return &RefImageTextureImpl{RefBase: NewRefTransfer[ImageTexture](reference)}
 }
 
 var _ RefImageTexture3D = &RefImageTexture3DImpl{}
@@ -4268,8 +6944,20 @@ func NewRefImageTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[ImageTexture3D](reference.(ImageTexture3D))
 }
 
+// NewRefImageTexture3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImageTexture3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImageTexture3DGDExtensionIternalConstructor(reference ImageTexture3D) RefImageTexture3D {
 	return &RefImageTexture3DImpl{RefBase: NewRef[ImageTexture3D](reference)}
+}
+
+// NewRefImageTexture3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImageTexture3DGDExtensionReturnOwner(reference ImageTexture3D) RefImageTexture3D {
+	return &RefImageTexture3DImpl{RefBase: NewRefTransfer[ImageTexture3D](reference)}
 }
 
 var _ RefImageTextureLayered = &RefImageTextureLayeredImpl{}
@@ -4287,8 +6975,20 @@ func NewRefImageTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[ImageTextureLayered](reference.(ImageTextureLayered))
 }
 
+// NewRefImageTextureLayeredGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImageTextureLayeredWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImageTextureLayeredGDExtensionIternalConstructor(reference ImageTextureLayered) RefImageTextureLayered {
 	return &RefImageTextureLayeredImpl{RefBase: NewRef[ImageTextureLayered](reference)}
+}
+
+// NewRefImageTextureLayeredGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImageTextureLayeredGDExtensionReturnOwner(reference ImageTextureLayered) RefImageTextureLayered {
+	return &RefImageTextureLayeredImpl{RefBase: NewRefTransfer[ImageTextureLayered](reference)}
 }
 
 var _ RefImmediateMesh = &RefImmediateMeshImpl{}
@@ -4306,8 +7006,20 @@ func NewRefImmediateMeshAsRef(reference RefCounted) Ref {
 	return NewRef[ImmediateMesh](reference.(ImmediateMesh))
 }
 
+// NewRefImmediateMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImmediateMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImmediateMeshGDExtensionIternalConstructor(reference ImmediateMesh) RefImmediateMesh {
 	return &RefImmediateMeshImpl{RefBase: NewRef[ImmediateMesh](reference)}
+}
+
+// NewRefImmediateMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImmediateMeshGDExtensionReturnOwner(reference ImmediateMesh) RefImmediateMesh {
+	return &RefImmediateMeshImpl{RefBase: NewRefTransfer[ImmediateMesh](reference)}
 }
 
 var _ RefImporterMesh = &RefImporterMeshImpl{}
@@ -4325,8 +7037,20 @@ func NewRefImporterMeshAsRef(reference RefCounted) Ref {
 	return NewRef[ImporterMesh](reference.(ImporterMesh))
 }
 
+// NewRefImporterMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewImporterMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefImporterMeshGDExtensionIternalConstructor(reference ImporterMesh) RefImporterMesh {
 	return &RefImporterMeshImpl{RefBase: NewRef[ImporterMesh](reference)}
+}
+
+// NewRefImporterMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefImporterMeshGDExtensionReturnOwner(reference ImporterMesh) RefImporterMesh {
+	return &RefImporterMeshImpl{RefBase: NewRefTransfer[ImporterMesh](reference)}
 }
 
 var _ RefInputEvent = &RefInputEventImpl{}
@@ -4344,8 +7068,20 @@ func NewRefInputEventAsRef(reference RefCounted) Ref {
 	return NewRef[InputEvent](reference.(InputEvent))
 }
 
+// NewRefInputEventGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventGDExtensionIternalConstructor(reference InputEvent) RefInputEvent {
 	return &RefInputEventImpl{RefBase: NewRef[InputEvent](reference)}
+}
+
+// NewRefInputEventGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventGDExtensionReturnOwner(reference InputEvent) RefInputEvent {
+	return &RefInputEventImpl{RefBase: NewRefTransfer[InputEvent](reference)}
 }
 
 var _ RefInputEventAction = &RefInputEventActionImpl{}
@@ -4363,8 +7099,20 @@ func NewRefInputEventActionAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventAction](reference.(InputEventAction))
 }
 
+// NewRefInputEventActionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventActionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventActionGDExtensionIternalConstructor(reference InputEventAction) RefInputEventAction {
 	return &RefInputEventActionImpl{RefBase: NewRef[InputEventAction](reference)}
+}
+
+// NewRefInputEventActionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventActionGDExtensionReturnOwner(reference InputEventAction) RefInputEventAction {
+	return &RefInputEventActionImpl{RefBase: NewRefTransfer[InputEventAction](reference)}
 }
 
 var _ RefInputEventFromWindow = &RefInputEventFromWindowImpl{}
@@ -4382,8 +7130,20 @@ func NewRefInputEventFromWindowAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventFromWindow](reference.(InputEventFromWindow))
 }
 
+// NewRefInputEventFromWindowGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventFromWindowWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventFromWindowGDExtensionIternalConstructor(reference InputEventFromWindow) RefInputEventFromWindow {
 	return &RefInputEventFromWindowImpl{RefBase: NewRef[InputEventFromWindow](reference)}
+}
+
+// NewRefInputEventFromWindowGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventFromWindowGDExtensionReturnOwner(reference InputEventFromWindow) RefInputEventFromWindow {
+	return &RefInputEventFromWindowImpl{RefBase: NewRefTransfer[InputEventFromWindow](reference)}
 }
 
 var _ RefInputEventGesture = &RefInputEventGestureImpl{}
@@ -4401,8 +7161,20 @@ func NewRefInputEventGestureAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventGesture](reference.(InputEventGesture))
 }
 
+// NewRefInputEventGestureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventGestureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventGestureGDExtensionIternalConstructor(reference InputEventGesture) RefInputEventGesture {
 	return &RefInputEventGestureImpl{RefBase: NewRef[InputEventGesture](reference)}
+}
+
+// NewRefInputEventGestureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventGestureGDExtensionReturnOwner(reference InputEventGesture) RefInputEventGesture {
+	return &RefInputEventGestureImpl{RefBase: NewRefTransfer[InputEventGesture](reference)}
 }
 
 var _ RefInputEventJoypadButton = &RefInputEventJoypadButtonImpl{}
@@ -4420,8 +7192,20 @@ func NewRefInputEventJoypadButtonAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventJoypadButton](reference.(InputEventJoypadButton))
 }
 
+// NewRefInputEventJoypadButtonGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventJoypadButtonWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventJoypadButtonGDExtensionIternalConstructor(reference InputEventJoypadButton) RefInputEventJoypadButton {
 	return &RefInputEventJoypadButtonImpl{RefBase: NewRef[InputEventJoypadButton](reference)}
+}
+
+// NewRefInputEventJoypadButtonGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventJoypadButtonGDExtensionReturnOwner(reference InputEventJoypadButton) RefInputEventJoypadButton {
+	return &RefInputEventJoypadButtonImpl{RefBase: NewRefTransfer[InputEventJoypadButton](reference)}
 }
 
 var _ RefInputEventJoypadMotion = &RefInputEventJoypadMotionImpl{}
@@ -4439,8 +7223,20 @@ func NewRefInputEventJoypadMotionAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventJoypadMotion](reference.(InputEventJoypadMotion))
 }
 
+// NewRefInputEventJoypadMotionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventJoypadMotionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventJoypadMotionGDExtensionIternalConstructor(reference InputEventJoypadMotion) RefInputEventJoypadMotion {
 	return &RefInputEventJoypadMotionImpl{RefBase: NewRef[InputEventJoypadMotion](reference)}
+}
+
+// NewRefInputEventJoypadMotionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventJoypadMotionGDExtensionReturnOwner(reference InputEventJoypadMotion) RefInputEventJoypadMotion {
+	return &RefInputEventJoypadMotionImpl{RefBase: NewRefTransfer[InputEventJoypadMotion](reference)}
 }
 
 var _ RefInputEventKey = &RefInputEventKeyImpl{}
@@ -4458,8 +7254,20 @@ func NewRefInputEventKeyAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventKey](reference.(InputEventKey))
 }
 
+// NewRefInputEventKeyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventKeyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventKeyGDExtensionIternalConstructor(reference InputEventKey) RefInputEventKey {
 	return &RefInputEventKeyImpl{RefBase: NewRef[InputEventKey](reference)}
+}
+
+// NewRefInputEventKeyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventKeyGDExtensionReturnOwner(reference InputEventKey) RefInputEventKey {
+	return &RefInputEventKeyImpl{RefBase: NewRefTransfer[InputEventKey](reference)}
 }
 
 var _ RefInputEventMIDI = &RefInputEventMIDIImpl{}
@@ -4477,8 +7285,20 @@ func NewRefInputEventMIDIAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMIDI](reference.(InputEventMIDI))
 }
 
+// NewRefInputEventMIDIGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventMIDIWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventMIDIGDExtensionIternalConstructor(reference InputEventMIDI) RefInputEventMIDI {
 	return &RefInputEventMIDIImpl{RefBase: NewRef[InputEventMIDI](reference)}
+}
+
+// NewRefInputEventMIDIGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventMIDIGDExtensionReturnOwner(reference InputEventMIDI) RefInputEventMIDI {
+	return &RefInputEventMIDIImpl{RefBase: NewRefTransfer[InputEventMIDI](reference)}
 }
 
 var _ RefInputEventMagnifyGesture = &RefInputEventMagnifyGestureImpl{}
@@ -4496,8 +7316,20 @@ func NewRefInputEventMagnifyGestureAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMagnifyGesture](reference.(InputEventMagnifyGesture))
 }
 
+// NewRefInputEventMagnifyGestureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventMagnifyGestureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventMagnifyGestureGDExtensionIternalConstructor(reference InputEventMagnifyGesture) RefInputEventMagnifyGesture {
 	return &RefInputEventMagnifyGestureImpl{RefBase: NewRef[InputEventMagnifyGesture](reference)}
+}
+
+// NewRefInputEventMagnifyGestureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventMagnifyGestureGDExtensionReturnOwner(reference InputEventMagnifyGesture) RefInputEventMagnifyGesture {
+	return &RefInputEventMagnifyGestureImpl{RefBase: NewRefTransfer[InputEventMagnifyGesture](reference)}
 }
 
 var _ RefInputEventMouse = &RefInputEventMouseImpl{}
@@ -4515,8 +7347,20 @@ func NewRefInputEventMouseAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMouse](reference.(InputEventMouse))
 }
 
+// NewRefInputEventMouseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventMouseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventMouseGDExtensionIternalConstructor(reference InputEventMouse) RefInputEventMouse {
 	return &RefInputEventMouseImpl{RefBase: NewRef[InputEventMouse](reference)}
+}
+
+// NewRefInputEventMouseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventMouseGDExtensionReturnOwner(reference InputEventMouse) RefInputEventMouse {
+	return &RefInputEventMouseImpl{RefBase: NewRefTransfer[InputEventMouse](reference)}
 }
 
 var _ RefInputEventMouseButton = &RefInputEventMouseButtonImpl{}
@@ -4534,8 +7378,20 @@ func NewRefInputEventMouseButtonAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMouseButton](reference.(InputEventMouseButton))
 }
 
+// NewRefInputEventMouseButtonGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventMouseButtonWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventMouseButtonGDExtensionIternalConstructor(reference InputEventMouseButton) RefInputEventMouseButton {
 	return &RefInputEventMouseButtonImpl{RefBase: NewRef[InputEventMouseButton](reference)}
+}
+
+// NewRefInputEventMouseButtonGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventMouseButtonGDExtensionReturnOwner(reference InputEventMouseButton) RefInputEventMouseButton {
+	return &RefInputEventMouseButtonImpl{RefBase: NewRefTransfer[InputEventMouseButton](reference)}
 }
 
 var _ RefInputEventMouseMotion = &RefInputEventMouseMotionImpl{}
@@ -4553,8 +7409,20 @@ func NewRefInputEventMouseMotionAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMouseMotion](reference.(InputEventMouseMotion))
 }
 
+// NewRefInputEventMouseMotionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventMouseMotionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventMouseMotionGDExtensionIternalConstructor(reference InputEventMouseMotion) RefInputEventMouseMotion {
 	return &RefInputEventMouseMotionImpl{RefBase: NewRef[InputEventMouseMotion](reference)}
+}
+
+// NewRefInputEventMouseMotionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventMouseMotionGDExtensionReturnOwner(reference InputEventMouseMotion) RefInputEventMouseMotion {
+	return &RefInputEventMouseMotionImpl{RefBase: NewRefTransfer[InputEventMouseMotion](reference)}
 }
 
 var _ RefInputEventPanGesture = &RefInputEventPanGestureImpl{}
@@ -4572,8 +7440,20 @@ func NewRefInputEventPanGestureAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventPanGesture](reference.(InputEventPanGesture))
 }
 
+// NewRefInputEventPanGestureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventPanGestureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventPanGestureGDExtensionIternalConstructor(reference InputEventPanGesture) RefInputEventPanGesture {
 	return &RefInputEventPanGestureImpl{RefBase: NewRef[InputEventPanGesture](reference)}
+}
+
+// NewRefInputEventPanGestureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventPanGestureGDExtensionReturnOwner(reference InputEventPanGesture) RefInputEventPanGesture {
+	return &RefInputEventPanGestureImpl{RefBase: NewRefTransfer[InputEventPanGesture](reference)}
 }
 
 var _ RefInputEventScreenDrag = &RefInputEventScreenDragImpl{}
@@ -4591,8 +7471,20 @@ func NewRefInputEventScreenDragAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventScreenDrag](reference.(InputEventScreenDrag))
 }
 
+// NewRefInputEventScreenDragGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventScreenDragWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventScreenDragGDExtensionIternalConstructor(reference InputEventScreenDrag) RefInputEventScreenDrag {
 	return &RefInputEventScreenDragImpl{RefBase: NewRef[InputEventScreenDrag](reference)}
+}
+
+// NewRefInputEventScreenDragGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventScreenDragGDExtensionReturnOwner(reference InputEventScreenDrag) RefInputEventScreenDrag {
+	return &RefInputEventScreenDragImpl{RefBase: NewRefTransfer[InputEventScreenDrag](reference)}
 }
 
 var _ RefInputEventScreenTouch = &RefInputEventScreenTouchImpl{}
@@ -4610,8 +7502,20 @@ func NewRefInputEventScreenTouchAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventScreenTouch](reference.(InputEventScreenTouch))
 }
 
+// NewRefInputEventScreenTouchGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventScreenTouchWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventScreenTouchGDExtensionIternalConstructor(reference InputEventScreenTouch) RefInputEventScreenTouch {
 	return &RefInputEventScreenTouchImpl{RefBase: NewRef[InputEventScreenTouch](reference)}
+}
+
+// NewRefInputEventScreenTouchGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventScreenTouchGDExtensionReturnOwner(reference InputEventScreenTouch) RefInputEventScreenTouch {
+	return &RefInputEventScreenTouchImpl{RefBase: NewRefTransfer[InputEventScreenTouch](reference)}
 }
 
 var _ RefInputEventShortcut = &RefInputEventShortcutImpl{}
@@ -4629,8 +7533,20 @@ func NewRefInputEventShortcutAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventShortcut](reference.(InputEventShortcut))
 }
 
+// NewRefInputEventShortcutGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventShortcutWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventShortcutGDExtensionIternalConstructor(reference InputEventShortcut) RefInputEventShortcut {
 	return &RefInputEventShortcutImpl{RefBase: NewRef[InputEventShortcut](reference)}
+}
+
+// NewRefInputEventShortcutGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventShortcutGDExtensionReturnOwner(reference InputEventShortcut) RefInputEventShortcut {
+	return &RefInputEventShortcutImpl{RefBase: NewRefTransfer[InputEventShortcut](reference)}
 }
 
 var _ RefInputEventWithModifiers = &RefInputEventWithModifiersImpl{}
@@ -4648,8 +7564,20 @@ func NewRefInputEventWithModifiersAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventWithModifiers](reference.(InputEventWithModifiers))
 }
 
+// NewRefInputEventWithModifiersGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewInputEventWithModifiersWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefInputEventWithModifiersGDExtensionIternalConstructor(reference InputEventWithModifiers) RefInputEventWithModifiers {
 	return &RefInputEventWithModifiersImpl{RefBase: NewRef[InputEventWithModifiers](reference)}
+}
+
+// NewRefInputEventWithModifiersGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefInputEventWithModifiersGDExtensionReturnOwner(reference InputEventWithModifiers) RefInputEventWithModifiers {
+	return &RefInputEventWithModifiersImpl{RefBase: NewRefTransfer[InputEventWithModifiers](reference)}
 }
 
 var _ RefIntervalTweener = &RefIntervalTweenerImpl{}
@@ -4667,8 +7595,20 @@ func NewRefIntervalTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[IntervalTweener](reference.(IntervalTweener))
 }
 
+// NewRefIntervalTweenerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewIntervalTweenerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefIntervalTweenerGDExtensionIternalConstructor(reference IntervalTweener) RefIntervalTweener {
 	return &RefIntervalTweenerImpl{RefBase: NewRef[IntervalTweener](reference)}
+}
+
+// NewRefIntervalTweenerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefIntervalTweenerGDExtensionReturnOwner(reference IntervalTweener) RefIntervalTweener {
+	return &RefIntervalTweenerImpl{RefBase: NewRefTransfer[IntervalTweener](reference)}
 }
 
 var _ RefJSON = &RefJSONImpl{}
@@ -4686,8 +7626,20 @@ func NewRefJSONAsRef(reference RefCounted) Ref {
 	return NewRef[JSON](reference.(JSON))
 }
 
+// NewRefJSONGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewJSONWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefJSONGDExtensionIternalConstructor(reference JSON) RefJSON {
 	return &RefJSONImpl{RefBase: NewRef[JSON](reference)}
+}
+
+// NewRefJSONGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefJSONGDExtensionReturnOwner(reference JSON) RefJSON {
+	return &RefJSONImpl{RefBase: NewRefTransfer[JSON](reference)}
 }
 
 var _ RefJavaClass = &RefJavaClassImpl{}
@@ -4705,8 +7657,20 @@ func NewRefJavaClassAsRef(reference RefCounted) Ref {
 	return NewRef[JavaClass](reference.(JavaClass))
 }
 
+// NewRefJavaClassGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewJavaClassWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefJavaClassGDExtensionIternalConstructor(reference JavaClass) RefJavaClass {
 	return &RefJavaClassImpl{RefBase: NewRef[JavaClass](reference)}
+}
+
+// NewRefJavaClassGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefJavaClassGDExtensionReturnOwner(reference JavaClass) RefJavaClass {
+	return &RefJavaClassImpl{RefBase: NewRefTransfer[JavaClass](reference)}
 }
 
 var _ RefJavaObject = &RefJavaObjectImpl{}
@@ -4724,8 +7688,20 @@ func NewRefJavaObjectAsRef(reference RefCounted) Ref {
 	return NewRef[JavaObject](reference.(JavaObject))
 }
 
+// NewRefJavaObjectGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewJavaObjectWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefJavaObjectGDExtensionIternalConstructor(reference JavaObject) RefJavaObject {
 	return &RefJavaObjectImpl{RefBase: NewRef[JavaObject](reference)}
+}
+
+// NewRefJavaObjectGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefJavaObjectGDExtensionReturnOwner(reference JavaObject) RefJavaObject {
+	return &RefJavaObjectImpl{RefBase: NewRefTransfer[JavaObject](reference)}
 }
 
 var _ RefJavaScriptObject = &RefJavaScriptObjectImpl{}
@@ -4743,8 +7719,20 @@ func NewRefJavaScriptObjectAsRef(reference RefCounted) Ref {
 	return NewRef[JavaScriptObject](reference.(JavaScriptObject))
 }
 
+// NewRefJavaScriptObjectGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewJavaScriptObjectWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefJavaScriptObjectGDExtensionIternalConstructor(reference JavaScriptObject) RefJavaScriptObject {
 	return &RefJavaScriptObjectImpl{RefBase: NewRef[JavaScriptObject](reference)}
+}
+
+// NewRefJavaScriptObjectGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefJavaScriptObjectGDExtensionReturnOwner(reference JavaScriptObject) RefJavaScriptObject {
+	return &RefJavaScriptObjectImpl{RefBase: NewRefTransfer[JavaScriptObject](reference)}
 }
 
 var _ RefJointLimitation3D = &RefJointLimitation3DImpl{}
@@ -4762,8 +7750,20 @@ func NewRefJointLimitation3DAsRef(reference RefCounted) Ref {
 	return NewRef[JointLimitation3D](reference.(JointLimitation3D))
 }
 
+// NewRefJointLimitation3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewJointLimitation3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefJointLimitation3DGDExtensionIternalConstructor(reference JointLimitation3D) RefJointLimitation3D {
 	return &RefJointLimitation3DImpl{RefBase: NewRef[JointLimitation3D](reference)}
+}
+
+// NewRefJointLimitation3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefJointLimitation3DGDExtensionReturnOwner(reference JointLimitation3D) RefJointLimitation3D {
+	return &RefJointLimitation3DImpl{RefBase: NewRefTransfer[JointLimitation3D](reference)}
 }
 
 var _ RefJointLimitationCone3D = &RefJointLimitationCone3DImpl{}
@@ -4781,8 +7781,20 @@ func NewRefJointLimitationCone3DAsRef(reference RefCounted) Ref {
 	return NewRef[JointLimitationCone3D](reference.(JointLimitationCone3D))
 }
 
+// NewRefJointLimitationCone3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewJointLimitationCone3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefJointLimitationCone3DGDExtensionIternalConstructor(reference JointLimitationCone3D) RefJointLimitationCone3D {
 	return &RefJointLimitationCone3DImpl{RefBase: NewRef[JointLimitationCone3D](reference)}
+}
+
+// NewRefJointLimitationCone3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefJointLimitationCone3DGDExtensionReturnOwner(reference JointLimitationCone3D) RefJointLimitationCone3D {
+	return &RefJointLimitationCone3DImpl{RefBase: NewRefTransfer[JointLimitationCone3D](reference)}
 }
 
 var _ RefKinematicCollision2D = &RefKinematicCollision2DImpl{}
@@ -4800,8 +7812,20 @@ func NewRefKinematicCollision2DAsRef(reference RefCounted) Ref {
 	return NewRef[KinematicCollision2D](reference.(KinematicCollision2D))
 }
 
+// NewRefKinematicCollision2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewKinematicCollision2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefKinematicCollision2DGDExtensionIternalConstructor(reference KinematicCollision2D) RefKinematicCollision2D {
 	return &RefKinematicCollision2DImpl{RefBase: NewRef[KinematicCollision2D](reference)}
+}
+
+// NewRefKinematicCollision2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefKinematicCollision2DGDExtensionReturnOwner(reference KinematicCollision2D) RefKinematicCollision2D {
+	return &RefKinematicCollision2DImpl{RefBase: NewRefTransfer[KinematicCollision2D](reference)}
 }
 
 var _ RefKinematicCollision3D = &RefKinematicCollision3DImpl{}
@@ -4819,8 +7843,20 @@ func NewRefKinematicCollision3DAsRef(reference RefCounted) Ref {
 	return NewRef[KinematicCollision3D](reference.(KinematicCollision3D))
 }
 
+// NewRefKinematicCollision3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewKinematicCollision3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefKinematicCollision3DGDExtensionIternalConstructor(reference KinematicCollision3D) RefKinematicCollision3D {
 	return &RefKinematicCollision3DImpl{RefBase: NewRef[KinematicCollision3D](reference)}
+}
+
+// NewRefKinematicCollision3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefKinematicCollision3DGDExtensionReturnOwner(reference KinematicCollision3D) RefKinematicCollision3D {
+	return &RefKinematicCollision3DImpl{RefBase: NewRefTransfer[KinematicCollision3D](reference)}
 }
 
 var _ RefLabelSettings = &RefLabelSettingsImpl{}
@@ -4838,8 +7874,20 @@ func NewRefLabelSettingsAsRef(reference RefCounted) Ref {
 	return NewRef[LabelSettings](reference.(LabelSettings))
 }
 
+// NewRefLabelSettingsGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewLabelSettingsWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefLabelSettingsGDExtensionIternalConstructor(reference LabelSettings) RefLabelSettings {
 	return &RefLabelSettingsImpl{RefBase: NewRef[LabelSettings](reference)}
+}
+
+// NewRefLabelSettingsGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefLabelSettingsGDExtensionReturnOwner(reference LabelSettings) RefLabelSettings {
+	return &RefLabelSettingsImpl{RefBase: NewRefTransfer[LabelSettings](reference)}
 }
 
 var _ RefLightmapGIData = &RefLightmapGIDataImpl{}
@@ -4857,8 +7905,20 @@ func NewRefLightmapGIDataAsRef(reference RefCounted) Ref {
 	return NewRef[LightmapGIData](reference.(LightmapGIData))
 }
 
+// NewRefLightmapGIDataGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewLightmapGIDataWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefLightmapGIDataGDExtensionIternalConstructor(reference LightmapGIData) RefLightmapGIData {
 	return &RefLightmapGIDataImpl{RefBase: NewRef[LightmapGIData](reference)}
+}
+
+// NewRefLightmapGIDataGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefLightmapGIDataGDExtensionReturnOwner(reference LightmapGIData) RefLightmapGIData {
+	return &RefLightmapGIDataImpl{RefBase: NewRefTransfer[LightmapGIData](reference)}
 }
 
 var _ RefLightmapper = &RefLightmapperImpl{}
@@ -4876,8 +7936,20 @@ func NewRefLightmapperAsRef(reference RefCounted) Ref {
 	return NewRef[Lightmapper](reference.(Lightmapper))
 }
 
+// NewRefLightmapperGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewLightmapperWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefLightmapperGDExtensionIternalConstructor(reference Lightmapper) RefLightmapper {
 	return &RefLightmapperImpl{RefBase: NewRef[Lightmapper](reference)}
+}
+
+// NewRefLightmapperGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefLightmapperGDExtensionReturnOwner(reference Lightmapper) RefLightmapper {
+	return &RefLightmapperImpl{RefBase: NewRefTransfer[Lightmapper](reference)}
 }
 
 var _ RefLightmapperRD = &RefLightmapperRDImpl{}
@@ -4895,8 +7967,20 @@ func NewRefLightmapperRDAsRef(reference RefCounted) Ref {
 	return NewRef[LightmapperRD](reference.(LightmapperRD))
 }
 
+// NewRefLightmapperRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewLightmapperRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefLightmapperRDGDExtensionIternalConstructor(reference LightmapperRD) RefLightmapperRD {
 	return &RefLightmapperRDImpl{RefBase: NewRef[LightmapperRD](reference)}
+}
+
+// NewRefLightmapperRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefLightmapperRDGDExtensionReturnOwner(reference LightmapperRD) RefLightmapperRD {
+	return &RefLightmapperRDImpl{RefBase: NewRefTransfer[LightmapperRD](reference)}
 }
 
 var _ RefLogger = &RefLoggerImpl{}
@@ -4914,8 +7998,20 @@ func NewRefLoggerAsRef(reference RefCounted) Ref {
 	return NewRef[Logger](reference.(Logger))
 }
 
+// NewRefLoggerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewLoggerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefLoggerGDExtensionIternalConstructor(reference Logger) RefLogger {
 	return &RefLoggerImpl{RefBase: NewRef[Logger](reference)}
+}
+
+// NewRefLoggerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefLoggerGDExtensionReturnOwner(reference Logger) RefLogger {
+	return &RefLoggerImpl{RefBase: NewRefTransfer[Logger](reference)}
 }
 
 var _ RefMaterial = &RefMaterialImpl{}
@@ -4933,8 +8029,20 @@ func NewRefMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[Material](reference.(Material))
 }
 
+// NewRefMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMaterialGDExtensionIternalConstructor(reference Material) RefMaterial {
 	return &RefMaterialImpl{RefBase: NewRef[Material](reference)}
+}
+
+// NewRefMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMaterialGDExtensionReturnOwner(reference Material) RefMaterial {
+	return &RefMaterialImpl{RefBase: NewRefTransfer[Material](reference)}
 }
 
 var _ RefMesh = &RefMeshImpl{}
@@ -4952,8 +8060,20 @@ func NewRefMeshAsRef(reference RefCounted) Ref {
 	return NewRef[Mesh](reference.(Mesh))
 }
 
+// NewRefMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMeshGDExtensionIternalConstructor(reference Mesh) RefMesh {
 	return &RefMeshImpl{RefBase: NewRef[Mesh](reference)}
+}
+
+// NewRefMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMeshGDExtensionReturnOwner(reference Mesh) RefMesh {
+	return &RefMeshImpl{RefBase: NewRefTransfer[Mesh](reference)}
 }
 
 var _ RefMeshConvexDecompositionSettings = &RefMeshConvexDecompositionSettingsImpl{}
@@ -4971,8 +8091,20 @@ func NewRefMeshConvexDecompositionSettingsAsRef(reference RefCounted) Ref {
 	return NewRef[MeshConvexDecompositionSettings](reference.(MeshConvexDecompositionSettings))
 }
 
+// NewRefMeshConvexDecompositionSettingsGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMeshConvexDecompositionSettingsWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMeshConvexDecompositionSettingsGDExtensionIternalConstructor(reference MeshConvexDecompositionSettings) RefMeshConvexDecompositionSettings {
 	return &RefMeshConvexDecompositionSettingsImpl{RefBase: NewRef[MeshConvexDecompositionSettings](reference)}
+}
+
+// NewRefMeshConvexDecompositionSettingsGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMeshConvexDecompositionSettingsGDExtensionReturnOwner(reference MeshConvexDecompositionSettings) RefMeshConvexDecompositionSettings {
+	return &RefMeshConvexDecompositionSettingsImpl{RefBase: NewRefTransfer[MeshConvexDecompositionSettings](reference)}
 }
 
 var _ RefMeshDataTool = &RefMeshDataToolImpl{}
@@ -4990,8 +8122,20 @@ func NewRefMeshDataToolAsRef(reference RefCounted) Ref {
 	return NewRef[MeshDataTool](reference.(MeshDataTool))
 }
 
+// NewRefMeshDataToolGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMeshDataToolWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMeshDataToolGDExtensionIternalConstructor(reference MeshDataTool) RefMeshDataTool {
 	return &RefMeshDataToolImpl{RefBase: NewRef[MeshDataTool](reference)}
+}
+
+// NewRefMeshDataToolGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMeshDataToolGDExtensionReturnOwner(reference MeshDataTool) RefMeshDataTool {
+	return &RefMeshDataToolImpl{RefBase: NewRefTransfer[MeshDataTool](reference)}
 }
 
 var _ RefMeshLibrary = &RefMeshLibraryImpl{}
@@ -5009,8 +8153,20 @@ func NewRefMeshLibraryAsRef(reference RefCounted) Ref {
 	return NewRef[MeshLibrary](reference.(MeshLibrary))
 }
 
+// NewRefMeshLibraryGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMeshLibraryWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMeshLibraryGDExtensionIternalConstructor(reference MeshLibrary) RefMeshLibrary {
 	return &RefMeshLibraryImpl{RefBase: NewRef[MeshLibrary](reference)}
+}
+
+// NewRefMeshLibraryGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMeshLibraryGDExtensionReturnOwner(reference MeshLibrary) RefMeshLibrary {
+	return &RefMeshLibraryImpl{RefBase: NewRefTransfer[MeshLibrary](reference)}
 }
 
 var _ RefMeshTexture = &RefMeshTextureImpl{}
@@ -5028,8 +8184,20 @@ func NewRefMeshTextureAsRef(reference RefCounted) Ref {
 	return NewRef[MeshTexture](reference.(MeshTexture))
 }
 
+// NewRefMeshTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMeshTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMeshTextureGDExtensionIternalConstructor(reference MeshTexture) RefMeshTexture {
 	return &RefMeshTextureImpl{RefBase: NewRef[MeshTexture](reference)}
+}
+
+// NewRefMeshTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMeshTextureGDExtensionReturnOwner(reference MeshTexture) RefMeshTexture {
+	return &RefMeshTextureImpl{RefBase: NewRefTransfer[MeshTexture](reference)}
 }
 
 var _ RefMethodTweener = &RefMethodTweenerImpl{}
@@ -5047,8 +8215,20 @@ func NewRefMethodTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[MethodTweener](reference.(MethodTweener))
 }
 
+// NewRefMethodTweenerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMethodTweenerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMethodTweenerGDExtensionIternalConstructor(reference MethodTweener) RefMethodTweener {
 	return &RefMethodTweenerImpl{RefBase: NewRef[MethodTweener](reference)}
+}
+
+// NewRefMethodTweenerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMethodTweenerGDExtensionReturnOwner(reference MethodTweener) RefMethodTweener {
+	return &RefMethodTweenerImpl{RefBase: NewRefTransfer[MethodTweener](reference)}
 }
 
 var _ RefMissingResource = &RefMissingResourceImpl{}
@@ -5066,8 +8246,20 @@ func NewRefMissingResourceAsRef(reference RefCounted) Ref {
 	return NewRef[MissingResource](reference.(MissingResource))
 }
 
+// NewRefMissingResourceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMissingResourceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMissingResourceGDExtensionIternalConstructor(reference MissingResource) RefMissingResource {
 	return &RefMissingResourceImpl{RefBase: NewRef[MissingResource](reference)}
+}
+
+// NewRefMissingResourceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMissingResourceGDExtensionReturnOwner(reference MissingResource) RefMissingResource {
+	return &RefMissingResourceImpl{RefBase: NewRefTransfer[MissingResource](reference)}
 }
 
 var _ RefMobileVRInterface = &RefMobileVRInterfaceImpl{}
@@ -5085,8 +8277,20 @@ func NewRefMobileVRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[MobileVRInterface](reference.(MobileVRInterface))
 }
 
+// NewRefMobileVRInterfaceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMobileVRInterfaceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMobileVRInterfaceGDExtensionIternalConstructor(reference MobileVRInterface) RefMobileVRInterface {
 	return &RefMobileVRInterfaceImpl{RefBase: NewRef[MobileVRInterface](reference)}
+}
+
+// NewRefMobileVRInterfaceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMobileVRInterfaceGDExtensionReturnOwner(reference MobileVRInterface) RefMobileVRInterface {
+	return &RefMobileVRInterfaceImpl{RefBase: NewRefTransfer[MobileVRInterface](reference)}
 }
 
 var _ RefMultiMesh = &RefMultiMeshImpl{}
@@ -5104,8 +8308,20 @@ func NewRefMultiMeshAsRef(reference RefCounted) Ref {
 	return NewRef[MultiMesh](reference.(MultiMesh))
 }
 
+// NewRefMultiMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMultiMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMultiMeshGDExtensionIternalConstructor(reference MultiMesh) RefMultiMesh {
 	return &RefMultiMeshImpl{RefBase: NewRef[MultiMesh](reference)}
+}
+
+// NewRefMultiMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMultiMeshGDExtensionReturnOwner(reference MultiMesh) RefMultiMesh {
+	return &RefMultiMeshImpl{RefBase: NewRefTransfer[MultiMesh](reference)}
 }
 
 var _ RefMultiplayerAPI = &RefMultiplayerAPIImpl{}
@@ -5123,8 +8339,20 @@ func NewRefMultiplayerAPIAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerAPI](reference.(MultiplayerAPI))
 }
 
+// NewRefMultiplayerAPIGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMultiplayerAPIWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMultiplayerAPIGDExtensionIternalConstructor(reference MultiplayerAPI) RefMultiplayerAPI {
 	return &RefMultiplayerAPIImpl{RefBase: NewRef[MultiplayerAPI](reference)}
+}
+
+// NewRefMultiplayerAPIGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMultiplayerAPIGDExtensionReturnOwner(reference MultiplayerAPI) RefMultiplayerAPI {
+	return &RefMultiplayerAPIImpl{RefBase: NewRefTransfer[MultiplayerAPI](reference)}
 }
 
 var _ RefMultiplayerAPIExtension = &RefMultiplayerAPIExtensionImpl{}
@@ -5142,8 +8370,20 @@ func NewRefMultiplayerAPIExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerAPIExtension](reference.(MultiplayerAPIExtension))
 }
 
+// NewRefMultiplayerAPIExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMultiplayerAPIExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMultiplayerAPIExtensionGDExtensionIternalConstructor(reference MultiplayerAPIExtension) RefMultiplayerAPIExtension {
 	return &RefMultiplayerAPIExtensionImpl{RefBase: NewRef[MultiplayerAPIExtension](reference)}
+}
+
+// NewRefMultiplayerAPIExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMultiplayerAPIExtensionGDExtensionReturnOwner(reference MultiplayerAPIExtension) RefMultiplayerAPIExtension {
+	return &RefMultiplayerAPIExtensionImpl{RefBase: NewRefTransfer[MultiplayerAPIExtension](reference)}
 }
 
 var _ RefMultiplayerPeer = &RefMultiplayerPeerImpl{}
@@ -5161,8 +8401,20 @@ func NewRefMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerPeer](reference.(MultiplayerPeer))
 }
 
+// NewRefMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMultiplayerPeerGDExtensionIternalConstructor(reference MultiplayerPeer) RefMultiplayerPeer {
 	return &RefMultiplayerPeerImpl{RefBase: NewRef[MultiplayerPeer](reference)}
+}
+
+// NewRefMultiplayerPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMultiplayerPeerGDExtensionReturnOwner(reference MultiplayerPeer) RefMultiplayerPeer {
+	return &RefMultiplayerPeerImpl{RefBase: NewRefTransfer[MultiplayerPeer](reference)}
 }
 
 var _ RefMultiplayerPeerExtension = &RefMultiplayerPeerExtensionImpl{}
@@ -5180,8 +8432,20 @@ func NewRefMultiplayerPeerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerPeerExtension](reference.(MultiplayerPeerExtension))
 }
 
+// NewRefMultiplayerPeerExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMultiplayerPeerExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMultiplayerPeerExtensionGDExtensionIternalConstructor(reference MultiplayerPeerExtension) RefMultiplayerPeerExtension {
 	return &RefMultiplayerPeerExtensionImpl{RefBase: NewRef[MultiplayerPeerExtension](reference)}
+}
+
+// NewRefMultiplayerPeerExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMultiplayerPeerExtensionGDExtensionReturnOwner(reference MultiplayerPeerExtension) RefMultiplayerPeerExtension {
+	return &RefMultiplayerPeerExtensionImpl{RefBase: NewRefTransfer[MultiplayerPeerExtension](reference)}
 }
 
 var _ RefMutex = &RefMutexImpl{}
@@ -5199,8 +8463,20 @@ func NewRefMutexAsRef(reference RefCounted) Ref {
 	return NewRef[Mutex](reference.(Mutex))
 }
 
+// NewRefMutexGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewMutexWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefMutexGDExtensionIternalConstructor(reference Mutex) RefMutex {
 	return &RefMutexImpl{RefBase: NewRef[Mutex](reference)}
+}
+
+// NewRefMutexGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefMutexGDExtensionReturnOwner(reference Mutex) RefMutex {
+	return &RefMutexImpl{RefBase: NewRefTransfer[Mutex](reference)}
 }
 
 var _ RefNavigationMesh = &RefNavigationMeshImpl{}
@@ -5218,8 +8494,20 @@ func NewRefNavigationMeshAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationMesh](reference.(NavigationMesh))
 }
 
+// NewRefNavigationMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationMeshGDExtensionIternalConstructor(reference NavigationMesh) RefNavigationMesh {
 	return &RefNavigationMeshImpl{RefBase: NewRef[NavigationMesh](reference)}
+}
+
+// NewRefNavigationMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationMeshGDExtensionReturnOwner(reference NavigationMesh) RefNavigationMesh {
+	return &RefNavigationMeshImpl{RefBase: NewRefTransfer[NavigationMesh](reference)}
 }
 
 var _ RefNavigationMeshSourceGeometryData2D = &RefNavigationMeshSourceGeometryData2DImpl{}
@@ -5237,8 +8525,20 @@ func NewRefNavigationMeshSourceGeometryData2DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationMeshSourceGeometryData2D](reference.(NavigationMeshSourceGeometryData2D))
 }
 
+// NewRefNavigationMeshSourceGeometryData2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationMeshSourceGeometryData2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationMeshSourceGeometryData2DGDExtensionIternalConstructor(reference NavigationMeshSourceGeometryData2D) RefNavigationMeshSourceGeometryData2D {
 	return &RefNavigationMeshSourceGeometryData2DImpl{RefBase: NewRef[NavigationMeshSourceGeometryData2D](reference)}
+}
+
+// NewRefNavigationMeshSourceGeometryData2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationMeshSourceGeometryData2DGDExtensionReturnOwner(reference NavigationMeshSourceGeometryData2D) RefNavigationMeshSourceGeometryData2D {
+	return &RefNavigationMeshSourceGeometryData2DImpl{RefBase: NewRefTransfer[NavigationMeshSourceGeometryData2D](reference)}
 }
 
 var _ RefNavigationMeshSourceGeometryData3D = &RefNavigationMeshSourceGeometryData3DImpl{}
@@ -5256,8 +8556,20 @@ func NewRefNavigationMeshSourceGeometryData3DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationMeshSourceGeometryData3D](reference.(NavigationMeshSourceGeometryData3D))
 }
 
+// NewRefNavigationMeshSourceGeometryData3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationMeshSourceGeometryData3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationMeshSourceGeometryData3DGDExtensionIternalConstructor(reference NavigationMeshSourceGeometryData3D) RefNavigationMeshSourceGeometryData3D {
 	return &RefNavigationMeshSourceGeometryData3DImpl{RefBase: NewRef[NavigationMeshSourceGeometryData3D](reference)}
+}
+
+// NewRefNavigationMeshSourceGeometryData3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationMeshSourceGeometryData3DGDExtensionReturnOwner(reference NavigationMeshSourceGeometryData3D) RefNavigationMeshSourceGeometryData3D {
+	return &RefNavigationMeshSourceGeometryData3DImpl{RefBase: NewRefTransfer[NavigationMeshSourceGeometryData3D](reference)}
 }
 
 var _ RefNavigationPathQueryParameters2D = &RefNavigationPathQueryParameters2DImpl{}
@@ -5275,8 +8587,20 @@ func NewRefNavigationPathQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryParameters2D](reference.(NavigationPathQueryParameters2D))
 }
 
+// NewRefNavigationPathQueryParameters2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationPathQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationPathQueryParameters2DGDExtensionIternalConstructor(reference NavigationPathQueryParameters2D) RefNavigationPathQueryParameters2D {
 	return &RefNavigationPathQueryParameters2DImpl{RefBase: NewRef[NavigationPathQueryParameters2D](reference)}
+}
+
+// NewRefNavigationPathQueryParameters2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationPathQueryParameters2DGDExtensionReturnOwner(reference NavigationPathQueryParameters2D) RefNavigationPathQueryParameters2D {
+	return &RefNavigationPathQueryParameters2DImpl{RefBase: NewRefTransfer[NavigationPathQueryParameters2D](reference)}
 }
 
 var _ RefNavigationPathQueryParameters3D = &RefNavigationPathQueryParameters3DImpl{}
@@ -5294,8 +8618,20 @@ func NewRefNavigationPathQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryParameters3D](reference.(NavigationPathQueryParameters3D))
 }
 
+// NewRefNavigationPathQueryParameters3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationPathQueryParameters3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationPathQueryParameters3DGDExtensionIternalConstructor(reference NavigationPathQueryParameters3D) RefNavigationPathQueryParameters3D {
 	return &RefNavigationPathQueryParameters3DImpl{RefBase: NewRef[NavigationPathQueryParameters3D](reference)}
+}
+
+// NewRefNavigationPathQueryParameters3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationPathQueryParameters3DGDExtensionReturnOwner(reference NavigationPathQueryParameters3D) RefNavigationPathQueryParameters3D {
+	return &RefNavigationPathQueryParameters3DImpl{RefBase: NewRefTransfer[NavigationPathQueryParameters3D](reference)}
 }
 
 var _ RefNavigationPathQueryResult2D = &RefNavigationPathQueryResult2DImpl{}
@@ -5313,8 +8649,20 @@ func NewRefNavigationPathQueryResult2DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryResult2D](reference.(NavigationPathQueryResult2D))
 }
 
+// NewRefNavigationPathQueryResult2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationPathQueryResult2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationPathQueryResult2DGDExtensionIternalConstructor(reference NavigationPathQueryResult2D) RefNavigationPathQueryResult2D {
 	return &RefNavigationPathQueryResult2DImpl{RefBase: NewRef[NavigationPathQueryResult2D](reference)}
+}
+
+// NewRefNavigationPathQueryResult2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationPathQueryResult2DGDExtensionReturnOwner(reference NavigationPathQueryResult2D) RefNavigationPathQueryResult2D {
+	return &RefNavigationPathQueryResult2DImpl{RefBase: NewRefTransfer[NavigationPathQueryResult2D](reference)}
 }
 
 var _ RefNavigationPathQueryResult3D = &RefNavigationPathQueryResult3DImpl{}
@@ -5332,8 +8680,20 @@ func NewRefNavigationPathQueryResult3DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryResult3D](reference.(NavigationPathQueryResult3D))
 }
 
+// NewRefNavigationPathQueryResult3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationPathQueryResult3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationPathQueryResult3DGDExtensionIternalConstructor(reference NavigationPathQueryResult3D) RefNavigationPathQueryResult3D {
 	return &RefNavigationPathQueryResult3DImpl{RefBase: NewRef[NavigationPathQueryResult3D](reference)}
+}
+
+// NewRefNavigationPathQueryResult3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationPathQueryResult3DGDExtensionReturnOwner(reference NavigationPathQueryResult3D) RefNavigationPathQueryResult3D {
+	return &RefNavigationPathQueryResult3DImpl{RefBase: NewRefTransfer[NavigationPathQueryResult3D](reference)}
 }
 
 var _ RefNavigationPolygon = &RefNavigationPolygonImpl{}
@@ -5351,8 +8711,20 @@ func NewRefNavigationPolygonAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPolygon](reference.(NavigationPolygon))
 }
 
+// NewRefNavigationPolygonGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNavigationPolygonWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNavigationPolygonGDExtensionIternalConstructor(reference NavigationPolygon) RefNavigationPolygon {
 	return &RefNavigationPolygonImpl{RefBase: NewRef[NavigationPolygon](reference)}
+}
+
+// NewRefNavigationPolygonGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNavigationPolygonGDExtensionReturnOwner(reference NavigationPolygon) RefNavigationPolygon {
+	return &RefNavigationPolygonImpl{RefBase: NewRefTransfer[NavigationPolygon](reference)}
 }
 
 var _ RefNode3DGizmo = &RefNode3DGizmoImpl{}
@@ -5370,8 +8742,20 @@ func NewRefNode3DGizmoAsRef(reference RefCounted) Ref {
 	return NewRef[Node3DGizmo](reference.(Node3DGizmo))
 }
 
+// NewRefNode3DGizmoGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNode3DGizmoWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNode3DGizmoGDExtensionIternalConstructor(reference Node3DGizmo) RefNode3DGizmo {
 	return &RefNode3DGizmoImpl{RefBase: NewRef[Node3DGizmo](reference)}
+}
+
+// NewRefNode3DGizmoGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNode3DGizmoGDExtensionReturnOwner(reference Node3DGizmo) RefNode3DGizmo {
+	return &RefNode3DGizmoImpl{RefBase: NewRefTransfer[Node3DGizmo](reference)}
 }
 
 var _ RefNoise = &RefNoiseImpl{}
@@ -5389,8 +8773,20 @@ func NewRefNoiseAsRef(reference RefCounted) Ref {
 	return NewRef[Noise](reference.(Noise))
 }
 
+// NewRefNoiseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNoiseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNoiseGDExtensionIternalConstructor(reference Noise) RefNoise {
 	return &RefNoiseImpl{RefBase: NewRef[Noise](reference)}
+}
+
+// NewRefNoiseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNoiseGDExtensionReturnOwner(reference Noise) RefNoise {
+	return &RefNoiseImpl{RefBase: NewRefTransfer[Noise](reference)}
 }
 
 var _ RefNoiseTexture2D = &RefNoiseTexture2DImpl{}
@@ -5408,8 +8804,20 @@ func NewRefNoiseTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[NoiseTexture2D](reference.(NoiseTexture2D))
 }
 
+// NewRefNoiseTexture2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNoiseTexture2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNoiseTexture2DGDExtensionIternalConstructor(reference NoiseTexture2D) RefNoiseTexture2D {
 	return &RefNoiseTexture2DImpl{RefBase: NewRef[NoiseTexture2D](reference)}
+}
+
+// NewRefNoiseTexture2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNoiseTexture2DGDExtensionReturnOwner(reference NoiseTexture2D) RefNoiseTexture2D {
+	return &RefNoiseTexture2DImpl{RefBase: NewRefTransfer[NoiseTexture2D](reference)}
 }
 
 var _ RefNoiseTexture3D = &RefNoiseTexture3DImpl{}
@@ -5427,8 +8835,20 @@ func NewRefNoiseTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[NoiseTexture3D](reference.(NoiseTexture3D))
 }
 
+// NewRefNoiseTexture3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewNoiseTexture3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefNoiseTexture3DGDExtensionIternalConstructor(reference NoiseTexture3D) RefNoiseTexture3D {
 	return &RefNoiseTexture3DImpl{RefBase: NewRef[NoiseTexture3D](reference)}
+}
+
+// NewRefNoiseTexture3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefNoiseTexture3DGDExtensionReturnOwner(reference NoiseTexture3D) RefNoiseTexture3D {
+	return &RefNoiseTexture3DImpl{RefBase: NewRefTransfer[NoiseTexture3D](reference)}
 }
 
 var _ RefORMMaterial3D = &RefORMMaterial3DImpl{}
@@ -5446,8 +8866,20 @@ func NewRefORMMaterial3DAsRef(reference RefCounted) Ref {
 	return NewRef[ORMMaterial3D](reference.(ORMMaterial3D))
 }
 
+// NewRefORMMaterial3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewORMMaterial3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefORMMaterial3DGDExtensionIternalConstructor(reference ORMMaterial3D) RefORMMaterial3D {
 	return &RefORMMaterial3DImpl{RefBase: NewRef[ORMMaterial3D](reference)}
+}
+
+// NewRefORMMaterial3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefORMMaterial3DGDExtensionReturnOwner(reference ORMMaterial3D) RefORMMaterial3D {
+	return &RefORMMaterial3DImpl{RefBase: NewRefTransfer[ORMMaterial3D](reference)}
 }
 
 var _ RefOccluder3D = &RefOccluder3DImpl{}
@@ -5465,8 +8897,20 @@ func NewRefOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[Occluder3D](reference.(Occluder3D))
 }
 
+// NewRefOccluder3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOccluder3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOccluder3DGDExtensionIternalConstructor(reference Occluder3D) RefOccluder3D {
 	return &RefOccluder3DImpl{RefBase: NewRef[Occluder3D](reference)}
+}
+
+// NewRefOccluder3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOccluder3DGDExtensionReturnOwner(reference Occluder3D) RefOccluder3D {
+	return &RefOccluder3DImpl{RefBase: NewRefTransfer[Occluder3D](reference)}
 }
 
 var _ RefOccluderPolygon2D = &RefOccluderPolygon2DImpl{}
@@ -5484,8 +8928,20 @@ func NewRefOccluderPolygon2DAsRef(reference RefCounted) Ref {
 	return NewRef[OccluderPolygon2D](reference.(OccluderPolygon2D))
 }
 
+// NewRefOccluderPolygon2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOccluderPolygon2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOccluderPolygon2DGDExtensionIternalConstructor(reference OccluderPolygon2D) RefOccluderPolygon2D {
 	return &RefOccluderPolygon2DImpl{RefBase: NewRef[OccluderPolygon2D](reference)}
+}
+
+// NewRefOccluderPolygon2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOccluderPolygon2DGDExtensionReturnOwner(reference OccluderPolygon2D) RefOccluderPolygon2D {
+	return &RefOccluderPolygon2DImpl{RefBase: NewRefTransfer[OccluderPolygon2D](reference)}
 }
 
 var _ RefOfflineMultiplayerPeer = &RefOfflineMultiplayerPeerImpl{}
@@ -5503,8 +8959,20 @@ func NewRefOfflineMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[OfflineMultiplayerPeer](reference.(OfflineMultiplayerPeer))
 }
 
+// NewRefOfflineMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOfflineMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOfflineMultiplayerPeerGDExtensionIternalConstructor(reference OfflineMultiplayerPeer) RefOfflineMultiplayerPeer {
 	return &RefOfflineMultiplayerPeerImpl{RefBase: NewRef[OfflineMultiplayerPeer](reference)}
+}
+
+// NewRefOfflineMultiplayerPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOfflineMultiplayerPeerGDExtensionReturnOwner(reference OfflineMultiplayerPeer) RefOfflineMultiplayerPeer {
+	return &RefOfflineMultiplayerPeerImpl{RefBase: NewRefTransfer[OfflineMultiplayerPeer](reference)}
 }
 
 var _ RefOggPacketSequence = &RefOggPacketSequenceImpl{}
@@ -5522,8 +8990,20 @@ func NewRefOggPacketSequenceAsRef(reference RefCounted) Ref {
 	return NewRef[OggPacketSequence](reference.(OggPacketSequence))
 }
 
+// NewRefOggPacketSequenceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOggPacketSequenceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOggPacketSequenceGDExtensionIternalConstructor(reference OggPacketSequence) RefOggPacketSequence {
 	return &RefOggPacketSequenceImpl{RefBase: NewRef[OggPacketSequence](reference)}
+}
+
+// NewRefOggPacketSequenceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOggPacketSequenceGDExtensionReturnOwner(reference OggPacketSequence) RefOggPacketSequence {
+	return &RefOggPacketSequenceImpl{RefBase: NewRefTransfer[OggPacketSequence](reference)}
 }
 
 var _ RefOggPacketSequencePlayback = &RefOggPacketSequencePlaybackImpl{}
@@ -5541,8 +9021,20 @@ func NewRefOggPacketSequencePlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[OggPacketSequencePlayback](reference.(OggPacketSequencePlayback))
 }
 
+// NewRefOggPacketSequencePlaybackGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOggPacketSequencePlaybackWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOggPacketSequencePlaybackGDExtensionIternalConstructor(reference OggPacketSequencePlayback) RefOggPacketSequencePlayback {
 	return &RefOggPacketSequencePlaybackImpl{RefBase: NewRef[OggPacketSequencePlayback](reference)}
+}
+
+// NewRefOggPacketSequencePlaybackGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOggPacketSequencePlaybackGDExtensionReturnOwner(reference OggPacketSequencePlayback) RefOggPacketSequencePlayback {
+	return &RefOggPacketSequencePlaybackImpl{RefBase: NewRefTransfer[OggPacketSequencePlayback](reference)}
 }
 
 var _ RefOpenXRAPIExtension = &RefOpenXRAPIExtensionImpl{}
@@ -5560,8 +9052,20 @@ func NewRefOpenXRAPIExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAPIExtension](reference.(OpenXRAPIExtension))
 }
 
+// NewRefOpenXRAPIExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRAPIExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRAPIExtensionGDExtensionIternalConstructor(reference OpenXRAPIExtension) RefOpenXRAPIExtension {
 	return &RefOpenXRAPIExtensionImpl{RefBase: NewRef[OpenXRAPIExtension](reference)}
+}
+
+// NewRefOpenXRAPIExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRAPIExtensionGDExtensionReturnOwner(reference OpenXRAPIExtension) RefOpenXRAPIExtension {
+	return &RefOpenXRAPIExtensionImpl{RefBase: NewRefTransfer[OpenXRAPIExtension](reference)}
 }
 
 var _ RefOpenXRAction = &RefOpenXRActionImpl{}
@@ -5579,8 +9083,20 @@ func NewRefOpenXRActionAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAction](reference.(OpenXRAction))
 }
 
+// NewRefOpenXRActionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRActionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRActionGDExtensionIternalConstructor(reference OpenXRAction) RefOpenXRAction {
 	return &RefOpenXRActionImpl{RefBase: NewRef[OpenXRAction](reference)}
+}
+
+// NewRefOpenXRActionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRActionGDExtensionReturnOwner(reference OpenXRAction) RefOpenXRAction {
+	return &RefOpenXRActionImpl{RefBase: NewRefTransfer[OpenXRAction](reference)}
 }
 
 var _ RefOpenXRActionBindingModifier = &RefOpenXRActionBindingModifierImpl{}
@@ -5598,8 +9114,20 @@ func NewRefOpenXRActionBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRActionBindingModifier](reference.(OpenXRActionBindingModifier))
 }
 
+// NewRefOpenXRActionBindingModifierGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRActionBindingModifierWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRActionBindingModifierGDExtensionIternalConstructor(reference OpenXRActionBindingModifier) RefOpenXRActionBindingModifier {
 	return &RefOpenXRActionBindingModifierImpl{RefBase: NewRef[OpenXRActionBindingModifier](reference)}
+}
+
+// NewRefOpenXRActionBindingModifierGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRActionBindingModifierGDExtensionReturnOwner(reference OpenXRActionBindingModifier) RefOpenXRActionBindingModifier {
+	return &RefOpenXRActionBindingModifierImpl{RefBase: NewRefTransfer[OpenXRActionBindingModifier](reference)}
 }
 
 var _ RefOpenXRActionMap = &RefOpenXRActionMapImpl{}
@@ -5617,8 +9145,20 @@ func NewRefOpenXRActionMapAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRActionMap](reference.(OpenXRActionMap))
 }
 
+// NewRefOpenXRActionMapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRActionMapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRActionMapGDExtensionIternalConstructor(reference OpenXRActionMap) RefOpenXRActionMap {
 	return &RefOpenXRActionMapImpl{RefBase: NewRef[OpenXRActionMap](reference)}
+}
+
+// NewRefOpenXRActionMapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRActionMapGDExtensionReturnOwner(reference OpenXRActionMap) RefOpenXRActionMap {
+	return &RefOpenXRActionMapImpl{RefBase: NewRefTransfer[OpenXRActionMap](reference)}
 }
 
 var _ RefOpenXRActionSet = &RefOpenXRActionSetImpl{}
@@ -5636,8 +9176,20 @@ func NewRefOpenXRActionSetAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRActionSet](reference.(OpenXRActionSet))
 }
 
+// NewRefOpenXRActionSetGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRActionSetWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRActionSetGDExtensionIternalConstructor(reference OpenXRActionSet) RefOpenXRActionSet {
 	return &RefOpenXRActionSetImpl{RefBase: NewRef[OpenXRActionSet](reference)}
+}
+
+// NewRefOpenXRActionSetGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRActionSetGDExtensionReturnOwner(reference OpenXRActionSet) RefOpenXRActionSet {
+	return &RefOpenXRActionSetImpl{RefBase: NewRefTransfer[OpenXRActionSet](reference)}
 }
 
 var _ RefOpenXRAnalogThresholdModifier = &RefOpenXRAnalogThresholdModifierImpl{}
@@ -5655,8 +9207,20 @@ func NewRefOpenXRAnalogThresholdModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAnalogThresholdModifier](reference.(OpenXRAnalogThresholdModifier))
 }
 
+// NewRefOpenXRAnalogThresholdModifierGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRAnalogThresholdModifierWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRAnalogThresholdModifierGDExtensionIternalConstructor(reference OpenXRAnalogThresholdModifier) RefOpenXRAnalogThresholdModifier {
 	return &RefOpenXRAnalogThresholdModifierImpl{RefBase: NewRef[OpenXRAnalogThresholdModifier](reference)}
+}
+
+// NewRefOpenXRAnalogThresholdModifierGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRAnalogThresholdModifierGDExtensionReturnOwner(reference OpenXRAnalogThresholdModifier) RefOpenXRAnalogThresholdModifier {
+	return &RefOpenXRAnalogThresholdModifierImpl{RefBase: NewRefTransfer[OpenXRAnalogThresholdModifier](reference)}
 }
 
 var _ RefOpenXRAnchorTracker = &RefOpenXRAnchorTrackerImpl{}
@@ -5674,8 +9238,20 @@ func NewRefOpenXRAnchorTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAnchorTracker](reference.(OpenXRAnchorTracker))
 }
 
+// NewRefOpenXRAnchorTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRAnchorTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRAnchorTrackerGDExtensionIternalConstructor(reference OpenXRAnchorTracker) RefOpenXRAnchorTracker {
 	return &RefOpenXRAnchorTrackerImpl{RefBase: NewRef[OpenXRAnchorTracker](reference)}
+}
+
+// NewRefOpenXRAnchorTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRAnchorTrackerGDExtensionReturnOwner(reference OpenXRAnchorTracker) RefOpenXRAnchorTracker {
+	return &RefOpenXRAnchorTrackerImpl{RefBase: NewRefTransfer[OpenXRAnchorTracker](reference)}
 }
 
 var _ RefOpenXRBindingModifier = &RefOpenXRBindingModifierImpl{}
@@ -5693,8 +9269,20 @@ func NewRefOpenXRBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRBindingModifier](reference.(OpenXRBindingModifier))
 }
 
+// NewRefOpenXRBindingModifierGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRBindingModifierWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRBindingModifierGDExtensionIternalConstructor(reference OpenXRBindingModifier) RefOpenXRBindingModifier {
 	return &RefOpenXRBindingModifierImpl{RefBase: NewRef[OpenXRBindingModifier](reference)}
+}
+
+// NewRefOpenXRBindingModifierGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRBindingModifierGDExtensionReturnOwner(reference OpenXRBindingModifier) RefOpenXRBindingModifier {
+	return &RefOpenXRBindingModifierImpl{RefBase: NewRefTransfer[OpenXRBindingModifier](reference)}
 }
 
 var _ RefOpenXRDpadBindingModifier = &RefOpenXRDpadBindingModifierImpl{}
@@ -5712,8 +9300,20 @@ func NewRefOpenXRDpadBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRDpadBindingModifier](reference.(OpenXRDpadBindingModifier))
 }
 
+// NewRefOpenXRDpadBindingModifierGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRDpadBindingModifierWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRDpadBindingModifierGDExtensionIternalConstructor(reference OpenXRDpadBindingModifier) RefOpenXRDpadBindingModifier {
 	return &RefOpenXRDpadBindingModifierImpl{RefBase: NewRef[OpenXRDpadBindingModifier](reference)}
+}
+
+// NewRefOpenXRDpadBindingModifierGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRDpadBindingModifierGDExtensionReturnOwner(reference OpenXRDpadBindingModifier) RefOpenXRDpadBindingModifier {
+	return &RefOpenXRDpadBindingModifierImpl{RefBase: NewRefTransfer[OpenXRDpadBindingModifier](reference)}
 }
 
 var _ RefOpenXRFutureResult = &RefOpenXRFutureResultImpl{}
@@ -5731,8 +9331,20 @@ func NewRefOpenXRFutureResultAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRFutureResult](reference.(OpenXRFutureResult))
 }
 
+// NewRefOpenXRFutureResultGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRFutureResultWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRFutureResultGDExtensionIternalConstructor(reference OpenXRFutureResult) RefOpenXRFutureResult {
 	return &RefOpenXRFutureResultImpl{RefBase: NewRef[OpenXRFutureResult](reference)}
+}
+
+// NewRefOpenXRFutureResultGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRFutureResultGDExtensionReturnOwner(reference OpenXRFutureResult) RefOpenXRFutureResult {
+	return &RefOpenXRFutureResultImpl{RefBase: NewRefTransfer[OpenXRFutureResult](reference)}
 }
 
 var _ RefOpenXRHapticBase = &RefOpenXRHapticBaseImpl{}
@@ -5750,8 +9362,20 @@ func NewRefOpenXRHapticBaseAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRHapticBase](reference.(OpenXRHapticBase))
 }
 
+// NewRefOpenXRHapticBaseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRHapticBaseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRHapticBaseGDExtensionIternalConstructor(reference OpenXRHapticBase) RefOpenXRHapticBase {
 	return &RefOpenXRHapticBaseImpl{RefBase: NewRef[OpenXRHapticBase](reference)}
+}
+
+// NewRefOpenXRHapticBaseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRHapticBaseGDExtensionReturnOwner(reference OpenXRHapticBase) RefOpenXRHapticBase {
+	return &RefOpenXRHapticBaseImpl{RefBase: NewRefTransfer[OpenXRHapticBase](reference)}
 }
 
 var _ RefOpenXRHapticVibration = &RefOpenXRHapticVibrationImpl{}
@@ -5769,8 +9393,20 @@ func NewRefOpenXRHapticVibrationAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRHapticVibration](reference.(OpenXRHapticVibration))
 }
 
+// NewRefOpenXRHapticVibrationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRHapticVibrationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRHapticVibrationGDExtensionIternalConstructor(reference OpenXRHapticVibration) RefOpenXRHapticVibration {
 	return &RefOpenXRHapticVibrationImpl{RefBase: NewRef[OpenXRHapticVibration](reference)}
+}
+
+// NewRefOpenXRHapticVibrationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRHapticVibrationGDExtensionReturnOwner(reference OpenXRHapticVibration) RefOpenXRHapticVibration {
+	return &RefOpenXRHapticVibrationImpl{RefBase: NewRefTransfer[OpenXRHapticVibration](reference)}
 }
 
 var _ RefOpenXRIPBinding = &RefOpenXRIPBindingImpl{}
@@ -5788,8 +9424,20 @@ func NewRefOpenXRIPBindingAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRIPBinding](reference.(OpenXRIPBinding))
 }
 
+// NewRefOpenXRIPBindingGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRIPBindingWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRIPBindingGDExtensionIternalConstructor(reference OpenXRIPBinding) RefOpenXRIPBinding {
 	return &RefOpenXRIPBindingImpl{RefBase: NewRef[OpenXRIPBinding](reference)}
+}
+
+// NewRefOpenXRIPBindingGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRIPBindingGDExtensionReturnOwner(reference OpenXRIPBinding) RefOpenXRIPBinding {
+	return &RefOpenXRIPBindingImpl{RefBase: NewRefTransfer[OpenXRIPBinding](reference)}
 }
 
 var _ RefOpenXRIPBindingModifier = &RefOpenXRIPBindingModifierImpl{}
@@ -5807,8 +9455,20 @@ func NewRefOpenXRIPBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRIPBindingModifier](reference.(OpenXRIPBindingModifier))
 }
 
+// NewRefOpenXRIPBindingModifierGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRIPBindingModifierWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRIPBindingModifierGDExtensionIternalConstructor(reference OpenXRIPBindingModifier) RefOpenXRIPBindingModifier {
 	return &RefOpenXRIPBindingModifierImpl{RefBase: NewRef[OpenXRIPBindingModifier](reference)}
+}
+
+// NewRefOpenXRIPBindingModifierGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRIPBindingModifierGDExtensionReturnOwner(reference OpenXRIPBindingModifier) RefOpenXRIPBindingModifier {
+	return &RefOpenXRIPBindingModifierImpl{RefBase: NewRefTransfer[OpenXRIPBindingModifier](reference)}
 }
 
 var _ RefOpenXRInteractionProfile = &RefOpenXRInteractionProfileImpl{}
@@ -5826,8 +9486,20 @@ func NewRefOpenXRInteractionProfileAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRInteractionProfile](reference.(OpenXRInteractionProfile))
 }
 
+// NewRefOpenXRInteractionProfileGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRInteractionProfileWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRInteractionProfileGDExtensionIternalConstructor(reference OpenXRInteractionProfile) RefOpenXRInteractionProfile {
 	return &RefOpenXRInteractionProfileImpl{RefBase: NewRef[OpenXRInteractionProfile](reference)}
+}
+
+// NewRefOpenXRInteractionProfileGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRInteractionProfileGDExtensionReturnOwner(reference OpenXRInteractionProfile) RefOpenXRInteractionProfile {
+	return &RefOpenXRInteractionProfileImpl{RefBase: NewRefTransfer[OpenXRInteractionProfile](reference)}
 }
 
 var _ RefOpenXRInterface = &RefOpenXRInterfaceImpl{}
@@ -5845,8 +9517,20 @@ func NewRefOpenXRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRInterface](reference.(OpenXRInterface))
 }
 
+// NewRefOpenXRInterfaceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRInterfaceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRInterfaceGDExtensionIternalConstructor(reference OpenXRInterface) RefOpenXRInterface {
 	return &RefOpenXRInterfaceImpl{RefBase: NewRef[OpenXRInterface](reference)}
+}
+
+// NewRefOpenXRInterfaceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRInterfaceGDExtensionReturnOwner(reference OpenXRInterface) RefOpenXRInterface {
+	return &RefOpenXRInterfaceImpl{RefBase: NewRefTransfer[OpenXRInterface](reference)}
 }
 
 var _ RefOpenXRMarkerTracker = &RefOpenXRMarkerTrackerImpl{}
@@ -5864,8 +9548,20 @@ func NewRefOpenXRMarkerTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRMarkerTracker](reference.(OpenXRMarkerTracker))
 }
 
+// NewRefOpenXRMarkerTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRMarkerTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRMarkerTrackerGDExtensionIternalConstructor(reference OpenXRMarkerTracker) RefOpenXRMarkerTracker {
 	return &RefOpenXRMarkerTrackerImpl{RefBase: NewRef[OpenXRMarkerTracker](reference)}
+}
+
+// NewRefOpenXRMarkerTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRMarkerTrackerGDExtensionReturnOwner(reference OpenXRMarkerTracker) RefOpenXRMarkerTracker {
+	return &RefOpenXRMarkerTrackerImpl{RefBase: NewRefTransfer[OpenXRMarkerTracker](reference)}
 }
 
 var _ RefOpenXRPlaneTracker = &RefOpenXRPlaneTrackerImpl{}
@@ -5883,8 +9579,20 @@ func NewRefOpenXRPlaneTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRPlaneTracker](reference.(OpenXRPlaneTracker))
 }
 
+// NewRefOpenXRPlaneTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRPlaneTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRPlaneTrackerGDExtensionIternalConstructor(reference OpenXRPlaneTracker) RefOpenXRPlaneTracker {
 	return &RefOpenXRPlaneTrackerImpl{RefBase: NewRef[OpenXRPlaneTracker](reference)}
+}
+
+// NewRefOpenXRPlaneTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRPlaneTrackerGDExtensionReturnOwner(reference OpenXRPlaneTracker) RefOpenXRPlaneTracker {
+	return &RefOpenXRPlaneTrackerImpl{RefBase: NewRefTransfer[OpenXRPlaneTracker](reference)}
 }
 
 var _ RefOpenXRSpatialCapabilityConfigurationAnchor = &RefOpenXRSpatialCapabilityConfigurationAnchorImpl{}
@@ -5902,8 +9610,20 @@ func NewRefOpenXRSpatialCapabilityConfigurationAnchorAsRef(reference RefCounted)
 	return NewRef[OpenXRSpatialCapabilityConfigurationAnchor](reference.(OpenXRSpatialCapabilityConfigurationAnchor))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationAnchorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialCapabilityConfigurationAnchorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialCapabilityConfigurationAnchorGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationAnchor) RefOpenXRSpatialCapabilityConfigurationAnchor {
 	return &RefOpenXRSpatialCapabilityConfigurationAnchorImpl{RefBase: NewRef[OpenXRSpatialCapabilityConfigurationAnchor](reference)}
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationAnchorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialCapabilityConfigurationAnchorGDExtensionReturnOwner(reference OpenXRSpatialCapabilityConfigurationAnchor) RefOpenXRSpatialCapabilityConfigurationAnchor {
+	return &RefOpenXRSpatialCapabilityConfigurationAnchorImpl{RefBase: NewRefTransfer[OpenXRSpatialCapabilityConfigurationAnchor](reference)}
 }
 
 var _ RefOpenXRSpatialCapabilityConfigurationAprilTag = &RefOpenXRSpatialCapabilityConfigurationAprilTagImpl{}
@@ -5921,8 +9641,20 @@ func NewRefOpenXRSpatialCapabilityConfigurationAprilTagAsRef(reference RefCounte
 	return NewRef[OpenXRSpatialCapabilityConfigurationAprilTag](reference.(OpenXRSpatialCapabilityConfigurationAprilTag))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationAprilTagGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialCapabilityConfigurationAprilTagWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialCapabilityConfigurationAprilTagGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationAprilTag) RefOpenXRSpatialCapabilityConfigurationAprilTag {
 	return &RefOpenXRSpatialCapabilityConfigurationAprilTagImpl{RefBase: NewRef[OpenXRSpatialCapabilityConfigurationAprilTag](reference)}
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationAprilTagGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialCapabilityConfigurationAprilTagGDExtensionReturnOwner(reference OpenXRSpatialCapabilityConfigurationAprilTag) RefOpenXRSpatialCapabilityConfigurationAprilTag {
+	return &RefOpenXRSpatialCapabilityConfigurationAprilTagImpl{RefBase: NewRefTransfer[OpenXRSpatialCapabilityConfigurationAprilTag](reference)}
 }
 
 var _ RefOpenXRSpatialCapabilityConfigurationAruco = &RefOpenXRSpatialCapabilityConfigurationArucoImpl{}
@@ -5940,8 +9672,20 @@ func NewRefOpenXRSpatialCapabilityConfigurationArucoAsRef(reference RefCounted) 
 	return NewRef[OpenXRSpatialCapabilityConfigurationAruco](reference.(OpenXRSpatialCapabilityConfigurationAruco))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationArucoGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialCapabilityConfigurationArucoWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialCapabilityConfigurationArucoGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationAruco) RefOpenXRSpatialCapabilityConfigurationAruco {
 	return &RefOpenXRSpatialCapabilityConfigurationArucoImpl{RefBase: NewRef[OpenXRSpatialCapabilityConfigurationAruco](reference)}
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationArucoGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialCapabilityConfigurationArucoGDExtensionReturnOwner(reference OpenXRSpatialCapabilityConfigurationAruco) RefOpenXRSpatialCapabilityConfigurationAruco {
+	return &RefOpenXRSpatialCapabilityConfigurationArucoImpl{RefBase: NewRefTransfer[OpenXRSpatialCapabilityConfigurationAruco](reference)}
 }
 
 var _ RefOpenXRSpatialCapabilityConfigurationBaseHeader = &RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl{}
@@ -5959,8 +9703,20 @@ func NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderAsRef(reference RefCoun
 	return NewRef[OpenXRSpatialCapabilityConfigurationBaseHeader](reference.(OpenXRSpatialCapabilityConfigurationBaseHeader))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialCapabilityConfigurationBaseHeaderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationBaseHeader) RefOpenXRSpatialCapabilityConfigurationBaseHeader {
 	return &RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl{RefBase: NewRef[OpenXRSpatialCapabilityConfigurationBaseHeader](reference)}
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderGDExtensionReturnOwner(reference OpenXRSpatialCapabilityConfigurationBaseHeader) RefOpenXRSpatialCapabilityConfigurationBaseHeader {
+	return &RefOpenXRSpatialCapabilityConfigurationBaseHeaderImpl{RefBase: NewRefTransfer[OpenXRSpatialCapabilityConfigurationBaseHeader](reference)}
 }
 
 var _ RefOpenXRSpatialCapabilityConfigurationMicroQrCode = &RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{}
@@ -5978,8 +9734,20 @@ func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeAsRef(reference RefCou
 	return NewRef[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference.(OpenXRSpatialCapabilityConfigurationMicroQrCode))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialCapabilityConfigurationMicroQrCodeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationMicroQrCode) RefOpenXRSpatialCapabilityConfigurationMicroQrCode {
 	return &RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{RefBase: NewRef[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference)}
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeGDExtensionReturnOwner(reference OpenXRSpatialCapabilityConfigurationMicroQrCode) RefOpenXRSpatialCapabilityConfigurationMicroQrCode {
+	return &RefOpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{RefBase: NewRefTransfer[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference)}
 }
 
 var _ RefOpenXRSpatialCapabilityConfigurationPlaneTracking = &RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl{}
@@ -5997,8 +9765,20 @@ func NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingAsRef(reference RefC
 	return NewRef[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference.(OpenXRSpatialCapabilityConfigurationPlaneTracking))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialCapabilityConfigurationPlaneTrackingWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationPlaneTracking) RefOpenXRSpatialCapabilityConfigurationPlaneTracking {
 	return &RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl{RefBase: NewRef[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference)}
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingGDExtensionReturnOwner(reference OpenXRSpatialCapabilityConfigurationPlaneTracking) RefOpenXRSpatialCapabilityConfigurationPlaneTracking {
+	return &RefOpenXRSpatialCapabilityConfigurationPlaneTrackingImpl{RefBase: NewRefTransfer[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference)}
 }
 
 var _ RefOpenXRSpatialCapabilityConfigurationQrCode = &RefOpenXRSpatialCapabilityConfigurationQrCodeImpl{}
@@ -6016,8 +9796,20 @@ func NewRefOpenXRSpatialCapabilityConfigurationQrCodeAsRef(reference RefCounted)
 	return NewRef[OpenXRSpatialCapabilityConfigurationQrCode](reference.(OpenXRSpatialCapabilityConfigurationQrCode))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationQrCodeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialCapabilityConfigurationQrCodeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialCapabilityConfigurationQrCodeGDExtensionIternalConstructor(reference OpenXRSpatialCapabilityConfigurationQrCode) RefOpenXRSpatialCapabilityConfigurationQrCode {
 	return &RefOpenXRSpatialCapabilityConfigurationQrCodeImpl{RefBase: NewRef[OpenXRSpatialCapabilityConfigurationQrCode](reference)}
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationQrCodeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialCapabilityConfigurationQrCodeGDExtensionReturnOwner(reference OpenXRSpatialCapabilityConfigurationQrCode) RefOpenXRSpatialCapabilityConfigurationQrCode {
+	return &RefOpenXRSpatialCapabilityConfigurationQrCodeImpl{RefBase: NewRefTransfer[OpenXRSpatialCapabilityConfigurationQrCode](reference)}
 }
 
 var _ RefOpenXRSpatialComponentAnchorList = &RefOpenXRSpatialComponentAnchorListImpl{}
@@ -6035,8 +9827,20 @@ func NewRefOpenXRSpatialComponentAnchorListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentAnchorList](reference.(OpenXRSpatialComponentAnchorList))
 }
 
+// NewRefOpenXRSpatialComponentAnchorListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentAnchorListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentAnchorListGDExtensionIternalConstructor(reference OpenXRSpatialComponentAnchorList) RefOpenXRSpatialComponentAnchorList {
 	return &RefOpenXRSpatialComponentAnchorListImpl{RefBase: NewRef[OpenXRSpatialComponentAnchorList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentAnchorListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentAnchorListGDExtensionReturnOwner(reference OpenXRSpatialComponentAnchorList) RefOpenXRSpatialComponentAnchorList {
+	return &RefOpenXRSpatialComponentAnchorListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentAnchorList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentBounded2DList = &RefOpenXRSpatialComponentBounded2DListImpl{}
@@ -6054,8 +9858,20 @@ func NewRefOpenXRSpatialComponentBounded2DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentBounded2DList](reference.(OpenXRSpatialComponentBounded2DList))
 }
 
+// NewRefOpenXRSpatialComponentBounded2DListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentBounded2DListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentBounded2DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentBounded2DList) RefOpenXRSpatialComponentBounded2DList {
 	return &RefOpenXRSpatialComponentBounded2DListImpl{RefBase: NewRef[OpenXRSpatialComponentBounded2DList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentBounded2DListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentBounded2DListGDExtensionReturnOwner(reference OpenXRSpatialComponentBounded2DList) RefOpenXRSpatialComponentBounded2DList {
+	return &RefOpenXRSpatialComponentBounded2DListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentBounded2DList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentBounded3DList = &RefOpenXRSpatialComponentBounded3DListImpl{}
@@ -6073,8 +9889,20 @@ func NewRefOpenXRSpatialComponentBounded3DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentBounded3DList](reference.(OpenXRSpatialComponentBounded3DList))
 }
 
+// NewRefOpenXRSpatialComponentBounded3DListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentBounded3DListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentBounded3DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentBounded3DList) RefOpenXRSpatialComponentBounded3DList {
 	return &RefOpenXRSpatialComponentBounded3DListImpl{RefBase: NewRef[OpenXRSpatialComponentBounded3DList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentBounded3DListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentBounded3DListGDExtensionReturnOwner(reference OpenXRSpatialComponentBounded3DList) RefOpenXRSpatialComponentBounded3DList {
+	return &RefOpenXRSpatialComponentBounded3DListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentBounded3DList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentData = &RefOpenXRSpatialComponentDataImpl{}
@@ -6092,8 +9920,20 @@ func NewRefOpenXRSpatialComponentDataAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentData](reference.(OpenXRSpatialComponentData))
 }
 
+// NewRefOpenXRSpatialComponentDataGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentDataWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentDataGDExtensionIternalConstructor(reference OpenXRSpatialComponentData) RefOpenXRSpatialComponentData {
 	return &RefOpenXRSpatialComponentDataImpl{RefBase: NewRef[OpenXRSpatialComponentData](reference)}
+}
+
+// NewRefOpenXRSpatialComponentDataGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentDataGDExtensionReturnOwner(reference OpenXRSpatialComponentData) RefOpenXRSpatialComponentData {
+	return &RefOpenXRSpatialComponentDataImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentData](reference)}
 }
 
 var _ RefOpenXRSpatialComponentMarkerList = &RefOpenXRSpatialComponentMarkerListImpl{}
@@ -6111,8 +9951,20 @@ func NewRefOpenXRSpatialComponentMarkerListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentMarkerList](reference.(OpenXRSpatialComponentMarkerList))
 }
 
+// NewRefOpenXRSpatialComponentMarkerListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentMarkerListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentMarkerListGDExtensionIternalConstructor(reference OpenXRSpatialComponentMarkerList) RefOpenXRSpatialComponentMarkerList {
 	return &RefOpenXRSpatialComponentMarkerListImpl{RefBase: NewRef[OpenXRSpatialComponentMarkerList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentMarkerListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentMarkerListGDExtensionReturnOwner(reference OpenXRSpatialComponentMarkerList) RefOpenXRSpatialComponentMarkerList {
+	return &RefOpenXRSpatialComponentMarkerListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentMarkerList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentMesh2DList = &RefOpenXRSpatialComponentMesh2DListImpl{}
@@ -6130,8 +9982,20 @@ func NewRefOpenXRSpatialComponentMesh2DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentMesh2DList](reference.(OpenXRSpatialComponentMesh2DList))
 }
 
+// NewRefOpenXRSpatialComponentMesh2DListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentMesh2DListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentMesh2DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentMesh2DList) RefOpenXRSpatialComponentMesh2DList {
 	return &RefOpenXRSpatialComponentMesh2DListImpl{RefBase: NewRef[OpenXRSpatialComponentMesh2DList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentMesh2DListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentMesh2DListGDExtensionReturnOwner(reference OpenXRSpatialComponentMesh2DList) RefOpenXRSpatialComponentMesh2DList {
+	return &RefOpenXRSpatialComponentMesh2DListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentMesh2DList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentMesh3DList = &RefOpenXRSpatialComponentMesh3DListImpl{}
@@ -6149,8 +10013,20 @@ func NewRefOpenXRSpatialComponentMesh3DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentMesh3DList](reference.(OpenXRSpatialComponentMesh3DList))
 }
 
+// NewRefOpenXRSpatialComponentMesh3DListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentMesh3DListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentMesh3DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentMesh3DList) RefOpenXRSpatialComponentMesh3DList {
 	return &RefOpenXRSpatialComponentMesh3DListImpl{RefBase: NewRef[OpenXRSpatialComponentMesh3DList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentMesh3DListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentMesh3DListGDExtensionReturnOwner(reference OpenXRSpatialComponentMesh3DList) RefOpenXRSpatialComponentMesh3DList {
+	return &RefOpenXRSpatialComponentMesh3DListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentMesh3DList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentParentList = &RefOpenXRSpatialComponentParentListImpl{}
@@ -6168,8 +10044,20 @@ func NewRefOpenXRSpatialComponentParentListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentParentList](reference.(OpenXRSpatialComponentParentList))
 }
 
+// NewRefOpenXRSpatialComponentParentListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentParentListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentParentListGDExtensionIternalConstructor(reference OpenXRSpatialComponentParentList) RefOpenXRSpatialComponentParentList {
 	return &RefOpenXRSpatialComponentParentListImpl{RefBase: NewRef[OpenXRSpatialComponentParentList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentParentListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentParentListGDExtensionReturnOwner(reference OpenXRSpatialComponentParentList) RefOpenXRSpatialComponentParentList {
+	return &RefOpenXRSpatialComponentParentListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentParentList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentPersistenceList = &RefOpenXRSpatialComponentPersistenceListImpl{}
@@ -6187,8 +10075,20 @@ func NewRefOpenXRSpatialComponentPersistenceListAsRef(reference RefCounted) Ref 
 	return NewRef[OpenXRSpatialComponentPersistenceList](reference.(OpenXRSpatialComponentPersistenceList))
 }
 
+// NewRefOpenXRSpatialComponentPersistenceListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentPersistenceListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentPersistenceListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPersistenceList) RefOpenXRSpatialComponentPersistenceList {
 	return &RefOpenXRSpatialComponentPersistenceListImpl{RefBase: NewRef[OpenXRSpatialComponentPersistenceList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentPersistenceListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentPersistenceListGDExtensionReturnOwner(reference OpenXRSpatialComponentPersistenceList) RefOpenXRSpatialComponentPersistenceList {
+	return &RefOpenXRSpatialComponentPersistenceListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentPersistenceList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentPlaneAlignmentList = &RefOpenXRSpatialComponentPlaneAlignmentListImpl{}
@@ -6206,8 +10106,20 @@ func NewRefOpenXRSpatialComponentPlaneAlignmentListAsRef(reference RefCounted) R
 	return NewRef[OpenXRSpatialComponentPlaneAlignmentList](reference.(OpenXRSpatialComponentPlaneAlignmentList))
 }
 
+// NewRefOpenXRSpatialComponentPlaneAlignmentListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentPlaneAlignmentListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentPlaneAlignmentListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPlaneAlignmentList) RefOpenXRSpatialComponentPlaneAlignmentList {
 	return &RefOpenXRSpatialComponentPlaneAlignmentListImpl{RefBase: NewRef[OpenXRSpatialComponentPlaneAlignmentList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentPlaneAlignmentListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentPlaneAlignmentListGDExtensionReturnOwner(reference OpenXRSpatialComponentPlaneAlignmentList) RefOpenXRSpatialComponentPlaneAlignmentList {
+	return &RefOpenXRSpatialComponentPlaneAlignmentListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentPlaneAlignmentList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentPlaneSemanticLabelList = &RefOpenXRSpatialComponentPlaneSemanticLabelListImpl{}
@@ -6225,8 +10137,20 @@ func NewRefOpenXRSpatialComponentPlaneSemanticLabelListAsRef(reference RefCounte
 	return NewRef[OpenXRSpatialComponentPlaneSemanticLabelList](reference.(OpenXRSpatialComponentPlaneSemanticLabelList))
 }
 
+// NewRefOpenXRSpatialComponentPlaneSemanticLabelListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentPlaneSemanticLabelListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentPlaneSemanticLabelListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPlaneSemanticLabelList) RefOpenXRSpatialComponentPlaneSemanticLabelList {
 	return &RefOpenXRSpatialComponentPlaneSemanticLabelListImpl{RefBase: NewRef[OpenXRSpatialComponentPlaneSemanticLabelList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentPlaneSemanticLabelListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentPlaneSemanticLabelListGDExtensionReturnOwner(reference OpenXRSpatialComponentPlaneSemanticLabelList) RefOpenXRSpatialComponentPlaneSemanticLabelList {
+	return &RefOpenXRSpatialComponentPlaneSemanticLabelListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentPlaneSemanticLabelList](reference)}
 }
 
 var _ RefOpenXRSpatialComponentPolygon2DList = &RefOpenXRSpatialComponentPolygon2DListImpl{}
@@ -6244,8 +10168,20 @@ func NewRefOpenXRSpatialComponentPolygon2DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentPolygon2DList](reference.(OpenXRSpatialComponentPolygon2DList))
 }
 
+// NewRefOpenXRSpatialComponentPolygon2DListGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialComponentPolygon2DListWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialComponentPolygon2DListGDExtensionIternalConstructor(reference OpenXRSpatialComponentPolygon2DList) RefOpenXRSpatialComponentPolygon2DList {
 	return &RefOpenXRSpatialComponentPolygon2DListImpl{RefBase: NewRef[OpenXRSpatialComponentPolygon2DList](reference)}
+}
+
+// NewRefOpenXRSpatialComponentPolygon2DListGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialComponentPolygon2DListGDExtensionReturnOwner(reference OpenXRSpatialComponentPolygon2DList) RefOpenXRSpatialComponentPolygon2DList {
+	return &RefOpenXRSpatialComponentPolygon2DListImpl{RefBase: NewRefTransfer[OpenXRSpatialComponentPolygon2DList](reference)}
 }
 
 var _ RefOpenXRSpatialContextPersistenceConfig = &RefOpenXRSpatialContextPersistenceConfigImpl{}
@@ -6263,8 +10199,20 @@ func NewRefOpenXRSpatialContextPersistenceConfigAsRef(reference RefCounted) Ref 
 	return NewRef[OpenXRSpatialContextPersistenceConfig](reference.(OpenXRSpatialContextPersistenceConfig))
 }
 
+// NewRefOpenXRSpatialContextPersistenceConfigGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialContextPersistenceConfigWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialContextPersistenceConfigGDExtensionIternalConstructor(reference OpenXRSpatialContextPersistenceConfig) RefOpenXRSpatialContextPersistenceConfig {
 	return &RefOpenXRSpatialContextPersistenceConfigImpl{RefBase: NewRef[OpenXRSpatialContextPersistenceConfig](reference)}
+}
+
+// NewRefOpenXRSpatialContextPersistenceConfigGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialContextPersistenceConfigGDExtensionReturnOwner(reference OpenXRSpatialContextPersistenceConfig) RefOpenXRSpatialContextPersistenceConfig {
+	return &RefOpenXRSpatialContextPersistenceConfigImpl{RefBase: NewRefTransfer[OpenXRSpatialContextPersistenceConfig](reference)}
 }
 
 var _ RefOpenXRSpatialEntityTracker = &RefOpenXRSpatialEntityTrackerImpl{}
@@ -6282,8 +10230,20 @@ func NewRefOpenXRSpatialEntityTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialEntityTracker](reference.(OpenXRSpatialEntityTracker))
 }
 
+// NewRefOpenXRSpatialEntityTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialEntityTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialEntityTrackerGDExtensionIternalConstructor(reference OpenXRSpatialEntityTracker) RefOpenXRSpatialEntityTracker {
 	return &RefOpenXRSpatialEntityTrackerImpl{RefBase: NewRef[OpenXRSpatialEntityTracker](reference)}
+}
+
+// NewRefOpenXRSpatialEntityTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialEntityTrackerGDExtensionReturnOwner(reference OpenXRSpatialEntityTracker) RefOpenXRSpatialEntityTracker {
+	return &RefOpenXRSpatialEntityTrackerImpl{RefBase: NewRefTransfer[OpenXRSpatialEntityTracker](reference)}
 }
 
 var _ RefOpenXRSpatialQueryResultData = &RefOpenXRSpatialQueryResultDataImpl{}
@@ -6301,8 +10261,20 @@ func NewRefOpenXRSpatialQueryResultDataAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialQueryResultData](reference.(OpenXRSpatialQueryResultData))
 }
 
+// NewRefOpenXRSpatialQueryResultDataGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRSpatialQueryResultDataWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRSpatialQueryResultDataGDExtensionIternalConstructor(reference OpenXRSpatialQueryResultData) RefOpenXRSpatialQueryResultData {
 	return &RefOpenXRSpatialQueryResultDataImpl{RefBase: NewRef[OpenXRSpatialQueryResultData](reference)}
+}
+
+// NewRefOpenXRSpatialQueryResultDataGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRSpatialQueryResultDataGDExtensionReturnOwner(reference OpenXRSpatialQueryResultData) RefOpenXRSpatialQueryResultData {
+	return &RefOpenXRSpatialQueryResultDataImpl{RefBase: NewRefTransfer[OpenXRSpatialQueryResultData](reference)}
 }
 
 var _ RefOpenXRStructureBase = &RefOpenXRStructureBaseImpl{}
@@ -6320,8 +10292,20 @@ func NewRefOpenXRStructureBaseAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRStructureBase](reference.(OpenXRStructureBase))
 }
 
+// NewRefOpenXRStructureBaseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOpenXRStructureBaseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOpenXRStructureBaseGDExtensionIternalConstructor(reference OpenXRStructureBase) RefOpenXRStructureBase {
 	return &RefOpenXRStructureBaseImpl{RefBase: NewRef[OpenXRStructureBase](reference)}
+}
+
+// NewRefOpenXRStructureBaseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOpenXRStructureBaseGDExtensionReturnOwner(reference OpenXRStructureBase) RefOpenXRStructureBase {
+	return &RefOpenXRStructureBaseImpl{RefBase: NewRefTransfer[OpenXRStructureBase](reference)}
 }
 
 var _ RefOptimizedTranslation = &RefOptimizedTranslationImpl{}
@@ -6339,8 +10323,20 @@ func NewRefOptimizedTranslationAsRef(reference RefCounted) Ref {
 	return NewRef[OptimizedTranslation](reference.(OptimizedTranslation))
 }
 
+// NewRefOptimizedTranslationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewOptimizedTranslationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefOptimizedTranslationGDExtensionIternalConstructor(reference OptimizedTranslation) RefOptimizedTranslation {
 	return &RefOptimizedTranslationImpl{RefBase: NewRef[OptimizedTranslation](reference)}
+}
+
+// NewRefOptimizedTranslationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefOptimizedTranslationGDExtensionReturnOwner(reference OptimizedTranslation) RefOptimizedTranslation {
+	return &RefOptimizedTranslationImpl{RefBase: NewRefTransfer[OptimizedTranslation](reference)}
 }
 
 var _ RefPCKPacker = &RefPCKPackerImpl{}
@@ -6358,8 +10354,20 @@ func NewRefPCKPackerAsRef(reference RefCounted) Ref {
 	return NewRef[PCKPacker](reference.(PCKPacker))
 }
 
+// NewRefPCKPackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPCKPackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPCKPackerGDExtensionIternalConstructor(reference PCKPacker) RefPCKPacker {
 	return &RefPCKPackerImpl{RefBase: NewRef[PCKPacker](reference)}
+}
+
+// NewRefPCKPackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPCKPackerGDExtensionReturnOwner(reference PCKPacker) RefPCKPacker {
+	return &RefPCKPackerImpl{RefBase: NewRefTransfer[PCKPacker](reference)}
 }
 
 var _ RefPackedDataContainer = &RefPackedDataContainerImpl{}
@@ -6377,8 +10385,20 @@ func NewRefPackedDataContainerAsRef(reference RefCounted) Ref {
 	return NewRef[PackedDataContainer](reference.(PackedDataContainer))
 }
 
+// NewRefPackedDataContainerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPackedDataContainerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPackedDataContainerGDExtensionIternalConstructor(reference PackedDataContainer) RefPackedDataContainer {
 	return &RefPackedDataContainerImpl{RefBase: NewRef[PackedDataContainer](reference)}
+}
+
+// NewRefPackedDataContainerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPackedDataContainerGDExtensionReturnOwner(reference PackedDataContainer) RefPackedDataContainer {
+	return &RefPackedDataContainerImpl{RefBase: NewRefTransfer[PackedDataContainer](reference)}
 }
 
 var _ RefPackedDataContainerRef = &RefPackedDataContainerRefImpl{}
@@ -6396,8 +10416,20 @@ func NewRefPackedDataContainerRefAsRef(reference RefCounted) Ref {
 	return NewRef[PackedDataContainerRef](reference.(PackedDataContainerRef))
 }
 
+// NewRefPackedDataContainerRefGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPackedDataContainerRefWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPackedDataContainerRefGDExtensionIternalConstructor(reference PackedDataContainerRef) RefPackedDataContainerRef {
 	return &RefPackedDataContainerRefImpl{RefBase: NewRef[PackedDataContainerRef](reference)}
+}
+
+// NewRefPackedDataContainerRefGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPackedDataContainerRefGDExtensionReturnOwner(reference PackedDataContainerRef) RefPackedDataContainerRef {
+	return &RefPackedDataContainerRefImpl{RefBase: NewRefTransfer[PackedDataContainerRef](reference)}
 }
 
 var _ RefPackedScene = &RefPackedSceneImpl{}
@@ -6415,8 +10447,20 @@ func NewRefPackedSceneAsRef(reference RefCounted) Ref {
 	return NewRef[PackedScene](reference.(PackedScene))
 }
 
+// NewRefPackedSceneGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPackedSceneWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPackedSceneGDExtensionIternalConstructor(reference PackedScene) RefPackedScene {
 	return &RefPackedSceneImpl{RefBase: NewRef[PackedScene](reference)}
+}
+
+// NewRefPackedSceneGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPackedSceneGDExtensionReturnOwner(reference PackedScene) RefPackedScene {
+	return &RefPackedSceneImpl{RefBase: NewRefTransfer[PackedScene](reference)}
 }
 
 var _ RefPacketPeer = &RefPacketPeerImpl{}
@@ -6434,8 +10478,20 @@ func NewRefPacketPeerAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeer](reference.(PacketPeer))
 }
 
+// NewRefPacketPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPacketPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPacketPeerGDExtensionIternalConstructor(reference PacketPeer) RefPacketPeer {
 	return &RefPacketPeerImpl{RefBase: NewRef[PacketPeer](reference)}
+}
+
+// NewRefPacketPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPacketPeerGDExtensionReturnOwner(reference PacketPeer) RefPacketPeer {
+	return &RefPacketPeerImpl{RefBase: NewRefTransfer[PacketPeer](reference)}
 }
 
 var _ RefPacketPeerDTLS = &RefPacketPeerDTLSImpl{}
@@ -6453,8 +10509,20 @@ func NewRefPacketPeerDTLSAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerDTLS](reference.(PacketPeerDTLS))
 }
 
+// NewRefPacketPeerDTLSGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPacketPeerDTLSWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPacketPeerDTLSGDExtensionIternalConstructor(reference PacketPeerDTLS) RefPacketPeerDTLS {
 	return &RefPacketPeerDTLSImpl{RefBase: NewRef[PacketPeerDTLS](reference)}
+}
+
+// NewRefPacketPeerDTLSGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPacketPeerDTLSGDExtensionReturnOwner(reference PacketPeerDTLS) RefPacketPeerDTLS {
+	return &RefPacketPeerDTLSImpl{RefBase: NewRefTransfer[PacketPeerDTLS](reference)}
 }
 
 var _ RefPacketPeerExtension = &RefPacketPeerExtensionImpl{}
@@ -6472,8 +10540,20 @@ func NewRefPacketPeerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerExtension](reference.(PacketPeerExtension))
 }
 
+// NewRefPacketPeerExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPacketPeerExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPacketPeerExtensionGDExtensionIternalConstructor(reference PacketPeerExtension) RefPacketPeerExtension {
 	return &RefPacketPeerExtensionImpl{RefBase: NewRef[PacketPeerExtension](reference)}
+}
+
+// NewRefPacketPeerExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPacketPeerExtensionGDExtensionReturnOwner(reference PacketPeerExtension) RefPacketPeerExtension {
+	return &RefPacketPeerExtensionImpl{RefBase: NewRefTransfer[PacketPeerExtension](reference)}
 }
 
 var _ RefPacketPeerStream = &RefPacketPeerStreamImpl{}
@@ -6491,8 +10571,20 @@ func NewRefPacketPeerStreamAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerStream](reference.(PacketPeerStream))
 }
 
+// NewRefPacketPeerStreamGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPacketPeerStreamWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPacketPeerStreamGDExtensionIternalConstructor(reference PacketPeerStream) RefPacketPeerStream {
 	return &RefPacketPeerStreamImpl{RefBase: NewRef[PacketPeerStream](reference)}
+}
+
+// NewRefPacketPeerStreamGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPacketPeerStreamGDExtensionReturnOwner(reference PacketPeerStream) RefPacketPeerStream {
+	return &RefPacketPeerStreamImpl{RefBase: NewRefTransfer[PacketPeerStream](reference)}
 }
 
 var _ RefPacketPeerUDP = &RefPacketPeerUDPImpl{}
@@ -6510,8 +10602,20 @@ func NewRefPacketPeerUDPAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerUDP](reference.(PacketPeerUDP))
 }
 
+// NewRefPacketPeerUDPGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPacketPeerUDPWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPacketPeerUDPGDExtensionIternalConstructor(reference PacketPeerUDP) RefPacketPeerUDP {
 	return &RefPacketPeerUDPImpl{RefBase: NewRef[PacketPeerUDP](reference)}
+}
+
+// NewRefPacketPeerUDPGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPacketPeerUDPGDExtensionReturnOwner(reference PacketPeerUDP) RefPacketPeerUDP {
+	return &RefPacketPeerUDPImpl{RefBase: NewRefTransfer[PacketPeerUDP](reference)}
 }
 
 var _ RefPanoramaSkyMaterial = &RefPanoramaSkyMaterialImpl{}
@@ -6529,8 +10633,20 @@ func NewRefPanoramaSkyMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PanoramaSkyMaterial](reference.(PanoramaSkyMaterial))
 }
 
+// NewRefPanoramaSkyMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPanoramaSkyMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPanoramaSkyMaterialGDExtensionIternalConstructor(reference PanoramaSkyMaterial) RefPanoramaSkyMaterial {
 	return &RefPanoramaSkyMaterialImpl{RefBase: NewRef[PanoramaSkyMaterial](reference)}
+}
+
+// NewRefPanoramaSkyMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPanoramaSkyMaterialGDExtensionReturnOwner(reference PanoramaSkyMaterial) RefPanoramaSkyMaterial {
+	return &RefPanoramaSkyMaterialImpl{RefBase: NewRefTransfer[PanoramaSkyMaterial](reference)}
 }
 
 var _ RefParticleProcessMaterial = &RefParticleProcessMaterialImpl{}
@@ -6548,8 +10664,20 @@ func NewRefParticleProcessMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[ParticleProcessMaterial](reference.(ParticleProcessMaterial))
 }
 
+// NewRefParticleProcessMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewParticleProcessMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefParticleProcessMaterialGDExtensionIternalConstructor(reference ParticleProcessMaterial) RefParticleProcessMaterial {
 	return &RefParticleProcessMaterialImpl{RefBase: NewRef[ParticleProcessMaterial](reference)}
+}
+
+// NewRefParticleProcessMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefParticleProcessMaterialGDExtensionReturnOwner(reference ParticleProcessMaterial) RefParticleProcessMaterial {
+	return &RefParticleProcessMaterialImpl{RefBase: NewRefTransfer[ParticleProcessMaterial](reference)}
 }
 
 var _ RefPhysicalSkyMaterial = &RefPhysicalSkyMaterialImpl{}
@@ -6567,8 +10695,20 @@ func NewRefPhysicalSkyMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicalSkyMaterial](reference.(PhysicalSkyMaterial))
 }
 
+// NewRefPhysicalSkyMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicalSkyMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicalSkyMaterialGDExtensionIternalConstructor(reference PhysicalSkyMaterial) RefPhysicalSkyMaterial {
 	return &RefPhysicalSkyMaterialImpl{RefBase: NewRef[PhysicalSkyMaterial](reference)}
+}
+
+// NewRefPhysicalSkyMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicalSkyMaterialGDExtensionReturnOwner(reference PhysicalSkyMaterial) RefPhysicalSkyMaterial {
+	return &RefPhysicalSkyMaterialImpl{RefBase: NewRefTransfer[PhysicalSkyMaterial](reference)}
 }
 
 var _ RefPhysicsMaterial = &RefPhysicsMaterialImpl{}
@@ -6586,8 +10726,20 @@ func NewRefPhysicsMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsMaterial](reference.(PhysicsMaterial))
 }
 
+// NewRefPhysicsMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsMaterialGDExtensionIternalConstructor(reference PhysicsMaterial) RefPhysicsMaterial {
 	return &RefPhysicsMaterialImpl{RefBase: NewRef[PhysicsMaterial](reference)}
+}
+
+// NewRefPhysicsMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsMaterialGDExtensionReturnOwner(reference PhysicsMaterial) RefPhysicsMaterial {
+	return &RefPhysicsMaterialImpl{RefBase: NewRefTransfer[PhysicsMaterial](reference)}
 }
 
 var _ RefPhysicsPointQueryParameters2D = &RefPhysicsPointQueryParameters2DImpl{}
@@ -6605,8 +10757,20 @@ func NewRefPhysicsPointQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsPointQueryParameters2D](reference.(PhysicsPointQueryParameters2D))
 }
 
+// NewRefPhysicsPointQueryParameters2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsPointQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsPointQueryParameters2DGDExtensionIternalConstructor(reference PhysicsPointQueryParameters2D) RefPhysicsPointQueryParameters2D {
 	return &RefPhysicsPointQueryParameters2DImpl{RefBase: NewRef[PhysicsPointQueryParameters2D](reference)}
+}
+
+// NewRefPhysicsPointQueryParameters2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsPointQueryParameters2DGDExtensionReturnOwner(reference PhysicsPointQueryParameters2D) RefPhysicsPointQueryParameters2D {
+	return &RefPhysicsPointQueryParameters2DImpl{RefBase: NewRefTransfer[PhysicsPointQueryParameters2D](reference)}
 }
 
 var _ RefPhysicsPointQueryParameters3D = &RefPhysicsPointQueryParameters3DImpl{}
@@ -6624,8 +10788,20 @@ func NewRefPhysicsPointQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsPointQueryParameters3D](reference.(PhysicsPointQueryParameters3D))
 }
 
+// NewRefPhysicsPointQueryParameters3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsPointQueryParameters3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsPointQueryParameters3DGDExtensionIternalConstructor(reference PhysicsPointQueryParameters3D) RefPhysicsPointQueryParameters3D {
 	return &RefPhysicsPointQueryParameters3DImpl{RefBase: NewRef[PhysicsPointQueryParameters3D](reference)}
+}
+
+// NewRefPhysicsPointQueryParameters3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsPointQueryParameters3DGDExtensionReturnOwner(reference PhysicsPointQueryParameters3D) RefPhysicsPointQueryParameters3D {
+	return &RefPhysicsPointQueryParameters3DImpl{RefBase: NewRefTransfer[PhysicsPointQueryParameters3D](reference)}
 }
 
 var _ RefPhysicsRayQueryParameters2D = &RefPhysicsRayQueryParameters2DImpl{}
@@ -6643,8 +10819,20 @@ func NewRefPhysicsRayQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsRayQueryParameters2D](reference.(PhysicsRayQueryParameters2D))
 }
 
+// NewRefPhysicsRayQueryParameters2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsRayQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsRayQueryParameters2DGDExtensionIternalConstructor(reference PhysicsRayQueryParameters2D) RefPhysicsRayQueryParameters2D {
 	return &RefPhysicsRayQueryParameters2DImpl{RefBase: NewRef[PhysicsRayQueryParameters2D](reference)}
+}
+
+// NewRefPhysicsRayQueryParameters2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsRayQueryParameters2DGDExtensionReturnOwner(reference PhysicsRayQueryParameters2D) RefPhysicsRayQueryParameters2D {
+	return &RefPhysicsRayQueryParameters2DImpl{RefBase: NewRefTransfer[PhysicsRayQueryParameters2D](reference)}
 }
 
 var _ RefPhysicsRayQueryParameters3D = &RefPhysicsRayQueryParameters3DImpl{}
@@ -6662,8 +10850,20 @@ func NewRefPhysicsRayQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsRayQueryParameters3D](reference.(PhysicsRayQueryParameters3D))
 }
 
+// NewRefPhysicsRayQueryParameters3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsRayQueryParameters3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsRayQueryParameters3DGDExtensionIternalConstructor(reference PhysicsRayQueryParameters3D) RefPhysicsRayQueryParameters3D {
 	return &RefPhysicsRayQueryParameters3DImpl{RefBase: NewRef[PhysicsRayQueryParameters3D](reference)}
+}
+
+// NewRefPhysicsRayQueryParameters3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsRayQueryParameters3DGDExtensionReturnOwner(reference PhysicsRayQueryParameters3D) RefPhysicsRayQueryParameters3D {
+	return &RefPhysicsRayQueryParameters3DImpl{RefBase: NewRefTransfer[PhysicsRayQueryParameters3D](reference)}
 }
 
 var _ RefPhysicsShapeQueryParameters2D = &RefPhysicsShapeQueryParameters2DImpl{}
@@ -6681,8 +10881,20 @@ func NewRefPhysicsShapeQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsShapeQueryParameters2D](reference.(PhysicsShapeQueryParameters2D))
 }
 
+// NewRefPhysicsShapeQueryParameters2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsShapeQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsShapeQueryParameters2DGDExtensionIternalConstructor(reference PhysicsShapeQueryParameters2D) RefPhysicsShapeQueryParameters2D {
 	return &RefPhysicsShapeQueryParameters2DImpl{RefBase: NewRef[PhysicsShapeQueryParameters2D](reference)}
+}
+
+// NewRefPhysicsShapeQueryParameters2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsShapeQueryParameters2DGDExtensionReturnOwner(reference PhysicsShapeQueryParameters2D) RefPhysicsShapeQueryParameters2D {
+	return &RefPhysicsShapeQueryParameters2DImpl{RefBase: NewRefTransfer[PhysicsShapeQueryParameters2D](reference)}
 }
 
 var _ RefPhysicsShapeQueryParameters3D = &RefPhysicsShapeQueryParameters3DImpl{}
@@ -6700,8 +10912,20 @@ func NewRefPhysicsShapeQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsShapeQueryParameters3D](reference.(PhysicsShapeQueryParameters3D))
 }
 
+// NewRefPhysicsShapeQueryParameters3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsShapeQueryParameters3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsShapeQueryParameters3DGDExtensionIternalConstructor(reference PhysicsShapeQueryParameters3D) RefPhysicsShapeQueryParameters3D {
 	return &RefPhysicsShapeQueryParameters3DImpl{RefBase: NewRef[PhysicsShapeQueryParameters3D](reference)}
+}
+
+// NewRefPhysicsShapeQueryParameters3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsShapeQueryParameters3DGDExtensionReturnOwner(reference PhysicsShapeQueryParameters3D) RefPhysicsShapeQueryParameters3D {
+	return &RefPhysicsShapeQueryParameters3DImpl{RefBase: NewRefTransfer[PhysicsShapeQueryParameters3D](reference)}
 }
 
 var _ RefPhysicsTestMotionParameters2D = &RefPhysicsTestMotionParameters2DImpl{}
@@ -6719,8 +10943,20 @@ func NewRefPhysicsTestMotionParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionParameters2D](reference.(PhysicsTestMotionParameters2D))
 }
 
+// NewRefPhysicsTestMotionParameters2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsTestMotionParameters2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsTestMotionParameters2DGDExtensionIternalConstructor(reference PhysicsTestMotionParameters2D) RefPhysicsTestMotionParameters2D {
 	return &RefPhysicsTestMotionParameters2DImpl{RefBase: NewRef[PhysicsTestMotionParameters2D](reference)}
+}
+
+// NewRefPhysicsTestMotionParameters2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsTestMotionParameters2DGDExtensionReturnOwner(reference PhysicsTestMotionParameters2D) RefPhysicsTestMotionParameters2D {
+	return &RefPhysicsTestMotionParameters2DImpl{RefBase: NewRefTransfer[PhysicsTestMotionParameters2D](reference)}
 }
 
 var _ RefPhysicsTestMotionParameters3D = &RefPhysicsTestMotionParameters3DImpl{}
@@ -6738,8 +10974,20 @@ func NewRefPhysicsTestMotionParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionParameters3D](reference.(PhysicsTestMotionParameters3D))
 }
 
+// NewRefPhysicsTestMotionParameters3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsTestMotionParameters3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsTestMotionParameters3DGDExtensionIternalConstructor(reference PhysicsTestMotionParameters3D) RefPhysicsTestMotionParameters3D {
 	return &RefPhysicsTestMotionParameters3DImpl{RefBase: NewRef[PhysicsTestMotionParameters3D](reference)}
+}
+
+// NewRefPhysicsTestMotionParameters3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsTestMotionParameters3DGDExtensionReturnOwner(reference PhysicsTestMotionParameters3D) RefPhysicsTestMotionParameters3D {
+	return &RefPhysicsTestMotionParameters3DImpl{RefBase: NewRefTransfer[PhysicsTestMotionParameters3D](reference)}
 }
 
 var _ RefPhysicsTestMotionResult2D = &RefPhysicsTestMotionResult2DImpl{}
@@ -6757,8 +11005,20 @@ func NewRefPhysicsTestMotionResult2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionResult2D](reference.(PhysicsTestMotionResult2D))
 }
 
+// NewRefPhysicsTestMotionResult2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsTestMotionResult2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsTestMotionResult2DGDExtensionIternalConstructor(reference PhysicsTestMotionResult2D) RefPhysicsTestMotionResult2D {
 	return &RefPhysicsTestMotionResult2DImpl{RefBase: NewRef[PhysicsTestMotionResult2D](reference)}
+}
+
+// NewRefPhysicsTestMotionResult2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsTestMotionResult2DGDExtensionReturnOwner(reference PhysicsTestMotionResult2D) RefPhysicsTestMotionResult2D {
+	return &RefPhysicsTestMotionResult2DImpl{RefBase: NewRefTransfer[PhysicsTestMotionResult2D](reference)}
 }
 
 var _ RefPhysicsTestMotionResult3D = &RefPhysicsTestMotionResult3DImpl{}
@@ -6776,8 +11036,20 @@ func NewRefPhysicsTestMotionResult3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionResult3D](reference.(PhysicsTestMotionResult3D))
 }
 
+// NewRefPhysicsTestMotionResult3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPhysicsTestMotionResult3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPhysicsTestMotionResult3DGDExtensionIternalConstructor(reference PhysicsTestMotionResult3D) RefPhysicsTestMotionResult3D {
 	return &RefPhysicsTestMotionResult3DImpl{RefBase: NewRef[PhysicsTestMotionResult3D](reference)}
+}
+
+// NewRefPhysicsTestMotionResult3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPhysicsTestMotionResult3DGDExtensionReturnOwner(reference PhysicsTestMotionResult3D) RefPhysicsTestMotionResult3D {
+	return &RefPhysicsTestMotionResult3DImpl{RefBase: NewRefTransfer[PhysicsTestMotionResult3D](reference)}
 }
 
 var _ RefPlaceholderCubemap = &RefPlaceholderCubemapImpl{}
@@ -6795,8 +11067,20 @@ func NewRefPlaceholderCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderCubemap](reference.(PlaceholderCubemap))
 }
 
+// NewRefPlaceholderCubemapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderCubemapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderCubemapGDExtensionIternalConstructor(reference PlaceholderCubemap) RefPlaceholderCubemap {
 	return &RefPlaceholderCubemapImpl{RefBase: NewRef[PlaceholderCubemap](reference)}
+}
+
+// NewRefPlaceholderCubemapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderCubemapGDExtensionReturnOwner(reference PlaceholderCubemap) RefPlaceholderCubemap {
+	return &RefPlaceholderCubemapImpl{RefBase: NewRefTransfer[PlaceholderCubemap](reference)}
 }
 
 var _ RefPlaceholderCubemapArray = &RefPlaceholderCubemapArrayImpl{}
@@ -6814,8 +11098,20 @@ func NewRefPlaceholderCubemapArrayAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderCubemapArray](reference.(PlaceholderCubemapArray))
 }
 
+// NewRefPlaceholderCubemapArrayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderCubemapArrayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderCubemapArrayGDExtensionIternalConstructor(reference PlaceholderCubemapArray) RefPlaceholderCubemapArray {
 	return &RefPlaceholderCubemapArrayImpl{RefBase: NewRef[PlaceholderCubemapArray](reference)}
+}
+
+// NewRefPlaceholderCubemapArrayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderCubemapArrayGDExtensionReturnOwner(reference PlaceholderCubemapArray) RefPlaceholderCubemapArray {
+	return &RefPlaceholderCubemapArrayImpl{RefBase: NewRefTransfer[PlaceholderCubemapArray](reference)}
 }
 
 var _ RefPlaceholderMaterial = &RefPlaceholderMaterialImpl{}
@@ -6833,8 +11129,20 @@ func NewRefPlaceholderMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderMaterial](reference.(PlaceholderMaterial))
 }
 
+// NewRefPlaceholderMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderMaterialGDExtensionIternalConstructor(reference PlaceholderMaterial) RefPlaceholderMaterial {
 	return &RefPlaceholderMaterialImpl{RefBase: NewRef[PlaceholderMaterial](reference)}
+}
+
+// NewRefPlaceholderMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderMaterialGDExtensionReturnOwner(reference PlaceholderMaterial) RefPlaceholderMaterial {
+	return &RefPlaceholderMaterialImpl{RefBase: NewRefTransfer[PlaceholderMaterial](reference)}
 }
 
 var _ RefPlaceholderMesh = &RefPlaceholderMeshImpl{}
@@ -6852,8 +11160,20 @@ func NewRefPlaceholderMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderMesh](reference.(PlaceholderMesh))
 }
 
+// NewRefPlaceholderMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderMeshGDExtensionIternalConstructor(reference PlaceholderMesh) RefPlaceholderMesh {
 	return &RefPlaceholderMeshImpl{RefBase: NewRef[PlaceholderMesh](reference)}
+}
+
+// NewRefPlaceholderMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderMeshGDExtensionReturnOwner(reference PlaceholderMesh) RefPlaceholderMesh {
+	return &RefPlaceholderMeshImpl{RefBase: NewRefTransfer[PlaceholderMesh](reference)}
 }
 
 var _ RefPlaceholderTexture2D = &RefPlaceholderTexture2DImpl{}
@@ -6871,8 +11191,20 @@ func NewRefPlaceholderTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTexture2D](reference.(PlaceholderTexture2D))
 }
 
+// NewRefPlaceholderTexture2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderTexture2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderTexture2DGDExtensionIternalConstructor(reference PlaceholderTexture2D) RefPlaceholderTexture2D {
 	return &RefPlaceholderTexture2DImpl{RefBase: NewRef[PlaceholderTexture2D](reference)}
+}
+
+// NewRefPlaceholderTexture2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderTexture2DGDExtensionReturnOwner(reference PlaceholderTexture2D) RefPlaceholderTexture2D {
+	return &RefPlaceholderTexture2DImpl{RefBase: NewRefTransfer[PlaceholderTexture2D](reference)}
 }
 
 var _ RefPlaceholderTexture2DArray = &RefPlaceholderTexture2DArrayImpl{}
@@ -6890,8 +11222,20 @@ func NewRefPlaceholderTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTexture2DArray](reference.(PlaceholderTexture2DArray))
 }
 
+// NewRefPlaceholderTexture2DArrayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderTexture2DArrayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderTexture2DArrayGDExtensionIternalConstructor(reference PlaceholderTexture2DArray) RefPlaceholderTexture2DArray {
 	return &RefPlaceholderTexture2DArrayImpl{RefBase: NewRef[PlaceholderTexture2DArray](reference)}
+}
+
+// NewRefPlaceholderTexture2DArrayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderTexture2DArrayGDExtensionReturnOwner(reference PlaceholderTexture2DArray) RefPlaceholderTexture2DArray {
+	return &RefPlaceholderTexture2DArrayImpl{RefBase: NewRefTransfer[PlaceholderTexture2DArray](reference)}
 }
 
 var _ RefPlaceholderTexture3D = &RefPlaceholderTexture3DImpl{}
@@ -6909,8 +11253,20 @@ func NewRefPlaceholderTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTexture3D](reference.(PlaceholderTexture3D))
 }
 
+// NewRefPlaceholderTexture3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderTexture3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderTexture3DGDExtensionIternalConstructor(reference PlaceholderTexture3D) RefPlaceholderTexture3D {
 	return &RefPlaceholderTexture3DImpl{RefBase: NewRef[PlaceholderTexture3D](reference)}
+}
+
+// NewRefPlaceholderTexture3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderTexture3DGDExtensionReturnOwner(reference PlaceholderTexture3D) RefPlaceholderTexture3D {
+	return &RefPlaceholderTexture3DImpl{RefBase: NewRefTransfer[PlaceholderTexture3D](reference)}
 }
 
 var _ RefPlaceholderTextureLayered = &RefPlaceholderTextureLayeredImpl{}
@@ -6928,8 +11284,20 @@ func NewRefPlaceholderTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTextureLayered](reference.(PlaceholderTextureLayered))
 }
 
+// NewRefPlaceholderTextureLayeredGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaceholderTextureLayeredWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaceholderTextureLayeredGDExtensionIternalConstructor(reference PlaceholderTextureLayered) RefPlaceholderTextureLayered {
 	return &RefPlaceholderTextureLayeredImpl{RefBase: NewRef[PlaceholderTextureLayered](reference)}
+}
+
+// NewRefPlaceholderTextureLayeredGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaceholderTextureLayeredGDExtensionReturnOwner(reference PlaceholderTextureLayered) RefPlaceholderTextureLayered {
+	return &RefPlaceholderTextureLayeredImpl{RefBase: NewRefTransfer[PlaceholderTextureLayered](reference)}
 }
 
 var _ RefPlaneMesh = &RefPlaneMeshImpl{}
@@ -6947,8 +11315,20 @@ func NewRefPlaneMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PlaneMesh](reference.(PlaneMesh))
 }
 
+// NewRefPlaneMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPlaneMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPlaneMeshGDExtensionIternalConstructor(reference PlaneMesh) RefPlaneMesh {
 	return &RefPlaneMeshImpl{RefBase: NewRef[PlaneMesh](reference)}
+}
+
+// NewRefPlaneMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPlaneMeshGDExtensionReturnOwner(reference PlaneMesh) RefPlaneMesh {
+	return &RefPlaneMeshImpl{RefBase: NewRefTransfer[PlaneMesh](reference)}
 }
 
 var _ RefPointMesh = &RefPointMeshImpl{}
@@ -6966,8 +11346,20 @@ func NewRefPointMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PointMesh](reference.(PointMesh))
 }
 
+// NewRefPointMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPointMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPointMeshGDExtensionIternalConstructor(reference PointMesh) RefPointMesh {
 	return &RefPointMeshImpl{RefBase: NewRef[PointMesh](reference)}
+}
+
+// NewRefPointMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPointMeshGDExtensionReturnOwner(reference PointMesh) RefPointMesh {
+	return &RefPointMeshImpl{RefBase: NewRefTransfer[PointMesh](reference)}
 }
 
 var _ RefPolygonOccluder3D = &RefPolygonOccluder3DImpl{}
@@ -6985,8 +11377,20 @@ func NewRefPolygonOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[PolygonOccluder3D](reference.(PolygonOccluder3D))
 }
 
+// NewRefPolygonOccluder3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPolygonOccluder3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPolygonOccluder3DGDExtensionIternalConstructor(reference PolygonOccluder3D) RefPolygonOccluder3D {
 	return &RefPolygonOccluder3DImpl{RefBase: NewRef[PolygonOccluder3D](reference)}
+}
+
+// NewRefPolygonOccluder3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPolygonOccluder3DGDExtensionReturnOwner(reference PolygonOccluder3D) RefPolygonOccluder3D {
+	return &RefPolygonOccluder3DImpl{RefBase: NewRefTransfer[PolygonOccluder3D](reference)}
 }
 
 var _ RefPolygonPathFinder = &RefPolygonPathFinderImpl{}
@@ -7004,8 +11408,20 @@ func NewRefPolygonPathFinderAsRef(reference RefCounted) Ref {
 	return NewRef[PolygonPathFinder](reference.(PolygonPathFinder))
 }
 
+// NewRefPolygonPathFinderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPolygonPathFinderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPolygonPathFinderGDExtensionIternalConstructor(reference PolygonPathFinder) RefPolygonPathFinder {
 	return &RefPolygonPathFinderImpl{RefBase: NewRef[PolygonPathFinder](reference)}
+}
+
+// NewRefPolygonPathFinderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPolygonPathFinderGDExtensionReturnOwner(reference PolygonPathFinder) RefPolygonPathFinder {
+	return &RefPolygonPathFinderImpl{RefBase: NewRefTransfer[PolygonPathFinder](reference)}
 }
 
 var _ RefPortableCompressedTexture2D = &RefPortableCompressedTexture2DImpl{}
@@ -7023,8 +11439,20 @@ func NewRefPortableCompressedTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[PortableCompressedTexture2D](reference.(PortableCompressedTexture2D))
 }
 
+// NewRefPortableCompressedTexture2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPortableCompressedTexture2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPortableCompressedTexture2DGDExtensionIternalConstructor(reference PortableCompressedTexture2D) RefPortableCompressedTexture2D {
 	return &RefPortableCompressedTexture2DImpl{RefBase: NewRef[PortableCompressedTexture2D](reference)}
+}
+
+// NewRefPortableCompressedTexture2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPortableCompressedTexture2DGDExtensionReturnOwner(reference PortableCompressedTexture2D) RefPortableCompressedTexture2D {
+	return &RefPortableCompressedTexture2DImpl{RefBase: NewRefTransfer[PortableCompressedTexture2D](reference)}
 }
 
 var _ RefPrimitiveMesh = &RefPrimitiveMeshImpl{}
@@ -7042,8 +11470,20 @@ func NewRefPrimitiveMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PrimitiveMesh](reference.(PrimitiveMesh))
 }
 
+// NewRefPrimitiveMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPrimitiveMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPrimitiveMeshGDExtensionIternalConstructor(reference PrimitiveMesh) RefPrimitiveMesh {
 	return &RefPrimitiveMeshImpl{RefBase: NewRef[PrimitiveMesh](reference)}
+}
+
+// NewRefPrimitiveMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPrimitiveMeshGDExtensionReturnOwner(reference PrimitiveMesh) RefPrimitiveMesh {
+	return &RefPrimitiveMeshImpl{RefBase: NewRefTransfer[PrimitiveMesh](reference)}
 }
 
 var _ RefPrismMesh = &RefPrismMeshImpl{}
@@ -7061,8 +11501,20 @@ func NewRefPrismMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PrismMesh](reference.(PrismMesh))
 }
 
+// NewRefPrismMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPrismMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPrismMeshGDExtensionIternalConstructor(reference PrismMesh) RefPrismMesh {
 	return &RefPrismMeshImpl{RefBase: NewRef[PrismMesh](reference)}
+}
+
+// NewRefPrismMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPrismMeshGDExtensionReturnOwner(reference PrismMesh) RefPrismMesh {
+	return &RefPrismMeshImpl{RefBase: NewRefTransfer[PrismMesh](reference)}
 }
 
 var _ RefProceduralSkyMaterial = &RefProceduralSkyMaterialImpl{}
@@ -7080,8 +11532,20 @@ func NewRefProceduralSkyMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[ProceduralSkyMaterial](reference.(ProceduralSkyMaterial))
 }
 
+// NewRefProceduralSkyMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewProceduralSkyMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefProceduralSkyMaterialGDExtensionIternalConstructor(reference ProceduralSkyMaterial) RefProceduralSkyMaterial {
 	return &RefProceduralSkyMaterialImpl{RefBase: NewRef[ProceduralSkyMaterial](reference)}
+}
+
+// NewRefProceduralSkyMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefProceduralSkyMaterialGDExtensionReturnOwner(reference ProceduralSkyMaterial) RefProceduralSkyMaterial {
+	return &RefProceduralSkyMaterialImpl{RefBase: NewRefTransfer[ProceduralSkyMaterial](reference)}
 }
 
 var _ RefPropertyTweener = &RefPropertyTweenerImpl{}
@@ -7099,8 +11563,20 @@ func NewRefPropertyTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[PropertyTweener](reference.(PropertyTweener))
 }
 
+// NewRefPropertyTweenerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewPropertyTweenerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefPropertyTweenerGDExtensionIternalConstructor(reference PropertyTweener) RefPropertyTweener {
 	return &RefPropertyTweenerImpl{RefBase: NewRef[PropertyTweener](reference)}
+}
+
+// NewRefPropertyTweenerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefPropertyTweenerGDExtensionReturnOwner(reference PropertyTweener) RefPropertyTweener {
+	return &RefPropertyTweenerImpl{RefBase: NewRefTransfer[PropertyTweener](reference)}
 }
 
 var _ RefQuadMesh = &RefQuadMeshImpl{}
@@ -7118,8 +11594,20 @@ func NewRefQuadMeshAsRef(reference RefCounted) Ref {
 	return NewRef[QuadMesh](reference.(QuadMesh))
 }
 
+// NewRefQuadMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewQuadMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefQuadMeshGDExtensionIternalConstructor(reference QuadMesh) RefQuadMesh {
 	return &RefQuadMeshImpl{RefBase: NewRef[QuadMesh](reference)}
+}
+
+// NewRefQuadMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefQuadMeshGDExtensionReturnOwner(reference QuadMesh) RefQuadMesh {
+	return &RefQuadMeshImpl{RefBase: NewRefTransfer[QuadMesh](reference)}
 }
 
 var _ RefQuadOccluder3D = &RefQuadOccluder3DImpl{}
@@ -7137,8 +11625,20 @@ func NewRefQuadOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[QuadOccluder3D](reference.(QuadOccluder3D))
 }
 
+// NewRefQuadOccluder3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewQuadOccluder3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefQuadOccluder3DGDExtensionIternalConstructor(reference QuadOccluder3D) RefQuadOccluder3D {
 	return &RefQuadOccluder3DImpl{RefBase: NewRef[QuadOccluder3D](reference)}
+}
+
+// NewRefQuadOccluder3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefQuadOccluder3DGDExtensionReturnOwner(reference QuadOccluder3D) RefQuadOccluder3D {
+	return &RefQuadOccluder3DImpl{RefBase: NewRefTransfer[QuadOccluder3D](reference)}
 }
 
 var _ RefRDAccelerationStructureGeometry = &RefRDAccelerationStructureGeometryImpl{}
@@ -7156,8 +11656,20 @@ func NewRefRDAccelerationStructureGeometryAsRef(reference RefCounted) Ref {
 	return NewRef[RDAccelerationStructureGeometry](reference.(RDAccelerationStructureGeometry))
 }
 
+// NewRefRDAccelerationStructureGeometryGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDAccelerationStructureGeometryWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDAccelerationStructureGeometryGDExtensionIternalConstructor(reference RDAccelerationStructureGeometry) RefRDAccelerationStructureGeometry {
 	return &RefRDAccelerationStructureGeometryImpl{RefBase: NewRef[RDAccelerationStructureGeometry](reference)}
+}
+
+// NewRefRDAccelerationStructureGeometryGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDAccelerationStructureGeometryGDExtensionReturnOwner(reference RDAccelerationStructureGeometry) RefRDAccelerationStructureGeometry {
+	return &RefRDAccelerationStructureGeometryImpl{RefBase: NewRefTransfer[RDAccelerationStructureGeometry](reference)}
 }
 
 var _ RefRDAccelerationStructureInstance = &RefRDAccelerationStructureInstanceImpl{}
@@ -7175,8 +11687,20 @@ func NewRefRDAccelerationStructureInstanceAsRef(reference RefCounted) Ref {
 	return NewRef[RDAccelerationStructureInstance](reference.(RDAccelerationStructureInstance))
 }
 
+// NewRefRDAccelerationStructureInstanceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDAccelerationStructureInstanceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDAccelerationStructureInstanceGDExtensionIternalConstructor(reference RDAccelerationStructureInstance) RefRDAccelerationStructureInstance {
 	return &RefRDAccelerationStructureInstanceImpl{RefBase: NewRef[RDAccelerationStructureInstance](reference)}
+}
+
+// NewRefRDAccelerationStructureInstanceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDAccelerationStructureInstanceGDExtensionReturnOwner(reference RDAccelerationStructureInstance) RefRDAccelerationStructureInstance {
+	return &RefRDAccelerationStructureInstanceImpl{RefBase: NewRefTransfer[RDAccelerationStructureInstance](reference)}
 }
 
 var _ RefRDAttachmentFormat = &RefRDAttachmentFormatImpl{}
@@ -7194,8 +11718,20 @@ func NewRefRDAttachmentFormatAsRef(reference RefCounted) Ref {
 	return NewRef[RDAttachmentFormat](reference.(RDAttachmentFormat))
 }
 
+// NewRefRDAttachmentFormatGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDAttachmentFormatWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDAttachmentFormatGDExtensionIternalConstructor(reference RDAttachmentFormat) RefRDAttachmentFormat {
 	return &RefRDAttachmentFormatImpl{RefBase: NewRef[RDAttachmentFormat](reference)}
+}
+
+// NewRefRDAttachmentFormatGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDAttachmentFormatGDExtensionReturnOwner(reference RDAttachmentFormat) RefRDAttachmentFormat {
+	return &RefRDAttachmentFormatImpl{RefBase: NewRefTransfer[RDAttachmentFormat](reference)}
 }
 
 var _ RefRDFramebufferPass = &RefRDFramebufferPassImpl{}
@@ -7213,8 +11749,20 @@ func NewRefRDFramebufferPassAsRef(reference RefCounted) Ref {
 	return NewRef[RDFramebufferPass](reference.(RDFramebufferPass))
 }
 
+// NewRefRDFramebufferPassGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDFramebufferPassWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDFramebufferPassGDExtensionIternalConstructor(reference RDFramebufferPass) RefRDFramebufferPass {
 	return &RefRDFramebufferPassImpl{RefBase: NewRef[RDFramebufferPass](reference)}
+}
+
+// NewRefRDFramebufferPassGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDFramebufferPassGDExtensionReturnOwner(reference RDFramebufferPass) RefRDFramebufferPass {
+	return &RefRDFramebufferPassImpl{RefBase: NewRefTransfer[RDFramebufferPass](reference)}
 }
 
 var _ RefRDHitGroup = &RefRDHitGroupImpl{}
@@ -7232,8 +11780,20 @@ func NewRefRDHitGroupAsRef(reference RefCounted) Ref {
 	return NewRef[RDHitGroup](reference.(RDHitGroup))
 }
 
+// NewRefRDHitGroupGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDHitGroupWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDHitGroupGDExtensionIternalConstructor(reference RDHitGroup) RefRDHitGroup {
 	return &RefRDHitGroupImpl{RefBase: NewRef[RDHitGroup](reference)}
+}
+
+// NewRefRDHitGroupGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDHitGroupGDExtensionReturnOwner(reference RDHitGroup) RefRDHitGroup {
+	return &RefRDHitGroupImpl{RefBase: NewRefTransfer[RDHitGroup](reference)}
 }
 
 var _ RefRDPipelineColorBlendState = &RefRDPipelineColorBlendStateImpl{}
@@ -7251,8 +11811,20 @@ func NewRefRDPipelineColorBlendStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineColorBlendState](reference.(RDPipelineColorBlendState))
 }
 
+// NewRefRDPipelineColorBlendStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDPipelineColorBlendStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDPipelineColorBlendStateGDExtensionIternalConstructor(reference RDPipelineColorBlendState) RefRDPipelineColorBlendState {
 	return &RefRDPipelineColorBlendStateImpl{RefBase: NewRef[RDPipelineColorBlendState](reference)}
+}
+
+// NewRefRDPipelineColorBlendStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDPipelineColorBlendStateGDExtensionReturnOwner(reference RDPipelineColorBlendState) RefRDPipelineColorBlendState {
+	return &RefRDPipelineColorBlendStateImpl{RefBase: NewRefTransfer[RDPipelineColorBlendState](reference)}
 }
 
 var _ RefRDPipelineColorBlendStateAttachment = &RefRDPipelineColorBlendStateAttachmentImpl{}
@@ -7270,8 +11842,20 @@ func NewRefRDPipelineColorBlendStateAttachmentAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineColorBlendStateAttachment](reference.(RDPipelineColorBlendStateAttachment))
 }
 
+// NewRefRDPipelineColorBlendStateAttachmentGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDPipelineColorBlendStateAttachmentWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDPipelineColorBlendStateAttachmentGDExtensionIternalConstructor(reference RDPipelineColorBlendStateAttachment) RefRDPipelineColorBlendStateAttachment {
 	return &RefRDPipelineColorBlendStateAttachmentImpl{RefBase: NewRef[RDPipelineColorBlendStateAttachment](reference)}
+}
+
+// NewRefRDPipelineColorBlendStateAttachmentGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDPipelineColorBlendStateAttachmentGDExtensionReturnOwner(reference RDPipelineColorBlendStateAttachment) RefRDPipelineColorBlendStateAttachment {
+	return &RefRDPipelineColorBlendStateAttachmentImpl{RefBase: NewRefTransfer[RDPipelineColorBlendStateAttachment](reference)}
 }
 
 var _ RefRDPipelineDepthStencilState = &RefRDPipelineDepthStencilStateImpl{}
@@ -7289,8 +11873,20 @@ func NewRefRDPipelineDepthStencilStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineDepthStencilState](reference.(RDPipelineDepthStencilState))
 }
 
+// NewRefRDPipelineDepthStencilStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDPipelineDepthStencilStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDPipelineDepthStencilStateGDExtensionIternalConstructor(reference RDPipelineDepthStencilState) RefRDPipelineDepthStencilState {
 	return &RefRDPipelineDepthStencilStateImpl{RefBase: NewRef[RDPipelineDepthStencilState](reference)}
+}
+
+// NewRefRDPipelineDepthStencilStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDPipelineDepthStencilStateGDExtensionReturnOwner(reference RDPipelineDepthStencilState) RefRDPipelineDepthStencilState {
+	return &RefRDPipelineDepthStencilStateImpl{RefBase: NewRefTransfer[RDPipelineDepthStencilState](reference)}
 }
 
 var _ RefRDPipelineMultisampleState = &RefRDPipelineMultisampleStateImpl{}
@@ -7308,8 +11904,20 @@ func NewRefRDPipelineMultisampleStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineMultisampleState](reference.(RDPipelineMultisampleState))
 }
 
+// NewRefRDPipelineMultisampleStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDPipelineMultisampleStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDPipelineMultisampleStateGDExtensionIternalConstructor(reference RDPipelineMultisampleState) RefRDPipelineMultisampleState {
 	return &RefRDPipelineMultisampleStateImpl{RefBase: NewRef[RDPipelineMultisampleState](reference)}
+}
+
+// NewRefRDPipelineMultisampleStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDPipelineMultisampleStateGDExtensionReturnOwner(reference RDPipelineMultisampleState) RefRDPipelineMultisampleState {
+	return &RefRDPipelineMultisampleStateImpl{RefBase: NewRefTransfer[RDPipelineMultisampleState](reference)}
 }
 
 var _ RefRDPipelineRasterizationState = &RefRDPipelineRasterizationStateImpl{}
@@ -7327,8 +11935,20 @@ func NewRefRDPipelineRasterizationStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineRasterizationState](reference.(RDPipelineRasterizationState))
 }
 
+// NewRefRDPipelineRasterizationStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDPipelineRasterizationStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDPipelineRasterizationStateGDExtensionIternalConstructor(reference RDPipelineRasterizationState) RefRDPipelineRasterizationState {
 	return &RefRDPipelineRasterizationStateImpl{RefBase: NewRef[RDPipelineRasterizationState](reference)}
+}
+
+// NewRefRDPipelineRasterizationStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDPipelineRasterizationStateGDExtensionReturnOwner(reference RDPipelineRasterizationState) RefRDPipelineRasterizationState {
+	return &RefRDPipelineRasterizationStateImpl{RefBase: NewRefTransfer[RDPipelineRasterizationState](reference)}
 }
 
 var _ RefRDPipelineShader = &RefRDPipelineShaderImpl{}
@@ -7346,8 +11966,20 @@ func NewRefRDPipelineShaderAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineShader](reference.(RDPipelineShader))
 }
 
+// NewRefRDPipelineShaderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDPipelineShaderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDPipelineShaderGDExtensionIternalConstructor(reference RDPipelineShader) RefRDPipelineShader {
 	return &RefRDPipelineShaderImpl{RefBase: NewRef[RDPipelineShader](reference)}
+}
+
+// NewRefRDPipelineShaderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDPipelineShaderGDExtensionReturnOwner(reference RDPipelineShader) RefRDPipelineShader {
+	return &RefRDPipelineShaderImpl{RefBase: NewRefTransfer[RDPipelineShader](reference)}
 }
 
 var _ RefRDPipelineSpecializationConstant = &RefRDPipelineSpecializationConstantImpl{}
@@ -7365,8 +11997,20 @@ func NewRefRDPipelineSpecializationConstantAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineSpecializationConstant](reference.(RDPipelineSpecializationConstant))
 }
 
+// NewRefRDPipelineSpecializationConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDPipelineSpecializationConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDPipelineSpecializationConstantGDExtensionIternalConstructor(reference RDPipelineSpecializationConstant) RefRDPipelineSpecializationConstant {
 	return &RefRDPipelineSpecializationConstantImpl{RefBase: NewRef[RDPipelineSpecializationConstant](reference)}
+}
+
+// NewRefRDPipelineSpecializationConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDPipelineSpecializationConstantGDExtensionReturnOwner(reference RDPipelineSpecializationConstant) RefRDPipelineSpecializationConstant {
+	return &RefRDPipelineSpecializationConstantImpl{RefBase: NewRefTransfer[RDPipelineSpecializationConstant](reference)}
 }
 
 var _ RefRDSamplerState = &RefRDSamplerStateImpl{}
@@ -7384,8 +12028,20 @@ func NewRefRDSamplerStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDSamplerState](reference.(RDSamplerState))
 }
 
+// NewRefRDSamplerStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDSamplerStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDSamplerStateGDExtensionIternalConstructor(reference RDSamplerState) RefRDSamplerState {
 	return &RefRDSamplerStateImpl{RefBase: NewRef[RDSamplerState](reference)}
+}
+
+// NewRefRDSamplerStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDSamplerStateGDExtensionReturnOwner(reference RDSamplerState) RefRDSamplerState {
+	return &RefRDSamplerStateImpl{RefBase: NewRefTransfer[RDSamplerState](reference)}
 }
 
 var _ RefRDShaderFile = &RefRDShaderFileImpl{}
@@ -7403,8 +12059,20 @@ func NewRefRDShaderFileAsRef(reference RefCounted) Ref {
 	return NewRef[RDShaderFile](reference.(RDShaderFile))
 }
 
+// NewRefRDShaderFileGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDShaderFileWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDShaderFileGDExtensionIternalConstructor(reference RDShaderFile) RefRDShaderFile {
 	return &RefRDShaderFileImpl{RefBase: NewRef[RDShaderFile](reference)}
+}
+
+// NewRefRDShaderFileGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDShaderFileGDExtensionReturnOwner(reference RDShaderFile) RefRDShaderFile {
+	return &RefRDShaderFileImpl{RefBase: NewRefTransfer[RDShaderFile](reference)}
 }
 
 var _ RefRDShaderSPIRV = &RefRDShaderSPIRVImpl{}
@@ -7422,8 +12090,20 @@ func NewRefRDShaderSPIRVAsRef(reference RefCounted) Ref {
 	return NewRef[RDShaderSPIRV](reference.(RDShaderSPIRV))
 }
 
+// NewRefRDShaderSPIRVGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDShaderSPIRVWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDShaderSPIRVGDExtensionIternalConstructor(reference RDShaderSPIRV) RefRDShaderSPIRV {
 	return &RefRDShaderSPIRVImpl{RefBase: NewRef[RDShaderSPIRV](reference)}
+}
+
+// NewRefRDShaderSPIRVGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDShaderSPIRVGDExtensionReturnOwner(reference RDShaderSPIRV) RefRDShaderSPIRV {
+	return &RefRDShaderSPIRVImpl{RefBase: NewRefTransfer[RDShaderSPIRV](reference)}
 }
 
 var _ RefRDShaderSource = &RefRDShaderSourceImpl{}
@@ -7441,8 +12121,20 @@ func NewRefRDShaderSourceAsRef(reference RefCounted) Ref {
 	return NewRef[RDShaderSource](reference.(RDShaderSource))
 }
 
+// NewRefRDShaderSourceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDShaderSourceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDShaderSourceGDExtensionIternalConstructor(reference RDShaderSource) RefRDShaderSource {
 	return &RefRDShaderSourceImpl{RefBase: NewRef[RDShaderSource](reference)}
+}
+
+// NewRefRDShaderSourceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDShaderSourceGDExtensionReturnOwner(reference RDShaderSource) RefRDShaderSource {
+	return &RefRDShaderSourceImpl{RefBase: NewRefTransfer[RDShaderSource](reference)}
 }
 
 var _ RefRDTextureFormat = &RefRDTextureFormatImpl{}
@@ -7460,8 +12152,20 @@ func NewRefRDTextureFormatAsRef(reference RefCounted) Ref {
 	return NewRef[RDTextureFormat](reference.(RDTextureFormat))
 }
 
+// NewRefRDTextureFormatGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDTextureFormatWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDTextureFormatGDExtensionIternalConstructor(reference RDTextureFormat) RefRDTextureFormat {
 	return &RefRDTextureFormatImpl{RefBase: NewRef[RDTextureFormat](reference)}
+}
+
+// NewRefRDTextureFormatGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDTextureFormatGDExtensionReturnOwner(reference RDTextureFormat) RefRDTextureFormat {
+	return &RefRDTextureFormatImpl{RefBase: NewRefTransfer[RDTextureFormat](reference)}
 }
 
 var _ RefRDTextureView = &RefRDTextureViewImpl{}
@@ -7479,8 +12183,20 @@ func NewRefRDTextureViewAsRef(reference RefCounted) Ref {
 	return NewRef[RDTextureView](reference.(RDTextureView))
 }
 
+// NewRefRDTextureViewGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDTextureViewWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDTextureViewGDExtensionIternalConstructor(reference RDTextureView) RefRDTextureView {
 	return &RefRDTextureViewImpl{RefBase: NewRef[RDTextureView](reference)}
+}
+
+// NewRefRDTextureViewGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDTextureViewGDExtensionReturnOwner(reference RDTextureView) RefRDTextureView {
+	return &RefRDTextureViewImpl{RefBase: NewRefTransfer[RDTextureView](reference)}
 }
 
 var _ RefRDUniform = &RefRDUniformImpl{}
@@ -7498,8 +12214,20 @@ func NewRefRDUniformAsRef(reference RefCounted) Ref {
 	return NewRef[RDUniform](reference.(RDUniform))
 }
 
+// NewRefRDUniformGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDUniformWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDUniformGDExtensionIternalConstructor(reference RDUniform) RefRDUniform {
 	return &RefRDUniformImpl{RefBase: NewRef[RDUniform](reference)}
+}
+
+// NewRefRDUniformGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDUniformGDExtensionReturnOwner(reference RDUniform) RefRDUniform {
+	return &RefRDUniformImpl{RefBase: NewRefTransfer[RDUniform](reference)}
 }
 
 var _ RefRDVertexAttribute = &RefRDVertexAttributeImpl{}
@@ -7517,8 +12245,20 @@ func NewRefRDVertexAttributeAsRef(reference RefCounted) Ref {
 	return NewRef[RDVertexAttribute](reference.(RDVertexAttribute))
 }
 
+// NewRefRDVertexAttributeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRDVertexAttributeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRDVertexAttributeGDExtensionIternalConstructor(reference RDVertexAttribute) RefRDVertexAttribute {
 	return &RefRDVertexAttributeImpl{RefBase: NewRef[RDVertexAttribute](reference)}
+}
+
+// NewRefRDVertexAttributeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRDVertexAttributeGDExtensionReturnOwner(reference RDVertexAttribute) RefRDVertexAttribute {
+	return &RefRDVertexAttributeImpl{RefBase: NewRefTransfer[RDVertexAttribute](reference)}
 }
 
 var _ RefRandomNumberGenerator = &RefRandomNumberGeneratorImpl{}
@@ -7536,8 +12276,20 @@ func NewRefRandomNumberGeneratorAsRef(reference RefCounted) Ref {
 	return NewRef[RandomNumberGenerator](reference.(RandomNumberGenerator))
 }
 
+// NewRefRandomNumberGeneratorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRandomNumberGeneratorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRandomNumberGeneratorGDExtensionIternalConstructor(reference RandomNumberGenerator) RefRandomNumberGenerator {
 	return &RefRandomNumberGeneratorImpl{RefBase: NewRef[RandomNumberGenerator](reference)}
+}
+
+// NewRefRandomNumberGeneratorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRandomNumberGeneratorGDExtensionReturnOwner(reference RandomNumberGenerator) RefRandomNumberGenerator {
+	return &RefRandomNumberGeneratorImpl{RefBase: NewRefTransfer[RandomNumberGenerator](reference)}
 }
 
 var _ RefRectangleShape2D = &RefRectangleShape2DImpl{}
@@ -7555,8 +12307,20 @@ func NewRefRectangleShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[RectangleShape2D](reference.(RectangleShape2D))
 }
 
+// NewRefRectangleShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRectangleShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRectangleShape2DGDExtensionIternalConstructor(reference RectangleShape2D) RefRectangleShape2D {
 	return &RefRectangleShape2DImpl{RefBase: NewRef[RectangleShape2D](reference)}
+}
+
+// NewRefRectangleShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRectangleShape2DGDExtensionReturnOwner(reference RectangleShape2D) RefRectangleShape2D {
+	return &RefRectangleShape2DImpl{RefBase: NewRefTransfer[RectangleShape2D](reference)}
 }
 
 var _ RefRefCounted = &RefRefCountedImpl{}
@@ -7574,8 +12338,20 @@ func NewRefRefCountedAsRef(reference RefCounted) Ref {
 	return NewRef[RefCounted](reference.(RefCounted))
 }
 
+// NewRefRefCountedGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRefCountedWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRefCountedGDExtensionIternalConstructor(reference RefCounted) RefRefCounted {
 	return &RefRefCountedImpl{RefBase: NewRef[RefCounted](reference)}
+}
+
+// NewRefRefCountedGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRefCountedGDExtensionReturnOwner(reference RefCounted) RefRefCounted {
+	return &RefRefCountedImpl{RefBase: NewRefTransfer[RefCounted](reference)}
 }
 
 var _ RefRegEx = &RefRegExImpl{}
@@ -7593,8 +12369,20 @@ func NewRefRegExAsRef(reference RefCounted) Ref {
 	return NewRef[RegEx](reference.(RegEx))
 }
 
+// NewRefRegExGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRegExWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRegExGDExtensionIternalConstructor(reference RegEx) RefRegEx {
 	return &RefRegExImpl{RefBase: NewRef[RegEx](reference)}
+}
+
+// NewRefRegExGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRegExGDExtensionReturnOwner(reference RegEx) RefRegEx {
+	return &RefRegExImpl{RefBase: NewRefTransfer[RegEx](reference)}
 }
 
 var _ RefRegExMatch = &RefRegExMatchImpl{}
@@ -7612,8 +12400,20 @@ func NewRefRegExMatchAsRef(reference RefCounted) Ref {
 	return NewRef[RegExMatch](reference.(RegExMatch))
 }
 
+// NewRefRegExMatchGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRegExMatchWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRegExMatchGDExtensionIternalConstructor(reference RegExMatch) RefRegExMatch {
 	return &RefRegExMatchImpl{RefBase: NewRef[RegExMatch](reference)}
+}
+
+// NewRefRegExMatchGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRegExMatchGDExtensionReturnOwner(reference RegExMatch) RefRegExMatch {
+	return &RefRegExMatchImpl{RefBase: NewRefTransfer[RegExMatch](reference)}
 }
 
 var _ RefRenderSceneBuffers = &RefRenderSceneBuffersImpl{}
@@ -7631,8 +12431,20 @@ func NewRefRenderSceneBuffersAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffers](reference.(RenderSceneBuffers))
 }
 
+// NewRefRenderSceneBuffersGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRenderSceneBuffersWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRenderSceneBuffersGDExtensionIternalConstructor(reference RenderSceneBuffers) RefRenderSceneBuffers {
 	return &RefRenderSceneBuffersImpl{RefBase: NewRef[RenderSceneBuffers](reference)}
+}
+
+// NewRefRenderSceneBuffersGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRenderSceneBuffersGDExtensionReturnOwner(reference RenderSceneBuffers) RefRenderSceneBuffers {
+	return &RefRenderSceneBuffersImpl{RefBase: NewRefTransfer[RenderSceneBuffers](reference)}
 }
 
 var _ RefRenderSceneBuffersConfiguration = &RefRenderSceneBuffersConfigurationImpl{}
@@ -7650,8 +12462,20 @@ func NewRefRenderSceneBuffersConfigurationAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffersConfiguration](reference.(RenderSceneBuffersConfiguration))
 }
 
+// NewRefRenderSceneBuffersConfigurationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRenderSceneBuffersConfigurationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRenderSceneBuffersConfigurationGDExtensionIternalConstructor(reference RenderSceneBuffersConfiguration) RefRenderSceneBuffersConfiguration {
 	return &RefRenderSceneBuffersConfigurationImpl{RefBase: NewRef[RenderSceneBuffersConfiguration](reference)}
+}
+
+// NewRefRenderSceneBuffersConfigurationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRenderSceneBuffersConfigurationGDExtensionReturnOwner(reference RenderSceneBuffersConfiguration) RefRenderSceneBuffersConfiguration {
+	return &RefRenderSceneBuffersConfigurationImpl{RefBase: NewRefTransfer[RenderSceneBuffersConfiguration](reference)}
 }
 
 var _ RefRenderSceneBuffersExtension = &RefRenderSceneBuffersExtensionImpl{}
@@ -7669,8 +12493,20 @@ func NewRefRenderSceneBuffersExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffersExtension](reference.(RenderSceneBuffersExtension))
 }
 
+// NewRefRenderSceneBuffersExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRenderSceneBuffersExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRenderSceneBuffersExtensionGDExtensionIternalConstructor(reference RenderSceneBuffersExtension) RefRenderSceneBuffersExtension {
 	return &RefRenderSceneBuffersExtensionImpl{RefBase: NewRef[RenderSceneBuffersExtension](reference)}
+}
+
+// NewRefRenderSceneBuffersExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRenderSceneBuffersExtensionGDExtensionReturnOwner(reference RenderSceneBuffersExtension) RefRenderSceneBuffersExtension {
+	return &RefRenderSceneBuffersExtensionImpl{RefBase: NewRefTransfer[RenderSceneBuffersExtension](reference)}
 }
 
 var _ RefRenderSceneBuffersRD = &RefRenderSceneBuffersRDImpl{}
@@ -7688,8 +12524,20 @@ func NewRefRenderSceneBuffersRDAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffersRD](reference.(RenderSceneBuffersRD))
 }
 
+// NewRefRenderSceneBuffersRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRenderSceneBuffersRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRenderSceneBuffersRDGDExtensionIternalConstructor(reference RenderSceneBuffersRD) RefRenderSceneBuffersRD {
 	return &RefRenderSceneBuffersRDImpl{RefBase: NewRef[RenderSceneBuffersRD](reference)}
+}
+
+// NewRefRenderSceneBuffersRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRenderSceneBuffersRDGDExtensionReturnOwner(reference RenderSceneBuffersRD) RefRenderSceneBuffersRD {
+	return &RefRenderSceneBuffersRDImpl{RefBase: NewRefTransfer[RenderSceneBuffersRD](reference)}
 }
 
 var _ RefResource = &RefResourceImpl{}
@@ -7707,8 +12555,20 @@ func NewRefResourceAsRef(reference RefCounted) Ref {
 	return NewRef[Resource](reference.(Resource))
 }
 
+// NewRefResourceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceGDExtensionIternalConstructor(reference Resource) RefResource {
 	return &RefResourceImpl{RefBase: NewRef[Resource](reference)}
+}
+
+// NewRefResourceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceGDExtensionReturnOwner(reference Resource) RefResource {
+	return &RefResourceImpl{RefBase: NewRefTransfer[Resource](reference)}
 }
 
 var _ RefResourceFormatLoader = &RefResourceFormatLoaderImpl{}
@@ -7726,8 +12586,20 @@ func NewRefResourceFormatLoaderAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceFormatLoader](reference.(ResourceFormatLoader))
 }
 
+// NewRefResourceFormatLoaderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceFormatLoaderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceFormatLoaderGDExtensionIternalConstructor(reference ResourceFormatLoader) RefResourceFormatLoader {
 	return &RefResourceFormatLoaderImpl{RefBase: NewRef[ResourceFormatLoader](reference)}
+}
+
+// NewRefResourceFormatLoaderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceFormatLoaderGDExtensionReturnOwner(reference ResourceFormatLoader) RefResourceFormatLoader {
+	return &RefResourceFormatLoaderImpl{RefBase: NewRefTransfer[ResourceFormatLoader](reference)}
 }
 
 var _ RefResourceFormatSaver = &RefResourceFormatSaverImpl{}
@@ -7745,8 +12617,20 @@ func NewRefResourceFormatSaverAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceFormatSaver](reference.(ResourceFormatSaver))
 }
 
+// NewRefResourceFormatSaverGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceFormatSaverWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceFormatSaverGDExtensionIternalConstructor(reference ResourceFormatSaver) RefResourceFormatSaver {
 	return &RefResourceFormatSaverImpl{RefBase: NewRef[ResourceFormatSaver](reference)}
+}
+
+// NewRefResourceFormatSaverGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceFormatSaverGDExtensionReturnOwner(reference ResourceFormatSaver) RefResourceFormatSaver {
+	return &RefResourceFormatSaverImpl{RefBase: NewRefTransfer[ResourceFormatSaver](reference)}
 }
 
 var _ RefResourceImporter = &RefResourceImporterImpl{}
@@ -7764,8 +12648,20 @@ func NewRefResourceImporterAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporter](reference.(ResourceImporter))
 }
 
+// NewRefResourceImporterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterGDExtensionIternalConstructor(reference ResourceImporter) RefResourceImporter {
 	return &RefResourceImporterImpl{RefBase: NewRef[ResourceImporter](reference)}
+}
+
+// NewRefResourceImporterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterGDExtensionReturnOwner(reference ResourceImporter) RefResourceImporter {
+	return &RefResourceImporterImpl{RefBase: NewRefTransfer[ResourceImporter](reference)}
 }
 
 var _ RefResourceImporterBMFont = &RefResourceImporterBMFontImpl{}
@@ -7783,8 +12679,20 @@ func NewRefResourceImporterBMFontAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterBMFont](reference.(ResourceImporterBMFont))
 }
 
+// NewRefResourceImporterBMFontGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterBMFontWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterBMFontGDExtensionIternalConstructor(reference ResourceImporterBMFont) RefResourceImporterBMFont {
 	return &RefResourceImporterBMFontImpl{RefBase: NewRef[ResourceImporterBMFont](reference)}
+}
+
+// NewRefResourceImporterBMFontGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterBMFontGDExtensionReturnOwner(reference ResourceImporterBMFont) RefResourceImporterBMFont {
+	return &RefResourceImporterBMFontImpl{RefBase: NewRefTransfer[ResourceImporterBMFont](reference)}
 }
 
 var _ RefResourceImporterBitMap = &RefResourceImporterBitMapImpl{}
@@ -7802,8 +12710,20 @@ func NewRefResourceImporterBitMapAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterBitMap](reference.(ResourceImporterBitMap))
 }
 
+// NewRefResourceImporterBitMapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterBitMapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterBitMapGDExtensionIternalConstructor(reference ResourceImporterBitMap) RefResourceImporterBitMap {
 	return &RefResourceImporterBitMapImpl{RefBase: NewRef[ResourceImporterBitMap](reference)}
+}
+
+// NewRefResourceImporterBitMapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterBitMapGDExtensionReturnOwner(reference ResourceImporterBitMap) RefResourceImporterBitMap {
+	return &RefResourceImporterBitMapImpl{RefBase: NewRefTransfer[ResourceImporterBitMap](reference)}
 }
 
 var _ RefResourceImporterCSVTranslation = &RefResourceImporterCSVTranslationImpl{}
@@ -7821,8 +12741,20 @@ func NewRefResourceImporterCSVTranslationAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterCSVTranslation](reference.(ResourceImporterCSVTranslation))
 }
 
+// NewRefResourceImporterCSVTranslationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterCSVTranslationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterCSVTranslationGDExtensionIternalConstructor(reference ResourceImporterCSVTranslation) RefResourceImporterCSVTranslation {
 	return &RefResourceImporterCSVTranslationImpl{RefBase: NewRef[ResourceImporterCSVTranslation](reference)}
+}
+
+// NewRefResourceImporterCSVTranslationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterCSVTranslationGDExtensionReturnOwner(reference ResourceImporterCSVTranslation) RefResourceImporterCSVTranslation {
+	return &RefResourceImporterCSVTranslationImpl{RefBase: NewRefTransfer[ResourceImporterCSVTranslation](reference)}
 }
 
 var _ RefResourceImporterDynamicFont = &RefResourceImporterDynamicFontImpl{}
@@ -7840,8 +12772,20 @@ func NewRefResourceImporterDynamicFontAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterDynamicFont](reference.(ResourceImporterDynamicFont))
 }
 
+// NewRefResourceImporterDynamicFontGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterDynamicFontWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterDynamicFontGDExtensionIternalConstructor(reference ResourceImporterDynamicFont) RefResourceImporterDynamicFont {
 	return &RefResourceImporterDynamicFontImpl{RefBase: NewRef[ResourceImporterDynamicFont](reference)}
+}
+
+// NewRefResourceImporterDynamicFontGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterDynamicFontGDExtensionReturnOwner(reference ResourceImporterDynamicFont) RefResourceImporterDynamicFont {
+	return &RefResourceImporterDynamicFontImpl{RefBase: NewRefTransfer[ResourceImporterDynamicFont](reference)}
 }
 
 var _ RefResourceImporterImage = &RefResourceImporterImageImpl{}
@@ -7859,8 +12803,20 @@ func NewRefResourceImporterImageAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterImage](reference.(ResourceImporterImage))
 }
 
+// NewRefResourceImporterImageGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterImageWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterImageGDExtensionIternalConstructor(reference ResourceImporterImage) RefResourceImporterImage {
 	return &RefResourceImporterImageImpl{RefBase: NewRef[ResourceImporterImage](reference)}
+}
+
+// NewRefResourceImporterImageGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterImageGDExtensionReturnOwner(reference ResourceImporterImage) RefResourceImporterImage {
+	return &RefResourceImporterImageImpl{RefBase: NewRefTransfer[ResourceImporterImage](reference)}
 }
 
 var _ RefResourceImporterImageFont = &RefResourceImporterImageFontImpl{}
@@ -7878,8 +12834,20 @@ func NewRefResourceImporterImageFontAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterImageFont](reference.(ResourceImporterImageFont))
 }
 
+// NewRefResourceImporterImageFontGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterImageFontWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterImageFontGDExtensionIternalConstructor(reference ResourceImporterImageFont) RefResourceImporterImageFont {
 	return &RefResourceImporterImageFontImpl{RefBase: NewRef[ResourceImporterImageFont](reference)}
+}
+
+// NewRefResourceImporterImageFontGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterImageFontGDExtensionReturnOwner(reference ResourceImporterImageFont) RefResourceImporterImageFont {
+	return &RefResourceImporterImageFontImpl{RefBase: NewRefTransfer[ResourceImporterImageFont](reference)}
 }
 
 var _ RefResourceImporterLayeredTexture = &RefResourceImporterLayeredTextureImpl{}
@@ -7897,8 +12865,20 @@ func NewRefResourceImporterLayeredTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterLayeredTexture](reference.(ResourceImporterLayeredTexture))
 }
 
+// NewRefResourceImporterLayeredTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterLayeredTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterLayeredTextureGDExtensionIternalConstructor(reference ResourceImporterLayeredTexture) RefResourceImporterLayeredTexture {
 	return &RefResourceImporterLayeredTextureImpl{RefBase: NewRef[ResourceImporterLayeredTexture](reference)}
+}
+
+// NewRefResourceImporterLayeredTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterLayeredTextureGDExtensionReturnOwner(reference ResourceImporterLayeredTexture) RefResourceImporterLayeredTexture {
+	return &RefResourceImporterLayeredTextureImpl{RefBase: NewRefTransfer[ResourceImporterLayeredTexture](reference)}
 }
 
 var _ RefResourceImporterMP3 = &RefResourceImporterMP3Impl{}
@@ -7916,8 +12896,20 @@ func NewRefResourceImporterMP3AsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterMP3](reference.(ResourceImporterMP3))
 }
 
+// NewRefResourceImporterMP3GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterMP3WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterMP3GDExtensionIternalConstructor(reference ResourceImporterMP3) RefResourceImporterMP3 {
 	return &RefResourceImporterMP3Impl{RefBase: NewRef[ResourceImporterMP3](reference)}
+}
+
+// NewRefResourceImporterMP3GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterMP3GDExtensionReturnOwner(reference ResourceImporterMP3) RefResourceImporterMP3 {
+	return &RefResourceImporterMP3Impl{RefBase: NewRefTransfer[ResourceImporterMP3](reference)}
 }
 
 var _ RefResourceImporterOBJ = &RefResourceImporterOBJImpl{}
@@ -7935,8 +12927,20 @@ func NewRefResourceImporterOBJAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterOBJ](reference.(ResourceImporterOBJ))
 }
 
+// NewRefResourceImporterOBJGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterOBJWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterOBJGDExtensionIternalConstructor(reference ResourceImporterOBJ) RefResourceImporterOBJ {
 	return &RefResourceImporterOBJImpl{RefBase: NewRef[ResourceImporterOBJ](reference)}
+}
+
+// NewRefResourceImporterOBJGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterOBJGDExtensionReturnOwner(reference ResourceImporterOBJ) RefResourceImporterOBJ {
+	return &RefResourceImporterOBJImpl{RefBase: NewRefTransfer[ResourceImporterOBJ](reference)}
 }
 
 var _ RefResourceImporterOggVorbis = &RefResourceImporterOggVorbisImpl{}
@@ -7954,8 +12958,20 @@ func NewRefResourceImporterOggVorbisAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterOggVorbis](reference.(ResourceImporterOggVorbis))
 }
 
+// NewRefResourceImporterOggVorbisGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterOggVorbisWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterOggVorbisGDExtensionIternalConstructor(reference ResourceImporterOggVorbis) RefResourceImporterOggVorbis {
 	return &RefResourceImporterOggVorbisImpl{RefBase: NewRef[ResourceImporterOggVorbis](reference)}
+}
+
+// NewRefResourceImporterOggVorbisGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterOggVorbisGDExtensionReturnOwner(reference ResourceImporterOggVorbis) RefResourceImporterOggVorbis {
+	return &RefResourceImporterOggVorbisImpl{RefBase: NewRefTransfer[ResourceImporterOggVorbis](reference)}
 }
 
 var _ RefResourceImporterSVG = &RefResourceImporterSVGImpl{}
@@ -7973,8 +12989,20 @@ func NewRefResourceImporterSVGAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterSVG](reference.(ResourceImporterSVG))
 }
 
+// NewRefResourceImporterSVGGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterSVGWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterSVGGDExtensionIternalConstructor(reference ResourceImporterSVG) RefResourceImporterSVG {
 	return &RefResourceImporterSVGImpl{RefBase: NewRef[ResourceImporterSVG](reference)}
+}
+
+// NewRefResourceImporterSVGGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterSVGGDExtensionReturnOwner(reference ResourceImporterSVG) RefResourceImporterSVG {
+	return &RefResourceImporterSVGImpl{RefBase: NewRefTransfer[ResourceImporterSVG](reference)}
 }
 
 var _ RefResourceImporterScene = &RefResourceImporterSceneImpl{}
@@ -7992,8 +13020,20 @@ func NewRefResourceImporterSceneAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterScene](reference.(ResourceImporterScene))
 }
 
+// NewRefResourceImporterSceneGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterSceneWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterSceneGDExtensionIternalConstructor(reference ResourceImporterScene) RefResourceImporterScene {
 	return &RefResourceImporterSceneImpl{RefBase: NewRef[ResourceImporterScene](reference)}
+}
+
+// NewRefResourceImporterSceneGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterSceneGDExtensionReturnOwner(reference ResourceImporterScene) RefResourceImporterScene {
+	return &RefResourceImporterSceneImpl{RefBase: NewRefTransfer[ResourceImporterScene](reference)}
 }
 
 var _ RefResourceImporterShaderFile = &RefResourceImporterShaderFileImpl{}
@@ -8011,8 +13051,20 @@ func NewRefResourceImporterShaderFileAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterShaderFile](reference.(ResourceImporterShaderFile))
 }
 
+// NewRefResourceImporterShaderFileGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterShaderFileWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterShaderFileGDExtensionIternalConstructor(reference ResourceImporterShaderFile) RefResourceImporterShaderFile {
 	return &RefResourceImporterShaderFileImpl{RefBase: NewRef[ResourceImporterShaderFile](reference)}
+}
+
+// NewRefResourceImporterShaderFileGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterShaderFileGDExtensionReturnOwner(reference ResourceImporterShaderFile) RefResourceImporterShaderFile {
+	return &RefResourceImporterShaderFileImpl{RefBase: NewRefTransfer[ResourceImporterShaderFile](reference)}
 }
 
 var _ RefResourceImporterTexture = &RefResourceImporterTextureImpl{}
@@ -8030,8 +13082,20 @@ func NewRefResourceImporterTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterTexture](reference.(ResourceImporterTexture))
 }
 
+// NewRefResourceImporterTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterTextureGDExtensionIternalConstructor(reference ResourceImporterTexture) RefResourceImporterTexture {
 	return &RefResourceImporterTextureImpl{RefBase: NewRef[ResourceImporterTexture](reference)}
+}
+
+// NewRefResourceImporterTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterTextureGDExtensionReturnOwner(reference ResourceImporterTexture) RefResourceImporterTexture {
+	return &RefResourceImporterTextureImpl{RefBase: NewRefTransfer[ResourceImporterTexture](reference)}
 }
 
 var _ RefResourceImporterTextureAtlas = &RefResourceImporterTextureAtlasImpl{}
@@ -8049,8 +13113,20 @@ func NewRefResourceImporterTextureAtlasAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterTextureAtlas](reference.(ResourceImporterTextureAtlas))
 }
 
+// NewRefResourceImporterTextureAtlasGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterTextureAtlasWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterTextureAtlasGDExtensionIternalConstructor(reference ResourceImporterTextureAtlas) RefResourceImporterTextureAtlas {
 	return &RefResourceImporterTextureAtlasImpl{RefBase: NewRef[ResourceImporterTextureAtlas](reference)}
+}
+
+// NewRefResourceImporterTextureAtlasGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterTextureAtlasGDExtensionReturnOwner(reference ResourceImporterTextureAtlas) RefResourceImporterTextureAtlas {
+	return &RefResourceImporterTextureAtlasImpl{RefBase: NewRefTransfer[ResourceImporterTextureAtlas](reference)}
 }
 
 var _ RefResourceImporterWAV = &RefResourceImporterWAVImpl{}
@@ -8068,8 +13144,20 @@ func NewRefResourceImporterWAVAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterWAV](reference.(ResourceImporterWAV))
 }
 
+// NewRefResourceImporterWAVGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewResourceImporterWAVWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefResourceImporterWAVGDExtensionIternalConstructor(reference ResourceImporterWAV) RefResourceImporterWAV {
 	return &RefResourceImporterWAVImpl{RefBase: NewRef[ResourceImporterWAV](reference)}
+}
+
+// NewRefResourceImporterWAVGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefResourceImporterWAVGDExtensionReturnOwner(reference ResourceImporterWAV) RefResourceImporterWAV {
+	return &RefResourceImporterWAVImpl{RefBase: NewRefTransfer[ResourceImporterWAV](reference)}
 }
 
 var _ RefRibbonTrailMesh = &RefRibbonTrailMeshImpl{}
@@ -8087,8 +13175,20 @@ func NewRefRibbonTrailMeshAsRef(reference RefCounted) Ref {
 	return NewRef[RibbonTrailMesh](reference.(RibbonTrailMesh))
 }
 
+// NewRefRibbonTrailMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRibbonTrailMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRibbonTrailMeshGDExtensionIternalConstructor(reference RibbonTrailMesh) RefRibbonTrailMesh {
 	return &RefRibbonTrailMeshImpl{RefBase: NewRef[RibbonTrailMesh](reference)}
+}
+
+// NewRefRibbonTrailMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRibbonTrailMeshGDExtensionReturnOwner(reference RibbonTrailMesh) RefRibbonTrailMesh {
+	return &RefRibbonTrailMeshImpl{RefBase: NewRefTransfer[RibbonTrailMesh](reference)}
 }
 
 var _ RefRichTextEffect = &RefRichTextEffectImpl{}
@@ -8106,8 +13206,20 @@ func NewRefRichTextEffectAsRef(reference RefCounted) Ref {
 	return NewRef[RichTextEffect](reference.(RichTextEffect))
 }
 
+// NewRefRichTextEffectGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewRichTextEffectWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefRichTextEffectGDExtensionIternalConstructor(reference RichTextEffect) RefRichTextEffect {
 	return &RefRichTextEffectImpl{RefBase: NewRef[RichTextEffect](reference)}
+}
+
+// NewRefRichTextEffectGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefRichTextEffectGDExtensionReturnOwner(reference RichTextEffect) RefRichTextEffect {
+	return &RefRichTextEffectImpl{RefBase: NewRefTransfer[RichTextEffect](reference)}
 }
 
 var _ RefSceneMultiplayer = &RefSceneMultiplayerImpl{}
@@ -8125,8 +13237,20 @@ func NewRefSceneMultiplayerAsRef(reference RefCounted) Ref {
 	return NewRef[SceneMultiplayer](reference.(SceneMultiplayer))
 }
 
+// NewRefSceneMultiplayerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSceneMultiplayerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSceneMultiplayerGDExtensionIternalConstructor(reference SceneMultiplayer) RefSceneMultiplayer {
 	return &RefSceneMultiplayerImpl{RefBase: NewRef[SceneMultiplayer](reference)}
+}
+
+// NewRefSceneMultiplayerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSceneMultiplayerGDExtensionReturnOwner(reference SceneMultiplayer) RefSceneMultiplayer {
+	return &RefSceneMultiplayerImpl{RefBase: NewRefTransfer[SceneMultiplayer](reference)}
 }
 
 var _ RefSceneReplicationConfig = &RefSceneReplicationConfigImpl{}
@@ -8144,8 +13268,20 @@ func NewRefSceneReplicationConfigAsRef(reference RefCounted) Ref {
 	return NewRef[SceneReplicationConfig](reference.(SceneReplicationConfig))
 }
 
+// NewRefSceneReplicationConfigGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSceneReplicationConfigWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSceneReplicationConfigGDExtensionIternalConstructor(reference SceneReplicationConfig) RefSceneReplicationConfig {
 	return &RefSceneReplicationConfigImpl{RefBase: NewRef[SceneReplicationConfig](reference)}
+}
+
+// NewRefSceneReplicationConfigGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSceneReplicationConfigGDExtensionReturnOwner(reference SceneReplicationConfig) RefSceneReplicationConfig {
+	return &RefSceneReplicationConfigImpl{RefBase: NewRefTransfer[SceneReplicationConfig](reference)}
 }
 
 var _ RefSceneState = &RefSceneStateImpl{}
@@ -8163,8 +13299,20 @@ func NewRefSceneStateAsRef(reference RefCounted) Ref {
 	return NewRef[SceneState](reference.(SceneState))
 }
 
+// NewRefSceneStateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSceneStateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSceneStateGDExtensionIternalConstructor(reference SceneState) RefSceneState {
 	return &RefSceneStateImpl{RefBase: NewRef[SceneState](reference)}
+}
+
+// NewRefSceneStateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSceneStateGDExtensionReturnOwner(reference SceneState) RefSceneState {
+	return &RefSceneStateImpl{RefBase: NewRefTransfer[SceneState](reference)}
 }
 
 var _ RefSceneTreeTimer = &RefSceneTreeTimerImpl{}
@@ -8182,8 +13330,20 @@ func NewRefSceneTreeTimerAsRef(reference RefCounted) Ref {
 	return NewRef[SceneTreeTimer](reference.(SceneTreeTimer))
 }
 
+// NewRefSceneTreeTimerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSceneTreeTimerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSceneTreeTimerGDExtensionIternalConstructor(reference SceneTreeTimer) RefSceneTreeTimer {
 	return &RefSceneTreeTimerImpl{RefBase: NewRef[SceneTreeTimer](reference)}
+}
+
+// NewRefSceneTreeTimerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSceneTreeTimerGDExtensionReturnOwner(reference SceneTreeTimer) RefSceneTreeTimer {
+	return &RefSceneTreeTimerImpl{RefBase: NewRefTransfer[SceneTreeTimer](reference)}
 }
 
 var _ RefScript = &RefScriptImpl{}
@@ -8201,8 +13361,20 @@ func NewRefScriptAsRef(reference RefCounted) Ref {
 	return NewRef[Script](reference.(Script))
 }
 
+// NewRefScriptGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewScriptWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefScriptGDExtensionIternalConstructor(reference Script) RefScript {
 	return &RefScriptImpl{RefBase: NewRef[Script](reference)}
+}
+
+// NewRefScriptGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefScriptGDExtensionReturnOwner(reference Script) RefScript {
+	return &RefScriptImpl{RefBase: NewRefTransfer[Script](reference)}
 }
 
 var _ RefScriptBacktrace = &RefScriptBacktraceImpl{}
@@ -8220,8 +13392,20 @@ func NewRefScriptBacktraceAsRef(reference RefCounted) Ref {
 	return NewRef[ScriptBacktrace](reference.(ScriptBacktrace))
 }
 
+// NewRefScriptBacktraceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewScriptBacktraceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefScriptBacktraceGDExtensionIternalConstructor(reference ScriptBacktrace) RefScriptBacktrace {
 	return &RefScriptBacktraceImpl{RefBase: NewRef[ScriptBacktrace](reference)}
+}
+
+// NewRefScriptBacktraceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefScriptBacktraceGDExtensionReturnOwner(reference ScriptBacktrace) RefScriptBacktrace {
+	return &RefScriptBacktraceImpl{RefBase: NewRefTransfer[ScriptBacktrace](reference)}
 }
 
 var _ RefScriptExtension = &RefScriptExtensionImpl{}
@@ -8239,8 +13423,20 @@ func NewRefScriptExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[ScriptExtension](reference.(ScriptExtension))
 }
 
+// NewRefScriptExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewScriptExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefScriptExtensionGDExtensionIternalConstructor(reference ScriptExtension) RefScriptExtension {
 	return &RefScriptExtensionImpl{RefBase: NewRef[ScriptExtension](reference)}
+}
+
+// NewRefScriptExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefScriptExtensionGDExtensionReturnOwner(reference ScriptExtension) RefScriptExtension {
+	return &RefScriptExtensionImpl{RefBase: NewRefTransfer[ScriptExtension](reference)}
 }
 
 var _ RefSegmentShape2D = &RefSegmentShape2DImpl{}
@@ -8258,8 +13454,20 @@ func NewRefSegmentShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[SegmentShape2D](reference.(SegmentShape2D))
 }
 
+// NewRefSegmentShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSegmentShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSegmentShape2DGDExtensionIternalConstructor(reference SegmentShape2D) RefSegmentShape2D {
 	return &RefSegmentShape2DImpl{RefBase: NewRef[SegmentShape2D](reference)}
+}
+
+// NewRefSegmentShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSegmentShape2DGDExtensionReturnOwner(reference SegmentShape2D) RefSegmentShape2D {
+	return &RefSegmentShape2DImpl{RefBase: NewRefTransfer[SegmentShape2D](reference)}
 }
 
 var _ RefSemaphore = &RefSemaphoreImpl{}
@@ -8277,8 +13485,20 @@ func NewRefSemaphoreAsRef(reference RefCounted) Ref {
 	return NewRef[Semaphore](reference.(Semaphore))
 }
 
+// NewRefSemaphoreGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSemaphoreWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSemaphoreGDExtensionIternalConstructor(reference Semaphore) RefSemaphore {
 	return &RefSemaphoreImpl{RefBase: NewRef[Semaphore](reference)}
+}
+
+// NewRefSemaphoreGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSemaphoreGDExtensionReturnOwner(reference Semaphore) RefSemaphore {
+	return &RefSemaphoreImpl{RefBase: NewRefTransfer[Semaphore](reference)}
 }
 
 var _ RefSeparationRayShape2D = &RefSeparationRayShape2DImpl{}
@@ -8296,8 +13516,20 @@ func NewRefSeparationRayShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[SeparationRayShape2D](reference.(SeparationRayShape2D))
 }
 
+// NewRefSeparationRayShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSeparationRayShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSeparationRayShape2DGDExtensionIternalConstructor(reference SeparationRayShape2D) RefSeparationRayShape2D {
 	return &RefSeparationRayShape2DImpl{RefBase: NewRef[SeparationRayShape2D](reference)}
+}
+
+// NewRefSeparationRayShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSeparationRayShape2DGDExtensionReturnOwner(reference SeparationRayShape2D) RefSeparationRayShape2D {
+	return &RefSeparationRayShape2DImpl{RefBase: NewRefTransfer[SeparationRayShape2D](reference)}
 }
 
 var _ RefSeparationRayShape3D = &RefSeparationRayShape3DImpl{}
@@ -8315,8 +13547,20 @@ func NewRefSeparationRayShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[SeparationRayShape3D](reference.(SeparationRayShape3D))
 }
 
+// NewRefSeparationRayShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSeparationRayShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSeparationRayShape3DGDExtensionIternalConstructor(reference SeparationRayShape3D) RefSeparationRayShape3D {
 	return &RefSeparationRayShape3DImpl{RefBase: NewRef[SeparationRayShape3D](reference)}
+}
+
+// NewRefSeparationRayShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSeparationRayShape3DGDExtensionReturnOwner(reference SeparationRayShape3D) RefSeparationRayShape3D {
+	return &RefSeparationRayShape3DImpl{RefBase: NewRefTransfer[SeparationRayShape3D](reference)}
 }
 
 var _ RefShader = &RefShaderImpl{}
@@ -8334,8 +13578,20 @@ func NewRefShaderAsRef(reference RefCounted) Ref {
 	return NewRef[Shader](reference.(Shader))
 }
 
+// NewRefShaderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewShaderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefShaderGDExtensionIternalConstructor(reference Shader) RefShader {
 	return &RefShaderImpl{RefBase: NewRef[Shader](reference)}
+}
+
+// NewRefShaderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefShaderGDExtensionReturnOwner(reference Shader) RefShader {
+	return &RefShaderImpl{RefBase: NewRefTransfer[Shader](reference)}
 }
 
 var _ RefShaderInclude = &RefShaderIncludeImpl{}
@@ -8353,8 +13609,20 @@ func NewRefShaderIncludeAsRef(reference RefCounted) Ref {
 	return NewRef[ShaderInclude](reference.(ShaderInclude))
 }
 
+// NewRefShaderIncludeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewShaderIncludeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefShaderIncludeGDExtensionIternalConstructor(reference ShaderInclude) RefShaderInclude {
 	return &RefShaderIncludeImpl{RefBase: NewRef[ShaderInclude](reference)}
+}
+
+// NewRefShaderIncludeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefShaderIncludeGDExtensionReturnOwner(reference ShaderInclude) RefShaderInclude {
+	return &RefShaderIncludeImpl{RefBase: NewRefTransfer[ShaderInclude](reference)}
 }
 
 var _ RefShaderMaterial = &RefShaderMaterialImpl{}
@@ -8372,8 +13640,20 @@ func NewRefShaderMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[ShaderMaterial](reference.(ShaderMaterial))
 }
 
+// NewRefShaderMaterialGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewShaderMaterialWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefShaderMaterialGDExtensionIternalConstructor(reference ShaderMaterial) RefShaderMaterial {
 	return &RefShaderMaterialImpl{RefBase: NewRef[ShaderMaterial](reference)}
+}
+
+// NewRefShaderMaterialGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefShaderMaterialGDExtensionReturnOwner(reference ShaderMaterial) RefShaderMaterial {
+	return &RefShaderMaterialImpl{RefBase: NewRefTransfer[ShaderMaterial](reference)}
 }
 
 var _ RefShape2D = &RefShape2DImpl{}
@@ -8391,8 +13671,20 @@ func NewRefShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[Shape2D](reference.(Shape2D))
 }
 
+// NewRefShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefShape2DGDExtensionIternalConstructor(reference Shape2D) RefShape2D {
 	return &RefShape2DImpl{RefBase: NewRef[Shape2D](reference)}
+}
+
+// NewRefShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefShape2DGDExtensionReturnOwner(reference Shape2D) RefShape2D {
+	return &RefShape2DImpl{RefBase: NewRefTransfer[Shape2D](reference)}
 }
 
 var _ RefShape3D = &RefShape3DImpl{}
@@ -8410,8 +13702,20 @@ func NewRefShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[Shape3D](reference.(Shape3D))
 }
 
+// NewRefShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefShape3DGDExtensionIternalConstructor(reference Shape3D) RefShape3D {
 	return &RefShape3DImpl{RefBase: NewRef[Shape3D](reference)}
+}
+
+// NewRefShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefShape3DGDExtensionReturnOwner(reference Shape3D) RefShape3D {
+	return &RefShape3DImpl{RefBase: NewRefTransfer[Shape3D](reference)}
 }
 
 var _ RefShortcut = &RefShortcutImpl{}
@@ -8429,8 +13733,20 @@ func NewRefShortcutAsRef(reference RefCounted) Ref {
 	return NewRef[Shortcut](reference.(Shortcut))
 }
 
+// NewRefShortcutGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewShortcutWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefShortcutGDExtensionIternalConstructor(reference Shortcut) RefShortcut {
 	return &RefShortcutImpl{RefBase: NewRef[Shortcut](reference)}
+}
+
+// NewRefShortcutGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefShortcutGDExtensionReturnOwner(reference Shortcut) RefShortcut {
+	return &RefShortcutImpl{RefBase: NewRefTransfer[Shortcut](reference)}
 }
 
 var _ RefSkeletonModification2D = &RefSkeletonModification2DImpl{}
@@ -8448,8 +13764,20 @@ func NewRefSkeletonModification2DAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2D](reference.(SkeletonModification2D))
 }
 
+// NewRefSkeletonModification2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DGDExtensionIternalConstructor(reference SkeletonModification2D) RefSkeletonModification2D {
 	return &RefSkeletonModification2DImpl{RefBase: NewRef[SkeletonModification2D](reference)}
+}
+
+// NewRefSkeletonModification2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DGDExtensionReturnOwner(reference SkeletonModification2D) RefSkeletonModification2D {
+	return &RefSkeletonModification2DImpl{RefBase: NewRefTransfer[SkeletonModification2D](reference)}
 }
 
 var _ RefSkeletonModification2DCCDIK = &RefSkeletonModification2DCCDIKImpl{}
@@ -8467,8 +13795,20 @@ func NewRefSkeletonModification2DCCDIKAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DCCDIK](reference.(SkeletonModification2DCCDIK))
 }
 
+// NewRefSkeletonModification2DCCDIKGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DCCDIKWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DCCDIKGDExtensionIternalConstructor(reference SkeletonModification2DCCDIK) RefSkeletonModification2DCCDIK {
 	return &RefSkeletonModification2DCCDIKImpl{RefBase: NewRef[SkeletonModification2DCCDIK](reference)}
+}
+
+// NewRefSkeletonModification2DCCDIKGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DCCDIKGDExtensionReturnOwner(reference SkeletonModification2DCCDIK) RefSkeletonModification2DCCDIK {
+	return &RefSkeletonModification2DCCDIKImpl{RefBase: NewRefTransfer[SkeletonModification2DCCDIK](reference)}
 }
 
 var _ RefSkeletonModification2DFABRIK = &RefSkeletonModification2DFABRIKImpl{}
@@ -8486,8 +13826,20 @@ func NewRefSkeletonModification2DFABRIKAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DFABRIK](reference.(SkeletonModification2DFABRIK))
 }
 
+// NewRefSkeletonModification2DFABRIKGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DFABRIKWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DFABRIKGDExtensionIternalConstructor(reference SkeletonModification2DFABRIK) RefSkeletonModification2DFABRIK {
 	return &RefSkeletonModification2DFABRIKImpl{RefBase: NewRef[SkeletonModification2DFABRIK](reference)}
+}
+
+// NewRefSkeletonModification2DFABRIKGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DFABRIKGDExtensionReturnOwner(reference SkeletonModification2DFABRIK) RefSkeletonModification2DFABRIK {
+	return &RefSkeletonModification2DFABRIKImpl{RefBase: NewRefTransfer[SkeletonModification2DFABRIK](reference)}
 }
 
 var _ RefSkeletonModification2DJiggle = &RefSkeletonModification2DJiggleImpl{}
@@ -8505,8 +13857,20 @@ func NewRefSkeletonModification2DJiggleAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DJiggle](reference.(SkeletonModification2DJiggle))
 }
 
+// NewRefSkeletonModification2DJiggleGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DJiggleWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DJiggleGDExtensionIternalConstructor(reference SkeletonModification2DJiggle) RefSkeletonModification2DJiggle {
 	return &RefSkeletonModification2DJiggleImpl{RefBase: NewRef[SkeletonModification2DJiggle](reference)}
+}
+
+// NewRefSkeletonModification2DJiggleGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DJiggleGDExtensionReturnOwner(reference SkeletonModification2DJiggle) RefSkeletonModification2DJiggle {
+	return &RefSkeletonModification2DJiggleImpl{RefBase: NewRefTransfer[SkeletonModification2DJiggle](reference)}
 }
 
 var _ RefSkeletonModification2DLookAt = &RefSkeletonModification2DLookAtImpl{}
@@ -8524,8 +13888,20 @@ func NewRefSkeletonModification2DLookAtAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DLookAt](reference.(SkeletonModification2DLookAt))
 }
 
+// NewRefSkeletonModification2DLookAtGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DLookAtWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DLookAtGDExtensionIternalConstructor(reference SkeletonModification2DLookAt) RefSkeletonModification2DLookAt {
 	return &RefSkeletonModification2DLookAtImpl{RefBase: NewRef[SkeletonModification2DLookAt](reference)}
+}
+
+// NewRefSkeletonModification2DLookAtGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DLookAtGDExtensionReturnOwner(reference SkeletonModification2DLookAt) RefSkeletonModification2DLookAt {
+	return &RefSkeletonModification2DLookAtImpl{RefBase: NewRefTransfer[SkeletonModification2DLookAt](reference)}
 }
 
 var _ RefSkeletonModification2DPhysicalBones = &RefSkeletonModification2DPhysicalBonesImpl{}
@@ -8543,8 +13919,20 @@ func NewRefSkeletonModification2DPhysicalBonesAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DPhysicalBones](reference.(SkeletonModification2DPhysicalBones))
 }
 
+// NewRefSkeletonModification2DPhysicalBonesGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DPhysicalBonesWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DPhysicalBonesGDExtensionIternalConstructor(reference SkeletonModification2DPhysicalBones) RefSkeletonModification2DPhysicalBones {
 	return &RefSkeletonModification2DPhysicalBonesImpl{RefBase: NewRef[SkeletonModification2DPhysicalBones](reference)}
+}
+
+// NewRefSkeletonModification2DPhysicalBonesGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DPhysicalBonesGDExtensionReturnOwner(reference SkeletonModification2DPhysicalBones) RefSkeletonModification2DPhysicalBones {
+	return &RefSkeletonModification2DPhysicalBonesImpl{RefBase: NewRefTransfer[SkeletonModification2DPhysicalBones](reference)}
 }
 
 var _ RefSkeletonModification2DStackHolder = &RefSkeletonModification2DStackHolderImpl{}
@@ -8562,8 +13950,20 @@ func NewRefSkeletonModification2DStackHolderAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DStackHolder](reference.(SkeletonModification2DStackHolder))
 }
 
+// NewRefSkeletonModification2DStackHolderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DStackHolderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DStackHolderGDExtensionIternalConstructor(reference SkeletonModification2DStackHolder) RefSkeletonModification2DStackHolder {
 	return &RefSkeletonModification2DStackHolderImpl{RefBase: NewRef[SkeletonModification2DStackHolder](reference)}
+}
+
+// NewRefSkeletonModification2DStackHolderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DStackHolderGDExtensionReturnOwner(reference SkeletonModification2DStackHolder) RefSkeletonModification2DStackHolder {
+	return &RefSkeletonModification2DStackHolderImpl{RefBase: NewRefTransfer[SkeletonModification2DStackHolder](reference)}
 }
 
 var _ RefSkeletonModification2DTwoBoneIK = &RefSkeletonModification2DTwoBoneIKImpl{}
@@ -8581,8 +13981,20 @@ func NewRefSkeletonModification2DTwoBoneIKAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DTwoBoneIK](reference.(SkeletonModification2DTwoBoneIK))
 }
 
+// NewRefSkeletonModification2DTwoBoneIKGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModification2DTwoBoneIKWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModification2DTwoBoneIKGDExtensionIternalConstructor(reference SkeletonModification2DTwoBoneIK) RefSkeletonModification2DTwoBoneIK {
 	return &RefSkeletonModification2DTwoBoneIKImpl{RefBase: NewRef[SkeletonModification2DTwoBoneIK](reference)}
+}
+
+// NewRefSkeletonModification2DTwoBoneIKGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModification2DTwoBoneIKGDExtensionReturnOwner(reference SkeletonModification2DTwoBoneIK) RefSkeletonModification2DTwoBoneIK {
+	return &RefSkeletonModification2DTwoBoneIKImpl{RefBase: NewRefTransfer[SkeletonModification2DTwoBoneIK](reference)}
 }
 
 var _ RefSkeletonModificationStack2D = &RefSkeletonModificationStack2DImpl{}
@@ -8600,8 +14012,20 @@ func NewRefSkeletonModificationStack2DAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModificationStack2D](reference.(SkeletonModificationStack2D))
 }
 
+// NewRefSkeletonModificationStack2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonModificationStack2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonModificationStack2DGDExtensionIternalConstructor(reference SkeletonModificationStack2D) RefSkeletonModificationStack2D {
 	return &RefSkeletonModificationStack2DImpl{RefBase: NewRef[SkeletonModificationStack2D](reference)}
+}
+
+// NewRefSkeletonModificationStack2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonModificationStack2DGDExtensionReturnOwner(reference SkeletonModificationStack2D) RefSkeletonModificationStack2D {
+	return &RefSkeletonModificationStack2DImpl{RefBase: NewRefTransfer[SkeletonModificationStack2D](reference)}
 }
 
 var _ RefSkeletonProfile = &RefSkeletonProfileImpl{}
@@ -8619,8 +14043,20 @@ func NewRefSkeletonProfileAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonProfile](reference.(SkeletonProfile))
 }
 
+// NewRefSkeletonProfileGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonProfileWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonProfileGDExtensionIternalConstructor(reference SkeletonProfile) RefSkeletonProfile {
 	return &RefSkeletonProfileImpl{RefBase: NewRef[SkeletonProfile](reference)}
+}
+
+// NewRefSkeletonProfileGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonProfileGDExtensionReturnOwner(reference SkeletonProfile) RefSkeletonProfile {
+	return &RefSkeletonProfileImpl{RefBase: NewRefTransfer[SkeletonProfile](reference)}
 }
 
 var _ RefSkeletonProfileHumanoid = &RefSkeletonProfileHumanoidImpl{}
@@ -8638,8 +14074,20 @@ func NewRefSkeletonProfileHumanoidAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonProfileHumanoid](reference.(SkeletonProfileHumanoid))
 }
 
+// NewRefSkeletonProfileHumanoidGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkeletonProfileHumanoidWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkeletonProfileHumanoidGDExtensionIternalConstructor(reference SkeletonProfileHumanoid) RefSkeletonProfileHumanoid {
 	return &RefSkeletonProfileHumanoidImpl{RefBase: NewRef[SkeletonProfileHumanoid](reference)}
+}
+
+// NewRefSkeletonProfileHumanoidGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkeletonProfileHumanoidGDExtensionReturnOwner(reference SkeletonProfileHumanoid) RefSkeletonProfileHumanoid {
+	return &RefSkeletonProfileHumanoidImpl{RefBase: NewRefTransfer[SkeletonProfileHumanoid](reference)}
 }
 
 var _ RefSkin = &RefSkinImpl{}
@@ -8657,8 +14105,20 @@ func NewRefSkinAsRef(reference RefCounted) Ref {
 	return NewRef[Skin](reference.(Skin))
 }
 
+// NewRefSkinGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkinWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkinGDExtensionIternalConstructor(reference Skin) RefSkin {
 	return &RefSkinImpl{RefBase: NewRef[Skin](reference)}
+}
+
+// NewRefSkinGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkinGDExtensionReturnOwner(reference Skin) RefSkin {
+	return &RefSkinImpl{RefBase: NewRefTransfer[Skin](reference)}
 }
 
 var _ RefSkinReference = &RefSkinReferenceImpl{}
@@ -8676,8 +14136,20 @@ func NewRefSkinReferenceAsRef(reference RefCounted) Ref {
 	return NewRef[SkinReference](reference.(SkinReference))
 }
 
+// NewRefSkinReferenceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkinReferenceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkinReferenceGDExtensionIternalConstructor(reference SkinReference) RefSkinReference {
 	return &RefSkinReferenceImpl{RefBase: NewRef[SkinReference](reference)}
+}
+
+// NewRefSkinReferenceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkinReferenceGDExtensionReturnOwner(reference SkinReference) RefSkinReference {
+	return &RefSkinReferenceImpl{RefBase: NewRefTransfer[SkinReference](reference)}
 }
 
 var _ RefSky = &RefSkyImpl{}
@@ -8695,8 +14167,20 @@ func NewRefSkyAsRef(reference RefCounted) Ref {
 	return NewRef[Sky](reference.(Sky))
 }
 
+// NewRefSkyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSkyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSkyGDExtensionIternalConstructor(reference Sky) RefSky {
 	return &RefSkyImpl{RefBase: NewRef[Sky](reference)}
+}
+
+// NewRefSkyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSkyGDExtensionReturnOwner(reference Sky) RefSky {
+	return &RefSkyImpl{RefBase: NewRefTransfer[Sky](reference)}
 }
 
 var _ RefSocketServer = &RefSocketServerImpl{}
@@ -8714,8 +14198,20 @@ func NewRefSocketServerAsRef(reference RefCounted) Ref {
 	return NewRef[SocketServer](reference.(SocketServer))
 }
 
+// NewRefSocketServerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSocketServerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSocketServerGDExtensionIternalConstructor(reference SocketServer) RefSocketServer {
 	return &RefSocketServerImpl{RefBase: NewRef[SocketServer](reference)}
+}
+
+// NewRefSocketServerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSocketServerGDExtensionReturnOwner(reference SocketServer) RefSocketServer {
+	return &RefSocketServerImpl{RefBase: NewRefTransfer[SocketServer](reference)}
 }
 
 var _ RefSphereMesh = &RefSphereMeshImpl{}
@@ -8733,8 +14229,20 @@ func NewRefSphereMeshAsRef(reference RefCounted) Ref {
 	return NewRef[SphereMesh](reference.(SphereMesh))
 }
 
+// NewRefSphereMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSphereMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSphereMeshGDExtensionIternalConstructor(reference SphereMesh) RefSphereMesh {
 	return &RefSphereMeshImpl{RefBase: NewRef[SphereMesh](reference)}
+}
+
+// NewRefSphereMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSphereMeshGDExtensionReturnOwner(reference SphereMesh) RefSphereMesh {
+	return &RefSphereMeshImpl{RefBase: NewRefTransfer[SphereMesh](reference)}
 }
 
 var _ RefSphereOccluder3D = &RefSphereOccluder3DImpl{}
@@ -8752,8 +14260,20 @@ func NewRefSphereOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[SphereOccluder3D](reference.(SphereOccluder3D))
 }
 
+// NewRefSphereOccluder3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSphereOccluder3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSphereOccluder3DGDExtensionIternalConstructor(reference SphereOccluder3D) RefSphereOccluder3D {
 	return &RefSphereOccluder3DImpl{RefBase: NewRef[SphereOccluder3D](reference)}
+}
+
+// NewRefSphereOccluder3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSphereOccluder3DGDExtensionReturnOwner(reference SphereOccluder3D) RefSphereOccluder3D {
+	return &RefSphereOccluder3DImpl{RefBase: NewRefTransfer[SphereOccluder3D](reference)}
 }
 
 var _ RefSphereShape3D = &RefSphereShape3DImpl{}
@@ -8771,8 +14291,20 @@ func NewRefSphereShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[SphereShape3D](reference.(SphereShape3D))
 }
 
+// NewRefSphereShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSphereShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSphereShape3DGDExtensionIternalConstructor(reference SphereShape3D) RefSphereShape3D {
 	return &RefSphereShape3DImpl{RefBase: NewRef[SphereShape3D](reference)}
+}
+
+// NewRefSphereShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSphereShape3DGDExtensionReturnOwner(reference SphereShape3D) RefSphereShape3D {
+	return &RefSphereShape3DImpl{RefBase: NewRefTransfer[SphereShape3D](reference)}
 }
 
 var _ RefSpriteFrames = &RefSpriteFramesImpl{}
@@ -8790,8 +14322,20 @@ func NewRefSpriteFramesAsRef(reference RefCounted) Ref {
 	return NewRef[SpriteFrames](reference.(SpriteFrames))
 }
 
+// NewRefSpriteFramesGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSpriteFramesWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSpriteFramesGDExtensionIternalConstructor(reference SpriteFrames) RefSpriteFrames {
 	return &RefSpriteFramesImpl{RefBase: NewRef[SpriteFrames](reference)}
+}
+
+// NewRefSpriteFramesGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSpriteFramesGDExtensionReturnOwner(reference SpriteFrames) RefSpriteFrames {
+	return &RefSpriteFramesImpl{RefBase: NewRefTransfer[SpriteFrames](reference)}
 }
 
 var _ RefStandardMaterial3D = &RefStandardMaterial3DImpl{}
@@ -8809,8 +14353,20 @@ func NewRefStandardMaterial3DAsRef(reference RefCounted) Ref {
 	return NewRef[StandardMaterial3D](reference.(StandardMaterial3D))
 }
 
+// NewRefStandardMaterial3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStandardMaterial3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStandardMaterial3DGDExtensionIternalConstructor(reference StandardMaterial3D) RefStandardMaterial3D {
 	return &RefStandardMaterial3DImpl{RefBase: NewRef[StandardMaterial3D](reference)}
+}
+
+// NewRefStandardMaterial3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStandardMaterial3DGDExtensionReturnOwner(reference StandardMaterial3D) RefStandardMaterial3D {
+	return &RefStandardMaterial3DImpl{RefBase: NewRefTransfer[StandardMaterial3D](reference)}
 }
 
 var _ RefStreamPeer = &RefStreamPeerImpl{}
@@ -8828,8 +14384,20 @@ func NewRefStreamPeerAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeer](reference.(StreamPeer))
 }
 
+// NewRefStreamPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerGDExtensionIternalConstructor(reference StreamPeer) RefStreamPeer {
 	return &RefStreamPeerImpl{RefBase: NewRef[StreamPeer](reference)}
+}
+
+// NewRefStreamPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerGDExtensionReturnOwner(reference StreamPeer) RefStreamPeer {
+	return &RefStreamPeerImpl{RefBase: NewRefTransfer[StreamPeer](reference)}
 }
 
 var _ RefStreamPeerBuffer = &RefStreamPeerBufferImpl{}
@@ -8847,8 +14415,20 @@ func NewRefStreamPeerBufferAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerBuffer](reference.(StreamPeerBuffer))
 }
 
+// NewRefStreamPeerBufferGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerBufferWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerBufferGDExtensionIternalConstructor(reference StreamPeerBuffer) RefStreamPeerBuffer {
 	return &RefStreamPeerBufferImpl{RefBase: NewRef[StreamPeerBuffer](reference)}
+}
+
+// NewRefStreamPeerBufferGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerBufferGDExtensionReturnOwner(reference StreamPeerBuffer) RefStreamPeerBuffer {
+	return &RefStreamPeerBufferImpl{RefBase: NewRefTransfer[StreamPeerBuffer](reference)}
 }
 
 var _ RefStreamPeerExtension = &RefStreamPeerExtensionImpl{}
@@ -8866,8 +14446,20 @@ func NewRefStreamPeerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerExtension](reference.(StreamPeerExtension))
 }
 
+// NewRefStreamPeerExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerExtensionGDExtensionIternalConstructor(reference StreamPeerExtension) RefStreamPeerExtension {
 	return &RefStreamPeerExtensionImpl{RefBase: NewRef[StreamPeerExtension](reference)}
+}
+
+// NewRefStreamPeerExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerExtensionGDExtensionReturnOwner(reference StreamPeerExtension) RefStreamPeerExtension {
+	return &RefStreamPeerExtensionImpl{RefBase: NewRefTransfer[StreamPeerExtension](reference)}
 }
 
 var _ RefStreamPeerGZIP = &RefStreamPeerGZIPImpl{}
@@ -8885,8 +14477,20 @@ func NewRefStreamPeerGZIPAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerGZIP](reference.(StreamPeerGZIP))
 }
 
+// NewRefStreamPeerGZIPGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerGZIPWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerGZIPGDExtensionIternalConstructor(reference StreamPeerGZIP) RefStreamPeerGZIP {
 	return &RefStreamPeerGZIPImpl{RefBase: NewRef[StreamPeerGZIP](reference)}
+}
+
+// NewRefStreamPeerGZIPGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerGZIPGDExtensionReturnOwner(reference StreamPeerGZIP) RefStreamPeerGZIP {
+	return &RefStreamPeerGZIPImpl{RefBase: NewRefTransfer[StreamPeerGZIP](reference)}
 }
 
 var _ RefStreamPeerSocket = &RefStreamPeerSocketImpl{}
@@ -8904,8 +14508,20 @@ func NewRefStreamPeerSocketAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerSocket](reference.(StreamPeerSocket))
 }
 
+// NewRefStreamPeerSocketGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerSocketWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerSocketGDExtensionIternalConstructor(reference StreamPeerSocket) RefStreamPeerSocket {
 	return &RefStreamPeerSocketImpl{RefBase: NewRef[StreamPeerSocket](reference)}
+}
+
+// NewRefStreamPeerSocketGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerSocketGDExtensionReturnOwner(reference StreamPeerSocket) RefStreamPeerSocket {
+	return &RefStreamPeerSocketImpl{RefBase: NewRefTransfer[StreamPeerSocket](reference)}
 }
 
 var _ RefStreamPeerTCP = &RefStreamPeerTCPImpl{}
@@ -8923,8 +14539,20 @@ func NewRefStreamPeerTCPAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerTCP](reference.(StreamPeerTCP))
 }
 
+// NewRefStreamPeerTCPGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerTCPWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerTCPGDExtensionIternalConstructor(reference StreamPeerTCP) RefStreamPeerTCP {
 	return &RefStreamPeerTCPImpl{RefBase: NewRef[StreamPeerTCP](reference)}
+}
+
+// NewRefStreamPeerTCPGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerTCPGDExtensionReturnOwner(reference StreamPeerTCP) RefStreamPeerTCP {
+	return &RefStreamPeerTCPImpl{RefBase: NewRefTransfer[StreamPeerTCP](reference)}
 }
 
 var _ RefStreamPeerTLS = &RefStreamPeerTLSImpl{}
@@ -8942,8 +14570,20 @@ func NewRefStreamPeerTLSAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerTLS](reference.(StreamPeerTLS))
 }
 
+// NewRefStreamPeerTLSGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerTLSWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerTLSGDExtensionIternalConstructor(reference StreamPeerTLS) RefStreamPeerTLS {
 	return &RefStreamPeerTLSImpl{RefBase: NewRef[StreamPeerTLS](reference)}
+}
+
+// NewRefStreamPeerTLSGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerTLSGDExtensionReturnOwner(reference StreamPeerTLS) RefStreamPeerTLS {
+	return &RefStreamPeerTLSImpl{RefBase: NewRefTransfer[StreamPeerTLS](reference)}
 }
 
 var _ RefStreamPeerUDS = &RefStreamPeerUDSImpl{}
@@ -8961,8 +14601,20 @@ func NewRefStreamPeerUDSAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerUDS](reference.(StreamPeerUDS))
 }
 
+// NewRefStreamPeerUDSGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStreamPeerUDSWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStreamPeerUDSGDExtensionIternalConstructor(reference StreamPeerUDS) RefStreamPeerUDS {
 	return &RefStreamPeerUDSImpl{RefBase: NewRef[StreamPeerUDS](reference)}
+}
+
+// NewRefStreamPeerUDSGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStreamPeerUDSGDExtensionReturnOwner(reference StreamPeerUDS) RefStreamPeerUDS {
+	return &RefStreamPeerUDSImpl{RefBase: NewRefTransfer[StreamPeerUDS](reference)}
 }
 
 var _ RefStyleBox = &RefStyleBoxImpl{}
@@ -8980,8 +14632,20 @@ func NewRefStyleBoxAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBox](reference.(StyleBox))
 }
 
+// NewRefStyleBoxGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStyleBoxWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStyleBoxGDExtensionIternalConstructor(reference StyleBox) RefStyleBox {
 	return &RefStyleBoxImpl{RefBase: NewRef[StyleBox](reference)}
+}
+
+// NewRefStyleBoxGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStyleBoxGDExtensionReturnOwner(reference StyleBox) RefStyleBox {
+	return &RefStyleBoxImpl{RefBase: NewRefTransfer[StyleBox](reference)}
 }
 
 var _ RefStyleBoxEmpty = &RefStyleBoxEmptyImpl{}
@@ -8999,8 +14663,20 @@ func NewRefStyleBoxEmptyAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxEmpty](reference.(StyleBoxEmpty))
 }
 
+// NewRefStyleBoxEmptyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStyleBoxEmptyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStyleBoxEmptyGDExtensionIternalConstructor(reference StyleBoxEmpty) RefStyleBoxEmpty {
 	return &RefStyleBoxEmptyImpl{RefBase: NewRef[StyleBoxEmpty](reference)}
+}
+
+// NewRefStyleBoxEmptyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStyleBoxEmptyGDExtensionReturnOwner(reference StyleBoxEmpty) RefStyleBoxEmpty {
+	return &RefStyleBoxEmptyImpl{RefBase: NewRefTransfer[StyleBoxEmpty](reference)}
 }
 
 var _ RefStyleBoxFlat = &RefStyleBoxFlatImpl{}
@@ -9018,8 +14694,20 @@ func NewRefStyleBoxFlatAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxFlat](reference.(StyleBoxFlat))
 }
 
+// NewRefStyleBoxFlatGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStyleBoxFlatWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStyleBoxFlatGDExtensionIternalConstructor(reference StyleBoxFlat) RefStyleBoxFlat {
 	return &RefStyleBoxFlatImpl{RefBase: NewRef[StyleBoxFlat](reference)}
+}
+
+// NewRefStyleBoxFlatGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStyleBoxFlatGDExtensionReturnOwner(reference StyleBoxFlat) RefStyleBoxFlat {
+	return &RefStyleBoxFlatImpl{RefBase: NewRefTransfer[StyleBoxFlat](reference)}
 }
 
 var _ RefStyleBoxLine = &RefStyleBoxLineImpl{}
@@ -9037,8 +14725,20 @@ func NewRefStyleBoxLineAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxLine](reference.(StyleBoxLine))
 }
 
+// NewRefStyleBoxLineGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStyleBoxLineWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStyleBoxLineGDExtensionIternalConstructor(reference StyleBoxLine) RefStyleBoxLine {
 	return &RefStyleBoxLineImpl{RefBase: NewRef[StyleBoxLine](reference)}
+}
+
+// NewRefStyleBoxLineGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStyleBoxLineGDExtensionReturnOwner(reference StyleBoxLine) RefStyleBoxLine {
+	return &RefStyleBoxLineImpl{RefBase: NewRefTransfer[StyleBoxLine](reference)}
 }
 
 var _ RefStyleBoxTexture = &RefStyleBoxTextureImpl{}
@@ -9056,8 +14756,20 @@ func NewRefStyleBoxTextureAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxTexture](reference.(StyleBoxTexture))
 }
 
+// NewRefStyleBoxTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewStyleBoxTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefStyleBoxTextureGDExtensionIternalConstructor(reference StyleBoxTexture) RefStyleBoxTexture {
 	return &RefStyleBoxTextureImpl{RefBase: NewRef[StyleBoxTexture](reference)}
+}
+
+// NewRefStyleBoxTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefStyleBoxTextureGDExtensionReturnOwner(reference StyleBoxTexture) RefStyleBoxTexture {
+	return &RefStyleBoxTextureImpl{RefBase: NewRefTransfer[StyleBoxTexture](reference)}
 }
 
 var _ RefSubtweenTweener = &RefSubtweenTweenerImpl{}
@@ -9075,8 +14787,20 @@ func NewRefSubtweenTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[SubtweenTweener](reference.(SubtweenTweener))
 }
 
+// NewRefSubtweenTweenerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSubtweenTweenerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSubtweenTweenerGDExtensionIternalConstructor(reference SubtweenTweener) RefSubtweenTweener {
 	return &RefSubtweenTweenerImpl{RefBase: NewRef[SubtweenTweener](reference)}
+}
+
+// NewRefSubtweenTweenerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSubtweenTweenerGDExtensionReturnOwner(reference SubtweenTweener) RefSubtweenTweener {
+	return &RefSubtweenTweenerImpl{RefBase: NewRefTransfer[SubtweenTweener](reference)}
 }
 
 var _ RefSurfaceTool = &RefSurfaceToolImpl{}
@@ -9094,8 +14818,20 @@ func NewRefSurfaceToolAsRef(reference RefCounted) Ref {
 	return NewRef[SurfaceTool](reference.(SurfaceTool))
 }
 
+// NewRefSurfaceToolGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSurfaceToolWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSurfaceToolGDExtensionIternalConstructor(reference SurfaceTool) RefSurfaceTool {
 	return &RefSurfaceToolImpl{RefBase: NewRef[SurfaceTool](reference)}
+}
+
+// NewRefSurfaceToolGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSurfaceToolGDExtensionReturnOwner(reference SurfaceTool) RefSurfaceTool {
+	return &RefSurfaceToolImpl{RefBase: NewRefTransfer[SurfaceTool](reference)}
 }
 
 var _ RefSyntaxHighlighter = &RefSyntaxHighlighterImpl{}
@@ -9113,8 +14849,20 @@ func NewRefSyntaxHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[SyntaxHighlighter](reference.(SyntaxHighlighter))
 }
 
+// NewRefSyntaxHighlighterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSyntaxHighlighterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSyntaxHighlighterGDExtensionIternalConstructor(reference SyntaxHighlighter) RefSyntaxHighlighter {
 	return &RefSyntaxHighlighterImpl{RefBase: NewRef[SyntaxHighlighter](reference)}
+}
+
+// NewRefSyntaxHighlighterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSyntaxHighlighterGDExtensionReturnOwner(reference SyntaxHighlighter) RefSyntaxHighlighter {
+	return &RefSyntaxHighlighterImpl{RefBase: NewRefTransfer[SyntaxHighlighter](reference)}
 }
 
 var _ RefSystemFont = &RefSystemFontImpl{}
@@ -9132,8 +14880,20 @@ func NewRefSystemFontAsRef(reference RefCounted) Ref {
 	return NewRef[SystemFont](reference.(SystemFont))
 }
 
+// NewRefSystemFontGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewSystemFontWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefSystemFontGDExtensionIternalConstructor(reference SystemFont) RefSystemFont {
 	return &RefSystemFontImpl{RefBase: NewRef[SystemFont](reference)}
+}
+
+// NewRefSystemFontGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefSystemFontGDExtensionReturnOwner(reference SystemFont) RefSystemFont {
+	return &RefSystemFontImpl{RefBase: NewRefTransfer[SystemFont](reference)}
 }
 
 var _ RefTCPServer = &RefTCPServerImpl{}
@@ -9151,8 +14911,20 @@ func NewRefTCPServerAsRef(reference RefCounted) Ref {
 	return NewRef[TCPServer](reference.(TCPServer))
 }
 
+// NewRefTCPServerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTCPServerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTCPServerGDExtensionIternalConstructor(reference TCPServer) RefTCPServer {
 	return &RefTCPServerImpl{RefBase: NewRef[TCPServer](reference)}
+}
+
+// NewRefTCPServerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTCPServerGDExtensionReturnOwner(reference TCPServer) RefTCPServer {
+	return &RefTCPServerImpl{RefBase: NewRefTransfer[TCPServer](reference)}
 }
 
 var _ RefTLSOptions = &RefTLSOptionsImpl{}
@@ -9170,8 +14942,20 @@ func NewRefTLSOptionsAsRef(reference RefCounted) Ref {
 	return NewRef[TLSOptions](reference.(TLSOptions))
 }
 
+// NewRefTLSOptionsGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTLSOptionsWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTLSOptionsGDExtensionIternalConstructor(reference TLSOptions) RefTLSOptions {
 	return &RefTLSOptionsImpl{RefBase: NewRef[TLSOptions](reference)}
+}
+
+// NewRefTLSOptionsGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTLSOptionsGDExtensionReturnOwner(reference TLSOptions) RefTLSOptions {
+	return &RefTLSOptionsImpl{RefBase: NewRefTransfer[TLSOptions](reference)}
 }
 
 var _ RefTextLine = &RefTextLineImpl{}
@@ -9189,8 +14973,20 @@ func NewRefTextLineAsRef(reference RefCounted) Ref {
 	return NewRef[TextLine](reference.(TextLine))
 }
 
+// NewRefTextLineGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextLineWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextLineGDExtensionIternalConstructor(reference TextLine) RefTextLine {
 	return &RefTextLineImpl{RefBase: NewRef[TextLine](reference)}
+}
+
+// NewRefTextLineGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextLineGDExtensionReturnOwner(reference TextLine) RefTextLine {
+	return &RefTextLineImpl{RefBase: NewRefTransfer[TextLine](reference)}
 }
 
 var _ RefTextMesh = &RefTextMeshImpl{}
@@ -9208,8 +15004,20 @@ func NewRefTextMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TextMesh](reference.(TextMesh))
 }
 
+// NewRefTextMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextMeshGDExtensionIternalConstructor(reference TextMesh) RefTextMesh {
 	return &RefTextMeshImpl{RefBase: NewRef[TextMesh](reference)}
+}
+
+// NewRefTextMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextMeshGDExtensionReturnOwner(reference TextMesh) RefTextMesh {
+	return &RefTextMeshImpl{RefBase: NewRefTransfer[TextMesh](reference)}
 }
 
 var _ RefTextParagraph = &RefTextParagraphImpl{}
@@ -9227,8 +15035,20 @@ func NewRefTextParagraphAsRef(reference RefCounted) Ref {
 	return NewRef[TextParagraph](reference.(TextParagraph))
 }
 
+// NewRefTextParagraphGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextParagraphWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextParagraphGDExtensionIternalConstructor(reference TextParagraph) RefTextParagraph {
 	return &RefTextParagraphImpl{RefBase: NewRef[TextParagraph](reference)}
+}
+
+// NewRefTextParagraphGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextParagraphGDExtensionReturnOwner(reference TextParagraph) RefTextParagraph {
+	return &RefTextParagraphImpl{RefBase: NewRefTransfer[TextParagraph](reference)}
 }
 
 var _ RefTextServer = &RefTextServerImpl{}
@@ -9246,8 +15066,20 @@ func NewRefTextServerAsRef(reference RefCounted) Ref {
 	return NewRef[TextServer](reference.(TextServer))
 }
 
+// NewRefTextServerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextServerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextServerGDExtensionIternalConstructor(reference TextServer) RefTextServer {
 	return &RefTextServerImpl{RefBase: NewRef[TextServer](reference)}
+}
+
+// NewRefTextServerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextServerGDExtensionReturnOwner(reference TextServer) RefTextServer {
+	return &RefTextServerImpl{RefBase: NewRefTransfer[TextServer](reference)}
 }
 
 var _ RefTextServerAdvanced = &RefTextServerAdvancedImpl{}
@@ -9265,8 +15097,20 @@ func NewRefTextServerAdvancedAsRef(reference RefCounted) Ref {
 	return NewRef[TextServerAdvanced](reference.(TextServerAdvanced))
 }
 
+// NewRefTextServerAdvancedGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextServerAdvancedWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextServerAdvancedGDExtensionIternalConstructor(reference TextServerAdvanced) RefTextServerAdvanced {
 	return &RefTextServerAdvancedImpl{RefBase: NewRef[TextServerAdvanced](reference)}
+}
+
+// NewRefTextServerAdvancedGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextServerAdvancedGDExtensionReturnOwner(reference TextServerAdvanced) RefTextServerAdvanced {
+	return &RefTextServerAdvancedImpl{RefBase: NewRefTransfer[TextServerAdvanced](reference)}
 }
 
 var _ RefTextServerDummy = &RefTextServerDummyImpl{}
@@ -9284,8 +15128,20 @@ func NewRefTextServerDummyAsRef(reference RefCounted) Ref {
 	return NewRef[TextServerDummy](reference.(TextServerDummy))
 }
 
+// NewRefTextServerDummyGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextServerDummyWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextServerDummyGDExtensionIternalConstructor(reference TextServerDummy) RefTextServerDummy {
 	return &RefTextServerDummyImpl{RefBase: NewRef[TextServerDummy](reference)}
+}
+
+// NewRefTextServerDummyGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextServerDummyGDExtensionReturnOwner(reference TextServerDummy) RefTextServerDummy {
+	return &RefTextServerDummyImpl{RefBase: NewRefTransfer[TextServerDummy](reference)}
 }
 
 var _ RefTextServerExtension = &RefTextServerExtensionImpl{}
@@ -9303,8 +15159,20 @@ func NewRefTextServerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[TextServerExtension](reference.(TextServerExtension))
 }
 
+// NewRefTextServerExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextServerExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextServerExtensionGDExtensionIternalConstructor(reference TextServerExtension) RefTextServerExtension {
 	return &RefTextServerExtensionImpl{RefBase: NewRef[TextServerExtension](reference)}
+}
+
+// NewRefTextServerExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextServerExtensionGDExtensionReturnOwner(reference TextServerExtension) RefTextServerExtension {
+	return &RefTextServerExtensionImpl{RefBase: NewRefTransfer[TextServerExtension](reference)}
 }
 
 var _ RefTexture = &RefTextureImpl{}
@@ -9322,8 +15190,20 @@ func NewRefTextureAsRef(reference RefCounted) Ref {
 	return NewRef[Texture](reference.(Texture))
 }
 
+// NewRefTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextureGDExtensionIternalConstructor(reference Texture) RefTexture {
 	return &RefTextureImpl{RefBase: NewRef[Texture](reference)}
+}
+
+// NewRefTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextureGDExtensionReturnOwner(reference Texture) RefTexture {
+	return &RefTextureImpl{RefBase: NewRefTransfer[Texture](reference)}
 }
 
 var _ RefTexture2D = &RefTexture2DImpl{}
@@ -9341,8 +15221,20 @@ func NewRefTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2D](reference.(Texture2D))
 }
 
+// NewRefTexture2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTexture2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTexture2DGDExtensionIternalConstructor(reference Texture2D) RefTexture2D {
 	return &RefTexture2DImpl{RefBase: NewRef[Texture2D](reference)}
+}
+
+// NewRefTexture2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTexture2DGDExtensionReturnOwner(reference Texture2D) RefTexture2D {
+	return &RefTexture2DImpl{RefBase: NewRefTransfer[Texture2D](reference)}
 }
 
 var _ RefTexture2DArray = &RefTexture2DArrayImpl{}
@@ -9360,8 +15252,20 @@ func NewRefTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2DArray](reference.(Texture2DArray))
 }
 
+// NewRefTexture2DArrayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTexture2DArrayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTexture2DArrayGDExtensionIternalConstructor(reference Texture2DArray) RefTexture2DArray {
 	return &RefTexture2DArrayImpl{RefBase: NewRef[Texture2DArray](reference)}
+}
+
+// NewRefTexture2DArrayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTexture2DArrayGDExtensionReturnOwner(reference Texture2DArray) RefTexture2DArray {
+	return &RefTexture2DArrayImpl{RefBase: NewRefTransfer[Texture2DArray](reference)}
 }
 
 var _ RefTexture2DArrayRD = &RefTexture2DArrayRDImpl{}
@@ -9379,8 +15283,20 @@ func NewRefTexture2DArrayRDAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2DArrayRD](reference.(Texture2DArrayRD))
 }
 
+// NewRefTexture2DArrayRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTexture2DArrayRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTexture2DArrayRDGDExtensionIternalConstructor(reference Texture2DArrayRD) RefTexture2DArrayRD {
 	return &RefTexture2DArrayRDImpl{RefBase: NewRef[Texture2DArrayRD](reference)}
+}
+
+// NewRefTexture2DArrayRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTexture2DArrayRDGDExtensionReturnOwner(reference Texture2DArrayRD) RefTexture2DArrayRD {
+	return &RefTexture2DArrayRDImpl{RefBase: NewRefTransfer[Texture2DArrayRD](reference)}
 }
 
 var _ RefTexture2DRD = &RefTexture2DRDImpl{}
@@ -9398,8 +15314,20 @@ func NewRefTexture2DRDAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2DRD](reference.(Texture2DRD))
 }
 
+// NewRefTexture2DRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTexture2DRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTexture2DRDGDExtensionIternalConstructor(reference Texture2DRD) RefTexture2DRD {
 	return &RefTexture2DRDImpl{RefBase: NewRef[Texture2DRD](reference)}
+}
+
+// NewRefTexture2DRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTexture2DRDGDExtensionReturnOwner(reference Texture2DRD) RefTexture2DRD {
+	return &RefTexture2DRDImpl{RefBase: NewRefTransfer[Texture2DRD](reference)}
 }
 
 var _ RefTexture3D = &RefTexture3DImpl{}
@@ -9417,8 +15345,20 @@ func NewRefTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[Texture3D](reference.(Texture3D))
 }
 
+// NewRefTexture3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTexture3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTexture3DGDExtensionIternalConstructor(reference Texture3D) RefTexture3D {
 	return &RefTexture3DImpl{RefBase: NewRef[Texture3D](reference)}
+}
+
+// NewRefTexture3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTexture3DGDExtensionReturnOwner(reference Texture3D) RefTexture3D {
+	return &RefTexture3DImpl{RefBase: NewRefTransfer[Texture3D](reference)}
 }
 
 var _ RefTexture3DRD = &RefTexture3DRDImpl{}
@@ -9436,8 +15376,20 @@ func NewRefTexture3DRDAsRef(reference RefCounted) Ref {
 	return NewRef[Texture3DRD](reference.(Texture3DRD))
 }
 
+// NewRefTexture3DRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTexture3DRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTexture3DRDGDExtensionIternalConstructor(reference Texture3DRD) RefTexture3DRD {
 	return &RefTexture3DRDImpl{RefBase: NewRef[Texture3DRD](reference)}
+}
+
+// NewRefTexture3DRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTexture3DRDGDExtensionReturnOwner(reference Texture3DRD) RefTexture3DRD {
+	return &RefTexture3DRDImpl{RefBase: NewRefTransfer[Texture3DRD](reference)}
 }
 
 var _ RefTextureCubemapArrayRD = &RefTextureCubemapArrayRDImpl{}
@@ -9455,8 +15407,20 @@ func NewRefTextureCubemapArrayRDAsRef(reference RefCounted) Ref {
 	return NewRef[TextureCubemapArrayRD](reference.(TextureCubemapArrayRD))
 }
 
+// NewRefTextureCubemapArrayRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextureCubemapArrayRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextureCubemapArrayRDGDExtensionIternalConstructor(reference TextureCubemapArrayRD) RefTextureCubemapArrayRD {
 	return &RefTextureCubemapArrayRDImpl{RefBase: NewRef[TextureCubemapArrayRD](reference)}
+}
+
+// NewRefTextureCubemapArrayRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextureCubemapArrayRDGDExtensionReturnOwner(reference TextureCubemapArrayRD) RefTextureCubemapArrayRD {
+	return &RefTextureCubemapArrayRDImpl{RefBase: NewRefTransfer[TextureCubemapArrayRD](reference)}
 }
 
 var _ RefTextureCubemapRD = &RefTextureCubemapRDImpl{}
@@ -9474,8 +15438,20 @@ func NewRefTextureCubemapRDAsRef(reference RefCounted) Ref {
 	return NewRef[TextureCubemapRD](reference.(TextureCubemapRD))
 }
 
+// NewRefTextureCubemapRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextureCubemapRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextureCubemapRDGDExtensionIternalConstructor(reference TextureCubemapRD) RefTextureCubemapRD {
 	return &RefTextureCubemapRDImpl{RefBase: NewRef[TextureCubemapRD](reference)}
+}
+
+// NewRefTextureCubemapRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextureCubemapRDGDExtensionReturnOwner(reference TextureCubemapRD) RefTextureCubemapRD {
+	return &RefTextureCubemapRDImpl{RefBase: NewRefTransfer[TextureCubemapRD](reference)}
 }
 
 var _ RefTextureLayered = &RefTextureLayeredImpl{}
@@ -9493,8 +15469,20 @@ func NewRefTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[TextureLayered](reference.(TextureLayered))
 }
 
+// NewRefTextureLayeredGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextureLayeredWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextureLayeredGDExtensionIternalConstructor(reference TextureLayered) RefTextureLayered {
 	return &RefTextureLayeredImpl{RefBase: NewRef[TextureLayered](reference)}
+}
+
+// NewRefTextureLayeredGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextureLayeredGDExtensionReturnOwner(reference TextureLayered) RefTextureLayered {
+	return &RefTextureLayeredImpl{RefBase: NewRefTransfer[TextureLayered](reference)}
 }
 
 var _ RefTextureLayeredRD = &RefTextureLayeredRDImpl{}
@@ -9512,8 +15500,20 @@ func NewRefTextureLayeredRDAsRef(reference RefCounted) Ref {
 	return NewRef[TextureLayeredRD](reference.(TextureLayeredRD))
 }
 
+// NewRefTextureLayeredRDGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTextureLayeredRDWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTextureLayeredRDGDExtensionIternalConstructor(reference TextureLayeredRD) RefTextureLayeredRD {
 	return &RefTextureLayeredRDImpl{RefBase: NewRef[TextureLayeredRD](reference)}
+}
+
+// NewRefTextureLayeredRDGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTextureLayeredRDGDExtensionReturnOwner(reference TextureLayeredRD) RefTextureLayeredRD {
+	return &RefTextureLayeredRDImpl{RefBase: NewRefTransfer[TextureLayeredRD](reference)}
 }
 
 var _ RefTheme = &RefThemeImpl{}
@@ -9531,8 +15531,20 @@ func NewRefThemeAsRef(reference RefCounted) Ref {
 	return NewRef[Theme](reference.(Theme))
 }
 
+// NewRefThemeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewThemeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefThemeGDExtensionIternalConstructor(reference Theme) RefTheme {
 	return &RefThemeImpl{RefBase: NewRef[Theme](reference)}
+}
+
+// NewRefThemeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefThemeGDExtensionReturnOwner(reference Theme) RefTheme {
+	return &RefThemeImpl{RefBase: NewRefTransfer[Theme](reference)}
 }
 
 var _ RefThread = &RefThreadImpl{}
@@ -9550,8 +15562,20 @@ func NewRefThreadAsRef(reference RefCounted) Ref {
 	return NewRef[Thread](reference.(Thread))
 }
 
+// NewRefThreadGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewThreadWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefThreadGDExtensionIternalConstructor(reference Thread) RefThread {
 	return &RefThreadImpl{RefBase: NewRef[Thread](reference)}
+}
+
+// NewRefThreadGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefThreadGDExtensionReturnOwner(reference Thread) RefThread {
+	return &RefThreadImpl{RefBase: NewRefTransfer[Thread](reference)}
 }
 
 var _ RefTileMapPattern = &RefTileMapPatternImpl{}
@@ -9569,8 +15593,20 @@ func NewRefTileMapPatternAsRef(reference RefCounted) Ref {
 	return NewRef[TileMapPattern](reference.(TileMapPattern))
 }
 
+// NewRefTileMapPatternGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTileMapPatternWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTileMapPatternGDExtensionIternalConstructor(reference TileMapPattern) RefTileMapPattern {
 	return &RefTileMapPatternImpl{RefBase: NewRef[TileMapPattern](reference)}
+}
+
+// NewRefTileMapPatternGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTileMapPatternGDExtensionReturnOwner(reference TileMapPattern) RefTileMapPattern {
+	return &RefTileMapPatternImpl{RefBase: NewRefTransfer[TileMapPattern](reference)}
 }
 
 var _ RefTileSet = &RefTileSetImpl{}
@@ -9588,8 +15624,20 @@ func NewRefTileSetAsRef(reference RefCounted) Ref {
 	return NewRef[TileSet](reference.(TileSet))
 }
 
+// NewRefTileSetGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTileSetWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTileSetGDExtensionIternalConstructor(reference TileSet) RefTileSet {
 	return &RefTileSetImpl{RefBase: NewRef[TileSet](reference)}
+}
+
+// NewRefTileSetGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTileSetGDExtensionReturnOwner(reference TileSet) RefTileSet {
+	return &RefTileSetImpl{RefBase: NewRefTransfer[TileSet](reference)}
 }
 
 var _ RefTileSetAtlasSource = &RefTileSetAtlasSourceImpl{}
@@ -9607,8 +15655,20 @@ func NewRefTileSetAtlasSourceAsRef(reference RefCounted) Ref {
 	return NewRef[TileSetAtlasSource](reference.(TileSetAtlasSource))
 }
 
+// NewRefTileSetAtlasSourceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTileSetAtlasSourceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTileSetAtlasSourceGDExtensionIternalConstructor(reference TileSetAtlasSource) RefTileSetAtlasSource {
 	return &RefTileSetAtlasSourceImpl{RefBase: NewRef[TileSetAtlasSource](reference)}
+}
+
+// NewRefTileSetAtlasSourceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTileSetAtlasSourceGDExtensionReturnOwner(reference TileSetAtlasSource) RefTileSetAtlasSource {
+	return &RefTileSetAtlasSourceImpl{RefBase: NewRefTransfer[TileSetAtlasSource](reference)}
 }
 
 var _ RefTileSetScenesCollectionSource = &RefTileSetScenesCollectionSourceImpl{}
@@ -9626,8 +15686,20 @@ func NewRefTileSetScenesCollectionSourceAsRef(reference RefCounted) Ref {
 	return NewRef[TileSetScenesCollectionSource](reference.(TileSetScenesCollectionSource))
 }
 
+// NewRefTileSetScenesCollectionSourceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTileSetScenesCollectionSourceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTileSetScenesCollectionSourceGDExtensionIternalConstructor(reference TileSetScenesCollectionSource) RefTileSetScenesCollectionSource {
 	return &RefTileSetScenesCollectionSourceImpl{RefBase: NewRef[TileSetScenesCollectionSource](reference)}
+}
+
+// NewRefTileSetScenesCollectionSourceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTileSetScenesCollectionSourceGDExtensionReturnOwner(reference TileSetScenesCollectionSource) RefTileSetScenesCollectionSource {
+	return &RefTileSetScenesCollectionSourceImpl{RefBase: NewRefTransfer[TileSetScenesCollectionSource](reference)}
 }
 
 var _ RefTileSetSource = &RefTileSetSourceImpl{}
@@ -9645,8 +15717,20 @@ func NewRefTileSetSourceAsRef(reference RefCounted) Ref {
 	return NewRef[TileSetSource](reference.(TileSetSource))
 }
 
+// NewRefTileSetSourceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTileSetSourceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTileSetSourceGDExtensionIternalConstructor(reference TileSetSource) RefTileSetSource {
 	return &RefTileSetSourceImpl{RefBase: NewRef[TileSetSource](reference)}
+}
+
+// NewRefTileSetSourceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTileSetSourceGDExtensionReturnOwner(reference TileSetSource) RefTileSetSource {
+	return &RefTileSetSourceImpl{RefBase: NewRefTransfer[TileSetSource](reference)}
 }
 
 var _ RefTorusMesh = &RefTorusMeshImpl{}
@@ -9664,8 +15748,20 @@ func NewRefTorusMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TorusMesh](reference.(TorusMesh))
 }
 
+// NewRefTorusMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTorusMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTorusMeshGDExtensionIternalConstructor(reference TorusMesh) RefTorusMesh {
 	return &RefTorusMeshImpl{RefBase: NewRef[TorusMesh](reference)}
+}
+
+// NewRefTorusMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTorusMeshGDExtensionReturnOwner(reference TorusMesh) RefTorusMesh {
+	return &RefTorusMeshImpl{RefBase: NewRefTransfer[TorusMesh](reference)}
 }
 
 var _ RefTranslation = &RefTranslationImpl{}
@@ -9683,8 +15779,20 @@ func NewRefTranslationAsRef(reference RefCounted) Ref {
 	return NewRef[Translation](reference.(Translation))
 }
 
+// NewRefTranslationGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTranslationWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTranslationGDExtensionIternalConstructor(reference Translation) RefTranslation {
 	return &RefTranslationImpl{RefBase: NewRef[Translation](reference)}
+}
+
+// NewRefTranslationGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTranslationGDExtensionReturnOwner(reference Translation) RefTranslation {
+	return &RefTranslationImpl{RefBase: NewRefTransfer[Translation](reference)}
 }
 
 var _ RefTranslationDomain = &RefTranslationDomainImpl{}
@@ -9702,8 +15810,20 @@ func NewRefTranslationDomainAsRef(reference RefCounted) Ref {
 	return NewRef[TranslationDomain](reference.(TranslationDomain))
 }
 
+// NewRefTranslationDomainGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTranslationDomainWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTranslationDomainGDExtensionIternalConstructor(reference TranslationDomain) RefTranslationDomain {
 	return &RefTranslationDomainImpl{RefBase: NewRef[TranslationDomain](reference)}
+}
+
+// NewRefTranslationDomainGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTranslationDomainGDExtensionReturnOwner(reference TranslationDomain) RefTranslationDomain {
+	return &RefTranslationDomainImpl{RefBase: NewRefTransfer[TranslationDomain](reference)}
 }
 
 var _ RefTriangleMesh = &RefTriangleMeshImpl{}
@@ -9721,8 +15841,20 @@ func NewRefTriangleMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TriangleMesh](reference.(TriangleMesh))
 }
 
+// NewRefTriangleMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTriangleMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTriangleMeshGDExtensionIternalConstructor(reference TriangleMesh) RefTriangleMesh {
 	return &RefTriangleMeshImpl{RefBase: NewRef[TriangleMesh](reference)}
+}
+
+// NewRefTriangleMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTriangleMeshGDExtensionReturnOwner(reference TriangleMesh) RefTriangleMesh {
+	return &RefTriangleMeshImpl{RefBase: NewRefTransfer[TriangleMesh](reference)}
 }
 
 var _ RefTubeTrailMesh = &RefTubeTrailMeshImpl{}
@@ -9740,8 +15872,20 @@ func NewRefTubeTrailMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TubeTrailMesh](reference.(TubeTrailMesh))
 }
 
+// NewRefTubeTrailMeshGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTubeTrailMeshWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTubeTrailMeshGDExtensionIternalConstructor(reference TubeTrailMesh) RefTubeTrailMesh {
 	return &RefTubeTrailMeshImpl{RefBase: NewRef[TubeTrailMesh](reference)}
+}
+
+// NewRefTubeTrailMeshGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTubeTrailMeshGDExtensionReturnOwner(reference TubeTrailMesh) RefTubeTrailMesh {
+	return &RefTubeTrailMeshImpl{RefBase: NewRefTransfer[TubeTrailMesh](reference)}
 }
 
 var _ RefTween = &RefTweenImpl{}
@@ -9759,8 +15903,20 @@ func NewRefTweenAsRef(reference RefCounted) Ref {
 	return NewRef[Tween](reference.(Tween))
 }
 
+// NewRefTweenGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTweenWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTweenGDExtensionIternalConstructor(reference Tween) RefTween {
 	return &RefTweenImpl{RefBase: NewRef[Tween](reference)}
+}
+
+// NewRefTweenGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTweenGDExtensionReturnOwner(reference Tween) RefTween {
+	return &RefTweenImpl{RefBase: NewRefTransfer[Tween](reference)}
 }
 
 var _ RefTweener = &RefTweenerImpl{}
@@ -9778,8 +15934,20 @@ func NewRefTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[Tweener](reference.(Tweener))
 }
 
+// NewRefTweenerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewTweenerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefTweenerGDExtensionIternalConstructor(reference Tweener) RefTweener {
 	return &RefTweenerImpl{RefBase: NewRef[Tweener](reference)}
+}
+
+// NewRefTweenerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefTweenerGDExtensionReturnOwner(reference Tweener) RefTweener {
+	return &RefTweenerImpl{RefBase: NewRefTransfer[Tweener](reference)}
 }
 
 var _ RefUDPServer = &RefUDPServerImpl{}
@@ -9797,8 +15965,20 @@ func NewRefUDPServerAsRef(reference RefCounted) Ref {
 	return NewRef[UDPServer](reference.(UDPServer))
 }
 
+// NewRefUDPServerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewUDPServerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefUDPServerGDExtensionIternalConstructor(reference UDPServer) RefUDPServer {
 	return &RefUDPServerImpl{RefBase: NewRef[UDPServer](reference)}
+}
+
+// NewRefUDPServerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefUDPServerGDExtensionReturnOwner(reference UDPServer) RefUDPServer {
+	return &RefUDPServerImpl{RefBase: NewRefTransfer[UDPServer](reference)}
 }
 
 var _ RefUDSServer = &RefUDSServerImpl{}
@@ -9816,8 +15996,20 @@ func NewRefUDSServerAsRef(reference RefCounted) Ref {
 	return NewRef[UDSServer](reference.(UDSServer))
 }
 
+// NewRefUDSServerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewUDSServerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefUDSServerGDExtensionIternalConstructor(reference UDSServer) RefUDSServer {
 	return &RefUDSServerImpl{RefBase: NewRef[UDSServer](reference)}
+}
+
+// NewRefUDSServerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefUDSServerGDExtensionReturnOwner(reference UDSServer) RefUDSServer {
+	return &RefUDSServerImpl{RefBase: NewRefTransfer[UDSServer](reference)}
 }
 
 var _ RefUPNP = &RefUPNPImpl{}
@@ -9835,8 +16027,20 @@ func NewRefUPNPAsRef(reference RefCounted) Ref {
 	return NewRef[UPNP](reference.(UPNP))
 }
 
+// NewRefUPNPGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewUPNPWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefUPNPGDExtensionIternalConstructor(reference UPNP) RefUPNP {
 	return &RefUPNPImpl{RefBase: NewRef[UPNP](reference)}
+}
+
+// NewRefUPNPGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefUPNPGDExtensionReturnOwner(reference UPNP) RefUPNP {
+	return &RefUPNPImpl{RefBase: NewRefTransfer[UPNP](reference)}
 }
 
 var _ RefUPNPDevice = &RefUPNPDeviceImpl{}
@@ -9854,8 +16058,20 @@ func NewRefUPNPDeviceAsRef(reference RefCounted) Ref {
 	return NewRef[UPNPDevice](reference.(UPNPDevice))
 }
 
+// NewRefUPNPDeviceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewUPNPDeviceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefUPNPDeviceGDExtensionIternalConstructor(reference UPNPDevice) RefUPNPDevice {
 	return &RefUPNPDeviceImpl{RefBase: NewRef[UPNPDevice](reference)}
+}
+
+// NewRefUPNPDeviceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefUPNPDeviceGDExtensionReturnOwner(reference UPNPDevice) RefUPNPDevice {
+	return &RefUPNPDeviceImpl{RefBase: NewRefTransfer[UPNPDevice](reference)}
 }
 
 var _ RefVideoStream = &RefVideoStreamImpl{}
@@ -9873,8 +16089,20 @@ func NewRefVideoStreamAsRef(reference RefCounted) Ref {
 	return NewRef[VideoStream](reference.(VideoStream))
 }
 
+// NewRefVideoStreamGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVideoStreamWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVideoStreamGDExtensionIternalConstructor(reference VideoStream) RefVideoStream {
 	return &RefVideoStreamImpl{RefBase: NewRef[VideoStream](reference)}
+}
+
+// NewRefVideoStreamGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVideoStreamGDExtensionReturnOwner(reference VideoStream) RefVideoStream {
+	return &RefVideoStreamImpl{RefBase: NewRefTransfer[VideoStream](reference)}
 }
 
 var _ RefVideoStreamPlayback = &RefVideoStreamPlaybackImpl{}
@@ -9892,8 +16120,20 @@ func NewRefVideoStreamPlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[VideoStreamPlayback](reference.(VideoStreamPlayback))
 }
 
+// NewRefVideoStreamPlaybackGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVideoStreamPlaybackWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVideoStreamPlaybackGDExtensionIternalConstructor(reference VideoStreamPlayback) RefVideoStreamPlayback {
 	return &RefVideoStreamPlaybackImpl{RefBase: NewRef[VideoStreamPlayback](reference)}
+}
+
+// NewRefVideoStreamPlaybackGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVideoStreamPlaybackGDExtensionReturnOwner(reference VideoStreamPlayback) RefVideoStreamPlayback {
+	return &RefVideoStreamPlaybackImpl{RefBase: NewRefTransfer[VideoStreamPlayback](reference)}
 }
 
 var _ RefVideoStreamTheora = &RefVideoStreamTheoraImpl{}
@@ -9911,8 +16151,20 @@ func NewRefVideoStreamTheoraAsRef(reference RefCounted) Ref {
 	return NewRef[VideoStreamTheora](reference.(VideoStreamTheora))
 }
 
+// NewRefVideoStreamTheoraGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVideoStreamTheoraWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVideoStreamTheoraGDExtensionIternalConstructor(reference VideoStreamTheora) RefVideoStreamTheora {
 	return &RefVideoStreamTheoraImpl{RefBase: NewRef[VideoStreamTheora](reference)}
+}
+
+// NewRefVideoStreamTheoraGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVideoStreamTheoraGDExtensionReturnOwner(reference VideoStreamTheora) RefVideoStreamTheora {
+	return &RefVideoStreamTheoraImpl{RefBase: NewRefTransfer[VideoStreamTheora](reference)}
 }
 
 var _ RefViewportTexture = &RefViewportTextureImpl{}
@@ -9930,8 +16182,20 @@ func NewRefViewportTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ViewportTexture](reference.(ViewportTexture))
 }
 
+// NewRefViewportTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewViewportTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefViewportTextureGDExtensionIternalConstructor(reference ViewportTexture) RefViewportTexture {
 	return &RefViewportTextureImpl{RefBase: NewRef[ViewportTexture](reference)}
+}
+
+// NewRefViewportTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefViewportTextureGDExtensionReturnOwner(reference ViewportTexture) RefViewportTexture {
+	return &RefViewportTextureImpl{RefBase: NewRefTransfer[ViewportTexture](reference)}
 }
 
 var _ RefVisualShader = &RefVisualShaderImpl{}
@@ -9949,8 +16213,20 @@ func NewRefVisualShaderAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShader](reference.(VisualShader))
 }
 
+// NewRefVisualShaderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderGDExtensionIternalConstructor(reference VisualShader) RefVisualShader {
 	return &RefVisualShaderImpl{RefBase: NewRef[VisualShader](reference)}
+}
+
+// NewRefVisualShaderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderGDExtensionReturnOwner(reference VisualShader) RefVisualShader {
+	return &RefVisualShaderImpl{RefBase: NewRefTransfer[VisualShader](reference)}
 }
 
 var _ RefVisualShaderNode = &RefVisualShaderNodeImpl{}
@@ -9968,8 +16244,20 @@ func NewRefVisualShaderNodeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNode](reference.(VisualShaderNode))
 }
 
+// NewRefVisualShaderNodeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeGDExtensionIternalConstructor(reference VisualShaderNode) RefVisualShaderNode {
 	return &RefVisualShaderNodeImpl{RefBase: NewRef[VisualShaderNode](reference)}
+}
+
+// NewRefVisualShaderNodeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeGDExtensionReturnOwner(reference VisualShaderNode) RefVisualShaderNode {
+	return &RefVisualShaderNodeImpl{RefBase: NewRefTransfer[VisualShaderNode](reference)}
 }
 
 var _ RefVisualShaderNodeBillboard = &RefVisualShaderNodeBillboardImpl{}
@@ -9987,8 +16275,20 @@ func NewRefVisualShaderNodeBillboardAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeBillboard](reference.(VisualShaderNodeBillboard))
 }
 
+// NewRefVisualShaderNodeBillboardGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeBillboardWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeBillboardGDExtensionIternalConstructor(reference VisualShaderNodeBillboard) RefVisualShaderNodeBillboard {
 	return &RefVisualShaderNodeBillboardImpl{RefBase: NewRef[VisualShaderNodeBillboard](reference)}
+}
+
+// NewRefVisualShaderNodeBillboardGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeBillboardGDExtensionReturnOwner(reference VisualShaderNodeBillboard) RefVisualShaderNodeBillboard {
+	return &RefVisualShaderNodeBillboardImpl{RefBase: NewRefTransfer[VisualShaderNodeBillboard](reference)}
 }
 
 var _ RefVisualShaderNodeBooleanConstant = &RefVisualShaderNodeBooleanConstantImpl{}
@@ -10006,8 +16306,20 @@ func NewRefVisualShaderNodeBooleanConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeBooleanConstant](reference.(VisualShaderNodeBooleanConstant))
 }
 
+// NewRefVisualShaderNodeBooleanConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeBooleanConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeBooleanConstantGDExtensionIternalConstructor(reference VisualShaderNodeBooleanConstant) RefVisualShaderNodeBooleanConstant {
 	return &RefVisualShaderNodeBooleanConstantImpl{RefBase: NewRef[VisualShaderNodeBooleanConstant](reference)}
+}
+
+// NewRefVisualShaderNodeBooleanConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeBooleanConstantGDExtensionReturnOwner(reference VisualShaderNodeBooleanConstant) RefVisualShaderNodeBooleanConstant {
+	return &RefVisualShaderNodeBooleanConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeBooleanConstant](reference)}
 }
 
 var _ RefVisualShaderNodeBooleanParameter = &RefVisualShaderNodeBooleanParameterImpl{}
@@ -10025,8 +16337,20 @@ func NewRefVisualShaderNodeBooleanParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeBooleanParameter](reference.(VisualShaderNodeBooleanParameter))
 }
 
+// NewRefVisualShaderNodeBooleanParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeBooleanParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeBooleanParameterGDExtensionIternalConstructor(reference VisualShaderNodeBooleanParameter) RefVisualShaderNodeBooleanParameter {
 	return &RefVisualShaderNodeBooleanParameterImpl{RefBase: NewRef[VisualShaderNodeBooleanParameter](reference)}
+}
+
+// NewRefVisualShaderNodeBooleanParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeBooleanParameterGDExtensionReturnOwner(reference VisualShaderNodeBooleanParameter) RefVisualShaderNodeBooleanParameter {
+	return &RefVisualShaderNodeBooleanParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeBooleanParameter](reference)}
 }
 
 var _ RefVisualShaderNodeClamp = &RefVisualShaderNodeClampImpl{}
@@ -10044,8 +16368,20 @@ func NewRefVisualShaderNodeClampAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeClamp](reference.(VisualShaderNodeClamp))
 }
 
+// NewRefVisualShaderNodeClampGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeClampWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeClampGDExtensionIternalConstructor(reference VisualShaderNodeClamp) RefVisualShaderNodeClamp {
 	return &RefVisualShaderNodeClampImpl{RefBase: NewRef[VisualShaderNodeClamp](reference)}
+}
+
+// NewRefVisualShaderNodeClampGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeClampGDExtensionReturnOwner(reference VisualShaderNodeClamp) RefVisualShaderNodeClamp {
+	return &RefVisualShaderNodeClampImpl{RefBase: NewRefTransfer[VisualShaderNodeClamp](reference)}
 }
 
 var _ RefVisualShaderNodeColorConstant = &RefVisualShaderNodeColorConstantImpl{}
@@ -10063,8 +16399,20 @@ func NewRefVisualShaderNodeColorConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorConstant](reference.(VisualShaderNodeColorConstant))
 }
 
+// NewRefVisualShaderNodeColorConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeColorConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeColorConstantGDExtensionIternalConstructor(reference VisualShaderNodeColorConstant) RefVisualShaderNodeColorConstant {
 	return &RefVisualShaderNodeColorConstantImpl{RefBase: NewRef[VisualShaderNodeColorConstant](reference)}
+}
+
+// NewRefVisualShaderNodeColorConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeColorConstantGDExtensionReturnOwner(reference VisualShaderNodeColorConstant) RefVisualShaderNodeColorConstant {
+	return &RefVisualShaderNodeColorConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeColorConstant](reference)}
 }
 
 var _ RefVisualShaderNodeColorFunc = &RefVisualShaderNodeColorFuncImpl{}
@@ -10082,8 +16430,20 @@ func NewRefVisualShaderNodeColorFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorFunc](reference.(VisualShaderNodeColorFunc))
 }
 
+// NewRefVisualShaderNodeColorFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeColorFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeColorFuncGDExtensionIternalConstructor(reference VisualShaderNodeColorFunc) RefVisualShaderNodeColorFunc {
 	return &RefVisualShaderNodeColorFuncImpl{RefBase: NewRef[VisualShaderNodeColorFunc](reference)}
+}
+
+// NewRefVisualShaderNodeColorFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeColorFuncGDExtensionReturnOwner(reference VisualShaderNodeColorFunc) RefVisualShaderNodeColorFunc {
+	return &RefVisualShaderNodeColorFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeColorFunc](reference)}
 }
 
 var _ RefVisualShaderNodeColorOp = &RefVisualShaderNodeColorOpImpl{}
@@ -10101,8 +16461,20 @@ func NewRefVisualShaderNodeColorOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorOp](reference.(VisualShaderNodeColorOp))
 }
 
+// NewRefVisualShaderNodeColorOpGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeColorOpWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeColorOpGDExtensionIternalConstructor(reference VisualShaderNodeColorOp) RefVisualShaderNodeColorOp {
 	return &RefVisualShaderNodeColorOpImpl{RefBase: NewRef[VisualShaderNodeColorOp](reference)}
+}
+
+// NewRefVisualShaderNodeColorOpGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeColorOpGDExtensionReturnOwner(reference VisualShaderNodeColorOp) RefVisualShaderNodeColorOp {
+	return &RefVisualShaderNodeColorOpImpl{RefBase: NewRefTransfer[VisualShaderNodeColorOp](reference)}
 }
 
 var _ RefVisualShaderNodeColorParameter = &RefVisualShaderNodeColorParameterImpl{}
@@ -10120,8 +16492,20 @@ func NewRefVisualShaderNodeColorParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorParameter](reference.(VisualShaderNodeColorParameter))
 }
 
+// NewRefVisualShaderNodeColorParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeColorParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeColorParameterGDExtensionIternalConstructor(reference VisualShaderNodeColorParameter) RefVisualShaderNodeColorParameter {
 	return &RefVisualShaderNodeColorParameterImpl{RefBase: NewRef[VisualShaderNodeColorParameter](reference)}
+}
+
+// NewRefVisualShaderNodeColorParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeColorParameterGDExtensionReturnOwner(reference VisualShaderNodeColorParameter) RefVisualShaderNodeColorParameter {
+	return &RefVisualShaderNodeColorParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeColorParameter](reference)}
 }
 
 var _ RefVisualShaderNodeComment = &RefVisualShaderNodeCommentImpl{}
@@ -10139,8 +16523,20 @@ func NewRefVisualShaderNodeCommentAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeComment](reference.(VisualShaderNodeComment))
 }
 
+// NewRefVisualShaderNodeCommentGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeCommentWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeCommentGDExtensionIternalConstructor(reference VisualShaderNodeComment) RefVisualShaderNodeComment {
 	return &RefVisualShaderNodeCommentImpl{RefBase: NewRef[VisualShaderNodeComment](reference)}
+}
+
+// NewRefVisualShaderNodeCommentGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeCommentGDExtensionReturnOwner(reference VisualShaderNodeComment) RefVisualShaderNodeComment {
+	return &RefVisualShaderNodeCommentImpl{RefBase: NewRefTransfer[VisualShaderNodeComment](reference)}
 }
 
 var _ RefVisualShaderNodeCompare = &RefVisualShaderNodeCompareImpl{}
@@ -10158,8 +16554,20 @@ func NewRefVisualShaderNodeCompareAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCompare](reference.(VisualShaderNodeCompare))
 }
 
+// NewRefVisualShaderNodeCompareGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeCompareWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeCompareGDExtensionIternalConstructor(reference VisualShaderNodeCompare) RefVisualShaderNodeCompare {
 	return &RefVisualShaderNodeCompareImpl{RefBase: NewRef[VisualShaderNodeCompare](reference)}
+}
+
+// NewRefVisualShaderNodeCompareGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeCompareGDExtensionReturnOwner(reference VisualShaderNodeCompare) RefVisualShaderNodeCompare {
+	return &RefVisualShaderNodeCompareImpl{RefBase: NewRefTransfer[VisualShaderNodeCompare](reference)}
 }
 
 var _ RefVisualShaderNodeConstant = &RefVisualShaderNodeConstantImpl{}
@@ -10177,8 +16585,20 @@ func NewRefVisualShaderNodeConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeConstant](reference.(VisualShaderNodeConstant))
 }
 
+// NewRefVisualShaderNodeConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeConstantGDExtensionIternalConstructor(reference VisualShaderNodeConstant) RefVisualShaderNodeConstant {
 	return &RefVisualShaderNodeConstantImpl{RefBase: NewRef[VisualShaderNodeConstant](reference)}
+}
+
+// NewRefVisualShaderNodeConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeConstantGDExtensionReturnOwner(reference VisualShaderNodeConstant) RefVisualShaderNodeConstant {
+	return &RefVisualShaderNodeConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeConstant](reference)}
 }
 
 var _ RefVisualShaderNodeCubemap = &RefVisualShaderNodeCubemapImpl{}
@@ -10196,8 +16616,20 @@ func NewRefVisualShaderNodeCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCubemap](reference.(VisualShaderNodeCubemap))
 }
 
+// NewRefVisualShaderNodeCubemapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeCubemapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeCubemapGDExtensionIternalConstructor(reference VisualShaderNodeCubemap) RefVisualShaderNodeCubemap {
 	return &RefVisualShaderNodeCubemapImpl{RefBase: NewRef[VisualShaderNodeCubemap](reference)}
+}
+
+// NewRefVisualShaderNodeCubemapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeCubemapGDExtensionReturnOwner(reference VisualShaderNodeCubemap) RefVisualShaderNodeCubemap {
+	return &RefVisualShaderNodeCubemapImpl{RefBase: NewRefTransfer[VisualShaderNodeCubemap](reference)}
 }
 
 var _ RefVisualShaderNodeCubemapParameter = &RefVisualShaderNodeCubemapParameterImpl{}
@@ -10215,8 +16647,20 @@ func NewRefVisualShaderNodeCubemapParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCubemapParameter](reference.(VisualShaderNodeCubemapParameter))
 }
 
+// NewRefVisualShaderNodeCubemapParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeCubemapParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeCubemapParameterGDExtensionIternalConstructor(reference VisualShaderNodeCubemapParameter) RefVisualShaderNodeCubemapParameter {
 	return &RefVisualShaderNodeCubemapParameterImpl{RefBase: NewRef[VisualShaderNodeCubemapParameter](reference)}
+}
+
+// NewRefVisualShaderNodeCubemapParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeCubemapParameterGDExtensionReturnOwner(reference VisualShaderNodeCubemapParameter) RefVisualShaderNodeCubemapParameter {
+	return &RefVisualShaderNodeCubemapParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeCubemapParameter](reference)}
 }
 
 var _ RefVisualShaderNodeCurveTexture = &RefVisualShaderNodeCurveTextureImpl{}
@@ -10234,8 +16678,20 @@ func NewRefVisualShaderNodeCurveTextureAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCurveTexture](reference.(VisualShaderNodeCurveTexture))
 }
 
+// NewRefVisualShaderNodeCurveTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeCurveTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeCurveTextureGDExtensionIternalConstructor(reference VisualShaderNodeCurveTexture) RefVisualShaderNodeCurveTexture {
 	return &RefVisualShaderNodeCurveTextureImpl{RefBase: NewRef[VisualShaderNodeCurveTexture](reference)}
+}
+
+// NewRefVisualShaderNodeCurveTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeCurveTextureGDExtensionReturnOwner(reference VisualShaderNodeCurveTexture) RefVisualShaderNodeCurveTexture {
+	return &RefVisualShaderNodeCurveTextureImpl{RefBase: NewRefTransfer[VisualShaderNodeCurveTexture](reference)}
 }
 
 var _ RefVisualShaderNodeCurveXYZTexture = &RefVisualShaderNodeCurveXYZTextureImpl{}
@@ -10253,8 +16709,20 @@ func NewRefVisualShaderNodeCurveXYZTextureAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCurveXYZTexture](reference.(VisualShaderNodeCurveXYZTexture))
 }
 
+// NewRefVisualShaderNodeCurveXYZTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeCurveXYZTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeCurveXYZTextureGDExtensionIternalConstructor(reference VisualShaderNodeCurveXYZTexture) RefVisualShaderNodeCurveXYZTexture {
 	return &RefVisualShaderNodeCurveXYZTextureImpl{RefBase: NewRef[VisualShaderNodeCurveXYZTexture](reference)}
+}
+
+// NewRefVisualShaderNodeCurveXYZTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeCurveXYZTextureGDExtensionReturnOwner(reference VisualShaderNodeCurveXYZTexture) RefVisualShaderNodeCurveXYZTexture {
+	return &RefVisualShaderNodeCurveXYZTextureImpl{RefBase: NewRefTransfer[VisualShaderNodeCurveXYZTexture](reference)}
 }
 
 var _ RefVisualShaderNodeCustom = &RefVisualShaderNodeCustomImpl{}
@@ -10272,8 +16740,20 @@ func NewRefVisualShaderNodeCustomAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCustom](reference.(VisualShaderNodeCustom))
 }
 
+// NewRefVisualShaderNodeCustomGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeCustomWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeCustomGDExtensionIternalConstructor(reference VisualShaderNodeCustom) RefVisualShaderNodeCustom {
 	return &RefVisualShaderNodeCustomImpl{RefBase: NewRef[VisualShaderNodeCustom](reference)}
+}
+
+// NewRefVisualShaderNodeCustomGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeCustomGDExtensionReturnOwner(reference VisualShaderNodeCustom) RefVisualShaderNodeCustom {
+	return &RefVisualShaderNodeCustomImpl{RefBase: NewRefTransfer[VisualShaderNodeCustom](reference)}
 }
 
 var _ RefVisualShaderNodeDerivativeFunc = &RefVisualShaderNodeDerivativeFuncImpl{}
@@ -10291,8 +16771,20 @@ func NewRefVisualShaderNodeDerivativeFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDerivativeFunc](reference.(VisualShaderNodeDerivativeFunc))
 }
 
+// NewRefVisualShaderNodeDerivativeFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeDerivativeFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeDerivativeFuncGDExtensionIternalConstructor(reference VisualShaderNodeDerivativeFunc) RefVisualShaderNodeDerivativeFunc {
 	return &RefVisualShaderNodeDerivativeFuncImpl{RefBase: NewRef[VisualShaderNodeDerivativeFunc](reference)}
+}
+
+// NewRefVisualShaderNodeDerivativeFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeDerivativeFuncGDExtensionReturnOwner(reference VisualShaderNodeDerivativeFunc) RefVisualShaderNodeDerivativeFunc {
+	return &RefVisualShaderNodeDerivativeFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeDerivativeFunc](reference)}
 }
 
 var _ RefVisualShaderNodeDeterminant = &RefVisualShaderNodeDeterminantImpl{}
@@ -10310,8 +16802,20 @@ func NewRefVisualShaderNodeDeterminantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDeterminant](reference.(VisualShaderNodeDeterminant))
 }
 
+// NewRefVisualShaderNodeDeterminantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeDeterminantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeDeterminantGDExtensionIternalConstructor(reference VisualShaderNodeDeterminant) RefVisualShaderNodeDeterminant {
 	return &RefVisualShaderNodeDeterminantImpl{RefBase: NewRef[VisualShaderNodeDeterminant](reference)}
+}
+
+// NewRefVisualShaderNodeDeterminantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeDeterminantGDExtensionReturnOwner(reference VisualShaderNodeDeterminant) RefVisualShaderNodeDeterminant {
+	return &RefVisualShaderNodeDeterminantImpl{RefBase: NewRefTransfer[VisualShaderNodeDeterminant](reference)}
 }
 
 var _ RefVisualShaderNodeDistanceFade = &RefVisualShaderNodeDistanceFadeImpl{}
@@ -10329,8 +16833,20 @@ func NewRefVisualShaderNodeDistanceFadeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDistanceFade](reference.(VisualShaderNodeDistanceFade))
 }
 
+// NewRefVisualShaderNodeDistanceFadeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeDistanceFadeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeDistanceFadeGDExtensionIternalConstructor(reference VisualShaderNodeDistanceFade) RefVisualShaderNodeDistanceFade {
 	return &RefVisualShaderNodeDistanceFadeImpl{RefBase: NewRef[VisualShaderNodeDistanceFade](reference)}
+}
+
+// NewRefVisualShaderNodeDistanceFadeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeDistanceFadeGDExtensionReturnOwner(reference VisualShaderNodeDistanceFade) RefVisualShaderNodeDistanceFade {
+	return &RefVisualShaderNodeDistanceFadeImpl{RefBase: NewRefTransfer[VisualShaderNodeDistanceFade](reference)}
 }
 
 var _ RefVisualShaderNodeDotProduct = &RefVisualShaderNodeDotProductImpl{}
@@ -10348,8 +16864,20 @@ func NewRefVisualShaderNodeDotProductAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDotProduct](reference.(VisualShaderNodeDotProduct))
 }
 
+// NewRefVisualShaderNodeDotProductGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeDotProductWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeDotProductGDExtensionIternalConstructor(reference VisualShaderNodeDotProduct) RefVisualShaderNodeDotProduct {
 	return &RefVisualShaderNodeDotProductImpl{RefBase: NewRef[VisualShaderNodeDotProduct](reference)}
+}
+
+// NewRefVisualShaderNodeDotProductGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeDotProductGDExtensionReturnOwner(reference VisualShaderNodeDotProduct) RefVisualShaderNodeDotProduct {
+	return &RefVisualShaderNodeDotProductImpl{RefBase: NewRefTransfer[VisualShaderNodeDotProduct](reference)}
 }
 
 var _ RefVisualShaderNodeExpression = &RefVisualShaderNodeExpressionImpl{}
@@ -10367,8 +16895,20 @@ func NewRefVisualShaderNodeExpressionAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeExpression](reference.(VisualShaderNodeExpression))
 }
 
+// NewRefVisualShaderNodeExpressionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeExpressionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeExpressionGDExtensionIternalConstructor(reference VisualShaderNodeExpression) RefVisualShaderNodeExpression {
 	return &RefVisualShaderNodeExpressionImpl{RefBase: NewRef[VisualShaderNodeExpression](reference)}
+}
+
+// NewRefVisualShaderNodeExpressionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeExpressionGDExtensionReturnOwner(reference VisualShaderNodeExpression) RefVisualShaderNodeExpression {
+	return &RefVisualShaderNodeExpressionImpl{RefBase: NewRefTransfer[VisualShaderNodeExpression](reference)}
 }
 
 var _ RefVisualShaderNodeFaceForward = &RefVisualShaderNodeFaceForwardImpl{}
@@ -10386,8 +16926,20 @@ func NewRefVisualShaderNodeFaceForwardAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFaceForward](reference.(VisualShaderNodeFaceForward))
 }
 
+// NewRefVisualShaderNodeFaceForwardGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeFaceForwardWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeFaceForwardGDExtensionIternalConstructor(reference VisualShaderNodeFaceForward) RefVisualShaderNodeFaceForward {
 	return &RefVisualShaderNodeFaceForwardImpl{RefBase: NewRef[VisualShaderNodeFaceForward](reference)}
+}
+
+// NewRefVisualShaderNodeFaceForwardGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeFaceForwardGDExtensionReturnOwner(reference VisualShaderNodeFaceForward) RefVisualShaderNodeFaceForward {
+	return &RefVisualShaderNodeFaceForwardImpl{RefBase: NewRefTransfer[VisualShaderNodeFaceForward](reference)}
 }
 
 var _ RefVisualShaderNodeFloatConstant = &RefVisualShaderNodeFloatConstantImpl{}
@@ -10405,8 +16957,20 @@ func NewRefVisualShaderNodeFloatConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatConstant](reference.(VisualShaderNodeFloatConstant))
 }
 
+// NewRefVisualShaderNodeFloatConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeFloatConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeFloatConstantGDExtensionIternalConstructor(reference VisualShaderNodeFloatConstant) RefVisualShaderNodeFloatConstant {
 	return &RefVisualShaderNodeFloatConstantImpl{RefBase: NewRef[VisualShaderNodeFloatConstant](reference)}
+}
+
+// NewRefVisualShaderNodeFloatConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeFloatConstantGDExtensionReturnOwner(reference VisualShaderNodeFloatConstant) RefVisualShaderNodeFloatConstant {
+	return &RefVisualShaderNodeFloatConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeFloatConstant](reference)}
 }
 
 var _ RefVisualShaderNodeFloatFunc = &RefVisualShaderNodeFloatFuncImpl{}
@@ -10424,8 +16988,20 @@ func NewRefVisualShaderNodeFloatFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatFunc](reference.(VisualShaderNodeFloatFunc))
 }
 
+// NewRefVisualShaderNodeFloatFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeFloatFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeFloatFuncGDExtensionIternalConstructor(reference VisualShaderNodeFloatFunc) RefVisualShaderNodeFloatFunc {
 	return &RefVisualShaderNodeFloatFuncImpl{RefBase: NewRef[VisualShaderNodeFloatFunc](reference)}
+}
+
+// NewRefVisualShaderNodeFloatFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeFloatFuncGDExtensionReturnOwner(reference VisualShaderNodeFloatFunc) RefVisualShaderNodeFloatFunc {
+	return &RefVisualShaderNodeFloatFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeFloatFunc](reference)}
 }
 
 var _ RefVisualShaderNodeFloatOp = &RefVisualShaderNodeFloatOpImpl{}
@@ -10443,8 +17019,20 @@ func NewRefVisualShaderNodeFloatOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatOp](reference.(VisualShaderNodeFloatOp))
 }
 
+// NewRefVisualShaderNodeFloatOpGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeFloatOpWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeFloatOpGDExtensionIternalConstructor(reference VisualShaderNodeFloatOp) RefVisualShaderNodeFloatOp {
 	return &RefVisualShaderNodeFloatOpImpl{RefBase: NewRef[VisualShaderNodeFloatOp](reference)}
+}
+
+// NewRefVisualShaderNodeFloatOpGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeFloatOpGDExtensionReturnOwner(reference VisualShaderNodeFloatOp) RefVisualShaderNodeFloatOp {
+	return &RefVisualShaderNodeFloatOpImpl{RefBase: NewRefTransfer[VisualShaderNodeFloatOp](reference)}
 }
 
 var _ RefVisualShaderNodeFloatParameter = &RefVisualShaderNodeFloatParameterImpl{}
@@ -10462,8 +17050,20 @@ func NewRefVisualShaderNodeFloatParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatParameter](reference.(VisualShaderNodeFloatParameter))
 }
 
+// NewRefVisualShaderNodeFloatParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeFloatParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeFloatParameterGDExtensionIternalConstructor(reference VisualShaderNodeFloatParameter) RefVisualShaderNodeFloatParameter {
 	return &RefVisualShaderNodeFloatParameterImpl{RefBase: NewRef[VisualShaderNodeFloatParameter](reference)}
+}
+
+// NewRefVisualShaderNodeFloatParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeFloatParameterGDExtensionReturnOwner(reference VisualShaderNodeFloatParameter) RefVisualShaderNodeFloatParameter {
+	return &RefVisualShaderNodeFloatParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeFloatParameter](reference)}
 }
 
 var _ RefVisualShaderNodeFrame = &RefVisualShaderNodeFrameImpl{}
@@ -10481,8 +17081,20 @@ func NewRefVisualShaderNodeFrameAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFrame](reference.(VisualShaderNodeFrame))
 }
 
+// NewRefVisualShaderNodeFrameGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeFrameWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeFrameGDExtensionIternalConstructor(reference VisualShaderNodeFrame) RefVisualShaderNodeFrame {
 	return &RefVisualShaderNodeFrameImpl{RefBase: NewRef[VisualShaderNodeFrame](reference)}
+}
+
+// NewRefVisualShaderNodeFrameGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeFrameGDExtensionReturnOwner(reference VisualShaderNodeFrame) RefVisualShaderNodeFrame {
+	return &RefVisualShaderNodeFrameImpl{RefBase: NewRefTransfer[VisualShaderNodeFrame](reference)}
 }
 
 var _ RefVisualShaderNodeFresnel = &RefVisualShaderNodeFresnelImpl{}
@@ -10500,8 +17112,20 @@ func NewRefVisualShaderNodeFresnelAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFresnel](reference.(VisualShaderNodeFresnel))
 }
 
+// NewRefVisualShaderNodeFresnelGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeFresnelWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeFresnelGDExtensionIternalConstructor(reference VisualShaderNodeFresnel) RefVisualShaderNodeFresnel {
 	return &RefVisualShaderNodeFresnelImpl{RefBase: NewRef[VisualShaderNodeFresnel](reference)}
+}
+
+// NewRefVisualShaderNodeFresnelGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeFresnelGDExtensionReturnOwner(reference VisualShaderNodeFresnel) RefVisualShaderNodeFresnel {
+	return &RefVisualShaderNodeFresnelImpl{RefBase: NewRefTransfer[VisualShaderNodeFresnel](reference)}
 }
 
 var _ RefVisualShaderNodeGlobalExpression = &RefVisualShaderNodeGlobalExpressionImpl{}
@@ -10519,8 +17143,20 @@ func NewRefVisualShaderNodeGlobalExpressionAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeGlobalExpression](reference.(VisualShaderNodeGlobalExpression))
 }
 
+// NewRefVisualShaderNodeGlobalExpressionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeGlobalExpressionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeGlobalExpressionGDExtensionIternalConstructor(reference VisualShaderNodeGlobalExpression) RefVisualShaderNodeGlobalExpression {
 	return &RefVisualShaderNodeGlobalExpressionImpl{RefBase: NewRef[VisualShaderNodeGlobalExpression](reference)}
+}
+
+// NewRefVisualShaderNodeGlobalExpressionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeGlobalExpressionGDExtensionReturnOwner(reference VisualShaderNodeGlobalExpression) RefVisualShaderNodeGlobalExpression {
+	return &RefVisualShaderNodeGlobalExpressionImpl{RefBase: NewRefTransfer[VisualShaderNodeGlobalExpression](reference)}
 }
 
 var _ RefVisualShaderNodeGroupBase = &RefVisualShaderNodeGroupBaseImpl{}
@@ -10538,8 +17174,20 @@ func NewRefVisualShaderNodeGroupBaseAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeGroupBase](reference.(VisualShaderNodeGroupBase))
 }
 
+// NewRefVisualShaderNodeGroupBaseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeGroupBaseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeGroupBaseGDExtensionIternalConstructor(reference VisualShaderNodeGroupBase) RefVisualShaderNodeGroupBase {
 	return &RefVisualShaderNodeGroupBaseImpl{RefBase: NewRef[VisualShaderNodeGroupBase](reference)}
+}
+
+// NewRefVisualShaderNodeGroupBaseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeGroupBaseGDExtensionReturnOwner(reference VisualShaderNodeGroupBase) RefVisualShaderNodeGroupBase {
+	return &RefVisualShaderNodeGroupBaseImpl{RefBase: NewRefTransfer[VisualShaderNodeGroupBase](reference)}
 }
 
 var _ RefVisualShaderNodeIf = &RefVisualShaderNodeIfImpl{}
@@ -10557,8 +17205,20 @@ func NewRefVisualShaderNodeIfAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIf](reference.(VisualShaderNodeIf))
 }
 
+// NewRefVisualShaderNodeIfGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeIfWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeIfGDExtensionIternalConstructor(reference VisualShaderNodeIf) RefVisualShaderNodeIf {
 	return &RefVisualShaderNodeIfImpl{RefBase: NewRef[VisualShaderNodeIf](reference)}
+}
+
+// NewRefVisualShaderNodeIfGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeIfGDExtensionReturnOwner(reference VisualShaderNodeIf) RefVisualShaderNodeIf {
+	return &RefVisualShaderNodeIfImpl{RefBase: NewRefTransfer[VisualShaderNodeIf](reference)}
 }
 
 var _ RefVisualShaderNodeInput = &RefVisualShaderNodeInputImpl{}
@@ -10576,8 +17236,20 @@ func NewRefVisualShaderNodeInputAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeInput](reference.(VisualShaderNodeInput))
 }
 
+// NewRefVisualShaderNodeInputGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeInputWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeInputGDExtensionIternalConstructor(reference VisualShaderNodeInput) RefVisualShaderNodeInput {
 	return &RefVisualShaderNodeInputImpl{RefBase: NewRef[VisualShaderNodeInput](reference)}
+}
+
+// NewRefVisualShaderNodeInputGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeInputGDExtensionReturnOwner(reference VisualShaderNodeInput) RefVisualShaderNodeInput {
+	return &RefVisualShaderNodeInputImpl{RefBase: NewRefTransfer[VisualShaderNodeInput](reference)}
 }
 
 var _ RefVisualShaderNodeIntConstant = &RefVisualShaderNodeIntConstantImpl{}
@@ -10595,8 +17267,20 @@ func NewRefVisualShaderNodeIntConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntConstant](reference.(VisualShaderNodeIntConstant))
 }
 
+// NewRefVisualShaderNodeIntConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeIntConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeIntConstantGDExtensionIternalConstructor(reference VisualShaderNodeIntConstant) RefVisualShaderNodeIntConstant {
 	return &RefVisualShaderNodeIntConstantImpl{RefBase: NewRef[VisualShaderNodeIntConstant](reference)}
+}
+
+// NewRefVisualShaderNodeIntConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeIntConstantGDExtensionReturnOwner(reference VisualShaderNodeIntConstant) RefVisualShaderNodeIntConstant {
+	return &RefVisualShaderNodeIntConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeIntConstant](reference)}
 }
 
 var _ RefVisualShaderNodeIntFunc = &RefVisualShaderNodeIntFuncImpl{}
@@ -10614,8 +17298,20 @@ func NewRefVisualShaderNodeIntFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntFunc](reference.(VisualShaderNodeIntFunc))
 }
 
+// NewRefVisualShaderNodeIntFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeIntFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeIntFuncGDExtensionIternalConstructor(reference VisualShaderNodeIntFunc) RefVisualShaderNodeIntFunc {
 	return &RefVisualShaderNodeIntFuncImpl{RefBase: NewRef[VisualShaderNodeIntFunc](reference)}
+}
+
+// NewRefVisualShaderNodeIntFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeIntFuncGDExtensionReturnOwner(reference VisualShaderNodeIntFunc) RefVisualShaderNodeIntFunc {
+	return &RefVisualShaderNodeIntFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeIntFunc](reference)}
 }
 
 var _ RefVisualShaderNodeIntOp = &RefVisualShaderNodeIntOpImpl{}
@@ -10633,8 +17329,20 @@ func NewRefVisualShaderNodeIntOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntOp](reference.(VisualShaderNodeIntOp))
 }
 
+// NewRefVisualShaderNodeIntOpGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeIntOpWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeIntOpGDExtensionIternalConstructor(reference VisualShaderNodeIntOp) RefVisualShaderNodeIntOp {
 	return &RefVisualShaderNodeIntOpImpl{RefBase: NewRef[VisualShaderNodeIntOp](reference)}
+}
+
+// NewRefVisualShaderNodeIntOpGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeIntOpGDExtensionReturnOwner(reference VisualShaderNodeIntOp) RefVisualShaderNodeIntOp {
+	return &RefVisualShaderNodeIntOpImpl{RefBase: NewRefTransfer[VisualShaderNodeIntOp](reference)}
 }
 
 var _ RefVisualShaderNodeIntParameter = &RefVisualShaderNodeIntParameterImpl{}
@@ -10652,8 +17360,20 @@ func NewRefVisualShaderNodeIntParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntParameter](reference.(VisualShaderNodeIntParameter))
 }
 
+// NewRefVisualShaderNodeIntParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeIntParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeIntParameterGDExtensionIternalConstructor(reference VisualShaderNodeIntParameter) RefVisualShaderNodeIntParameter {
 	return &RefVisualShaderNodeIntParameterImpl{RefBase: NewRef[VisualShaderNodeIntParameter](reference)}
+}
+
+// NewRefVisualShaderNodeIntParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeIntParameterGDExtensionReturnOwner(reference VisualShaderNodeIntParameter) RefVisualShaderNodeIntParameter {
+	return &RefVisualShaderNodeIntParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeIntParameter](reference)}
 }
 
 var _ RefVisualShaderNodeIs = &RefVisualShaderNodeIsImpl{}
@@ -10671,8 +17391,20 @@ func NewRefVisualShaderNodeIsAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIs](reference.(VisualShaderNodeIs))
 }
 
+// NewRefVisualShaderNodeIsGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeIsWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeIsGDExtensionIternalConstructor(reference VisualShaderNodeIs) RefVisualShaderNodeIs {
 	return &RefVisualShaderNodeIsImpl{RefBase: NewRef[VisualShaderNodeIs](reference)}
+}
+
+// NewRefVisualShaderNodeIsGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeIsGDExtensionReturnOwner(reference VisualShaderNodeIs) RefVisualShaderNodeIs {
+	return &RefVisualShaderNodeIsImpl{RefBase: NewRefTransfer[VisualShaderNodeIs](reference)}
 }
 
 var _ RefVisualShaderNodeLinearSceneDepth = &RefVisualShaderNodeLinearSceneDepthImpl{}
@@ -10690,8 +17422,20 @@ func NewRefVisualShaderNodeLinearSceneDepthAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeLinearSceneDepth](reference.(VisualShaderNodeLinearSceneDepth))
 }
 
+// NewRefVisualShaderNodeLinearSceneDepthGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeLinearSceneDepthWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeLinearSceneDepthGDExtensionIternalConstructor(reference VisualShaderNodeLinearSceneDepth) RefVisualShaderNodeLinearSceneDepth {
 	return &RefVisualShaderNodeLinearSceneDepthImpl{RefBase: NewRef[VisualShaderNodeLinearSceneDepth](reference)}
+}
+
+// NewRefVisualShaderNodeLinearSceneDepthGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeLinearSceneDepthGDExtensionReturnOwner(reference VisualShaderNodeLinearSceneDepth) RefVisualShaderNodeLinearSceneDepth {
+	return &RefVisualShaderNodeLinearSceneDepthImpl{RefBase: NewRefTransfer[VisualShaderNodeLinearSceneDepth](reference)}
 }
 
 var _ RefVisualShaderNodeMix = &RefVisualShaderNodeMixImpl{}
@@ -10709,8 +17453,20 @@ func NewRefVisualShaderNodeMixAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeMix](reference.(VisualShaderNodeMix))
 }
 
+// NewRefVisualShaderNodeMixGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeMixWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeMixGDExtensionIternalConstructor(reference VisualShaderNodeMix) RefVisualShaderNodeMix {
 	return &RefVisualShaderNodeMixImpl{RefBase: NewRef[VisualShaderNodeMix](reference)}
+}
+
+// NewRefVisualShaderNodeMixGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeMixGDExtensionReturnOwner(reference VisualShaderNodeMix) RefVisualShaderNodeMix {
+	return &RefVisualShaderNodeMixImpl{RefBase: NewRefTransfer[VisualShaderNodeMix](reference)}
 }
 
 var _ RefVisualShaderNodeMultiplyAdd = &RefVisualShaderNodeMultiplyAddImpl{}
@@ -10728,8 +17484,20 @@ func NewRefVisualShaderNodeMultiplyAddAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeMultiplyAdd](reference.(VisualShaderNodeMultiplyAdd))
 }
 
+// NewRefVisualShaderNodeMultiplyAddGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeMultiplyAddWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeMultiplyAddGDExtensionIternalConstructor(reference VisualShaderNodeMultiplyAdd) RefVisualShaderNodeMultiplyAdd {
 	return &RefVisualShaderNodeMultiplyAddImpl{RefBase: NewRef[VisualShaderNodeMultiplyAdd](reference)}
+}
+
+// NewRefVisualShaderNodeMultiplyAddGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeMultiplyAddGDExtensionReturnOwner(reference VisualShaderNodeMultiplyAdd) RefVisualShaderNodeMultiplyAdd {
+	return &RefVisualShaderNodeMultiplyAddImpl{RefBase: NewRefTransfer[VisualShaderNodeMultiplyAdd](reference)}
 }
 
 var _ RefVisualShaderNodeOuterProduct = &RefVisualShaderNodeOuterProductImpl{}
@@ -10747,8 +17515,20 @@ func NewRefVisualShaderNodeOuterProductAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeOuterProduct](reference.(VisualShaderNodeOuterProduct))
 }
 
+// NewRefVisualShaderNodeOuterProductGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeOuterProductWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeOuterProductGDExtensionIternalConstructor(reference VisualShaderNodeOuterProduct) RefVisualShaderNodeOuterProduct {
 	return &RefVisualShaderNodeOuterProductImpl{RefBase: NewRef[VisualShaderNodeOuterProduct](reference)}
+}
+
+// NewRefVisualShaderNodeOuterProductGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeOuterProductGDExtensionReturnOwner(reference VisualShaderNodeOuterProduct) RefVisualShaderNodeOuterProduct {
+	return &RefVisualShaderNodeOuterProductImpl{RefBase: NewRefTransfer[VisualShaderNodeOuterProduct](reference)}
 }
 
 var _ RefVisualShaderNodeOutput = &RefVisualShaderNodeOutputImpl{}
@@ -10766,8 +17546,20 @@ func NewRefVisualShaderNodeOutputAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeOutput](reference.(VisualShaderNodeOutput))
 }
 
+// NewRefVisualShaderNodeOutputGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeOutputWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeOutputGDExtensionIternalConstructor(reference VisualShaderNodeOutput) RefVisualShaderNodeOutput {
 	return &RefVisualShaderNodeOutputImpl{RefBase: NewRef[VisualShaderNodeOutput](reference)}
+}
+
+// NewRefVisualShaderNodeOutputGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeOutputGDExtensionReturnOwner(reference VisualShaderNodeOutput) RefVisualShaderNodeOutput {
+	return &RefVisualShaderNodeOutputImpl{RefBase: NewRefTransfer[VisualShaderNodeOutput](reference)}
 }
 
 var _ RefVisualShaderNodeParameter = &RefVisualShaderNodeParameterImpl{}
@@ -10785,8 +17577,20 @@ func NewRefVisualShaderNodeParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParameter](reference.(VisualShaderNodeParameter))
 }
 
+// NewRefVisualShaderNodeParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParameterGDExtensionIternalConstructor(reference VisualShaderNodeParameter) RefVisualShaderNodeParameter {
 	return &RefVisualShaderNodeParameterImpl{RefBase: NewRef[VisualShaderNodeParameter](reference)}
+}
+
+// NewRefVisualShaderNodeParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParameterGDExtensionReturnOwner(reference VisualShaderNodeParameter) RefVisualShaderNodeParameter {
+	return &RefVisualShaderNodeParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeParameter](reference)}
 }
 
 var _ RefVisualShaderNodeParameterRef = &RefVisualShaderNodeParameterRefImpl{}
@@ -10804,8 +17608,20 @@ func NewRefVisualShaderNodeParameterRefAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParameterRef](reference.(VisualShaderNodeParameterRef))
 }
 
+// NewRefVisualShaderNodeParameterRefGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParameterRefWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParameterRefGDExtensionIternalConstructor(reference VisualShaderNodeParameterRef) RefVisualShaderNodeParameterRef {
 	return &RefVisualShaderNodeParameterRefImpl{RefBase: NewRef[VisualShaderNodeParameterRef](reference)}
+}
+
+// NewRefVisualShaderNodeParameterRefGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParameterRefGDExtensionReturnOwner(reference VisualShaderNodeParameterRef) RefVisualShaderNodeParameterRef {
+	return &RefVisualShaderNodeParameterRefImpl{RefBase: NewRefTransfer[VisualShaderNodeParameterRef](reference)}
 }
 
 var _ RefVisualShaderNodeParticleAccelerator = &RefVisualShaderNodeParticleAcceleratorImpl{}
@@ -10823,8 +17639,20 @@ func NewRefVisualShaderNodeParticleAcceleratorAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleAccelerator](reference.(VisualShaderNodeParticleAccelerator))
 }
 
+// NewRefVisualShaderNodeParticleAcceleratorGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleAcceleratorWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleAcceleratorGDExtensionIternalConstructor(reference VisualShaderNodeParticleAccelerator) RefVisualShaderNodeParticleAccelerator {
 	return &RefVisualShaderNodeParticleAcceleratorImpl{RefBase: NewRef[VisualShaderNodeParticleAccelerator](reference)}
+}
+
+// NewRefVisualShaderNodeParticleAcceleratorGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleAcceleratorGDExtensionReturnOwner(reference VisualShaderNodeParticleAccelerator) RefVisualShaderNodeParticleAccelerator {
+	return &RefVisualShaderNodeParticleAcceleratorImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleAccelerator](reference)}
 }
 
 var _ RefVisualShaderNodeParticleBoxEmitter = &RefVisualShaderNodeParticleBoxEmitterImpl{}
@@ -10842,8 +17670,20 @@ func NewRefVisualShaderNodeParticleBoxEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleBoxEmitter](reference.(VisualShaderNodeParticleBoxEmitter))
 }
 
+// NewRefVisualShaderNodeParticleBoxEmitterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleBoxEmitterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleBoxEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleBoxEmitter) RefVisualShaderNodeParticleBoxEmitter {
 	return &RefVisualShaderNodeParticleBoxEmitterImpl{RefBase: NewRef[VisualShaderNodeParticleBoxEmitter](reference)}
+}
+
+// NewRefVisualShaderNodeParticleBoxEmitterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleBoxEmitterGDExtensionReturnOwner(reference VisualShaderNodeParticleBoxEmitter) RefVisualShaderNodeParticleBoxEmitter {
+	return &RefVisualShaderNodeParticleBoxEmitterImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleBoxEmitter](reference)}
 }
 
 var _ RefVisualShaderNodeParticleConeVelocity = &RefVisualShaderNodeParticleConeVelocityImpl{}
@@ -10861,8 +17701,20 @@ func NewRefVisualShaderNodeParticleConeVelocityAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleConeVelocity](reference.(VisualShaderNodeParticleConeVelocity))
 }
 
+// NewRefVisualShaderNodeParticleConeVelocityGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleConeVelocityWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleConeVelocityGDExtensionIternalConstructor(reference VisualShaderNodeParticleConeVelocity) RefVisualShaderNodeParticleConeVelocity {
 	return &RefVisualShaderNodeParticleConeVelocityImpl{RefBase: NewRef[VisualShaderNodeParticleConeVelocity](reference)}
+}
+
+// NewRefVisualShaderNodeParticleConeVelocityGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleConeVelocityGDExtensionReturnOwner(reference VisualShaderNodeParticleConeVelocity) RefVisualShaderNodeParticleConeVelocity {
+	return &RefVisualShaderNodeParticleConeVelocityImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleConeVelocity](reference)}
 }
 
 var _ RefVisualShaderNodeParticleEmit = &RefVisualShaderNodeParticleEmitImpl{}
@@ -10880,8 +17732,20 @@ func NewRefVisualShaderNodeParticleEmitAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleEmit](reference.(VisualShaderNodeParticleEmit))
 }
 
+// NewRefVisualShaderNodeParticleEmitGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleEmitWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleEmitGDExtensionIternalConstructor(reference VisualShaderNodeParticleEmit) RefVisualShaderNodeParticleEmit {
 	return &RefVisualShaderNodeParticleEmitImpl{RefBase: NewRef[VisualShaderNodeParticleEmit](reference)}
+}
+
+// NewRefVisualShaderNodeParticleEmitGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleEmitGDExtensionReturnOwner(reference VisualShaderNodeParticleEmit) RefVisualShaderNodeParticleEmit {
+	return &RefVisualShaderNodeParticleEmitImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleEmit](reference)}
 }
 
 var _ RefVisualShaderNodeParticleEmitter = &RefVisualShaderNodeParticleEmitterImpl{}
@@ -10899,8 +17763,20 @@ func NewRefVisualShaderNodeParticleEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleEmitter](reference.(VisualShaderNodeParticleEmitter))
 }
 
+// NewRefVisualShaderNodeParticleEmitterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleEmitterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleEmitter) RefVisualShaderNodeParticleEmitter {
 	return &RefVisualShaderNodeParticleEmitterImpl{RefBase: NewRef[VisualShaderNodeParticleEmitter](reference)}
+}
+
+// NewRefVisualShaderNodeParticleEmitterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleEmitterGDExtensionReturnOwner(reference VisualShaderNodeParticleEmitter) RefVisualShaderNodeParticleEmitter {
+	return &RefVisualShaderNodeParticleEmitterImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleEmitter](reference)}
 }
 
 var _ RefVisualShaderNodeParticleMeshEmitter = &RefVisualShaderNodeParticleMeshEmitterImpl{}
@@ -10918,8 +17794,20 @@ func NewRefVisualShaderNodeParticleMeshEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleMeshEmitter](reference.(VisualShaderNodeParticleMeshEmitter))
 }
 
+// NewRefVisualShaderNodeParticleMeshEmitterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleMeshEmitterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleMeshEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleMeshEmitter) RefVisualShaderNodeParticleMeshEmitter {
 	return &RefVisualShaderNodeParticleMeshEmitterImpl{RefBase: NewRef[VisualShaderNodeParticleMeshEmitter](reference)}
+}
+
+// NewRefVisualShaderNodeParticleMeshEmitterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleMeshEmitterGDExtensionReturnOwner(reference VisualShaderNodeParticleMeshEmitter) RefVisualShaderNodeParticleMeshEmitter {
+	return &RefVisualShaderNodeParticleMeshEmitterImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleMeshEmitter](reference)}
 }
 
 var _ RefVisualShaderNodeParticleMultiplyByAxisAngle = &RefVisualShaderNodeParticleMultiplyByAxisAngleImpl{}
@@ -10937,8 +17825,20 @@ func NewRefVisualShaderNodeParticleMultiplyByAxisAngleAsRef(reference RefCounted
 	return NewRef[VisualShaderNodeParticleMultiplyByAxisAngle](reference.(VisualShaderNodeParticleMultiplyByAxisAngle))
 }
 
+// NewRefVisualShaderNodeParticleMultiplyByAxisAngleGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleMultiplyByAxisAngleWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleMultiplyByAxisAngleGDExtensionIternalConstructor(reference VisualShaderNodeParticleMultiplyByAxisAngle) RefVisualShaderNodeParticleMultiplyByAxisAngle {
 	return &RefVisualShaderNodeParticleMultiplyByAxisAngleImpl{RefBase: NewRef[VisualShaderNodeParticleMultiplyByAxisAngle](reference)}
+}
+
+// NewRefVisualShaderNodeParticleMultiplyByAxisAngleGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleMultiplyByAxisAngleGDExtensionReturnOwner(reference VisualShaderNodeParticleMultiplyByAxisAngle) RefVisualShaderNodeParticleMultiplyByAxisAngle {
+	return &RefVisualShaderNodeParticleMultiplyByAxisAngleImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleMultiplyByAxisAngle](reference)}
 }
 
 var _ RefVisualShaderNodeParticleOutput = &RefVisualShaderNodeParticleOutputImpl{}
@@ -10956,8 +17856,20 @@ func NewRefVisualShaderNodeParticleOutputAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleOutput](reference.(VisualShaderNodeParticleOutput))
 }
 
+// NewRefVisualShaderNodeParticleOutputGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleOutputWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleOutputGDExtensionIternalConstructor(reference VisualShaderNodeParticleOutput) RefVisualShaderNodeParticleOutput {
 	return &RefVisualShaderNodeParticleOutputImpl{RefBase: NewRef[VisualShaderNodeParticleOutput](reference)}
+}
+
+// NewRefVisualShaderNodeParticleOutputGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleOutputGDExtensionReturnOwner(reference VisualShaderNodeParticleOutput) RefVisualShaderNodeParticleOutput {
+	return &RefVisualShaderNodeParticleOutputImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleOutput](reference)}
 }
 
 var _ RefVisualShaderNodeParticleRandomness = &RefVisualShaderNodeParticleRandomnessImpl{}
@@ -10975,8 +17887,20 @@ func NewRefVisualShaderNodeParticleRandomnessAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleRandomness](reference.(VisualShaderNodeParticleRandomness))
 }
 
+// NewRefVisualShaderNodeParticleRandomnessGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleRandomnessWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleRandomnessGDExtensionIternalConstructor(reference VisualShaderNodeParticleRandomness) RefVisualShaderNodeParticleRandomness {
 	return &RefVisualShaderNodeParticleRandomnessImpl{RefBase: NewRef[VisualShaderNodeParticleRandomness](reference)}
+}
+
+// NewRefVisualShaderNodeParticleRandomnessGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleRandomnessGDExtensionReturnOwner(reference VisualShaderNodeParticleRandomness) RefVisualShaderNodeParticleRandomness {
+	return &RefVisualShaderNodeParticleRandomnessImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleRandomness](reference)}
 }
 
 var _ RefVisualShaderNodeParticleRingEmitter = &RefVisualShaderNodeParticleRingEmitterImpl{}
@@ -10994,8 +17918,20 @@ func NewRefVisualShaderNodeParticleRingEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleRingEmitter](reference.(VisualShaderNodeParticleRingEmitter))
 }
 
+// NewRefVisualShaderNodeParticleRingEmitterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleRingEmitterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleRingEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleRingEmitter) RefVisualShaderNodeParticleRingEmitter {
 	return &RefVisualShaderNodeParticleRingEmitterImpl{RefBase: NewRef[VisualShaderNodeParticleRingEmitter](reference)}
+}
+
+// NewRefVisualShaderNodeParticleRingEmitterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleRingEmitterGDExtensionReturnOwner(reference VisualShaderNodeParticleRingEmitter) RefVisualShaderNodeParticleRingEmitter {
+	return &RefVisualShaderNodeParticleRingEmitterImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleRingEmitter](reference)}
 }
 
 var _ RefVisualShaderNodeParticleSphereEmitter = &RefVisualShaderNodeParticleSphereEmitterImpl{}
@@ -11013,8 +17949,20 @@ func NewRefVisualShaderNodeParticleSphereEmitterAsRef(reference RefCounted) Ref 
 	return NewRef[VisualShaderNodeParticleSphereEmitter](reference.(VisualShaderNodeParticleSphereEmitter))
 }
 
+// NewRefVisualShaderNodeParticleSphereEmitterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeParticleSphereEmitterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeParticleSphereEmitterGDExtensionIternalConstructor(reference VisualShaderNodeParticleSphereEmitter) RefVisualShaderNodeParticleSphereEmitter {
 	return &RefVisualShaderNodeParticleSphereEmitterImpl{RefBase: NewRef[VisualShaderNodeParticleSphereEmitter](reference)}
+}
+
+// NewRefVisualShaderNodeParticleSphereEmitterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeParticleSphereEmitterGDExtensionReturnOwner(reference VisualShaderNodeParticleSphereEmitter) RefVisualShaderNodeParticleSphereEmitter {
+	return &RefVisualShaderNodeParticleSphereEmitterImpl{RefBase: NewRefTransfer[VisualShaderNodeParticleSphereEmitter](reference)}
 }
 
 var _ RefVisualShaderNodeProximityFade = &RefVisualShaderNodeProximityFadeImpl{}
@@ -11032,8 +17980,20 @@ func NewRefVisualShaderNodeProximityFadeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeProximityFade](reference.(VisualShaderNodeProximityFade))
 }
 
+// NewRefVisualShaderNodeProximityFadeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeProximityFadeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeProximityFadeGDExtensionIternalConstructor(reference VisualShaderNodeProximityFade) RefVisualShaderNodeProximityFade {
 	return &RefVisualShaderNodeProximityFadeImpl{RefBase: NewRef[VisualShaderNodeProximityFade](reference)}
+}
+
+// NewRefVisualShaderNodeProximityFadeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeProximityFadeGDExtensionReturnOwner(reference VisualShaderNodeProximityFade) RefVisualShaderNodeProximityFade {
+	return &RefVisualShaderNodeProximityFadeImpl{RefBase: NewRefTransfer[VisualShaderNodeProximityFade](reference)}
 }
 
 var _ RefVisualShaderNodeRandomRange = &RefVisualShaderNodeRandomRangeImpl{}
@@ -11051,8 +18011,20 @@ func NewRefVisualShaderNodeRandomRangeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeRandomRange](reference.(VisualShaderNodeRandomRange))
 }
 
+// NewRefVisualShaderNodeRandomRangeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeRandomRangeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeRandomRangeGDExtensionIternalConstructor(reference VisualShaderNodeRandomRange) RefVisualShaderNodeRandomRange {
 	return &RefVisualShaderNodeRandomRangeImpl{RefBase: NewRef[VisualShaderNodeRandomRange](reference)}
+}
+
+// NewRefVisualShaderNodeRandomRangeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeRandomRangeGDExtensionReturnOwner(reference VisualShaderNodeRandomRange) RefVisualShaderNodeRandomRange {
+	return &RefVisualShaderNodeRandomRangeImpl{RefBase: NewRefTransfer[VisualShaderNodeRandomRange](reference)}
 }
 
 var _ RefVisualShaderNodeRemap = &RefVisualShaderNodeRemapImpl{}
@@ -11070,8 +18042,20 @@ func NewRefVisualShaderNodeRemapAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeRemap](reference.(VisualShaderNodeRemap))
 }
 
+// NewRefVisualShaderNodeRemapGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeRemapWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeRemapGDExtensionIternalConstructor(reference VisualShaderNodeRemap) RefVisualShaderNodeRemap {
 	return &RefVisualShaderNodeRemapImpl{RefBase: NewRef[VisualShaderNodeRemap](reference)}
+}
+
+// NewRefVisualShaderNodeRemapGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeRemapGDExtensionReturnOwner(reference VisualShaderNodeRemap) RefVisualShaderNodeRemap {
+	return &RefVisualShaderNodeRemapImpl{RefBase: NewRefTransfer[VisualShaderNodeRemap](reference)}
 }
 
 var _ RefVisualShaderNodeReroute = &RefVisualShaderNodeRerouteImpl{}
@@ -11089,8 +18073,20 @@ func NewRefVisualShaderNodeRerouteAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeReroute](reference.(VisualShaderNodeReroute))
 }
 
+// NewRefVisualShaderNodeRerouteGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeRerouteWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeRerouteGDExtensionIternalConstructor(reference VisualShaderNodeReroute) RefVisualShaderNodeReroute {
 	return &RefVisualShaderNodeRerouteImpl{RefBase: NewRef[VisualShaderNodeReroute](reference)}
+}
+
+// NewRefVisualShaderNodeRerouteGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeRerouteGDExtensionReturnOwner(reference VisualShaderNodeReroute) RefVisualShaderNodeReroute {
+	return &RefVisualShaderNodeRerouteImpl{RefBase: NewRefTransfer[VisualShaderNodeReroute](reference)}
 }
 
 var _ RefVisualShaderNodeResizableBase = &RefVisualShaderNodeResizableBaseImpl{}
@@ -11108,8 +18104,20 @@ func NewRefVisualShaderNodeResizableBaseAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeResizableBase](reference.(VisualShaderNodeResizableBase))
 }
 
+// NewRefVisualShaderNodeResizableBaseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeResizableBaseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeResizableBaseGDExtensionIternalConstructor(reference VisualShaderNodeResizableBase) RefVisualShaderNodeResizableBase {
 	return &RefVisualShaderNodeResizableBaseImpl{RefBase: NewRef[VisualShaderNodeResizableBase](reference)}
+}
+
+// NewRefVisualShaderNodeResizableBaseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeResizableBaseGDExtensionReturnOwner(reference VisualShaderNodeResizableBase) RefVisualShaderNodeResizableBase {
+	return &RefVisualShaderNodeResizableBaseImpl{RefBase: NewRefTransfer[VisualShaderNodeResizableBase](reference)}
 }
 
 var _ RefVisualShaderNodeRotationByAxis = &RefVisualShaderNodeRotationByAxisImpl{}
@@ -11127,8 +18135,20 @@ func NewRefVisualShaderNodeRotationByAxisAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeRotationByAxis](reference.(VisualShaderNodeRotationByAxis))
 }
 
+// NewRefVisualShaderNodeRotationByAxisGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeRotationByAxisWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeRotationByAxisGDExtensionIternalConstructor(reference VisualShaderNodeRotationByAxis) RefVisualShaderNodeRotationByAxis {
 	return &RefVisualShaderNodeRotationByAxisImpl{RefBase: NewRef[VisualShaderNodeRotationByAxis](reference)}
+}
+
+// NewRefVisualShaderNodeRotationByAxisGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeRotationByAxisGDExtensionReturnOwner(reference VisualShaderNodeRotationByAxis) RefVisualShaderNodeRotationByAxis {
+	return &RefVisualShaderNodeRotationByAxisImpl{RefBase: NewRefTransfer[VisualShaderNodeRotationByAxis](reference)}
 }
 
 var _ RefVisualShaderNodeSDFRaymarch = &RefVisualShaderNodeSDFRaymarchImpl{}
@@ -11146,8 +18166,20 @@ func NewRefVisualShaderNodeSDFRaymarchAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSDFRaymarch](reference.(VisualShaderNodeSDFRaymarch))
 }
 
+// NewRefVisualShaderNodeSDFRaymarchGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeSDFRaymarchWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeSDFRaymarchGDExtensionIternalConstructor(reference VisualShaderNodeSDFRaymarch) RefVisualShaderNodeSDFRaymarch {
 	return &RefVisualShaderNodeSDFRaymarchImpl{RefBase: NewRef[VisualShaderNodeSDFRaymarch](reference)}
+}
+
+// NewRefVisualShaderNodeSDFRaymarchGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeSDFRaymarchGDExtensionReturnOwner(reference VisualShaderNodeSDFRaymarch) RefVisualShaderNodeSDFRaymarch {
+	return &RefVisualShaderNodeSDFRaymarchImpl{RefBase: NewRefTransfer[VisualShaderNodeSDFRaymarch](reference)}
 }
 
 var _ RefVisualShaderNodeSDFToScreenUV = &RefVisualShaderNodeSDFToScreenUVImpl{}
@@ -11165,8 +18197,20 @@ func NewRefVisualShaderNodeSDFToScreenUVAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSDFToScreenUV](reference.(VisualShaderNodeSDFToScreenUV))
 }
 
+// NewRefVisualShaderNodeSDFToScreenUVGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeSDFToScreenUVWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeSDFToScreenUVGDExtensionIternalConstructor(reference VisualShaderNodeSDFToScreenUV) RefVisualShaderNodeSDFToScreenUV {
 	return &RefVisualShaderNodeSDFToScreenUVImpl{RefBase: NewRef[VisualShaderNodeSDFToScreenUV](reference)}
+}
+
+// NewRefVisualShaderNodeSDFToScreenUVGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeSDFToScreenUVGDExtensionReturnOwner(reference VisualShaderNodeSDFToScreenUV) RefVisualShaderNodeSDFToScreenUV {
+	return &RefVisualShaderNodeSDFToScreenUVImpl{RefBase: NewRefTransfer[VisualShaderNodeSDFToScreenUV](reference)}
 }
 
 var _ RefVisualShaderNodeSample3D = &RefVisualShaderNodeSample3DImpl{}
@@ -11184,8 +18228,20 @@ func NewRefVisualShaderNodeSample3DAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSample3D](reference.(VisualShaderNodeSample3D))
 }
 
+// NewRefVisualShaderNodeSample3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeSample3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeSample3DGDExtensionIternalConstructor(reference VisualShaderNodeSample3D) RefVisualShaderNodeSample3D {
 	return &RefVisualShaderNodeSample3DImpl{RefBase: NewRef[VisualShaderNodeSample3D](reference)}
+}
+
+// NewRefVisualShaderNodeSample3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeSample3DGDExtensionReturnOwner(reference VisualShaderNodeSample3D) RefVisualShaderNodeSample3D {
+	return &RefVisualShaderNodeSample3DImpl{RefBase: NewRefTransfer[VisualShaderNodeSample3D](reference)}
 }
 
 var _ RefVisualShaderNodeScreenNormalWorldSpace = &RefVisualShaderNodeScreenNormalWorldSpaceImpl{}
@@ -11203,8 +18259,20 @@ func NewRefVisualShaderNodeScreenNormalWorldSpaceAsRef(reference RefCounted) Ref
 	return NewRef[VisualShaderNodeScreenNormalWorldSpace](reference.(VisualShaderNodeScreenNormalWorldSpace))
 }
 
+// NewRefVisualShaderNodeScreenNormalWorldSpaceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeScreenNormalWorldSpaceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeScreenNormalWorldSpaceGDExtensionIternalConstructor(reference VisualShaderNodeScreenNormalWorldSpace) RefVisualShaderNodeScreenNormalWorldSpace {
 	return &RefVisualShaderNodeScreenNormalWorldSpaceImpl{RefBase: NewRef[VisualShaderNodeScreenNormalWorldSpace](reference)}
+}
+
+// NewRefVisualShaderNodeScreenNormalWorldSpaceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeScreenNormalWorldSpaceGDExtensionReturnOwner(reference VisualShaderNodeScreenNormalWorldSpace) RefVisualShaderNodeScreenNormalWorldSpace {
+	return &RefVisualShaderNodeScreenNormalWorldSpaceImpl{RefBase: NewRefTransfer[VisualShaderNodeScreenNormalWorldSpace](reference)}
 }
 
 var _ RefVisualShaderNodeScreenUVToSDF = &RefVisualShaderNodeScreenUVToSDFImpl{}
@@ -11222,8 +18290,20 @@ func NewRefVisualShaderNodeScreenUVToSDFAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeScreenUVToSDF](reference.(VisualShaderNodeScreenUVToSDF))
 }
 
+// NewRefVisualShaderNodeScreenUVToSDFGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeScreenUVToSDFWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeScreenUVToSDFGDExtensionIternalConstructor(reference VisualShaderNodeScreenUVToSDF) RefVisualShaderNodeScreenUVToSDF {
 	return &RefVisualShaderNodeScreenUVToSDFImpl{RefBase: NewRef[VisualShaderNodeScreenUVToSDF](reference)}
+}
+
+// NewRefVisualShaderNodeScreenUVToSDFGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeScreenUVToSDFGDExtensionReturnOwner(reference VisualShaderNodeScreenUVToSDF) RefVisualShaderNodeScreenUVToSDF {
+	return &RefVisualShaderNodeScreenUVToSDFImpl{RefBase: NewRefTransfer[VisualShaderNodeScreenUVToSDF](reference)}
 }
 
 var _ RefVisualShaderNodeSmoothStep = &RefVisualShaderNodeSmoothStepImpl{}
@@ -11241,8 +18321,20 @@ func NewRefVisualShaderNodeSmoothStepAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSmoothStep](reference.(VisualShaderNodeSmoothStep))
 }
 
+// NewRefVisualShaderNodeSmoothStepGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeSmoothStepWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeSmoothStepGDExtensionIternalConstructor(reference VisualShaderNodeSmoothStep) RefVisualShaderNodeSmoothStep {
 	return &RefVisualShaderNodeSmoothStepImpl{RefBase: NewRef[VisualShaderNodeSmoothStep](reference)}
+}
+
+// NewRefVisualShaderNodeSmoothStepGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeSmoothStepGDExtensionReturnOwner(reference VisualShaderNodeSmoothStep) RefVisualShaderNodeSmoothStep {
+	return &RefVisualShaderNodeSmoothStepImpl{RefBase: NewRefTransfer[VisualShaderNodeSmoothStep](reference)}
 }
 
 var _ RefVisualShaderNodeStep = &RefVisualShaderNodeStepImpl{}
@@ -11260,8 +18352,20 @@ func NewRefVisualShaderNodeStepAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeStep](reference.(VisualShaderNodeStep))
 }
 
+// NewRefVisualShaderNodeStepGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeStepWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeStepGDExtensionIternalConstructor(reference VisualShaderNodeStep) RefVisualShaderNodeStep {
 	return &RefVisualShaderNodeStepImpl{RefBase: NewRef[VisualShaderNodeStep](reference)}
+}
+
+// NewRefVisualShaderNodeStepGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeStepGDExtensionReturnOwner(reference VisualShaderNodeStep) RefVisualShaderNodeStep {
+	return &RefVisualShaderNodeStepImpl{RefBase: NewRefTransfer[VisualShaderNodeStep](reference)}
 }
 
 var _ RefVisualShaderNodeSwitch = &RefVisualShaderNodeSwitchImpl{}
@@ -11279,8 +18383,20 @@ func NewRefVisualShaderNodeSwitchAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSwitch](reference.(VisualShaderNodeSwitch))
 }
 
+// NewRefVisualShaderNodeSwitchGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeSwitchWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeSwitchGDExtensionIternalConstructor(reference VisualShaderNodeSwitch) RefVisualShaderNodeSwitch {
 	return &RefVisualShaderNodeSwitchImpl{RefBase: NewRef[VisualShaderNodeSwitch](reference)}
+}
+
+// NewRefVisualShaderNodeSwitchGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeSwitchGDExtensionReturnOwner(reference VisualShaderNodeSwitch) RefVisualShaderNodeSwitch {
+	return &RefVisualShaderNodeSwitchImpl{RefBase: NewRefTransfer[VisualShaderNodeSwitch](reference)}
 }
 
 var _ RefVisualShaderNodeTexture = &RefVisualShaderNodeTextureImpl{}
@@ -11298,8 +18414,20 @@ func NewRefVisualShaderNodeTextureAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture](reference.(VisualShaderNodeTexture))
 }
 
+// NewRefVisualShaderNodeTextureGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTextureWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTextureGDExtensionIternalConstructor(reference VisualShaderNodeTexture) RefVisualShaderNodeTexture {
 	return &RefVisualShaderNodeTextureImpl{RefBase: NewRef[VisualShaderNodeTexture](reference)}
+}
+
+// NewRefVisualShaderNodeTextureGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTextureGDExtensionReturnOwner(reference VisualShaderNodeTexture) RefVisualShaderNodeTexture {
+	return &RefVisualShaderNodeTextureImpl{RefBase: NewRefTransfer[VisualShaderNodeTexture](reference)}
 }
 
 var _ RefVisualShaderNodeTexture2DArray = &RefVisualShaderNodeTexture2DArrayImpl{}
@@ -11317,8 +18445,20 @@ func NewRefVisualShaderNodeTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture2DArray](reference.(VisualShaderNodeTexture2DArray))
 }
 
+// NewRefVisualShaderNodeTexture2DArrayGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTexture2DArrayWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTexture2DArrayGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DArray) RefVisualShaderNodeTexture2DArray {
 	return &RefVisualShaderNodeTexture2DArrayImpl{RefBase: NewRef[VisualShaderNodeTexture2DArray](reference)}
+}
+
+// NewRefVisualShaderNodeTexture2DArrayGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTexture2DArrayGDExtensionReturnOwner(reference VisualShaderNodeTexture2DArray) RefVisualShaderNodeTexture2DArray {
+	return &RefVisualShaderNodeTexture2DArrayImpl{RefBase: NewRefTransfer[VisualShaderNodeTexture2DArray](reference)}
 }
 
 var _ RefVisualShaderNodeTexture2DArrayParameter = &RefVisualShaderNodeTexture2DArrayParameterImpl{}
@@ -11336,8 +18476,20 @@ func NewRefVisualShaderNodeTexture2DArrayParameterAsRef(reference RefCounted) Re
 	return NewRef[VisualShaderNodeTexture2DArrayParameter](reference.(VisualShaderNodeTexture2DArrayParameter))
 }
 
+// NewRefVisualShaderNodeTexture2DArrayParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTexture2DArrayParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTexture2DArrayParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DArrayParameter) RefVisualShaderNodeTexture2DArrayParameter {
 	return &RefVisualShaderNodeTexture2DArrayParameterImpl{RefBase: NewRef[VisualShaderNodeTexture2DArrayParameter](reference)}
+}
+
+// NewRefVisualShaderNodeTexture2DArrayParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTexture2DArrayParameterGDExtensionReturnOwner(reference VisualShaderNodeTexture2DArrayParameter) RefVisualShaderNodeTexture2DArrayParameter {
+	return &RefVisualShaderNodeTexture2DArrayParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeTexture2DArrayParameter](reference)}
 }
 
 var _ RefVisualShaderNodeTexture2DParameter = &RefVisualShaderNodeTexture2DParameterImpl{}
@@ -11355,8 +18507,20 @@ func NewRefVisualShaderNodeTexture2DParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture2DParameter](reference.(VisualShaderNodeTexture2DParameter))
 }
 
+// NewRefVisualShaderNodeTexture2DParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTexture2DParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTexture2DParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture2DParameter) RefVisualShaderNodeTexture2DParameter {
 	return &RefVisualShaderNodeTexture2DParameterImpl{RefBase: NewRef[VisualShaderNodeTexture2DParameter](reference)}
+}
+
+// NewRefVisualShaderNodeTexture2DParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTexture2DParameterGDExtensionReturnOwner(reference VisualShaderNodeTexture2DParameter) RefVisualShaderNodeTexture2DParameter {
+	return &RefVisualShaderNodeTexture2DParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeTexture2DParameter](reference)}
 }
 
 var _ RefVisualShaderNodeTexture3D = &RefVisualShaderNodeTexture3DImpl{}
@@ -11374,8 +18538,20 @@ func NewRefVisualShaderNodeTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture3D](reference.(VisualShaderNodeTexture3D))
 }
 
+// NewRefVisualShaderNodeTexture3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTexture3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTexture3DGDExtensionIternalConstructor(reference VisualShaderNodeTexture3D) RefVisualShaderNodeTexture3D {
 	return &RefVisualShaderNodeTexture3DImpl{RefBase: NewRef[VisualShaderNodeTexture3D](reference)}
+}
+
+// NewRefVisualShaderNodeTexture3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTexture3DGDExtensionReturnOwner(reference VisualShaderNodeTexture3D) RefVisualShaderNodeTexture3D {
+	return &RefVisualShaderNodeTexture3DImpl{RefBase: NewRefTransfer[VisualShaderNodeTexture3D](reference)}
 }
 
 var _ RefVisualShaderNodeTexture3DParameter = &RefVisualShaderNodeTexture3DParameterImpl{}
@@ -11393,8 +18569,20 @@ func NewRefVisualShaderNodeTexture3DParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture3DParameter](reference.(VisualShaderNodeTexture3DParameter))
 }
 
+// NewRefVisualShaderNodeTexture3DParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTexture3DParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTexture3DParameterGDExtensionIternalConstructor(reference VisualShaderNodeTexture3DParameter) RefVisualShaderNodeTexture3DParameter {
 	return &RefVisualShaderNodeTexture3DParameterImpl{RefBase: NewRef[VisualShaderNodeTexture3DParameter](reference)}
+}
+
+// NewRefVisualShaderNodeTexture3DParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTexture3DParameterGDExtensionReturnOwner(reference VisualShaderNodeTexture3DParameter) RefVisualShaderNodeTexture3DParameter {
+	return &RefVisualShaderNodeTexture3DParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeTexture3DParameter](reference)}
 }
 
 var _ RefVisualShaderNodeTextureParameter = &RefVisualShaderNodeTextureParameterImpl{}
@@ -11412,8 +18600,20 @@ func NewRefVisualShaderNodeTextureParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTextureParameter](reference.(VisualShaderNodeTextureParameter))
 }
 
+// NewRefVisualShaderNodeTextureParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTextureParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTextureParameterGDExtensionIternalConstructor(reference VisualShaderNodeTextureParameter) RefVisualShaderNodeTextureParameter {
 	return &RefVisualShaderNodeTextureParameterImpl{RefBase: NewRef[VisualShaderNodeTextureParameter](reference)}
+}
+
+// NewRefVisualShaderNodeTextureParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTextureParameterGDExtensionReturnOwner(reference VisualShaderNodeTextureParameter) RefVisualShaderNodeTextureParameter {
+	return &RefVisualShaderNodeTextureParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeTextureParameter](reference)}
 }
 
 var _ RefVisualShaderNodeTextureParameterTriplanar = &RefVisualShaderNodeTextureParameterTriplanarImpl{}
@@ -11431,8 +18631,20 @@ func NewRefVisualShaderNodeTextureParameterTriplanarAsRef(reference RefCounted) 
 	return NewRef[VisualShaderNodeTextureParameterTriplanar](reference.(VisualShaderNodeTextureParameterTriplanar))
 }
 
+// NewRefVisualShaderNodeTextureParameterTriplanarGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTextureParameterTriplanarWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTextureParameterTriplanarGDExtensionIternalConstructor(reference VisualShaderNodeTextureParameterTriplanar) RefVisualShaderNodeTextureParameterTriplanar {
 	return &RefVisualShaderNodeTextureParameterTriplanarImpl{RefBase: NewRef[VisualShaderNodeTextureParameterTriplanar](reference)}
+}
+
+// NewRefVisualShaderNodeTextureParameterTriplanarGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTextureParameterTriplanarGDExtensionReturnOwner(reference VisualShaderNodeTextureParameterTriplanar) RefVisualShaderNodeTextureParameterTriplanar {
+	return &RefVisualShaderNodeTextureParameterTriplanarImpl{RefBase: NewRefTransfer[VisualShaderNodeTextureParameterTriplanar](reference)}
 }
 
 var _ RefVisualShaderNodeTextureSDF = &RefVisualShaderNodeTextureSDFImpl{}
@@ -11450,8 +18662,20 @@ func NewRefVisualShaderNodeTextureSDFAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTextureSDF](reference.(VisualShaderNodeTextureSDF))
 }
 
+// NewRefVisualShaderNodeTextureSDFGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTextureSDFWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTextureSDFGDExtensionIternalConstructor(reference VisualShaderNodeTextureSDF) RefVisualShaderNodeTextureSDF {
 	return &RefVisualShaderNodeTextureSDFImpl{RefBase: NewRef[VisualShaderNodeTextureSDF](reference)}
+}
+
+// NewRefVisualShaderNodeTextureSDFGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTextureSDFGDExtensionReturnOwner(reference VisualShaderNodeTextureSDF) RefVisualShaderNodeTextureSDF {
+	return &RefVisualShaderNodeTextureSDFImpl{RefBase: NewRefTransfer[VisualShaderNodeTextureSDF](reference)}
 }
 
 var _ RefVisualShaderNodeTextureSDFNormal = &RefVisualShaderNodeTextureSDFNormalImpl{}
@@ -11469,8 +18693,20 @@ func NewRefVisualShaderNodeTextureSDFNormalAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTextureSDFNormal](reference.(VisualShaderNodeTextureSDFNormal))
 }
 
+// NewRefVisualShaderNodeTextureSDFNormalGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTextureSDFNormalWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTextureSDFNormalGDExtensionIternalConstructor(reference VisualShaderNodeTextureSDFNormal) RefVisualShaderNodeTextureSDFNormal {
 	return &RefVisualShaderNodeTextureSDFNormalImpl{RefBase: NewRef[VisualShaderNodeTextureSDFNormal](reference)}
+}
+
+// NewRefVisualShaderNodeTextureSDFNormalGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTextureSDFNormalGDExtensionReturnOwner(reference VisualShaderNodeTextureSDFNormal) RefVisualShaderNodeTextureSDFNormal {
+	return &RefVisualShaderNodeTextureSDFNormalImpl{RefBase: NewRefTransfer[VisualShaderNodeTextureSDFNormal](reference)}
 }
 
 var _ RefVisualShaderNodeTransformCompose = &RefVisualShaderNodeTransformComposeImpl{}
@@ -11488,8 +18724,20 @@ func NewRefVisualShaderNodeTransformComposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformCompose](reference.(VisualShaderNodeTransformCompose))
 }
 
+// NewRefVisualShaderNodeTransformComposeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTransformComposeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTransformComposeGDExtensionIternalConstructor(reference VisualShaderNodeTransformCompose) RefVisualShaderNodeTransformCompose {
 	return &RefVisualShaderNodeTransformComposeImpl{RefBase: NewRef[VisualShaderNodeTransformCompose](reference)}
+}
+
+// NewRefVisualShaderNodeTransformComposeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTransformComposeGDExtensionReturnOwner(reference VisualShaderNodeTransformCompose) RefVisualShaderNodeTransformCompose {
+	return &RefVisualShaderNodeTransformComposeImpl{RefBase: NewRefTransfer[VisualShaderNodeTransformCompose](reference)}
 }
 
 var _ RefVisualShaderNodeTransformConstant = &RefVisualShaderNodeTransformConstantImpl{}
@@ -11507,8 +18755,20 @@ func NewRefVisualShaderNodeTransformConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformConstant](reference.(VisualShaderNodeTransformConstant))
 }
 
+// NewRefVisualShaderNodeTransformConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTransformConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTransformConstantGDExtensionIternalConstructor(reference VisualShaderNodeTransformConstant) RefVisualShaderNodeTransformConstant {
 	return &RefVisualShaderNodeTransformConstantImpl{RefBase: NewRef[VisualShaderNodeTransformConstant](reference)}
+}
+
+// NewRefVisualShaderNodeTransformConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTransformConstantGDExtensionReturnOwner(reference VisualShaderNodeTransformConstant) RefVisualShaderNodeTransformConstant {
+	return &RefVisualShaderNodeTransformConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeTransformConstant](reference)}
 }
 
 var _ RefVisualShaderNodeTransformDecompose = &RefVisualShaderNodeTransformDecomposeImpl{}
@@ -11526,8 +18786,20 @@ func NewRefVisualShaderNodeTransformDecomposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformDecompose](reference.(VisualShaderNodeTransformDecompose))
 }
 
+// NewRefVisualShaderNodeTransformDecomposeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTransformDecomposeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTransformDecomposeGDExtensionIternalConstructor(reference VisualShaderNodeTransformDecompose) RefVisualShaderNodeTransformDecompose {
 	return &RefVisualShaderNodeTransformDecomposeImpl{RefBase: NewRef[VisualShaderNodeTransformDecompose](reference)}
+}
+
+// NewRefVisualShaderNodeTransformDecomposeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTransformDecomposeGDExtensionReturnOwner(reference VisualShaderNodeTransformDecompose) RefVisualShaderNodeTransformDecompose {
+	return &RefVisualShaderNodeTransformDecomposeImpl{RefBase: NewRefTransfer[VisualShaderNodeTransformDecompose](reference)}
 }
 
 var _ RefVisualShaderNodeTransformFunc = &RefVisualShaderNodeTransformFuncImpl{}
@@ -11545,8 +18817,20 @@ func NewRefVisualShaderNodeTransformFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformFunc](reference.(VisualShaderNodeTransformFunc))
 }
 
+// NewRefVisualShaderNodeTransformFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTransformFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTransformFuncGDExtensionIternalConstructor(reference VisualShaderNodeTransformFunc) RefVisualShaderNodeTransformFunc {
 	return &RefVisualShaderNodeTransformFuncImpl{RefBase: NewRef[VisualShaderNodeTransformFunc](reference)}
+}
+
+// NewRefVisualShaderNodeTransformFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTransformFuncGDExtensionReturnOwner(reference VisualShaderNodeTransformFunc) RefVisualShaderNodeTransformFunc {
+	return &RefVisualShaderNodeTransformFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeTransformFunc](reference)}
 }
 
 var _ RefVisualShaderNodeTransformOp = &RefVisualShaderNodeTransformOpImpl{}
@@ -11564,8 +18848,20 @@ func NewRefVisualShaderNodeTransformOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformOp](reference.(VisualShaderNodeTransformOp))
 }
 
+// NewRefVisualShaderNodeTransformOpGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTransformOpWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTransformOpGDExtensionIternalConstructor(reference VisualShaderNodeTransformOp) RefVisualShaderNodeTransformOp {
 	return &RefVisualShaderNodeTransformOpImpl{RefBase: NewRef[VisualShaderNodeTransformOp](reference)}
+}
+
+// NewRefVisualShaderNodeTransformOpGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTransformOpGDExtensionReturnOwner(reference VisualShaderNodeTransformOp) RefVisualShaderNodeTransformOp {
+	return &RefVisualShaderNodeTransformOpImpl{RefBase: NewRefTransfer[VisualShaderNodeTransformOp](reference)}
 }
 
 var _ RefVisualShaderNodeTransformParameter = &RefVisualShaderNodeTransformParameterImpl{}
@@ -11583,8 +18879,20 @@ func NewRefVisualShaderNodeTransformParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformParameter](reference.(VisualShaderNodeTransformParameter))
 }
 
+// NewRefVisualShaderNodeTransformParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTransformParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTransformParameterGDExtensionIternalConstructor(reference VisualShaderNodeTransformParameter) RefVisualShaderNodeTransformParameter {
 	return &RefVisualShaderNodeTransformParameterImpl{RefBase: NewRef[VisualShaderNodeTransformParameter](reference)}
+}
+
+// NewRefVisualShaderNodeTransformParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTransformParameterGDExtensionReturnOwner(reference VisualShaderNodeTransformParameter) RefVisualShaderNodeTransformParameter {
+	return &RefVisualShaderNodeTransformParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeTransformParameter](reference)}
 }
 
 var _ RefVisualShaderNodeTransformVecMult = &RefVisualShaderNodeTransformVecMultImpl{}
@@ -11602,8 +18910,20 @@ func NewRefVisualShaderNodeTransformVecMultAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformVecMult](reference.(VisualShaderNodeTransformVecMult))
 }
 
+// NewRefVisualShaderNodeTransformVecMultGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeTransformVecMultWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeTransformVecMultGDExtensionIternalConstructor(reference VisualShaderNodeTransformVecMult) RefVisualShaderNodeTransformVecMult {
 	return &RefVisualShaderNodeTransformVecMultImpl{RefBase: NewRef[VisualShaderNodeTransformVecMult](reference)}
+}
+
+// NewRefVisualShaderNodeTransformVecMultGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeTransformVecMultGDExtensionReturnOwner(reference VisualShaderNodeTransformVecMult) RefVisualShaderNodeTransformVecMult {
+	return &RefVisualShaderNodeTransformVecMultImpl{RefBase: NewRefTransfer[VisualShaderNodeTransformVecMult](reference)}
 }
 
 var _ RefVisualShaderNodeUIntConstant = &RefVisualShaderNodeUIntConstantImpl{}
@@ -11621,8 +18941,20 @@ func NewRefVisualShaderNodeUIntConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntConstant](reference.(VisualShaderNodeUIntConstant))
 }
 
+// NewRefVisualShaderNodeUIntConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeUIntConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeUIntConstantGDExtensionIternalConstructor(reference VisualShaderNodeUIntConstant) RefVisualShaderNodeUIntConstant {
 	return &RefVisualShaderNodeUIntConstantImpl{RefBase: NewRef[VisualShaderNodeUIntConstant](reference)}
+}
+
+// NewRefVisualShaderNodeUIntConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeUIntConstantGDExtensionReturnOwner(reference VisualShaderNodeUIntConstant) RefVisualShaderNodeUIntConstant {
+	return &RefVisualShaderNodeUIntConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeUIntConstant](reference)}
 }
 
 var _ RefVisualShaderNodeUIntFunc = &RefVisualShaderNodeUIntFuncImpl{}
@@ -11640,8 +18972,20 @@ func NewRefVisualShaderNodeUIntFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntFunc](reference.(VisualShaderNodeUIntFunc))
 }
 
+// NewRefVisualShaderNodeUIntFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeUIntFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeUIntFuncGDExtensionIternalConstructor(reference VisualShaderNodeUIntFunc) RefVisualShaderNodeUIntFunc {
 	return &RefVisualShaderNodeUIntFuncImpl{RefBase: NewRef[VisualShaderNodeUIntFunc](reference)}
+}
+
+// NewRefVisualShaderNodeUIntFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeUIntFuncGDExtensionReturnOwner(reference VisualShaderNodeUIntFunc) RefVisualShaderNodeUIntFunc {
+	return &RefVisualShaderNodeUIntFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeUIntFunc](reference)}
 }
 
 var _ RefVisualShaderNodeUIntOp = &RefVisualShaderNodeUIntOpImpl{}
@@ -11659,8 +19003,20 @@ func NewRefVisualShaderNodeUIntOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntOp](reference.(VisualShaderNodeUIntOp))
 }
 
+// NewRefVisualShaderNodeUIntOpGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeUIntOpWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeUIntOpGDExtensionIternalConstructor(reference VisualShaderNodeUIntOp) RefVisualShaderNodeUIntOp {
 	return &RefVisualShaderNodeUIntOpImpl{RefBase: NewRef[VisualShaderNodeUIntOp](reference)}
+}
+
+// NewRefVisualShaderNodeUIntOpGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeUIntOpGDExtensionReturnOwner(reference VisualShaderNodeUIntOp) RefVisualShaderNodeUIntOp {
+	return &RefVisualShaderNodeUIntOpImpl{RefBase: NewRefTransfer[VisualShaderNodeUIntOp](reference)}
 }
 
 var _ RefVisualShaderNodeUIntParameter = &RefVisualShaderNodeUIntParameterImpl{}
@@ -11678,8 +19034,20 @@ func NewRefVisualShaderNodeUIntParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntParameter](reference.(VisualShaderNodeUIntParameter))
 }
 
+// NewRefVisualShaderNodeUIntParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeUIntParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeUIntParameterGDExtensionIternalConstructor(reference VisualShaderNodeUIntParameter) RefVisualShaderNodeUIntParameter {
 	return &RefVisualShaderNodeUIntParameterImpl{RefBase: NewRef[VisualShaderNodeUIntParameter](reference)}
+}
+
+// NewRefVisualShaderNodeUIntParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeUIntParameterGDExtensionReturnOwner(reference VisualShaderNodeUIntParameter) RefVisualShaderNodeUIntParameter {
+	return &RefVisualShaderNodeUIntParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeUIntParameter](reference)}
 }
 
 var _ RefVisualShaderNodeUVFunc = &RefVisualShaderNodeUVFuncImpl{}
@@ -11697,8 +19065,20 @@ func NewRefVisualShaderNodeUVFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUVFunc](reference.(VisualShaderNodeUVFunc))
 }
 
+// NewRefVisualShaderNodeUVFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeUVFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeUVFuncGDExtensionIternalConstructor(reference VisualShaderNodeUVFunc) RefVisualShaderNodeUVFunc {
 	return &RefVisualShaderNodeUVFuncImpl{RefBase: NewRef[VisualShaderNodeUVFunc](reference)}
+}
+
+// NewRefVisualShaderNodeUVFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeUVFuncGDExtensionReturnOwner(reference VisualShaderNodeUVFunc) RefVisualShaderNodeUVFunc {
+	return &RefVisualShaderNodeUVFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeUVFunc](reference)}
 }
 
 var _ RefVisualShaderNodeUVPolarCoord = &RefVisualShaderNodeUVPolarCoordImpl{}
@@ -11716,8 +19096,20 @@ func NewRefVisualShaderNodeUVPolarCoordAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUVPolarCoord](reference.(VisualShaderNodeUVPolarCoord))
 }
 
+// NewRefVisualShaderNodeUVPolarCoordGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeUVPolarCoordWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeUVPolarCoordGDExtensionIternalConstructor(reference VisualShaderNodeUVPolarCoord) RefVisualShaderNodeUVPolarCoord {
 	return &RefVisualShaderNodeUVPolarCoordImpl{RefBase: NewRef[VisualShaderNodeUVPolarCoord](reference)}
+}
+
+// NewRefVisualShaderNodeUVPolarCoordGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeUVPolarCoordGDExtensionReturnOwner(reference VisualShaderNodeUVPolarCoord) RefVisualShaderNodeUVPolarCoord {
+	return &RefVisualShaderNodeUVPolarCoordImpl{RefBase: NewRefTransfer[VisualShaderNodeUVPolarCoord](reference)}
 }
 
 var _ RefVisualShaderNodeVarying = &RefVisualShaderNodeVaryingImpl{}
@@ -11735,8 +19127,20 @@ func NewRefVisualShaderNodeVaryingAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVarying](reference.(VisualShaderNodeVarying))
 }
 
+// NewRefVisualShaderNodeVaryingGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVaryingWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVaryingGDExtensionIternalConstructor(reference VisualShaderNodeVarying) RefVisualShaderNodeVarying {
 	return &RefVisualShaderNodeVaryingImpl{RefBase: NewRef[VisualShaderNodeVarying](reference)}
+}
+
+// NewRefVisualShaderNodeVaryingGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVaryingGDExtensionReturnOwner(reference VisualShaderNodeVarying) RefVisualShaderNodeVarying {
+	return &RefVisualShaderNodeVaryingImpl{RefBase: NewRefTransfer[VisualShaderNodeVarying](reference)}
 }
 
 var _ RefVisualShaderNodeVaryingGetter = &RefVisualShaderNodeVaryingGetterImpl{}
@@ -11754,8 +19158,20 @@ func NewRefVisualShaderNodeVaryingGetterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVaryingGetter](reference.(VisualShaderNodeVaryingGetter))
 }
 
+// NewRefVisualShaderNodeVaryingGetterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVaryingGetterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVaryingGetterGDExtensionIternalConstructor(reference VisualShaderNodeVaryingGetter) RefVisualShaderNodeVaryingGetter {
 	return &RefVisualShaderNodeVaryingGetterImpl{RefBase: NewRef[VisualShaderNodeVaryingGetter](reference)}
+}
+
+// NewRefVisualShaderNodeVaryingGetterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVaryingGetterGDExtensionReturnOwner(reference VisualShaderNodeVaryingGetter) RefVisualShaderNodeVaryingGetter {
+	return &RefVisualShaderNodeVaryingGetterImpl{RefBase: NewRefTransfer[VisualShaderNodeVaryingGetter](reference)}
 }
 
 var _ RefVisualShaderNodeVaryingSetter = &RefVisualShaderNodeVaryingSetterImpl{}
@@ -11773,8 +19189,20 @@ func NewRefVisualShaderNodeVaryingSetterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVaryingSetter](reference.(VisualShaderNodeVaryingSetter))
 }
 
+// NewRefVisualShaderNodeVaryingSetterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVaryingSetterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVaryingSetterGDExtensionIternalConstructor(reference VisualShaderNodeVaryingSetter) RefVisualShaderNodeVaryingSetter {
 	return &RefVisualShaderNodeVaryingSetterImpl{RefBase: NewRef[VisualShaderNodeVaryingSetter](reference)}
+}
+
+// NewRefVisualShaderNodeVaryingSetterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVaryingSetterGDExtensionReturnOwner(reference VisualShaderNodeVaryingSetter) RefVisualShaderNodeVaryingSetter {
+	return &RefVisualShaderNodeVaryingSetterImpl{RefBase: NewRefTransfer[VisualShaderNodeVaryingSetter](reference)}
 }
 
 var _ RefVisualShaderNodeVec2Constant = &RefVisualShaderNodeVec2ConstantImpl{}
@@ -11792,8 +19220,20 @@ func NewRefVisualShaderNodeVec2ConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec2Constant](reference.(VisualShaderNodeVec2Constant))
 }
 
+// NewRefVisualShaderNodeVec2ConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVec2ConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVec2ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec2Constant) RefVisualShaderNodeVec2Constant {
 	return &RefVisualShaderNodeVec2ConstantImpl{RefBase: NewRef[VisualShaderNodeVec2Constant](reference)}
+}
+
+// NewRefVisualShaderNodeVec2ConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVec2ConstantGDExtensionReturnOwner(reference VisualShaderNodeVec2Constant) RefVisualShaderNodeVec2Constant {
+	return &RefVisualShaderNodeVec2ConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeVec2Constant](reference)}
 }
 
 var _ RefVisualShaderNodeVec2Parameter = &RefVisualShaderNodeVec2ParameterImpl{}
@@ -11811,8 +19251,20 @@ func NewRefVisualShaderNodeVec2ParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec2Parameter](reference.(VisualShaderNodeVec2Parameter))
 }
 
+// NewRefVisualShaderNodeVec2ParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVec2ParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVec2ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec2Parameter) RefVisualShaderNodeVec2Parameter {
 	return &RefVisualShaderNodeVec2ParameterImpl{RefBase: NewRef[VisualShaderNodeVec2Parameter](reference)}
+}
+
+// NewRefVisualShaderNodeVec2ParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVec2ParameterGDExtensionReturnOwner(reference VisualShaderNodeVec2Parameter) RefVisualShaderNodeVec2Parameter {
+	return &RefVisualShaderNodeVec2ParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeVec2Parameter](reference)}
 }
 
 var _ RefVisualShaderNodeVec3Constant = &RefVisualShaderNodeVec3ConstantImpl{}
@@ -11830,8 +19282,20 @@ func NewRefVisualShaderNodeVec3ConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec3Constant](reference.(VisualShaderNodeVec3Constant))
 }
 
+// NewRefVisualShaderNodeVec3ConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVec3ConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVec3ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec3Constant) RefVisualShaderNodeVec3Constant {
 	return &RefVisualShaderNodeVec3ConstantImpl{RefBase: NewRef[VisualShaderNodeVec3Constant](reference)}
+}
+
+// NewRefVisualShaderNodeVec3ConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVec3ConstantGDExtensionReturnOwner(reference VisualShaderNodeVec3Constant) RefVisualShaderNodeVec3Constant {
+	return &RefVisualShaderNodeVec3ConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeVec3Constant](reference)}
 }
 
 var _ RefVisualShaderNodeVec3Parameter = &RefVisualShaderNodeVec3ParameterImpl{}
@@ -11849,8 +19313,20 @@ func NewRefVisualShaderNodeVec3ParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec3Parameter](reference.(VisualShaderNodeVec3Parameter))
 }
 
+// NewRefVisualShaderNodeVec3ParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVec3ParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVec3ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec3Parameter) RefVisualShaderNodeVec3Parameter {
 	return &RefVisualShaderNodeVec3ParameterImpl{RefBase: NewRef[VisualShaderNodeVec3Parameter](reference)}
+}
+
+// NewRefVisualShaderNodeVec3ParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVec3ParameterGDExtensionReturnOwner(reference VisualShaderNodeVec3Parameter) RefVisualShaderNodeVec3Parameter {
+	return &RefVisualShaderNodeVec3ParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeVec3Parameter](reference)}
 }
 
 var _ RefVisualShaderNodeVec4Constant = &RefVisualShaderNodeVec4ConstantImpl{}
@@ -11868,8 +19344,20 @@ func NewRefVisualShaderNodeVec4ConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec4Constant](reference.(VisualShaderNodeVec4Constant))
 }
 
+// NewRefVisualShaderNodeVec4ConstantGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVec4ConstantWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVec4ConstantGDExtensionIternalConstructor(reference VisualShaderNodeVec4Constant) RefVisualShaderNodeVec4Constant {
 	return &RefVisualShaderNodeVec4ConstantImpl{RefBase: NewRef[VisualShaderNodeVec4Constant](reference)}
+}
+
+// NewRefVisualShaderNodeVec4ConstantGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVec4ConstantGDExtensionReturnOwner(reference VisualShaderNodeVec4Constant) RefVisualShaderNodeVec4Constant {
+	return &RefVisualShaderNodeVec4ConstantImpl{RefBase: NewRefTransfer[VisualShaderNodeVec4Constant](reference)}
 }
 
 var _ RefVisualShaderNodeVec4Parameter = &RefVisualShaderNodeVec4ParameterImpl{}
@@ -11887,8 +19375,20 @@ func NewRefVisualShaderNodeVec4ParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec4Parameter](reference.(VisualShaderNodeVec4Parameter))
 }
 
+// NewRefVisualShaderNodeVec4ParameterGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVec4ParameterWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVec4ParameterGDExtensionIternalConstructor(reference VisualShaderNodeVec4Parameter) RefVisualShaderNodeVec4Parameter {
 	return &RefVisualShaderNodeVec4ParameterImpl{RefBase: NewRef[VisualShaderNodeVec4Parameter](reference)}
+}
+
+// NewRefVisualShaderNodeVec4ParameterGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVec4ParameterGDExtensionReturnOwner(reference VisualShaderNodeVec4Parameter) RefVisualShaderNodeVec4Parameter {
+	return &RefVisualShaderNodeVec4ParameterImpl{RefBase: NewRefTransfer[VisualShaderNodeVec4Parameter](reference)}
 }
 
 var _ RefVisualShaderNodeVectorBase = &RefVisualShaderNodeVectorBaseImpl{}
@@ -11906,8 +19406,20 @@ func NewRefVisualShaderNodeVectorBaseAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorBase](reference.(VisualShaderNodeVectorBase))
 }
 
+// NewRefVisualShaderNodeVectorBaseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorBaseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorBaseGDExtensionIternalConstructor(reference VisualShaderNodeVectorBase) RefVisualShaderNodeVectorBase {
 	return &RefVisualShaderNodeVectorBaseImpl{RefBase: NewRef[VisualShaderNodeVectorBase](reference)}
+}
+
+// NewRefVisualShaderNodeVectorBaseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorBaseGDExtensionReturnOwner(reference VisualShaderNodeVectorBase) RefVisualShaderNodeVectorBase {
+	return &RefVisualShaderNodeVectorBaseImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorBase](reference)}
 }
 
 var _ RefVisualShaderNodeVectorCompose = &RefVisualShaderNodeVectorComposeImpl{}
@@ -11925,8 +19437,20 @@ func NewRefVisualShaderNodeVectorComposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorCompose](reference.(VisualShaderNodeVectorCompose))
 }
 
+// NewRefVisualShaderNodeVectorComposeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorComposeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorComposeGDExtensionIternalConstructor(reference VisualShaderNodeVectorCompose) RefVisualShaderNodeVectorCompose {
 	return &RefVisualShaderNodeVectorComposeImpl{RefBase: NewRef[VisualShaderNodeVectorCompose](reference)}
+}
+
+// NewRefVisualShaderNodeVectorComposeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorComposeGDExtensionReturnOwner(reference VisualShaderNodeVectorCompose) RefVisualShaderNodeVectorCompose {
+	return &RefVisualShaderNodeVectorComposeImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorCompose](reference)}
 }
 
 var _ RefVisualShaderNodeVectorDecompose = &RefVisualShaderNodeVectorDecomposeImpl{}
@@ -11944,8 +19468,20 @@ func NewRefVisualShaderNodeVectorDecomposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorDecompose](reference.(VisualShaderNodeVectorDecompose))
 }
 
+// NewRefVisualShaderNodeVectorDecomposeGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorDecomposeWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorDecomposeGDExtensionIternalConstructor(reference VisualShaderNodeVectorDecompose) RefVisualShaderNodeVectorDecompose {
 	return &RefVisualShaderNodeVectorDecomposeImpl{RefBase: NewRef[VisualShaderNodeVectorDecompose](reference)}
+}
+
+// NewRefVisualShaderNodeVectorDecomposeGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorDecomposeGDExtensionReturnOwner(reference VisualShaderNodeVectorDecompose) RefVisualShaderNodeVectorDecompose {
+	return &RefVisualShaderNodeVectorDecomposeImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorDecompose](reference)}
 }
 
 var _ RefVisualShaderNodeVectorDistance = &RefVisualShaderNodeVectorDistanceImpl{}
@@ -11963,8 +19499,20 @@ func NewRefVisualShaderNodeVectorDistanceAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorDistance](reference.(VisualShaderNodeVectorDistance))
 }
 
+// NewRefVisualShaderNodeVectorDistanceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorDistanceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorDistanceGDExtensionIternalConstructor(reference VisualShaderNodeVectorDistance) RefVisualShaderNodeVectorDistance {
 	return &RefVisualShaderNodeVectorDistanceImpl{RefBase: NewRef[VisualShaderNodeVectorDistance](reference)}
+}
+
+// NewRefVisualShaderNodeVectorDistanceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorDistanceGDExtensionReturnOwner(reference VisualShaderNodeVectorDistance) RefVisualShaderNodeVectorDistance {
+	return &RefVisualShaderNodeVectorDistanceImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorDistance](reference)}
 }
 
 var _ RefVisualShaderNodeVectorFunc = &RefVisualShaderNodeVectorFuncImpl{}
@@ -11982,8 +19530,20 @@ func NewRefVisualShaderNodeVectorFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorFunc](reference.(VisualShaderNodeVectorFunc))
 }
 
+// NewRefVisualShaderNodeVectorFuncGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorFuncWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorFuncGDExtensionIternalConstructor(reference VisualShaderNodeVectorFunc) RefVisualShaderNodeVectorFunc {
 	return &RefVisualShaderNodeVectorFuncImpl{RefBase: NewRef[VisualShaderNodeVectorFunc](reference)}
+}
+
+// NewRefVisualShaderNodeVectorFuncGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorFuncGDExtensionReturnOwner(reference VisualShaderNodeVectorFunc) RefVisualShaderNodeVectorFunc {
+	return &RefVisualShaderNodeVectorFuncImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorFunc](reference)}
 }
 
 var _ RefVisualShaderNodeVectorLen = &RefVisualShaderNodeVectorLenImpl{}
@@ -12001,8 +19561,20 @@ func NewRefVisualShaderNodeVectorLenAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorLen](reference.(VisualShaderNodeVectorLen))
 }
 
+// NewRefVisualShaderNodeVectorLenGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorLenWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorLenGDExtensionIternalConstructor(reference VisualShaderNodeVectorLen) RefVisualShaderNodeVectorLen {
 	return &RefVisualShaderNodeVectorLenImpl{RefBase: NewRef[VisualShaderNodeVectorLen](reference)}
+}
+
+// NewRefVisualShaderNodeVectorLenGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorLenGDExtensionReturnOwner(reference VisualShaderNodeVectorLen) RefVisualShaderNodeVectorLen {
+	return &RefVisualShaderNodeVectorLenImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorLen](reference)}
 }
 
 var _ RefVisualShaderNodeVectorOp = &RefVisualShaderNodeVectorOpImpl{}
@@ -12020,8 +19592,20 @@ func NewRefVisualShaderNodeVectorOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorOp](reference.(VisualShaderNodeVectorOp))
 }
 
+// NewRefVisualShaderNodeVectorOpGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorOpWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorOpGDExtensionIternalConstructor(reference VisualShaderNodeVectorOp) RefVisualShaderNodeVectorOp {
 	return &RefVisualShaderNodeVectorOpImpl{RefBase: NewRef[VisualShaderNodeVectorOp](reference)}
+}
+
+// NewRefVisualShaderNodeVectorOpGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorOpGDExtensionReturnOwner(reference VisualShaderNodeVectorOp) RefVisualShaderNodeVectorOp {
+	return &RefVisualShaderNodeVectorOpImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorOp](reference)}
 }
 
 var _ RefVisualShaderNodeVectorRefract = &RefVisualShaderNodeVectorRefractImpl{}
@@ -12039,8 +19623,20 @@ func NewRefVisualShaderNodeVectorRefractAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorRefract](reference.(VisualShaderNodeVectorRefract))
 }
 
+// NewRefVisualShaderNodeVectorRefractGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeVectorRefractWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeVectorRefractGDExtensionIternalConstructor(reference VisualShaderNodeVectorRefract) RefVisualShaderNodeVectorRefract {
 	return &RefVisualShaderNodeVectorRefractImpl{RefBase: NewRef[VisualShaderNodeVectorRefract](reference)}
+}
+
+// NewRefVisualShaderNodeVectorRefractGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeVectorRefractGDExtensionReturnOwner(reference VisualShaderNodeVectorRefract) RefVisualShaderNodeVectorRefract {
+	return &RefVisualShaderNodeVectorRefractImpl{RefBase: NewRefTransfer[VisualShaderNodeVectorRefract](reference)}
 }
 
 var _ RefVisualShaderNodeWorldPositionFromDepth = &RefVisualShaderNodeWorldPositionFromDepthImpl{}
@@ -12058,8 +19654,20 @@ func NewRefVisualShaderNodeWorldPositionFromDepthAsRef(reference RefCounted) Ref
 	return NewRef[VisualShaderNodeWorldPositionFromDepth](reference.(VisualShaderNodeWorldPositionFromDepth))
 }
 
+// NewRefVisualShaderNodeWorldPositionFromDepthGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVisualShaderNodeWorldPositionFromDepthWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVisualShaderNodeWorldPositionFromDepthGDExtensionIternalConstructor(reference VisualShaderNodeWorldPositionFromDepth) RefVisualShaderNodeWorldPositionFromDepth {
 	return &RefVisualShaderNodeWorldPositionFromDepthImpl{RefBase: NewRef[VisualShaderNodeWorldPositionFromDepth](reference)}
+}
+
+// NewRefVisualShaderNodeWorldPositionFromDepthGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVisualShaderNodeWorldPositionFromDepthGDExtensionReturnOwner(reference VisualShaderNodeWorldPositionFromDepth) RefVisualShaderNodeWorldPositionFromDepth {
+	return &RefVisualShaderNodeWorldPositionFromDepthImpl{RefBase: NewRefTransfer[VisualShaderNodeWorldPositionFromDepth](reference)}
 }
 
 var _ RefVoxelGIData = &RefVoxelGIDataImpl{}
@@ -12077,8 +19685,20 @@ func NewRefVoxelGIDataAsRef(reference RefCounted) Ref {
 	return NewRef[VoxelGIData](reference.(VoxelGIData))
 }
 
+// NewRefVoxelGIDataGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewVoxelGIDataWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefVoxelGIDataGDExtensionIternalConstructor(reference VoxelGIData) RefVoxelGIData {
 	return &RefVoxelGIDataImpl{RefBase: NewRef[VoxelGIData](reference)}
+}
+
+// NewRefVoxelGIDataGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefVoxelGIDataGDExtensionReturnOwner(reference VoxelGIData) RefVoxelGIData {
+	return &RefVoxelGIDataImpl{RefBase: NewRefTransfer[VoxelGIData](reference)}
 }
 
 var _ RefWeakRef = &RefWeakRefImpl{}
@@ -12096,8 +19716,20 @@ func NewRefWeakRefAsRef(reference RefCounted) Ref {
 	return NewRef[WeakRef](reference.(WeakRef))
 }
 
+// NewRefWeakRefGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWeakRefWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWeakRefGDExtensionIternalConstructor(reference WeakRef) RefWeakRef {
 	return &RefWeakRefImpl{RefBase: NewRef[WeakRef](reference)}
+}
+
+// NewRefWeakRefGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWeakRefGDExtensionReturnOwner(reference WeakRef) RefWeakRef {
+	return &RefWeakRefImpl{RefBase: NewRefTransfer[WeakRef](reference)}
 }
 
 var _ RefWebRTCDataChannel = &RefWebRTCDataChannelImpl{}
@@ -12115,8 +19747,20 @@ func NewRefWebRTCDataChannelAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCDataChannel](reference.(WebRTCDataChannel))
 }
 
+// NewRefWebRTCDataChannelGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebRTCDataChannelWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebRTCDataChannelGDExtensionIternalConstructor(reference WebRTCDataChannel) RefWebRTCDataChannel {
 	return &RefWebRTCDataChannelImpl{RefBase: NewRef[WebRTCDataChannel](reference)}
+}
+
+// NewRefWebRTCDataChannelGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebRTCDataChannelGDExtensionReturnOwner(reference WebRTCDataChannel) RefWebRTCDataChannel {
+	return &RefWebRTCDataChannelImpl{RefBase: NewRefTransfer[WebRTCDataChannel](reference)}
 }
 
 var _ RefWebRTCDataChannelExtension = &RefWebRTCDataChannelExtensionImpl{}
@@ -12134,8 +19778,20 @@ func NewRefWebRTCDataChannelExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCDataChannelExtension](reference.(WebRTCDataChannelExtension))
 }
 
+// NewRefWebRTCDataChannelExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebRTCDataChannelExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebRTCDataChannelExtensionGDExtensionIternalConstructor(reference WebRTCDataChannelExtension) RefWebRTCDataChannelExtension {
 	return &RefWebRTCDataChannelExtensionImpl{RefBase: NewRef[WebRTCDataChannelExtension](reference)}
+}
+
+// NewRefWebRTCDataChannelExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebRTCDataChannelExtensionGDExtensionReturnOwner(reference WebRTCDataChannelExtension) RefWebRTCDataChannelExtension {
+	return &RefWebRTCDataChannelExtensionImpl{RefBase: NewRefTransfer[WebRTCDataChannelExtension](reference)}
 }
 
 var _ RefWebRTCMultiplayerPeer = &RefWebRTCMultiplayerPeerImpl{}
@@ -12153,8 +19809,20 @@ func NewRefWebRTCMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCMultiplayerPeer](reference.(WebRTCMultiplayerPeer))
 }
 
+// NewRefWebRTCMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebRTCMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebRTCMultiplayerPeerGDExtensionIternalConstructor(reference WebRTCMultiplayerPeer) RefWebRTCMultiplayerPeer {
 	return &RefWebRTCMultiplayerPeerImpl{RefBase: NewRef[WebRTCMultiplayerPeer](reference)}
+}
+
+// NewRefWebRTCMultiplayerPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebRTCMultiplayerPeerGDExtensionReturnOwner(reference WebRTCMultiplayerPeer) RefWebRTCMultiplayerPeer {
+	return &RefWebRTCMultiplayerPeerImpl{RefBase: NewRefTransfer[WebRTCMultiplayerPeer](reference)}
 }
 
 var _ RefWebRTCPeerConnection = &RefWebRTCPeerConnectionImpl{}
@@ -12172,8 +19840,20 @@ func NewRefWebRTCPeerConnectionAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCPeerConnection](reference.(WebRTCPeerConnection))
 }
 
+// NewRefWebRTCPeerConnectionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebRTCPeerConnectionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebRTCPeerConnectionGDExtensionIternalConstructor(reference WebRTCPeerConnection) RefWebRTCPeerConnection {
 	return &RefWebRTCPeerConnectionImpl{RefBase: NewRef[WebRTCPeerConnection](reference)}
+}
+
+// NewRefWebRTCPeerConnectionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebRTCPeerConnectionGDExtensionReturnOwner(reference WebRTCPeerConnection) RefWebRTCPeerConnection {
+	return &RefWebRTCPeerConnectionImpl{RefBase: NewRefTransfer[WebRTCPeerConnection](reference)}
 }
 
 var _ RefWebRTCPeerConnectionExtension = &RefWebRTCPeerConnectionExtensionImpl{}
@@ -12191,8 +19871,20 @@ func NewRefWebRTCPeerConnectionExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCPeerConnectionExtension](reference.(WebRTCPeerConnectionExtension))
 }
 
+// NewRefWebRTCPeerConnectionExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebRTCPeerConnectionExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebRTCPeerConnectionExtensionGDExtensionIternalConstructor(reference WebRTCPeerConnectionExtension) RefWebRTCPeerConnectionExtension {
 	return &RefWebRTCPeerConnectionExtensionImpl{RefBase: NewRef[WebRTCPeerConnectionExtension](reference)}
+}
+
+// NewRefWebRTCPeerConnectionExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebRTCPeerConnectionExtensionGDExtensionReturnOwner(reference WebRTCPeerConnectionExtension) RefWebRTCPeerConnectionExtension {
+	return &RefWebRTCPeerConnectionExtensionImpl{RefBase: NewRefTransfer[WebRTCPeerConnectionExtension](reference)}
 }
 
 var _ RefWebSocketMultiplayerPeer = &RefWebSocketMultiplayerPeerImpl{}
@@ -12210,8 +19902,20 @@ func NewRefWebSocketMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[WebSocketMultiplayerPeer](reference.(WebSocketMultiplayerPeer))
 }
 
+// NewRefWebSocketMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebSocketMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebSocketMultiplayerPeerGDExtensionIternalConstructor(reference WebSocketMultiplayerPeer) RefWebSocketMultiplayerPeer {
 	return &RefWebSocketMultiplayerPeerImpl{RefBase: NewRef[WebSocketMultiplayerPeer](reference)}
+}
+
+// NewRefWebSocketMultiplayerPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebSocketMultiplayerPeerGDExtensionReturnOwner(reference WebSocketMultiplayerPeer) RefWebSocketMultiplayerPeer {
+	return &RefWebSocketMultiplayerPeerImpl{RefBase: NewRefTransfer[WebSocketMultiplayerPeer](reference)}
 }
 
 var _ RefWebSocketPeer = &RefWebSocketPeerImpl{}
@@ -12229,8 +19933,20 @@ func NewRefWebSocketPeerAsRef(reference RefCounted) Ref {
 	return NewRef[WebSocketPeer](reference.(WebSocketPeer))
 }
 
+// NewRefWebSocketPeerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebSocketPeerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebSocketPeerGDExtensionIternalConstructor(reference WebSocketPeer) RefWebSocketPeer {
 	return &RefWebSocketPeerImpl{RefBase: NewRef[WebSocketPeer](reference)}
+}
+
+// NewRefWebSocketPeerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebSocketPeerGDExtensionReturnOwner(reference WebSocketPeer) RefWebSocketPeer {
+	return &RefWebSocketPeerImpl{RefBase: NewRefTransfer[WebSocketPeer](reference)}
 }
 
 var _ RefWebXRInterface = &RefWebXRInterfaceImpl{}
@@ -12248,8 +19964,20 @@ func NewRefWebXRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[WebXRInterface](reference.(WebXRInterface))
 }
 
+// NewRefWebXRInterfaceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWebXRInterfaceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWebXRInterfaceGDExtensionIternalConstructor(reference WebXRInterface) RefWebXRInterface {
 	return &RefWebXRInterfaceImpl{RefBase: NewRef[WebXRInterface](reference)}
+}
+
+// NewRefWebXRInterfaceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWebXRInterfaceGDExtensionReturnOwner(reference WebXRInterface) RefWebXRInterface {
+	return &RefWebXRInterfaceImpl{RefBase: NewRefTransfer[WebXRInterface](reference)}
 }
 
 var _ RefWorld2D = &RefWorld2DImpl{}
@@ -12267,8 +19995,20 @@ func NewRefWorld2DAsRef(reference RefCounted) Ref {
 	return NewRef[World2D](reference.(World2D))
 }
 
+// NewRefWorld2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWorld2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWorld2DGDExtensionIternalConstructor(reference World2D) RefWorld2D {
 	return &RefWorld2DImpl{RefBase: NewRef[World2D](reference)}
+}
+
+// NewRefWorld2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWorld2DGDExtensionReturnOwner(reference World2D) RefWorld2D {
+	return &RefWorld2DImpl{RefBase: NewRefTransfer[World2D](reference)}
 }
 
 var _ RefWorld3D = &RefWorld3DImpl{}
@@ -12286,8 +20026,20 @@ func NewRefWorld3DAsRef(reference RefCounted) Ref {
 	return NewRef[World3D](reference.(World3D))
 }
 
+// NewRefWorld3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWorld3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWorld3DGDExtensionIternalConstructor(reference World3D) RefWorld3D {
 	return &RefWorld3DImpl{RefBase: NewRef[World3D](reference)}
+}
+
+// NewRefWorld3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWorld3DGDExtensionReturnOwner(reference World3D) RefWorld3D {
+	return &RefWorld3DImpl{RefBase: NewRefTransfer[World3D](reference)}
 }
 
 var _ RefWorldBoundaryShape2D = &RefWorldBoundaryShape2DImpl{}
@@ -12305,8 +20057,20 @@ func NewRefWorldBoundaryShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[WorldBoundaryShape2D](reference.(WorldBoundaryShape2D))
 }
 
+// NewRefWorldBoundaryShape2DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWorldBoundaryShape2DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWorldBoundaryShape2DGDExtensionIternalConstructor(reference WorldBoundaryShape2D) RefWorldBoundaryShape2D {
 	return &RefWorldBoundaryShape2DImpl{RefBase: NewRef[WorldBoundaryShape2D](reference)}
+}
+
+// NewRefWorldBoundaryShape2DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWorldBoundaryShape2DGDExtensionReturnOwner(reference WorldBoundaryShape2D) RefWorldBoundaryShape2D {
+	return &RefWorldBoundaryShape2DImpl{RefBase: NewRefTransfer[WorldBoundaryShape2D](reference)}
 }
 
 var _ RefWorldBoundaryShape3D = &RefWorldBoundaryShape3DImpl{}
@@ -12324,8 +20088,20 @@ func NewRefWorldBoundaryShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[WorldBoundaryShape3D](reference.(WorldBoundaryShape3D))
 }
 
+// NewRefWorldBoundaryShape3DGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewWorldBoundaryShape3DWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefWorldBoundaryShape3DGDExtensionIternalConstructor(reference WorldBoundaryShape3D) RefWorldBoundaryShape3D {
 	return &RefWorldBoundaryShape3DImpl{RefBase: NewRef[WorldBoundaryShape3D](reference)}
+}
+
+// NewRefWorldBoundaryShape3DGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefWorldBoundaryShape3DGDExtensionReturnOwner(reference WorldBoundaryShape3D) RefWorldBoundaryShape3D {
+	return &RefWorldBoundaryShape3DImpl{RefBase: NewRefTransfer[WorldBoundaryShape3D](reference)}
 }
 
 var _ RefX509Certificate = &RefX509CertificateImpl{}
@@ -12343,8 +20119,20 @@ func NewRefX509CertificateAsRef(reference RefCounted) Ref {
 	return NewRef[X509Certificate](reference.(X509Certificate))
 }
 
+// NewRefX509CertificateGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewX509CertificateWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefX509CertificateGDExtensionIternalConstructor(reference X509Certificate) RefX509Certificate {
 	return &RefX509CertificateImpl{RefBase: NewRef[X509Certificate](reference)}
+}
+
+// NewRefX509CertificateGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefX509CertificateGDExtensionReturnOwner(reference X509Certificate) RefX509Certificate {
+	return &RefX509CertificateImpl{RefBase: NewRefTransfer[X509Certificate](reference)}
 }
 
 var _ RefXMLParser = &RefXMLParserImpl{}
@@ -12362,8 +20150,20 @@ func NewRefXMLParserAsRef(reference RefCounted) Ref {
 	return NewRef[XMLParser](reference.(XMLParser))
 }
 
+// NewRefXMLParserGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXMLParserWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXMLParserGDExtensionIternalConstructor(reference XMLParser) RefXMLParser {
 	return &RefXMLParserImpl{RefBase: NewRef[XMLParser](reference)}
+}
+
+// NewRefXMLParserGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXMLParserGDExtensionReturnOwner(reference XMLParser) RefXMLParser {
+	return &RefXMLParserImpl{RefBase: NewRefTransfer[XMLParser](reference)}
 }
 
 var _ RefXRBodyTracker = &RefXRBodyTrackerImpl{}
@@ -12381,8 +20181,20 @@ func NewRefXRBodyTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRBodyTracker](reference.(XRBodyTracker))
 }
 
+// NewRefXRBodyTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRBodyTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRBodyTrackerGDExtensionIternalConstructor(reference XRBodyTracker) RefXRBodyTracker {
 	return &RefXRBodyTrackerImpl{RefBase: NewRef[XRBodyTracker](reference)}
+}
+
+// NewRefXRBodyTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRBodyTrackerGDExtensionReturnOwner(reference XRBodyTracker) RefXRBodyTracker {
+	return &RefXRBodyTrackerImpl{RefBase: NewRefTransfer[XRBodyTracker](reference)}
 }
 
 var _ RefXRControllerTracker = &RefXRControllerTrackerImpl{}
@@ -12400,8 +20212,20 @@ func NewRefXRControllerTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRControllerTracker](reference.(XRControllerTracker))
 }
 
+// NewRefXRControllerTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRControllerTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRControllerTrackerGDExtensionIternalConstructor(reference XRControllerTracker) RefXRControllerTracker {
 	return &RefXRControllerTrackerImpl{RefBase: NewRef[XRControllerTracker](reference)}
+}
+
+// NewRefXRControllerTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRControllerTrackerGDExtensionReturnOwner(reference XRControllerTracker) RefXRControllerTracker {
+	return &RefXRControllerTrackerImpl{RefBase: NewRefTransfer[XRControllerTracker](reference)}
 }
 
 var _ RefXRFaceTracker = &RefXRFaceTrackerImpl{}
@@ -12419,8 +20243,20 @@ func NewRefXRFaceTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRFaceTracker](reference.(XRFaceTracker))
 }
 
+// NewRefXRFaceTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRFaceTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRFaceTrackerGDExtensionIternalConstructor(reference XRFaceTracker) RefXRFaceTracker {
 	return &RefXRFaceTrackerImpl{RefBase: NewRef[XRFaceTracker](reference)}
+}
+
+// NewRefXRFaceTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRFaceTrackerGDExtensionReturnOwner(reference XRFaceTracker) RefXRFaceTracker {
+	return &RefXRFaceTrackerImpl{RefBase: NewRefTransfer[XRFaceTracker](reference)}
 }
 
 var _ RefXRHandTracker = &RefXRHandTrackerImpl{}
@@ -12438,8 +20274,20 @@ func NewRefXRHandTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRHandTracker](reference.(XRHandTracker))
 }
 
+// NewRefXRHandTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRHandTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRHandTrackerGDExtensionIternalConstructor(reference XRHandTracker) RefXRHandTracker {
 	return &RefXRHandTrackerImpl{RefBase: NewRef[XRHandTracker](reference)}
+}
+
+// NewRefXRHandTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRHandTrackerGDExtensionReturnOwner(reference XRHandTracker) RefXRHandTracker {
+	return &RefXRHandTrackerImpl{RefBase: NewRefTransfer[XRHandTracker](reference)}
 }
 
 var _ RefXRInterface = &RefXRInterfaceImpl{}
@@ -12457,8 +20305,20 @@ func NewRefXRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[XRInterface](reference.(XRInterface))
 }
 
+// NewRefXRInterfaceGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRInterfaceWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRInterfaceGDExtensionIternalConstructor(reference XRInterface) RefXRInterface {
 	return &RefXRInterfaceImpl{RefBase: NewRef[XRInterface](reference)}
+}
+
+// NewRefXRInterfaceGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRInterfaceGDExtensionReturnOwner(reference XRInterface) RefXRInterface {
+	return &RefXRInterfaceImpl{RefBase: NewRefTransfer[XRInterface](reference)}
 }
 
 var _ RefXRInterfaceExtension = &RefXRInterfaceExtensionImpl{}
@@ -12476,8 +20336,20 @@ func NewRefXRInterfaceExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[XRInterfaceExtension](reference.(XRInterfaceExtension))
 }
 
+// NewRefXRInterfaceExtensionGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRInterfaceExtensionWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRInterfaceExtensionGDExtensionIternalConstructor(reference XRInterfaceExtension) RefXRInterfaceExtension {
 	return &RefXRInterfaceExtensionImpl{RefBase: NewRef[XRInterfaceExtension](reference)}
+}
+
+// NewRefXRInterfaceExtensionGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRInterfaceExtensionGDExtensionReturnOwner(reference XRInterfaceExtension) RefXRInterfaceExtension {
+	return &RefXRInterfaceExtensionImpl{RefBase: NewRefTransfer[XRInterfaceExtension](reference)}
 }
 
 var _ RefXRPose = &RefXRPoseImpl{}
@@ -12495,8 +20367,20 @@ func NewRefXRPoseAsRef(reference RefCounted) Ref {
 	return NewRef[XRPose](reference.(XRPose))
 }
 
+// NewRefXRPoseGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRPoseWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRPoseGDExtensionIternalConstructor(reference XRPose) RefXRPose {
 	return &RefXRPoseImpl{RefBase: NewRef[XRPose](reference)}
+}
+
+// NewRefXRPoseGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRPoseGDExtensionReturnOwner(reference XRPose) RefXRPose {
+	return &RefXRPoseImpl{RefBase: NewRefTransfer[XRPose](reference)}
 }
 
 var _ RefXRPositionalTracker = &RefXRPositionalTrackerImpl{}
@@ -12514,8 +20398,20 @@ func NewRefXRPositionalTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRPositionalTracker](reference.(XRPositionalTracker))
 }
 
+// NewRefXRPositionalTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRPositionalTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRPositionalTrackerGDExtensionIternalConstructor(reference XRPositionalTracker) RefXRPositionalTracker {
 	return &RefXRPositionalTrackerImpl{RefBase: NewRef[XRPositionalTracker](reference)}
+}
+
+// NewRefXRPositionalTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRPositionalTrackerGDExtensionReturnOwner(reference XRPositionalTracker) RefXRPositionalTracker {
+	return &RefXRPositionalTrackerImpl{RefBase: NewRefTransfer[XRPositionalTracker](reference)}
 }
 
 var _ RefXRTracker = &RefXRTrackerImpl{}
@@ -12533,8 +20429,20 @@ func NewRefXRTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRTracker](reference.(XRTracker))
 }
 
+// NewRefXRTrackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewXRTrackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefXRTrackerGDExtensionIternalConstructor(reference XRTracker) RefXRTracker {
 	return &RefXRTrackerImpl{RefBase: NewRef[XRTracker](reference)}
+}
+
+// NewRefXRTrackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefXRTrackerGDExtensionReturnOwner(reference XRTracker) RefXRTracker {
+	return &RefXRTrackerImpl{RefBase: NewRefTransfer[XRTracker](reference)}
 }
 
 var _ RefZIPPacker = &RefZIPPackerImpl{}
@@ -12552,8 +20460,20 @@ func NewRefZIPPackerAsRef(reference RefCounted) Ref {
 	return NewRef[ZIPPacker](reference.(ZIPPacker))
 }
 
+// NewRefZIPPackerGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewZIPPackerWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefZIPPackerGDExtensionIternalConstructor(reference ZIPPacker) RefZIPPacker {
 	return &RefZIPPackerImpl{RefBase: NewRef[ZIPPacker](reference)}
+}
+
+// NewRefZIPPackerGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefZIPPackerGDExtensionReturnOwner(reference ZIPPacker) RefZIPPacker {
+	return &RefZIPPackerImpl{RefBase: NewRefTransfer[ZIPPacker](reference)}
 }
 
 var _ RefZIPReader = &RefZIPReaderImpl{}
@@ -12571,6 +20491,18 @@ func NewRefZIPReaderAsRef(reference RefCounted) Ref {
 	return NewRef[ZIPReader](reference.(ZIPReader))
 }
 
+// NewRefZIPReaderGDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by NewZIPReaderWithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func NewRefZIPReaderGDExtensionIternalConstructor(reference ZIPReader) RefZIPReader {
 	return &RefZIPReaderImpl{RefBase: NewRef[ZIPReader](reference)}
+}
+
+// NewRefZIPReaderGDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func NewRefZIPReaderGDExtensionReturnOwner(reference ZIPReader) RefZIPReader {
+	return &RefZIPReaderImpl{RefBase: NewRefTransfer[ZIPReader](reference)}
 }

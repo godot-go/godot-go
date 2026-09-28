@@ -336,8 +336,37 @@ func (md *GoMethodMetadata) fillCallArgs(gdArgs []Variant) []Variant {
 	return callArgs
 }
 
-// Call is called by GDScript to call into Go
+// Call is called by GDScript to call into Go.
+//
+// It is the panic-on-error facade over CallWithError, preserved so the exported
+// signature does not change. A direct Go caller of this method bypasses the
+// varcall callback's arity and variant-kind pre-validation and has no engine
+// call-error slot to report through, so a decode failure is surfaced loudly
+// instead. Callers that can report -- the varcall callback -- use CallWithError.
 func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
+	ret, err := md.CallWithError(inst, gdArgs...)
+	if err != nil {
+		log.Panic("varcall argument decode failed with no call-error slot to report through",
+			zap.String("method", md.GdMethodName),
+			zap.Error(err),
+		)
+	}
+	return ret
+}
+
+// CallWithError dispatches a varcall and returns an argument-decode failure
+// rather than aborting the process.
+//
+// The varcall callback owns the engine's GDExtensionCallError slot; the decoder
+// several frames below does not. This is the seam that lets a caller-induced
+// decode failure travel up so the callback can reject the call as
+// INVALID_ARGUMENT instead of running a panic off the cgo boundary.
+//
+// Only caller-induced decode failures are returned. Authoring faults inside the
+// dispatch (an unexpected return style) remain fatal, and the variadic path
+// returns no error because its arguments are collected raw as Variants with no
+// per-parameter decode to fail.
+func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Variant, error) {
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 	callArgs := md.fillCallArgs(gdArgs)
@@ -366,15 +395,20 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 			// Variadic methods receive raw Variants and never hold borrows,
 			// so any returned StringName/NodePath is Go-created: always destroy.
 			GDExtensionVariantPtrFromReflectValue(ret[0], ptr, true)
-			return v
+			return v, nil
 		default:
 			log.Panic("unexpected MethodBindReturnStyle",
 				zap.Any("value", ret),
 			)
 		}
-		return NewVariantNil()
+		return NewVariantNil(), nil
 	} else {
-		args := reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst, callArgs, exepctedTypes)
+		args, err := reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst, callArgs, exepctedTypes)
+		if err != nil {
+			// The decoder already released any owned arguments it decoded
+			// before the failure, so there is nothing left to unwind here.
+			return NewVariantNil(), err
+		}
 		log.Debug("Calling",
 			zap.String("bind", md.String()),
 			zap.String("gd_args", VariantSliceToString(gdArgs)),
@@ -409,9 +443,9 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 		// produced; the encoded return holds its own reference.
 		destroyOwnedContainerArgs(args)
 		if md.GoReturnStyle == NoneReturnStyle {
-			return NewVariantNil()
+			return NewVariantNil(), nil
 		}
-		return retVariant
+		return retVariant, nil
 	}
 }
 

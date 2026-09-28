@@ -1,6 +1,8 @@
 package core
 
 import (
+	"fmt"
+
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
@@ -68,3 +70,31 @@ func (md *GoMethodMetadata) varcallArgumentConvertible(arg Variant, index int) b
 	to := md.gdeArgumentTypes[index]
 	return CallFunc_GDExtensionInterfaceVariantCanConvertStrict(from, to) != 0
 }
+
+// VarcallArgDecodeError reports that a varcall argument cleared variant-level
+// validation but could not be decoded into the bound Go parameter type.
+//
+// It exists so the failure can travel from the decoder, which knows the argument
+// position and the declared type, up to the varcall callback, which owns the
+// engine's GDExtensionCallError slot. The callback reads Index directly instead
+// of parsing it back out of a message string.
+//
+// Only failures a caller can induce are carried by this type. Authoring faults --
+// a missing Ref constructor, an unsupported Go kind -- remain fatal and never
+// become a VarcallArgDecodeError, per the caller-induced rule in
+// method-call-error-reporting.
+type VarcallArgDecodeError struct {
+	// Index is the zero-based position of the argument that failed to decode.
+	Index int
+	// ParamType is the declared Go type the argument could not satisfy.
+	ParamType string
+	// Err is the underlying decoder failure.
+	Err error
+}
+
+func (e *VarcallArgDecodeError) Error() string {
+	return fmt.Sprintf("varcall argument %d failed to decode into %s: %v", e.Index, e.ParamType, e.Err)
+}
+
+// Unwrap keeps errors.Is and errors.As working through this wrapper.
+func (e *VarcallArgDecodeError) Unwrap() error { return e.Err }

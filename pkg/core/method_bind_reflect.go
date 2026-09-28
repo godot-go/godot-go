@@ -31,7 +31,13 @@ var (
 
 // reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs is called for each
 // function call argument that needs to be translated when GDScript calls into Go.
-func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass, suppliedArgs []Variant, expectedArgTypes []reflect.Type) []reflect.Value {
+//
+// On a caller-induced decode failure it returns a *VarcallArgDecodeError naming
+// the argument index and declared type, after releasing every owned argument it
+// already decoded in this call. Ownership rule: the decoder owns the decoded
+// prefix on failure, and GoMethodMetadata.Call owns the full set on success, so
+// the two cleanup paths can never both fire.
+func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass, suppliedArgs []Variant, expectedArgTypes []reflect.Type) ([]reflect.Value, error) {
 	argsCount := len(expectedArgTypes)
 	args := make([]reflect.Value, argsCount+1)
 	// add receiver instance as the first argument
@@ -39,17 +45,22 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass
 	for i := 0; i < argsCount; i++ {
 		v, err := convertVariantToGoTypeReflectValue(suppliedArgs[i], expectedArgTypes[i])
 		if err != nil {
-			log.Panic("error converting variant to go type",
-				zap.Int("arg_index", i),
-				zap.Error(err),
-			)
+			// Entries args[1]..args[i] decoded successfully; args[i+1] onward
+			// is still the zero reflect.Value, which panics on Interface(), so
+			// only the decoded prefix is handed to the releaser.
+			destroyOwnedContainerArgs(args[1 : i+1])
+			return nil, &VarcallArgDecodeError{
+				Index:     i,
+				ParamType: expectedArgTypes[i].String(),
+				Err:       err,
+			}
 		}
 		args[i+1] = v
 	}
 	log.Debug("argument converted",
 		zap.String("args", spew.Sdump(args)),
 	)
-	return args
+	return args, nil
 }
 
 // destroyOwnedContainerArgs releases container call arguments that
@@ -251,6 +262,18 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 					"unsupported object class %q for parameter type %s", className, t.String())
 			}
 			inst := constructor(owner).(Object)
+			// A registered class name is not the same as a wrapper of the
+			// declared type. Label is registered, and a LabelImpl still cannot
+			// be handed to a method that asked for Sprite2D. Without this check
+			// the mismatch surfaces one frame later as a reflect panic inside
+			// Func.Call -- outside the decoder, outside the returned-error
+			// contract, and still an abort of the host. That is precisely the
+			// failure this change exists to remove, so the check belongs here
+			// rather than downstream.
+			if !reflect.TypeOf(inst).Implements(t) {
+				return reflect.Value{}, fmt.Errorf(
+					"unsupported object class %q for parameter type %s", className, t.String())
+			}
 			log.Debug("varcall arg parsed",
 				zap.String("class_name", className),
 			)
@@ -265,7 +288,7 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		inst := v.Interface()
 		switch inst.(type) {
 		case Variant:
-			v := NewVariantCopyWithGDExtensionConstVariantPtr(arg.NativeConstPtr())
+			v := VariantViewFromConstPtr(arg.NativeConstPtr())
 			return reflect.ValueOf(v), nil
 		case Vector2:
 			v := arg.ToVector2()
@@ -831,7 +854,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := NewProjectionWithProjection(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Variant:
-				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
+				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			case PackedInt64Array:
 				v := *(*PackedInt64Array)(arg)
@@ -1040,7 +1063,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				v := NewProjectionWithProjection(*pV)
 				args[i+1] = reflect.ValueOf(v)
 			case Variant:
-				v := NewVariantCopyWithGDExtensionConstVariantPtr((GDExtensionConstVariantPtr)(arg))
+				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			default:
 				if strings.HasPrefix(t.String(), "gdextension.Ref") {

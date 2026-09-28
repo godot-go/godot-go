@@ -14,6 +14,7 @@ func _ready():
 	test_return_ownership(example)
 	test_ptrcall_object_decode(example)
 	test_user_defined_object_args(example)
+	test_varcall_arg_rejection(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -720,3 +721,42 @@ func test_user_defined_object_args(example: Example):
 
 	derived.free()
 	plain.free()
+
+
+# Varcall argument rejection (openspec: fix-varcall-arg-error-reporting).
+#
+# A wrong-class object used to abort the whole process from inside the Go
+# decoder, off the cgo boundary. These assert the call is rejected instead: the
+# method body must not run, and the run must survive far enough to print its
+# own summary.
+#
+# Dynamic example.call() on purpose. A statically typed call site would be
+# settled by GDScript's analyzer and never reach the varcall path under test.
+func test_varcall_arg_rejection(example: Example):
+	print("test varcall arg rejection")
+
+	var label = Label.new()
+	var sprite = Sprite2D.new()
+	var arr = [1, 2, 3]
+
+	# The decoder-level contract, driven through the Go seam.
+	assert_equal(example.call("test_varcall_decode_wrong_class", label), 1)
+	assert_equal(example.call("test_varcall_decode_subclass_still_accepted", label), 1)
+	assert_equal(example.call("test_varcall_decode_owned_prefix_released", arr, label), 1)
+	assert_equal(example.call("test_varcall_decode_success_releases_owned_container", arr), 1)
+
+	# Control: the declared class is accepted and the probe body really runs.
+	assert_equal(example.call("test_varcall_reject_probe", sprite), 1)
+	var before = example.test_varcall_reject_probe_count()
+
+	# This call MUST go through expect_rejected_call. Written inline, the engine's
+	# rejection makes GDScript abandon this function, so everything below it --
+	# including the frees -- silently stops executing while the suite still
+	# reports green. The primitive contains the abandonment here so the
+	# assertions and cleanup below actually run.
+	expect_rejected_call(example, "test_varcall_reject_probe", [label])
+	assert_true(last_call_was_rejected)
+	assert_equal(example.test_varcall_reject_probe_count(), before)
+
+	label.free()
+	sprite.free()

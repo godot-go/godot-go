@@ -154,11 +154,17 @@ type notAnObjectAtAll interface {
 
 // TestPtrcallDecodeUndecodableInterface requires a loud failure naming the
 // argument index and the offending type.
+//
+// The decoder refuses this the only way it can: log.Panic. The test catches the
+// panic and, because a PANIC log line arriving in `make test` output would
+// otherwise read as a failure, announces the expectation first so the noise is
+// recognisable as this test doing its job.
 func (e *Example) TestPtrcallDecodeUndecodableInterface(node Node) int32 {
 	return objectArgGuard("ptrcall_undecodable", func() int32 {
 		if isNullObject(node) {
 			return -1
 		}
+		fmt.Printf("  ptrcall_undecodable: about to feed a non-object interface; one expected PANIC log follows from the decoder refusing it\n")
 		var msg string
 		func() {
 			msg = capturePanic(func() {
@@ -173,7 +179,7 @@ func (e *Example) TestPtrcallDecodeUndecodableInterface(node Node) int32 {
 			fmt.Printf("  ptrcall_undecodable: FAIL: message lacks the type name: %s\n", msg)
 			return -3
 		}
-		fmt.Printf("  ptrcall_undecodable: refused loudly: %s\n", firstLine(msg))
+		fmt.Printf("  ptrcall_undecodable: PASS - refused loudly as required: %s\n", firstLine(msg))
 		return 1
 	})
 }

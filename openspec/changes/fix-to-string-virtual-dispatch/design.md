@@ -53,3 +53,13 @@ When no virtual is registered, emit the current `[ GDExtension::<class> <--> Ins
 - **Reflection return-type mismatch:** a user virtual registered as `to_string` that does not return a Go `string` would panic on `.String()`. Mitigation: the binding's registration already encodes the return type; guard with a type assertion and fall back to the default format with a warning log rather than panicking, keeping `to_string` (a display-only path) non-fatal.
 - **UTF-8 switch changes behavior for hypothetical Latin-1 users:** any existing code relying on Latin-1 byte reinterpretation of non-ASCII would render differently. Accepted: UTF-8 is the correct interpretation of Go strings, and the Latin-1 path was only ever accidentally safe for ASCII.
 - **Per-call map lookup:** resolving the virtual on every `to_string` call adds a map lookup. Negligible: `to_string` is display-only and low-frequency.
+
+## Corrections found during implementation
+
+**Decision 4's stated justification was false.** The design justified keeping the default format partly because "this preserves the format the demo assertion expects." That made the acceptance test worthless: `V_Example_ToString` returned a byte-identical string to the fallback, so `main.gd:28` passed whether dispatch worked or not. The assertion could not have failed for the exact bug this change fixes — which is why the bug survived as long as a red test sitting in the suite.
+
+Fixed by making the virtual's return value distinguishable: `[ GDExtension::Example <--> Instance ID:<id> | é中 ]`. The marker is produced only by the virtual, so a fallback is now a visible failure. Verified by sabotage: forcing the virtual lookup to miss yields 1078 passes / 1 failure and exit 2; restored yields 1079 / 0 and exit 0.
+
+The non-ASCII payload was added for the same reason on a different axis. Decision 3 changed Latin-1 to UTF-8 out construction, but every string the suite compared was ASCII, so 2.4 had no test at all. `é` (2 bytes) and `中` (3 bytes) now cross the boundary and arrive intact.
+
+General lesson for this repo: before trusting an assertion as proof of a fix, check that the expected value cannot be produced by the broken path.

@@ -51,16 +51,16 @@ func GoCallback_ClassCreationInfoToString(
 	if wci == nil {
 		log.Panic("wci should not be null")
 	}
-	log.Info("GoCallback_ClassCreationInfoToString",
-		zap.String("class_name", wci.Instance.GetClassName()),
-	)
-	inst := wci.Instance
-	className := inst.GetClassName()
-	instanceId := inst.GetInstanceId()
-	value := fmt.Sprintf("[ GDExtension::%s <--> Instance ID:%d ]", className, instanceId)
-	GDExtensionStringPtrWithLatin1Chars((GDExtensionStringPtr)(p_out), value)
-	var isValid C.uchar = 1
-	r_is_valid = (*C.GDExtensionBool)(&isValid)
+	value := resolveToString(wci.Instance)
+	// Go strings are UTF-8. The Latin-1 constructor reinterprets each byte as a
+	// Latin-1 code point, which corrupts anything outside ASCII; the old
+	// ASCII-only default masked that.
+	GDExtensionStringPtrWithUtf8Chars((GDExtensionStringPtr)(p_out), value)
+	// Write the flag *through* the out pointer. The previous code rebound this
+	// function's local copy of the pointer parameter, so the engine's bool never
+	// changed, stayed false, and discarded the string we just constructed in
+	// favour of the built-in Object::to_string().
+	*r_is_valid = C.GDExtensionBool(1)
 }
 
 //export GoCallback_ClassCreationInfoGetVirtualCallWithData

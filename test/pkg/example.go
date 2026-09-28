@@ -918,7 +918,12 @@ func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
 }
 
 func (e *Example) V_Example_ToString() string {
-	return fmt.Sprintf("[ GDExtension::Example <--> Instance ID:%d ]", e.GetInstanceId())
+	// Deliberately unlike the binding's default format, and carrying non-ASCII.
+	// The default format is ASCII-only and is also what a *failed* dispatch
+	// produces, so an assertion written against it could not tell the two apart.
+	// This string proves the virtual ran and that multi-byte UTF-8 survives the
+	// crossing into Godot's String.
+	return fmt.Sprintf("[ GDExtension::Example <--> Instance ID:%d | é中 ]", e.GetInstanceId())
 }
 
 func NewExampleFromOwnerObject(owner *GodotObject) GDClass {

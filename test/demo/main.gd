@@ -25,8 +25,10 @@ func test_suite(i: int, example: Example):
 	example.emit_custom_signal("Button", 42)
 	assert_equal(custom_signal_emitted, ["Button", 42])
 
-	# To string.
-	assert_equal(example.to_string(),'[ GDExtension::Example <--> Instance ID:%s ]' % example.get_instance_id())
+	# To string. The expected value carries a non-ASCII marker that only the Go
+	# V_Example_ToString virtual produces -- the binding's fallback format is
+	# ASCII-only, so this fails if dispatch or the UTF-8 encoding breaks.
+	assert_equal(example.to_string(),'[ GDExtension::Example <--> Instance ID:%s | é中 ]' % example.get_instance_id())
 	# It appears there's a bug with instance ids :-(
 	#assert_equal($Example/ExampleMin.to_string(), 'ExampleMin:[Wrapped:%s]' % $Example/ExampleMin.get_instance_id())
 

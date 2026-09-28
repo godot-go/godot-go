@@ -1017,6 +1017,12 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestUserDefinedArgStable", "test_user_defined_arg_stable", []string{"node"}, nil)
 		ClassDBBindMethod(t, "TestEngineClassArgStillResolves", "test_engine_class_arg_still_resolves", []string{"node", "expected_id"}, nil)
 		ClassDBBindMethod(t, "TestUnresolvableBindingIsTypedError", "test_unresolvable_binding_is_typed_error", nil, nil)
+		ClassDBBindMethod(t, "TestVarcallDecodeWrongClass", "test_varcall_decode_wrong_class", []string{"label"}, nil)
+		ClassDBBindMethod(t, "TestVarcallDecodeSubclassStillAccepted", "test_varcall_decode_subclass_still_accepted", []string{"label"}, nil)
+		ClassDBBindMethod(t, "TestVarcallDecodeOwnedPrefixReleased", "test_varcall_decode_owned_prefix_released", []string{"arr", "label"}, nil)
+		ClassDBBindMethod(t, "TestVarcallDecodeSuccessReleasesOwnedContainer", "test_varcall_decode_success_releases_owned_container", []string{"arr"}, nil)
+		ClassDBBindMethod(t, "TestVarcallRejectProbe", "test_varcall_reject_probe", []string{"target"}, nil)
+		ClassDBBindMethod(t, "TestVarcallRejectProbeCount", "test_varcall_reject_probe_count", nil, nil)
 
 		ClassDBBindMethod(t, "TestScalarEcho", "test_scalar_echo", []string{"p_bool", "p_i64", "p_f64", "p_str"}, nil)
 		ClassDBBindMethod(t, "TestUint64Echo", "test_uint64_echo", []string{"u64"}, nil)

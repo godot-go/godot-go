@@ -6,6 +6,7 @@ package core
 // #include <stdlib.h>
 import "C"
 import (
+	"errors"
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
@@ -87,7 +88,24 @@ func GoCallback_MethodBindMethodCall(
 		zap.String("method", bind.GdMethodName),
 		zap.String("bind", bind.String()),
 	)
-	retCall := bind.Call(inst, args...)
+	retCall, err := bind.CallWithError(inst, args...)
+	if err != nil {
+		// The argument cleared variant_can_convert_strict but could not be
+		// decoded into the declared Go parameter type. Report it through the
+		// engine's call-error slot exactly as the pre-pass rejections do,
+		// instead of letting the failure run off the cgo boundary.
+		var decodeErr *VarcallArgDecodeError
+		if errors.As(err, &decodeErr) {
+			rejectVarcallDecodeFailure(bind, rError, rReturn, decodeErr)
+			return
+		}
+		// Not a caller-induced decode failure, so there is nothing to report
+		// and no contract that permits swallowing it.
+		log.Panic("varcall failed with an unclassified error",
+			zap.String("method", bind.GdMethodName),
+			zap.Error(err),
+		)
+	}
 	*(*Variant)(unsafe.Pointer(rReturn)) = retCall
 	pinner.Pin(rReturn)
 	setCallErrorOK(rError)
@@ -147,6 +165,35 @@ func rejectVarcallInvalidArgument(
 		zap.String("error", "invalid_argument"),
 		zap.Int32("argument", int32(argument)),
 		zap.Int32("expectedType", int32(expected)),
+	)
+}
+
+// rejectVarcallDecodeFailure reports an argument that cleared variant-level
+// validation but failed to decode into the bound Go parameter type.
+//
+// It writes the same INVALID_ARGUMENT shape the variant-kind pre-pass uses, so
+// the engine sees one consistent rejection outcome rather than two dialects.
+// The extra debug line carries the declared parameter type and the decoder's
+// reason, which the pre-pass has no way to know. That diagnostic matters more
+// here than for an arity reject: a wrong-class object used to abort the process
+// loudly, and a quiet rejection could otherwise read as the method silently
+// never running.
+func rejectVarcallDecodeFailure(
+	md *GoMethodMetadata,
+	rError *C.GDExtensionCallError,
+	rReturn C.GDExtensionVariantPtr,
+	decodeErr *VarcallArgDecodeError,
+) {
+	expected := -1
+	if decodeErr.Index >= 0 && decodeErr.Index < len(md.gdeArgumentTypes) {
+		expected = int(md.gdeArgumentTypes[decodeErr.Index])
+	}
+	rejectVarcallInvalidArgument(md, rError, rReturn, decodeErr.Index, expected)
+	log.Debug("varcall rejected: argument decode failure",
+		zap.String("method", md.GdMethodName),
+		zap.Int("argument", decodeErr.Index),
+		zap.String("param_type", decodeErr.ParamType),
+		zap.String("reason", decodeErr.Error()),
 	)
 }
 

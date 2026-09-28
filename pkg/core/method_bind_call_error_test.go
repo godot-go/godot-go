@@ -1,6 +1,8 @@
 package core
 
 import (
+	"errors"
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -185,5 +187,48 @@ func TestBindRejectsVariadicDefaults(t *testing.T) {
 	msg, ok := recovered.(string)
 	if !ok || !strings.Contains(msg, "cannot have default arguments") {
 		t.Fatalf("expected panic about variadic default arguments, got: %v", recovered)
+	}
+}
+
+func TestVarcallArgDecodeErrorCarriesIndexAndParamType(t *testing.T) {
+	sentinel := errors.New(`unsupported object class "Label"`)
+	err := &VarcallArgDecodeError{Index: 2, ParamType: "core.Sprite2D", Err: sentinel}
+
+	var decoded *VarcallArgDecodeError
+	if !errors.As(err, &decoded) {
+		t.Fatalf("errors.As did not recover *VarcallArgDecodeError from %T", err)
+	}
+	if decoded.Index != 2 {
+		t.Errorf("Index = %d, want 2", decoded.Index)
+	}
+	if decoded.ParamType != "core.Sprite2D" {
+		t.Errorf("ParamType = %q, want %q", decoded.ParamType, "core.Sprite2D")
+	}
+	if !errors.Is(err, sentinel) {
+		t.Error("errors.Is did not see through Unwrap to the sentinel")
+	}
+	msg := err.Error()
+	if !strings.Contains(msg, "argument 2") || !strings.Contains(msg, "core.Sprite2D") {
+		t.Errorf("Error() = %q, want it to name the argument index and parameter type", msg)
+	}
+}
+
+// The decoder hands the callback a wrapped chain -- VarcallArgDecodeError over a
+// fmt.Errorf-wrapped cause -- because the per-argument converter already wraps
+// with %w. The callback must still reach Index through that depth.
+func TestVarcallArgDecodeErrorIndexReachableThroughWrapping(t *testing.T) {
+	sentinel := errors.New("instance binding unresolved")
+	cause := fmt.Errorf("resolve object: %w", sentinel)
+	err := error(&VarcallArgDecodeError{Index: 1, ParamType: "core.Node", Err: cause})
+
+	var decoded *VarcallArgDecodeError
+	if !errors.As(err, &decoded) {
+		t.Fatalf("errors.As did not recover *VarcallArgDecodeError from %T", err)
+	}
+	if decoded.Index != 1 {
+		t.Errorf("Index = %d, want 1", decoded.Index)
+	}
+	if !errors.Is(err, sentinel) {
+		t.Error("errors.Is did not reach the sentinel through two wrap levels")
 	}
 }

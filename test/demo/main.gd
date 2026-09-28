@@ -2,10 +2,6 @@ extends "res://test_base.gd"
 
 var custom_signal_emitted = null
 
-# Probe count captured after the accepted call, so the group that follows the
-# deliberate rejection can assert the rejected one never ran its body.
-var probe_count_after_control = 0
-
 class TestClass:
 	func test(p_msg: String) -> String:
 		return p_msg + " world"
@@ -19,7 +15,6 @@ func _ready():
 	test_ptrcall_object_decode(example)
 	test_user_defined_object_args(example)
 	test_varcall_arg_rejection(example)
-	test_varcall_rejection_survivable(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -744,9 +739,7 @@ func test_varcall_arg_rejection(example: Example):
 	var sprite = Sprite2D.new()
 	var arr = [1, 2, 3]
 
-	# The decoder-level contract, driven through the Go seam. These come first:
-	# the deliberate rejection at the end of this function makes GDScript stop
-	# executing here, so nothing that still has to run may sit after it.
+	# The decoder-level contract, driven through the Go seam.
 	assert_equal(example.call("test_varcall_decode_wrong_class", label), 1)
 	assert_equal(example.call("test_varcall_decode_subclass_still_accepted", label), 1)
 	assert_equal(example.call("test_varcall_decode_owned_prefix_released", arr, label), 1)
@@ -754,23 +747,16 @@ func test_varcall_arg_rejection(example: Example):
 
 	# Control: the declared class is accepted and the probe body really runs.
 	assert_equal(example.call("test_varcall_reject_probe", sprite), 1)
-	probe_count_after_control = example.test_varcall_reject_probe_count()
+	var before = example.test_varcall_reject_probe_count()
+
+	# This call MUST go through expect_rejected_call. Written inline, the engine's
+	# rejection makes GDScript abandon this function, so everything below it --
+	# including the frees -- silently stops executing while the suite still
+	# reports green. The primitive contains the abandonment here so the
+	# assertions and cleanup below actually run.
+	expect_rejected_call(example, "test_varcall_reject_probe", [label])
+	assert_true(last_call_was_rejected)
+	assert_equal(example.test_varcall_reject_probe_count(), before)
 
 	label.free()
 	sprite.free()
-
-	# Deliberate rejection, last. The engine reports it as a script error and
-	# GDScript abandons this function there, so the label is parented to the
-	# Example node: the scene tree owns it and it cannot leak when we are
-	# thrown out mid-function.
-	var doomed_label = Label.new()
-	example.add_child(doomed_label)
-	example.call("test_varcall_reject_probe", doomed_label)
-
-
-# Reached only if the rejection above left the process running. The probe count
-# is still the control's value, so the rejected call never reached the method
-# body -- and arriving here at all is the proof the rejection was survivable.
-func test_varcall_rejection_survivable(example: Example):
-	print("test varcall rejection survivable")
-	assert_equal(example.test_varcall_reject_probe_count(), probe_count_after_control)

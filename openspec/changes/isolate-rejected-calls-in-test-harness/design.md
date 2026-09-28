@@ -34,53 +34,47 @@ person to touch it will "tidy" it back into the broken shape.
 
 ## Decisions
 
-### Set the flag before the call, not after
+### Detect rejection from the return value, not from control flow
 
-```gdscript
-var last_call_was_rejected := false
+**Chosen: `last_call_was_rejected = obj.callv(method, args) == null`.**
 
-func expect_rejected_call(obj: Object, method: String, args: Array) -> void:
-    print("expect_rejected_call: %s" % method)
-    last_call_was_rejected = true
-    obj.callv(method, args)
-    last_call_was_rejected = false   # reached only if the call completed
-```
+The first draft of this design said to set the flag *before* the call, on the
+reasoning that a rejected call never reaches a `return`, so only a
+pre-set value survives. That reasoning came from watching `example.call(...)`
+abandon its frame, and it does not survive contact with `callv`.
 
-A return value cannot express "rejected", because a rejected call never reaches a
-`return` -- the caller would receive null and have to interpret it, and null is
-also what a method returning nothing would give. Setting the flag *before* the
-call means the value that survives the abandonment is the correct one.
+Measured, the two dynamic call forms behave differently on the same rejection:
 
-The caller then asserts normally:
+| Form | On rejection |
+|---|---|
+| `obj.call("m", bad)` | `SCRIPT ERROR`, frame abandoned, everything after it is dead code |
+| `obj.callv("m", [bad])` | engine `ERROR` logged, **returns `<null>`, caller continues** |
 
-```gdscript
-expect_rejected_call(example, "test_varcall_reject_probe", [label])
-assert_true(last_call_was_rejected)
-assert_equal(example.test_varcall_reject_probe_count(), probe_count_after_control)
-```
+`callv` is the better foundation: it removes the stranding problem instead of
+containing it. And because a rejected call yields `null` where an accepted one
+yields the method's value, rejection is directly observable after the fact --
+no before-the-fact flag required.
 
-**Rejected: return a bool.** Cannot distinguish "rejected" from "returned
-nothing", and invites callers to write `assert_true(expect_rejected_call(...))`
-against a null.
+**Constraint this introduces:** a void method also yields `null`, so for a void
+target the flag cannot distinguish rejection from normal completion. The
+primitive is for value-returning targets; a void target must assert an
+observable side effect instead, such as a counter the body increments.
 
-**Rejected: return a tri-state enum.** Same reachability problem; the function
-does not get to return anything when the call is rejected.
+**Rejected: set the flag before the call.** Built on the wrong premise, and it
+failed exactly the way a wrong premise does -- quietly. The first run reported
+`last_call_was_rejected == false` on a call that *was* rejected, because
+`callv` returned normally and cleared the flag.
 
-### Print a marker before the call
+**Rejected: `call()` with the primitive containing the abandonment.** It would
+work, but `callv` is strictly better: there is nothing to contain.
 
-If the containment assumption ever breaks and the whole stack unwinds, the last
-line in the log identifies the primitive and the method, rather than the run
-just stopping. The existing gate already fails on a missing summary banner; the
-marker makes that failure diagnosable instead of mysterious.
+### The marker line still earns its place
 
-### Verify containment rather than trust it
-
-The assumption that abandonment is function-local is observed, not documented by
-Godot. The self-check is that the caller's `assert_true(last_call_was_rejected)`
-and everything after it execute at all. If a future Godot unwinds the whole
-stack, the driver never reaches its summary and the gate fails with
-`no-driver-summary` -- which is the loud failure the spec asks for, and the
-marker line points at the cause.
+The original reason for the marker was a broken containment assumption. That
+reason is gone, but the line still pays for itself: the engine's rejection
+surfaces as an `ERROR` naming the method and argument conversion, and the marker
+identifies which test induced it rather than leaving the error to be matched
+back by hand.
 
 ### Reshape the existing rejection group
 

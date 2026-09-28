@@ -3,6 +3,11 @@ extends Node
 var test_passes := 0
 var test_failures := 0
 
+# Whether the most recent expect_rejected_call() was actually rejected. Read it
+# immediately after the call -- it is a live result, not a record, and nested or
+# interleaved uses overwrite it.
+var last_call_was_rejected := false
+
 func __get_stack_frame():
 	var me = get_script()
 	for s in get_stack():
@@ -40,6 +45,45 @@ func assert_not_equal(actual, expected):
 	else:
 		__assert_fail()
 		print ("    |-> Expected '%s' NOT to equal '%s'" % [expected, actual])
+
+# Makes a call the suite expects the engine to reject, without stranding the
+# caller, and records whether the rejection actually happened.
+#
+# Why this exists: a rejected call leaves the caller in an awkward spot. Written
+# with the dynamic call() form, the engine's rejection makes GDScript abandon the
+# frame, so everything written after it -- assertions, free() calls -- silently
+# stops executing while the suite still reports green. That is the worst kind of
+# pass: coverage disappears without a failure to point at.
+#
+# callv() handles the same rejection differently: it reports it as an engine
+# error and returns normally, so the caller keeps running. This primitive
+# standardises on callv() so the caller is never stranded.
+#
+# Detection: a rejected call yields null; an accepted one yields the method's
+# return value. last_call_was_rejected is set from that, after the call.
+#
+# Constraint: the target must return a value. A void method also yields null, so
+# for a void target the flag cannot tell rejection apart from normal completion.
+# Assert an observable side effect instead -- a counter the body increments, say.
+#
+# Read last_call_was_rejected immediately after the call:
+#
+#     expect_rejected_call(example, "takes_sprite", [a_label])
+#     assert_true(last_call_was_rejected)
+func expect_rejected_call(obj: Object, method: String, args: Array) -> void:
+	# Marker first. If the run ever dies inside this call, the last line in the
+	# log names the primitive and its target instead of the run just stopping.
+	print ("expect_rejected_call: %s (rejection expected)" % method)
+
+	# A mistyped method name would otherwise read as a rejection that worked.
+	# Fail as the typo it actually is.
+	if not obj.has_method(method):
+		last_call_was_rejected = false
+		__assert_fail()
+		print ("    |-> expect_rejected_call: target has no method '%s' -- that is a typo, not a rejection" % method)
+		return
+
+	last_call_was_rejected = obj.callv(method, args) == null
 
 # The banner below is machine-consumed: test/check_test_output.sh parses
 # "TESTS FINISHED", "PASSES: <n>" and "FAILURES: <n>" to decide whether the

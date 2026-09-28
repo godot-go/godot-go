@@ -92,30 +92,24 @@ func ObjectCastTo(obj Object, className string) Object {
 	if casted == nil {
 		return nil
 	}
-	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
-	if !ok {
-		log.Warn("unable to find callbacks for Object",
-			zap.String("name", className),
-		)
+	// The binding slot is a cgo.Handle value, not a *WrappedClassInstance
+	// pointer. This function used to cast it as one and dereference
+	// wci.Instance, the same defect this change removes from the other two
+	// readers; it never surfaced because ObjectCastTo has no callers. The
+	// lookup and any binding creation are delegated so that
+	// objectFromBindingPtr is the only place that knows the shape.
+	resolved, err := ObjectFromInstanceBinding((*GodotObject)(casted))
+	if err != nil {
+		log.Warn("unable to resolve binding for cast object", zap.Error(err))
 		return nil
 	}
-	cbsPtr := &cbs
-	pnr.Pin(casted)
-	pnr.Pin(cbsPtr)
-	// TODO: validate this is working as expected
-	inst := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-		casted,
-		FFI.Token,
-		cbsPtr)
-	wci := (*WrappedClassInstance)(inst)
-	wrapperClassName := wci.Instance.GetClassName()
-	gdStrClassName := wci.Instance.GetClass()
+	gdStrClassName := resolved.GetClass()
 	defer gdStrClassName.Destroy()
 	log.Info("ObjectCastTo casted",
 		zap.String("class", gdStrClassName.ToUtf8()),
-		zap.String("className", wrapperClassName),
+		zap.String("className", resolved.GetClassName()),
 	)
-	return wci.Instance
+	return resolved
 }
 
 type WrappedClassInstance struct {

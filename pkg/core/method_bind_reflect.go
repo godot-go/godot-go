@@ -221,34 +221,37 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 			if arg.IsNil() {
 				return reflect.Zero(t), nil
 			}
-			obj := arg.ToObject()
+			// Resolve the caller's object through its instance binding instead
+			// of re-wrapping by class name. A user-defined extension class has
+			// no GDNativeConstructors entry at all, so the name-keyed path
+			// below could never resolve one; the binding already holds the Go
+			// wrapper created for this exact object.
+			obj, err := ObjectFromVariant(&arg)
+			if err != nil {
+				return reflect.Value{}, fmt.Errorf(
+					"cannot resolve object argument for parameter type %s: %w", t.String(), err)
+			}
+			if reflect.TypeOf(obj).Implements(t) {
+				log.Debug("varcall object arg resolved from instance binding",
+					zap.String("class", obj.GetClassName()),
+					zap.String("type", t.String()),
+				)
+				return reflect.ValueOf(obj), nil
+			}
+			// The binding resolved to a wrapper that does not satisfy the
+			// declared parameter type, so fall back to building one by class
+			// name.
 			gdsClass := obj.GetClass()
 			defer gdsClass.Destroy()
 			className := gdsClass.ToUtf8()
-			log.Debug("found object arg",
-				zap.String("class", obj.GetClassName()),
-				zap.String("class from gd", className),
-			)
-			gdObjPtr := obj.AsGDExtensionConstObjectPtr()
-			// gdsn := StringName{}
-			// ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
-			// cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
-			// if cok == 0 {
-			// 	log.Panic("failed to get class name",
-			// 		zap.String("class", gdsn.ToUtf8()),
-			// 	)
-			// }
-			// defer gdsn.Destroy()
-			owner := (*GodotObject)(gdObjPtr)
+			owner := (*GodotObject)(obj.AsGDExtensionConstObjectPtr())
 			constructor, ok := GDNativeConstructors.Get(className)
 			if !ok {
-				log.Panic("unsupported interface class name",
-					zap.String("class_name", className),
-					zap.Any("type", t),
-				)
+				return reflect.Value{}, fmt.Errorf(
+					"unsupported object class %q for parameter type %s", className, t.String())
 			}
 			inst := constructor(owner).(Object)
-			log.Info("varcall arg parsed",
+			log.Debug("varcall arg parsed",
 				zap.String("class_name", className),
 			)
 			return reflect.ValueOf(inst), nil

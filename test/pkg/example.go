@@ -1013,6 +1013,10 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestPtrcallDecodeRefRegression", "test_ptrcall_decode_ref_regression", []string{"shape"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeUndecodableInterface", "test_ptrcall_decode_undecodable_interface", []string{"node"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeRelease", "test_ptrcall_decode_release", nil, nil)
+		ClassDBBindMethod(t, "TestUserDefinedNodeArg", "test_user_defined_node_arg", []string{"node", "expected_id"}, nil)
+		ClassDBBindMethod(t, "TestUserDefinedArgStable", "test_user_defined_arg_stable", []string{"node"}, nil)
+		ClassDBBindMethod(t, "TestEngineClassArgStillResolves", "test_engine_class_arg_still_resolves", []string{"node", "expected_id"}, nil)
+		ClassDBBindMethod(t, "TestUnresolvableBindingIsTypedError", "test_unresolvable_binding_is_typed_error", nil, nil)
 
 		ClassDBBindMethod(t, "TestScalarEcho", "test_scalar_echo", []string{"p_bool", "p_i64", "p_f64", "p_str"}, nil)
 		ClassDBBindMethod(t, "TestUint64Echo", "test_uint64_echo", []string{"u64"}, nil)

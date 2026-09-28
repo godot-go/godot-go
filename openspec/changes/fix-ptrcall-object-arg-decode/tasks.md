@@ -27,4 +27,4 @@
 - [x] 3.1 `go build ./...` clean; `go vet ./pkg/... ./test/pkg/...` clean.
 - [x] 3.2 `make generate` produces **no diff in any `*.gen.*` file** — this change touches no template.
 - [x] 3.3 `GODOT=/home/pcting/bin/godot make test` — **1091 assertions, 0 failures, 0 leaked instances**, exit 0.
-- [ ] 3.4 Sibling `fix-object-argument-type-metadata` stash applies on top and its typed `var child: Node` plus `test_object_arg_add_child(child)` no longer panics. Recorded there; that change's own verification stays in its own tasks.
+- [x] 3.4 Sibling `fix-object-argument-type-metadata` stash applied on top cleanly, and its typed `var child: Node` plus `test_object_arg_add_child(child)` no longer panics — the run went green at 1093 assertions with typed object arguments parsing **and** decoding. Verified as part of landing that change; its own verification lives in its own tasks.

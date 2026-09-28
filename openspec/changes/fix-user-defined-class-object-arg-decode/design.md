@@ -51,3 +51,100 @@ Downstream, the `gdObjectType` decode branch (`pkg/core/method_bind_reflect.go:2
 - **Object identity change for engine-class arguments.** D4 returns one wrapper where the old path created a second one per call. Code comparing wrapper pointers (rather than instance ids) could notice; identity by instance id is preserved, and the test suite pins round-trip identity.
 - **`ToObject` returning nil on typed failure** is a behavior change from crash→nil for direct Go callers. Considered acceptable: a nil `Object` is already the documented result for a nil variant, and the varcall path — the one that matters for engine calls — propagates the typed error.
 - **Changing the create callback touches every engine-class binding creation.** Blast radius is broad but mechanical; the full `make test` suite plus the existing object-argument round-trip tests (`test/pkg/object_arg_tests.go`) cover it.
+
+## Investigation findings (task 1, recorded before any code edit)
+
+### The header contract
+
+`object_get_instance_binding(GDExtensionObjectPtr p_o, void *p_token, const GDExtensionInstanceBindingCallbacks *p_callbacks) -> void*`
+and `object_set_instance_binding(p_o, p_token, void *p_binding, p_callbacks)`. The binding is an
+**extension-defined opaque `void*`**: the engine never interprets it, it only stores and hands it
+back, keyed by the library `p_token`. If no binding exists yet and `p_callbacks` is non-null, the
+engine calls `create_callback(token, instance)` to make one. The callbacks struct is
+`{create, free, reference}`. So the shape of the binding is entirely this project's choice —
+which is precisely why two different shapes in the same slot is a bug and not an engine quirk.
+
+### Every writer of the binding slot, and the shape each stores
+
+| # | Site | Stores | Value behind the shape |
+|---|---|---|---|
+| 1 | `SetConstructInfo` — `pkg/builtin/wrapped_gdclass.go:49→58` | `cgo.NewHandle(w)` value | `Wrapped` (interface) |
+| 2 | `WrappedPostInitialize` — `pkg/builtin/wrapped_gdclass.go:95→103` | `cgo.NewHandle(inst)` value | `*WrappedClassInstance` |
+| 3 | `GoCallback_GDExtensionBindingCreate` — `pkg/gdclassinit/wrapped_gdextension_class.go:27-29` | `&inst` — **address of a Go interface local** | `Object` |
+| 4 | `GoCallback_GDClassBindingCreate` — `pkg/builtin/wrapped_gdclass.go:112` | `nullptr` | none |
+
+The generated setter types the parameter `p_binding cgo.Handle` (`pkg/ffi/ffi_wrapper.gen.go:865`,
+`:881`, `:4226`), and the FFI generator special-cases it on purpose
+(`cmd/generate/ffi/templatefunctions.go:24` — "void* parameter called p_binding is a cgo.Handle
+slot, not a raw…"). So D1 is not a preference; it is what the generated interface already asserts.
+Site 3 is the sole violator.
+
+### The reader assumes site 3's shape
+
+`getObjectInstanceBinding` (`pkg/builtin/variant.go:121-132`) does
+
+```go
+instPtr := (*Object)(CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(...))
+if instPtr != nil && *instPtr != nil {
+    return *instPtr
+}
+```
+
+That is correct **only** for site 3's pointer-to-interface. For sites 1 and 2 the returned
+`void*` *is* the handle number, so `*instPtr` dereferences a small integer.
+
+### Reproduction
+
+Passing a `TestHierarchicalDerived` (a registered extension class, `Control`-derived) into the
+existing `TestObjectArgAddChild(child Node)` from GDScript:
+
+```
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x85 pc=0x7f7a84e2c7bb]
+github.com/godot-go/godot-go/pkg/builtin.getObjectInstanceBinding(0x55aa5ebd8920)
+    pkg/builtin/variant.go:131 +0xdb
+github.com/godot-go/godot-go/pkg/builtin.(*Variant).ToObject(...)
+    pkg/builtin/variant.go:116 +0x17a
+```
+
+`addr=0x85` is the decisive detail: a fault at a tiny address is a handle number being used as a
+pointer, not a null or a wild address. The proposal named line 115; the code has drifted to 131 and
+the deref is the same one.
+
+### Why engine-class arguments work today
+
+Engine classes get their binding through site 3, whose shape the reader matches. User-defined
+extension classes get theirs through sites 1 and 2. That is the whole split: the reader was written
+against one writer and never reconciled with the other two.
+
+### `GDNativeConstructors` and user-defined names
+
+`GDNativeConstructors` is populated only by the generated init
+(`pkg/gdclassinit/classes.init.gen.go:6244+`) with **engine** class names. `TestHierarchicalDerived`
+has no entry, confirming that any decode path keyed on that map cannot resolve a user-defined class,
+which is why D4's pass-through of the already-resolved wrapper is required rather than a nicety.
+
+## Corrections found during implementation
+
+**There was a third reader, not two.** `ObjectCastTo` (`pkg/builtin/wrapped.go`) assumed a
+third shape — it cast the binding to `*WrappedClassInstance` and dereferenced `wci.Instance`,
+under a `// TODO: validate this is working as expected` that was never honoured. It has no
+callers anywhere in the repo, which is the only reason it never surfaced. The inventory in this
+document said four writers and one reader; it is four writers and **three** readers. It was fixed
+rather than left behind, because unifying the shape while leaving a known-wrong reader is how the
+next version of this bug gets written.
+
+**The decode helper takes `uintptr`, not `unsafe.Pointer`.** Two independent reasons pushed the
+same way: the value being decoded is a pointer-sized integer that must never be dereferenced, only
+reinterpreted as a `cgo.Handle`, so `uintptr` keeps an unsafe conversion off the API surface; and
+this project's build rejects cgo in `_test.go` files, so an `unsafe.Pointer` parameter could not
+be exercised by unit tests without routing through the C packing shim. The result is that all
+seven shapes of the slot are now covered by a plain `go test`, with no engine.
+
+**Task 4.3's "without aborting the process" is not achievable inside this change.** The typed
+error is produced and named, and never SIGSEGVs, but the pre-existing varcall boundary
+`log.Panic`s on any conversion error and there is no `recover()` anywhere in the production
+varcall path. The D4 falsification shows the typed error arriving intact and then that boundary
+aborting godot with exit 134. Making the boundary non-fatal is a change to
+`method-call-error-reporting` itself; absorbing it here would have hidden a second defect inside
+the first one's fix.

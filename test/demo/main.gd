@@ -13,6 +13,7 @@ func _ready():
 	test_pin_scratch_stays_flat(example)
 	test_return_ownership(example)
 	test_ptrcall_object_decode(example)
+	test_user_defined_object_args(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -696,3 +697,26 @@ func test_ptrcall_object_decode(example: Example):
 	circle = null
 
 	assert_equal(example.test_ptrcall_decode_release(), 1)
+
+
+# User-defined extension class arguments (openspec:
+# fix-user-defined-class-object-arg-decode).
+# Passing a TestHierarchicalDerived into a Go method declaring a plain Node
+# used to segfault: the binding slot held a cgo.Handle value for user-defined
+# classes while the reader assumed the address of a Go interface.
+#
+# Untyped on purpose. These must travel the varcall path, which is the path
+# under test; a typed declaration would route the call to ptrcall instead.
+func test_user_defined_object_args(example: Example):
+	print("test user-defined object args")
+
+	var derived = TestHierarchicalDerived.new()
+	var plain = Node.new()
+
+	assert_equal(example.test_user_defined_node_arg(derived, derived.get_instance_id()), 1)
+	assert_equal(example.test_user_defined_arg_stable(derived), 1)
+	assert_equal(example.test_engine_class_arg_still_resolves(plain, plain.get_instance_id()), 1)
+	assert_equal(example.test_unresolvable_binding_is_typed_error(), 1)
+
+	derived.free()
+	plain.free()

@@ -1,7 +1,9 @@
 package gdclassinit
 
+// #include "cgo_ptr.h"
 import "C"
 import (
+	"runtime/cgo"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -24,9 +26,21 @@ func GoCallback_GDExtensionBindingCreate(p_type_name *C.char, p_token unsafe.Poi
 	if inst == nil {
 		log.Panic("no instance returned")
 	}
-	ptr := &inst
-	pnr.Pin(ptr)
-	return (unsafe.Pointer)(ptr)
+	// The binding slot is a cgo.Handle value, not the address of a Go
+	// interface. Returning &inst here is what made engine-class bindings a
+	// different shape from the user-defined ones written by SetConstructInfo
+	// and WrappedPostInitialize, and the reader could only match one of them.
+	// Every writer now stores a handle, which is also what the generated
+	// setter's p_binding cgo.Handle type asserts.
+	//
+	// The handle is deliberately never deleted: the engine keeps the value for
+	// the life of the object, and the previous shape pinned the interface
+	// header permanently. See the never-delete-after-retrieval policy.
+	handle := cgo.NewHandle(inst)
+	// Packed through the C shim rather than unsafe.Pointer(uintptr(...)), which
+	// go vet's unsafeptr check cannot know is pointer-stable. See
+	// pkg/log/cgo_ptr.h.
+	return (unsafe.Pointer)(C.cgo_handle_to_ptr(C.uintptr_t(handle)))
 }
 
 //export GoCallback_GDExtensionBindingFree

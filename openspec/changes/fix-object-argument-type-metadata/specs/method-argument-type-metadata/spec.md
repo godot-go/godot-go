@@ -70,11 +70,13 @@ When a bound method's return has the OBJECT variant type, the return `PropertyIn
 - **WHEN** a method bound on class `Example` declares a Go return type of interface `RefImage`
 - **THEN** the return `PropertyInfo.class_name` is `"Image"`
 
-### Requirement: Unresolvable Object Types Fail Loudly At Bind Time
+### Requirement: Unresolvable Object Types Advertise The Base Class And Warn
 
-If a parameter or return resolves to the OBJECT variant type but its Go type name matches no registered Godot class (in `GDNativeConstructors`, `GDClassRefConstructors`, or the registered extension classes), and it is not a generic object interface that falls back to `"Object"`, the bind SHALL fail with a panic identifying the method and the unresolvable Go type, rather than silently advertising the owning class.
+If a parameter or return resolves to the OBJECT variant type but its Go type name matches no registered Godot class (in `GDNativeConstructors`, `GDClassRefConstructors`, or the registered extension classes), the bind SHALL advertise `"Object"` and log a warning identifying the method and the Go type, rather than advertising the owning class and rather than failing the bind.
 
-#### Scenario: Unknown object-typed argument panics at bind
+A Go type can be a valid object without being a registered Godot class, so "unresolvable" is not a bind error. Advertising `"Object"` is truthful because every engine object is an Object, so no correctly typed call is rejected; advertising the owning class would be a lie, and panicking would break a legitimate bind.
 
-- **WHEN** a method is bound with an OBJECT-typed parameter whose Go interface name resolves to no registered class and is not a generic object interface
-- **THEN** binding panics with the method name and the unresolved Go type name, and no method registration occurs
+#### Scenario: Unregistered object type advertises Object and warns
+
+- **WHEN** a method is bound with an OBJECT-typed parameter or return whose Go type resolves to no registered class
+- **THEN** the `PropertyInfo.class_name` is `"Object"`, a warning naming the method and the Go type is logged, and the bind succeeds

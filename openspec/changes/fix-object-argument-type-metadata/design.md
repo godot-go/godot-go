@@ -49,3 +49,13 @@ The return `PropertyInfo` has the identical defect and the same resolution appli
 - **Generic `Ref` edge case.** `strings.HasPrefix("Ref", "Ref")` is true but `tn[3:]` is empty; the generic-interface fallback (D1 step 4) must be checked so a bare `Ref` advertises `"Object"` rather than `""`.
 - **Wrong-class rejection is a GDScript parse error**, so it cannot live in the same compiled demo script. Covered by a negative fixture script validated with `godot --check-only` (or editor verification) rather than a runtime assert.
 - **Trade-off accepted:** resolution duplication between the generator (`IsRefcountedClassName`) and the runtime registries is tolerable because both derive from the same `extension_api.json` naming, and the runtime cannot call generator code.
+
+## Corrections found during implementation
+
+**The resolution order missed pointer types, and the guard caught it.** `reflect.Type.Name()` is empty for a pointer, and concrete Go class implementations are pointers — `ReturnEmptyRef` returns `*pkg.ExampleRef`. Running the resolver as designed made every such return look unresolvable. The helper now walks to the element type first.
+
+**The "fail loudly at bind time" requirement was wrong and has been revised.** It fired on `*pkg.ExampleRef`, a legitimate object type whose `RegisterClassExampleRef()` is commented out at `test/pkg/lib.go:20`. A Go type can be a valid object without being a registered Godot class, so unresolvable is not a bind error. Panicking broke a working bind; advertising the owning class would be a lie. The requirement now specifies `"Object"` plus a warning — truthful, since every engine object is an `Object`, so no correctly typed call is rejected.
+
+**This change could not land before the ptrcall object decode, and the reason is worth keeping straight.** Landing the metadata fix alone made typed GDScript object arguments parse, which made the engine dispatch them through ptrcall rather than varcall, which hit `panic: unsupported interface type` in a decoder that had never received an object interface before. The work was stashed and reapplied after `fix-ptrcall-object-arg-decode` landed. Two defects in two different paths, each invisible while the other masked it: the metadata bug kept typed calls from parsing, and the decode bug kept the ptrcall object branch from ever being reached. Fixing either one alone exposed the other.
+
+**Task 2.3 as written is not achievable in a plain `go test`.** `NewGoMethodMetadata` builds `StringName`s and needs a live engine. The resolution logic is unit-tested where it can be, and the wiring is verified in-engine by typed call sites plus a falsification showing those call sites are gated by the advertised class.

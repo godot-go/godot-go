@@ -560,31 +560,27 @@ func _on_Example_custom_signal(signal_name, value):
 func test_object_args(example: Example):
 	print("test object args")
 
-	# Object arguments are declared untyped, the same way the existing ref tests
-	# declare `var image = Image.new()`. The binder reports every object-typed
-	# parameter's class as the owning class (Example), so a typed GDScript
-	# variable fails static checking. That metadata bug is separate from the
-	# ptrcall encoding under test here.
-	#
-	# Readback of refcounted resources happens here in Godot rather than in Go:
-	# the generated object-return path pins a wrapper per call, which would leave
-	# resources reachable at shutdown and trip the leak check.
+	# Object parameters and returns are declared with static types throughout this
+	# function. That is itself part of the assertion: GDScript validates every call
+	# site against the class the binder advertises, so a parameter still
+	# advertising the owning class (Example) would fail here at parse time rather
+	# than at runtime.
 
 	# AddChild: the call shape that used to segfault.
-	var child = Node.new()
+	var child: Node = Node.new()
 	assert_equal(example.test_object_arg_add_child(child), 1)
 	assert_equal(child.get_parent(), example)
 
 	# Identity carried through two object arguments.
-	var parent = Node.new()
-	var kid = Node.new()
+	var parent: Node = Node.new()
+	var kid: Node = Node.new()
 	assert_equal(example.test_object_arg_identity(parent, kid), 1)
 	assert_equal(kid.get_parent(), parent)
 	assert_equal(parent.get_child_count(), 1)
 
 	# Ref<Shape2D> argument: the engine must hold the very object we passed.
-	var cs = CollisionShape2D.new()
-	var circle = CircleShape2D.new()
+	var cs: CollisionShape2D = CollisionShape2D.new()
+	var circle: CircleShape2D = CircleShape2D.new()
 	assert_equal(example.test_object_arg_set_shape(cs, circle), 1)
 	assert_equal(cs.shape, circle)
 
@@ -597,21 +593,33 @@ func test_object_args(example: Example):
 	assert_equal(cs.shape, null)
 
 	# Nil non-refcounted (plain engine class) argument.
-	var owned = Node.new()
+	var owned: Node = Node.new()
 	assert_equal(example.test_object_arg_nil_plain_object(owned), 1)
 	assert_equal(owned.get_owner(), null)
 
+	# A base-class parameter accepts a typed subclass instance, which only parses
+	# if the parameter advertises Shape2D rather than the owning class.
+	var cs2: CollisionShape2D = CollisionShape2D.new()
+	var circle2: CircleShape2D = CircleShape2D.new()
+	assert_equal(example.test_object_arg_base_class_param(circle2), 1)
+
+	# A typed return assignment: the return PropertyInfo must advertise Node.
+	var returned: Node = example.test_object_arg_return_node(child)
+	assert_equal(returned, child)
+
 	# Repeated object arguments must not drift the reference count.
-	var cs3 = CollisionShape2D.new()
-	var shape3 = CircleShape2D.new()
+	var cs3: CollisionShape2D = CollisionShape2D.new()
+	var shape3: CircleShape2D = CircleShape2D.new()
 	assert_equal(example.test_object_arg_refcount_stability(cs3, shape3), 1)
 
 	child.free()
 	parent.free()
 	cs.free()
+	cs2.free()
 	cs3.free()
 	owned.free()
 	circle = null
+	circle2 = null
 	shape3 = null
 
 	# Let Go run the finalizers on Ref values decoded from the calls above, so no

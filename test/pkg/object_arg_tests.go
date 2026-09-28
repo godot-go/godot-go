@@ -196,3 +196,29 @@ func (e *Example) TestObjectArgRefcountStability(owner CollisionShape2D, shape R
 		return 1
 	})
 }
+
+// TestObjectArgBaseClassParam declares the base class and is called with a
+// subclass instance. The argument metadata must advertise "Shape2D", not the
+// owning class, or GDScript static typing rejects a typed CircleShape2D before
+// the call is ever reached.
+func (e *Example) TestObjectArgBaseClassParam(shape Shape2D) int32 {
+	return objectArgGuard("base_class_param", func() int32 {
+		if isNullObject(shape) {
+			return -1
+		}
+		cls := shape.GetClass()
+		defer cls.Destroy()
+		if cls.ToUtf8() != "CircleShape2D" {
+			fmt.Printf("  base_class_param: expected CircleShape2D, got %s\n", cls.ToUtf8())
+			return -2
+		}
+		return 1
+	})
+}
+
+// TestObjectArgReturnNode hands an engine class back to GDScript. The return
+// PropertyInfo must advertise "Node"; if it still advertised the owning class the
+// typed assignment in main.gd fails at parse time.
+func (e *Example) TestObjectArgReturnNode(node Node) Node {
+	return node
+}

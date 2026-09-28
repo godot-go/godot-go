@@ -997,6 +997,8 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestObjectArgSetShapeInvalidRef", "test_object_arg_set_shape_invalid_ref", []string{"owner"}, nil)
 		ClassDBBindMethod(t, "TestObjectArgNilPlainObject", "test_object_arg_nil_plain_object", []string{"node"}, nil)
 		ClassDBBindMethod(t, "TestObjectArgRefcountStability", "test_object_arg_refcount_stability", []string{"owner", "shape"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgBaseClassParam", "test_object_arg_base_class_param", []string{"shape"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgReturnNode", "test_object_arg_return_node", []string{"node"}, nil)
 		ClassDBBindMethod(t, "TestPinScratchStaysFlat", "test_pin_scratch_stays_flat", []string{"small", "large"}, nil)
 		ClassDBBindMethod(t, "TestObjectArgRelease", "test_object_arg_release", nil, nil)
 		ClassDBBindMethod(t, "TestReturnRefcountStability", "test_return_refcount_stability", []string{"owner", "iterations"}, nil)

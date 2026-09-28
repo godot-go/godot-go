@@ -12,6 +12,7 @@ func _ready():
 	test_object_args(example)
 	test_pin_scratch_stays_flat(example)
 	test_return_ownership(example)
+	test_ptrcall_object_decode(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -658,3 +659,32 @@ func test_pin_scratch_stays_flat(example: Example):
 	#
 	# Value-returning calls only, so nothing here touches refcount ownership.
 	assert_equal(example.test_pin_scratch_stays_flat(2000, 10000), 1)
+
+
+# Ptrcall object-argument decoding (openspec: fix-ptrcall-object-arg-decode).
+# The objects reach Go through the varcall path, which works today, and each Go
+# test then rebuilds the ptrcall argument cell by hand. That keeps this
+# independent of fix-object-argument-type-metadata, without which no typed
+# GDScript call could reach ptrcall at all.
+func test_ptrcall_object_decode(example: Example):
+	print("test ptrcall object decode")
+
+	# Untyped on purpose: a typed call site would be rejected at parse by
+	# the metadata defect that fix-object-argument-type-metadata owns. These
+	# tests exercise the Go decoder, not GDScript static typing.
+	var node = Node.new()
+	var cs = CollisionShape2D.new()
+	var circle = CircleShape2D.new()
+	cs.shape = circle
+
+	assert_equal(example.test_ptrcall_decode_plain_object(node), 1)
+	assert_equal(example.test_ptrcall_decode_subclass(circle), 1)
+	assert_equal(example.test_ptrcall_decode_null_object(), 1)
+	assert_equal(example.test_ptrcall_decode_ref_regression(circle), 1)
+	assert_equal(example.test_ptrcall_decode_undecodable_interface(node), 1)
+
+	node.free()
+	cs.free()
+	circle = null
+
+	assert_equal(example.test_ptrcall_decode_release(), 1)

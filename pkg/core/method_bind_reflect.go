@@ -569,11 +569,29 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 			)
 		case reflect.Interface:
-			v := reflect.Zero(t)
-			inst := v.Interface()
-			switch inst.(type) {
-			case Object:
-				gdObjPtr := (GDExtensionConstObjectPtr)(arg)
+			// Dispatch on the declared type itself. The previous form was
+			//   switch reflect.Zero(t).Interface().(type) { case Object: ... }
+			// and could never reach the object case: the zero value of an
+			// interface is a nil interface, and a Go type switch matches a
+			// concrete case only against a non-nil dynamic type. Every
+			// object-typed parameter therefore fell through to default and
+			// panicked with "unsupported interface type".
+			switch {
+			case t.Implements(gdObjectType):
+				// args[i] points at the value, and for an object the value is
+				// the object pointer, so the cell must be read rather than
+				// cast. The dead code this replaces cast the cell address
+				// itself and would have wrapped a stack address as an object.
+				objPtr := *(*GDExtensionObjectPtr)(arg)
+				if objPtr == nil {
+					// A null argument has no class name to ask for, and
+					// object_get_class_name through a null pointer is not a
+					// recoverable failure. Hand back the zero of the declared
+					// interface so the callee sees a nil object.
+					args[i+1] = reflect.Zero(t)
+					break
+				}
+				gdObjPtr := (GDExtensionConstObjectPtr)(objPtr)
 
 				// GDExtensionUninitializedStringNamePtr
 				gdsn := StringName{}
@@ -603,53 +621,54 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					zap.String("class_name", className),
 				)
 				args[i+1] = reflect.ValueOf(inst)
-			default:
-				if t.Implements(refType) {
-					gdRefPtr := (GDExtensionConstRefPtr)(arg)
-					gdObjPtr := (GDExtensionConstObjectPtr)(CallFunc_GDExtensionInterfaceRefGetObject(gdRefPtr))
+			case t.Implements(refType):
+				gdRefPtr := (GDExtensionConstRefPtr)(arg)
+				gdObjPtr := (GDExtensionConstObjectPtr)(CallFunc_GDExtensionInterfaceRefGetObject(gdRefPtr))
 
-					// gdsn := NewStringName()
-					// defer gdsn.Destroy()
-					// ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
-					// cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
-					// if cok == 0 {
-					// 	log.Panic("failed to get class name",
-					// 		zap.Any("gdObjPtr", gdObjPtr),
-					// 	)
-					// }
-					// gds := gdsn.AsString()
-					// defer gds.Destroy()
-					// className := gds.ToUtf8()
-					refClassName := t.Name()
-					className := refClassName[3:]
-					constructor, ok := GDNativeConstructors.Get(className)
-					if !ok {
-						log.Panic("does not support gdextension class type",
-							zap.String("class_name", className),
-							zap.Int("arg_index", i),
-							zap.Any("type", t),
-						)
-					}
-					owner := (*GodotObject)(gdObjPtr)
-					inst := constructor(owner).(RefCounted)
-					log.Debug("ptrcall arg parsed",
-						zap.Int("arg_index", i),
-						zap.String("type", "Ref"),
+				// gdsn := NewStringName()
+				// defer gdsn.Destroy()
+				// ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
+				// cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
+				// if cok == 0 {
+				// 	log.Panic("failed to get class name",
+				// 		zap.Any("gdObjPtr", gdObjPtr),
+				// 	)
+				// }
+				// gds := gdsn.AsString()
+				// defer gds.Destroy()
+				// className := gds.ToUtf8()
+				refClassName := t.Name()
+				className := refClassName[3:]
+				constructor, ok := GDNativeConstructors.Get(className)
+				if !ok {
+					log.Panic("does not support gdextension class type",
 						zap.String("class_name", className),
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
 					)
-					refConstructor, ok := GDClassRefConstructors.Get(className)
-					if !ok {
-						log.Panic("unable to find ref for type",
-							zap.String("class_name", className),
-							zap.Int("arg_index", i),
-							zap.Any("type", t),
-						)
-					}
-					ref := refConstructor(inst)
-					args[i+1] = reflect.ValueOf(ref)
-					break
 				}
-				log.Panic("unsupported interface type",
+				owner := (*GodotObject)(gdObjPtr)
+				inst := constructor(owner).(RefCounted)
+				log.Debug("ptrcall arg parsed",
+					zap.Int("arg_index", i),
+					zap.String("type", "Ref"),
+					zap.String("class_name", className),
+				)
+				refConstructor, ok := GDClassRefConstructors.Get(className)
+				if !ok {
+					log.Panic("unable to find ref for type",
+						zap.String("class_name", className),
+						zap.Int("arg_index", i),
+						zap.Any("type", t),
+					)
+				}
+				ref := refConstructor(inst)
+				args[i+1] = reflect.ValueOf(ref)
+			default:
+				// The type name and index go in the panic value as well as the
+				// structured fields, so a caller recovering from this can tell
+				// what was refused without scraping the log.
+				log.Panic(fmt.Sprintf("unsupported interface type for argument %d: %s", i, t.String()),
 					zap.Int("arg_index", i),
 					zap.Any("type", t),
 				)

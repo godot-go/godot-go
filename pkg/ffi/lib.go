@@ -16,6 +16,9 @@ import (
 )
 
 var (
+	// pnr is for program-lifetime retention only: values the engine keeps a
+	// pointer to after the call that registers them returns. Per-call scratch
+	// must use a body-scoped runtime.Pinner with defer Unpin() instead.
 	pnr = runtime.Pinner{}
 )
 

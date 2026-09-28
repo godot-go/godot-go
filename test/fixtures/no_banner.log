@@ -1,0 +1,14 @@
+Godot Engine v4.5.stable.official
+ERROR: Attempt to get non-existent interface function: 'get_variant_get_internal_ptr_func'.
+   at: get_interface_function (core/extension/gdextension.cpp:728)
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "get_variant_get_internal_ptr_func"}
+ERROR: Attempt to get non-existent interface function: 'callable_custom_get_user_data'.
+   at: get_interface_function (core/extension/gdextension.cpp:728)
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "callable_custom_get_user_data"}
+ERROR: Attempt to get non-existent interface function: 'classdb_register_extension_class_5'.
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "classdb_register_extension_class_5"}
+ERROR: Attempt to get non-existent interface function: 'classdb_register_extension_class_6'.
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "classdb_register_extension_class_6"}
+gdclass registered class=Example parent_type=Control
+test suite run 0
+-- CRASH: Signal: SIGSEGV (Segmentation fault)

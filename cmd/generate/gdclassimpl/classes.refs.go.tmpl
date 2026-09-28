@@ -35,7 +35,19 @@ func New{{ $refInterfaceName }}AsRef(reference RefCounted) Ref {
 	return NewRef[{{ $c.Name }}](reference.({{ $c.Name }}))
 }
 
+// New{{ $refInterfaceName }}GDExtensionIternalConstructor wraps an instance this
+// binding constructed but does not hold an engine reference to, such as the
+// Go-side object built by New{{ $c.Name }}WithGodotOwnerObject. Borrowing: dropping
+// the wrapper releases nothing.
 func New{{ $refInterfaceName }}GDExtensionIternalConstructor(reference {{ $c.Name }}) {{ $refInterfaceName }} {
 	return &{{ $refStructName }} {RefBase: NewRef[{{ $c.Name }}](reference)}
+}
+
+// New{{ $refInterfaceName }}GDExtensionReturnOwner wraps a reference the engine
+// transferred into a ptrcall return slot. The +1 already exists and is now
+// owned here, so a finalizer releases it exactly once on drop. Only the
+// generated return path uses this; see builtin.NewRefTransfer.
+func New{{ $refInterfaceName }}GDExtensionReturnOwner(reference {{ $c.Name }}) {{ $refInterfaceName }} {
+	return &{{ $refStructName }} {RefBase: NewRefTransfer[{{ $c.Name }}](reference)}
 }
 {{ end -}}

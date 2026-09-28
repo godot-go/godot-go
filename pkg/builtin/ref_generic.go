@@ -85,10 +85,37 @@ func NewRefInit[T RefCountedT](obj T) *RefBase[T] {
 	return r
 }
 
-// NewRef wraps a Godot-owned object with transfer semantics: the reference
-// count is not changed because the other side already holds a reference.
-// Mirrors godot-cpp's _gde_internal_constructor. The caller must ensure a
-// reference is held for the wrapper's lifetime; to take ownership, copy.
+// NewRefTransfer takes ownership of a reference the engine has already
+// counted and explicitly handed over. The refcount is not changed -- the +1
+// already exists -- but a finalizer is installed so that transferred
+// reference is released exactly once when the wrapper is dropped, mirroring
+// godot-cpp's Ref destructor.
+//
+// Use this only where the engine genuinely transferred a reference into the
+// value being wrapped, such as a ptrcall return slot filled through
+// PtrToArg<Ref<T>>::convert, which constructs a Ref and so calls
+// reference(). Wrapping an object that someone else holds with this
+// constructor releases a reference that was never acquired.
+//
+// A wrapper over no engine object gets no finalizer: Unref would issue an
+// unreference ptrcall against a null owner.
+func NewRefTransfer[T RefCountedT](obj T) *RefBase[T] {
+	r := &RefBase[T]{m_ref: obj}
+	if ObjectArgPtr(obj) != nil {
+		runtime.SetFinalizer(r, (*RefBase[T]).Unref)
+	}
+	return r
+}
+
+// NewRef wraps an object without changing its reference count and without
+// taking any ownership: the caller or some other party holds the reference
+// that keeps the object alive, and dropping this wrapper releases nothing.
+//
+// This is the borrowing constructor. A wrapper built here that outlives the
+// real owner's reference observes a freed object, and it never releases the
+// engine reference even when the engine handed one over. Where the engine
+// transferred a +1 into the value being wrapped -- a ptrcall return slot,
+// for instance -- use NewRefTransfer instead so that reference is released.
 func NewRef[T RefCountedT](obj T) *RefBase[T] {
 	return &RefBase[T]{m_ref: obj}
 }

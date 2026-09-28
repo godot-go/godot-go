@@ -108,8 +108,6 @@ func CallFunc_{{ $f.Name }}(
 		{{ cgoCleanUpArgument $arg (add $j 1) }}
 	{{ end -}}
 
-	{{ cgoPinReturnType $f.ReturnType "ret" }}
-
 	{{ if $rt -}}
 	return {{ cgoCastReturnType $f.ReturnType "ret" }}
 	{{ end -}}
@@ -159,8 +157,6 @@ func CallFunc_{{ $f.Name }}(
 	{{ range $j, $arg := $f.Arguments -}}
 		{{ cgoCleanUpArgument $arg (add $j 1) }}
 	{{ end }}
-
-	{{ cgoPinReturnType $f.ReturnType "ret" }}
 
 	{{ if $rt -}}
 	return {{ cgoCastReturnType $f.ReturnType "ret" }}
@@ -214,8 +210,6 @@ func CallFunc_{{ $f.Name }}(
 			{{ range $j, $arg := $f.Arguments -}}
 				{{ cgoCleanUpArgument $arg (add $j 1) }}
 			{{ end }}
-
-			{{ cgoPinReturnType $f.ReturnType "ret" }}
 
 			{{ if $rt -}}
 			return {{ cgoCastReturnType $f.ReturnType "ret" }}

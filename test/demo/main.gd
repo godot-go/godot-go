@@ -9,6 +9,11 @@ class TestClass:
 func _ready():
 	var example: Example = $Example
 	test_suite(1, example)
+	test_object_args(example)
+	test_pin_scratch_stays_flat(example)
+	test_return_ownership(example)
+	test_ptrcall_object_decode(example)
+	test_user_defined_object_args(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
@@ -23,8 +28,10 @@ func test_suite(i: int, example: Example):
 	example.emit_custom_signal("Button", 42)
 	assert_equal(custom_signal_emitted, ["Button", 42])
 
-	# To string.
-	assert_equal(example.to_string(),'[ GDExtension::Example <--> Instance ID:%s ]' % example.get_instance_id())
+	# To string. The expected value carries a non-ASCII marker that only the Go
+	# V_Example_ToString virtual produces -- the binding's fallback format is
+	# ASCII-only, so this fails if dispatch or the UTF-8 encoding breaks.
+	assert_equal(example.to_string(),'[ GDExtension::Example <--> Instance ID:%s | é中 ]' % example.get_instance_id())
 	# It appears there's a bug with instance ids :-(
 	#assert_equal($Example/ExampleMin.to_string(), 'ExampleMin:[Wrapped:%s]' % $Example/ExampleMin.get_instance_id())
 
@@ -546,3 +553,170 @@ func test_suite(i: int, example: Example):
 
 func _on_Example_custom_signal(signal_name, value):
 	custom_signal_emitted = [signal_name, value]
+
+# Object-argument encoding tests (openspec: fix-object-arg-ptrcall-encoding).
+# Each Go method returns 1 on success, a negative code on a failed assertion, or
+# -900 if the Go side panicked. Nodes are freed here so the ObjectDB leak check
+# in `make test` stays clean; freeing a parent frees its children.
+func test_object_args(example: Example):
+	print("test object args")
+
+	# Object parameters and returns are declared with static types throughout this
+	# function. That is itself part of the assertion: GDScript validates every call
+	# site against the class the binder advertises, so a parameter still
+	# advertising the owning class (Example) would fail here at parse time rather
+	# than at runtime.
+
+	# AddChild: the call shape that used to segfault.
+	var child: Node = Node.new()
+	assert_equal(example.test_object_arg_add_child(child), 1)
+	assert_equal(child.get_parent(), example)
+
+	# Identity carried through two object arguments.
+	var parent: Node = Node.new()
+	var kid: Node = Node.new()
+	assert_equal(example.test_object_arg_identity(parent, kid), 1)
+	assert_equal(kid.get_parent(), parent)
+	assert_equal(parent.get_child_count(), 1)
+
+	# Ref<Shape2D> argument: the engine must hold the very object we passed.
+	var cs: CollisionShape2D = CollisionShape2D.new()
+	var circle: CircleShape2D = CircleShape2D.new()
+	assert_equal(example.test_object_arg_set_shape(cs, circle), 1)
+	assert_equal(cs.shape, circle)
+
+	# A typed-nil Ref clears it.
+	assert_equal(example.test_object_arg_set_shape_typed_nil(cs), 1)
+	assert_equal(cs.shape, null)
+
+	# A live Ref holding no object clears it too.
+	assert_equal(example.test_object_arg_set_shape_invalid_ref(cs), 1)
+	assert_equal(cs.shape, null)
+
+	# Nil non-refcounted (plain engine class) argument.
+	var owned: Node = Node.new()
+	assert_equal(example.test_object_arg_nil_plain_object(owned), 1)
+	assert_equal(owned.get_owner(), null)
+
+	# A base-class parameter accepts a typed subclass instance, which only parses
+	# if the parameter advertises Shape2D rather than the owning class.
+	var cs2: CollisionShape2D = CollisionShape2D.new()
+	var circle2: CircleShape2D = CircleShape2D.new()
+	assert_equal(example.test_object_arg_base_class_param(circle2), 1)
+
+	# A typed return assignment: the return PropertyInfo must advertise Node.
+	var returned: Node = example.test_object_arg_return_node(child)
+	assert_equal(returned, child)
+
+	# Repeated object arguments must not drift the reference count.
+	var cs3: CollisionShape2D = CollisionShape2D.new()
+	var shape3: CircleShape2D = CircleShape2D.new()
+	assert_equal(example.test_object_arg_refcount_stability(cs3, shape3), 1)
+
+	child.free()
+	parent.free()
+	cs.free()
+	cs2.free()
+	cs3.free()
+	owned.free()
+	circle = null
+	circle2 = null
+	shape3 = null
+
+	# Let Go run the finalizers on Ref values decoded from the calls above, so no
+	# Go-held reference survives into the engine's leak check.
+	assert_equal(example.test_object_arg_release(), 1)
+
+	# A Go-side get_shape() loop is exercised by test_return_ownership below.
+	# It was withheld here while the object-return path leaked one engine reference
+	# per call; that is now fixed, so the loop runs and the exit leak check gates it.
+
+
+func test_return_ownership(example: Example):
+	print("test return ownership")
+
+	# Every generated method returning a refcounted object receives a reference
+	# the engine already counted and transferred into the Go return slot. The
+	# wrapper must own it and release it exactly once.
+	var cs = CollisionShape2D.new()
+	var circle = CircleShape2D.new()
+	cs.shape = circle
+
+	assert_equal(example.test_return_refcount_stability(cs, 200), 1)
+	assert_equal(example.test_return_dropped_releases(cs), 1)
+	assert_equal(example.test_return_unref_idempotence(cs), 1)
+	assert_equal(example.test_borrowed_ref_never_releases(cs), 1)
+	assert_equal(example.test_null_return_schedules_no_release(cs), 1)
+
+	cs.free()
+	circle = null
+
+	# Collect while the engine is still running so no Go-held reference survives
+	# into the exit leak check and no finalizer races engine teardown.
+	assert_equal(example.test_return_ownership_release(), 1)
+
+
+func test_pin_scratch_stays_flat(example: Example):
+	print("test pin scratch stays flat")
+
+	# Every generated call pins a return slot, an owner cell, an argument slice
+	# and its argument cells. Those pins used to be taken on a package-global
+	# pinner that was never released, so live Go heap climbed with the number of
+	# calls and never came back down. Driving thousands of real generated calls
+	# through the engine and sampling heap after a forced GC must land in a
+	# constant band regardless of how many calls ran.
+	#
+	# Value-returning calls only, so nothing here touches refcount ownership.
+	assert_equal(example.test_pin_scratch_stays_flat(2000, 10000), 1)
+
+
+# Ptrcall object-argument decoding (openspec: fix-ptrcall-object-arg-decode).
+# The objects reach Go through the varcall path, which works today, and each Go
+# test then rebuilds the ptrcall argument cell by hand. That keeps this
+# independent of fix-object-argument-type-metadata, without which no typed
+# GDScript call could reach ptrcall at all.
+func test_ptrcall_object_decode(example: Example):
+	print("test ptrcall object decode")
+
+	# Untyped on purpose: a typed call site would be rejected at parse by
+	# the metadata defect that fix-object-argument-type-metadata owns. These
+	# tests exercise the Go decoder, not GDScript static typing.
+	var node = Node.new()
+	var cs = CollisionShape2D.new()
+	var circle = CircleShape2D.new()
+	cs.shape = circle
+
+	assert_equal(example.test_ptrcall_decode_plain_object(node), 1)
+	assert_equal(example.test_ptrcall_decode_subclass(circle), 1)
+	assert_equal(example.test_ptrcall_decode_null_object(), 1)
+	assert_equal(example.test_ptrcall_decode_ref_regression(circle), 1)
+	assert_equal(example.test_ptrcall_decode_undecodable_interface(node), 1)
+
+	node.free()
+	cs.free()
+	circle = null
+
+	assert_equal(example.test_ptrcall_decode_release(), 1)
+
+
+# User-defined extension class arguments (openspec:
+# fix-user-defined-class-object-arg-decode).
+# Passing a TestHierarchicalDerived into a Go method declaring a plain Node
+# used to segfault: the binding slot held a cgo.Handle value for user-defined
+# classes while the reader assumed the address of a Go interface.
+#
+# Untyped on purpose. These must travel the varcall path, which is the path
+# under test; a typed declaration would route the call to ptrcall instead.
+func test_user_defined_object_args(example: Example):
+	print("test user-defined object args")
+
+	var derived = TestHierarchicalDerived.new()
+	var plain = Node.new()
+
+	assert_equal(example.test_user_defined_node_arg(derived, derived.get_instance_id()), 1)
+	assert_equal(example.test_user_defined_arg_stable(derived), 1)
+	assert_equal(example.test_engine_class_arg_still_resolves(plain, plain.get_instance_id()), 1)
+	assert_equal(example.test_unresolvable_binding_is_typed_error(), 1)
+
+	derived.free()
+	plain.free()

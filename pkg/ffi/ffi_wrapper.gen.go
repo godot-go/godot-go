@@ -632,8 +632,6 @@ func CallFunc_GDExtensionVariantGetInternalPtrFunc(
 
 	ret := C.cgo_callfn_GDExtensionVariantGetInternalPtrFunc(arg0, arg1)
 
-	pnr.Pin(ret)
-
 	return unsafe.Pointer(ret)
 }
 
@@ -856,8 +854,6 @@ func CallFunc_GDExtensionInstanceBindingCreateCallback(
 	log.Debug("called C.cgo_callfn_GDExtensionInstanceBindingCreateCallback")
 
 	ret := C.cgo_callfn_GDExtensionInstanceBindingCreateCallback(arg0, arg1, arg2)
-
-	pnr.Pin(ret)
 
 	return unsafe.Pointer(ret)
 }
@@ -1261,8 +1257,6 @@ func CallFunc_GDExtensionClassGetVirtualCallData(
 
 	ret := C.cgo_callfn_GDExtensionClassGetVirtualCallData(arg0, arg1, arg2)
 
-	pnr.Pin(ret)
-
 	return unsafe.Pointer(ret)
 }
 
@@ -1280,8 +1274,6 @@ func CallFunc_GDExtensionClassGetVirtualCallData2(
 	log.Debug("called C.cgo_callfn_GDExtensionClassGetVirtualCallData2")
 
 	ret := C.cgo_callfn_GDExtensionClassGetVirtualCallData2(arg0, arg1, arg2, arg3)
-
-	pnr.Pin(ret)
 
 	return unsafe.Pointer(ret)
 }
@@ -2081,7 +2073,6 @@ func CallFunc_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars(
 	C.cgo_callfn_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8Chars(arg0, arg1)
 
 	C.free(unsafe.Pointer(arg1))
-
 }
 
 func CallFunc_GDExtensionsInterfaceEditorHelpLoadXmlFromUtf8CharsAndLen(
@@ -2152,8 +2143,6 @@ func CallFunc_GDExtensionInterfaceMemAlloc(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceMemAlloc(arg0, arg1)
 
-	pnr.Pin(ret)
-
 	return unsafe.Pointer(ret)
 }
 
@@ -2168,8 +2157,6 @@ func CallFunc_GDExtensionInterfaceMemRealloc(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceMemRealloc")
 
 	ret := C.cgo_callfn_GDExtensionInterfaceMemRealloc(arg0, arg1, arg2)
-
-	pnr.Pin(ret)
 
 	return unsafe.Pointer(ret)
 }
@@ -2198,8 +2185,6 @@ func CallFunc_GDExtensionInterfaceMemAlloc2(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceMemAlloc2(arg0, arg1, arg2)
 
-	pnr.Pin(ret)
-
 	return unsafe.Pointer(ret)
 }
 
@@ -2216,8 +2201,6 @@ func CallFunc_GDExtensionInterfaceMemRealloc2(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceMemRealloc2")
 
 	ret := C.cgo_callfn_GDExtensionInterfaceMemRealloc2(arg0, arg1, arg2, arg3)
-
-	pnr.Pin(ret)
 
 	return unsafe.Pointer(ret)
 }
@@ -4234,8 +4217,6 @@ func CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectGetInstanceBinding(arg0, arg1, arg2, arg3)
 
-	pnr.Pin(ret)
-
 	return unsafe.Pointer(ret)
 }
 
@@ -4556,8 +4537,6 @@ func CallFunc_GDExtensionInterfaceCallableCustomGetUserData(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceCallableCustomGetUserData(arg0, arg1, arg2)
 
-	pnr.Pin(ret)
-
 	return unsafe.Pointer(ret)
 }
 
@@ -4626,8 +4605,6 @@ func CallFunc_GDExtensionInterfaceClassdbGetClassTag(
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceClassdbGetClassTag")
 
 	ret := C.cgo_callfn_GDExtensionInterfaceClassdbGetClassTag(arg0, arg1)
-
-	pnr.Pin(ret)
 
 	return unsafe.Pointer(ret)
 }

@@ -918,7 +918,12 @@ func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
 }
 
 func (e *Example) V_Example_ToString() string {
-	return fmt.Sprintf("[ GDExtension::Example <--> Instance ID:%d ]", e.GetInstanceId())
+	// Deliberately unlike the binding's default format, and carrying non-ASCII.
+	// The default format is ASCII-only and is also what a *failed* dispatch
+	// produces, so an assertion written against it could not tell the two apart.
+	// This string proves the virtual ran and that multi-byte UTF-8 survives the
+	// crossing into Godot's String.
+	return fmt.Sprintf("[ GDExtension::Example <--> Instance ID:%d | é中 ]", e.GetInstanceId())
 }
 
 func NewExampleFromOwnerObject(owner *GodotObject) GDClass {
@@ -984,6 +989,35 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestFreshStringName", "test_fresh_string_name", []string{"name"}, nil)
 		ClassDBBindMethod(t, "TestEchoNodePathArg", "test_echo_node_path_arg", []string{"path"}, nil)
 		ClassDBBindMethod(t, "TestFreshNodePath", "test_fresh_node_path", []string{"path"}, nil)
+		// Object-argument encoding (openspec: fix-object-arg-ptrcall-encoding).
+		ClassDBBindMethod(t, "TestObjectArgAddChild", "test_object_arg_add_child", []string{"child"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgIdentity", "test_object_arg_identity", []string{"parent", "child"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgSetShape", "test_object_arg_set_shape", []string{"owner", "shape"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgSetShapeTypedNil", "test_object_arg_set_shape_typed_nil", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgSetShapeInvalidRef", "test_object_arg_set_shape_invalid_ref", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgNilPlainObject", "test_object_arg_nil_plain_object", []string{"node"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgRefcountStability", "test_object_arg_refcount_stability", []string{"owner", "shape"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgBaseClassParam", "test_object_arg_base_class_param", []string{"shape"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgReturnNode", "test_object_arg_return_node", []string{"node"}, nil)
+		ClassDBBindMethod(t, "TestPinScratchStaysFlat", "test_pin_scratch_stays_flat", []string{"small", "large"}, nil)
+		ClassDBBindMethod(t, "TestObjectArgRelease", "test_object_arg_release", nil, nil)
+		ClassDBBindMethod(t, "TestReturnRefcountStability", "test_return_refcount_stability", []string{"owner", "iterations"}, nil)
+		ClassDBBindMethod(t, "TestReturnDroppedReleases", "test_return_dropped_releases", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestReturnUnrefIdempotence", "test_return_unref_idempotence", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestBorrowedRefNeverReleases", "test_borrowed_ref_never_releases", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestNullReturnSchedulesNoRelease", "test_null_return_schedules_no_release", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestReturnOwnershipRelease", "test_return_ownership_release", nil, nil)
+		ClassDBBindMethod(t, "TestPtrcallDecodePlainObject", "test_ptrcall_decode_plain_object", []string{"node"}, nil)
+		ClassDBBindMethod(t, "TestPtrcallDecodeSubclass", "test_ptrcall_decode_subclass", []string{"shape"}, nil)
+		ClassDBBindMethod(t, "TestPtrcallDecodeNullObject", "test_ptrcall_decode_null_object", nil, nil)
+		ClassDBBindMethod(t, "TestPtrcallDecodeRefRegression", "test_ptrcall_decode_ref_regression", []string{"shape"}, nil)
+		ClassDBBindMethod(t, "TestPtrcallDecodeUndecodableInterface", "test_ptrcall_decode_undecodable_interface", []string{"node"}, nil)
+		ClassDBBindMethod(t, "TestPtrcallDecodeRelease", "test_ptrcall_decode_release", nil, nil)
+		ClassDBBindMethod(t, "TestUserDefinedNodeArg", "test_user_defined_node_arg", []string{"node", "expected_id"}, nil)
+		ClassDBBindMethod(t, "TestUserDefinedArgStable", "test_user_defined_arg_stable", []string{"node"}, nil)
+		ClassDBBindMethod(t, "TestEngineClassArgStillResolves", "test_engine_class_arg_still_resolves", []string{"node", "expected_id"}, nil)
+		ClassDBBindMethod(t, "TestUnresolvableBindingIsTypedError", "test_unresolvable_binding_is_typed_error", nil, nil)
+
 		ClassDBBindMethod(t, "TestScalarEcho", "test_scalar_echo", []string{"p_bool", "p_i64", "p_f64", "p_str"}, nil)
 		ClassDBBindMethod(t, "TestUint64Echo", "test_uint64_echo", []string{"u64"}, nil)
 		ClassDBBindMethod(t, "TestReturnInt8", "test_return_int8", nil, nil)

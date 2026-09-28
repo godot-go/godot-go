@@ -6,7 +6,9 @@ package core
 // #include <stdlib.h>
 import "C"
 import (
+	"fmt"
 	"reflect"
+	"runtime"
 	"runtime/cgo"
 	"strings"
 	"unsafe"
@@ -217,7 +219,8 @@ func NewGoMethodMetadata(
 		returnPropHintString          String
 	)
 	if returnType != GDEXTENSION_VARIANT_TYPE_NIL {
-		returnPropClassNameStringName = NewStringNameWithLatin1Chars(className)
+		returnPropClassNameStringName = NewStringNameWithLatin1Chars(
+			objectClassForMetadata(className, gdMethodName, "return", goReturnType, returnType))
 		returnPropNameStringName = NewStringNameWithLatin1Chars(goReturnType.Name())
 		returnPropHintString = NewStringWithUtf8Chars("")
 		returnPropertyInfo = NewGDExtensionPropertyInfoFromNames(
@@ -244,7 +247,8 @@ func NewGoMethodMetadata(
 		t := mt.In(i + 1)
 		goArgumentTypes[i] = t
 		variantTypes[i] = ReflectTypeToGDExtensionVariantType(t)
-		argPropClassNameStringNames[i] = NewStringNameWithLatin1Chars(className)
+		argPropClassNameStringNames[i] = NewStringNameWithLatin1Chars(
+			objectClassForMetadata(className, gdMethodName, fmt.Sprintf("argument %d", i), t, variantTypes[i]))
 		argPropNameStringNames[i] = NewStringNameWithLatin1Chars(t.Name())
 		argPropHintStrings[i] = NewStringWithUtf8Chars("")
 		argumentsInfo[i] = NewGDExtensionPropertyInfoFromNames(
@@ -334,6 +338,8 @@ func (md *GoMethodMetadata) fillCallArgs(gdArgs []Variant) []Variant {
 
 // Call is called by GDScript to call into Go
 func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	callArgs := md.fillCallArgs(gdArgs)
 	exepctedTypes := md.GoArgumentTypes
 	if md.IsVariadic {
@@ -390,7 +396,7 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 		case ValueReturnStyle:
 			v := Variant{}
 			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.NativePtr()))
-			pnr.Pin(ptr)
+			pinner.Pin(ptr)
 			GDExtensionVariantPtrFromReflectValue(ret[0], ptr, !isPtrcallBorrowEcho(ret[0], args))
 			retVariant = v
 		default:

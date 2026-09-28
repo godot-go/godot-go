@@ -17,11 +17,23 @@ func (w *WrappedImpl) GetGodotObjectOwner() *GodotObject {
 	return w.Owner
 }
 
+// AsGDExtensionObjectPtr returns the wrapped Godot object pointer. A nil receiver
+// or a nil Owner yields a null pointer rather than panicking, so callers can pass a
+// nil or typed-nil object straight into a call argument slot. Godot reads a null
+// object pointer as null.
 func (w *WrappedImpl) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
+	if w == nil || w.Owner == nil {
+		return nil
+	}
 	return (GDExtensionObjectPtr)(unsafe.Pointer(w.Owner))
 }
 
+// AsGDExtensionConstObjectPtr is the const form of AsGDExtensionObjectPtr and
+// shares its nil-receiver behaviour.
 func (w *WrappedImpl) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
+	if w == nil || w.Owner == nil {
+		return nil
+	}
 	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.Owner))
 }
 
@@ -80,30 +92,24 @@ func ObjectCastTo(obj Object, className string) Object {
 	if casted == nil {
 		return nil
 	}
-	cbs, ok := GDExtensionBindingGDExtensionInstanceBindingCallbacks.Get(className)
-	if !ok {
-		log.Warn("unable to find callbacks for Object",
-			zap.String("name", className),
-		)
+	// The binding slot is a cgo.Handle value, not a *WrappedClassInstance
+	// pointer. This function used to cast it as one and dereference
+	// wci.Instance, the same defect this change removes from the other two
+	// readers; it never surfaced because ObjectCastTo has no callers. The
+	// lookup and any binding creation are delegated so that
+	// objectFromBindingPtr is the only place that knows the shape.
+	resolved, err := ObjectFromInstanceBinding((*GodotObject)(casted))
+	if err != nil {
+		log.Warn("unable to resolve binding for cast object", zap.Error(err))
 		return nil
 	}
-	cbsPtr := &cbs
-	pnr.Pin(casted)
-	pnr.Pin(cbsPtr)
-	// TODO: validate this is working as expected
-	inst := CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
-		casted,
-		FFI.Token,
-		cbsPtr)
-	wci := (*WrappedClassInstance)(inst)
-	wrapperClassName := wci.Instance.GetClassName()
-	gdStrClassName := wci.Instance.GetClass()
+	gdStrClassName := resolved.GetClass()
 	defer gdStrClassName.Destroy()
 	log.Info("ObjectCastTo casted",
 		zap.String("class", gdStrClassName.ToUtf8()),
-		zap.String("className", wrapperClassName),
+		zap.String("className", resolved.GetClassName()),
 	)
-	return wci.Instance
+	return resolved
 }
 
 type WrappedClassInstance struct {
@@ -122,12 +128,27 @@ func (w *WrappedClassInstance) GetGodotObjectOwner() *GodotObject {
 	return w.Instance.GetGodotObjectOwner()
 }
 
-func (w *WrappedClassInstance) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
-	return (GDExtensionObjectPtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+// godotObjectOwner returns the wrapped owner, or nil when the receiver or its
+// Instance is nil. Shared by the object-pointer accessors so a nil or typed-nil
+// instance never panics at the boundary.
+func (w *WrappedClassInstance) godotObjectOwner() *GodotObject {
+	if w == nil || w.Instance == nil {
+		return nil
+	}
+	return w.Instance.GetGodotObjectOwner()
 }
 
+// AsGDExtensionObjectPtr returns the wrapped Godot object pointer. A nil receiver
+// or nil Instance yields a null pointer rather than panicking, matching
+// WrappedImpl.AsGDExtensionObjectPtr.
+func (w *WrappedClassInstance) AsGDExtensionObjectPtr() GDExtensionObjectPtr {
+	return (GDExtensionObjectPtr)(unsafe.Pointer(w.godotObjectOwner()))
+}
+
+// AsGDExtensionConstObjectPtr is the const form of AsGDExtensionObjectPtr and
+// shares its nil-receiver behaviour.
 func (w *WrappedClassInstance) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
-	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.Instance.GetGodotObjectOwner()))
+	return (GDExtensionConstObjectPtr)(unsafe.Pointer(w.godotObjectOwner()))
 }
 
 func (w *WrappedClassInstance) AsGDExtensionTypePtr() GDExtensionTypePtr {

@@ -3,18 +3,26 @@ package builtin
 // #include <godot/gdextension_interface.h>
 import "C"
 import (
+	"runtime"
+
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
 
 func NewVariantBool(v bool) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromBool(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromBool(v bool, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded uint8
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	BoolEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -27,10 +35,12 @@ func GDExtensionVariantPtrFromBool(v bool, rOut GDExtensionUninitializedVariantP
 }
 
 func (c Variant) ToBool() bool {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_BOOL]
 	var v uint8
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -42,14 +52,20 @@ func (c Variant) ToBool() bool {
 }
 
 func NewVariantUint(v uint) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromUint(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromUint(v uint, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	UintEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -62,10 +78,12 @@ func GDExtensionVariantPtrFromUint(v uint, rOut GDExtensionUninitializedVariantP
 }
 
 func (c Variant) ToUint() uint {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -77,14 +95,20 @@ func (c Variant) ToUint() uint {
 }
 
 func NewVariantInt(v int) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromInt(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromInt(v int, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	IntEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -97,10 +121,12 @@ func GDExtensionVariantPtrFromInt(v int, rOut GDExtensionUninitializedVariantPtr
 }
 
 func (c Variant) ToInt() int {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -112,14 +138,20 @@ func (c Variant) ToInt() int {
 }
 
 func NewVariantUint8(v uint8) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromUint8(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromUint8(v uint8, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Uint8Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -132,10 +164,12 @@ func GDExtensionVariantPtrFromUint8(v uint8, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToUint8() uint8 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -147,14 +181,20 @@ func (c Variant) ToUint8() uint8 {
 }
 
 func NewVariantInt8(v int8) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromInt8(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromInt8(v int8, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Int8Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -167,10 +207,12 @@ func GDExtensionVariantPtrFromInt8(v int8, rOut GDExtensionUninitializedVariantP
 }
 
 func (c Variant) ToInt8() int8 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -182,14 +224,20 @@ func (c Variant) ToInt8() int8 {
 }
 
 func NewVariantUint16(v uint16) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromUint16(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromUint16(v uint16, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Uint16Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -202,10 +250,12 @@ func GDExtensionVariantPtrFromUint16(v uint16, rOut GDExtensionUninitializedVari
 }
 
 func (c Variant) ToUint16() uint16 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -217,14 +267,20 @@ func (c Variant) ToUint16() uint16 {
 }
 
 func NewVariantInt16(v int16) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromInt16(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromInt16(v int16, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Int16Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -237,10 +293,12 @@ func GDExtensionVariantPtrFromInt16(v int16, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToInt16() int16 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -252,14 +310,20 @@ func (c Variant) ToInt16() int16 {
 }
 
 func NewVariantUint32(v uint32) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromUint32(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromUint32(v uint32, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Uint32Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -272,10 +336,12 @@ func GDExtensionVariantPtrFromUint32(v uint32, rOut GDExtensionUninitializedVari
 }
 
 func (c Variant) ToUint32() uint32 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -287,14 +353,20 @@ func (c Variant) ToUint32() uint32 {
 }
 
 func NewVariantInt32(v int32) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromInt32(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromInt32(v int32, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Int32Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -307,10 +379,12 @@ func GDExtensionVariantPtrFromInt32(v int32, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToInt32() int32 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -322,14 +396,20 @@ func (c Variant) ToInt32() int32 {
 }
 
 func NewVariantUint64(v uint64) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromUint64(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromUint64(v uint64, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Uint64Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -342,10 +422,12 @@ func GDExtensionVariantPtrFromUint64(v uint64, rOut GDExtensionUninitializedVari
 }
 
 func (c Variant) ToUint64() uint64 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -357,14 +439,20 @@ func (c Variant) ToUint64() uint64 {
 }
 
 func NewVariantInt64(v int64) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromInt64(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromInt64(v int64, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded int64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Int64Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -377,10 +465,12 @@ func GDExtensionVariantPtrFromInt64(v int64, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToInt64() int64 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_INT]
 	var v int64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -392,14 +482,20 @@ func (c Variant) ToInt64() int64 {
 }
 
 func NewVariantFloat32(v float32) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromFloat32(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromFloat32(v float32, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded float64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Float32Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -412,10 +508,12 @@ func GDExtensionVariantPtrFromFloat32(v float32, rOut GDExtensionUninitializedVa
 }
 
 func (c Variant) ToFloat32() float32 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_FLOAT]
 	var v float64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -427,14 +525,20 @@ func (c Variant) ToFloat32() float32 {
 }
 
 func NewVariantFloat64(v float64) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromFloat64(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromFloat64(v float64, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded float64
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
 	Float64Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
@@ -447,10 +551,12 @@ func GDExtensionVariantPtrFromFloat64(v float64, rOut GDExtensionUninitializedVa
 }
 
 func (c Variant) ToFloat64() float64 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_FLOAT]
 	var v float64
 	ptr := (GDExtensionTypePtr)(&v)
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -462,17 +568,23 @@ func (c Variant) ToFloat64() float64 {
 }
 
 func NewVariantString(v String) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromString(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromString(v String, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded String
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	StringEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_STRING]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -483,10 +595,12 @@ func GDExtensionVariantPtrFromString(v String, rOut GDExtensionUninitializedVari
 }
 
 func (c Variant) ToString() String {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_STRING]
 	var v String
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -496,17 +610,23 @@ func (c Variant) ToString() String {
 }
 
 func NewVariantVector2(v Vector2) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromVector2(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector2(v Vector2, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Vector2
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Vector2Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -517,10 +637,12 @@ func GDExtensionVariantPtrFromVector2(v Vector2, rOut GDExtensionUninitializedVa
 }
 
 func (c Variant) ToVector2() Vector2 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2]
 	var v Vector2
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -530,17 +652,23 @@ func (c Variant) ToVector2() Vector2 {
 }
 
 func NewVariantVector2i(v Vector2i) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromVector2i(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector2i(v Vector2i, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Vector2i
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Vector2iEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2I]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -551,10 +679,12 @@ func GDExtensionVariantPtrFromVector2i(v Vector2i, rOut GDExtensionUninitialized
 }
 
 func (c Variant) ToVector2i() Vector2i {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR2I]
 	var v Vector2i
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -564,17 +694,23 @@ func (c Variant) ToVector2i() Vector2i {
 }
 
 func NewVariantVector3(v Vector3) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromVector3(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector3(v Vector3, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Vector3
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Vector3Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -585,10 +721,12 @@ func GDExtensionVariantPtrFromVector3(v Vector3, rOut GDExtensionUninitializedVa
 }
 
 func (c Variant) ToVector3() Vector3 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3]
 	var v Vector3
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -598,17 +736,23 @@ func (c Variant) ToVector3() Vector3 {
 }
 
 func NewVariantVector3i(v Vector3i) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromVector3i(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector3i(v Vector3i, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Vector3i
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Vector3iEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3I]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -619,10 +763,12 @@ func GDExtensionVariantPtrFromVector3i(v Vector3i, rOut GDExtensionUninitialized
 }
 
 func (c Variant) ToVector3i() Vector3i {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR3I]
 	var v Vector3i
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -632,17 +778,23 @@ func (c Variant) ToVector3i() Vector3i {
 }
 
 func NewVariantTransform2D(v Transform2D) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromTransform2D(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromTransform2D(v Transform2D, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Transform2D
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Transform2DEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM2D]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -653,10 +805,12 @@ func GDExtensionVariantPtrFromTransform2D(v Transform2D, rOut GDExtensionUniniti
 }
 
 func (c Variant) ToTransform2D() Transform2D {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM2D]
 	var v Transform2D
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -666,17 +820,23 @@ func (c Variant) ToTransform2D() Transform2D {
 }
 
 func NewVariantVector4(v Vector4) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromVector4(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector4(v Vector4, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Vector4
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Vector4Encoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -687,10 +847,12 @@ func GDExtensionVariantPtrFromVector4(v Vector4, rOut GDExtensionUninitializedVa
 }
 
 func (c Variant) ToVector4() Vector4 {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4]
 	var v Vector4
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -700,17 +862,23 @@ func (c Variant) ToVector4() Vector4 {
 }
 
 func NewVariantVector4i(v Vector4i) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromVector4i(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromVector4i(v Vector4i, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Vector4i
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Vector4iEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4I]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -721,10 +889,12 @@ func GDExtensionVariantPtrFromVector4i(v Vector4i, rOut GDExtensionUninitialized
 }
 
 func (c Variant) ToVector4i() Vector4i {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_VECTOR4I]
 	var v Vector4i
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -734,17 +904,23 @@ func (c Variant) ToVector4i() Vector4i {
 }
 
 func NewVariantPlane(v Plane) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPlane(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPlane(v Plane, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Plane
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PlaneEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PLANE]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -755,10 +931,12 @@ func GDExtensionVariantPtrFromPlane(v Plane, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToPlane() Plane {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PLANE]
 	var v Plane
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -768,17 +946,23 @@ func (c Variant) ToPlane() Plane {
 }
 
 func NewVariantQuaternion(v Quaternion) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromQuaternion(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromQuaternion(v Quaternion, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Quaternion
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	QuaternionEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_QUATERNION]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -789,10 +973,12 @@ func GDExtensionVariantPtrFromQuaternion(v Quaternion, rOut GDExtensionUninitial
 }
 
 func (c Variant) ToQuaternion() Quaternion {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_QUATERNION]
 	var v Quaternion
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -802,17 +988,23 @@ func (c Variant) ToQuaternion() Quaternion {
 }
 
 func NewVariantAABB(v AABB) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromAABB(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromAABB(v AABB, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded AABB
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	AABBEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_AABB]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -823,10 +1015,12 @@ func GDExtensionVariantPtrFromAABB(v AABB, rOut GDExtensionUninitializedVariantP
 }
 
 func (c Variant) ToAABB() AABB {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_AABB]
 	var v AABB
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -836,17 +1030,23 @@ func (c Variant) ToAABB() AABB {
 }
 
 func NewVariantBasis(v Basis) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromBasis(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromBasis(v Basis, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Basis
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	BasisEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_BASIS]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -857,10 +1057,12 @@ func GDExtensionVariantPtrFromBasis(v Basis, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToBasis() Basis {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_BASIS]
 	var v Basis
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -870,17 +1072,23 @@ func (c Variant) ToBasis() Basis {
 }
 
 func NewVariantTransform3D(v Transform3D) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromTransform3D(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromTransform3D(v Transform3D, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Transform3D
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	Transform3DEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM3D]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -891,10 +1099,12 @@ func GDExtensionVariantPtrFromTransform3D(v Transform3D, rOut GDExtensionUniniti
 }
 
 func (c Variant) ToTransform3D() Transform3D {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_TRANSFORM3D]
 	var v Transform3D
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -904,17 +1114,23 @@ func (c Variant) ToTransform3D() Transform3D {
 }
 
 func NewVariantProjection(v Projection) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromProjection(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromProjection(v Projection, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Projection
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	ProjectionEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PROJECTION]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -925,10 +1141,12 @@ func GDExtensionVariantPtrFromProjection(v Projection, rOut GDExtensionUninitial
 }
 
 func (c Variant) ToProjection() Projection {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PROJECTION]
 	var v Projection
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -938,17 +1156,23 @@ func (c Variant) ToProjection() Projection {
 }
 
 func NewVariantColor(v Color) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromColor(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromColor(v Color, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Color
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	ColorEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_COLOR]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -959,10 +1183,12 @@ func GDExtensionVariantPtrFromColor(v Color, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToColor() Color {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_COLOR]
 	var v Color
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -972,17 +1198,23 @@ func (c Variant) ToColor() Color {
 }
 
 func NewVariantStringName(v StringName) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromStringName(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromStringName(v StringName, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded StringName
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	StringNameEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_STRING_NAME]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -993,10 +1225,12 @@ func GDExtensionVariantPtrFromStringName(v StringName, rOut GDExtensionUninitial
 }
 
 func (c Variant) ToStringName() StringName {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_STRING_NAME]
 	var v StringName
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1006,17 +1240,23 @@ func (c Variant) ToStringName() StringName {
 }
 
 func NewVariantNodePath(v NodePath) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromNodePath(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromNodePath(v NodePath, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded NodePath
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	NodePathEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_NODE_PATH]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1027,10 +1267,12 @@ func GDExtensionVariantPtrFromNodePath(v NodePath, rOut GDExtensionUninitialized
 }
 
 func (c Variant) ToNodePath() NodePath {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_NODE_PATH]
 	var v NodePath
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1040,17 +1282,23 @@ func (c Variant) ToNodePath() NodePath {
 }
 
 func NewVariantRID(v RID) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromRID(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromRID(v RID, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded RID
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	RIDEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_RID]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1061,10 +1309,12 @@ func GDExtensionVariantPtrFromRID(v RID, rOut GDExtensionUninitializedVariantPtr
 }
 
 func (c Variant) ToRID() RID {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_RID]
 	var v RID
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1074,17 +1324,23 @@ func (c Variant) ToRID() RID {
 }
 
 func NewVariantCallable(v Callable) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromCallable(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromCallable(v Callable, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Callable
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	CallableEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_CALLABLE]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1095,10 +1351,12 @@ func GDExtensionVariantPtrFromCallable(v Callable, rOut GDExtensionUninitialized
 }
 
 func (c Variant) ToCallable() Callable {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_CALLABLE]
 	var v Callable
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1108,17 +1366,23 @@ func (c Variant) ToCallable() Callable {
 }
 
 func NewVariantSignal(v Signal) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromSignal(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromSignal(v Signal, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Signal
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	SignalEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_SIGNAL]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1129,10 +1393,12 @@ func GDExtensionVariantPtrFromSignal(v Signal, rOut GDExtensionUninitializedVari
 }
 
 func (c Variant) ToSignal() Signal {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_SIGNAL]
 	var v Signal
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1142,17 +1408,23 @@ func (c Variant) ToSignal() Signal {
 }
 
 func NewVariantDictionary(v Dictionary) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromDictionary(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromDictionary(v Dictionary, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Dictionary
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	DictionaryEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_DICTIONARY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1163,10 +1435,12 @@ func GDExtensionVariantPtrFromDictionary(v Dictionary, rOut GDExtensionUninitial
 }
 
 func (c Variant) ToDictionary() Dictionary {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_DICTIONARY]
 	var v Dictionary
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1176,17 +1450,23 @@ func (c Variant) ToDictionary() Dictionary {
 }
 
 func NewVariantArray(v Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromArray(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromArray(v Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1197,10 +1477,12 @@ func GDExtensionVariantPtrFromArray(v Array, rOut GDExtensionUninitializedVarian
 }
 
 func (c Variant) ToArray() Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_ARRAY]
 	var v Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1210,17 +1492,23 @@ func (c Variant) ToArray() Array {
 }
 
 func NewVariantPackedByteArray(v PackedByteArray) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedByteArray(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedByteArray(v PackedByteArray, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedByteArray
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedByteArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1231,10 +1519,12 @@ func GDExtensionVariantPtrFromPackedByteArray(v PackedByteArray, rOut GDExtensio
 }
 
 func (c Variant) ToPackedByteArray() PackedByteArray {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY]
 	var v PackedByteArray
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1244,17 +1534,23 @@ func (c Variant) ToPackedByteArray() PackedByteArray {
 }
 
 func NewVariantPackedInt32Array(v PackedInt32Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedInt32Array(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedInt32Array(v PackedInt32Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedInt32Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedInt32ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1265,10 +1561,12 @@ func GDExtensionVariantPtrFromPackedInt32Array(v PackedInt32Array, rOut GDExtens
 }
 
 func (c Variant) ToPackedInt32Array() PackedInt32Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY]
 	var v PackedInt32Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1278,17 +1576,23 @@ func (c Variant) ToPackedInt32Array() PackedInt32Array {
 }
 
 func NewVariantPackedInt64Array(v PackedInt64Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedInt64Array(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedInt64Array(v PackedInt64Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedInt64Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedInt64ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1299,10 +1603,12 @@ func GDExtensionVariantPtrFromPackedInt64Array(v PackedInt64Array, rOut GDExtens
 }
 
 func (c Variant) ToPackedInt64Array() PackedInt64Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY]
 	var v PackedInt64Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1312,17 +1618,23 @@ func (c Variant) ToPackedInt64Array() PackedInt64Array {
 }
 
 func NewVariantPackedFloat32Array(v PackedFloat32Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedFloat32Array(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedFloat32Array(v PackedFloat32Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedFloat32Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedFloat32ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1333,10 +1645,12 @@ func GDExtensionVariantPtrFromPackedFloat32Array(v PackedFloat32Array, rOut GDEx
 }
 
 func (c Variant) ToPackedFloat32Array() PackedFloat32Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY]
 	var v PackedFloat32Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1346,17 +1660,23 @@ func (c Variant) ToPackedFloat32Array() PackedFloat32Array {
 }
 
 func NewVariantPackedFloat64Array(v PackedFloat64Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedFloat64Array(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedFloat64Array(v PackedFloat64Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedFloat64Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedFloat64ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1367,10 +1687,12 @@ func GDExtensionVariantPtrFromPackedFloat64Array(v PackedFloat64Array, rOut GDEx
 }
 
 func (c Variant) ToPackedFloat64Array() PackedFloat64Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY]
 	var v PackedFloat64Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1380,17 +1702,23 @@ func (c Variant) ToPackedFloat64Array() PackedFloat64Array {
 }
 
 func NewVariantPackedStringArray(v PackedStringArray) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedStringArray(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedStringArray(v PackedStringArray, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedStringArray
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedStringArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1401,10 +1729,12 @@ func GDExtensionVariantPtrFromPackedStringArray(v PackedStringArray, rOut GDExte
 }
 
 func (c Variant) ToPackedStringArray() PackedStringArray {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY]
 	var v PackedStringArray
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1414,17 +1744,23 @@ func (c Variant) ToPackedStringArray() PackedStringArray {
 }
 
 func NewVariantPackedVector2Array(v PackedVector2Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedVector2Array(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedVector2Array(v PackedVector2Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedVector2Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedVector2ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1435,10 +1771,12 @@ func GDExtensionVariantPtrFromPackedVector2Array(v PackedVector2Array, rOut GDEx
 }
 
 func (c Variant) ToPackedVector2Array() PackedVector2Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY]
 	var v PackedVector2Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1448,17 +1786,23 @@ func (c Variant) ToPackedVector2Array() PackedVector2Array {
 }
 
 func NewVariantPackedVector3Array(v PackedVector3Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedVector3Array(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedVector3Array(v PackedVector3Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedVector3Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedVector3ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1469,10 +1813,12 @@ func GDExtensionVariantPtrFromPackedVector3Array(v PackedVector3Array, rOut GDEx
 }
 
 func (c Variant) ToPackedVector3Array() PackedVector3Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY]
 	var v PackedVector3Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1482,17 +1828,23 @@ func (c Variant) ToPackedVector3Array() PackedVector3Array {
 }
 
 func NewVariantPackedColorArray(v PackedColorArray) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedColorArray(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedColorArray(v PackedColorArray, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedColorArray
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedColorArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1503,10 +1855,12 @@ func GDExtensionVariantPtrFromPackedColorArray(v PackedColorArray, rOut GDExtens
 }
 
 func (c Variant) ToPackedColorArray() PackedColorArray {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY]
 	var v PackedColorArray
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),
@@ -1516,17 +1870,23 @@ func (c Variant) ToPackedColorArray() PackedColorArray {
 }
 
 func NewVariantPackedVector4Array(v PackedVector4Array) Variant {
+	// Call-scoped pinner: the variant constructor reads this pointer value
+	// synchronously and retains no reference to the Go cell behind it.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	ret := Variant{}
 	ptr := (GDExtensionUninitializedVariantPtr)(ret.NativePtr())
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	GDExtensionVariantPtrFromPackedVector4Array(v, ptr)
 	return ret
 }
 
 func GDExtensionVariantPtrFromPackedVector4Array(v PackedVector4Array, rOut GDExtensionUninitializedVariantPtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	var encoded PackedVector4Array
 	encodedPtr := (GDExtensionTypePtr)(&encoded)
-	pnr.Pin(encodedPtr)
+	pinner.Pin(encodedPtr)
 	PackedVector4ArrayEncoder.EncodeTypePtrArg(v, (GDExtensionUninitializedTypePtr)(encodedPtr))
 	fn := variantFromTypeConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY]
 	CallFunc_GDExtensionVariantFromTypeConstructorFunc(
@@ -1537,10 +1897,12 @@ func GDExtensionVariantPtrFromPackedVector4Array(v PackedVector4Array, rOut GDEx
 }
 
 func (c Variant) ToPackedVector4Array() PackedVector4Array {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	fn := typeFromVariantConstructor[GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY]
 	var v PackedVector4Array
 	ptr := v.NativePtr()
-	pnr.Pin(ptr)
+	pinner.Pin(ptr)
 	CallFunc_GDExtensionTypeFromVariantConstructorFunc(
 		(GDExtensionTypeFromVariantConstructorFunc)(fn),
 		(GDExtensionUninitializedTypePtr)(ptr),

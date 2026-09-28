@@ -13,6 +13,7 @@ package gdclassimpl
 //revive:disable
 
 import (
+	"runtime"
 	"sync"
 	"unsafe"
 
@@ -106,13 +107,21 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 {{end -}}
 {{- if $m.IsVararg }}varargs ...Variant,{{ end -}}
 ) {{ if $view.IsRefcountedClassName $fnReturnType }}Ref{{ $fnReturnType }}{{ else }}{{ $fnReturnType }}{{ end }} {
+	// Call-scoped pinner. The engine reads the pointer values handed to it below
+	// synchronously and keeps no reference to the Go cells behind them, so every
+	// pin made in this body is released when the call returns. Anything the
+	// engine retains past the call is pinned at registration time on the package
+	// pinner, never here. Registered first, so LIFO runs it last, after the
+	// variant Destroy()s.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
     {{/* TODO: refactor for static instantiation */}}
 	className := getCachedClassName("{{ $c.Name }}")
 	methodName := NewStringNameWithLatin1Chars("{{ $m.Name }}")
 	defer methodName.Destroy()
 	fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
-		className.AsGDExtensionConstStringNamePtr(),
-		methodName.AsGDExtensionConstStringNamePtr(),
+		className.AsGDExtensionConstStringNamePtrPinned(&pinner),
+		methodName.AsGDExtensionConstStringNamePtrPinned(&pinner),
 		{{ $m.Hash }},
 	)
 	if fn == nil {
@@ -137,23 +146,23 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{ end -}}
 	{{ end -}}
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
-	pnr.Pin(cOwner)
+	pinner.Pin(cOwner)
 	{{ if $m.IsVararg -}}
 	callArgCount := {{ len $m.Arguments }} + len(varargs)
 	argPtrSlice := make([]GDExtensionConstVariantPtr, int(callArgCount))
 	cArgs := (*GDExtensionConstVariantPtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
+	pinner.Pin(cArgs)
 	{{ range $j, $a := $m.Arguments -}}
 	v{{ $j }} := {{ (goVariantFunc $a.Type (goArgumentName $a.Name) $view.Classes) }}
 	defer v{{ $j }}.Destroy()
 	argPtrSlice[{{ $j }}] = v{{ $j }}.NativeConstPtr()
-	pnr.Pin(argPtrSlice[{{ $j }}])
+	pinner.Pin(argPtrSlice[{{ $j }}])
 	{{ end -}}
 	for i := range varargs {
 		argPtrSlice[i + {{ len $m.Arguments }}] = (GDExtensionConstVariantPtr)(unsafe.Pointer(&varargs[i])) // variant
-		pnr.Pin(argPtrSlice[i + {{ len $m.Arguments }}])
+		pinner.Pin(argPtrSlice[i + {{ len $m.Arguments }}])
     }
 	var err GDExtensionCallError
 	CallFunc_GDExtensionInterfaceObjectMethodBindCall(fn, cOwner, cArgs, (GDExtensionInt)(callArgCount), retPtr, &err)
@@ -164,23 +173,37 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	callArgCount := {{ len $m.Arguments }}
 	argPtrSlice := make([]GDExtensionConstTypePtr, int(callArgCount))
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
-	pnr.Pin(cArgs)
+	pinner.Pin(cArgs)
 	{{ range $j, $a := $m.Arguments -}}
-		{{ if $view.ContainsClassName (goArgumentType (typeOrMeta $a.Meta $a.Type)) -}}
-		{{ if and (eq $j 0) (and (isSetterMethodName (goMethodName $m.Name)) ($view.IsRefcountedClassName (goArgumentType (typeOrMeta $a.Meta $a.Type)))) -}}
-		{{/* {{ goArgumentName $a.Name }}.Reference() */}}
+		{{ $argType := goArgumentType (typeOrMeta $a.Meta $a.Type) -}}
+		{{ if $view.ContainsClassName $argType -}}
+		{{/*
+		  Engine-class argument. Godot's PtrToArg<T*>::convert dereferences this slot
+		  (*reinterpret_cast<T*const*>(p_ptr)), so it must point at a cell whose
+		  contents are the object pointer -- never the address of the Go interface,
+		  whose first word is the itab.
+
+		  Arguments are borrowed. For Ref<T>, PtrToArg<Ref<T>>::convert builds
+		  Ref<T>(ptr) on the receiving side and takes its own reference, so a
+		  Reference() here would leak one reference per call.
+		*/}}
+		var argObj_{{ $j }} GDExtensionObjectPtr
+		{{ if $view.IsRefcountedClassName $argType -}}
+		argObj_{{ $j }} = RefArgPtr({{ goArgumentName $a.Name }})
+		{{ else -}}
+		argObj_{{ $j }} = ObjectArgPtr({{ goArgumentName $a.Name }})
 		{{ end -}}
-		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
+		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_{{ $j }}))
 		{{ else -}}
 		argPtrSlice[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer(&{{ goArgumentName $a.Name }}))
 		{{ end -}}
-		pnr.Pin(argPtrSlice[{{ $j }}])
+		pinner.Pin(argPtrSlice[{{ $j }}])
 	{{ end -}}
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	{{ end -}}
 	{{ with $fnReturnType -}}
 	{{ if $view.IsRefcountedClassName $fnReturnType -}}
-	return NewRef{{ $fnReturnType }}GDExtensionIternalConstructor(&ret)
+	return NewRef{{ $fnReturnType }}GDExtensionReturnOwner(&ret)
 	{{ else if $view.ContainsClassName $fnReturnType -}}
 	return &ret
 	{{ else -}}

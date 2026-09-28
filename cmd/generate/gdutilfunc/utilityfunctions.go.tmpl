@@ -17,6 +17,7 @@ package gdutilfunc
 // #include <stdlib.h>
 import "C"
 import (
+	"runtime"
 	"unsafe"
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
@@ -35,10 +36,14 @@ func {{ camelCase $f.Name }}(
 	varargs ...Variant,
 {{- end -}}
 ) {{ $fnReturnType }} {
+	// Call-scoped pinner: the utility function reads these pointer values
+	// synchronously and retains no reference to the Go cells behind them.
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
 	{{/* TODO: refactor for static instantiation */ -}}
 	fName := NewStringNameWithLatin1Chars("{{ $f.Name }}")
 	defer fName.Destroy()
-	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtr(), {{ $f.Hash }})
+	fn := CallFunc_GDExtensionInterfaceVariantGetPtrUtilityFunction(fName.AsGDExtensionConstStringNamePtrPinned(&pinner), {{ $f.Hash }})
 	if fn == nil {
 		panic("could not find utility function {{ $f.Name }} ({{ $f.Hash }})")
 	}
@@ -56,18 +61,18 @@ func {{ camelCase $f.Name }}(
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(nullptr)
 	{{- end }}
-	pnr.Pin(retPtr)
+	pinner.Pin(retPtr)
 	{{ if $f.Arguments -}}
 	{{ if $f.IsVararg -}}
 	sz := {{ len $f.Arguments }}
 	args := make([]GDExtensionConstTypePtr, sz + len(varargs))
 	{{ range $j, $arg := $f.Arguments -}}
 		args[{{ $j }}] = (GDExtensionConstTypePtr)(unsafe.Pointer({{ goEncoder (goArgumentType $arg.Type) }}.EncodeTypePtr({{ goArgumentName $arg.Name }})))
-		pnr.Pin(args[{{ $j }}])
+		pinner.Pin(args[{{ $j }}])
 	{{ end -}}
 	for i := range varargs {
 		args[sz + i] = (GDExtensionConstTypePtr)(unsafe.Pointer(VariantEncoder.EncodeTypePtr(varargs[i])))
-		pnr.Pin(args[sz + i])
+		pinner.Pin(args[sz + i])
 	}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(args))
 	{{ else -}}
@@ -77,14 +82,14 @@ func {{ camelCase $f.Name }}(
 	{{ end -}}
 	}
 	{{ range $j, $arg := $f.Arguments -}}
-		pnr.Pin(args[{{ $j }}])
+		pinner.Pin(args[{{ $j }}])
 	{{ end -}}
 	typePtrArgs := (*GDExtensionConstTypePtr)(unsafe.Pointer(&args[0]))
 	{{ end -}}
 	{{ else -}}
 	typePtrArgs := (*GDExtensionConstTypePtr)(nil)
 	{{ end -}}
-	pnr.Pin(typePtrArgs)
+	pinner.Pin(typePtrArgs)
 	argCount := (int32)({{ len $f.Arguments }}{{ if $f.IsVararg -}} + len(varargs){{ end }})
 	CallFunc_GDExtensionPtrUtilityFunction(fn, retPtr, typePtrArgs, argCount)
 	{{- with $fnReturnType }}

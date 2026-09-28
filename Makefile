@@ -97,17 +97,37 @@ ci_gen_test_project_files: ## Generate test project files for CI
 		echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg; \
 	fi
 
-test: ## Run headless tests (fails on assertion failures or leaked engine objects)
-	@bash -o pipefail -ec ' \
+test: build ## Run headless tests (green only if the extension loaded, assertions ran, and none failed or leaked)
+	@status=0; \
+	bash -o pipefail -ec ' \
 		CI=1 \
 		LOG_LEVEL=WARN \
 		GOTRACEBACK=single \
 		GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
-		"$(GODOT)" --headless --verbose --path test/demo/ --quit 2>&1 | tee $(CURDIR)/test-output.log; \
-		if grep -qE "ObjectDB instances were leaked|Leaked instance:" $(CURDIR)/test-output.log; then \
-			echo "FAIL: leaked engine objects detected in test output"; \
-			exit 1; \
-		fi'
+		"$(GODOT)" --headless --verbose --path test/demo/ --quit 2>&1 | tee $(CURDIR)/test-output.log' || status=$$?; \
+	bash $(CURDIR)/test/check_test_output.sh $(CURDIR)/test-output.log $$status
+
+test_gate: ## Run the fixture tests for the test-output gate itself (no Godot needed)
+	@bash $(CURDIR)/test/fixtures/run_fixture_tests.sh
+
+check_type_rejection: build ## Assert the engine rejects a wrong-class typed argument (negative fixture)
+	@out="$$($(GODOT) --headless --check-only --script res://type_rejection.gd --path test/demo/ 2>&1)"; \
+	status=$$?; \
+	if [ $$status -eq 0 ]; then \
+		echo "FAIL: type_rejection.gd parsed cleanly; the advertised argument classes are no longer enforced"; \
+		exit 1; \
+	fi; \
+	if ! printf '%s' "$$out" | grep -q 'should be "CollisionShape2D" but is "Image"'; then \
+		echo "FAIL: expected a CollisionShape2D-vs-Image rejection; got:"; \
+		printf '%s\n' "$$out" | tail -10; \
+		exit 1; \
+	fi; \
+	if ! printf '%s' "$$out" | grep -q 'should be "Shape2D" but is "Image"'; then \
+		echo "FAIL: expected the Ref pointee class Shape2D to be advertised; got:"; \
+		printf '%s\n' "$$out" | tail -10; \
+		exit 1; \
+	fi; \
+	echo "PASS: engine rejects wrong-class typed arguments (CollisionShape2D and Ref pointee Shape2D both enforced)"
 
 test_delegation_trap: build ## Expect the delegating virtual repro to abort godot with the bounded-depth recursion diagnostic (non-zero exit)
 	@if [ ! -x "$(GODOT)" ]; then \

@@ -108,14 +108,27 @@ The shutdown hook logs a unique literal marker (e.g.
 `LOG_LEVEL=WARN` filter. `test/check_test_output.sh` gains a gate requiring
 that literal, with its own distinct failure message (delta spec).
 
+### D8: Multi-iteration harness run (`--quit-after 5`) and primed frame awaits
+Engine facts (`../godot main/main.cpp`): `--quit` sets `quit_after = 1`, so
+`Main::iteration` runs exactly once; the extension frame callback fires near
+the end of an iteration (`GDExtensionManager::frame()`, line 5135) and the
+quit check follows it (line 5188). `SceneTree::process` fires `process_frame`
+before that hook, and an awaiting coroutine resumes inside the dispatch.
+Consequences: under `--quit` the frame hook is invisible to GDScript and a
+second `await process_frame` never resumes (banner would be lost). The test
+target therefore runs `--quit-after 5`, and the GDScript test primes with one
+await (absorbing the resume-before-hook boundary) and then measures per-await
+deltas of at least one, which satisfies the spec scenario literally. Five
+iterations leave margin: the coroutine completes by iteration 3.
+
 ## Risks / Trade-offs
 
 - [Frame hook adds a cgo hop per frame] → Only wired when a hook is
   registered; an empty slot check is negligible per frame; documented cost is
   one no-arg cgo callback (~tens of ns).
-- [`--quit` headless run may make frame counting tight] → Assertions use
-  "at least one per awaited frame", not exact equality, absorbing the
-  engine's own frame boundaries.
+- [`--quit-after 5` leaves a fixed iteration budget] → The coroutine
+  completes by iteration 3 of 5; if the driver ever needs more frames the
+  run fails loudly as "no driver summary", never as a false pass (D8).
 - [Marker check makes every future unrelated `make test` run depend on the
   fixture] → Intended per delta spec; the failure message names the missing
   marker so diagnosis is one step.

@@ -54,6 +54,10 @@ function — only the `pkg/core` binding layer is missing.
 - `test/demo/main.gd`: assertions for startup-before-ready and frame counting
   across awaited frames.
 - `test/check_test_output.sh`: new shutdown-marker gate.
+- `Makefile`: headless invocation changes from `--quit` to `--quit-after 5`
+  so the driver can observe multiple main-loop iterations (single-iteration
+  runs cannot show frame-hook growth and lose the summary banner on any
+  second `await process_frame`).
 - `docs/overview.md`, `docs/roadmap.md`: document the feature, mark C3 done.
 - No public API breakage; existing callers untouched.
 

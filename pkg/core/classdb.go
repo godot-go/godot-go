@@ -74,7 +74,10 @@ func ClassDBAddPropertySubgroup(t GDClass, p_name string, p_prefix string) {
 	)
 }
 
-// ClassDBAddProperty default p_index = -1
+// ClassDBAddProperty registers a property with default metadata: hint
+// PROPERTY_HINT_NONE, an empty hint string, and PROPERTY_USAGE_DEFAULT.
+// Use ClassDBAddPropertyInfo for inspector hints, usage flags, and class
+// qualifiers.
 func ClassDBAddProperty(
 	inst GDClass,
 	p_property_type GDExtensionVariantType,
@@ -82,89 +85,12 @@ func ClassDBAddProperty(
 	p_setter string,
 	p_getter string,
 ) {
-	t := reflect.TypeOf(inst)
-	cn := inst.GetClassName()
-	pn := p_property_name
-	ci, ok := Internal.GDRegisteredGDClasses.Get(cn)
-	if !ok {
-		log.Panic("Trying to add property to non-existing class.",
-			zap.String("property", pn),
-			zap.String("p_class", (string)(cn)),
-			zap.Any("type", t),
-		)
-	}
-	if _, ok := ci.PropertyNameSet[pn]; ok {
-		panic(fmt.Sprintf(`Property "%s" already exists in class "%s".`, pn, cn))
-	}
-	var (
-		setter *GoMethodMetadata
-		getter *GoMethodMetadata
-	)
-	if len(p_getter) == 0 {
-		log.Panic(`Getter method must be specified.`)
-	}
-	mci, ok := ci.MethodMap[p_getter]
-	if !ok {
-		log.Panic("unable to find getter",
-			zap.String("getter", p_getter),
-		)
-	}
-	getter = mci.GoMethodMetadata
-	if len(getter.GoArgumentTypes) != 0 {
-		panic(fmt.Sprintf(`getter method "%s" must take a single argument.`, p_getter))
-	}
-	// specifying a setter is optional
-	if len(p_setter) > 0 {
-		mci, ok := ci.MethodMap[p_setter]
-		if !ok {
-			log.Panic("unable to find setter",
-				zap.String("setter", p_setter),
-			)
-		}
-		setter = mci.GoMethodMetadata
-		if len(setter.GoArgumentTypes) != 1 {
-			panic(fmt.Sprintf(`Setter method "%s" must take a single argument.`, p_setter))
-		}
-	}
-	// register property with plugin
-	ci.PropertyNameSet[pn] = struct{}{}
-	propName := NewStringNameWithLatin1Chars(pn)
-	defer propName.Destroy()
-	hint := NewStringWithUtf8Chars("")
-	defer hint.Destroy()
-	pnr.Pin(&hint)
-	// register with Godot
-	prop_info := NewGDExtensionPropertyInfo(
-		ci.NameStringName.AsGDExtensionConstStringNamePtr(),
-		p_property_type,
-		propName.AsGDExtensionConstStringNamePtr(),
-		uint32(PROPERTY_HINT_NONE),
-		hint.AsGDExtensionConstStringPtr(),
-		uint32(PROPERTY_USAGE_DEFAULT),
-	)
-	pnr.Pin(&prop_info)
-	snSetterGDName := NewStringNameWithLatin1Chars(setter.GdMethodName)
-	defer snSetterGDName.Destroy()
-	snGetterGDName := NewStringNameWithLatin1Chars(getter.GdMethodName)
-	defer snGetterGDName.Destroy()
-	log.Info("register property",
-		zap.String("class", cn),
-		zap.String("name", p_property_name),
-		zap.Int("variant_type", int(p_property_type)),
-	)
-	cnName := ci.NameStringName
-	pnr.Pin(&cnName)
-	pnr.Pin(&propName)
-	pnr.Pin(&snSetterGDName)
-	pnr.Pin(&snGetterGDName)
-	CallFunc_GDExtensionInterfaceClassdbRegisterExtensionClassPropertyIndexed(
-		FFI.Library,
-		cnName.AsGDExtensionConstStringNamePtr(),
-		&prop_info,
-		snSetterGDName.AsGDExtensionConstStringNamePtr(),
-		snGetterGDName.AsGDExtensionConstStringNamePtr(),
-		-1,
-	)
+	ClassDBAddPropertyInfo(inst, PropertySpec{
+		VariantType: p_property_type,
+		Name:        p_property_name,
+		Setter:      p_setter,
+		Getter:      p_getter,
+	})
 }
 
 type SignalParam struct {

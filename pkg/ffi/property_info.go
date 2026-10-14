@@ -14,6 +14,12 @@ import (
 	"github.com/godot-go/godot-go/pkg/constant"
 )
 
+// NewGDExtensionPropertyInfo builds a C GDExtensionPropertyInfo from
+// pointers. Ownership contract: the caller owns the StringName/String
+// objects behind propertyName, className, and hintString, and must keep
+// them alive (pinned) for the duration of every engine call that consumes
+// the returned struct. pkg/core owns creation and teardown of these
+// temporaries for property registration (see ClassDBAddPropertyInfo).
 func NewGDExtensionPropertyInfo(
 	className GDExtensionConstStringNamePtr,
 	propertyType GDExtensionVariantType,
@@ -22,7 +28,6 @@ func NewGDExtensionPropertyInfo(
 	hintString GDExtensionConstStringPtr,
 	usage uint32,
 ) GDExtensionPropertyInfo {
-	// TODO: create StringName locally here
 	return (GDExtensionPropertyInfo)(C.GDExtensionPropertyInfo{
 		_type:       (C.GDExtensionVariantType)(propertyType),
 		name:        (C.GDExtensionStringNamePtr)(propertyName),

@@ -42,6 +42,13 @@ type Example struct {
 	propertyFromList  Vector3
 	dprop             [3]Vector2
 	notificationCodes []int32
+	// Property hint fixtures (support-property-hints)
+	hintedRange   float64
+	hintedEnum    int64
+	hintedTexture RefTexture2D
+	hintedNode    Node
+	storageOnly   int64
+	readonlyValue int64
 }
 
 func (c *Example) GetClassName() string {
@@ -307,6 +314,25 @@ func (e *Example) SetCustomPosition(pos Vector2) {
 func (e *Example) GetCustomPosition() Vector2 {
 	return e.customPosition
 }
+
+// --- Property hint fixture accessors ---
+
+func (e *Example) SetHintedRange(value float64) { e.hintedRange = value }
+func (e *Example) GetHintedRange() float64      { return e.hintedRange }
+
+func (e *Example) SetHintedEnum(value int64) { e.hintedEnum = value }
+func (e *Example) GetHintedEnum() int64      { return e.hintedEnum }
+
+func (e *Example) SetHintedTexture(value RefTexture2D) { e.hintedTexture = value }
+func (e *Example) GetHintedTexture() RefTexture2D      { return e.hintedTexture }
+
+func (e *Example) SetHintedNode(value Node) { e.hintedNode = value }
+func (e *Example) GetHintedNode() Node      { return e.hintedNode }
+
+func (e *Example) SetStorageOnly(value int64) { e.storageOnly = value }
+func (e *Example) GetStorageOnly() int64      { return e.storageOnly }
+
+func (e *Example) GetReadonlyValue() int64 { return e.readonlyValue }
 
 func (e *Example) SetPropertyFromList(v Vector3) {
 	e.propertyFromList = v
@@ -1111,6 +1137,68 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "GetCustomPosition", "get_custom_position", nil, nil)
 		ClassDBBindMethod(t, "SetCustomPosition", "set_custom_position", []string{"position"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_VECTOR2, "group_subgroup_custom_position", "set_custom_position", "get_custom_position")
+
+		// Properties with inspector metadata (ClassDBAddPropertyInfo).
+		ClassDBBindMethod(t, "GetHintedRange", "get_hinted_range", nil, nil)
+		ClassDBBindMethod(t, "SetHintedRange", "set_hinted_range", []string{"value"}, nil)
+		ClassDBAddPropertyInfo(t, PropertySpec{
+			VariantType: GDEXTENSION_VARIANT_TYPE_FLOAT,
+			Name:        "hinted_range",
+			Setter:      "set_hinted_range",
+			Getter:      "get_hinted_range",
+			Hint:        PROPERTY_HINT_RANGE,
+			HintString:  "0:100:1",
+		})
+
+		ClassDBBindMethod(t, "GetHintedEnum", "get_hinted_enum", nil, nil)
+		ClassDBBindMethod(t, "SetHintedEnum", "set_hinted_enum", []string{"value"}, nil)
+		ClassDBAddPropertyInfo(t, PropertySpec{
+			VariantType: GDEXTENSION_VARIANT_TYPE_INT,
+			Name:        "hinted_enum",
+			Setter:      "set_hinted_enum",
+			Getter:      "get_hinted_enum",
+			Hint:        PROPERTY_HINT_ENUM,
+			HintString:  "idle,walk,run",
+		})
+
+		ClassDBBindMethod(t, "GetHintedTexture", "get_hinted_texture", nil, nil)
+		ClassDBBindMethod(t, "SetHintedTexture", "set_hinted_texture", []string{"texture"}, nil)
+		ClassDBAddPropertyInfo(t, PropertySpec{
+			VariantType: GDEXTENSION_VARIANT_TYPE_OBJECT,
+			Name:        "hinted_texture",
+			Setter:      "set_hinted_texture",
+			Getter:      "get_hinted_texture",
+			Hint:        PROPERTY_HINT_RESOURCE_TYPE,
+			HintString:  "Texture2D",
+		})
+
+		ClassDBBindMethod(t, "GetHintedNode", "get_hinted_node", nil, nil)
+		ClassDBBindMethod(t, "SetHintedNode", "set_hinted_node", []string{"node"}, nil)
+		ClassDBAddPropertyInfo(t, PropertySpec{
+			VariantType: GDEXTENSION_VARIANT_TYPE_OBJECT,
+			Name:        "hinted_node",
+			Setter:      "set_hinted_node",
+			Getter:      "get_hinted_node",
+			ClassName:   "Node",
+		})
+
+		ClassDBBindMethod(t, "GetStorageOnly", "get_storage_only", nil, nil)
+		ClassDBBindMethod(t, "SetStorageOnly", "set_storage_only", []string{"value"}, nil)
+		ClassDBAddPropertyInfo(t, PropertySpec{
+			VariantType: GDEXTENSION_VARIANT_TYPE_INT,
+			Name:        "storage_only",
+			Setter:      "set_storage_only",
+			Getter:      "get_storage_only",
+			Usage:       PROPERTY_USAGE_STORAGE,
+		})
+
+		// Read-only property: registration with no setter name.
+		ClassDBBindMethod(t, "GetReadonlyValue", "get_readonly_value", nil, nil)
+		ClassDBAddPropertyInfo(t, PropertySpec{
+			VariantType: GDEXTENSION_VARIANT_TYPE_INT,
+			Name:        "readonly_value",
+			Getter:      "get_readonly_value",
+		})
 
 		// Signals.
 		ClassDBAddSignal(t, "custom_signal",

@@ -39,6 +39,9 @@ func Generate(projectPath string, eapi extensionapiparser.ExtensionApi) {
 	if err = GenerateVirtuals(projectPath, eapi); err != nil {
 		panic(err)
 	}
+	if err = GenerateSingletons(projectPath, eapi); err != nil {
+		panic(err)
+	}
 }
 
 // VirtualClassInfo is one engine class's Category-A virtual surface.

@@ -3,8 +3,6 @@ package gdclassimpl
 import (
 	"runtime"
 	"unsafe"
-
-	. "github.com/godot-go/godot-go/pkg/builtin"
 )
 
 var (
@@ -22,9 +20,4 @@ func (cx *ObjectImpl) ToGoString() string {
 	gdstr := cx.ToString()
 	defer gdstr.Destroy()
 	return gdstr.ToUtf8()
-}
-
-func GetInputSingleton() Input {
-	owner := (*GodotObject)(unsafe.Pointer(GetSingleton("Input")))
-	return NewInputWithGodotOwnerObject(owner)
 }

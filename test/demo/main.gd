@@ -24,6 +24,7 @@ func _ready():
 	# test_suite(2, example)
 	test_property_hint_metadata_late(example)
 	await test_main_loop_callbacks(example)
+	assert_equal(example.test_singleton_helpers(), 0)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):

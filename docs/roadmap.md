@@ -25,6 +25,13 @@ with typed `Array[T]` / `Dictionary[K,V]` generics (godot-cpp's
 
 ### A2. Native Go strings at method boundaries
 
+**DONE** — implemented by change `ratify-string-marshalling` (2026-10-14):
+the strict-vs-convert question is settled as convert-per-engine-table and
+ratified in spec `string-boundary-marshalling`; `Copy()` retention helpers
+landed on `String`/`StringName`/`NodePath`, and demo fixtures pin every
+row of the marshalling table. The bind-time TODO now points at the spec.
+Original item:
+
 Binding a Go method that takes a plain `string` is an open question.
 
 - `pkg/core/method_bind_reflect.go:199` - "TODO: how to support native go
@@ -205,42 +212,46 @@ Ordering is driven by three axes:
   B3 rewrites the generated interface surface and goes last, against
   settled templates.
 
+The `Done` column is checked (`[x]`) once an item is implemented; the
+item's section in the catalog above keeps the authoritative **DONE**
+note naming the change that shipped it.
+
 ### Phase 0 - free quick wins (parallel-safe, zero conflicts)
 
-| Order | Item | Why now |
-|---|---|---|
-| 1 | B1 property hints (fold in D2) | Only `TODO.md` item; touches `classdb.go` / `property_info.go` and nothing else |
-| 2 | C3 main-loop callbacks **(DONE)** | Independent addition to init plumbing; cheap godot-cpp parity; C2 will want frame hooks to sit on |
-| 3 | D3 typed singleton helpers **(DONE)** | Trivial codegen; clears a parity gap immediately |
+| Done | Order | Item | Why now |
+|---|---|---|---|
+| [x] | 1 | B1 property hints (fold in D2) | Only `TODO.md` item; touches `classdb.go` / `property_info.go` and nothing else |
+| [x] | 2 | C3 main-loop callbacks | Independent addition to init plumbing; cheap godot-cpp parity; C2 will want frame hooks to sit on |
+| [x] | 3 | D3 typed singleton helpers | Trivial codegen; clears a parity gap immediately |
 
 ### Phase 1 - settle the marshalling foundation (strictly ordered)
 
-| Order | Item | Why here |
-|---|---|---|
-| 4 | A2 native Go strings | Small decision that A1, A3, C1 and B2 all inherit; decide strict-vs-convert once, early |
-| 5 | A1 slices <-> Packed*Array (+ typed `Array[T]`) | Loudest TODO; builds directly on A2's string/element decisions |
-| 6 | A3 variant reflect completeness | Its "what still can't cross" inventory is only accurate after A1/A2; also clears the Ref-output TODOs |
+| Done | Order | Item | Why here |
+|---|---|---|---|
+| [x] | 4 | A2 native Go strings | Small decision that A1, A3, C1 and B2 all inherit; decide strict-vs-convert once, early |
+| [ ] | 5 | A1 slices <-> Packed*Array (+ typed `Array[T]`) | Loudest TODO; builds directly on A2's string/element decisions |
+| [ ] | 6 | A3 variant reflect completeness | Its "what still can't cross" inventory is only accurate after A1/A2; also clears the Ref-output TODOs |
 
 ### Phase 2 - the keystone
 
-| Order | Item | Why here |
-|---|---|---|
-| 7 | C1 Go func -> Callable bridge (spike first) | Highest leverage; needs the encoder layer frozen from Phase 1; the availability spike starts immediately and runs in parallel with Phases 0-1 |
+| Done | Order | Item | Why here |
+|---|---|---|---|
+| [ ] | 7 | C1 Go func -> Callable bridge (spike first) | Highest leverage; needs the encoder layer frozen from Phase 1; the availability spike starts immediately and runs in parallel with Phases 0-1 |
 
 ### Phase 3 - cash the blocked chips
 
-| Order | Item | Why here |
-|---|---|---|
-| 8 | C2 await / goroutine <-> signal bridge | Hard-blocked by C1; delivers the pattern `docs/overview.md` already promises |
-| 9 | B2 static methods, then static variables | Wants settled marshalling for signatures; includes the `cmd/generate` "static instantiation" refactor notes |
-| 10 | C4 editor plugin ergonomics | Soft-depends on C1 and C3 |
+| Done | Order | Item | Why here |
+|---|---|---|---|
+| [ ] | 8 | C2 await / goroutine <-> signal bridge | Hard-blocked by C1; delivers the pattern `docs/overview.md` already promises |
+| [ ] | 9 | B2 static methods, then static variables | Wants settled marshalling for signatures; includes the `cmd/generate` "static instantiation" refactor notes |
+| [ ] | 10 | C4 editor plugin ergonomics | Soft-depends on C1 and C3 |
 
 ### Phase 4 - volume work against stable ground
 
-| Order | Item | Why here |
-|---|---|---|
-| 11 | D1 fatal-panic policy | Worthless until A1/A3 stop adding/removing panic sites; policy debate, then mechanical sweep |
-| 12 | B3 Category-B virtual catalog | 900+ entries of codegen churn; cheapest once templates and interfaces have stopped moving |
+| Done | Order | Item | Why here |
+|---|---|---|---|
+| [ ] | 11 | D1 fatal-panic policy | Worthless until A1/A3 stop adding/removing panic sites; policy debate, then mechanical sweep |
+| [ ] | 12 | B3 Category-B virtual catalog | 900+ entries of codegen churn; cheapest once templates and interfaces have stopped moving |
 
 ### Gantt - master schedule
 
@@ -253,11 +264,11 @@ gantt
     dateFormat YYYY-MM-DD
     excludes weekends
     section Phase 0 quick wins
-    B1 property hints plus D2          :b1, 2026-10-13, 2026-10-17
+    B1 property hints plus D2          :done, b1, 2026-10-13, 2026-10-17
     C3 main-loop callbacks             :done, c3, 2026-10-13, 2026-10-14
     D3 typed singleton helpers         :done, d3, 2026-10-15, 2026-10-17
     section Phase 1 marshalling foundation
-    A2 native Go strings               :a2, 2026-10-19, 2026-10-23
+    A2 native Go strings               :done, a2, 2026-10-19, 2026-10-23
     A1 slices and packed arrays        :a1, 2026-10-26, 2026-11-06
     A3 variant reflect completeness    :a3, 2026-11-09, 2026-11-13
     section Phase 2 keystone
@@ -286,7 +297,7 @@ gantt
     section De-risk
     C1 spike - callable_custom audit   :done, s1, 2026-10-13, 2026-10-21
     section Freeze marshalling
-    A2 native Go strings               :crit, s2, 2026-10-19, 2026-10-23
+    A2 native Go strings               :done, crit, s2, 2026-10-19, 2026-10-23
     A1 slices and packed arrays        :crit, s3, 2026-10-26, 2026-11-06
     A3 variant reflect completeness    :crit, s4, 2026-11-09, 2026-11-13
     section Keystone

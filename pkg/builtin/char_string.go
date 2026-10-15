@@ -30,6 +30,61 @@ func NodePathCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensio
 	CallBuiltinConstructor(globalNodePathMethodBindings.constructor_1, out, src)
 }
 
+func StringCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	pinner.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalStringMethodBindings.constructor_1, out, src)
+}
+
+// Copy returns a new String holding its own reference to the same content as
+// the receiver, initialized through the GDExtension copy constructor (a
+// refcount transfer, never a raw byte copy). The receiver may be owned or a
+// call-scoped borrow: Copy is the sanctioned way to retain a borrowed value
+// past the call that supplied it. The result is owned by the caller and MUST
+// be released with Destroy().
+func (cx String) Copy() String {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	out := String{}
+	outPtr := (GDExtensionUninitializedTypePtr)(out.NativePtr())
+	pinner.Pin(unsafe.Pointer(outPtr))
+	StringCopyConstructor(outPtr, cx.NativeConstPtr())
+	return out
+}
+
+// Copy returns a new StringName holding its own reference to the same
+// interned name as the receiver, initialized through the GDExtension copy
+// constructor (a refcount increment, never a raw byte copy). The receiver may
+// be owned or a call-scoped borrow: Copy is the sanctioned way to retain a
+// borrowed StringName past the call that supplied it. The result is owned by
+// the caller and MUST be released with Destroy().
+func (cx StringName) Copy() StringName {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	out := StringName{}
+	outPtr := (GDExtensionUninitializedTypePtr)(out.NativePtr())
+	pinner.Pin(unsafe.Pointer(outPtr))
+	StringNameCopyConstructor(outPtr, cx.NativeConstPtr())
+	return out
+}
+
+// Copy returns a new NodePath holding its own reference to the same content
+// as the receiver, initialized through the GDExtension copy constructor (a
+// refcount increment on the shared path object, never a raw byte copy). The
+// receiver may be owned or a call-scoped borrow: Copy is the sanctioned way
+// to retain a borrowed NodePath past the call that supplied it. The result is
+// owned by the caller and MUST be released with Destroy().
+func (cx NodePath) Copy() NodePath {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	out := NodePath{}
+	outPtr := (GDExtensionUninitializedTypePtr)(out.NativePtr())
+	pinner.Pin(unsafe.Pointer(outPtr))
+	NodePathCopyConstructor(outPtr, cx.NativeConstPtr())
+	return out
+}
+
 func NewStringNameWithLatin1Chars(content string) StringName {
 	var pinner runtime.Pinner
 	defer pinner.Unpin()

@@ -25,6 +25,7 @@ func _ready():
 	test_property_hint_metadata_late(example)
 	await test_main_loop_callbacks(example)
 	assert_equal(example.test_singleton_helpers(), 0)
+	await test_string_boundary_marshalling(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -852,3 +853,34 @@ func test_varcall_arg_rejection(example: Example):
 
 	label.free()
 	sprite.free()
+
+
+# string-boundary-marshalling fixtures: mixed variant types arriving at a
+# native `string` parameter, Copy() content preservation, and retention of a
+# borrowed StringName past its call.
+func test_string_boundary_marshalling(example: Example) -> void:
+	print("test string boundary marshalling")
+
+	# A StringName's text arrives at a string parameter, direct and generic.
+	assert_equal(example.test_string_param_text_conversion("boundary_name", &"boundary_name"), 0)
+	assert_equal(example.call("test_string_param_text_conversion", "boundary_name", &"boundary_name"), 0)
+
+	# A NodePath's text arrives at a string parameter. Non-implicit argument
+	# conversions only exist on the generic call path; the static analyzer
+	# rejects them at direct call sites.
+	assert_equal(example.call("test_string_param_text_conversion", "boundary/path", NodePath("boundary/path")), 0)
+
+	# A variant without a String conversion is rejected at the call layer
+	# before the Go method runs. Contained via expect_rejected_call so the
+	# engine rejection cannot abandon the rest of this function.
+	expect_rejected_call(example, "test_string_param_text_conversion", ["42", 42])
+	assert_true(last_call_was_rejected)
+
+	# Copy() preserves content for all three engine string types.
+	assert_equal(example.test_copy_content_preservation(), 0)
+
+	# A borrowed StringName retained via Copy() survives into later frames.
+	assert_equal(example.test_string_copy_store(&"retained_name"), 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	assert_equal(example.test_string_copy_verify_release("retained_name"), 0)

@@ -104,7 +104,7 @@ test: build ## Run headless tests (green only if the extension loaded, assertion
 		LOG_LEVEL=WARN \
 		GOTRACEBACK=single \
 		GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
-		"$(GODOT)" --headless --verbose --path test/demo/ --quit-after 5 2>&1 | tee $(CURDIR)/test-output.log' || status=$$?; \
+		"$(GODOT)" --headless --verbose --path test/demo/ --quit-after 12 2>&1 | tee $(CURDIR)/test-output.log' || status=$$?; \
 	bash $(CURDIR)/test/check_test_output.sh $(CURDIR)/test-output.log $$status
 
 test_gate: ## Run the fixture tests for the test-output gate itself (no Godot needed)

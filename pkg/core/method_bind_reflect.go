@@ -212,9 +212,17 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.Slice:
-		log.Panic("slice not implemented",
-			zap.Any("stringify", arg.Stringify()),
+		// support-native-slice-marshalling: the strict-conversion gate has
+		// already accepted this variant against the PACKED_* registration
+		// type (Nil is not convertible and never reaches here, pinned by
+		// fixture). The elements are deep-copied out of an owned conversion
+		// that is released before returning (design D1/D4).
+		typedValue := sliceDecodeVarcallArg(arg, t.Elem())
+		log.Debug("varcall arg parsed",
+			zap.Int("len", typedValue.Len()),
+			zap.String("type", t.String()),
 		)
+		return typedValue, nil
 	case reflect.Interface:
 		switch {
 		case t.Implements(refType):
@@ -597,11 +605,16 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 			)
 			args[i+1] = reflect.ValueOf(str)
 		case reflect.Slice:
-			slice := *(*[]unsafe.Pointer)(arg)
-			log.Panic("slice not implemented",
-				zap.Any("len", len(slice)),
+			// support-native-slice-marshalling: arg borrows the engine's
+			// Packed*K cell for this call; elements are deep-copied into
+			// Go-owned memory (design D1) and nothing is released here.
+			sliceValue := sliceFromPackedCell(GDExtensionConstTypePtr(arg), t.Elem())
+			log.Debug("ptrcall arg parsed",
+				zap.Int("len", sliceValue.Len()),
 				zap.Int("arg_index", i),
+				zap.String("type", t.String()),
 			)
+			args[i+1] = sliceValue
 		case reflect.Interface:
 			// Dispatch on the declared type itself. The previous form was
 			//   switch reflect.Zero(t).Interface().(type) { case Object: ... }

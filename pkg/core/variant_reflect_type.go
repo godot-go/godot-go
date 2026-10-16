@@ -11,6 +11,36 @@ import (
 	"go.uber.org/zap"
 )
 
+// packedVariantTypeForSliceElement is the single source of truth mapping Go
+// slice element types to engine packed array variant types (design D2/D5 of
+// support-native-slice-marshalling). Decoders and encoders consume the same
+// table so registration and marshalling cannot drift.
+func packedVariantTypeForSliceElement(elem reflect.Type) (GDExtensionVariantType, bool) {
+	switch reflect.Zero(elem).Interface().(type) {
+	case byte:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY, true
+	case int32:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY, true
+	case int, int64:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY, true
+	case float32:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY, true
+	case float64:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY, true
+	case string:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY, true
+	case Vector2:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY, true
+	case Vector3:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY, true
+	case Vector4:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY, true
+	case Color:
+		return GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY, true
+	}
+	return 0, false
+}
+
 // ReflectTypeToGDExtensionVariantType returns the correct GDExtensionVariantType given a reflect.Type.
 func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType {
 	if t == nil {
@@ -113,84 +143,22 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 			)
 		}
 	case reflect.Slice:
-		elemType := t.Elem()
-		zero := reflect.Zero(elemType)
-		inst := zero.Interface()
-		switch inst.(type) {
-		case String:
-			return GDEXTENSION_VARIANT_TYPE_STRING
-		case Vector2:
-			return GDEXTENSION_VARIANT_TYPE_VECTOR2
-		case Vector2i:
-			return GDEXTENSION_VARIANT_TYPE_VECTOR2I
-		case Rect2:
-			return GDEXTENSION_VARIANT_TYPE_RECT2
-		case Rect2i:
-			return GDEXTENSION_VARIANT_TYPE_RECT2I
-		case Vector3:
-			return GDEXTENSION_VARIANT_TYPE_VECTOR3
-		case Vector3i:
-			return GDEXTENSION_VARIANT_TYPE_VECTOR3I
-		case Vector4:
-			return GDEXTENSION_VARIANT_TYPE_VECTOR4
-		case Vector4i:
-			return GDEXTENSION_VARIANT_TYPE_VECTOR4I
-		case Transform2D:
-			return GDEXTENSION_VARIANT_TYPE_TRANSFORM2D
-		case Plane:
-			return GDEXTENSION_VARIANT_TYPE_PLANE
-		case Quaternion:
-			return GDEXTENSION_VARIANT_TYPE_QUATERNION
-		case AABB:
-			return GDEXTENSION_VARIANT_TYPE_AABB
-		case Basis:
-			return GDEXTENSION_VARIANT_TYPE_BASIS
-		case Transform3D:
-			return GDEXTENSION_VARIANT_TYPE_TRANSFORM3D
-		case Color:
-			return GDEXTENSION_VARIANT_TYPE_COLOR
-		case StringName:
-			return GDEXTENSION_VARIANT_TYPE_STRING_NAME
-		case NodePath:
-			return GDEXTENSION_VARIANT_TYPE_NODE_PATH
-		case RID:
-			return GDEXTENSION_VARIANT_TYPE_RID
-		case Callable:
-			return GDEXTENSION_VARIANT_TYPE_CALLABLE
-		case Signal:
-			return GDEXTENSION_VARIANT_TYPE_SIGNAL
-		case Dictionary:
-			return GDEXTENSION_VARIANT_TYPE_DICTIONARY
-		case Array:
-			return GDEXTENSION_VARIANT_TYPE_ARRAY
-		case PackedByteArray:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_BYTE_ARRAY
-		case PackedInt32Array:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_INT32_ARRAY
-		case PackedInt64Array:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_INT64_ARRAY
-		case PackedFloat32Array:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT32_ARRAY
-		case PackedFloat64Array:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_FLOAT64_ARRAY
-		case PackedStringArray:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_STRING_ARRAY
-		case PackedVector2Array:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR2_ARRAY
-		case PackedVector3Array:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR3_ARRAY
-		case PackedColorArray:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_COLOR_ARRAY
-		case PackedVector4Array:
-			return GDEXTENSION_VARIANT_TYPE_PACKED_VECTOR4_ARRAY
-		case Variant:
+		// Variadic bindings register their trailing []Variant slot under a
+		// predating convention as the scalar VARIANT type; the call-time
+		// variadic machinery assembles that slice itself and never reaches
+		// the packed-array decoders below.
+		if t.Elem() == reflect.TypeOf(Variant{}) {
 			return GDEXTENSION_VARIANT_TYPE_VARIANT_MAX
-		default:
-			log.Panic("unhandled go slice element type",
-				zap.Any("type", t),
-				zap.Any("elem_type", elemType),
-			)
 		}
+		// Slices map to the engine packed array whose element type matches
+		// the slice element (design D2/D5 of support-native-slice-marshalling).
+		if variantType, ok := packedVariantTypeForSliceElement(t.Elem()); ok {
+			return variantType
+		}
+		log.Panic("slice element type has no packed array counterpart",
+			zap.Any("type", t),
+			zap.Any("elem_type", t.Elem()),
+		)
 	case reflect.String:
 		return GDEXTENSION_VARIANT_TYPE_STRING
 	case reflect.Struct:

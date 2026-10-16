@@ -48,7 +48,7 @@ Add to `pkg/builtin/ref_generic.go`:
 func NewRefAcquire[T RefCountedT](obj T) *RefBase[T]
 ```
 
-Null object (`ObjectArgPtr(obj) == nil`) → zero wrapper, no finalizer (same discipline as `NewRefTransfer`). Extend `cmd/generate/gdclassimpl/classes.refs.go.tmpl` to emit `New{{X}}AsRefAcquired(RefCounted) Ref` beside the existing `AsRef`, and `classes.init.go.tmpl:48` to register the acquired flavor into `GDClassRefConstructors`. The user-facing `NewRefXxx` (Init) and `NewRefXxxAsRef` (borrow) stay unchanged; grep evidence shows the registry's only behavioral consumers are the binder decode paths (the two other readers test key presence only). Decode = acquire, exactly once per decoded argument, released by the finalizer.
+Null object (`ObjectArgPtr(obj) == nil`) → zero wrapper, no finalizer (same discipline as `NewRefTransfer`). Extend `cmd/generate/gdclassimpl/classes.refs.go.tmpl` to emit `New{{X}}AsRefAcquired(RefCounted) Ref` beside the existing `AsRef`, and `classes.init.go.tmpl:48` to register the acquired flavor into `GDClassRefConstructors`. The user-facing `NewRefXxx` (Init) and `NewRefXxxAsRef` (borrow) stay unchanged; grep evidence shows the registry's only behavioral consumers are the binder decode paths (the two other readers test key presence only). Decode = acquire, exactly once per decoded argument, released deterministically at call end by `releaseDecodedRefArgs` (both dispatch paths, every return style); the finalizer stays as a safety net for wrappers the callee itself creates. A method that stores the argument must copy it (`NewRefAcquire`) — the decode's `+1` is gone before the callee regains control.
 
 ### D5 — ptrcall object decode mirrors varcall
 
@@ -58,9 +58,18 @@ Extract varcall's resolution sequence (binding getter → `Implements` check →
 
 A synchronous (no `await`, zero frame budget) fixture set in `test/demo/` pins the matrix: every variant type × {varcall, ptrcall} × {argument, return}, plus the Ref scenarios from the spec delta (bind-time rejections asserted via Go tests, crossing asserted via GDScript calls both paths). Rejections in GDScript fixtures use `expect_rejected_call` so an accidentally-uncontained failure can't silently skip the rest of the function. `variant_refect_value.go:80`'s stale "add all types supported by variant" TODO is deleted once the matrix exists — the encoders already cover all 36 types; the audit turns that claim into evidence.
 
+### D7 — Ownership corrections surfaced by the audit
+
+Running the audit in-engine exposed four refcount defects the D4 finalizer model could not paper over, fixed as part of this change:
+
+- **Deterministic decode release.** A finalizer is too lazy to bound the decode's `+1`: acquired refs pile up and release in a cascade at the first explicit `runtime.GC()`. Both dispatch paths now release decoded Ref arguments at call end through `releaseDecodedRefArgs` (every return style, after the return value is encoded), and a method that stores an argument copies it (`NewRefAcquire`) rather than aliasing the decode.
+- **`Unref()` memdeletes.** Godot 4.8's `RefCounted::unreference()` returns whether the object should be destroyed but no longer self-deletes; the caller must `memdelete` (godot-cpp's `Ref` destructor does). `Unref()` calls `object_destroy` when `Unreference()` reports the last reference.
+- **ptrcall return `reference()`.** `validated_call` initializes an empty OBJECT return slot and never references it, but the return-Variant destructor unreferences; the encoder now references before writing the slot so the destructor balances.
+- **Copy-constructor returns.** Dictionary/Callable/Signal/PackedVector4Array return through engine copy constructors, not the generic encoder's raw struct copy, and `isPtrcallBorrowEcho` covers that whole destroy-gated set.
+
 ## Risks / Trade-offs
 
-- **Refcount arithmetic changes for existing Ref-parameter methods** (+1 decode, −1 GC). Net zero, but objects live until GC. Shutdown leak checks need finalizers to have run: retention fixtures must nil their stash and drive `runtime.GC()` before the engine's leak snapshot, same discipline as the A2 string-retention fixtures.
+- **Refcount arithmetic changes for existing Ref-parameter methods** (+1 decode, −1 call-end release). Net zero, with release deterministic rather than GC-driven. Retention fixtures must copy (not alias) a stored argument and release it before the engine's leak snapshot, same discipline as the A2 string-retention fixtures.
 - **Class tags are engine-class identifiers** — fine here, because declared `RefXxx` parameter types exist only for engine classes (codegen), and bare `Ref` checks `"RefCounted"`; engine-side `is_parent_class` accepts extension classes inheriting them.
 - **Divergence from godot-cpp**: godot-cpp silently nulls a mismatched `Ref`; we produce a contained error (gdext-strict, ratified posture from A2).
-- **Deferred release**: finalizer-based release lags C++ destructors; already the ratified model for Go-held Refs (return-path ownership), so no new class of risk.
+- **Finalizer thread affinity**: `Unref()` now calls `object_destroy` when it drops the last reference (Godot 4.8 `unreference()` no longer self-deletes; the caller memdeletes, as godot-cpp's `Ref` destructor does). Deterministic decode release runs on the caller's thread, but a wrapper with a live finalizer that is GC'd while holding the last reference memdeletes off-thread; the deterministic release keeps this out of the common path.

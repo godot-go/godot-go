@@ -37,10 +37,10 @@ A `RefXxx` parameter SHALL decode an object argument of the declared class or an
 - **THEN** the decoded values satisfy the same conditions
 
 ### Requirement: Decoded Ref arguments own a reference
-A Ref value decoded from a method argument SHALL hold its own engine reference, released exactly once when the wrapper becomes unreachable, so a Go method MAY store the argument and use it after the call returns. The suite SHALL report no leaked objects attributable to decoded arguments.
+A Ref value decoded from a method argument SHALL hold its own engine reference, released deterministically when the call returns, so a Go method MAY use the argument for the duration of the call; a method that stores the argument past the call SHALL copy it (e.g. `NewRefAcquire`) to retain ownership. The suite SHALL report no leaked objects attributable to decoded arguments.
 
 #### Scenario: Stored argument keeps the object alive
-- **WHEN** a bound method stores its `RefResource` argument and a later frame reads the stored value
+- **WHEN** a bound method copies its `RefResource` argument (via `NewRefAcquire`) and stores the copy, and a later frame reads the stored value
 - **THEN** the referenced object is still alive and its contents are readable
 - **AND** the suite shutdown reports no leaked engine object from this path
 

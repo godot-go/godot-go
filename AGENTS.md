@@ -72,24 +72,13 @@ make build
 ### Known Issues
 When validating the test results from `make test`, ignore the following errors:
 ```
-...
-ERROR: Attempt to get non-existent interface function: 'get_variant_get_internal_ptr_func'.
-   at: get_interface_function (core/extension/gdextension.cpp:728)
-WARN    ffi/ffi.gen.go:390      GDExtensionInterfaceGetProcAddress Error        {"name": "get_variant_get_internal_ptr_func"}
-github.com/godot-go/godot-go/pkg/ffi.LoadProcAddress
-        github.com/godot-go/godot-go/pkg/ffi/ffi.gen.go:390
-...
-ERROR: Attempt to get non-existent interface function: 'callable_custom_get_user_data'.
-   at: get_interface_function (core/extension/gdextension.cpp:728)
-WARN    ffi/ffi.gen.go:390      GDExtensionInterfaceGetProcAddress Error        {"name": "callable_custom_get_user_data"}
-github.com/godot-go/godot-go/pkg/ffi.LoadProcAddress
-        github.com/godot-go/godot-go/pkg/ffi/ffi.gen.go:390
-...
-WARN    ffi/ffi.gen.go:390      GDExtensionInterfaceGetProcAddress Error        {"name": "classdb_register_extension_class_5"}
-github.com/godot-go/godot-go/pkg/ffi.LoadProcAddress
-        github.com/godot-go/godot-go/pkg/ffi/ffi.gen.go:390
-...
+(no known startup warnings as of the interface loader name fix)
 ```
+Earlier runs tolerated warnings for `get_variant_get_internal_ptr_func`,
+`callable_custom_get_user_data`, and `classdb_register_extension_class_5/_6`.
+Those were generated-loader symbol-name bugs - the loader requested
+snake-cased Go identifiers instead of the `@name` registration names published
+in `godot_headers/godot/gdextension_interface.h` - and no longer occur.
 
 ### Helpful Source Code
 Godot source code is helpful to look through. It exists at `../godot`.

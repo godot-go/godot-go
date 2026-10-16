@@ -247,7 +247,7 @@ note naming the change that shipped it.
 |---|---|---|---|
 | [x] | 4 | A2 native Go strings | Small decision that A1, A3, C1 and B2 all inherit; decide strict-vs-convert once, early |
 | [x] | 5 | A1 slices <-> Packed*Array (typed `Array[T]` split out) | Loudest TODO; builds directly on A2's string/element decisions |
-| [ ] | 6 | A3 variant reflect completeness | Its "what still can't cross" inventory is only accurate after A1/A2; also clears the Ref-output TODOs |
+| [x] | 6 | A3 variant reflect completeness | Its "what still can't cross" inventory is only accurate after A1/A2; also clears the Ref-output TODOs |
 
 ### Phase 2 - the keystone
 
@@ -287,7 +287,7 @@ gantt
     section Phase 1 marshalling foundation
     A2 native Go strings               :done, a2, 2026-10-19, 2026-10-23
     A1 slices and packed arrays        :done, a1, 2026-10-15, 2026-10-15
-    A3 variant reflect completeness    :a3, 2026-11-09, 2026-11-13
+    A3 variant reflect completeness    :done, a3, 2026-10-15, 2026-10-16
     section Phase 2 keystone
     C1 spike - callable_custom audit   :done, c1s, 2026-10-13, 2026-10-21
     C1 Go func to Callable bridge      :crit, c1, 2026-11-16, 2026-11-27
@@ -316,7 +316,7 @@ gantt
     section Freeze marshalling
     A2 native Go strings               :done, crit, s2, 2026-10-19, 2026-10-23
     A1 slices and packed arrays        :done, crit, s3, 2026-10-15, 2026-10-15
-    A3 variant reflect completeness    :crit, s4, 2026-11-09, 2026-11-13
+    A3 variant reflect completeness    :done, crit, s4, 2026-10-15, 2026-10-16
     section Keystone
     C1 Go func to Callable bridge      :crit, s5, 2026-11-16, 2026-11-27
     section Payout

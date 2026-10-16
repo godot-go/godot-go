@@ -1343,6 +1343,18 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestRefBoundaryPtrcallBareRefCell", "test_ref_boundary_ptrcall_bare_ref_cell", []string{"shape"}, nil)
 		ClassDBBindMethod(t, "TestRefBoundaryPtrcallNilCell", "test_ref_boundary_ptrcall_nil_cell", nil, nil)
 		ClassDBBindMethod(t, "TestRefBoundaryPtrcallMismatchCell", "test_ref_boundary_ptrcall_mismatch_cell", []string{"node"}, nil)
+		// support-go-callable-bridge: Go closure -> Callable bridge.
+		ClassDBBindMethod(t, "CreateCounterCallable", "create_counter_callable", nil, nil)
+		ClassDBBindMethod(t, "CreateProbeCallable", "create_probe_callable", nil, nil)
+		ClassDBBindMethod(t, "CreateErrorCallable", "create_error_callable", nil, nil)
+		ClassDBBindMethod(t, "CreatePanicCallable", "create_panic_callable", nil, nil)
+		ClassDBBindMethod(t, "CreateCopyStoredCallable", "create_copy_stored_callable", nil, nil)
+		ClassDBBindMethod(t, "ReleaseGoCallableStoredCopy", "release_go_callable_stored_copy", nil, nil)
+		ClassDBBindMethod(t, "CreateReentrantCallable", "create_reentrant_callable", nil, nil)
+		ClassDBBindMethod(t, "CallableBindTarget", "callable_bind_target", []string{"value"}, nil)
+		ClassDBBindMethod(t, "GoCallableInvocationCount", "go_callable_invocation_count", nil, nil)
+		ClassDBBindMethod(t, "ResetGoCallableInvocationCount", "reset_go_callable_invocation_count", nil, nil)
+		ClassDBBindMethod(t, "GoCallableRegistryCount", "go_callable_registry_count", nil, nil)
 		// support-variant-reflect-completeness: 36-type matrix audit echoes.
 		ClassDBBindMethod(t, "TestAuditBool", "test_audit_bool", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestAuditInt", "test_audit_int", []string{"v"}, nil)

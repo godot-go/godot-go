@@ -8,7 +8,6 @@ import "C"
 import (
 	"fmt"
 	"reflect"
-	"strings"
 	"unsafe"
 
 	"github.com/davecgh/go-spew/spew"
@@ -49,6 +48,7 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass
 			// is still the zero reflect.Value, which panics on Interface(), so
 			// only the decoded prefix is handed to the releaser.
 			destroyOwnedContainerArgs(args[1 : i+1])
+			releaseDecodedRefArgs(args[1 : i+1])
 			return nil, &VarcallArgDecodeError{
 				Index:     i,
 				ParamType: expectedArgTypes[i].String(),
@@ -74,6 +74,10 @@ func destroyOwnedContainerArgs(args []reflect.Value) {
 			v.Destroy()
 		case Dictionary:
 			v.Destroy()
+		case Callable:
+			v.Destroy()
+		case Signal:
+			v.Destroy()
 		case PackedByteArray:
 			v.Destroy()
 		case PackedInt32Array:
@@ -96,6 +100,139 @@ func destroyOwnedContainerArgs(args []reflect.Value) {
 			v.Destroy()
 		}
 	}
+}
+
+// releaseDecodedRefArgs releases the reference every decoded Ref argument
+// acquired during the call. Ref parameters are decoded as acquired (+1) so the
+// object stays alive for the duration of the call, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert, whose temporary Ref is destroyed at call end by a
+// C++ destructor. Go has no destructor and a finalizer runs too lazily to bound
+// the reference (the acquired refs pile up and then release in a cascade at the
+// first explicit GC), so both dispatch paths release deterministically here,
+// after the return value has been encoded -- an echoed Ref return already took
+// its own reference through the return slot.
+//
+// A Ref argument the callee needs past the call must be copied (NewRefAcquire
+// of the pointee) rather than aliased: this release drops the decode's +1 and
+// clears its finalizer, so an alias would dangle.
+func releaseDecodedRefArgs(args []reflect.Value) {
+	for _, arg := range args {
+		switch v := arg.Interface().(type) {
+		case Ref:
+			v.Unref()
+		}
+	}
+}
+
+// refArgumentClass is the pointee class a declared Ref-typed parameter keys
+// off. The generated RefXxx interfaces name their pointee by codegen
+// convention; bare builtin.Ref is the protocol interface itself and stands
+// for Ref<RefCounted>, accepting any reference-counted object.
+func refArgumentClass(t reflect.Type) string {
+	if t == refType {
+		return "RefCounted"
+	}
+	return t.Name()[3:]
+}
+
+// decodeRefArgument decodes a Ref-typed method argument from a raw engine
+// object pointer, identically on both dispatch paths (design D2/D3/D4).
+//
+// The declared Ref type keys the pointee class; an argument that is not an
+// instance of it or a subclass -- including any non-reference-counted object
+// -- is a caller error returned as a value, mirroring the binder's strict
+// conversion gate rather than godot-cpp's silent null. The wrapper is built
+// over the declared class so a subclass argument is sliced to the pointee the
+// method asked for, and it acquires its own engine reference (released by
+// finalizer), because the engine transfers nothing into an argument: godot-cpp
+// does the same through PtrToArg<Ref<T>>::convert.
+func decodeRefArgument(objPtr GDExtensionObjectPtr, t reflect.Type) (Ref, error) {
+	className := refArgumentClass(t)
+	if !ObjectInheritsClass(objPtr, className) {
+		actual, nameErr := ObjectClassName((*GodotObject)(objPtr))
+		if nameErr != nil {
+			actual = "unknown"
+		}
+		return nil, fmt.Errorf("object of class %q is not a %s", actual, className)
+	}
+	refConstructor, ok := GDClassRefConstructors.Get(className)
+	if !ok {
+		return nil, fmt.Errorf("no ref constructor is registered for class %q", className)
+	}
+	owner := (*GodotObject)(objPtr)
+	// Binding first, mirroring resolveObjectArgument: a user-defined extension
+	// class instance decodes to the live Go wrapper the binding created for
+	// it, so a Go method can reach the object's Go-side state through the
+	// decoded Ref (the task-6.2 ExampleRef fixture pins this). The engine cast
+	// above already proved the object inherits the declared class, so a
+	// wrapper the constructor's own type assert rejects means the binding's
+	// class model disagrees with the engine's; fall back rather than panic.
+	if obj, err := ObjectFromInstanceBinding(owner); err == nil {
+		if ref, usable := acquireRefOver(refConstructor, obj); usable {
+			return ref, nil
+		}
+	}
+	nativeConstructor, ok := GDNativeConstructors.Get(className)
+	if !ok {
+		return nil, fmt.Errorf("no wrapper constructor is registered for class %q", className)
+	}
+	return refConstructor(nativeConstructor(owner).(RefCounted)), nil
+}
+
+// acquireRefOver hands obj to the declared class's acquired Ref constructor.
+// Generated constructors type-assert their argument to the declared pointee;
+// a failed assert (or a panic from it) reports the wrapper as unusable so the
+// caller can build one by declared class name instead.
+func acquireRefOver(refConstructor RefCountedConstructor, obj Object) (ref Ref, ok bool) {
+	defer func() {
+		if recover() != nil {
+			ref, ok = nil, false
+		}
+	}()
+	rc, isRefcounted := obj.(RefCounted)
+	if !isRefcounted {
+		return nil, false
+	}
+	return refConstructor(rc), true
+}
+
+// resolveObjectArgument resolves a raw engine object pointer to the Go
+// wrapper for an object-typed parameter: through the instance binding first,
+// so a user-defined extension-class instance receives the wrapper registered
+// for that exact object, and otherwise through the engine-class constructor
+// keyed by the argument's runtime class name. Both dispatch paths decode
+// objects through this one helper so they cannot drift apart.
+func resolveObjectArgument(objPtr GDExtensionObjectPtr, declared reflect.Type) (Object, error) {
+	engineObject := (*GodotObject)(objPtr)
+	obj, err := ObjectFromInstanceBinding(engineObject)
+	if err != nil {
+		return nil, err
+	}
+	if reflect.TypeOf(obj).Implements(declared) {
+		return obj, nil
+	}
+	// The binding resolved to a wrapper that does not satisfy the declared
+	// parameter type, so fall back to building one by class name.
+	gdsClass := obj.GetClass()
+	defer gdsClass.Destroy()
+	className := gdsClass.ToUtf8()
+	constructor, ok := GDNativeConstructors.Get(className)
+	if !ok {
+		return nil, fmt.Errorf(
+			"unsupported object class %q for parameter type %s", className, declared.String())
+	}
+	inst := constructor(engineObject).(Object)
+	// A registered class name is not the same as a wrapper of the declared
+	// type. Label is registered, and a LabelImpl still cannot be handed to a
+	// method that asked for Sprite2D. Without this check the mismatch surfaces
+	// one frame later as a reflect panic inside Func.Call -- outside the
+	// decoder, outside the returned-error contract, and still an abort of the
+	// host. The check belongs here rather than downstream.
+	if !reflect.TypeOf(inst).Implements(declared) {
+		return nil, fmt.Errorf(
+			"unsupported object class %q for parameter type %s", className, declared.String())
+	}
+	return inst, nil
 }
 
 func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Value, error) {
@@ -226,23 +363,25 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 	case reflect.Interface:
 		switch {
 		case t.Implements(refType):
-			obj := arg.ToObject()
+			// A nil argument has no class to guard against, so the zero Ref
+			// is handed back before any registry lookup. The previous order
+			// reached the lookup first and log.Fatal'ed on the empty name a
+			// bare builtin.Ref derives -- killing the host for a legal null.
+			if arg.IsNil() {
+				return reflect.Zero(t), nil
+			}
+			engineObject := GodotObjectPtrFromVariant(&arg)
+			if engineObject == nil {
+				return reflect.Zero(t), nil
+			}
+			ref, err := decodeRefArgument((GDExtensionObjectPtr)(engineObject), t)
+			if err != nil {
+				return reflect.Value{}, err
+			}
 			log.Debug("varcall arg parsed",
 				zap.String("value", arg.Stringify()),
 				zap.String("type", t.Name()),
 			)
-			refTypeName := t.Name()
-			constructor, ok := GDClassRefConstructors.Get(refTypeName[3:])
-			if !ok {
-				log.Fatal("unable to get ref constructor",
-					zap.String("type", t.Name()),
-				)
-			}
-			if obj == nil {
-				return reflect.Zero(t), nil
-
-			}
-			ref := constructor(obj.(RefCounted))
 			return reflect.ValueOf(ref), nil
 		case t.Implements(gdObjectType):
 			if arg.IsNil() {
@@ -251,49 +390,22 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 			// Resolve the caller's object through its instance binding instead
 			// of re-wrapping by class name. A user-defined extension class has
 			// no GDNativeConstructors entry at all, so the name-keyed path
-			// below could never resolve one; the binding already holds the Go
+			// could never resolve one; the binding already holds the Go
 			// wrapper created for this exact object.
-			obj, err := ObjectFromVariant(&arg)
+			engineObject := GodotObjectPtrFromVariant(&arg)
+			if engineObject == nil {
+				return reflect.Zero(t), nil
+			}
+			obj, err := resolveObjectArgument((GDExtensionObjectPtr)(engineObject), t)
 			if err != nil {
 				return reflect.Value{}, fmt.Errorf(
 					"cannot resolve object argument for parameter type %s: %w", t.String(), err)
 			}
-			if reflect.TypeOf(obj).Implements(t) {
-				log.Debug("varcall object arg resolved from instance binding",
-					zap.String("class", obj.GetClassName()),
-					zap.String("type", t.String()),
-				)
-				return reflect.ValueOf(obj), nil
-			}
-			// The binding resolved to a wrapper that does not satisfy the
-			// declared parameter type, so fall back to building one by class
-			// name.
-			gdsClass := obj.GetClass()
-			defer gdsClass.Destroy()
-			className := gdsClass.ToUtf8()
-			owner := (*GodotObject)(obj.AsGDExtensionConstObjectPtr())
-			constructor, ok := GDNativeConstructors.Get(className)
-			if !ok {
-				return reflect.Value{}, fmt.Errorf(
-					"unsupported object class %q for parameter type %s", className, t.String())
-			}
-			inst := constructor(owner).(Object)
-			// A registered class name is not the same as a wrapper of the
-			// declared type. Label is registered, and a LabelImpl still cannot
-			// be handed to a method that asked for Sprite2D. Without this check
-			// the mismatch surfaces one frame later as a reflect panic inside
-			// Func.Call -- outside the decoder, outside the returned-error
-			// contract, and still an abort of the host. That is precisely the
-			// failure this change exists to remove, so the check belongs here
-			// rather than downstream.
-			if !reflect.TypeOf(inst).Implements(t) {
-				return reflect.Value{}, fmt.Errorf(
-					"unsupported object class %q for parameter type %s", className, t.String())
-			}
 			log.Debug("varcall arg parsed",
-				zap.String("class_name", className),
+				zap.String("class", obj.GetClassName()),
+				zap.String("type", t.String()),
 			)
-			return reflect.ValueOf(inst), nil
+			return reflect.ValueOf(obj), nil
 		default:
 			log.Panic("unsupported interface type",
 				zap.Any("type", t),
@@ -351,6 +463,12 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		case Projection:
 			v := arg.ToProjection()
 			return reflect.ValueOf(v), nil
+		case Color:
+			// support-variant-reflect-completeness (36-type audit): Color was
+			// missing from the varcall decoder even though the mapper and both
+			// return encoders handled it; the audit fixture crashed here.
+			v := arg.ToColor()
+			return reflect.ValueOf(v), nil
 		// Container arguments are decoded as owned copies. The Go side acquires
 		// a reference it releases after the call (see destroyOwnedContainerArgs,
 		// invoked from GoMethodMetadata.Call). A borrowed byte-copy is unsafe
@@ -394,6 +512,12 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		case PackedColorArray:
 			v := arg.ToPackedColorArray()
 			return reflect.ValueOf(v), nil
+		case RID:
+			// support-variant-reflect-completeness (36-type audit): RID was
+			// the one variant type the varcall decoder had no branch for; the
+			// handle is a value, so the converted copy goes straight through.
+			v := arg.ToRID()
+			return reflect.ValueOf(v), nil
 		case Dictionary:
 			v := arg.ToDictionary()
 			return reflect.ValueOf(v), nil
@@ -429,45 +553,15 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		}
 	case reflect.Pointer:
 		switch {
-		case t.Implements(refType):
-			// TODO: is this coming out as a Ref type here?
-			obj := arg.ToObject()
-			ref, ok := obj.(Ref)
-			if !ok {
-				log.Panic("not a ref instance",
-					zap.String("value", arg.Stringify()),
-				)
-			}
-			log.Debug("varcall arg parsed",
-				zap.String("type", "Ref"),
-			)
-			return reflect.ValueOf(ref), nil
+		// A Ref-protocol pointer type (*RefXxxImpl, *RefBase[T]) can never
+		// arrive here: the type mapper refuses it at bind time. What remains
+		// is the class-wrapper pointer parameter decoded as an object.
 		case t.Implements(gdClassType):
 			obj := arg.ToObject()
 			// NOTE: add .Elem() if we want to support
 			return reflect.ValueOf(obj), nil
 		default:
 			log.Panic("unsupported pointer type",
-				zap.Any("type", t),
-			)
-		}
-	case reflect.Struct:
-		switch {
-		case t.Implements(refType):
-			// TODO: is this coming out as a Ref type here?
-			obj := arg.ToObject()
-			ref, ok := obj.(Ref)
-			if !ok {
-				log.Panic("not a ref instance",
-					zap.String("value", arg.Stringify()),
-				)
-			}
-			log.Debug("varcall arg parsed",
-				zap.String("type", "Ref"),
-			)
-			return reflect.ValueOf(ref), nil
-		default:
-			log.Panic("unsupported struct type",
 				zap.Any("type", t),
 			)
 		}
@@ -638,78 +732,55 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					args[i+1] = reflect.Zero(t)
 					break
 				}
-				gdObjPtr := (GDExtensionConstObjectPtr)(objPtr)
-
-				// GDExtensionUninitializedStringNamePtr
-				gdsn := StringName{}
-				defer gdsn.Destroy()
-				ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
-				cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
-				if cok == 0 {
-					log.Panic("failed to get class name",
-						zap.Any("gdObjPtr", gdObjPtr),
-					)
-				}
-				owner := (*GodotObject)(gdObjPtr)
-				gds := gdsn.AsString()
-				defer gds.Destroy()
-				className := gds.ToUtf8()
-				constructor, ok := GDNativeConstructors.Get(className)
-				if !ok {
-					log.Panic("does not support gdextension class type",
-						zap.String("class_name", className),
+				// Same resolution order as varcall -- instance binding first,
+				// engine-class constructor fallback keyed by the runtime class
+				// name -- so a user-defined extension-class instance receives
+				// its own Go wrapper on a direct typed call instead of
+				// panicking, and wrapper identity matches call() dispatch.
+				obj, err := resolveObjectArgument(objPtr, t)
+				if err != nil {
+					// The ptrcall fast path has no CallError slot, so the
+					// failure is loud rather than contained; the message
+					// carries the argument index and both class names so the
+					// fatal-panic policy change has a clean diagnostic to
+					// report.
+					log.Panic(fmt.Sprintf("object argument %d rejected: %s", i, err.Error()),
 						zap.Int("arg_index", i),
 						zap.Any("type", t),
 					)
 				}
-				inst := constructor(owner)
 				log.Debug("ptrcall arg parsed",
 					zap.Int("arg_index", i),
-					zap.String("class_name", className),
+					zap.String("class", obj.GetClassName()),
 				)
-				args[i+1] = reflect.ValueOf(inst)
+				args[i+1] = reflect.ValueOf(obj)
 			case t.Implements(refType):
+				// The engine Ref<T> struct is one pointer wide, so the cell
+				// reads through ref_get_object whether GDScript handed a Ref
+				// or a plain object; the declared pointee guard below covers
+				// both. godot-cpp's PtrToArg<Ref<T>>::convert is the same.
 				gdRefPtr := (GDExtensionConstRefPtr)(arg)
-				gdObjPtr := (GDExtensionConstObjectPtr)(CallFunc_GDExtensionInterfaceRefGetObject(gdRefPtr))
-
-				// gdsn := NewStringName()
-				// defer gdsn.Destroy()
-				// ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
-				// cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
-				// if cok == 0 {
-				// 	log.Panic("failed to get class name",
-				// 		zap.Any("gdObjPtr", gdObjPtr),
-				// 	)
-				// }
-				// gds := gdsn.AsString()
-				// defer gds.Destroy()
-				// className := gds.ToUtf8()
-				refClassName := t.Name()
-				className := refClassName[3:]
-				constructor, ok := GDNativeConstructors.Get(className)
-				if !ok {
-					log.Panic("does not support gdextension class type",
-						zap.String("class_name", className),
+				objPtr := CallFunc_GDExtensionInterfaceRefGetObject(gdRefPtr)
+				if objPtr == nil {
+					// A null referenced object decodes to the zero Ref; no
+					// engine call may dereference the null pointer.
+					args[i+1] = reflect.Zero(t)
+					break
+				}
+				ref, err := decodeRefArgument(objPtr, t)
+				if err != nil {
+					// Loud for the same ABI reason as the object branch
+					// above: ptrcall reports no CallError.
+					log.Panic(fmt.Sprintf("ref argument %d rejected: %s", i, err.Error()),
 						zap.Int("arg_index", i),
 						zap.Any("type", t),
 					)
 				}
-				owner := (*GodotObject)(gdObjPtr)
-				inst := constructor(owner).(RefCounted)
 				log.Debug("ptrcall arg parsed",
 					zap.Int("arg_index", i),
 					zap.String("type", "Ref"),
-					zap.String("class_name", className),
+					zap.String("class_name", refArgumentClass(t)),
 				)
-				refConstructor, ok := GDClassRefConstructors.Get(className)
-				if !ok {
-					log.Panic("unable to find ref for type",
-						zap.String("class_name", className),
-						zap.Int("arg_index", i),
-						zap.Any("type", t),
-					)
-				}
-				ref := refConstructor(inst)
 				args[i+1] = reflect.ValueOf(ref)
 			default:
 				// The type name and index go in the panic value as well as the
@@ -874,6 +945,12 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				}
 				v := NewProjectionWithProjection(*pV)
 				args[i+1] = reflect.ValueOf(v)
+			case Color:
+				// Audit gap: Color had no ptrcall branch either (the crash
+				// this fixture line exposed). POD value: borrowed raw copy,
+				// same discipline as the StringName/NodePath cases below.
+				v := *(*Color)(arg)
+				args[i+1] = reflect.ValueOf(v)
 			case Variant:
 				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
@@ -925,6 +1002,24 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				args[i+1] = reflect.ValueOf(v)
 			case NodePath:
 				v := *(*NodePath)(arg)
+				args[i+1] = reflect.ValueOf(v)
+			case RID:
+				// support-variant-reflect-completeness (36-type audit): the
+				// interface exports no ref/unref for RID, so it crosses as a
+				// pure value handle, borrowed for the duration of the call.
+				v := *(*RID)(arg)
+				args[i+1] = reflect.ValueOf(v)
+			case Callable:
+				// The engine keeps the cell's callable alive for the whole
+				// call; the copy is a borrow, released nowhere because nothing
+				// was acquired -- same discipline as the Array case above.
+				v := *(*Callable)(arg)
+				args[i+1] = reflect.ValueOf(v)
+			case Signal:
+				v := *(*Signal)(arg)
+				args[i+1] = reflect.ValueOf(v)
+			case Dictionary:
+				v := *(*Dictionary)(arg)
 				args[i+1] = reflect.ValueOf(v)
 			default:
 				log.Panic(fmt.Sprintf("MethodBind.Ptrcall reflected as array does not support type: %s", t.Name()))
@@ -1083,56 +1178,17 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				}
 				v := NewProjectionWithProjection(*pV)
 				args[i+1] = reflect.ValueOf(v)
+			case Color:
+				v := *(*Color)(arg)
+				args[i+1] = reflect.ValueOf(v)
 			case Variant:
 				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
 				args[i+1] = reflect.ValueOf(v)
 			default:
-				if strings.HasPrefix(t.String(), "gdextension.Ref") {
-					gdRefPtr := (GDExtensionConstRefPtr)(arg)
-					gdObjPtr := (GDExtensionConstObjectPtr)(CallFunc_GDExtensionInterfaceRefGetObject(gdRefPtr))
-
-					// GDExtensionUninitializedStringNamePtr
-					gdsn := StringName{}
-					defer gdsn.Destroy()
-					ptr := (GDExtensionUninitializedStringNamePtr)(unsafe.Pointer(gdsn.NativePtr()))
-					cok := CallFunc_GDExtensionInterfaceObjectGetClassName(gdObjPtr, FFI.Library, ptr)
-					if cok == 0 {
-						log.Panic("failed to get class name",
-							zap.Any("gdObjPtr", gdObjPtr),
-							zap.Int("arg_index", i),
-							zap.Any("type", t),
-						)
-					}
-					owner := (*GodotObject)(gdObjPtr)
-					gds := gdsn.AsString()
-					defer gds.Destroy()
-					className := gds.ToUtf8()
-					constructor, ok := GDNativeConstructors.Get(className)
-					if !ok {
-						log.Panic("does not support gdextension class type",
-							zap.String("class_name", className),
-							zap.Int("arg_index", i),
-							zap.Any("type", t),
-						)
-					}
-					inst := constructor(owner).(RefCounted)
-					log.Debug("ptrcall arg parsed",
-						zap.Int("arg_index", i),
-						zap.String("type", "Ref"),
-						zap.String("class_name", className),
-					)
-					refConstructor, ok := GDClassRefConstructors.Get(className)
-					if !ok {
-						log.Panic("unable to find ref for type",
-							zap.String("class_name", className),
-							zap.Int("arg_index", i),
-							zap.Any("type", t),
-						)
-					}
-					ref := refConstructor(inst)
-					args[i+1] = reflect.ValueOf(ref)
-					break
-				}
+				// No Array-kind type reaches here that could be a Ref: the
+				// former gdextension.Ref-prefixed block below it was dead for
+				// the package names this codebase no longer has, and Ref-typed
+				// parameters are Interface-kind and decode above.
 				log.Panic("unsupported struct type",
 					zap.Int("arg_index", i),
 					zap.Any("type", t),
@@ -1140,11 +1196,9 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 			}
 		case reflect.Pointer:
 			switch {
-			case t.Implements(refType):
-				log.Panic("TODO: missing ref pointer type",
-					zap.Int("arg_index", i),
-					zap.Any("type", t),
-				)
+			// A Ref-protocol pointer type can never arrive here: the type
+			// mapper refuses it at bind time, replacing the
+			// "TODO: missing ref pointer type" panic.
 			case t.Implements(gdClassType):
 				className := t.Elem().Name()
 				constructor, ok := Internal.GDClassConstructors.Get(className)

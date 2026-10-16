@@ -27,6 +27,8 @@ func _ready():
 	assert_equal(example.test_singleton_helpers(), 0)
 	await test_string_boundary_marshalling(example)
 	await test_native_slice_marshalling(example)
+	test_variant_matrix_audit(example)
+	await test_ref_method_boundary(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1070,3 +1072,219 @@ func test_native_slice_marshalling(example: Example) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	assert_equal(example.test_slice_retain_verify(1000, bytes_sum), 0)
+
+# Ref argument/return crossing (openspec: ref-method-boundary).
+# Direct calls take the ptrcall path and example.call() pins varcall; both
+# decode through one shared path. Mismatches go through expect_rejected_call
+# because only varcall contains them: a mismatched direct call is a ptrcall
+# panic by design (no CallError slot in the ABI), so the cells proving that
+# behavior are driven inside Go, not from here.
+func test_ref_method_boundary(example: Example) -> void:
+	print("test ref method boundary")
+
+	var shape: Shape2D = RectangleShape2D.new()
+	var res: Resource = shape
+
+	# Valid Ref decodes on both paths.
+	assert_equal(example.test_ref_boundary_valid(res), 1)
+	assert_equal(example.call("test_ref_boundary_valid", res), 1)
+
+	# The echoed Ref identifies the same object through the return encoder.
+	assert_equal(example.test_ref_boundary_echo(res).get_instance_id(), res.get_instance_id())
+	assert_equal(example.call("test_ref_boundary_echo", res).get_instance_id(), res.get_instance_id())
+
+	# A null argument is the zero Ref, not a rejected call: the body runs and
+	# reports 0.
+	var nilres: Resource = null
+	assert_equal(example.test_ref_boundary_valid(nilres), 0)
+	assert_equal(example.call("test_ref_boundary_valid", null), 0)
+	assert_true(example.test_ref_boundary_echo(nilres) == null)
+
+	# An invalid Ref return crosses back as null.
+	assert_true(example.test_ref_boundary_null_return() == null)
+
+	# Bare builtin.Ref accepts any reference-counted object on both paths.
+	assert_equal(example.test_bare_ref_valid(res), 1)
+	assert_equal(example.call("test_bare_ref_valid", res), 1)
+
+	# A user-defined extension RefCounted decodes to its live Go wrapper on
+	# both paths: the Id was set through the binding and lives only there.
+	var user_ref = ExampleRef.new()
+	user_ref.set_id(777)
+	assert_equal(example.test_ref_boundary_user_ref_id(user_ref), 777)
+	assert_equal(example.call("test_ref_boundary_user_ref_id", user_ref), 777)
+
+	# The bare Ref return form crosses back with the same identity.
+	assert_equal(example.test_bare_ref_echo(user_ref).get_instance_id(), user_ref.get_instance_id())
+	assert_equal(example.call("test_bare_ref_echo", user_ref).get_instance_id(), user_ref.get_instance_id())
+
+	# A subclass argument slices to the declared pointee while the object
+	# keeps its runtime identity.
+	assert_equal(example.test_ref_boundary_subclass_sliced(shape), 1)
+
+	# The decoded Ref holds a reference of its own (acquire, godot-cpp parity).
+	assert_equal(example.test_ref_boundary_refcount(res), 1)
+
+	# Wrong-class arguments are caller errors, contained through varcall, and
+	# the body must not run: a non-reference-counted object and a
+	# reference-counted object outside the declared pointee's branch.
+	var label = Label.new()
+	var probe_before = example.test_ref_boundary_reject_probe_count()
+	expect_rejected_call(example, "test_ref_boundary_reject_probe", [label])
+	assert_true(last_call_was_rejected)
+	var not_a_resource = RefCounted.new()
+	expect_rejected_call(example, "test_ref_boundary_reject_probe", [not_a_resource])
+	assert_true(last_call_was_rejected)
+	expect_rejected_call(example, "test_bare_ref_valid", [label])
+	assert_true(last_call_was_rejected)
+	assert_equal(example.test_ref_boundary_reject_probe_count(), probe_before)
+
+	# ptrcall cells driven in Go: the fast path refuses wrong classes loudly,
+	# and a refusal there must never reach a live call site.
+	assert_equal(example.test_ref_boundary_ptrcall_cell(res), 1)
+	assert_equal(example.test_ref_boundary_ptrcall_bare_ref_cell(shape), 1)
+	assert_equal(example.test_ref_boundary_ptrcall_nil_cell(), 1)
+	assert_equal(example.test_ref_boundary_ptrcall_mismatch_cell(label), 1)
+	label.free()
+
+	# Retention across a frame boundary: the script drops its references and
+	# only the acquired one can keep the stashed object alive and readable.
+	assert_equal(example.test_ref_boundary_stash(res), 1)
+	res = null
+	shape = null
+	await get_tree().process_frame
+	assert_equal(example.test_ref_boundary_stash_alive(), 1)
+
+	# Release every reference this suite acquired before the engine takes its
+	# exit leak snapshot.
+	assert_equal(example.test_ref_boundary_release(), 1)
+
+# 36-type variant matrix audit (openspec: support-variant-reflect-completeness).
+# Every TestAudit* echo is driven twice: a direct call (ptrcall fast path) and
+# example.call() (varcall). Together with the metadata the binder derives from
+# each signature, that pins mapper acceptance, both decoders, and both return
+# encoders per variant type. The ten packed rows reuse the slice echoes bound
+# by support-native-slice-marshalling; NIL rides the Variant echo as null.
+func test_variant_matrix_audit(example: Example) -> void:
+	print("test variant matrix audit")
+
+	assert_true(example.test_audit_bool(true))
+	assert_true(example.call("test_audit_bool", false) == false)
+	assert_equal(example.test_audit_int(-42), -42)
+	assert_equal(example.call("test_audit_int", 4611686018427387903), 4611686018427387903)
+	assert_equal(example.test_audit_float(3.25), 3.25)
+	assert_equal(example.call("test_audit_float", -0.5), -0.5)
+	assert_equal(example.test_audit_string("audit"), "audit")
+	assert_equal(example.call("test_audit_string", "héllo 世界 😀"), "héllo 世界 😀")
+	assert_equal(example.test_audit_vector2(Vector2(1.5, -2.25)), Vector2(1.5, -2.25))
+	assert_equal(example.call("test_audit_vector2", Vector2(-3, 4)), Vector2(-3, 4))
+	assert_equal(example.test_audit_vector2i(Vector2i(3, -4)), Vector2i(3, -4))
+	assert_equal(example.call("test_audit_vector2i", Vector2i.MIN), Vector2i.MIN)
+	assert_equal(example.test_audit_rect2(Rect2(1.5, 2.5, 3.0, -4.0)), Rect2(1.5, 2.5, 3.0, -4.0))
+	assert_equal(example.call("test_audit_rect2", Rect2()), Rect2())
+	assert_equal(example.test_audit_rect2i(Rect2i(1, -2, 3, 4)), Rect2i(1, -2, 3, 4))
+	assert_equal(example.call("test_audit_rect2i", Rect2i()), Rect2i())
+	assert_equal(example.test_audit_vector3(Vector3(1, -2, 3.5)), Vector3(1, -2, 3.5))
+	assert_equal(example.call("test_audit_vector3", Vector3.ZERO), Vector3.ZERO)
+	assert_equal(example.test_audit_vector3i(Vector3i(1, -2, 3)), Vector3i(1, -2, 3))
+	assert_equal(example.call("test_audit_vector3i", Vector3i.MAX), Vector3i.MAX)
+	assert_equal(example.test_audit_transform2d(Transform2D(0.5, Vector2(1, 2))),
+		Transform2D(0.5, Vector2(1, 2)))
+	assert_equal(example.call("test_audit_transform2d", Transform2D()), Transform2D())
+	assert_equal(example.test_audit_vector4(Vector4(1, -2, 3.5, 0)), Vector4(1, -2, 3.5, 0))
+	assert_equal(example.call("test_audit_vector4", Vector4.ZERO), Vector4.ZERO)
+	assert_equal(example.test_audit_vector4i(Vector4i(1, -2, 3, -4)), Vector4i(1, -2, 3, -4))
+	assert_equal(example.call("test_audit_vector4i", Vector4i.ZERO), Vector4i.ZERO)
+	assert_equal(example.test_audit_plane(Plane(Vector3(0, 1, 0), 2.5)), Plane(Vector3(0, 1, 0), 2.5))
+	assert_equal(example.call("test_audit_plane", Plane()), Plane())
+	assert_equal(example.test_audit_quaternion(Quaternion(0.5, 0.5, 0.5, 0.5)),
+		Quaternion(0.5, 0.5, 0.5, 0.5))
+	assert_equal(example.call("test_audit_quaternion", Quaternion.IDENTITY), Quaternion.IDENTITY)
+	assert_equal(example.test_audit_aabb(AABB(Vector3(1, 2, 3), Vector3(4, 5, 6))),
+		AABB(Vector3(1, 2, 3), Vector3(4, 5, 6)))
+	assert_equal(example.call("test_audit_aabb", AABB()), AABB())
+	assert_equal(example.test_audit_basis(Basis(Vector3(2, 0, 0), Vector3(0, 3, 0), Vector3(0, 0, 4))),
+		Basis(Vector3(2, 0, 0), Vector3(0, 3, 0), Vector3(0, 0, 4)))
+	assert_equal(example.call("test_audit_basis", Basis.IDENTITY), Basis.IDENTITY)
+	assert_equal(example.test_audit_transform3d(
+		Transform3D(Basis(Vector3(2, 0, 0), Vector3(0, 3, 0), Vector3(0, 0, 4)), Vector3(1, 2, 3))),
+		Transform3D(Basis(Vector3(2, 0, 0), Vector3(0, 3, 0), Vector3(0, 0, 4)), Vector3(1, 2, 3)))
+	assert_equal(example.call("test_audit_transform3d", Transform3D()), Transform3D())
+	assert_equal(example.test_audit_projection(Projection()), Projection())
+	assert_equal(example.call("test_audit_projection", Projection()), Projection())
+	assert_equal(example.test_audit_color(Color(0.25, 0.5, 0.75, 1.0)), Color(0.25, 0.5, 0.75, 1.0))
+	assert_equal(example.call("test_audit_color", Color.TRANSPARENT), Color.TRANSPARENT)
+	assert_equal(example.test_audit_string_name(&"audit_name"), &"audit_name")
+	assert_equal(example.call("test_audit_string_name", &""), &"")
+	assert_equal(example.test_audit_node_path(^"Some/Path/Node"), ^"Some/Path/Node")
+	assert_equal(example.call("test_audit_node_path", ^"."), ^".")
+	assert_equal(example.test_audit_rid(RID()), RID())
+	assert_equal(example.call("test_audit_rid", RID()), RID())
+
+	# OBJECT: identity survives both paths; the Node lives until the free below.
+	var probe_node = Label.new()
+	assert_equal(example.test_audit_object(probe_node).get_instance_id(), probe_node.get_instance_id())
+	assert_equal(example.call("test_audit_object", probe_node).get_instance_id(), probe_node.get_instance_id())
+	probe_node.free()
+
+	var probe_callable := Callable(example, "to_string")
+	assert_true(example.test_audit_callable(probe_callable) == probe_callable)
+	assert_true(example.call("test_audit_callable", probe_callable) == probe_callable)
+
+	var probe_signal = example.tree_entered
+	assert_true(example.test_audit_signal(probe_signal) == probe_signal)
+	assert_true(example.call("test_audit_signal", probe_signal) == probe_signal)
+
+	var probe_dictionary := {"a": 1, "b": [1, 2], 3: &"three"}
+	assert_true(example.test_audit_dictionary(probe_dictionary) == probe_dictionary)
+	assert_true(example.call("test_audit_dictionary", probe_dictionary) == probe_dictionary)
+
+	var probe_array := [1, "two", Vector2(3, 4), null]
+	assert_true(example.test_audit_array(probe_array) == probe_array)
+	assert_true(example.call("test_audit_array", probe_array) == probe_array)
+
+	# NIL row: the zero Variant crosses back as null on both paths.
+	assert_true(example.test_audit_variant(null) == null)
+	assert_true(example.call("test_audit_variant", null) == null)
+
+	# VARIANT_MAX row: a typed value keeps type and content through the
+	# Variant echo on both paths.
+	var typed_variant = example.test_audit_variant(Vector2(1.5, 2.5))
+	assert_true(typed_variant is Vector2)
+	assert_equal(typed_variant, Vector2(1.5, 2.5))
+	assert_equal(example.call("test_audit_variant", &"variant_name"), &"variant_name")
+
+	# The ten packed rows reuse the native-slice echoes; content equality for
+	# packed arrays compares elementwise, proving the deep copy.
+	assert_equal(example.test_slice_echo_bytes(PackedByteArray([1, 2, 3])), PackedByteArray([1, 2, 3]))
+	assert_equal(example.call("test_slice_echo_bytes", PackedByteArray([4, 5])), PackedByteArray([4, 5]))
+	assert_equal(example.test_slice_echo_int32(PackedInt32Array([1, -2])), PackedInt32Array([1, -2]))
+	assert_equal(example.call("test_slice_echo_int32", PackedInt32Array([3])), PackedInt32Array([3]))
+	assert_equal(example.test_slice_echo_int64(PackedInt64Array([-9223372036854775807 - 1, 7])),
+		PackedInt64Array([-9223372036854775807 - 1, 7]))
+	assert_equal(example.call("test_slice_echo_int64", PackedInt64Array([8])), PackedInt64Array([8]))
+	assert_equal(example.test_slice_echo_float32(PackedFloat32Array([1.5, -2.5])),
+		PackedFloat32Array([1.5, -2.5]))
+	assert_equal(example.call("test_slice_echo_float32", PackedFloat32Array([0.0])), PackedFloat32Array([0.0]))
+	assert_equal(example.test_slice_echo_float64(PackedFloat64Array([1.5, -0.25])),
+		PackedFloat64Array([1.5, -0.25]))
+	assert_equal(example.call("test_slice_echo_float64", PackedFloat64Array([2.0])), PackedFloat64Array([2.0]))
+	assert_equal(example.test_slice_echo_strings(PackedStringArray(["a", "héllo"])),
+		PackedStringArray(["a", "héllo"]))
+	assert_equal(example.call("test_slice_echo_strings", PackedStringArray(["b"])), PackedStringArray(["b"]))
+	assert_equal(example.test_slice_echo_vector2(PackedVector2Array([Vector2(1, 2)])),
+		PackedVector2Array([Vector2(1, 2)]))
+	assert_equal(example.call("test_slice_echo_vector2", PackedVector2Array([Vector2(3, 4)])),
+		PackedVector2Array([Vector2(3, 4)]))
+	assert_equal(example.test_slice_echo_vector3(PackedVector3Array([Vector3(1, 2, 3)])),
+		PackedVector3Array([Vector3(1, 2, 3)]))
+	assert_equal(example.call("test_slice_echo_vector3", PackedVector3Array([Vector3(4, 5, 6)])),
+		PackedVector3Array([Vector3(4, 5, 6)]))
+	assert_equal(example.test_slice_echo_vector4(PackedVector4Array([Vector4(1, 2, 3, 4)])),
+		PackedVector4Array([Vector4(1, 2, 3, 4)]))
+	assert_equal(example.call("test_slice_echo_vector4", PackedVector4Array([Vector4(5, 6, 7, 8)])),
+		PackedVector4Array([Vector4(5, 6, 7, 8)]))
+	assert_equal(example.test_slice_echo_color(PackedColorArray([Color(0.5, 0.25, 0.125, 1.0)])),
+		PackedColorArray([Color(0.5, 0.25, 0.125, 1.0)]))
+	assert_equal(example.call("test_slice_echo_color", PackedColorArray([Color(1, 0, 0, 0.5)])),
+		PackedColorArray([Color(1, 0, 0, 0.5)]))

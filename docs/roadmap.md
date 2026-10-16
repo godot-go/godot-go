@@ -53,6 +53,12 @@ blast radius on the variant encoder layer.
 
 ### A3. Variant reflect completeness
 
+**DONE** — implemented by change `support-variant-reflect-completeness` (2026-10-15):
+Ref values cross reflectively bound Go methods with ratified ownership on both
+dispatch paths; every variant type decodes and encodes on both dispatch paths;
+the synchronous 36-type audit closes the gaps the fixture matrix exposed and
+retires the three stale citations below. Original item:
+
 The "some real signatures still can't cross" bucket; A1/A2 feed into it.
 
 - `pkg/core/variant_refect_value.go:75` - "TODO: add all types supported by variant"

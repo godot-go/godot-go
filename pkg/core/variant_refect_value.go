@@ -62,14 +62,22 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		}
 		switch inst := value.Interface().(type) {
 		case Object:
+			// The engine's OBJECT return-Variant destructor unreferences the
+			// stored pointer, but validated_call only initializes an empty
+			// OBJECT slot and never references it, so the callee owns the +1.
+			// RefCounted pointees are referenced here; a plain Object (Node)
+			// is not refcounted and reference() is a safe no-op for it.
+			if rc, ok := inst.(RefCounted); ok {
+				rc.Reference()
+			}
 			ObjectEncoder.EncodeTypePtrArg(inst, rOut)
-			// *(*C.GDExtensionObjectPtr)(rOut) = (C.GDExtensionObjectPtr)(inst.AsGDExtensionObjectPtr())
 		case Ref:
 			obj := inst.ToObject()
 			if obj == nil {
 				*(**GodotObject)(rOut) = nil
 				return
 			}
+			obj.Reference()
 			ObjectEncoder.EncodeTypePtrArg(obj, rOut)
 		default:
 			log.Panic("unhandled go interface to GDExtensionTypePtr",
@@ -77,7 +85,10 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 				zap.Any("kind", k))
 		}
 	case reflect.Struct:
-		// TODO: add all types supported by variant
+		// Every variant type has a case here, pinned by the synchronous
+		// matrix audit (test/pkg/variant_matrix_audit_tests.go driven by
+		// test/demo/main.gd: test_variant_matrix_audit) across both dispatch
+		// paths. A new variant type must extend the audit row as well.
 		switch inst := value.Interface().(type) {
 		case Variant:
 			VariantEncoder.EncodeTypePtrArg(inst, rOut)
@@ -128,11 +139,25 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		case RID:
 			RIDEncoder.EncodeTypePtrArg(inst, rOut)
 		case Callable:
-			CallableEncoder.EncodeTypePtrArg(inst, rOut)
+			// Refcounted: the generic encoder's raw copy would alias the
+			// source without a reference, so the caller's release eats the
+			// owner's count. Copy-construct, then release the Go-side source
+			// when the call owned it (a borrow echo is caught upstream by
+			// isPtrcallBorrowEcho and reaches this gate as false).
+			CallableCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case Signal:
-			SignalEncoder.EncodeTypePtrArg(inst, rOut)
+			SignalCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case Dictionary:
-			DictionaryEncoder.EncodeTypePtrArg(inst, rOut)
+			DictionaryCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case Array:
 			ArrayCopyConstructor(rOut, inst.NativeConstPtr())
 			if destroySource {
@@ -179,7 +204,10 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 				inst.Destroy()
 			}
 		case PackedVector4Array:
-			PackedVector4ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedVector4ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedColorArray:
 			PackedColorArrayCopyConstructor(rOut, inst.NativeConstPtr())
 			if destroySource {
@@ -252,11 +280,25 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		case RID:
 			RIDEncoder.EncodeTypePtrArg(inst, rOut)
 		case Callable:
-			CallableEncoder.EncodeTypePtrArg(inst, rOut)
+			// Refcounted: the generic encoder's raw copy would alias the
+			// source without a reference, so the caller's release eats the
+			// owner's count. Copy-construct, then release the Go-side source
+			// when the call owned it (a borrow echo is caught upstream by
+			// isPtrcallBorrowEcho and reaches this gate as false).
+			CallableCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case Signal:
-			SignalEncoder.EncodeTypePtrArg(inst, rOut)
+			SignalCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case Dictionary:
-			DictionaryEncoder.EncodeTypePtrArg(inst, rOut)
+			DictionaryCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case Array:
 			ArrayCopyConstructor(rOut, inst.NativeConstPtr())
 			if destroySource {
@@ -303,7 +345,10 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 				inst.Destroy()
 			}
 		case PackedVector4Array:
-			PackedVector4ArrayEncoder.EncodeTypePtrArg(inst, rOut)
+			PackedVector4ArrayCopyConstructor(rOut, inst.NativeConstPtr())
+			if destroySource {
+				inst.Destroy()
+			}
 		case PackedColorArray:
 			PackedColorArrayCopyConstructor(rOut, inst.NativeConstPtr())
 			if destroySource {

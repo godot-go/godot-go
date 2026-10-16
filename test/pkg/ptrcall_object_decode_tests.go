@@ -137,6 +137,7 @@ func (e *Example) TestPtrcallDecodeRefRegression(shape Shape2D) int32 {
 		if !ok || decoded == nil || !decoded.IsValid() {
 			return -2
 		}
+		defer decoded.Unref() // release the acquire the seam took; bypasses the dispatch cleanup
 		if got := decoded.ToObject().GetInstanceId(); got != wantID {
 			fmt.Printf("  ptrcall_ref_regression: FAIL: ref points at %d, want %d\n", got, wantID)
 			return -3

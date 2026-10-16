@@ -35,6 +35,15 @@ func New{{ $refInterfaceName }}AsRef(reference RefCounted) Ref {
 	return NewRef[{{ $c.Name }}](reference.({{ $c.Name }}))
 }
 
+// New{{ $refInterfaceName }}AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func New{{ $refInterfaceName }}AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[{{ $c.Name }}](reference.({{ $c.Name }}))
+}
+
 // New{{ $refInterfaceName }}GDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by New{{ $c.Name }}WithGodotOwnerObject. Borrowing: dropping

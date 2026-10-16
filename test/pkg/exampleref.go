@@ -46,3 +46,8 @@ func RegisterClassExampleRef() {
 		log.Debug("ExampleRef registered")
 	})
 }
+
+func UnregisterClassExampleRef() {
+	ClassDBUnregisterClass[*ExampleRef]()
+	log.Debug("ExampleRef unregistered")
+}

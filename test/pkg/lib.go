@@ -17,7 +17,7 @@ import (
 
 func RegisterExampleTypes() {
 	log.Debug("RegisterExampleTypes called")
-	// RegisterClassExampleRef()
+	RegisterClassExampleRef()
 	RegisterClassExample()
 	RegisterClassTestHierarchicalBase()
 	RegisterClassTestHierarchicalDerived()
@@ -27,6 +27,7 @@ func RegisterExampleTypes() {
 func UnregisterExampleTypes() {
 	log.Debug("UnregisterExampleTypes called")
 	UnregisterClassExample()
+	UnregisterClassExampleRef()
 	UnregisterClassTestDelegationRepro()
 	UnregisterClassTestHierarchicalClasses()
 	DestroyAllCachedClassNames()

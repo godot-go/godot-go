@@ -129,7 +129,7 @@ func ObjectFromInstanceBinding(engineObject *GodotObject) (Object, error) {
 		return objectFromBindingPtr(uintptr(raw))
 	}
 
-	className, err := engineObjectClassName(engineObject)
+	className, err := ObjectClassName(engineObject)
 	if err != nil {
 		return nil, err
 	}
@@ -172,8 +172,8 @@ func ObjectFromInstanceBinding(engineObject *GodotObject) (Object, error) {
 	return obj, nil
 }
 
-// engineObjectClassName asks the engine for an object's runtime class name.
-func engineObjectClassName(engineObject *GodotObject) (string, error) {
+// ObjectClassName asks the engine for an object's runtime class name.
+func ObjectClassName(engineObject *GodotObject) (string, error) {
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 
@@ -193,11 +193,37 @@ func engineObjectClassName(engineObject *GodotObject) (string, error) {
 	return sn.ToUtf8(), nil
 }
 
-// godotObjectPtrFromVariant extracts the engine object pointer an OBJECT variant
+// ObjectInheritsClass reports whether the engine object is an instance of
+// className or a subclass of it. This is godot-cpp's Object::cast_to mechanism:
+// classdb_get_class_tag identifies the class inside ClassDB and object_cast_to
+// performs the inheritance-aware cast engine-side, which accepts extension
+// classes registered with ClassDB. A null object, an empty class name, an
+// unknown class name, and a failed cast all report false.
+func ObjectInheritsClass(objPtr GDExtensionObjectPtr, className string) bool {
+	if objPtr == nil || className == "" {
+		return false
+	}
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+
+	sn := NewStringNameWithLatin1Chars(className)
+	snPtr := sn.NativePtr()
+	pinner.Pin(snPtr)
+	defer sn.Destroy()
+
+	tag := CallFunc_GDExtensionInterfaceClassdbGetClassTag((GDExtensionConstStringNamePtr)(snPtr))
+	if tag == nil {
+		return false
+	}
+	return CallFunc_GDExtensionInterfaceObjectCastTo((GDExtensionConstObjectPtr)(objPtr), tag) != nil
+}
+
+// GodotObjectPtrFromVariant extracts the engine object pointer an OBJECT variant
 // carries, without resolving its instance binding. Splitting this out is what
 // lets a caller reach ObjectFromInstanceBinding, which needs the engine pointer
-// rather than the wrapper that resolving the binding would produce.
-func godotObjectPtrFromVariant(v *Variant) *GodotObject {
+// rather than the wrapper that resolving the binding would produce, and lets
+// decode paths run engine casts against the raw pointer.
+func GodotObjectPtrFromVariant(v *Variant) *GodotObject {
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 
@@ -222,5 +248,5 @@ func ObjectFromVariant(v *Variant) (Object, error) {
 	if v == nil || v.IsNil() {
 		return nil, &ObjectBindingError{Reason: "variant is null"}
 	}
-	return ObjectFromInstanceBinding(godotObjectPtrFromVariant(v))
+	return ObjectFromInstanceBinding(GodotObjectPtrFromVariant(v))
 }

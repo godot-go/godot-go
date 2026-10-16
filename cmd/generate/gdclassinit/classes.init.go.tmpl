@@ -45,6 +45,6 @@ func RegisterEngineClassRefs() {
 	{{ range $i, $c := $view.FilteredRefcountedClasses -}}
 	{{ $refInterfaceName := (printf "Ref%s" $c.Name) -}}
 	{{ $refStructName := (printf "Ref%sImpl" $c.Name) -}}
-	GDClassRefConstructors.Set("{{ $c.Name }}", New{{ $refInterfaceName }}AsRef)
+	GDClassRefConstructors.Set("{{ $c.Name }}", New{{ $refInterfaceName }}AsRefAcquired)
 	{{ end -}}
 }

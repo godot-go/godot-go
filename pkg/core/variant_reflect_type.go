@@ -2,7 +2,6 @@ package core
 
 import (
 	"reflect"
-	"strings"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
@@ -166,15 +165,29 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 		inst := zero.Interface()
 		switch inst.(type) {
 		default:
+			// A concrete Ref form (the generated RefXxxImpl struct) must be
+			// refused here rather than reaching a decode branch that can
+			// never assert it (support-variant-reflect-completeness design
+			// D1): the supported spellings of a reference are the RefXxx
+			// interface and bare builtin.Ref.
+			if t.Implements(refType) {
+				log.Panic("Ref-typed parameters and returns must be the RefXxx interface or bare builtin.Ref, not the concrete form "+t.String(),
+					zap.Any("type", t),
+				)
+			}
 			log.Panic("unhandled go struct", zap.Any("type", t))
 		}
 	case reflect.Pointer:
+		// A Ref-protocol pointer (*RefXxxImpl, *RefBase[T]) is the same
+		// concrete-form rejection as above: accepting it here advertised a
+		// binding whose decode paths could only panic or borrow wrongly.
+		if t.Implements(refType) {
+			log.Panic("Ref-typed parameters and returns must be the RefXxx interface or bare builtin.Ref, not the concrete form "+t.String(),
+				zap.Any("type", t),
+			)
+		}
 		zero := reflect.Zero(t)
 		inst := zero.Interface()
-		if _, ok := inst.(Ref); ok {
-			log.Debug("detected Ref (type assertion) as GDEXTENSION_VARIANT_TYPE_OBJECT")
-			return GDEXTENSION_VARIANT_TYPE_OBJECT
-		}
 		if _, ok := inst.(GDClass); ok {
 			log.Debug("detected GDClass as GDEXTENSION_VARIANT_TYPE_OBJECT")
 			return GDEXTENSION_VARIANT_TYPE_OBJECT
@@ -206,11 +219,10 @@ func ReflectTypeToGDExtensionVariantType(t reflect.Type) GDExtensionVariantType 
 			if _, ok := GDNativeConstructors.Get(tn); ok {
 				return GDEXTENSION_VARIANT_TYPE_OBJECT
 			}
-			if strings.HasPrefix(tn, "Ref") {
-				if _, ok := GDClassRefConstructors.Get(tn[3:]); ok {
-					return GDEXTENSION_VARIANT_TYPE_OBJECT
-				}
-			}
+			// Ref-typed interfaces never reach here: the Implements(refType)
+			// check above accepts both the generated RefXxx interfaces and
+			// bare builtin.Ref, replacing the name-strip probe that handed a
+			// bare Ref the empty string.
 			log.Panic("unhandled go interface",
 				zap.Any("type", t),
 			)

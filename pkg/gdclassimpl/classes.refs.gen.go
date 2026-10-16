@@ -31,6 +31,15 @@ func NewRefAESContextAsRef(reference RefCounted) Ref {
 	return NewRef[AESContext](reference.(AESContext))
 }
 
+// NewRefAESContextAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAESContextAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AESContext](reference.(AESContext))
+}
+
 // NewRefAESContextGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAESContextWithGodotOwnerObject. Borrowing: dropping
@@ -60,6 +69,15 @@ func NewRefAStar2D(reference AStar2D) RefAStar2D {
 
 func NewRefAStar2DAsRef(reference RefCounted) Ref {
 	return NewRef[AStar2D](reference.(AStar2D))
+}
+
+// NewRefAStar2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAStar2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AStar2D](reference.(AStar2D))
 }
 
 // NewRefAStar2DGDExtensionIternalConstructor wraps an instance this
@@ -93,6 +111,15 @@ func NewRefAStar3DAsRef(reference RefCounted) Ref {
 	return NewRef[AStar3D](reference.(AStar3D))
 }
 
+// NewRefAStar3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAStar3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AStar3D](reference.(AStar3D))
+}
+
 // NewRefAStar3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAStar3DWithGodotOwnerObject. Borrowing: dropping
@@ -122,6 +149,15 @@ func NewRefAStarGrid2D(reference AStarGrid2D) RefAStarGrid2D {
 
 func NewRefAStarGrid2DAsRef(reference RefCounted) Ref {
 	return NewRef[AStarGrid2D](reference.(AStarGrid2D))
+}
+
+// NewRefAStarGrid2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAStarGrid2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AStarGrid2D](reference.(AStarGrid2D))
 }
 
 // NewRefAStarGrid2DGDExtensionIternalConstructor wraps an instance this
@@ -155,6 +191,15 @@ func NewRefAnimatedTextureAsRef(reference RefCounted) Ref {
 	return NewRef[AnimatedTexture](reference.(AnimatedTexture))
 }
 
+// NewRefAnimatedTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimatedTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimatedTexture](reference.(AnimatedTexture))
+}
+
 // NewRefAnimatedTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimatedTextureWithGodotOwnerObject. Borrowing: dropping
@@ -184,6 +229,15 @@ func NewRefAnimation(reference Animation) RefAnimation {
 
 func NewRefAnimationAsRef(reference RefCounted) Ref {
 	return NewRef[Animation](reference.(Animation))
+}
+
+// NewRefAnimationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Animation](reference.(Animation))
 }
 
 // NewRefAnimationGDExtensionIternalConstructor wraps an instance this
@@ -217,6 +271,15 @@ func NewRefAnimationLibraryAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationLibrary](reference.(AnimationLibrary))
 }
 
+// NewRefAnimationLibraryAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationLibraryAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationLibrary](reference.(AnimationLibrary))
+}
+
 // NewRefAnimationLibraryGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationLibraryWithGodotOwnerObject. Borrowing: dropping
@@ -246,6 +309,15 @@ func NewRefAnimationNode(reference AnimationNode) RefAnimationNode {
 
 func NewRefAnimationNodeAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNode](reference.(AnimationNode))
+}
+
+// NewRefAnimationNodeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNode](reference.(AnimationNode))
 }
 
 // NewRefAnimationNodeGDExtensionIternalConstructor wraps an instance this
@@ -279,6 +351,15 @@ func NewRefAnimationNodeAdd2AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeAdd2](reference.(AnimationNodeAdd2))
 }
 
+// NewRefAnimationNodeAdd2AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeAdd2AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeAdd2](reference.(AnimationNodeAdd2))
+}
+
 // NewRefAnimationNodeAdd2GDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeAdd2WithGodotOwnerObject. Borrowing: dropping
@@ -308,6 +389,15 @@ func NewRefAnimationNodeAdd3(reference AnimationNodeAdd3) RefAnimationNodeAdd3 {
 
 func NewRefAnimationNodeAdd3AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeAdd3](reference.(AnimationNodeAdd3))
+}
+
+// NewRefAnimationNodeAdd3AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeAdd3AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeAdd3](reference.(AnimationNodeAdd3))
 }
 
 // NewRefAnimationNodeAdd3GDExtensionIternalConstructor wraps an instance this
@@ -341,6 +431,15 @@ func NewRefAnimationNodeAnimationAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeAnimation](reference.(AnimationNodeAnimation))
 }
 
+// NewRefAnimationNodeAnimationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeAnimationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeAnimation](reference.(AnimationNodeAnimation))
+}
+
 // NewRefAnimationNodeAnimationGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeAnimationWithGodotOwnerObject. Borrowing: dropping
@@ -370,6 +469,15 @@ func NewRefAnimationNodeBlend2(reference AnimationNodeBlend2) RefAnimationNodeBl
 
 func NewRefAnimationNodeBlend2AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlend2](reference.(AnimationNodeBlend2))
+}
+
+// NewRefAnimationNodeBlend2AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeBlend2AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeBlend2](reference.(AnimationNodeBlend2))
 }
 
 // NewRefAnimationNodeBlend2GDExtensionIternalConstructor wraps an instance this
@@ -403,6 +511,15 @@ func NewRefAnimationNodeBlend3AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlend3](reference.(AnimationNodeBlend3))
 }
 
+// NewRefAnimationNodeBlend3AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeBlend3AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeBlend3](reference.(AnimationNodeBlend3))
+}
+
 // NewRefAnimationNodeBlend3GDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeBlend3WithGodotOwnerObject. Borrowing: dropping
@@ -432,6 +549,15 @@ func NewRefAnimationNodeBlendSpace1D(reference AnimationNodeBlendSpace1D) RefAni
 
 func NewRefAnimationNodeBlendSpace1DAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlendSpace1D](reference.(AnimationNodeBlendSpace1D))
+}
+
+// NewRefAnimationNodeBlendSpace1DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeBlendSpace1DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeBlendSpace1D](reference.(AnimationNodeBlendSpace1D))
 }
 
 // NewRefAnimationNodeBlendSpace1DGDExtensionIternalConstructor wraps an instance this
@@ -465,6 +591,15 @@ func NewRefAnimationNodeBlendSpace2DAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlendSpace2D](reference.(AnimationNodeBlendSpace2D))
 }
 
+// NewRefAnimationNodeBlendSpace2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeBlendSpace2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeBlendSpace2D](reference.(AnimationNodeBlendSpace2D))
+}
+
 // NewRefAnimationNodeBlendSpace2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeBlendSpace2DWithGodotOwnerObject. Borrowing: dropping
@@ -494,6 +629,15 @@ func NewRefAnimationNodeBlendTree(reference AnimationNodeBlendTree) RefAnimation
 
 func NewRefAnimationNodeBlendTreeAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeBlendTree](reference.(AnimationNodeBlendTree))
+}
+
+// NewRefAnimationNodeBlendTreeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeBlendTreeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeBlendTree](reference.(AnimationNodeBlendTree))
 }
 
 // NewRefAnimationNodeBlendTreeGDExtensionIternalConstructor wraps an instance this
@@ -527,6 +671,15 @@ func NewRefAnimationNodeExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeExtension](reference.(AnimationNodeExtension))
 }
 
+// NewRefAnimationNodeExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeExtension](reference.(AnimationNodeExtension))
+}
+
 // NewRefAnimationNodeExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -556,6 +709,15 @@ func NewRefAnimationNodeOneShot(reference AnimationNodeOneShot) RefAnimationNode
 
 func NewRefAnimationNodeOneShotAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeOneShot](reference.(AnimationNodeOneShot))
+}
+
+// NewRefAnimationNodeOneShotAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeOneShotAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeOneShot](reference.(AnimationNodeOneShot))
 }
 
 // NewRefAnimationNodeOneShotGDExtensionIternalConstructor wraps an instance this
@@ -589,6 +751,15 @@ func NewRefAnimationNodeOutputAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeOutput](reference.(AnimationNodeOutput))
 }
 
+// NewRefAnimationNodeOutputAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeOutputAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeOutput](reference.(AnimationNodeOutput))
+}
+
 // NewRefAnimationNodeOutputGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeOutputWithGodotOwnerObject. Borrowing: dropping
@@ -618,6 +789,15 @@ func NewRefAnimationNodeStateMachine(reference AnimationNodeStateMachine) RefAni
 
 func NewRefAnimationNodeStateMachineAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeStateMachine](reference.(AnimationNodeStateMachine))
+}
+
+// NewRefAnimationNodeStateMachineAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeStateMachineAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeStateMachine](reference.(AnimationNodeStateMachine))
 }
 
 // NewRefAnimationNodeStateMachineGDExtensionIternalConstructor wraps an instance this
@@ -651,6 +831,15 @@ func NewRefAnimationNodeStateMachinePlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeStateMachinePlayback](reference.(AnimationNodeStateMachinePlayback))
 }
 
+// NewRefAnimationNodeStateMachinePlaybackAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeStateMachinePlaybackAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeStateMachinePlayback](reference.(AnimationNodeStateMachinePlayback))
+}
+
 // NewRefAnimationNodeStateMachinePlaybackGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeStateMachinePlaybackWithGodotOwnerObject. Borrowing: dropping
@@ -680,6 +869,15 @@ func NewRefAnimationNodeStateMachineTransition(reference AnimationNodeStateMachi
 
 func NewRefAnimationNodeStateMachineTransitionAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeStateMachineTransition](reference.(AnimationNodeStateMachineTransition))
+}
+
+// NewRefAnimationNodeStateMachineTransitionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeStateMachineTransitionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeStateMachineTransition](reference.(AnimationNodeStateMachineTransition))
 }
 
 // NewRefAnimationNodeStateMachineTransitionGDExtensionIternalConstructor wraps an instance this
@@ -713,6 +911,15 @@ func NewRefAnimationNodeSub2AsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeSub2](reference.(AnimationNodeSub2))
 }
 
+// NewRefAnimationNodeSub2AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeSub2AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeSub2](reference.(AnimationNodeSub2))
+}
+
 // NewRefAnimationNodeSub2GDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeSub2WithGodotOwnerObject. Borrowing: dropping
@@ -742,6 +949,15 @@ func NewRefAnimationNodeSync(reference AnimationNodeSync) RefAnimationNodeSync {
 
 func NewRefAnimationNodeSyncAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeSync](reference.(AnimationNodeSync))
+}
+
+// NewRefAnimationNodeSyncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeSyncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeSync](reference.(AnimationNodeSync))
 }
 
 // NewRefAnimationNodeSyncGDExtensionIternalConstructor wraps an instance this
@@ -775,6 +991,15 @@ func NewRefAnimationNodeTimeScaleAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeTimeScale](reference.(AnimationNodeTimeScale))
 }
 
+// NewRefAnimationNodeTimeScaleAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeTimeScaleAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeTimeScale](reference.(AnimationNodeTimeScale))
+}
+
 // NewRefAnimationNodeTimeScaleGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeTimeScaleWithGodotOwnerObject. Borrowing: dropping
@@ -804,6 +1029,15 @@ func NewRefAnimationNodeTimeSeek(reference AnimationNodeTimeSeek) RefAnimationNo
 
 func NewRefAnimationNodeTimeSeekAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeTimeSeek](reference.(AnimationNodeTimeSeek))
+}
+
+// NewRefAnimationNodeTimeSeekAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeTimeSeekAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeTimeSeek](reference.(AnimationNodeTimeSeek))
 }
 
 // NewRefAnimationNodeTimeSeekGDExtensionIternalConstructor wraps an instance this
@@ -837,6 +1071,15 @@ func NewRefAnimationNodeTransitionAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationNodeTransition](reference.(AnimationNodeTransition))
 }
 
+// NewRefAnimationNodeTransitionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationNodeTransitionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationNodeTransition](reference.(AnimationNodeTransition))
+}
+
 // NewRefAnimationNodeTransitionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAnimationNodeTransitionWithGodotOwnerObject. Borrowing: dropping
@@ -866,6 +1109,15 @@ func NewRefAnimationRootNode(reference AnimationRootNode) RefAnimationRootNode {
 
 func NewRefAnimationRootNodeAsRef(reference RefCounted) Ref {
 	return NewRef[AnimationRootNode](reference.(AnimationRootNode))
+}
+
+// NewRefAnimationRootNodeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAnimationRootNodeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AnimationRootNode](reference.(AnimationRootNode))
 }
 
 // NewRefAnimationRootNodeGDExtensionIternalConstructor wraps an instance this
@@ -899,6 +1151,15 @@ func NewRefArrayMeshAsRef(reference RefCounted) Ref {
 	return NewRef[ArrayMesh](reference.(ArrayMesh))
 }
 
+// NewRefArrayMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefArrayMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ArrayMesh](reference.(ArrayMesh))
+}
+
 // NewRefArrayMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewArrayMeshWithGodotOwnerObject. Borrowing: dropping
@@ -928,6 +1189,15 @@ func NewRefArrayOccluder3D(reference ArrayOccluder3D) RefArrayOccluder3D {
 
 func NewRefArrayOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[ArrayOccluder3D](reference.(ArrayOccluder3D))
+}
+
+// NewRefArrayOccluder3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefArrayOccluder3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ArrayOccluder3D](reference.(ArrayOccluder3D))
 }
 
 // NewRefArrayOccluder3DGDExtensionIternalConstructor wraps an instance this
@@ -961,6 +1231,15 @@ func NewRefAtlasTextureAsRef(reference RefCounted) Ref {
 	return NewRef[AtlasTexture](reference.(AtlasTexture))
 }
 
+// NewRefAtlasTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAtlasTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AtlasTexture](reference.(AtlasTexture))
+}
+
 // NewRefAtlasTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAtlasTextureWithGodotOwnerObject. Borrowing: dropping
@@ -990,6 +1269,15 @@ func NewRefAudioBusLayout(reference AudioBusLayout) RefAudioBusLayout {
 
 func NewRefAudioBusLayoutAsRef(reference RefCounted) Ref {
 	return NewRef[AudioBusLayout](reference.(AudioBusLayout))
+}
+
+// NewRefAudioBusLayoutAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioBusLayoutAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioBusLayout](reference.(AudioBusLayout))
 }
 
 // NewRefAudioBusLayoutGDExtensionIternalConstructor wraps an instance this
@@ -1023,6 +1311,15 @@ func NewRefAudioEffectAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffect](reference.(AudioEffect))
 }
 
+// NewRefAudioEffectAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffect](reference.(AudioEffect))
+}
+
 // NewRefAudioEffectGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectWithGodotOwnerObject. Borrowing: dropping
@@ -1052,6 +1349,15 @@ func NewRefAudioEffectAmplify(reference AudioEffectAmplify) RefAudioEffectAmplif
 
 func NewRefAudioEffectAmplifyAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectAmplify](reference.(AudioEffectAmplify))
+}
+
+// NewRefAudioEffectAmplifyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectAmplifyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectAmplify](reference.(AudioEffectAmplify))
 }
 
 // NewRefAudioEffectAmplifyGDExtensionIternalConstructor wraps an instance this
@@ -1085,6 +1391,15 @@ func NewRefAudioEffectBandLimitFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectBandLimitFilter](reference.(AudioEffectBandLimitFilter))
 }
 
+// NewRefAudioEffectBandLimitFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectBandLimitFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectBandLimitFilter](reference.(AudioEffectBandLimitFilter))
+}
+
 // NewRefAudioEffectBandLimitFilterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectBandLimitFilterWithGodotOwnerObject. Borrowing: dropping
@@ -1114,6 +1429,15 @@ func NewRefAudioEffectBandPassFilter(reference AudioEffectBandPassFilter) RefAud
 
 func NewRefAudioEffectBandPassFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectBandPassFilter](reference.(AudioEffectBandPassFilter))
+}
+
+// NewRefAudioEffectBandPassFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectBandPassFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectBandPassFilter](reference.(AudioEffectBandPassFilter))
 }
 
 // NewRefAudioEffectBandPassFilterGDExtensionIternalConstructor wraps an instance this
@@ -1147,6 +1471,15 @@ func NewRefAudioEffectCaptureAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectCapture](reference.(AudioEffectCapture))
 }
 
+// NewRefAudioEffectCaptureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectCaptureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectCapture](reference.(AudioEffectCapture))
+}
+
 // NewRefAudioEffectCaptureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectCaptureWithGodotOwnerObject. Borrowing: dropping
@@ -1176,6 +1509,15 @@ func NewRefAudioEffectChorus(reference AudioEffectChorus) RefAudioEffectChorus {
 
 func NewRefAudioEffectChorusAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectChorus](reference.(AudioEffectChorus))
+}
+
+// NewRefAudioEffectChorusAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectChorusAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectChorus](reference.(AudioEffectChorus))
 }
 
 // NewRefAudioEffectChorusGDExtensionIternalConstructor wraps an instance this
@@ -1209,6 +1551,15 @@ func NewRefAudioEffectCompressorAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectCompressor](reference.(AudioEffectCompressor))
 }
 
+// NewRefAudioEffectCompressorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectCompressorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectCompressor](reference.(AudioEffectCompressor))
+}
+
 // NewRefAudioEffectCompressorGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectCompressorWithGodotOwnerObject. Borrowing: dropping
@@ -1238,6 +1589,15 @@ func NewRefAudioEffectDelay(reference AudioEffectDelay) RefAudioEffectDelay {
 
 func NewRefAudioEffectDelayAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectDelay](reference.(AudioEffectDelay))
+}
+
+// NewRefAudioEffectDelayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectDelayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectDelay](reference.(AudioEffectDelay))
 }
 
 // NewRefAudioEffectDelayGDExtensionIternalConstructor wraps an instance this
@@ -1271,6 +1631,15 @@ func NewRefAudioEffectDistortionAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectDistortion](reference.(AudioEffectDistortion))
 }
 
+// NewRefAudioEffectDistortionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectDistortionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectDistortion](reference.(AudioEffectDistortion))
+}
+
 // NewRefAudioEffectDistortionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectDistortionWithGodotOwnerObject. Borrowing: dropping
@@ -1300,6 +1669,15 @@ func NewRefAudioEffectEQ(reference AudioEffectEQ) RefAudioEffectEQ {
 
 func NewRefAudioEffectEQAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ](reference.(AudioEffectEQ))
+}
+
+// NewRefAudioEffectEQAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectEQAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectEQ](reference.(AudioEffectEQ))
 }
 
 // NewRefAudioEffectEQGDExtensionIternalConstructor wraps an instance this
@@ -1333,6 +1711,15 @@ func NewRefAudioEffectEQ10AsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ10](reference.(AudioEffectEQ10))
 }
 
+// NewRefAudioEffectEQ10AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectEQ10AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectEQ10](reference.(AudioEffectEQ10))
+}
+
 // NewRefAudioEffectEQ10GDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectEQ10WithGodotOwnerObject. Borrowing: dropping
@@ -1362,6 +1749,15 @@ func NewRefAudioEffectEQ21(reference AudioEffectEQ21) RefAudioEffectEQ21 {
 
 func NewRefAudioEffectEQ21AsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ21](reference.(AudioEffectEQ21))
+}
+
+// NewRefAudioEffectEQ21AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectEQ21AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectEQ21](reference.(AudioEffectEQ21))
 }
 
 // NewRefAudioEffectEQ21GDExtensionIternalConstructor wraps an instance this
@@ -1395,6 +1791,15 @@ func NewRefAudioEffectEQ6AsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectEQ6](reference.(AudioEffectEQ6))
 }
 
+// NewRefAudioEffectEQ6AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectEQ6AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectEQ6](reference.(AudioEffectEQ6))
+}
+
 // NewRefAudioEffectEQ6GDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectEQ6WithGodotOwnerObject. Borrowing: dropping
@@ -1424,6 +1829,15 @@ func NewRefAudioEffectFilter(reference AudioEffectFilter) RefAudioEffectFilter {
 
 func NewRefAudioEffectFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectFilter](reference.(AudioEffectFilter))
+}
+
+// NewRefAudioEffectFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectFilter](reference.(AudioEffectFilter))
 }
 
 // NewRefAudioEffectFilterGDExtensionIternalConstructor wraps an instance this
@@ -1457,6 +1871,15 @@ func NewRefAudioEffectHardLimiterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectHardLimiter](reference.(AudioEffectHardLimiter))
 }
 
+// NewRefAudioEffectHardLimiterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectHardLimiterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectHardLimiter](reference.(AudioEffectHardLimiter))
+}
+
 // NewRefAudioEffectHardLimiterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectHardLimiterWithGodotOwnerObject. Borrowing: dropping
@@ -1486,6 +1909,15 @@ func NewRefAudioEffectHighPassFilter(reference AudioEffectHighPassFilter) RefAud
 
 func NewRefAudioEffectHighPassFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectHighPassFilter](reference.(AudioEffectHighPassFilter))
+}
+
+// NewRefAudioEffectHighPassFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectHighPassFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectHighPassFilter](reference.(AudioEffectHighPassFilter))
 }
 
 // NewRefAudioEffectHighPassFilterGDExtensionIternalConstructor wraps an instance this
@@ -1519,6 +1951,15 @@ func NewRefAudioEffectHighShelfFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectHighShelfFilter](reference.(AudioEffectHighShelfFilter))
 }
 
+// NewRefAudioEffectHighShelfFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectHighShelfFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectHighShelfFilter](reference.(AudioEffectHighShelfFilter))
+}
+
 // NewRefAudioEffectHighShelfFilterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectHighShelfFilterWithGodotOwnerObject. Borrowing: dropping
@@ -1548,6 +1989,15 @@ func NewRefAudioEffectInstance(reference AudioEffectInstance) RefAudioEffectInst
 
 func NewRefAudioEffectInstanceAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectInstance](reference.(AudioEffectInstance))
+}
+
+// NewRefAudioEffectInstanceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectInstanceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectInstance](reference.(AudioEffectInstance))
 }
 
 // NewRefAudioEffectInstanceGDExtensionIternalConstructor wraps an instance this
@@ -1581,6 +2031,15 @@ func NewRefAudioEffectLimiterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectLimiter](reference.(AudioEffectLimiter))
 }
 
+// NewRefAudioEffectLimiterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectLimiterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectLimiter](reference.(AudioEffectLimiter))
+}
+
 // NewRefAudioEffectLimiterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectLimiterWithGodotOwnerObject. Borrowing: dropping
@@ -1610,6 +2069,15 @@ func NewRefAudioEffectLowPassFilter(reference AudioEffectLowPassFilter) RefAudio
 
 func NewRefAudioEffectLowPassFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectLowPassFilter](reference.(AudioEffectLowPassFilter))
+}
+
+// NewRefAudioEffectLowPassFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectLowPassFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectLowPassFilter](reference.(AudioEffectLowPassFilter))
 }
 
 // NewRefAudioEffectLowPassFilterGDExtensionIternalConstructor wraps an instance this
@@ -1643,6 +2111,15 @@ func NewRefAudioEffectLowShelfFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectLowShelfFilter](reference.(AudioEffectLowShelfFilter))
 }
 
+// NewRefAudioEffectLowShelfFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectLowShelfFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectLowShelfFilter](reference.(AudioEffectLowShelfFilter))
+}
+
 // NewRefAudioEffectLowShelfFilterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectLowShelfFilterWithGodotOwnerObject. Borrowing: dropping
@@ -1672,6 +2149,15 @@ func NewRefAudioEffectNotchFilter(reference AudioEffectNotchFilter) RefAudioEffe
 
 func NewRefAudioEffectNotchFilterAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectNotchFilter](reference.(AudioEffectNotchFilter))
+}
+
+// NewRefAudioEffectNotchFilterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectNotchFilterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectNotchFilter](reference.(AudioEffectNotchFilter))
 }
 
 // NewRefAudioEffectNotchFilterGDExtensionIternalConstructor wraps an instance this
@@ -1705,6 +2191,15 @@ func NewRefAudioEffectPannerAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectPanner](reference.(AudioEffectPanner))
 }
 
+// NewRefAudioEffectPannerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectPannerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectPanner](reference.(AudioEffectPanner))
+}
+
 // NewRefAudioEffectPannerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectPannerWithGodotOwnerObject. Borrowing: dropping
@@ -1734,6 +2229,15 @@ func NewRefAudioEffectPhaser(reference AudioEffectPhaser) RefAudioEffectPhaser {
 
 func NewRefAudioEffectPhaserAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectPhaser](reference.(AudioEffectPhaser))
+}
+
+// NewRefAudioEffectPhaserAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectPhaserAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectPhaser](reference.(AudioEffectPhaser))
 }
 
 // NewRefAudioEffectPhaserGDExtensionIternalConstructor wraps an instance this
@@ -1767,6 +2271,15 @@ func NewRefAudioEffectPitchShiftAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectPitchShift](reference.(AudioEffectPitchShift))
 }
 
+// NewRefAudioEffectPitchShiftAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectPitchShiftAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectPitchShift](reference.(AudioEffectPitchShift))
+}
+
 // NewRefAudioEffectPitchShiftGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectPitchShiftWithGodotOwnerObject. Borrowing: dropping
@@ -1796,6 +2309,15 @@ func NewRefAudioEffectRecord(reference AudioEffectRecord) RefAudioEffectRecord {
 
 func NewRefAudioEffectRecordAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectRecord](reference.(AudioEffectRecord))
+}
+
+// NewRefAudioEffectRecordAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectRecordAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectRecord](reference.(AudioEffectRecord))
 }
 
 // NewRefAudioEffectRecordGDExtensionIternalConstructor wraps an instance this
@@ -1829,6 +2351,15 @@ func NewRefAudioEffectReverbAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectReverb](reference.(AudioEffectReverb))
 }
 
+// NewRefAudioEffectReverbAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectReverbAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectReverb](reference.(AudioEffectReverb))
+}
+
 // NewRefAudioEffectReverbGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectReverbWithGodotOwnerObject. Borrowing: dropping
@@ -1858,6 +2389,15 @@ func NewRefAudioEffectSpectrumAnalyzer(reference AudioEffectSpectrumAnalyzer) Re
 
 func NewRefAudioEffectSpectrumAnalyzerAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectSpectrumAnalyzer](reference.(AudioEffectSpectrumAnalyzer))
+}
+
+// NewRefAudioEffectSpectrumAnalyzerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectSpectrumAnalyzerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectSpectrumAnalyzer](reference.(AudioEffectSpectrumAnalyzer))
 }
 
 // NewRefAudioEffectSpectrumAnalyzerGDExtensionIternalConstructor wraps an instance this
@@ -1891,6 +2431,15 @@ func NewRefAudioEffectSpectrumAnalyzerInstanceAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectSpectrumAnalyzerInstance](reference.(AudioEffectSpectrumAnalyzerInstance))
 }
 
+// NewRefAudioEffectSpectrumAnalyzerInstanceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectSpectrumAnalyzerInstanceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectSpectrumAnalyzerInstance](reference.(AudioEffectSpectrumAnalyzerInstance))
+}
+
 // NewRefAudioEffectSpectrumAnalyzerInstanceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioEffectSpectrumAnalyzerInstanceWithGodotOwnerObject. Borrowing: dropping
@@ -1920,6 +2469,15 @@ func NewRefAudioEffectStereoEnhance(reference AudioEffectStereoEnhance) RefAudio
 
 func NewRefAudioEffectStereoEnhanceAsRef(reference RefCounted) Ref {
 	return NewRef[AudioEffectStereoEnhance](reference.(AudioEffectStereoEnhance))
+}
+
+// NewRefAudioEffectStereoEnhanceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioEffectStereoEnhanceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioEffectStereoEnhance](reference.(AudioEffectStereoEnhance))
 }
 
 // NewRefAudioEffectStereoEnhanceGDExtensionIternalConstructor wraps an instance this
@@ -1953,6 +2511,15 @@ func NewRefAudioSampleAsRef(reference RefCounted) Ref {
 	return NewRef[AudioSample](reference.(AudioSample))
 }
 
+// NewRefAudioSampleAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioSampleAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioSample](reference.(AudioSample))
+}
+
 // NewRefAudioSampleGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioSampleWithGodotOwnerObject. Borrowing: dropping
@@ -1982,6 +2549,15 @@ func NewRefAudioSamplePlayback(reference AudioSamplePlayback) RefAudioSamplePlay
 
 func NewRefAudioSamplePlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AudioSamplePlayback](reference.(AudioSamplePlayback))
+}
+
+// NewRefAudioSamplePlaybackAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioSamplePlaybackAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioSamplePlayback](reference.(AudioSamplePlayback))
 }
 
 // NewRefAudioSamplePlaybackGDExtensionIternalConstructor wraps an instance this
@@ -2015,6 +2591,15 @@ func NewRefAudioStreamAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStream](reference.(AudioStream))
 }
 
+// NewRefAudioStreamAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStream](reference.(AudioStream))
+}
+
 // NewRefAudioStreamGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamWithGodotOwnerObject. Borrowing: dropping
@@ -2044,6 +2629,15 @@ func NewRefAudioStreamGenerator(reference AudioStreamGenerator) RefAudioStreamGe
 
 func NewRefAudioStreamGeneratorAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamGenerator](reference.(AudioStreamGenerator))
+}
+
+// NewRefAudioStreamGeneratorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamGeneratorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamGenerator](reference.(AudioStreamGenerator))
 }
 
 // NewRefAudioStreamGeneratorGDExtensionIternalConstructor wraps an instance this
@@ -2077,6 +2671,15 @@ func NewRefAudioStreamGeneratorPlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamGeneratorPlayback](reference.(AudioStreamGeneratorPlayback))
 }
 
+// NewRefAudioStreamGeneratorPlaybackAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamGeneratorPlaybackAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamGeneratorPlayback](reference.(AudioStreamGeneratorPlayback))
+}
+
 // NewRefAudioStreamGeneratorPlaybackGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamGeneratorPlaybackWithGodotOwnerObject. Borrowing: dropping
@@ -2106,6 +2709,15 @@ func NewRefAudioStreamInteractive(reference AudioStreamInteractive) RefAudioStre
 
 func NewRefAudioStreamInteractiveAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamInteractive](reference.(AudioStreamInteractive))
+}
+
+// NewRefAudioStreamInteractiveAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamInteractiveAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamInteractive](reference.(AudioStreamInteractive))
 }
 
 // NewRefAudioStreamInteractiveGDExtensionIternalConstructor wraps an instance this
@@ -2139,6 +2751,15 @@ func NewRefAudioStreamMP3AsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamMP3](reference.(AudioStreamMP3))
 }
 
+// NewRefAudioStreamMP3AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamMP3AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamMP3](reference.(AudioStreamMP3))
+}
+
 // NewRefAudioStreamMP3GDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamMP3WithGodotOwnerObject. Borrowing: dropping
@@ -2168,6 +2789,15 @@ func NewRefAudioStreamMicrophone(reference AudioStreamMicrophone) RefAudioStream
 
 func NewRefAudioStreamMicrophoneAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamMicrophone](reference.(AudioStreamMicrophone))
+}
+
+// NewRefAudioStreamMicrophoneAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamMicrophoneAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamMicrophone](reference.(AudioStreamMicrophone))
 }
 
 // NewRefAudioStreamMicrophoneGDExtensionIternalConstructor wraps an instance this
@@ -2201,6 +2831,15 @@ func NewRefAudioStreamOggVorbisAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamOggVorbis](reference.(AudioStreamOggVorbis))
 }
 
+// NewRefAudioStreamOggVorbisAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamOggVorbisAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamOggVorbis](reference.(AudioStreamOggVorbis))
+}
+
 // NewRefAudioStreamOggVorbisGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamOggVorbisWithGodotOwnerObject. Borrowing: dropping
@@ -2230,6 +2869,15 @@ func NewRefAudioStreamPlayback(reference AudioStreamPlayback) RefAudioStreamPlay
 
 func NewRefAudioStreamPlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlayback](reference.(AudioStreamPlayback))
+}
+
+// NewRefAudioStreamPlaybackAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaybackAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlayback](reference.(AudioStreamPlayback))
 }
 
 // NewRefAudioStreamPlaybackGDExtensionIternalConstructor wraps an instance this
@@ -2263,6 +2911,15 @@ func NewRefAudioStreamPlaybackInteractiveAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackInteractive](reference.(AudioStreamPlaybackInteractive))
 }
 
+// NewRefAudioStreamPlaybackInteractiveAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaybackInteractiveAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlaybackInteractive](reference.(AudioStreamPlaybackInteractive))
+}
+
 // NewRefAudioStreamPlaybackInteractiveGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamPlaybackInteractiveWithGodotOwnerObject. Borrowing: dropping
@@ -2292,6 +2949,15 @@ func NewRefAudioStreamPlaybackOggVorbis(reference AudioStreamPlaybackOggVorbis) 
 
 func NewRefAudioStreamPlaybackOggVorbisAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackOggVorbis](reference.(AudioStreamPlaybackOggVorbis))
+}
+
+// NewRefAudioStreamPlaybackOggVorbisAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaybackOggVorbisAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlaybackOggVorbis](reference.(AudioStreamPlaybackOggVorbis))
 }
 
 // NewRefAudioStreamPlaybackOggVorbisGDExtensionIternalConstructor wraps an instance this
@@ -2325,6 +2991,15 @@ func NewRefAudioStreamPlaybackPlaylistAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackPlaylist](reference.(AudioStreamPlaybackPlaylist))
 }
 
+// NewRefAudioStreamPlaybackPlaylistAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaybackPlaylistAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlaybackPlaylist](reference.(AudioStreamPlaybackPlaylist))
+}
+
 // NewRefAudioStreamPlaybackPlaylistGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamPlaybackPlaylistWithGodotOwnerObject. Borrowing: dropping
@@ -2354,6 +3029,15 @@ func NewRefAudioStreamPlaybackPolyphonic(reference AudioStreamPlaybackPolyphonic
 
 func NewRefAudioStreamPlaybackPolyphonicAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackPolyphonic](reference.(AudioStreamPlaybackPolyphonic))
+}
+
+// NewRefAudioStreamPlaybackPolyphonicAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaybackPolyphonicAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlaybackPolyphonic](reference.(AudioStreamPlaybackPolyphonic))
 }
 
 // NewRefAudioStreamPlaybackPolyphonicGDExtensionIternalConstructor wraps an instance this
@@ -2387,6 +3071,15 @@ func NewRefAudioStreamPlaybackResampledAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackResampled](reference.(AudioStreamPlaybackResampled))
 }
 
+// NewRefAudioStreamPlaybackResampledAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaybackResampledAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlaybackResampled](reference.(AudioStreamPlaybackResampled))
+}
+
 // NewRefAudioStreamPlaybackResampledGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamPlaybackResampledWithGodotOwnerObject. Borrowing: dropping
@@ -2416,6 +3109,15 @@ func NewRefAudioStreamPlaybackSynchronized(reference AudioStreamPlaybackSynchron
 
 func NewRefAudioStreamPlaybackSynchronizedAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaybackSynchronized](reference.(AudioStreamPlaybackSynchronized))
+}
+
+// NewRefAudioStreamPlaybackSynchronizedAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaybackSynchronizedAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlaybackSynchronized](reference.(AudioStreamPlaybackSynchronized))
 }
 
 // NewRefAudioStreamPlaybackSynchronizedGDExtensionIternalConstructor wraps an instance this
@@ -2449,6 +3151,15 @@ func NewRefAudioStreamPlaylistAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPlaylist](reference.(AudioStreamPlaylist))
 }
 
+// NewRefAudioStreamPlaylistAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPlaylistAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPlaylist](reference.(AudioStreamPlaylist))
+}
+
 // NewRefAudioStreamPlaylistGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamPlaylistWithGodotOwnerObject. Borrowing: dropping
@@ -2478,6 +3189,15 @@ func NewRefAudioStreamPolyphonic(reference AudioStreamPolyphonic) RefAudioStream
 
 func NewRefAudioStreamPolyphonicAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamPolyphonic](reference.(AudioStreamPolyphonic))
+}
+
+// NewRefAudioStreamPolyphonicAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamPolyphonicAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamPolyphonic](reference.(AudioStreamPolyphonic))
 }
 
 // NewRefAudioStreamPolyphonicGDExtensionIternalConstructor wraps an instance this
@@ -2511,6 +3231,15 @@ func NewRefAudioStreamRandomizerAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamRandomizer](reference.(AudioStreamRandomizer))
 }
 
+// NewRefAudioStreamRandomizerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamRandomizerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamRandomizer](reference.(AudioStreamRandomizer))
+}
+
 // NewRefAudioStreamRandomizerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamRandomizerWithGodotOwnerObject. Borrowing: dropping
@@ -2540,6 +3269,15 @@ func NewRefAudioStreamSynchronized(reference AudioStreamSynchronized) RefAudioSt
 
 func NewRefAudioStreamSynchronizedAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamSynchronized](reference.(AudioStreamSynchronized))
+}
+
+// NewRefAudioStreamSynchronizedAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamSynchronizedAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamSynchronized](reference.(AudioStreamSynchronized))
 }
 
 // NewRefAudioStreamSynchronizedGDExtensionIternalConstructor wraps an instance this
@@ -2573,6 +3311,15 @@ func NewRefAudioStreamWAVAsRef(reference RefCounted) Ref {
 	return NewRef[AudioStreamWAV](reference.(AudioStreamWAV))
 }
 
+// NewRefAudioStreamWAVAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAudioStreamWAVAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AudioStreamWAV](reference.(AudioStreamWAV))
+}
+
 // NewRefAudioStreamWAVGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewAudioStreamWAVWithGodotOwnerObject. Borrowing: dropping
@@ -2602,6 +3349,15 @@ func NewRefAwaitTweener(reference AwaitTweener) RefAwaitTweener {
 
 func NewRefAwaitTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[AwaitTweener](reference.(AwaitTweener))
+}
+
+// NewRefAwaitTweenerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefAwaitTweenerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[AwaitTweener](reference.(AwaitTweener))
 }
 
 // NewRefAwaitTweenerGDExtensionIternalConstructor wraps an instance this
@@ -2635,6 +3391,15 @@ func NewRefBaseMaterial3DAsRef(reference RefCounted) Ref {
 	return NewRef[BaseMaterial3D](reference.(BaseMaterial3D))
 }
 
+// NewRefBaseMaterial3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefBaseMaterial3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[BaseMaterial3D](reference.(BaseMaterial3D))
+}
+
 // NewRefBaseMaterial3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewBaseMaterial3DWithGodotOwnerObject. Borrowing: dropping
@@ -2664,6 +3429,15 @@ func NewRefBitMap(reference BitMap) RefBitMap {
 
 func NewRefBitMapAsRef(reference RefCounted) Ref {
 	return NewRef[BitMap](reference.(BitMap))
+}
+
+// NewRefBitMapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefBitMapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[BitMap](reference.(BitMap))
 }
 
 // NewRefBitMapGDExtensionIternalConstructor wraps an instance this
@@ -2697,6 +3471,15 @@ func NewRefBlitMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[BlitMaterial](reference.(BlitMaterial))
 }
 
+// NewRefBlitMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefBlitMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[BlitMaterial](reference.(BlitMaterial))
+}
+
 // NewRefBlitMaterialGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewBlitMaterialWithGodotOwnerObject. Borrowing: dropping
@@ -2726,6 +3509,15 @@ func NewRefBoneMap(reference BoneMap) RefBoneMap {
 
 func NewRefBoneMapAsRef(reference RefCounted) Ref {
 	return NewRef[BoneMap](reference.(BoneMap))
+}
+
+// NewRefBoneMapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefBoneMapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[BoneMap](reference.(BoneMap))
 }
 
 // NewRefBoneMapGDExtensionIternalConstructor wraps an instance this
@@ -2759,6 +3551,15 @@ func NewRefBoxMeshAsRef(reference RefCounted) Ref {
 	return NewRef[BoxMesh](reference.(BoxMesh))
 }
 
+// NewRefBoxMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefBoxMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[BoxMesh](reference.(BoxMesh))
+}
+
 // NewRefBoxMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewBoxMeshWithGodotOwnerObject. Borrowing: dropping
@@ -2788,6 +3589,15 @@ func NewRefBoxOccluder3D(reference BoxOccluder3D) RefBoxOccluder3D {
 
 func NewRefBoxOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[BoxOccluder3D](reference.(BoxOccluder3D))
+}
+
+// NewRefBoxOccluder3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefBoxOccluder3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[BoxOccluder3D](reference.(BoxOccluder3D))
 }
 
 // NewRefBoxOccluder3DGDExtensionIternalConstructor wraps an instance this
@@ -2821,6 +3631,15 @@ func NewRefBoxShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[BoxShape3D](reference.(BoxShape3D))
 }
 
+// NewRefBoxShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefBoxShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[BoxShape3D](reference.(BoxShape3D))
+}
+
 // NewRefBoxShape3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewBoxShape3DWithGodotOwnerObject. Borrowing: dropping
@@ -2850,6 +3669,15 @@ func NewRefButtonGroup(reference ButtonGroup) RefButtonGroup {
 
 func NewRefButtonGroupAsRef(reference RefCounted) Ref {
 	return NewRef[ButtonGroup](reference.(ButtonGroup))
+}
+
+// NewRefButtonGroupAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefButtonGroupAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ButtonGroup](reference.(ButtonGroup))
 }
 
 // NewRefButtonGroupGDExtensionIternalConstructor wraps an instance this
@@ -2883,6 +3711,15 @@ func NewRefCallbackTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[CallbackTweener](reference.(CallbackTweener))
 }
 
+// NewRefCallbackTweenerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCallbackTweenerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CallbackTweener](reference.(CallbackTweener))
+}
+
 // NewRefCallbackTweenerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCallbackTweenerWithGodotOwnerObject. Borrowing: dropping
@@ -2912,6 +3749,15 @@ func NewRefCameraAttributes(reference CameraAttributes) RefCameraAttributes {
 
 func NewRefCameraAttributesAsRef(reference RefCounted) Ref {
 	return NewRef[CameraAttributes](reference.(CameraAttributes))
+}
+
+// NewRefCameraAttributesAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCameraAttributesAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CameraAttributes](reference.(CameraAttributes))
 }
 
 // NewRefCameraAttributesGDExtensionIternalConstructor wraps an instance this
@@ -2945,6 +3791,15 @@ func NewRefCameraAttributesPhysicalAsRef(reference RefCounted) Ref {
 	return NewRef[CameraAttributesPhysical](reference.(CameraAttributesPhysical))
 }
 
+// NewRefCameraAttributesPhysicalAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCameraAttributesPhysicalAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CameraAttributesPhysical](reference.(CameraAttributesPhysical))
+}
+
 // NewRefCameraAttributesPhysicalGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCameraAttributesPhysicalWithGodotOwnerObject. Borrowing: dropping
@@ -2974,6 +3829,15 @@ func NewRefCameraAttributesPractical(reference CameraAttributesPractical) RefCam
 
 func NewRefCameraAttributesPracticalAsRef(reference RefCounted) Ref {
 	return NewRef[CameraAttributesPractical](reference.(CameraAttributesPractical))
+}
+
+// NewRefCameraAttributesPracticalAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCameraAttributesPracticalAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CameraAttributesPractical](reference.(CameraAttributesPractical))
 }
 
 // NewRefCameraAttributesPracticalGDExtensionIternalConstructor wraps an instance this
@@ -3007,6 +3871,15 @@ func NewRefCameraFeedAsRef(reference RefCounted) Ref {
 	return NewRef[CameraFeed](reference.(CameraFeed))
 }
 
+// NewRefCameraFeedAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCameraFeedAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CameraFeed](reference.(CameraFeed))
+}
+
 // NewRefCameraFeedGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCameraFeedWithGodotOwnerObject. Borrowing: dropping
@@ -3036,6 +3909,15 @@ func NewRefCameraTexture(reference CameraTexture) RefCameraTexture {
 
 func NewRefCameraTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CameraTexture](reference.(CameraTexture))
+}
+
+// NewRefCameraTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCameraTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CameraTexture](reference.(CameraTexture))
 }
 
 // NewRefCameraTextureGDExtensionIternalConstructor wraps an instance this
@@ -3069,6 +3951,15 @@ func NewRefCanvasItemMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[CanvasItemMaterial](reference.(CanvasItemMaterial))
 }
 
+// NewRefCanvasItemMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCanvasItemMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CanvasItemMaterial](reference.(CanvasItemMaterial))
+}
+
 // NewRefCanvasItemMaterialGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCanvasItemMaterialWithGodotOwnerObject. Borrowing: dropping
@@ -3098,6 +3989,15 @@ func NewRefCanvasTexture(reference CanvasTexture) RefCanvasTexture {
 
 func NewRefCanvasTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CanvasTexture](reference.(CanvasTexture))
+}
+
+// NewRefCanvasTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCanvasTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CanvasTexture](reference.(CanvasTexture))
 }
 
 // NewRefCanvasTextureGDExtensionIternalConstructor wraps an instance this
@@ -3131,6 +4031,15 @@ func NewRefCapsuleMeshAsRef(reference RefCounted) Ref {
 	return NewRef[CapsuleMesh](reference.(CapsuleMesh))
 }
 
+// NewRefCapsuleMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCapsuleMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CapsuleMesh](reference.(CapsuleMesh))
+}
+
 // NewRefCapsuleMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCapsuleMeshWithGodotOwnerObject. Borrowing: dropping
@@ -3160,6 +4069,15 @@ func NewRefCapsuleShape2D(reference CapsuleShape2D) RefCapsuleShape2D {
 
 func NewRefCapsuleShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[CapsuleShape2D](reference.(CapsuleShape2D))
+}
+
+// NewRefCapsuleShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCapsuleShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CapsuleShape2D](reference.(CapsuleShape2D))
 }
 
 // NewRefCapsuleShape2DGDExtensionIternalConstructor wraps an instance this
@@ -3193,6 +4111,15 @@ func NewRefCapsuleShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[CapsuleShape3D](reference.(CapsuleShape3D))
 }
 
+// NewRefCapsuleShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCapsuleShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CapsuleShape3D](reference.(CapsuleShape3D))
+}
+
 // NewRefCapsuleShape3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCapsuleShape3DWithGodotOwnerObject. Borrowing: dropping
@@ -3222,6 +4149,15 @@ func NewRefCharFXTransform(reference CharFXTransform) RefCharFXTransform {
 
 func NewRefCharFXTransformAsRef(reference RefCounted) Ref {
 	return NewRef[CharFXTransform](reference.(CharFXTransform))
+}
+
+// NewRefCharFXTransformAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCharFXTransformAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CharFXTransform](reference.(CharFXTransform))
 }
 
 // NewRefCharFXTransformGDExtensionIternalConstructor wraps an instance this
@@ -3255,6 +4191,15 @@ func NewRefCircleShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[CircleShape2D](reference.(CircleShape2D))
 }
 
+// NewRefCircleShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCircleShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CircleShape2D](reference.(CircleShape2D))
+}
+
 // NewRefCircleShape2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCircleShape2DWithGodotOwnerObject. Borrowing: dropping
@@ -3284,6 +4229,15 @@ func NewRefCodeHighlighter(reference CodeHighlighter) RefCodeHighlighter {
 
 func NewRefCodeHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[CodeHighlighter](reference.(CodeHighlighter))
+}
+
+// NewRefCodeHighlighterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCodeHighlighterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CodeHighlighter](reference.(CodeHighlighter))
 }
 
 // NewRefCodeHighlighterGDExtensionIternalConstructor wraps an instance this
@@ -3317,6 +4271,15 @@ func NewRefColorPaletteAsRef(reference RefCounted) Ref {
 	return NewRef[ColorPalette](reference.(ColorPalette))
 }
 
+// NewRefColorPaletteAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefColorPaletteAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ColorPalette](reference.(ColorPalette))
+}
+
 // NewRefColorPaletteGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewColorPaletteWithGodotOwnerObject. Borrowing: dropping
@@ -3346,6 +4309,15 @@ func NewRefCompositor(reference Compositor) RefCompositor {
 
 func NewRefCompositorAsRef(reference RefCounted) Ref {
 	return NewRef[Compositor](reference.(Compositor))
+}
+
+// NewRefCompositorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompositorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Compositor](reference.(Compositor))
 }
 
 // NewRefCompositorGDExtensionIternalConstructor wraps an instance this
@@ -3379,6 +4351,15 @@ func NewRefCompositorEffectAsRef(reference RefCounted) Ref {
 	return NewRef[CompositorEffect](reference.(CompositorEffect))
 }
 
+// NewRefCompositorEffectAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompositorEffectAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CompositorEffect](reference.(CompositorEffect))
+}
+
 // NewRefCompositorEffectGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCompositorEffectWithGodotOwnerObject. Borrowing: dropping
@@ -3408,6 +4389,15 @@ func NewRefCompressedCubemap(reference CompressedCubemap) RefCompressedCubemap {
 
 func NewRefCompressedCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedCubemap](reference.(CompressedCubemap))
+}
+
+// NewRefCompressedCubemapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompressedCubemapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CompressedCubemap](reference.(CompressedCubemap))
 }
 
 // NewRefCompressedCubemapGDExtensionIternalConstructor wraps an instance this
@@ -3441,6 +4431,15 @@ func NewRefCompressedCubemapArrayAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedCubemapArray](reference.(CompressedCubemapArray))
 }
 
+// NewRefCompressedCubemapArrayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompressedCubemapArrayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CompressedCubemapArray](reference.(CompressedCubemapArray))
+}
+
 // NewRefCompressedCubemapArrayGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCompressedCubemapArrayWithGodotOwnerObject. Borrowing: dropping
@@ -3470,6 +4469,15 @@ func NewRefCompressedTexture2D(reference CompressedTexture2D) RefCompressedTextu
 
 func NewRefCompressedTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTexture2D](reference.(CompressedTexture2D))
+}
+
+// NewRefCompressedTexture2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompressedTexture2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CompressedTexture2D](reference.(CompressedTexture2D))
 }
 
 // NewRefCompressedTexture2DGDExtensionIternalConstructor wraps an instance this
@@ -3503,6 +4511,15 @@ func NewRefCompressedTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTexture2DArray](reference.(CompressedTexture2DArray))
 }
 
+// NewRefCompressedTexture2DArrayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompressedTexture2DArrayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CompressedTexture2DArray](reference.(CompressedTexture2DArray))
+}
+
 // NewRefCompressedTexture2DArrayGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCompressedTexture2DArrayWithGodotOwnerObject. Borrowing: dropping
@@ -3532,6 +4549,15 @@ func NewRefCompressedTexture3D(reference CompressedTexture3D) RefCompressedTextu
 
 func NewRefCompressedTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTexture3D](reference.(CompressedTexture3D))
+}
+
+// NewRefCompressedTexture3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompressedTexture3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CompressedTexture3D](reference.(CompressedTexture3D))
 }
 
 // NewRefCompressedTexture3DGDExtensionIternalConstructor wraps an instance this
@@ -3565,6 +4591,15 @@ func NewRefCompressedTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[CompressedTextureLayered](reference.(CompressedTextureLayered))
 }
 
+// NewRefCompressedTextureLayeredAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCompressedTextureLayeredAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CompressedTextureLayered](reference.(CompressedTextureLayered))
+}
+
 // NewRefCompressedTextureLayeredGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCompressedTextureLayeredWithGodotOwnerObject. Borrowing: dropping
@@ -3594,6 +4629,15 @@ func NewRefConcavePolygonShape2D(reference ConcavePolygonShape2D) RefConcavePoly
 
 func NewRefConcavePolygonShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[ConcavePolygonShape2D](reference.(ConcavePolygonShape2D))
+}
+
+// NewRefConcavePolygonShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefConcavePolygonShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ConcavePolygonShape2D](reference.(ConcavePolygonShape2D))
 }
 
 // NewRefConcavePolygonShape2DGDExtensionIternalConstructor wraps an instance this
@@ -3627,6 +4671,15 @@ func NewRefConcavePolygonShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[ConcavePolygonShape3D](reference.(ConcavePolygonShape3D))
 }
 
+// NewRefConcavePolygonShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefConcavePolygonShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ConcavePolygonShape3D](reference.(ConcavePolygonShape3D))
+}
+
 // NewRefConcavePolygonShape3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewConcavePolygonShape3DWithGodotOwnerObject. Borrowing: dropping
@@ -3656,6 +4709,15 @@ func NewRefConfigFile(reference ConfigFile) RefConfigFile {
 
 func NewRefConfigFileAsRef(reference RefCounted) Ref {
 	return NewRef[ConfigFile](reference.(ConfigFile))
+}
+
+// NewRefConfigFileAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefConfigFileAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ConfigFile](reference.(ConfigFile))
 }
 
 // NewRefConfigFileGDExtensionIternalConstructor wraps an instance this
@@ -3689,6 +4751,15 @@ func NewRefConvexPolygonShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[ConvexPolygonShape2D](reference.(ConvexPolygonShape2D))
 }
 
+// NewRefConvexPolygonShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefConvexPolygonShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ConvexPolygonShape2D](reference.(ConvexPolygonShape2D))
+}
+
 // NewRefConvexPolygonShape2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewConvexPolygonShape2DWithGodotOwnerObject. Borrowing: dropping
@@ -3718,6 +4789,15 @@ func NewRefConvexPolygonShape3D(reference ConvexPolygonShape3D) RefConvexPolygon
 
 func NewRefConvexPolygonShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[ConvexPolygonShape3D](reference.(ConvexPolygonShape3D))
+}
+
+// NewRefConvexPolygonShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefConvexPolygonShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ConvexPolygonShape3D](reference.(ConvexPolygonShape3D))
 }
 
 // NewRefConvexPolygonShape3DGDExtensionIternalConstructor wraps an instance this
@@ -3751,6 +4831,15 @@ func NewRefCryptoAsRef(reference RefCounted) Ref {
 	return NewRef[Crypto](reference.(Crypto))
 }
 
+// NewRefCryptoAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCryptoAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Crypto](reference.(Crypto))
+}
+
 // NewRefCryptoGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCryptoWithGodotOwnerObject. Borrowing: dropping
@@ -3780,6 +4869,15 @@ func NewRefCryptoKey(reference CryptoKey) RefCryptoKey {
 
 func NewRefCryptoKeyAsRef(reference RefCounted) Ref {
 	return NewRef[CryptoKey](reference.(CryptoKey))
+}
+
+// NewRefCryptoKeyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCryptoKeyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CryptoKey](reference.(CryptoKey))
 }
 
 // NewRefCryptoKeyGDExtensionIternalConstructor wraps an instance this
@@ -3813,6 +4911,15 @@ func NewRefCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[Cubemap](reference.(Cubemap))
 }
 
+// NewRefCubemapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCubemapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Cubemap](reference.(Cubemap))
+}
+
 // NewRefCubemapGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCubemapWithGodotOwnerObject. Borrowing: dropping
@@ -3842,6 +4949,15 @@ func NewRefCubemapArray(reference CubemapArray) RefCubemapArray {
 
 func NewRefCubemapArrayAsRef(reference RefCounted) Ref {
 	return NewRef[CubemapArray](reference.(CubemapArray))
+}
+
+// NewRefCubemapArrayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCubemapArrayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CubemapArray](reference.(CubemapArray))
 }
 
 // NewRefCubemapArrayGDExtensionIternalConstructor wraps an instance this
@@ -3875,6 +4991,15 @@ func NewRefCurveAsRef(reference RefCounted) Ref {
 	return NewRef[Curve](reference.(Curve))
 }
 
+// NewRefCurveAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCurveAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Curve](reference.(Curve))
+}
+
 // NewRefCurveGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCurveWithGodotOwnerObject. Borrowing: dropping
@@ -3904,6 +5029,15 @@ func NewRefCurve2D(reference Curve2D) RefCurve2D {
 
 func NewRefCurve2DAsRef(reference RefCounted) Ref {
 	return NewRef[Curve2D](reference.(Curve2D))
+}
+
+// NewRefCurve2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCurve2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Curve2D](reference.(Curve2D))
 }
 
 // NewRefCurve2DGDExtensionIternalConstructor wraps an instance this
@@ -3937,6 +5071,15 @@ func NewRefCurve3DAsRef(reference RefCounted) Ref {
 	return NewRef[Curve3D](reference.(Curve3D))
 }
 
+// NewRefCurve3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCurve3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Curve3D](reference.(Curve3D))
+}
+
 // NewRefCurve3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCurve3DWithGodotOwnerObject. Borrowing: dropping
@@ -3966,6 +5109,15 @@ func NewRefCurveTexture(reference CurveTexture) RefCurveTexture {
 
 func NewRefCurveTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CurveTexture](reference.(CurveTexture))
+}
+
+// NewRefCurveTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCurveTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CurveTexture](reference.(CurveTexture))
 }
 
 // NewRefCurveTextureGDExtensionIternalConstructor wraps an instance this
@@ -3999,6 +5151,15 @@ func NewRefCurveXYZTextureAsRef(reference RefCounted) Ref {
 	return NewRef[CurveXYZTexture](reference.(CurveXYZTexture))
 }
 
+// NewRefCurveXYZTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCurveXYZTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CurveXYZTexture](reference.(CurveXYZTexture))
+}
+
 // NewRefCurveXYZTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCurveXYZTextureWithGodotOwnerObject. Borrowing: dropping
@@ -4028,6 +5189,15 @@ func NewRefCylinderMesh(reference CylinderMesh) RefCylinderMesh {
 
 func NewRefCylinderMeshAsRef(reference RefCounted) Ref {
 	return NewRef[CylinderMesh](reference.(CylinderMesh))
+}
+
+// NewRefCylinderMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCylinderMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CylinderMesh](reference.(CylinderMesh))
 }
 
 // NewRefCylinderMeshGDExtensionIternalConstructor wraps an instance this
@@ -4061,6 +5231,15 @@ func NewRefCylinderShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[CylinderShape3D](reference.(CylinderShape3D))
 }
 
+// NewRefCylinderShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefCylinderShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[CylinderShape3D](reference.(CylinderShape3D))
+}
+
 // NewRefCylinderShape3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewCylinderShape3DWithGodotOwnerObject. Borrowing: dropping
@@ -4090,6 +5269,15 @@ func NewRefDPITexture(reference DPITexture) RefDPITexture {
 
 func NewRefDPITextureAsRef(reference RefCounted) Ref {
 	return NewRef[DPITexture](reference.(DPITexture))
+}
+
+// NewRefDPITextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefDPITextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[DPITexture](reference.(DPITexture))
 }
 
 // NewRefDPITextureGDExtensionIternalConstructor wraps an instance this
@@ -4123,6 +5311,15 @@ func NewRefDTLSServerAsRef(reference RefCounted) Ref {
 	return NewRef[DTLSServer](reference.(DTLSServer))
 }
 
+// NewRefDTLSServerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefDTLSServerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[DTLSServer](reference.(DTLSServer))
+}
+
 // NewRefDTLSServerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewDTLSServerWithGodotOwnerObject. Borrowing: dropping
@@ -4152,6 +5349,15 @@ func NewRefDirAccess(reference DirAccess) RefDirAccess {
 
 func NewRefDirAccessAsRef(reference RefCounted) Ref {
 	return NewRef[DirAccess](reference.(DirAccess))
+}
+
+// NewRefDirAccessAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefDirAccessAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[DirAccess](reference.(DirAccess))
 }
 
 // NewRefDirAccessGDExtensionIternalConstructor wraps an instance this
@@ -4185,6 +5391,15 @@ func NewRefDrawableTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[DrawableTexture2D](reference.(DrawableTexture2D))
 }
 
+// NewRefDrawableTexture2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefDrawableTexture2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[DrawableTexture2D](reference.(DrawableTexture2D))
+}
+
 // NewRefDrawableTexture2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewDrawableTexture2DWithGodotOwnerObject. Borrowing: dropping
@@ -4214,6 +5429,15 @@ func NewRefENetConnection(reference ENetConnection) RefENetConnection {
 
 func NewRefENetConnectionAsRef(reference RefCounted) Ref {
 	return NewRef[ENetConnection](reference.(ENetConnection))
+}
+
+// NewRefENetConnectionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefENetConnectionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ENetConnection](reference.(ENetConnection))
 }
 
 // NewRefENetConnectionGDExtensionIternalConstructor wraps an instance this
@@ -4247,6 +5471,15 @@ func NewRefENetMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[ENetMultiplayerPeer](reference.(ENetMultiplayerPeer))
 }
 
+// NewRefENetMultiplayerPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefENetMultiplayerPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ENetMultiplayerPeer](reference.(ENetMultiplayerPeer))
+}
+
 // NewRefENetMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewENetMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
@@ -4276,6 +5509,15 @@ func NewRefENetPacketPeer(reference ENetPacketPeer) RefENetPacketPeer {
 
 func NewRefENetPacketPeerAsRef(reference RefCounted) Ref {
 	return NewRef[ENetPacketPeer](reference.(ENetPacketPeer))
+}
+
+// NewRefENetPacketPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefENetPacketPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ENetPacketPeer](reference.(ENetPacketPeer))
 }
 
 // NewRefENetPacketPeerGDExtensionIternalConstructor wraps an instance this
@@ -4309,6 +5551,15 @@ func NewRefEditorContextMenuPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorContextMenuPlugin](reference.(EditorContextMenuPlugin))
 }
 
+// NewRefEditorContextMenuPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorContextMenuPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorContextMenuPlugin](reference.(EditorContextMenuPlugin))
+}
+
 // NewRefEditorContextMenuPluginGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorContextMenuPluginWithGodotOwnerObject. Borrowing: dropping
@@ -4338,6 +5589,15 @@ func NewRefEditorDebuggerPlugin(reference EditorDebuggerPlugin) RefEditorDebugge
 
 func NewRefEditorDebuggerPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorDebuggerPlugin](reference.(EditorDebuggerPlugin))
+}
+
+// NewRefEditorDebuggerPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorDebuggerPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorDebuggerPlugin](reference.(EditorDebuggerPlugin))
 }
 
 // NewRefEditorDebuggerPluginGDExtensionIternalConstructor wraps an instance this
@@ -4371,6 +5631,15 @@ func NewRefEditorDebuggerSessionAsRef(reference RefCounted) Ref {
 	return NewRef[EditorDebuggerSession](reference.(EditorDebuggerSession))
 }
 
+// NewRefEditorDebuggerSessionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorDebuggerSessionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorDebuggerSession](reference.(EditorDebuggerSession))
+}
+
 // NewRefEditorDebuggerSessionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorDebuggerSessionWithGodotOwnerObject. Borrowing: dropping
@@ -4400,6 +5669,15 @@ func NewRefEditorExportPlatform(reference EditorExportPlatform) RefEditorExportP
 
 func NewRefEditorExportPlatformAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatform](reference.(EditorExportPlatform))
+}
+
+// NewRefEditorExportPlatformAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatform](reference.(EditorExportPlatform))
 }
 
 // NewRefEditorExportPlatformGDExtensionIternalConstructor wraps an instance this
@@ -4433,6 +5711,15 @@ func NewRefEditorExportPlatformAndroidAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformAndroid](reference.(EditorExportPlatformAndroid))
 }
 
+// NewRefEditorExportPlatformAndroidAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformAndroidAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformAndroid](reference.(EditorExportPlatformAndroid))
+}
+
 // NewRefEditorExportPlatformAndroidGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorExportPlatformAndroidWithGodotOwnerObject. Borrowing: dropping
@@ -4462,6 +5749,15 @@ func NewRefEditorExportPlatformAppleEmbedded(reference EditorExportPlatformApple
 
 func NewRefEditorExportPlatformAppleEmbeddedAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformAppleEmbedded](reference.(EditorExportPlatformAppleEmbedded))
+}
+
+// NewRefEditorExportPlatformAppleEmbeddedAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformAppleEmbeddedAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformAppleEmbedded](reference.(EditorExportPlatformAppleEmbedded))
 }
 
 // NewRefEditorExportPlatformAppleEmbeddedGDExtensionIternalConstructor wraps an instance this
@@ -4495,6 +5791,15 @@ func NewRefEditorExportPlatformExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformExtension](reference.(EditorExportPlatformExtension))
 }
 
+// NewRefEditorExportPlatformExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformExtension](reference.(EditorExportPlatformExtension))
+}
+
 // NewRefEditorExportPlatformExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorExportPlatformExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -4524,6 +5829,15 @@ func NewRefEditorExportPlatformIOS(reference EditorExportPlatformIOS) RefEditorE
 
 func NewRefEditorExportPlatformIOSAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformIOS](reference.(EditorExportPlatformIOS))
+}
+
+// NewRefEditorExportPlatformIOSAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformIOSAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformIOS](reference.(EditorExportPlatformIOS))
 }
 
 // NewRefEditorExportPlatformIOSGDExtensionIternalConstructor wraps an instance this
@@ -4557,6 +5871,15 @@ func NewRefEditorExportPlatformLinuxBSDAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformLinuxBSD](reference.(EditorExportPlatformLinuxBSD))
 }
 
+// NewRefEditorExportPlatformLinuxBSDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformLinuxBSDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformLinuxBSD](reference.(EditorExportPlatformLinuxBSD))
+}
+
 // NewRefEditorExportPlatformLinuxBSDGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorExportPlatformLinuxBSDWithGodotOwnerObject. Borrowing: dropping
@@ -4586,6 +5909,15 @@ func NewRefEditorExportPlatformMacOS(reference EditorExportPlatformMacOS) RefEdi
 
 func NewRefEditorExportPlatformMacOSAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformMacOS](reference.(EditorExportPlatformMacOS))
+}
+
+// NewRefEditorExportPlatformMacOSAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformMacOSAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformMacOS](reference.(EditorExportPlatformMacOS))
 }
 
 // NewRefEditorExportPlatformMacOSGDExtensionIternalConstructor wraps an instance this
@@ -4619,6 +5951,15 @@ func NewRefEditorExportPlatformPCAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformPC](reference.(EditorExportPlatformPC))
 }
 
+// NewRefEditorExportPlatformPCAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformPCAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformPC](reference.(EditorExportPlatformPC))
+}
+
 // NewRefEditorExportPlatformPCGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorExportPlatformPCWithGodotOwnerObject. Borrowing: dropping
@@ -4648,6 +5989,15 @@ func NewRefEditorExportPlatformVisionOS(reference EditorExportPlatformVisionOS) 
 
 func NewRefEditorExportPlatformVisionOSAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformVisionOS](reference.(EditorExportPlatformVisionOS))
+}
+
+// NewRefEditorExportPlatformVisionOSAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformVisionOSAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformVisionOS](reference.(EditorExportPlatformVisionOS))
 }
 
 // NewRefEditorExportPlatformVisionOSGDExtensionIternalConstructor wraps an instance this
@@ -4681,6 +6031,15 @@ func NewRefEditorExportPlatformWebAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformWeb](reference.(EditorExportPlatformWeb))
 }
 
+// NewRefEditorExportPlatformWebAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformWebAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformWeb](reference.(EditorExportPlatformWeb))
+}
+
 // NewRefEditorExportPlatformWebGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorExportPlatformWebWithGodotOwnerObject. Borrowing: dropping
@@ -4710,6 +6069,15 @@ func NewRefEditorExportPlatformWindows(reference EditorExportPlatformWindows) Re
 
 func NewRefEditorExportPlatformWindowsAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlatformWindows](reference.(EditorExportPlatformWindows))
+}
+
+// NewRefEditorExportPlatformWindowsAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPlatformWindowsAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlatformWindows](reference.(EditorExportPlatformWindows))
 }
 
 // NewRefEditorExportPlatformWindowsGDExtensionIternalConstructor wraps an instance this
@@ -4743,6 +6111,15 @@ func NewRefEditorExportPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPlugin](reference.(EditorExportPlugin))
 }
 
+// NewRefEditorExportPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPlugin](reference.(EditorExportPlugin))
+}
+
 // NewRefEditorExportPluginGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorExportPluginWithGodotOwnerObject. Borrowing: dropping
@@ -4772,6 +6149,15 @@ func NewRefEditorExportPreset(reference EditorExportPreset) RefEditorExportPrese
 
 func NewRefEditorExportPresetAsRef(reference RefCounted) Ref {
 	return NewRef[EditorExportPreset](reference.(EditorExportPreset))
+}
+
+// NewRefEditorExportPresetAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorExportPresetAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorExportPreset](reference.(EditorExportPreset))
 }
 
 // NewRefEditorExportPresetGDExtensionIternalConstructor wraps an instance this
@@ -4805,6 +6191,15 @@ func NewRefEditorFeatureProfileAsRef(reference RefCounted) Ref {
 	return NewRef[EditorFeatureProfile](reference.(EditorFeatureProfile))
 }
 
+// NewRefEditorFeatureProfileAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorFeatureProfileAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorFeatureProfile](reference.(EditorFeatureProfile))
+}
+
 // NewRefEditorFeatureProfileGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorFeatureProfileWithGodotOwnerObject. Borrowing: dropping
@@ -4834,6 +6229,15 @@ func NewRefEditorFileSystemImportFormatSupportQuery(reference EditorFileSystemIm
 
 func NewRefEditorFileSystemImportFormatSupportQueryAsRef(reference RefCounted) Ref {
 	return NewRef[EditorFileSystemImportFormatSupportQuery](reference.(EditorFileSystemImportFormatSupportQuery))
+}
+
+// NewRefEditorFileSystemImportFormatSupportQueryAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorFileSystemImportFormatSupportQueryAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorFileSystemImportFormatSupportQuery](reference.(EditorFileSystemImportFormatSupportQuery))
 }
 
 // NewRefEditorFileSystemImportFormatSupportQueryGDExtensionIternalConstructor wraps an instance this
@@ -4867,6 +6271,15 @@ func NewRefEditorImportPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorImportPlugin](reference.(EditorImportPlugin))
 }
 
+// NewRefEditorImportPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorImportPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorImportPlugin](reference.(EditorImportPlugin))
+}
+
 // NewRefEditorImportPluginGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorImportPluginWithGodotOwnerObject. Borrowing: dropping
@@ -4896,6 +6309,15 @@ func NewRefEditorInspectorPlugin(reference EditorInspectorPlugin) RefEditorInspe
 
 func NewRefEditorInspectorPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorInspectorPlugin](reference.(EditorInspectorPlugin))
+}
+
+// NewRefEditorInspectorPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorInspectorPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorInspectorPlugin](reference.(EditorInspectorPlugin))
 }
 
 // NewRefEditorInspectorPluginGDExtensionIternalConstructor wraps an instance this
@@ -4929,6 +6351,15 @@ func NewRefEditorNode3DGizmoAsRef(reference RefCounted) Ref {
 	return NewRef[EditorNode3DGizmo](reference.(EditorNode3DGizmo))
 }
 
+// NewRefEditorNode3DGizmoAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorNode3DGizmoAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorNode3DGizmo](reference.(EditorNode3DGizmo))
+}
+
 // NewRefEditorNode3DGizmoGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorNode3DGizmoWithGodotOwnerObject. Borrowing: dropping
@@ -4958,6 +6389,15 @@ func NewRefEditorNode3DGizmoPlugin(reference EditorNode3DGizmoPlugin) RefEditorN
 
 func NewRefEditorNode3DGizmoPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorNode3DGizmoPlugin](reference.(EditorNode3DGizmoPlugin))
+}
+
+// NewRefEditorNode3DGizmoPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorNode3DGizmoPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorNode3DGizmoPlugin](reference.(EditorNode3DGizmoPlugin))
 }
 
 // NewRefEditorNode3DGizmoPluginGDExtensionIternalConstructor wraps an instance this
@@ -4991,6 +6431,15 @@ func NewRefEditorResourceConversionPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorResourceConversionPlugin](reference.(EditorResourceConversionPlugin))
 }
 
+// NewRefEditorResourceConversionPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorResourceConversionPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorResourceConversionPlugin](reference.(EditorResourceConversionPlugin))
+}
+
 // NewRefEditorResourceConversionPluginGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorResourceConversionPluginWithGodotOwnerObject. Borrowing: dropping
@@ -5020,6 +6469,15 @@ func NewRefEditorResourcePreviewGenerator(reference EditorResourcePreviewGenerat
 
 func NewRefEditorResourcePreviewGeneratorAsRef(reference RefCounted) Ref {
 	return NewRef[EditorResourcePreviewGenerator](reference.(EditorResourcePreviewGenerator))
+}
+
+// NewRefEditorResourcePreviewGeneratorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorResourcePreviewGeneratorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorResourcePreviewGenerator](reference.(EditorResourcePreviewGenerator))
 }
 
 // NewRefEditorResourcePreviewGeneratorGDExtensionIternalConstructor wraps an instance this
@@ -5053,6 +6511,15 @@ func NewRefEditorResourceTooltipPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorResourceTooltipPlugin](reference.(EditorResourceTooltipPlugin))
 }
 
+// NewRefEditorResourceTooltipPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorResourceTooltipPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorResourceTooltipPlugin](reference.(EditorResourceTooltipPlugin))
+}
+
 // NewRefEditorResourceTooltipPluginGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorResourceTooltipPluginWithGodotOwnerObject. Borrowing: dropping
@@ -5082,6 +6549,15 @@ func NewRefEditorSceneFormatImporter(reference EditorSceneFormatImporter) RefEdi
 
 func NewRefEditorSceneFormatImporterAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporter](reference.(EditorSceneFormatImporter))
+}
+
+// NewRefEditorSceneFormatImporterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorSceneFormatImporterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorSceneFormatImporter](reference.(EditorSceneFormatImporter))
 }
 
 // NewRefEditorSceneFormatImporterGDExtensionIternalConstructor wraps an instance this
@@ -5115,6 +6591,15 @@ func NewRefEditorSceneFormatImporterBlendAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterBlend](reference.(EditorSceneFormatImporterBlend))
 }
 
+// NewRefEditorSceneFormatImporterBlendAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorSceneFormatImporterBlendAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorSceneFormatImporterBlend](reference.(EditorSceneFormatImporterBlend))
+}
+
 // NewRefEditorSceneFormatImporterBlendGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorSceneFormatImporterBlendWithGodotOwnerObject. Borrowing: dropping
@@ -5144,6 +6629,15 @@ func NewRefEditorSceneFormatImporterFBX2GLTF(reference EditorSceneFormatImporter
 
 func NewRefEditorSceneFormatImporterFBX2GLTFAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterFBX2GLTF](reference.(EditorSceneFormatImporterFBX2GLTF))
+}
+
+// NewRefEditorSceneFormatImporterFBX2GLTFAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorSceneFormatImporterFBX2GLTFAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorSceneFormatImporterFBX2GLTF](reference.(EditorSceneFormatImporterFBX2GLTF))
 }
 
 // NewRefEditorSceneFormatImporterFBX2GLTFGDExtensionIternalConstructor wraps an instance this
@@ -5177,6 +6671,15 @@ func NewRefEditorSceneFormatImporterGLTFAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterGLTF](reference.(EditorSceneFormatImporterGLTF))
 }
 
+// NewRefEditorSceneFormatImporterGLTFAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorSceneFormatImporterGLTFAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorSceneFormatImporterGLTF](reference.(EditorSceneFormatImporterGLTF))
+}
+
 // NewRefEditorSceneFormatImporterGLTFGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorSceneFormatImporterGLTFWithGodotOwnerObject. Borrowing: dropping
@@ -5206,6 +6709,15 @@ func NewRefEditorSceneFormatImporterUFBX(reference EditorSceneFormatImporterUFBX
 
 func NewRefEditorSceneFormatImporterUFBXAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSceneFormatImporterUFBX](reference.(EditorSceneFormatImporterUFBX))
+}
+
+// NewRefEditorSceneFormatImporterUFBXAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorSceneFormatImporterUFBXAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorSceneFormatImporterUFBX](reference.(EditorSceneFormatImporterUFBX))
 }
 
 // NewRefEditorSceneFormatImporterUFBXGDExtensionIternalConstructor wraps an instance this
@@ -5239,6 +6751,15 @@ func NewRefEditorScenePostImportAsRef(reference RefCounted) Ref {
 	return NewRef[EditorScenePostImport](reference.(EditorScenePostImport))
 }
 
+// NewRefEditorScenePostImportAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorScenePostImportAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorScenePostImport](reference.(EditorScenePostImport))
+}
+
 // NewRefEditorScenePostImportGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorScenePostImportWithGodotOwnerObject. Borrowing: dropping
@@ -5268,6 +6789,15 @@ func NewRefEditorScenePostImportPlugin(reference EditorScenePostImportPlugin) Re
 
 func NewRefEditorScenePostImportPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorScenePostImportPlugin](reference.(EditorScenePostImportPlugin))
+}
+
+// NewRefEditorScenePostImportPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorScenePostImportPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorScenePostImportPlugin](reference.(EditorScenePostImportPlugin))
 }
 
 // NewRefEditorScenePostImportPluginGDExtensionIternalConstructor wraps an instance this
@@ -5301,6 +6831,15 @@ func NewRefEditorScriptAsRef(reference RefCounted) Ref {
 	return NewRef[EditorScript](reference.(EditorScript))
 }
 
+// NewRefEditorScriptAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorScriptAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorScript](reference.(EditorScript))
+}
+
 // NewRefEditorScriptGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorScriptWithGodotOwnerObject. Borrowing: dropping
@@ -5330,6 +6869,15 @@ func NewRefEditorSettings(reference EditorSettings) RefEditorSettings {
 
 func NewRefEditorSettingsAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSettings](reference.(EditorSettings))
+}
+
+// NewRefEditorSettingsAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorSettingsAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorSettings](reference.(EditorSettings))
 }
 
 // NewRefEditorSettingsGDExtensionIternalConstructor wraps an instance this
@@ -5363,6 +6911,15 @@ func NewRefEditorSyntaxHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[EditorSyntaxHighlighter](reference.(EditorSyntaxHighlighter))
 }
 
+// NewRefEditorSyntaxHighlighterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorSyntaxHighlighterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorSyntaxHighlighter](reference.(EditorSyntaxHighlighter))
+}
+
 // NewRefEditorSyntaxHighlighterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEditorSyntaxHighlighterWithGodotOwnerObject. Borrowing: dropping
@@ -5392,6 +6949,15 @@ func NewRefEditorTranslationParserPlugin(reference EditorTranslationParserPlugin
 
 func NewRefEditorTranslationParserPluginAsRef(reference RefCounted) Ref {
 	return NewRef[EditorTranslationParserPlugin](reference.(EditorTranslationParserPlugin))
+}
+
+// NewRefEditorTranslationParserPluginAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEditorTranslationParserPluginAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EditorTranslationParserPlugin](reference.(EditorTranslationParserPlugin))
 }
 
 // NewRefEditorTranslationParserPluginGDExtensionIternalConstructor wraps an instance this
@@ -5425,6 +6991,15 @@ func NewRefEncodedObjectAsIDAsRef(reference RefCounted) Ref {
 	return NewRef[EncodedObjectAsID](reference.(EncodedObjectAsID))
 }
 
+// NewRefEncodedObjectAsIDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEncodedObjectAsIDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EncodedObjectAsID](reference.(EncodedObjectAsID))
+}
+
 // NewRefEncodedObjectAsIDGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEncodedObjectAsIDWithGodotOwnerObject. Borrowing: dropping
@@ -5454,6 +7029,15 @@ func NewRefEngineProfiler(reference EngineProfiler) RefEngineProfiler {
 
 func NewRefEngineProfilerAsRef(reference RefCounted) Ref {
 	return NewRef[EngineProfiler](reference.(EngineProfiler))
+}
+
+// NewRefEngineProfilerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEngineProfilerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[EngineProfiler](reference.(EngineProfiler))
 }
 
 // NewRefEngineProfilerGDExtensionIternalConstructor wraps an instance this
@@ -5487,6 +7071,15 @@ func NewRefEnvironmentAsRef(reference RefCounted) Ref {
 	return NewRef[Environment](reference.(Environment))
 }
 
+// NewRefEnvironmentAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefEnvironmentAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Environment](reference.(Environment))
+}
+
 // NewRefEnvironmentGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewEnvironmentWithGodotOwnerObject. Borrowing: dropping
@@ -5516,6 +7109,15 @@ func NewRefExpression(reference Expression) RefExpression {
 
 func NewRefExpressionAsRef(reference RefCounted) Ref {
 	return NewRef[Expression](reference.(Expression))
+}
+
+// NewRefExpressionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefExpressionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Expression](reference.(Expression))
 }
 
 // NewRefExpressionGDExtensionIternalConstructor wraps an instance this
@@ -5549,6 +7151,15 @@ func NewRefExternalTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ExternalTexture](reference.(ExternalTexture))
 }
 
+// NewRefExternalTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefExternalTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ExternalTexture](reference.(ExternalTexture))
+}
+
 // NewRefExternalTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewExternalTextureWithGodotOwnerObject. Borrowing: dropping
@@ -5578,6 +7189,15 @@ func NewRefFBXDocument(reference FBXDocument) RefFBXDocument {
 
 func NewRefFBXDocumentAsRef(reference RefCounted) Ref {
 	return NewRef[FBXDocument](reference.(FBXDocument))
+}
+
+// NewRefFBXDocumentAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFBXDocumentAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FBXDocument](reference.(FBXDocument))
 }
 
 // NewRefFBXDocumentGDExtensionIternalConstructor wraps an instance this
@@ -5611,6 +7231,15 @@ func NewRefFBXStateAsRef(reference RefCounted) Ref {
 	return NewRef[FBXState](reference.(FBXState))
 }
 
+// NewRefFBXStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFBXStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FBXState](reference.(FBXState))
+}
+
 // NewRefFBXStateGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewFBXStateWithGodotOwnerObject. Borrowing: dropping
@@ -5640,6 +7269,15 @@ func NewRefFastNoiseLite(reference FastNoiseLite) RefFastNoiseLite {
 
 func NewRefFastNoiseLiteAsRef(reference RefCounted) Ref {
 	return NewRef[FastNoiseLite](reference.(FastNoiseLite))
+}
+
+// NewRefFastNoiseLiteAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFastNoiseLiteAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FastNoiseLite](reference.(FastNoiseLite))
 }
 
 // NewRefFastNoiseLiteGDExtensionIternalConstructor wraps an instance this
@@ -5673,6 +7311,15 @@ func NewRefFileAccessAsRef(reference RefCounted) Ref {
 	return NewRef[FileAccess](reference.(FileAccess))
 }
 
+// NewRefFileAccessAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFileAccessAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FileAccess](reference.(FileAccess))
+}
+
 // NewRefFileAccessGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewFileAccessWithGodotOwnerObject. Borrowing: dropping
@@ -5702,6 +7349,15 @@ func NewRefFogMaterial(reference FogMaterial) RefFogMaterial {
 
 func NewRefFogMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[FogMaterial](reference.(FogMaterial))
+}
+
+// NewRefFogMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFogMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FogMaterial](reference.(FogMaterial))
 }
 
 // NewRefFogMaterialGDExtensionIternalConstructor wraps an instance this
@@ -5735,6 +7391,15 @@ func NewRefFoldableGroupAsRef(reference RefCounted) Ref {
 	return NewRef[FoldableGroup](reference.(FoldableGroup))
 }
 
+// NewRefFoldableGroupAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFoldableGroupAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FoldableGroup](reference.(FoldableGroup))
+}
+
 // NewRefFoldableGroupGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewFoldableGroupWithGodotOwnerObject. Borrowing: dropping
@@ -5764,6 +7429,15 @@ func NewRefFont(reference Font) RefFont {
 
 func NewRefFontAsRef(reference RefCounted) Ref {
 	return NewRef[Font](reference.(Font))
+}
+
+// NewRefFontAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFontAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Font](reference.(Font))
 }
 
 // NewRefFontGDExtensionIternalConstructor wraps an instance this
@@ -5797,6 +7471,15 @@ func NewRefFontFileAsRef(reference RefCounted) Ref {
 	return NewRef[FontFile](reference.(FontFile))
 }
 
+// NewRefFontFileAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFontFileAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FontFile](reference.(FontFile))
+}
+
 // NewRefFontFileGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewFontFileWithGodotOwnerObject. Borrowing: dropping
@@ -5826,6 +7509,15 @@ func NewRefFontVariation(reference FontVariation) RefFontVariation {
 
 func NewRefFontVariationAsRef(reference RefCounted) Ref {
 	return NewRef[FontVariation](reference.(FontVariation))
+}
+
+// NewRefFontVariationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefFontVariationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[FontVariation](reference.(FontVariation))
 }
 
 // NewRefFontVariationGDExtensionIternalConstructor wraps an instance this
@@ -5859,6 +7551,15 @@ func NewRefGDExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[GDExtension](reference.(GDExtension))
 }
 
+// NewRefGDExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGDExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GDExtension](reference.(GDExtension))
+}
+
 // NewRefGDExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGDExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -5888,6 +7589,15 @@ func NewRefGDScript(reference GDScript) RefGDScript {
 
 func NewRefGDScriptAsRef(reference RefCounted) Ref {
 	return NewRef[GDScript](reference.(GDScript))
+}
+
+// NewRefGDScriptAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGDScriptAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GDScript](reference.(GDScript))
 }
 
 // NewRefGDScriptGDExtensionIternalConstructor wraps an instance this
@@ -5921,6 +7631,15 @@ func NewRefGDScriptSyntaxHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[GDScriptSyntaxHighlighter](reference.(GDScriptSyntaxHighlighter))
 }
 
+// NewRefGDScriptSyntaxHighlighterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGDScriptSyntaxHighlighterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GDScriptSyntaxHighlighter](reference.(GDScriptSyntaxHighlighter))
+}
+
 // NewRefGDScriptSyntaxHighlighterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGDScriptSyntaxHighlighterWithGodotOwnerObject. Borrowing: dropping
@@ -5950,6 +7669,15 @@ func NewRefGDScriptTextDocument(reference GDScriptTextDocument) RefGDScriptTextD
 
 func NewRefGDScriptTextDocumentAsRef(reference RefCounted) Ref {
 	return NewRef[GDScriptTextDocument](reference.(GDScriptTextDocument))
+}
+
+// NewRefGDScriptTextDocumentAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGDScriptTextDocumentAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GDScriptTextDocument](reference.(GDScriptTextDocument))
 }
 
 // NewRefGDScriptTextDocumentGDExtensionIternalConstructor wraps an instance this
@@ -5983,6 +7711,15 @@ func NewRefGDScriptWorkspaceAsRef(reference RefCounted) Ref {
 	return NewRef[GDScriptWorkspace](reference.(GDScriptWorkspace))
 }
 
+// NewRefGDScriptWorkspaceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGDScriptWorkspaceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GDScriptWorkspace](reference.(GDScriptWorkspace))
+}
+
 // NewRefGDScriptWorkspaceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGDScriptWorkspaceWithGodotOwnerObject. Borrowing: dropping
@@ -6012,6 +7749,15 @@ func NewRefGLTFAccessor(reference GLTFAccessor) RefGLTFAccessor {
 
 func NewRefGLTFAccessorAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFAccessor](reference.(GLTFAccessor))
+}
+
+// NewRefGLTFAccessorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFAccessorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFAccessor](reference.(GLTFAccessor))
 }
 
 // NewRefGLTFAccessorGDExtensionIternalConstructor wraps an instance this
@@ -6045,6 +7791,15 @@ func NewRefGLTFAnimationAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFAnimation](reference.(GLTFAnimation))
 }
 
+// NewRefGLTFAnimationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFAnimationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFAnimation](reference.(GLTFAnimation))
+}
+
 // NewRefGLTFAnimationGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFAnimationWithGodotOwnerObject. Borrowing: dropping
@@ -6074,6 +7829,15 @@ func NewRefGLTFBufferView(reference GLTFBufferView) RefGLTFBufferView {
 
 func NewRefGLTFBufferViewAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFBufferView](reference.(GLTFBufferView))
+}
+
+// NewRefGLTFBufferViewAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFBufferViewAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFBufferView](reference.(GLTFBufferView))
 }
 
 // NewRefGLTFBufferViewGDExtensionIternalConstructor wraps an instance this
@@ -6107,6 +7871,15 @@ func NewRefGLTFCameraAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFCamera](reference.(GLTFCamera))
 }
 
+// NewRefGLTFCameraAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFCameraAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFCamera](reference.(GLTFCamera))
+}
+
 // NewRefGLTFCameraGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFCameraWithGodotOwnerObject. Borrowing: dropping
@@ -6136,6 +7909,15 @@ func NewRefGLTFDocument(reference GLTFDocument) RefGLTFDocument {
 
 func NewRefGLTFDocumentAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFDocument](reference.(GLTFDocument))
+}
+
+// NewRefGLTFDocumentAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFDocumentAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFDocument](reference.(GLTFDocument))
 }
 
 // NewRefGLTFDocumentGDExtensionIternalConstructor wraps an instance this
@@ -6169,6 +7951,15 @@ func NewRefGLTFDocumentExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFDocumentExtension](reference.(GLTFDocumentExtension))
 }
 
+// NewRefGLTFDocumentExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFDocumentExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFDocumentExtension](reference.(GLTFDocumentExtension))
+}
+
 // NewRefGLTFDocumentExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFDocumentExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -6198,6 +7989,15 @@ func NewRefGLTFDocumentExtensionConvertImporterMesh(reference GLTFDocumentExtens
 
 func NewRefGLTFDocumentExtensionConvertImporterMeshAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFDocumentExtensionConvertImporterMesh](reference.(GLTFDocumentExtensionConvertImporterMesh))
+}
+
+// NewRefGLTFDocumentExtensionConvertImporterMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFDocumentExtensionConvertImporterMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFDocumentExtensionConvertImporterMesh](reference.(GLTFDocumentExtensionConvertImporterMesh))
 }
 
 // NewRefGLTFDocumentExtensionConvertImporterMeshGDExtensionIternalConstructor wraps an instance this
@@ -6231,6 +8031,15 @@ func NewRefGLTFLightAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFLight](reference.(GLTFLight))
 }
 
+// NewRefGLTFLightAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFLightAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFLight](reference.(GLTFLight))
+}
+
 // NewRefGLTFLightGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFLightWithGodotOwnerObject. Borrowing: dropping
@@ -6260,6 +8069,15 @@ func NewRefGLTFMesh(reference GLTFMesh) RefGLTFMesh {
 
 func NewRefGLTFMeshAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFMesh](reference.(GLTFMesh))
+}
+
+// NewRefGLTFMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFMesh](reference.(GLTFMesh))
 }
 
 // NewRefGLTFMeshGDExtensionIternalConstructor wraps an instance this
@@ -6293,6 +8111,15 @@ func NewRefGLTFNodeAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFNode](reference.(GLTFNode))
 }
 
+// NewRefGLTFNodeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFNodeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFNode](reference.(GLTFNode))
+}
+
 // NewRefGLTFNodeGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFNodeWithGodotOwnerObject. Borrowing: dropping
@@ -6322,6 +8149,15 @@ func NewRefGLTFObjectModelProperty(reference GLTFObjectModelProperty) RefGLTFObj
 
 func NewRefGLTFObjectModelPropertyAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFObjectModelProperty](reference.(GLTFObjectModelProperty))
+}
+
+// NewRefGLTFObjectModelPropertyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFObjectModelPropertyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFObjectModelProperty](reference.(GLTFObjectModelProperty))
 }
 
 // NewRefGLTFObjectModelPropertyGDExtensionIternalConstructor wraps an instance this
@@ -6355,6 +8191,15 @@ func NewRefGLTFPhysicsBodyAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFPhysicsBody](reference.(GLTFPhysicsBody))
 }
 
+// NewRefGLTFPhysicsBodyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFPhysicsBodyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFPhysicsBody](reference.(GLTFPhysicsBody))
+}
+
 // NewRefGLTFPhysicsBodyGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFPhysicsBodyWithGodotOwnerObject. Borrowing: dropping
@@ -6384,6 +8229,15 @@ func NewRefGLTFPhysicsShape(reference GLTFPhysicsShape) RefGLTFPhysicsShape {
 
 func NewRefGLTFPhysicsShapeAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFPhysicsShape](reference.(GLTFPhysicsShape))
+}
+
+// NewRefGLTFPhysicsShapeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFPhysicsShapeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFPhysicsShape](reference.(GLTFPhysicsShape))
 }
 
 // NewRefGLTFPhysicsShapeGDExtensionIternalConstructor wraps an instance this
@@ -6417,6 +8271,15 @@ func NewRefGLTFSkeletonAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFSkeleton](reference.(GLTFSkeleton))
 }
 
+// NewRefGLTFSkeletonAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFSkeletonAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFSkeleton](reference.(GLTFSkeleton))
+}
+
 // NewRefGLTFSkeletonGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFSkeletonWithGodotOwnerObject. Borrowing: dropping
@@ -6446,6 +8309,15 @@ func NewRefGLTFSkin(reference GLTFSkin) RefGLTFSkin {
 
 func NewRefGLTFSkinAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFSkin](reference.(GLTFSkin))
+}
+
+// NewRefGLTFSkinAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFSkinAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFSkin](reference.(GLTFSkin))
 }
 
 // NewRefGLTFSkinGDExtensionIternalConstructor wraps an instance this
@@ -6479,6 +8351,15 @@ func NewRefGLTFSpecGlossAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFSpecGloss](reference.(GLTFSpecGloss))
 }
 
+// NewRefGLTFSpecGlossAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFSpecGlossAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFSpecGloss](reference.(GLTFSpecGloss))
+}
+
 // NewRefGLTFSpecGlossGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFSpecGlossWithGodotOwnerObject. Borrowing: dropping
@@ -6508,6 +8389,15 @@ func NewRefGLTFState(reference GLTFState) RefGLTFState {
 
 func NewRefGLTFStateAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFState](reference.(GLTFState))
+}
+
+// NewRefGLTFStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFState](reference.(GLTFState))
 }
 
 // NewRefGLTFStateGDExtensionIternalConstructor wraps an instance this
@@ -6541,6 +8431,15 @@ func NewRefGLTFTextureAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFTexture](reference.(GLTFTexture))
 }
 
+// NewRefGLTFTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFTexture](reference.(GLTFTexture))
+}
+
 // NewRefGLTFTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGLTFTextureWithGodotOwnerObject. Borrowing: dropping
@@ -6570,6 +8469,15 @@ func NewRefGLTFTextureSampler(reference GLTFTextureSampler) RefGLTFTextureSample
 
 func NewRefGLTFTextureSamplerAsRef(reference RefCounted) Ref {
 	return NewRef[GLTFTextureSampler](reference.(GLTFTextureSampler))
+}
+
+// NewRefGLTFTextureSamplerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGLTFTextureSamplerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GLTFTextureSampler](reference.(GLTFTextureSampler))
 }
 
 // NewRefGLTFTextureSamplerGDExtensionIternalConstructor wraps an instance this
@@ -6603,6 +8511,15 @@ func NewRefGradientAsRef(reference RefCounted) Ref {
 	return NewRef[Gradient](reference.(Gradient))
 }
 
+// NewRefGradientAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGradientAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Gradient](reference.(Gradient))
+}
+
 // NewRefGradientGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGradientWithGodotOwnerObject. Borrowing: dropping
@@ -6632,6 +8549,15 @@ func NewRefGradientTexture1D(reference GradientTexture1D) RefGradientTexture1D {
 
 func NewRefGradientTexture1DAsRef(reference RefCounted) Ref {
 	return NewRef[GradientTexture1D](reference.(GradientTexture1D))
+}
+
+// NewRefGradientTexture1DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGradientTexture1DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GradientTexture1D](reference.(GradientTexture1D))
 }
 
 // NewRefGradientTexture1DGDExtensionIternalConstructor wraps an instance this
@@ -6665,6 +8591,15 @@ func NewRefGradientTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[GradientTexture2D](reference.(GradientTexture2D))
 }
 
+// NewRefGradientTexture2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefGradientTexture2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[GradientTexture2D](reference.(GradientTexture2D))
+}
+
 // NewRefGradientTexture2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewGradientTexture2DWithGodotOwnerObject. Borrowing: dropping
@@ -6694,6 +8629,15 @@ func NewRefHMACContext(reference HMACContext) RefHMACContext {
 
 func NewRefHMACContextAsRef(reference RefCounted) Ref {
 	return NewRef[HMACContext](reference.(HMACContext))
+}
+
+// NewRefHMACContextAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefHMACContextAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[HMACContext](reference.(HMACContext))
 }
 
 // NewRefHMACContextGDExtensionIternalConstructor wraps an instance this
@@ -6727,6 +8671,15 @@ func NewRefHTTPClientAsRef(reference RefCounted) Ref {
 	return NewRef[HTTPClient](reference.(HTTPClient))
 }
 
+// NewRefHTTPClientAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefHTTPClientAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[HTTPClient](reference.(HTTPClient))
+}
+
 // NewRefHTTPClientGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewHTTPClientWithGodotOwnerObject. Borrowing: dropping
@@ -6756,6 +8709,15 @@ func NewRefHashingContext(reference HashingContext) RefHashingContext {
 
 func NewRefHashingContextAsRef(reference RefCounted) Ref {
 	return NewRef[HashingContext](reference.(HashingContext))
+}
+
+// NewRefHashingContextAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefHashingContextAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[HashingContext](reference.(HashingContext))
 }
 
 // NewRefHashingContextGDExtensionIternalConstructor wraps an instance this
@@ -6789,6 +8751,15 @@ func NewRefHeightMapShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[HeightMapShape3D](reference.(HeightMapShape3D))
 }
 
+// NewRefHeightMapShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefHeightMapShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[HeightMapShape3D](reference.(HeightMapShape3D))
+}
+
 // NewRefHeightMapShape3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewHeightMapShape3DWithGodotOwnerObject. Borrowing: dropping
@@ -6818,6 +8789,15 @@ func NewRefImage(reference Image) RefImage {
 
 func NewRefImageAsRef(reference RefCounted) Ref {
 	return NewRef[Image](reference.(Image))
+}
+
+// NewRefImageAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImageAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Image](reference.(Image))
 }
 
 // NewRefImageGDExtensionIternalConstructor wraps an instance this
@@ -6851,6 +8831,15 @@ func NewRefImageFormatLoaderAsRef(reference RefCounted) Ref {
 	return NewRef[ImageFormatLoader](reference.(ImageFormatLoader))
 }
 
+// NewRefImageFormatLoaderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImageFormatLoaderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ImageFormatLoader](reference.(ImageFormatLoader))
+}
+
 // NewRefImageFormatLoaderGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewImageFormatLoaderWithGodotOwnerObject. Borrowing: dropping
@@ -6880,6 +8869,15 @@ func NewRefImageFormatLoaderExtension(reference ImageFormatLoaderExtension) RefI
 
 func NewRefImageFormatLoaderExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[ImageFormatLoaderExtension](reference.(ImageFormatLoaderExtension))
+}
+
+// NewRefImageFormatLoaderExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImageFormatLoaderExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ImageFormatLoaderExtension](reference.(ImageFormatLoaderExtension))
 }
 
 // NewRefImageFormatLoaderExtensionGDExtensionIternalConstructor wraps an instance this
@@ -6913,6 +8911,15 @@ func NewRefImageTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ImageTexture](reference.(ImageTexture))
 }
 
+// NewRefImageTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImageTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ImageTexture](reference.(ImageTexture))
+}
+
 // NewRefImageTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewImageTextureWithGodotOwnerObject. Borrowing: dropping
@@ -6942,6 +8949,15 @@ func NewRefImageTexture3D(reference ImageTexture3D) RefImageTexture3D {
 
 func NewRefImageTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[ImageTexture3D](reference.(ImageTexture3D))
+}
+
+// NewRefImageTexture3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImageTexture3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ImageTexture3D](reference.(ImageTexture3D))
 }
 
 // NewRefImageTexture3DGDExtensionIternalConstructor wraps an instance this
@@ -6975,6 +8991,15 @@ func NewRefImageTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[ImageTextureLayered](reference.(ImageTextureLayered))
 }
 
+// NewRefImageTextureLayeredAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImageTextureLayeredAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ImageTextureLayered](reference.(ImageTextureLayered))
+}
+
 // NewRefImageTextureLayeredGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewImageTextureLayeredWithGodotOwnerObject. Borrowing: dropping
@@ -7004,6 +9029,15 @@ func NewRefImmediateMesh(reference ImmediateMesh) RefImmediateMesh {
 
 func NewRefImmediateMeshAsRef(reference RefCounted) Ref {
 	return NewRef[ImmediateMesh](reference.(ImmediateMesh))
+}
+
+// NewRefImmediateMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImmediateMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ImmediateMesh](reference.(ImmediateMesh))
 }
 
 // NewRefImmediateMeshGDExtensionIternalConstructor wraps an instance this
@@ -7037,6 +9071,15 @@ func NewRefImporterMeshAsRef(reference RefCounted) Ref {
 	return NewRef[ImporterMesh](reference.(ImporterMesh))
 }
 
+// NewRefImporterMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefImporterMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ImporterMesh](reference.(ImporterMesh))
+}
+
 // NewRefImporterMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewImporterMeshWithGodotOwnerObject. Borrowing: dropping
@@ -7066,6 +9109,15 @@ func NewRefInputEvent(reference InputEvent) RefInputEvent {
 
 func NewRefInputEventAsRef(reference RefCounted) Ref {
 	return NewRef[InputEvent](reference.(InputEvent))
+}
+
+// NewRefInputEventAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEvent](reference.(InputEvent))
 }
 
 // NewRefInputEventGDExtensionIternalConstructor wraps an instance this
@@ -7099,6 +9151,15 @@ func NewRefInputEventActionAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventAction](reference.(InputEventAction))
 }
 
+// NewRefInputEventActionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventActionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventAction](reference.(InputEventAction))
+}
+
 // NewRefInputEventActionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventActionWithGodotOwnerObject. Borrowing: dropping
@@ -7128,6 +9189,15 @@ func NewRefInputEventFromWindow(reference InputEventFromWindow) RefInputEventFro
 
 func NewRefInputEventFromWindowAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventFromWindow](reference.(InputEventFromWindow))
+}
+
+// NewRefInputEventFromWindowAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventFromWindowAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventFromWindow](reference.(InputEventFromWindow))
 }
 
 // NewRefInputEventFromWindowGDExtensionIternalConstructor wraps an instance this
@@ -7161,6 +9231,15 @@ func NewRefInputEventGestureAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventGesture](reference.(InputEventGesture))
 }
 
+// NewRefInputEventGestureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventGestureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventGesture](reference.(InputEventGesture))
+}
+
 // NewRefInputEventGestureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventGestureWithGodotOwnerObject. Borrowing: dropping
@@ -7190,6 +9269,15 @@ func NewRefInputEventJoypadButton(reference InputEventJoypadButton) RefInputEven
 
 func NewRefInputEventJoypadButtonAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventJoypadButton](reference.(InputEventJoypadButton))
+}
+
+// NewRefInputEventJoypadButtonAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventJoypadButtonAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventJoypadButton](reference.(InputEventJoypadButton))
 }
 
 // NewRefInputEventJoypadButtonGDExtensionIternalConstructor wraps an instance this
@@ -7223,6 +9311,15 @@ func NewRefInputEventJoypadMotionAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventJoypadMotion](reference.(InputEventJoypadMotion))
 }
 
+// NewRefInputEventJoypadMotionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventJoypadMotionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventJoypadMotion](reference.(InputEventJoypadMotion))
+}
+
 // NewRefInputEventJoypadMotionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventJoypadMotionWithGodotOwnerObject. Borrowing: dropping
@@ -7252,6 +9349,15 @@ func NewRefInputEventKey(reference InputEventKey) RefInputEventKey {
 
 func NewRefInputEventKeyAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventKey](reference.(InputEventKey))
+}
+
+// NewRefInputEventKeyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventKeyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventKey](reference.(InputEventKey))
 }
 
 // NewRefInputEventKeyGDExtensionIternalConstructor wraps an instance this
@@ -7285,6 +9391,15 @@ func NewRefInputEventMIDIAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMIDI](reference.(InputEventMIDI))
 }
 
+// NewRefInputEventMIDIAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventMIDIAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventMIDI](reference.(InputEventMIDI))
+}
+
 // NewRefInputEventMIDIGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventMIDIWithGodotOwnerObject. Borrowing: dropping
@@ -7314,6 +9429,15 @@ func NewRefInputEventMagnifyGesture(reference InputEventMagnifyGesture) RefInput
 
 func NewRefInputEventMagnifyGestureAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMagnifyGesture](reference.(InputEventMagnifyGesture))
+}
+
+// NewRefInputEventMagnifyGestureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventMagnifyGestureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventMagnifyGesture](reference.(InputEventMagnifyGesture))
 }
 
 // NewRefInputEventMagnifyGestureGDExtensionIternalConstructor wraps an instance this
@@ -7347,6 +9471,15 @@ func NewRefInputEventMouseAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMouse](reference.(InputEventMouse))
 }
 
+// NewRefInputEventMouseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventMouseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventMouse](reference.(InputEventMouse))
+}
+
 // NewRefInputEventMouseGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventMouseWithGodotOwnerObject. Borrowing: dropping
@@ -7376,6 +9509,15 @@ func NewRefInputEventMouseButton(reference InputEventMouseButton) RefInputEventM
 
 func NewRefInputEventMouseButtonAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMouseButton](reference.(InputEventMouseButton))
+}
+
+// NewRefInputEventMouseButtonAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventMouseButtonAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventMouseButton](reference.(InputEventMouseButton))
 }
 
 // NewRefInputEventMouseButtonGDExtensionIternalConstructor wraps an instance this
@@ -7409,6 +9551,15 @@ func NewRefInputEventMouseMotionAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventMouseMotion](reference.(InputEventMouseMotion))
 }
 
+// NewRefInputEventMouseMotionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventMouseMotionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventMouseMotion](reference.(InputEventMouseMotion))
+}
+
 // NewRefInputEventMouseMotionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventMouseMotionWithGodotOwnerObject. Borrowing: dropping
@@ -7438,6 +9589,15 @@ func NewRefInputEventPanGesture(reference InputEventPanGesture) RefInputEventPan
 
 func NewRefInputEventPanGestureAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventPanGesture](reference.(InputEventPanGesture))
+}
+
+// NewRefInputEventPanGestureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventPanGestureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventPanGesture](reference.(InputEventPanGesture))
 }
 
 // NewRefInputEventPanGestureGDExtensionIternalConstructor wraps an instance this
@@ -7471,6 +9631,15 @@ func NewRefInputEventScreenDragAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventScreenDrag](reference.(InputEventScreenDrag))
 }
 
+// NewRefInputEventScreenDragAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventScreenDragAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventScreenDrag](reference.(InputEventScreenDrag))
+}
+
 // NewRefInputEventScreenDragGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventScreenDragWithGodotOwnerObject. Borrowing: dropping
@@ -7500,6 +9669,15 @@ func NewRefInputEventScreenTouch(reference InputEventScreenTouch) RefInputEventS
 
 func NewRefInputEventScreenTouchAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventScreenTouch](reference.(InputEventScreenTouch))
+}
+
+// NewRefInputEventScreenTouchAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventScreenTouchAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventScreenTouch](reference.(InputEventScreenTouch))
 }
 
 // NewRefInputEventScreenTouchGDExtensionIternalConstructor wraps an instance this
@@ -7533,6 +9711,15 @@ func NewRefInputEventShortcutAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventShortcut](reference.(InputEventShortcut))
 }
 
+// NewRefInputEventShortcutAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventShortcutAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventShortcut](reference.(InputEventShortcut))
+}
+
 // NewRefInputEventShortcutGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewInputEventShortcutWithGodotOwnerObject. Borrowing: dropping
@@ -7562,6 +9749,15 @@ func NewRefInputEventWithModifiers(reference InputEventWithModifiers) RefInputEv
 
 func NewRefInputEventWithModifiersAsRef(reference RefCounted) Ref {
 	return NewRef[InputEventWithModifiers](reference.(InputEventWithModifiers))
+}
+
+// NewRefInputEventWithModifiersAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefInputEventWithModifiersAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[InputEventWithModifiers](reference.(InputEventWithModifiers))
 }
 
 // NewRefInputEventWithModifiersGDExtensionIternalConstructor wraps an instance this
@@ -7595,6 +9791,15 @@ func NewRefIntervalTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[IntervalTweener](reference.(IntervalTweener))
 }
 
+// NewRefIntervalTweenerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefIntervalTweenerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[IntervalTweener](reference.(IntervalTweener))
+}
+
 // NewRefIntervalTweenerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewIntervalTweenerWithGodotOwnerObject. Borrowing: dropping
@@ -7624,6 +9829,15 @@ func NewRefJSON(reference JSON) RefJSON {
 
 func NewRefJSONAsRef(reference RefCounted) Ref {
 	return NewRef[JSON](reference.(JSON))
+}
+
+// NewRefJSONAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefJSONAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[JSON](reference.(JSON))
 }
 
 // NewRefJSONGDExtensionIternalConstructor wraps an instance this
@@ -7657,6 +9871,15 @@ func NewRefJavaClassAsRef(reference RefCounted) Ref {
 	return NewRef[JavaClass](reference.(JavaClass))
 }
 
+// NewRefJavaClassAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefJavaClassAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[JavaClass](reference.(JavaClass))
+}
+
 // NewRefJavaClassGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewJavaClassWithGodotOwnerObject. Borrowing: dropping
@@ -7686,6 +9909,15 @@ func NewRefJavaObject(reference JavaObject) RefJavaObject {
 
 func NewRefJavaObjectAsRef(reference RefCounted) Ref {
 	return NewRef[JavaObject](reference.(JavaObject))
+}
+
+// NewRefJavaObjectAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefJavaObjectAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[JavaObject](reference.(JavaObject))
 }
 
 // NewRefJavaObjectGDExtensionIternalConstructor wraps an instance this
@@ -7719,6 +9951,15 @@ func NewRefJavaScriptObjectAsRef(reference RefCounted) Ref {
 	return NewRef[JavaScriptObject](reference.(JavaScriptObject))
 }
 
+// NewRefJavaScriptObjectAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefJavaScriptObjectAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[JavaScriptObject](reference.(JavaScriptObject))
+}
+
 // NewRefJavaScriptObjectGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewJavaScriptObjectWithGodotOwnerObject. Borrowing: dropping
@@ -7748,6 +9989,15 @@ func NewRefJointLimitation3D(reference JointLimitation3D) RefJointLimitation3D {
 
 func NewRefJointLimitation3DAsRef(reference RefCounted) Ref {
 	return NewRef[JointLimitation3D](reference.(JointLimitation3D))
+}
+
+// NewRefJointLimitation3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefJointLimitation3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[JointLimitation3D](reference.(JointLimitation3D))
 }
 
 // NewRefJointLimitation3DGDExtensionIternalConstructor wraps an instance this
@@ -7781,6 +10031,15 @@ func NewRefJointLimitationCone3DAsRef(reference RefCounted) Ref {
 	return NewRef[JointLimitationCone3D](reference.(JointLimitationCone3D))
 }
 
+// NewRefJointLimitationCone3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefJointLimitationCone3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[JointLimitationCone3D](reference.(JointLimitationCone3D))
+}
+
 // NewRefJointLimitationCone3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewJointLimitationCone3DWithGodotOwnerObject. Borrowing: dropping
@@ -7810,6 +10069,15 @@ func NewRefKinematicCollision2D(reference KinematicCollision2D) RefKinematicColl
 
 func NewRefKinematicCollision2DAsRef(reference RefCounted) Ref {
 	return NewRef[KinematicCollision2D](reference.(KinematicCollision2D))
+}
+
+// NewRefKinematicCollision2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefKinematicCollision2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[KinematicCollision2D](reference.(KinematicCollision2D))
 }
 
 // NewRefKinematicCollision2DGDExtensionIternalConstructor wraps an instance this
@@ -7843,6 +10111,15 @@ func NewRefKinematicCollision3DAsRef(reference RefCounted) Ref {
 	return NewRef[KinematicCollision3D](reference.(KinematicCollision3D))
 }
 
+// NewRefKinematicCollision3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefKinematicCollision3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[KinematicCollision3D](reference.(KinematicCollision3D))
+}
+
 // NewRefKinematicCollision3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewKinematicCollision3DWithGodotOwnerObject. Borrowing: dropping
@@ -7872,6 +10149,15 @@ func NewRefLabelSettings(reference LabelSettings) RefLabelSettings {
 
 func NewRefLabelSettingsAsRef(reference RefCounted) Ref {
 	return NewRef[LabelSettings](reference.(LabelSettings))
+}
+
+// NewRefLabelSettingsAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefLabelSettingsAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[LabelSettings](reference.(LabelSettings))
 }
 
 // NewRefLabelSettingsGDExtensionIternalConstructor wraps an instance this
@@ -7905,6 +10191,15 @@ func NewRefLightmapGIDataAsRef(reference RefCounted) Ref {
 	return NewRef[LightmapGIData](reference.(LightmapGIData))
 }
 
+// NewRefLightmapGIDataAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefLightmapGIDataAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[LightmapGIData](reference.(LightmapGIData))
+}
+
 // NewRefLightmapGIDataGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewLightmapGIDataWithGodotOwnerObject. Borrowing: dropping
@@ -7934,6 +10229,15 @@ func NewRefLightmapper(reference Lightmapper) RefLightmapper {
 
 func NewRefLightmapperAsRef(reference RefCounted) Ref {
 	return NewRef[Lightmapper](reference.(Lightmapper))
+}
+
+// NewRefLightmapperAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefLightmapperAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Lightmapper](reference.(Lightmapper))
 }
 
 // NewRefLightmapperGDExtensionIternalConstructor wraps an instance this
@@ -7967,6 +10271,15 @@ func NewRefLightmapperRDAsRef(reference RefCounted) Ref {
 	return NewRef[LightmapperRD](reference.(LightmapperRD))
 }
 
+// NewRefLightmapperRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefLightmapperRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[LightmapperRD](reference.(LightmapperRD))
+}
+
 // NewRefLightmapperRDGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewLightmapperRDWithGodotOwnerObject. Borrowing: dropping
@@ -7996,6 +10309,15 @@ func NewRefLogger(reference Logger) RefLogger {
 
 func NewRefLoggerAsRef(reference RefCounted) Ref {
 	return NewRef[Logger](reference.(Logger))
+}
+
+// NewRefLoggerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefLoggerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Logger](reference.(Logger))
 }
 
 // NewRefLoggerGDExtensionIternalConstructor wraps an instance this
@@ -8029,6 +10351,15 @@ func NewRefMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[Material](reference.(Material))
 }
 
+// NewRefMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Material](reference.(Material))
+}
+
 // NewRefMaterialGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMaterialWithGodotOwnerObject. Borrowing: dropping
@@ -8058,6 +10389,15 @@ func NewRefMesh(reference Mesh) RefMesh {
 
 func NewRefMeshAsRef(reference RefCounted) Ref {
 	return NewRef[Mesh](reference.(Mesh))
+}
+
+// NewRefMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Mesh](reference.(Mesh))
 }
 
 // NewRefMeshGDExtensionIternalConstructor wraps an instance this
@@ -8091,6 +10431,15 @@ func NewRefMeshConvexDecompositionSettingsAsRef(reference RefCounted) Ref {
 	return NewRef[MeshConvexDecompositionSettings](reference.(MeshConvexDecompositionSettings))
 }
 
+// NewRefMeshConvexDecompositionSettingsAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMeshConvexDecompositionSettingsAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MeshConvexDecompositionSettings](reference.(MeshConvexDecompositionSettings))
+}
+
 // NewRefMeshConvexDecompositionSettingsGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMeshConvexDecompositionSettingsWithGodotOwnerObject. Borrowing: dropping
@@ -8120,6 +10469,15 @@ func NewRefMeshDataTool(reference MeshDataTool) RefMeshDataTool {
 
 func NewRefMeshDataToolAsRef(reference RefCounted) Ref {
 	return NewRef[MeshDataTool](reference.(MeshDataTool))
+}
+
+// NewRefMeshDataToolAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMeshDataToolAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MeshDataTool](reference.(MeshDataTool))
 }
 
 // NewRefMeshDataToolGDExtensionIternalConstructor wraps an instance this
@@ -8153,6 +10511,15 @@ func NewRefMeshLibraryAsRef(reference RefCounted) Ref {
 	return NewRef[MeshLibrary](reference.(MeshLibrary))
 }
 
+// NewRefMeshLibraryAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMeshLibraryAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MeshLibrary](reference.(MeshLibrary))
+}
+
 // NewRefMeshLibraryGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMeshLibraryWithGodotOwnerObject. Borrowing: dropping
@@ -8182,6 +10549,15 @@ func NewRefMeshTexture(reference MeshTexture) RefMeshTexture {
 
 func NewRefMeshTextureAsRef(reference RefCounted) Ref {
 	return NewRef[MeshTexture](reference.(MeshTexture))
+}
+
+// NewRefMeshTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMeshTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MeshTexture](reference.(MeshTexture))
 }
 
 // NewRefMeshTextureGDExtensionIternalConstructor wraps an instance this
@@ -8215,6 +10591,15 @@ func NewRefMethodTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[MethodTweener](reference.(MethodTweener))
 }
 
+// NewRefMethodTweenerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMethodTweenerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MethodTweener](reference.(MethodTweener))
+}
+
 // NewRefMethodTweenerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMethodTweenerWithGodotOwnerObject. Borrowing: dropping
@@ -8244,6 +10629,15 @@ func NewRefMissingResource(reference MissingResource) RefMissingResource {
 
 func NewRefMissingResourceAsRef(reference RefCounted) Ref {
 	return NewRef[MissingResource](reference.(MissingResource))
+}
+
+// NewRefMissingResourceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMissingResourceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MissingResource](reference.(MissingResource))
 }
 
 // NewRefMissingResourceGDExtensionIternalConstructor wraps an instance this
@@ -8277,6 +10671,15 @@ func NewRefMobileVRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[MobileVRInterface](reference.(MobileVRInterface))
 }
 
+// NewRefMobileVRInterfaceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMobileVRInterfaceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MobileVRInterface](reference.(MobileVRInterface))
+}
+
 // NewRefMobileVRInterfaceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMobileVRInterfaceWithGodotOwnerObject. Borrowing: dropping
@@ -8306,6 +10709,15 @@ func NewRefMultiMesh(reference MultiMesh) RefMultiMesh {
 
 func NewRefMultiMeshAsRef(reference RefCounted) Ref {
 	return NewRef[MultiMesh](reference.(MultiMesh))
+}
+
+// NewRefMultiMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMultiMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MultiMesh](reference.(MultiMesh))
 }
 
 // NewRefMultiMeshGDExtensionIternalConstructor wraps an instance this
@@ -8339,6 +10751,15 @@ func NewRefMultiplayerAPIAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerAPI](reference.(MultiplayerAPI))
 }
 
+// NewRefMultiplayerAPIAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMultiplayerAPIAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MultiplayerAPI](reference.(MultiplayerAPI))
+}
+
 // NewRefMultiplayerAPIGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMultiplayerAPIWithGodotOwnerObject. Borrowing: dropping
@@ -8368,6 +10789,15 @@ func NewRefMultiplayerAPIExtension(reference MultiplayerAPIExtension) RefMultipl
 
 func NewRefMultiplayerAPIExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerAPIExtension](reference.(MultiplayerAPIExtension))
+}
+
+// NewRefMultiplayerAPIExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMultiplayerAPIExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MultiplayerAPIExtension](reference.(MultiplayerAPIExtension))
 }
 
 // NewRefMultiplayerAPIExtensionGDExtensionIternalConstructor wraps an instance this
@@ -8401,6 +10831,15 @@ func NewRefMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerPeer](reference.(MultiplayerPeer))
 }
 
+// NewRefMultiplayerPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMultiplayerPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MultiplayerPeer](reference.(MultiplayerPeer))
+}
+
 // NewRefMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
@@ -8430,6 +10869,15 @@ func NewRefMultiplayerPeerExtension(reference MultiplayerPeerExtension) RefMulti
 
 func NewRefMultiplayerPeerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[MultiplayerPeerExtension](reference.(MultiplayerPeerExtension))
+}
+
+// NewRefMultiplayerPeerExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMultiplayerPeerExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[MultiplayerPeerExtension](reference.(MultiplayerPeerExtension))
 }
 
 // NewRefMultiplayerPeerExtensionGDExtensionIternalConstructor wraps an instance this
@@ -8463,6 +10911,15 @@ func NewRefMutexAsRef(reference RefCounted) Ref {
 	return NewRef[Mutex](reference.(Mutex))
 }
 
+// NewRefMutexAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefMutexAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Mutex](reference.(Mutex))
+}
+
 // NewRefMutexGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewMutexWithGodotOwnerObject. Borrowing: dropping
@@ -8492,6 +10949,15 @@ func NewRefNavigationMesh(reference NavigationMesh) RefNavigationMesh {
 
 func NewRefNavigationMeshAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationMesh](reference.(NavigationMesh))
+}
+
+// NewRefNavigationMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationMesh](reference.(NavigationMesh))
 }
 
 // NewRefNavigationMeshGDExtensionIternalConstructor wraps an instance this
@@ -8525,6 +10991,15 @@ func NewRefNavigationMeshSourceGeometryData2DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationMeshSourceGeometryData2D](reference.(NavigationMeshSourceGeometryData2D))
 }
 
+// NewRefNavigationMeshSourceGeometryData2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationMeshSourceGeometryData2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationMeshSourceGeometryData2D](reference.(NavigationMeshSourceGeometryData2D))
+}
+
 // NewRefNavigationMeshSourceGeometryData2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewNavigationMeshSourceGeometryData2DWithGodotOwnerObject. Borrowing: dropping
@@ -8554,6 +11029,15 @@ func NewRefNavigationMeshSourceGeometryData3D(reference NavigationMeshSourceGeom
 
 func NewRefNavigationMeshSourceGeometryData3DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationMeshSourceGeometryData3D](reference.(NavigationMeshSourceGeometryData3D))
+}
+
+// NewRefNavigationMeshSourceGeometryData3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationMeshSourceGeometryData3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationMeshSourceGeometryData3D](reference.(NavigationMeshSourceGeometryData3D))
 }
 
 // NewRefNavigationMeshSourceGeometryData3DGDExtensionIternalConstructor wraps an instance this
@@ -8587,6 +11071,15 @@ func NewRefNavigationPathQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryParameters2D](reference.(NavigationPathQueryParameters2D))
 }
 
+// NewRefNavigationPathQueryParameters2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationPathQueryParameters2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationPathQueryParameters2D](reference.(NavigationPathQueryParameters2D))
+}
+
 // NewRefNavigationPathQueryParameters2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewNavigationPathQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
@@ -8616,6 +11109,15 @@ func NewRefNavigationPathQueryParameters3D(reference NavigationPathQueryParamete
 
 func NewRefNavigationPathQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryParameters3D](reference.(NavigationPathQueryParameters3D))
+}
+
+// NewRefNavigationPathQueryParameters3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationPathQueryParameters3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationPathQueryParameters3D](reference.(NavigationPathQueryParameters3D))
 }
 
 // NewRefNavigationPathQueryParameters3DGDExtensionIternalConstructor wraps an instance this
@@ -8649,6 +11151,15 @@ func NewRefNavigationPathQueryResult2DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryResult2D](reference.(NavigationPathQueryResult2D))
 }
 
+// NewRefNavigationPathQueryResult2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationPathQueryResult2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationPathQueryResult2D](reference.(NavigationPathQueryResult2D))
+}
+
 // NewRefNavigationPathQueryResult2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewNavigationPathQueryResult2DWithGodotOwnerObject. Borrowing: dropping
@@ -8678,6 +11189,15 @@ func NewRefNavigationPathQueryResult3D(reference NavigationPathQueryResult3D) Re
 
 func NewRefNavigationPathQueryResult3DAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPathQueryResult3D](reference.(NavigationPathQueryResult3D))
+}
+
+// NewRefNavigationPathQueryResult3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationPathQueryResult3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationPathQueryResult3D](reference.(NavigationPathQueryResult3D))
 }
 
 // NewRefNavigationPathQueryResult3DGDExtensionIternalConstructor wraps an instance this
@@ -8711,6 +11231,15 @@ func NewRefNavigationPolygonAsRef(reference RefCounted) Ref {
 	return NewRef[NavigationPolygon](reference.(NavigationPolygon))
 }
 
+// NewRefNavigationPolygonAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNavigationPolygonAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NavigationPolygon](reference.(NavigationPolygon))
+}
+
 // NewRefNavigationPolygonGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewNavigationPolygonWithGodotOwnerObject. Borrowing: dropping
@@ -8740,6 +11269,15 @@ func NewRefNode3DGizmo(reference Node3DGizmo) RefNode3DGizmo {
 
 func NewRefNode3DGizmoAsRef(reference RefCounted) Ref {
 	return NewRef[Node3DGizmo](reference.(Node3DGizmo))
+}
+
+// NewRefNode3DGizmoAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNode3DGizmoAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Node3DGizmo](reference.(Node3DGizmo))
 }
 
 // NewRefNode3DGizmoGDExtensionIternalConstructor wraps an instance this
@@ -8773,6 +11311,15 @@ func NewRefNoiseAsRef(reference RefCounted) Ref {
 	return NewRef[Noise](reference.(Noise))
 }
 
+// NewRefNoiseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNoiseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Noise](reference.(Noise))
+}
+
 // NewRefNoiseGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewNoiseWithGodotOwnerObject. Borrowing: dropping
@@ -8802,6 +11349,15 @@ func NewRefNoiseTexture2D(reference NoiseTexture2D) RefNoiseTexture2D {
 
 func NewRefNoiseTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[NoiseTexture2D](reference.(NoiseTexture2D))
+}
+
+// NewRefNoiseTexture2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNoiseTexture2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NoiseTexture2D](reference.(NoiseTexture2D))
 }
 
 // NewRefNoiseTexture2DGDExtensionIternalConstructor wraps an instance this
@@ -8835,6 +11391,15 @@ func NewRefNoiseTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[NoiseTexture3D](reference.(NoiseTexture3D))
 }
 
+// NewRefNoiseTexture3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefNoiseTexture3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[NoiseTexture3D](reference.(NoiseTexture3D))
+}
+
 // NewRefNoiseTexture3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewNoiseTexture3DWithGodotOwnerObject. Borrowing: dropping
@@ -8864,6 +11429,15 @@ func NewRefORMMaterial3D(reference ORMMaterial3D) RefORMMaterial3D {
 
 func NewRefORMMaterial3DAsRef(reference RefCounted) Ref {
 	return NewRef[ORMMaterial3D](reference.(ORMMaterial3D))
+}
+
+// NewRefORMMaterial3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefORMMaterial3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ORMMaterial3D](reference.(ORMMaterial3D))
 }
 
 // NewRefORMMaterial3DGDExtensionIternalConstructor wraps an instance this
@@ -8897,6 +11471,15 @@ func NewRefOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[Occluder3D](reference.(Occluder3D))
 }
 
+// NewRefOccluder3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOccluder3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Occluder3D](reference.(Occluder3D))
+}
+
 // NewRefOccluder3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOccluder3DWithGodotOwnerObject. Borrowing: dropping
@@ -8926,6 +11509,15 @@ func NewRefOccluderPolygon2D(reference OccluderPolygon2D) RefOccluderPolygon2D {
 
 func NewRefOccluderPolygon2DAsRef(reference RefCounted) Ref {
 	return NewRef[OccluderPolygon2D](reference.(OccluderPolygon2D))
+}
+
+// NewRefOccluderPolygon2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOccluderPolygon2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OccluderPolygon2D](reference.(OccluderPolygon2D))
 }
 
 // NewRefOccluderPolygon2DGDExtensionIternalConstructor wraps an instance this
@@ -8959,6 +11551,15 @@ func NewRefOfflineMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[OfflineMultiplayerPeer](reference.(OfflineMultiplayerPeer))
 }
 
+// NewRefOfflineMultiplayerPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOfflineMultiplayerPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OfflineMultiplayerPeer](reference.(OfflineMultiplayerPeer))
+}
+
 // NewRefOfflineMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOfflineMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
@@ -8988,6 +11589,15 @@ func NewRefOggPacketSequence(reference OggPacketSequence) RefOggPacketSequence {
 
 func NewRefOggPacketSequenceAsRef(reference RefCounted) Ref {
 	return NewRef[OggPacketSequence](reference.(OggPacketSequence))
+}
+
+// NewRefOggPacketSequenceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOggPacketSequenceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OggPacketSequence](reference.(OggPacketSequence))
 }
 
 // NewRefOggPacketSequenceGDExtensionIternalConstructor wraps an instance this
@@ -9021,6 +11631,15 @@ func NewRefOggPacketSequencePlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[OggPacketSequencePlayback](reference.(OggPacketSequencePlayback))
 }
 
+// NewRefOggPacketSequencePlaybackAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOggPacketSequencePlaybackAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OggPacketSequencePlayback](reference.(OggPacketSequencePlayback))
+}
+
 // NewRefOggPacketSequencePlaybackGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOggPacketSequencePlaybackWithGodotOwnerObject. Borrowing: dropping
@@ -9050,6 +11669,15 @@ func NewRefOpenXRAPIExtension(reference OpenXRAPIExtension) RefOpenXRAPIExtensio
 
 func NewRefOpenXRAPIExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAPIExtension](reference.(OpenXRAPIExtension))
+}
+
+// NewRefOpenXRAPIExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRAPIExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRAPIExtension](reference.(OpenXRAPIExtension))
 }
 
 // NewRefOpenXRAPIExtensionGDExtensionIternalConstructor wraps an instance this
@@ -9083,6 +11711,15 @@ func NewRefOpenXRActionAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAction](reference.(OpenXRAction))
 }
 
+// NewRefOpenXRActionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRActionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRAction](reference.(OpenXRAction))
+}
+
 // NewRefOpenXRActionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRActionWithGodotOwnerObject. Borrowing: dropping
@@ -9112,6 +11749,15 @@ func NewRefOpenXRActionBindingModifier(reference OpenXRActionBindingModifier) Re
 
 func NewRefOpenXRActionBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRActionBindingModifier](reference.(OpenXRActionBindingModifier))
+}
+
+// NewRefOpenXRActionBindingModifierAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRActionBindingModifierAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRActionBindingModifier](reference.(OpenXRActionBindingModifier))
 }
 
 // NewRefOpenXRActionBindingModifierGDExtensionIternalConstructor wraps an instance this
@@ -9145,6 +11791,15 @@ func NewRefOpenXRActionMapAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRActionMap](reference.(OpenXRActionMap))
 }
 
+// NewRefOpenXRActionMapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRActionMapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRActionMap](reference.(OpenXRActionMap))
+}
+
 // NewRefOpenXRActionMapGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRActionMapWithGodotOwnerObject. Borrowing: dropping
@@ -9174,6 +11829,15 @@ func NewRefOpenXRActionSet(reference OpenXRActionSet) RefOpenXRActionSet {
 
 func NewRefOpenXRActionSetAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRActionSet](reference.(OpenXRActionSet))
+}
+
+// NewRefOpenXRActionSetAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRActionSetAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRActionSet](reference.(OpenXRActionSet))
 }
 
 // NewRefOpenXRActionSetGDExtensionIternalConstructor wraps an instance this
@@ -9207,6 +11871,15 @@ func NewRefOpenXRAnalogThresholdModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAnalogThresholdModifier](reference.(OpenXRAnalogThresholdModifier))
 }
 
+// NewRefOpenXRAnalogThresholdModifierAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRAnalogThresholdModifierAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRAnalogThresholdModifier](reference.(OpenXRAnalogThresholdModifier))
+}
+
 // NewRefOpenXRAnalogThresholdModifierGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRAnalogThresholdModifierWithGodotOwnerObject. Borrowing: dropping
@@ -9236,6 +11909,15 @@ func NewRefOpenXRAnchorTracker(reference OpenXRAnchorTracker) RefOpenXRAnchorTra
 
 func NewRefOpenXRAnchorTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRAnchorTracker](reference.(OpenXRAnchorTracker))
+}
+
+// NewRefOpenXRAnchorTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRAnchorTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRAnchorTracker](reference.(OpenXRAnchorTracker))
 }
 
 // NewRefOpenXRAnchorTrackerGDExtensionIternalConstructor wraps an instance this
@@ -9269,6 +11951,15 @@ func NewRefOpenXRBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRBindingModifier](reference.(OpenXRBindingModifier))
 }
 
+// NewRefOpenXRBindingModifierAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRBindingModifierAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRBindingModifier](reference.(OpenXRBindingModifier))
+}
+
 // NewRefOpenXRBindingModifierGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRBindingModifierWithGodotOwnerObject. Borrowing: dropping
@@ -9298,6 +11989,15 @@ func NewRefOpenXRDpadBindingModifier(reference OpenXRDpadBindingModifier) RefOpe
 
 func NewRefOpenXRDpadBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRDpadBindingModifier](reference.(OpenXRDpadBindingModifier))
+}
+
+// NewRefOpenXRDpadBindingModifierAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRDpadBindingModifierAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRDpadBindingModifier](reference.(OpenXRDpadBindingModifier))
 }
 
 // NewRefOpenXRDpadBindingModifierGDExtensionIternalConstructor wraps an instance this
@@ -9331,6 +12031,15 @@ func NewRefOpenXRFutureResultAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRFutureResult](reference.(OpenXRFutureResult))
 }
 
+// NewRefOpenXRFutureResultAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRFutureResultAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRFutureResult](reference.(OpenXRFutureResult))
+}
+
 // NewRefOpenXRFutureResultGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRFutureResultWithGodotOwnerObject. Borrowing: dropping
@@ -9360,6 +12069,15 @@ func NewRefOpenXRHapticBase(reference OpenXRHapticBase) RefOpenXRHapticBase {
 
 func NewRefOpenXRHapticBaseAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRHapticBase](reference.(OpenXRHapticBase))
+}
+
+// NewRefOpenXRHapticBaseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRHapticBaseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRHapticBase](reference.(OpenXRHapticBase))
 }
 
 // NewRefOpenXRHapticBaseGDExtensionIternalConstructor wraps an instance this
@@ -9393,6 +12111,15 @@ func NewRefOpenXRHapticVibrationAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRHapticVibration](reference.(OpenXRHapticVibration))
 }
 
+// NewRefOpenXRHapticVibrationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRHapticVibrationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRHapticVibration](reference.(OpenXRHapticVibration))
+}
+
 // NewRefOpenXRHapticVibrationGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRHapticVibrationWithGodotOwnerObject. Borrowing: dropping
@@ -9422,6 +12149,15 @@ func NewRefOpenXRIPBinding(reference OpenXRIPBinding) RefOpenXRIPBinding {
 
 func NewRefOpenXRIPBindingAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRIPBinding](reference.(OpenXRIPBinding))
+}
+
+// NewRefOpenXRIPBindingAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRIPBindingAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRIPBinding](reference.(OpenXRIPBinding))
 }
 
 // NewRefOpenXRIPBindingGDExtensionIternalConstructor wraps an instance this
@@ -9455,6 +12191,15 @@ func NewRefOpenXRIPBindingModifierAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRIPBindingModifier](reference.(OpenXRIPBindingModifier))
 }
 
+// NewRefOpenXRIPBindingModifierAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRIPBindingModifierAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRIPBindingModifier](reference.(OpenXRIPBindingModifier))
+}
+
 // NewRefOpenXRIPBindingModifierGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRIPBindingModifierWithGodotOwnerObject. Borrowing: dropping
@@ -9484,6 +12229,15 @@ func NewRefOpenXRInteractionProfile(reference OpenXRInteractionProfile) RefOpenX
 
 func NewRefOpenXRInteractionProfileAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRInteractionProfile](reference.(OpenXRInteractionProfile))
+}
+
+// NewRefOpenXRInteractionProfileAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRInteractionProfileAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRInteractionProfile](reference.(OpenXRInteractionProfile))
 }
 
 // NewRefOpenXRInteractionProfileGDExtensionIternalConstructor wraps an instance this
@@ -9517,6 +12271,15 @@ func NewRefOpenXRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRInterface](reference.(OpenXRInterface))
 }
 
+// NewRefOpenXRInterfaceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRInterfaceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRInterface](reference.(OpenXRInterface))
+}
+
 // NewRefOpenXRInterfaceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRInterfaceWithGodotOwnerObject. Borrowing: dropping
@@ -9546,6 +12309,15 @@ func NewRefOpenXRMarkerTracker(reference OpenXRMarkerTracker) RefOpenXRMarkerTra
 
 func NewRefOpenXRMarkerTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRMarkerTracker](reference.(OpenXRMarkerTracker))
+}
+
+// NewRefOpenXRMarkerTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRMarkerTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRMarkerTracker](reference.(OpenXRMarkerTracker))
 }
 
 // NewRefOpenXRMarkerTrackerGDExtensionIternalConstructor wraps an instance this
@@ -9579,6 +12351,15 @@ func NewRefOpenXRPlaneTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRPlaneTracker](reference.(OpenXRPlaneTracker))
 }
 
+// NewRefOpenXRPlaneTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRPlaneTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRPlaneTracker](reference.(OpenXRPlaneTracker))
+}
+
 // NewRefOpenXRPlaneTrackerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRPlaneTrackerWithGodotOwnerObject. Borrowing: dropping
@@ -9608,6 +12389,15 @@ func NewRefOpenXRSpatialCapabilityConfigurationAnchor(reference OpenXRSpatialCap
 
 func NewRefOpenXRSpatialCapabilityConfigurationAnchorAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialCapabilityConfigurationAnchor](reference.(OpenXRSpatialCapabilityConfigurationAnchor))
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationAnchorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialCapabilityConfigurationAnchorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialCapabilityConfigurationAnchor](reference.(OpenXRSpatialCapabilityConfigurationAnchor))
 }
 
 // NewRefOpenXRSpatialCapabilityConfigurationAnchorGDExtensionIternalConstructor wraps an instance this
@@ -9641,6 +12431,15 @@ func NewRefOpenXRSpatialCapabilityConfigurationAprilTagAsRef(reference RefCounte
 	return NewRef[OpenXRSpatialCapabilityConfigurationAprilTag](reference.(OpenXRSpatialCapabilityConfigurationAprilTag))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationAprilTagAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialCapabilityConfigurationAprilTagAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialCapabilityConfigurationAprilTag](reference.(OpenXRSpatialCapabilityConfigurationAprilTag))
+}
+
 // NewRefOpenXRSpatialCapabilityConfigurationAprilTagGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialCapabilityConfigurationAprilTagWithGodotOwnerObject. Borrowing: dropping
@@ -9670,6 +12469,15 @@ func NewRefOpenXRSpatialCapabilityConfigurationAruco(reference OpenXRSpatialCapa
 
 func NewRefOpenXRSpatialCapabilityConfigurationArucoAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialCapabilityConfigurationAruco](reference.(OpenXRSpatialCapabilityConfigurationAruco))
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationArucoAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialCapabilityConfigurationArucoAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialCapabilityConfigurationAruco](reference.(OpenXRSpatialCapabilityConfigurationAruco))
 }
 
 // NewRefOpenXRSpatialCapabilityConfigurationArucoGDExtensionIternalConstructor wraps an instance this
@@ -9703,6 +12511,15 @@ func NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderAsRef(reference RefCoun
 	return NewRef[OpenXRSpatialCapabilityConfigurationBaseHeader](reference.(OpenXRSpatialCapabilityConfigurationBaseHeader))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialCapabilityConfigurationBaseHeader](reference.(OpenXRSpatialCapabilityConfigurationBaseHeader))
+}
+
 // NewRefOpenXRSpatialCapabilityConfigurationBaseHeaderGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialCapabilityConfigurationBaseHeaderWithGodotOwnerObject. Borrowing: dropping
@@ -9732,6 +12549,15 @@ func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCode(reference OpenXRSpati
 
 func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference.(OpenXRSpatialCapabilityConfigurationMicroQrCode))
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialCapabilityConfigurationMicroQrCode](reference.(OpenXRSpatialCapabilityConfigurationMicroQrCode))
 }
 
 // NewRefOpenXRSpatialCapabilityConfigurationMicroQrCodeGDExtensionIternalConstructor wraps an instance this
@@ -9765,6 +12591,15 @@ func NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingAsRef(reference RefC
 	return NewRef[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference.(OpenXRSpatialCapabilityConfigurationPlaneTracking))
 }
 
+// NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialCapabilityConfigurationPlaneTracking](reference.(OpenXRSpatialCapabilityConfigurationPlaneTracking))
+}
+
 // NewRefOpenXRSpatialCapabilityConfigurationPlaneTrackingGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialCapabilityConfigurationPlaneTrackingWithGodotOwnerObject. Borrowing: dropping
@@ -9794,6 +12629,15 @@ func NewRefOpenXRSpatialCapabilityConfigurationQrCode(reference OpenXRSpatialCap
 
 func NewRefOpenXRSpatialCapabilityConfigurationQrCodeAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialCapabilityConfigurationQrCode](reference.(OpenXRSpatialCapabilityConfigurationQrCode))
+}
+
+// NewRefOpenXRSpatialCapabilityConfigurationQrCodeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialCapabilityConfigurationQrCodeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialCapabilityConfigurationQrCode](reference.(OpenXRSpatialCapabilityConfigurationQrCode))
 }
 
 // NewRefOpenXRSpatialCapabilityConfigurationQrCodeGDExtensionIternalConstructor wraps an instance this
@@ -9827,6 +12671,15 @@ func NewRefOpenXRSpatialComponentAnchorListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentAnchorList](reference.(OpenXRSpatialComponentAnchorList))
 }
 
+// NewRefOpenXRSpatialComponentAnchorListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentAnchorListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentAnchorList](reference.(OpenXRSpatialComponentAnchorList))
+}
+
 // NewRefOpenXRSpatialComponentAnchorListGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialComponentAnchorListWithGodotOwnerObject. Borrowing: dropping
@@ -9856,6 +12709,15 @@ func NewRefOpenXRSpatialComponentBounded2DList(reference OpenXRSpatialComponentB
 
 func NewRefOpenXRSpatialComponentBounded2DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentBounded2DList](reference.(OpenXRSpatialComponentBounded2DList))
+}
+
+// NewRefOpenXRSpatialComponentBounded2DListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentBounded2DListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentBounded2DList](reference.(OpenXRSpatialComponentBounded2DList))
 }
 
 // NewRefOpenXRSpatialComponentBounded2DListGDExtensionIternalConstructor wraps an instance this
@@ -9889,6 +12751,15 @@ func NewRefOpenXRSpatialComponentBounded3DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentBounded3DList](reference.(OpenXRSpatialComponentBounded3DList))
 }
 
+// NewRefOpenXRSpatialComponentBounded3DListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentBounded3DListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentBounded3DList](reference.(OpenXRSpatialComponentBounded3DList))
+}
+
 // NewRefOpenXRSpatialComponentBounded3DListGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialComponentBounded3DListWithGodotOwnerObject. Borrowing: dropping
@@ -9918,6 +12789,15 @@ func NewRefOpenXRSpatialComponentData(reference OpenXRSpatialComponentData) RefO
 
 func NewRefOpenXRSpatialComponentDataAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentData](reference.(OpenXRSpatialComponentData))
+}
+
+// NewRefOpenXRSpatialComponentDataAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentDataAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentData](reference.(OpenXRSpatialComponentData))
 }
 
 // NewRefOpenXRSpatialComponentDataGDExtensionIternalConstructor wraps an instance this
@@ -9951,6 +12831,15 @@ func NewRefOpenXRSpatialComponentMarkerListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentMarkerList](reference.(OpenXRSpatialComponentMarkerList))
 }
 
+// NewRefOpenXRSpatialComponentMarkerListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentMarkerListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentMarkerList](reference.(OpenXRSpatialComponentMarkerList))
+}
+
 // NewRefOpenXRSpatialComponentMarkerListGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialComponentMarkerListWithGodotOwnerObject. Borrowing: dropping
@@ -9980,6 +12869,15 @@ func NewRefOpenXRSpatialComponentMesh2DList(reference OpenXRSpatialComponentMesh
 
 func NewRefOpenXRSpatialComponentMesh2DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentMesh2DList](reference.(OpenXRSpatialComponentMesh2DList))
+}
+
+// NewRefOpenXRSpatialComponentMesh2DListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentMesh2DListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentMesh2DList](reference.(OpenXRSpatialComponentMesh2DList))
 }
 
 // NewRefOpenXRSpatialComponentMesh2DListGDExtensionIternalConstructor wraps an instance this
@@ -10013,6 +12911,15 @@ func NewRefOpenXRSpatialComponentMesh3DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentMesh3DList](reference.(OpenXRSpatialComponentMesh3DList))
 }
 
+// NewRefOpenXRSpatialComponentMesh3DListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentMesh3DListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentMesh3DList](reference.(OpenXRSpatialComponentMesh3DList))
+}
+
 // NewRefOpenXRSpatialComponentMesh3DListGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialComponentMesh3DListWithGodotOwnerObject. Borrowing: dropping
@@ -10042,6 +12949,15 @@ func NewRefOpenXRSpatialComponentParentList(reference OpenXRSpatialComponentPare
 
 func NewRefOpenXRSpatialComponentParentListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentParentList](reference.(OpenXRSpatialComponentParentList))
+}
+
+// NewRefOpenXRSpatialComponentParentListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentParentListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentParentList](reference.(OpenXRSpatialComponentParentList))
 }
 
 // NewRefOpenXRSpatialComponentParentListGDExtensionIternalConstructor wraps an instance this
@@ -10075,6 +12991,15 @@ func NewRefOpenXRSpatialComponentPersistenceListAsRef(reference RefCounted) Ref 
 	return NewRef[OpenXRSpatialComponentPersistenceList](reference.(OpenXRSpatialComponentPersistenceList))
 }
 
+// NewRefOpenXRSpatialComponentPersistenceListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentPersistenceListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentPersistenceList](reference.(OpenXRSpatialComponentPersistenceList))
+}
+
 // NewRefOpenXRSpatialComponentPersistenceListGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialComponentPersistenceListWithGodotOwnerObject. Borrowing: dropping
@@ -10104,6 +13029,15 @@ func NewRefOpenXRSpatialComponentPlaneAlignmentList(reference OpenXRSpatialCompo
 
 func NewRefOpenXRSpatialComponentPlaneAlignmentListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentPlaneAlignmentList](reference.(OpenXRSpatialComponentPlaneAlignmentList))
+}
+
+// NewRefOpenXRSpatialComponentPlaneAlignmentListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentPlaneAlignmentListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentPlaneAlignmentList](reference.(OpenXRSpatialComponentPlaneAlignmentList))
 }
 
 // NewRefOpenXRSpatialComponentPlaneAlignmentListGDExtensionIternalConstructor wraps an instance this
@@ -10137,6 +13071,15 @@ func NewRefOpenXRSpatialComponentPlaneSemanticLabelListAsRef(reference RefCounte
 	return NewRef[OpenXRSpatialComponentPlaneSemanticLabelList](reference.(OpenXRSpatialComponentPlaneSemanticLabelList))
 }
 
+// NewRefOpenXRSpatialComponentPlaneSemanticLabelListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentPlaneSemanticLabelListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentPlaneSemanticLabelList](reference.(OpenXRSpatialComponentPlaneSemanticLabelList))
+}
+
 // NewRefOpenXRSpatialComponentPlaneSemanticLabelListGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialComponentPlaneSemanticLabelListWithGodotOwnerObject. Borrowing: dropping
@@ -10166,6 +13109,15 @@ func NewRefOpenXRSpatialComponentPolygon2DList(reference OpenXRSpatialComponentP
 
 func NewRefOpenXRSpatialComponentPolygon2DListAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialComponentPolygon2DList](reference.(OpenXRSpatialComponentPolygon2DList))
+}
+
+// NewRefOpenXRSpatialComponentPolygon2DListAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialComponentPolygon2DListAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialComponentPolygon2DList](reference.(OpenXRSpatialComponentPolygon2DList))
 }
 
 // NewRefOpenXRSpatialComponentPolygon2DListGDExtensionIternalConstructor wraps an instance this
@@ -10199,6 +13151,15 @@ func NewRefOpenXRSpatialContextPersistenceConfigAsRef(reference RefCounted) Ref 
 	return NewRef[OpenXRSpatialContextPersistenceConfig](reference.(OpenXRSpatialContextPersistenceConfig))
 }
 
+// NewRefOpenXRSpatialContextPersistenceConfigAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialContextPersistenceConfigAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialContextPersistenceConfig](reference.(OpenXRSpatialContextPersistenceConfig))
+}
+
 // NewRefOpenXRSpatialContextPersistenceConfigGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialContextPersistenceConfigWithGodotOwnerObject. Borrowing: dropping
@@ -10228,6 +13189,15 @@ func NewRefOpenXRSpatialEntityTracker(reference OpenXRSpatialEntityTracker) RefO
 
 func NewRefOpenXRSpatialEntityTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialEntityTracker](reference.(OpenXRSpatialEntityTracker))
+}
+
+// NewRefOpenXRSpatialEntityTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialEntityTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialEntityTracker](reference.(OpenXRSpatialEntityTracker))
 }
 
 // NewRefOpenXRSpatialEntityTrackerGDExtensionIternalConstructor wraps an instance this
@@ -10261,6 +13231,15 @@ func NewRefOpenXRSpatialQueryResultDataAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRSpatialQueryResultData](reference.(OpenXRSpatialQueryResultData))
 }
 
+// NewRefOpenXRSpatialQueryResultDataAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRSpatialQueryResultDataAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRSpatialQueryResultData](reference.(OpenXRSpatialQueryResultData))
+}
+
 // NewRefOpenXRSpatialQueryResultDataGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOpenXRSpatialQueryResultDataWithGodotOwnerObject. Borrowing: dropping
@@ -10290,6 +13269,15 @@ func NewRefOpenXRStructureBase(reference OpenXRStructureBase) RefOpenXRStructure
 
 func NewRefOpenXRStructureBaseAsRef(reference RefCounted) Ref {
 	return NewRef[OpenXRStructureBase](reference.(OpenXRStructureBase))
+}
+
+// NewRefOpenXRStructureBaseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOpenXRStructureBaseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OpenXRStructureBase](reference.(OpenXRStructureBase))
 }
 
 // NewRefOpenXRStructureBaseGDExtensionIternalConstructor wraps an instance this
@@ -10323,6 +13311,15 @@ func NewRefOptimizedTranslationAsRef(reference RefCounted) Ref {
 	return NewRef[OptimizedTranslation](reference.(OptimizedTranslation))
 }
 
+// NewRefOptimizedTranslationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefOptimizedTranslationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[OptimizedTranslation](reference.(OptimizedTranslation))
+}
+
 // NewRefOptimizedTranslationGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewOptimizedTranslationWithGodotOwnerObject. Borrowing: dropping
@@ -10352,6 +13349,15 @@ func NewRefPCKPacker(reference PCKPacker) RefPCKPacker {
 
 func NewRefPCKPackerAsRef(reference RefCounted) Ref {
 	return NewRef[PCKPacker](reference.(PCKPacker))
+}
+
+// NewRefPCKPackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPCKPackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PCKPacker](reference.(PCKPacker))
 }
 
 // NewRefPCKPackerGDExtensionIternalConstructor wraps an instance this
@@ -10385,6 +13391,15 @@ func NewRefPackedDataContainerAsRef(reference RefCounted) Ref {
 	return NewRef[PackedDataContainer](reference.(PackedDataContainer))
 }
 
+// NewRefPackedDataContainerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPackedDataContainerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PackedDataContainer](reference.(PackedDataContainer))
+}
+
 // NewRefPackedDataContainerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPackedDataContainerWithGodotOwnerObject. Borrowing: dropping
@@ -10414,6 +13429,15 @@ func NewRefPackedDataContainerRef(reference PackedDataContainerRef) RefPackedDat
 
 func NewRefPackedDataContainerRefAsRef(reference RefCounted) Ref {
 	return NewRef[PackedDataContainerRef](reference.(PackedDataContainerRef))
+}
+
+// NewRefPackedDataContainerRefAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPackedDataContainerRefAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PackedDataContainerRef](reference.(PackedDataContainerRef))
 }
 
 // NewRefPackedDataContainerRefGDExtensionIternalConstructor wraps an instance this
@@ -10447,6 +13471,15 @@ func NewRefPackedSceneAsRef(reference RefCounted) Ref {
 	return NewRef[PackedScene](reference.(PackedScene))
 }
 
+// NewRefPackedSceneAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPackedSceneAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PackedScene](reference.(PackedScene))
+}
+
 // NewRefPackedSceneGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPackedSceneWithGodotOwnerObject. Borrowing: dropping
@@ -10476,6 +13509,15 @@ func NewRefPacketPeer(reference PacketPeer) RefPacketPeer {
 
 func NewRefPacketPeerAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeer](reference.(PacketPeer))
+}
+
+// NewRefPacketPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPacketPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PacketPeer](reference.(PacketPeer))
 }
 
 // NewRefPacketPeerGDExtensionIternalConstructor wraps an instance this
@@ -10509,6 +13551,15 @@ func NewRefPacketPeerDTLSAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerDTLS](reference.(PacketPeerDTLS))
 }
 
+// NewRefPacketPeerDTLSAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPacketPeerDTLSAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PacketPeerDTLS](reference.(PacketPeerDTLS))
+}
+
 // NewRefPacketPeerDTLSGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPacketPeerDTLSWithGodotOwnerObject. Borrowing: dropping
@@ -10538,6 +13589,15 @@ func NewRefPacketPeerExtension(reference PacketPeerExtension) RefPacketPeerExten
 
 func NewRefPacketPeerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerExtension](reference.(PacketPeerExtension))
+}
+
+// NewRefPacketPeerExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPacketPeerExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PacketPeerExtension](reference.(PacketPeerExtension))
 }
 
 // NewRefPacketPeerExtensionGDExtensionIternalConstructor wraps an instance this
@@ -10571,6 +13631,15 @@ func NewRefPacketPeerStreamAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerStream](reference.(PacketPeerStream))
 }
 
+// NewRefPacketPeerStreamAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPacketPeerStreamAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PacketPeerStream](reference.(PacketPeerStream))
+}
+
 // NewRefPacketPeerStreamGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPacketPeerStreamWithGodotOwnerObject. Borrowing: dropping
@@ -10600,6 +13669,15 @@ func NewRefPacketPeerUDP(reference PacketPeerUDP) RefPacketPeerUDP {
 
 func NewRefPacketPeerUDPAsRef(reference RefCounted) Ref {
 	return NewRef[PacketPeerUDP](reference.(PacketPeerUDP))
+}
+
+// NewRefPacketPeerUDPAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPacketPeerUDPAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PacketPeerUDP](reference.(PacketPeerUDP))
 }
 
 // NewRefPacketPeerUDPGDExtensionIternalConstructor wraps an instance this
@@ -10633,6 +13711,15 @@ func NewRefPanoramaSkyMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PanoramaSkyMaterial](reference.(PanoramaSkyMaterial))
 }
 
+// NewRefPanoramaSkyMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPanoramaSkyMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PanoramaSkyMaterial](reference.(PanoramaSkyMaterial))
+}
+
 // NewRefPanoramaSkyMaterialGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPanoramaSkyMaterialWithGodotOwnerObject. Borrowing: dropping
@@ -10662,6 +13749,15 @@ func NewRefParticleProcessMaterial(reference ParticleProcessMaterial) RefParticl
 
 func NewRefParticleProcessMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[ParticleProcessMaterial](reference.(ParticleProcessMaterial))
+}
+
+// NewRefParticleProcessMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefParticleProcessMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ParticleProcessMaterial](reference.(ParticleProcessMaterial))
 }
 
 // NewRefParticleProcessMaterialGDExtensionIternalConstructor wraps an instance this
@@ -10695,6 +13791,15 @@ func NewRefPhysicalSkyMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicalSkyMaterial](reference.(PhysicalSkyMaterial))
 }
 
+// NewRefPhysicalSkyMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicalSkyMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicalSkyMaterial](reference.(PhysicalSkyMaterial))
+}
+
 // NewRefPhysicalSkyMaterialGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPhysicalSkyMaterialWithGodotOwnerObject. Borrowing: dropping
@@ -10724,6 +13829,15 @@ func NewRefPhysicsMaterial(reference PhysicsMaterial) RefPhysicsMaterial {
 
 func NewRefPhysicsMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsMaterial](reference.(PhysicsMaterial))
+}
+
+// NewRefPhysicsMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsMaterial](reference.(PhysicsMaterial))
 }
 
 // NewRefPhysicsMaterialGDExtensionIternalConstructor wraps an instance this
@@ -10757,6 +13871,15 @@ func NewRefPhysicsPointQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsPointQueryParameters2D](reference.(PhysicsPointQueryParameters2D))
 }
 
+// NewRefPhysicsPointQueryParameters2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsPointQueryParameters2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsPointQueryParameters2D](reference.(PhysicsPointQueryParameters2D))
+}
+
 // NewRefPhysicsPointQueryParameters2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPhysicsPointQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
@@ -10786,6 +13909,15 @@ func NewRefPhysicsPointQueryParameters3D(reference PhysicsPointQueryParameters3D
 
 func NewRefPhysicsPointQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsPointQueryParameters3D](reference.(PhysicsPointQueryParameters3D))
+}
+
+// NewRefPhysicsPointQueryParameters3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsPointQueryParameters3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsPointQueryParameters3D](reference.(PhysicsPointQueryParameters3D))
 }
 
 // NewRefPhysicsPointQueryParameters3DGDExtensionIternalConstructor wraps an instance this
@@ -10819,6 +13951,15 @@ func NewRefPhysicsRayQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsRayQueryParameters2D](reference.(PhysicsRayQueryParameters2D))
 }
 
+// NewRefPhysicsRayQueryParameters2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsRayQueryParameters2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsRayQueryParameters2D](reference.(PhysicsRayQueryParameters2D))
+}
+
 // NewRefPhysicsRayQueryParameters2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPhysicsRayQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
@@ -10848,6 +13989,15 @@ func NewRefPhysicsRayQueryParameters3D(reference PhysicsRayQueryParameters3D) Re
 
 func NewRefPhysicsRayQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsRayQueryParameters3D](reference.(PhysicsRayQueryParameters3D))
+}
+
+// NewRefPhysicsRayQueryParameters3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsRayQueryParameters3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsRayQueryParameters3D](reference.(PhysicsRayQueryParameters3D))
 }
 
 // NewRefPhysicsRayQueryParameters3DGDExtensionIternalConstructor wraps an instance this
@@ -10881,6 +14031,15 @@ func NewRefPhysicsShapeQueryParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsShapeQueryParameters2D](reference.(PhysicsShapeQueryParameters2D))
 }
 
+// NewRefPhysicsShapeQueryParameters2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsShapeQueryParameters2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsShapeQueryParameters2D](reference.(PhysicsShapeQueryParameters2D))
+}
+
 // NewRefPhysicsShapeQueryParameters2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPhysicsShapeQueryParameters2DWithGodotOwnerObject. Borrowing: dropping
@@ -10910,6 +14069,15 @@ func NewRefPhysicsShapeQueryParameters3D(reference PhysicsShapeQueryParameters3D
 
 func NewRefPhysicsShapeQueryParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsShapeQueryParameters3D](reference.(PhysicsShapeQueryParameters3D))
+}
+
+// NewRefPhysicsShapeQueryParameters3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsShapeQueryParameters3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsShapeQueryParameters3D](reference.(PhysicsShapeQueryParameters3D))
 }
 
 // NewRefPhysicsShapeQueryParameters3DGDExtensionIternalConstructor wraps an instance this
@@ -10943,6 +14111,15 @@ func NewRefPhysicsTestMotionParameters2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionParameters2D](reference.(PhysicsTestMotionParameters2D))
 }
 
+// NewRefPhysicsTestMotionParameters2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsTestMotionParameters2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsTestMotionParameters2D](reference.(PhysicsTestMotionParameters2D))
+}
+
 // NewRefPhysicsTestMotionParameters2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPhysicsTestMotionParameters2DWithGodotOwnerObject. Borrowing: dropping
@@ -10972,6 +14149,15 @@ func NewRefPhysicsTestMotionParameters3D(reference PhysicsTestMotionParameters3D
 
 func NewRefPhysicsTestMotionParameters3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionParameters3D](reference.(PhysicsTestMotionParameters3D))
+}
+
+// NewRefPhysicsTestMotionParameters3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsTestMotionParameters3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsTestMotionParameters3D](reference.(PhysicsTestMotionParameters3D))
 }
 
 // NewRefPhysicsTestMotionParameters3DGDExtensionIternalConstructor wraps an instance this
@@ -11005,6 +14191,15 @@ func NewRefPhysicsTestMotionResult2DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionResult2D](reference.(PhysicsTestMotionResult2D))
 }
 
+// NewRefPhysicsTestMotionResult2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsTestMotionResult2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsTestMotionResult2D](reference.(PhysicsTestMotionResult2D))
+}
+
 // NewRefPhysicsTestMotionResult2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPhysicsTestMotionResult2DWithGodotOwnerObject. Borrowing: dropping
@@ -11034,6 +14229,15 @@ func NewRefPhysicsTestMotionResult3D(reference PhysicsTestMotionResult3D) RefPhy
 
 func NewRefPhysicsTestMotionResult3DAsRef(reference RefCounted) Ref {
 	return NewRef[PhysicsTestMotionResult3D](reference.(PhysicsTestMotionResult3D))
+}
+
+// NewRefPhysicsTestMotionResult3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPhysicsTestMotionResult3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PhysicsTestMotionResult3D](reference.(PhysicsTestMotionResult3D))
 }
 
 // NewRefPhysicsTestMotionResult3DGDExtensionIternalConstructor wraps an instance this
@@ -11067,6 +14271,15 @@ func NewRefPlaceholderCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderCubemap](reference.(PlaceholderCubemap))
 }
 
+// NewRefPlaceholderCubemapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderCubemapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderCubemap](reference.(PlaceholderCubemap))
+}
+
 // NewRefPlaceholderCubemapGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPlaceholderCubemapWithGodotOwnerObject. Borrowing: dropping
@@ -11096,6 +14309,15 @@ func NewRefPlaceholderCubemapArray(reference PlaceholderCubemapArray) RefPlaceho
 
 func NewRefPlaceholderCubemapArrayAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderCubemapArray](reference.(PlaceholderCubemapArray))
+}
+
+// NewRefPlaceholderCubemapArrayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderCubemapArrayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderCubemapArray](reference.(PlaceholderCubemapArray))
 }
 
 // NewRefPlaceholderCubemapArrayGDExtensionIternalConstructor wraps an instance this
@@ -11129,6 +14351,15 @@ func NewRefPlaceholderMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderMaterial](reference.(PlaceholderMaterial))
 }
 
+// NewRefPlaceholderMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderMaterial](reference.(PlaceholderMaterial))
+}
+
 // NewRefPlaceholderMaterialGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPlaceholderMaterialWithGodotOwnerObject. Borrowing: dropping
@@ -11158,6 +14389,15 @@ func NewRefPlaceholderMesh(reference PlaceholderMesh) RefPlaceholderMesh {
 
 func NewRefPlaceholderMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderMesh](reference.(PlaceholderMesh))
+}
+
+// NewRefPlaceholderMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderMesh](reference.(PlaceholderMesh))
 }
 
 // NewRefPlaceholderMeshGDExtensionIternalConstructor wraps an instance this
@@ -11191,6 +14431,15 @@ func NewRefPlaceholderTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTexture2D](reference.(PlaceholderTexture2D))
 }
 
+// NewRefPlaceholderTexture2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderTexture2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderTexture2D](reference.(PlaceholderTexture2D))
+}
+
 // NewRefPlaceholderTexture2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPlaceholderTexture2DWithGodotOwnerObject. Borrowing: dropping
@@ -11220,6 +14469,15 @@ func NewRefPlaceholderTexture2DArray(reference PlaceholderTexture2DArray) RefPla
 
 func NewRefPlaceholderTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTexture2DArray](reference.(PlaceholderTexture2DArray))
+}
+
+// NewRefPlaceholderTexture2DArrayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderTexture2DArrayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderTexture2DArray](reference.(PlaceholderTexture2DArray))
 }
 
 // NewRefPlaceholderTexture2DArrayGDExtensionIternalConstructor wraps an instance this
@@ -11253,6 +14511,15 @@ func NewRefPlaceholderTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTexture3D](reference.(PlaceholderTexture3D))
 }
 
+// NewRefPlaceholderTexture3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderTexture3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderTexture3D](reference.(PlaceholderTexture3D))
+}
+
 // NewRefPlaceholderTexture3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPlaceholderTexture3DWithGodotOwnerObject. Borrowing: dropping
@@ -11282,6 +14549,15 @@ func NewRefPlaceholderTextureLayered(reference PlaceholderTextureLayered) RefPla
 
 func NewRefPlaceholderTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[PlaceholderTextureLayered](reference.(PlaceholderTextureLayered))
+}
+
+// NewRefPlaceholderTextureLayeredAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaceholderTextureLayeredAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaceholderTextureLayered](reference.(PlaceholderTextureLayered))
 }
 
 // NewRefPlaceholderTextureLayeredGDExtensionIternalConstructor wraps an instance this
@@ -11315,6 +14591,15 @@ func NewRefPlaneMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PlaneMesh](reference.(PlaneMesh))
 }
 
+// NewRefPlaneMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPlaneMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PlaneMesh](reference.(PlaneMesh))
+}
+
 // NewRefPlaneMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPlaneMeshWithGodotOwnerObject. Borrowing: dropping
@@ -11344,6 +14629,15 @@ func NewRefPointMesh(reference PointMesh) RefPointMesh {
 
 func NewRefPointMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PointMesh](reference.(PointMesh))
+}
+
+// NewRefPointMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPointMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PointMesh](reference.(PointMesh))
 }
 
 // NewRefPointMeshGDExtensionIternalConstructor wraps an instance this
@@ -11377,6 +14671,15 @@ func NewRefPolygonOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[PolygonOccluder3D](reference.(PolygonOccluder3D))
 }
 
+// NewRefPolygonOccluder3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPolygonOccluder3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PolygonOccluder3D](reference.(PolygonOccluder3D))
+}
+
 // NewRefPolygonOccluder3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPolygonOccluder3DWithGodotOwnerObject. Borrowing: dropping
@@ -11406,6 +14709,15 @@ func NewRefPolygonPathFinder(reference PolygonPathFinder) RefPolygonPathFinder {
 
 func NewRefPolygonPathFinderAsRef(reference RefCounted) Ref {
 	return NewRef[PolygonPathFinder](reference.(PolygonPathFinder))
+}
+
+// NewRefPolygonPathFinderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPolygonPathFinderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PolygonPathFinder](reference.(PolygonPathFinder))
 }
 
 // NewRefPolygonPathFinderGDExtensionIternalConstructor wraps an instance this
@@ -11439,6 +14751,15 @@ func NewRefPortableCompressedTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[PortableCompressedTexture2D](reference.(PortableCompressedTexture2D))
 }
 
+// NewRefPortableCompressedTexture2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPortableCompressedTexture2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PortableCompressedTexture2D](reference.(PortableCompressedTexture2D))
+}
+
 // NewRefPortableCompressedTexture2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPortableCompressedTexture2DWithGodotOwnerObject. Borrowing: dropping
@@ -11468,6 +14789,15 @@ func NewRefPrimitiveMesh(reference PrimitiveMesh) RefPrimitiveMesh {
 
 func NewRefPrimitiveMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PrimitiveMesh](reference.(PrimitiveMesh))
+}
+
+// NewRefPrimitiveMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPrimitiveMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PrimitiveMesh](reference.(PrimitiveMesh))
 }
 
 // NewRefPrimitiveMeshGDExtensionIternalConstructor wraps an instance this
@@ -11501,6 +14831,15 @@ func NewRefPrismMeshAsRef(reference RefCounted) Ref {
 	return NewRef[PrismMesh](reference.(PrismMesh))
 }
 
+// NewRefPrismMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPrismMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PrismMesh](reference.(PrismMesh))
+}
+
 // NewRefPrismMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPrismMeshWithGodotOwnerObject. Borrowing: dropping
@@ -11530,6 +14869,15 @@ func NewRefProceduralSkyMaterial(reference ProceduralSkyMaterial) RefProceduralS
 
 func NewRefProceduralSkyMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[ProceduralSkyMaterial](reference.(ProceduralSkyMaterial))
+}
+
+// NewRefProceduralSkyMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefProceduralSkyMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ProceduralSkyMaterial](reference.(ProceduralSkyMaterial))
 }
 
 // NewRefProceduralSkyMaterialGDExtensionIternalConstructor wraps an instance this
@@ -11563,6 +14911,15 @@ func NewRefPropertyTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[PropertyTweener](reference.(PropertyTweener))
 }
 
+// NewRefPropertyTweenerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefPropertyTweenerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[PropertyTweener](reference.(PropertyTweener))
+}
+
 // NewRefPropertyTweenerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewPropertyTweenerWithGodotOwnerObject. Borrowing: dropping
@@ -11592,6 +14949,15 @@ func NewRefQuadMesh(reference QuadMesh) RefQuadMesh {
 
 func NewRefQuadMeshAsRef(reference RefCounted) Ref {
 	return NewRef[QuadMesh](reference.(QuadMesh))
+}
+
+// NewRefQuadMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefQuadMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[QuadMesh](reference.(QuadMesh))
 }
 
 // NewRefQuadMeshGDExtensionIternalConstructor wraps an instance this
@@ -11625,6 +14991,15 @@ func NewRefQuadOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[QuadOccluder3D](reference.(QuadOccluder3D))
 }
 
+// NewRefQuadOccluder3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefQuadOccluder3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[QuadOccluder3D](reference.(QuadOccluder3D))
+}
+
 // NewRefQuadOccluder3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewQuadOccluder3DWithGodotOwnerObject. Borrowing: dropping
@@ -11654,6 +15029,15 @@ func NewRefRDAccelerationStructureGeometry(reference RDAccelerationStructureGeom
 
 func NewRefRDAccelerationStructureGeometryAsRef(reference RefCounted) Ref {
 	return NewRef[RDAccelerationStructureGeometry](reference.(RDAccelerationStructureGeometry))
+}
+
+// NewRefRDAccelerationStructureGeometryAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDAccelerationStructureGeometryAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDAccelerationStructureGeometry](reference.(RDAccelerationStructureGeometry))
 }
 
 // NewRefRDAccelerationStructureGeometryGDExtensionIternalConstructor wraps an instance this
@@ -11687,6 +15071,15 @@ func NewRefRDAccelerationStructureInstanceAsRef(reference RefCounted) Ref {
 	return NewRef[RDAccelerationStructureInstance](reference.(RDAccelerationStructureInstance))
 }
 
+// NewRefRDAccelerationStructureInstanceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDAccelerationStructureInstanceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDAccelerationStructureInstance](reference.(RDAccelerationStructureInstance))
+}
+
 // NewRefRDAccelerationStructureInstanceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDAccelerationStructureInstanceWithGodotOwnerObject. Borrowing: dropping
@@ -11716,6 +15109,15 @@ func NewRefRDAttachmentFormat(reference RDAttachmentFormat) RefRDAttachmentForma
 
 func NewRefRDAttachmentFormatAsRef(reference RefCounted) Ref {
 	return NewRef[RDAttachmentFormat](reference.(RDAttachmentFormat))
+}
+
+// NewRefRDAttachmentFormatAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDAttachmentFormatAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDAttachmentFormat](reference.(RDAttachmentFormat))
 }
 
 // NewRefRDAttachmentFormatGDExtensionIternalConstructor wraps an instance this
@@ -11749,6 +15151,15 @@ func NewRefRDFramebufferPassAsRef(reference RefCounted) Ref {
 	return NewRef[RDFramebufferPass](reference.(RDFramebufferPass))
 }
 
+// NewRefRDFramebufferPassAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDFramebufferPassAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDFramebufferPass](reference.(RDFramebufferPass))
+}
+
 // NewRefRDFramebufferPassGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDFramebufferPassWithGodotOwnerObject. Borrowing: dropping
@@ -11778,6 +15189,15 @@ func NewRefRDHitGroup(reference RDHitGroup) RefRDHitGroup {
 
 func NewRefRDHitGroupAsRef(reference RefCounted) Ref {
 	return NewRef[RDHitGroup](reference.(RDHitGroup))
+}
+
+// NewRefRDHitGroupAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDHitGroupAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDHitGroup](reference.(RDHitGroup))
 }
 
 // NewRefRDHitGroupGDExtensionIternalConstructor wraps an instance this
@@ -11811,6 +15231,15 @@ func NewRefRDPipelineColorBlendStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineColorBlendState](reference.(RDPipelineColorBlendState))
 }
 
+// NewRefRDPipelineColorBlendStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDPipelineColorBlendStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDPipelineColorBlendState](reference.(RDPipelineColorBlendState))
+}
+
 // NewRefRDPipelineColorBlendStateGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDPipelineColorBlendStateWithGodotOwnerObject. Borrowing: dropping
@@ -11840,6 +15269,15 @@ func NewRefRDPipelineColorBlendStateAttachment(reference RDPipelineColorBlendSta
 
 func NewRefRDPipelineColorBlendStateAttachmentAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineColorBlendStateAttachment](reference.(RDPipelineColorBlendStateAttachment))
+}
+
+// NewRefRDPipelineColorBlendStateAttachmentAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDPipelineColorBlendStateAttachmentAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDPipelineColorBlendStateAttachment](reference.(RDPipelineColorBlendStateAttachment))
 }
 
 // NewRefRDPipelineColorBlendStateAttachmentGDExtensionIternalConstructor wraps an instance this
@@ -11873,6 +15311,15 @@ func NewRefRDPipelineDepthStencilStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineDepthStencilState](reference.(RDPipelineDepthStencilState))
 }
 
+// NewRefRDPipelineDepthStencilStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDPipelineDepthStencilStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDPipelineDepthStencilState](reference.(RDPipelineDepthStencilState))
+}
+
 // NewRefRDPipelineDepthStencilStateGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDPipelineDepthStencilStateWithGodotOwnerObject. Borrowing: dropping
@@ -11902,6 +15349,15 @@ func NewRefRDPipelineMultisampleState(reference RDPipelineMultisampleState) RefR
 
 func NewRefRDPipelineMultisampleStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineMultisampleState](reference.(RDPipelineMultisampleState))
+}
+
+// NewRefRDPipelineMultisampleStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDPipelineMultisampleStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDPipelineMultisampleState](reference.(RDPipelineMultisampleState))
 }
 
 // NewRefRDPipelineMultisampleStateGDExtensionIternalConstructor wraps an instance this
@@ -11935,6 +15391,15 @@ func NewRefRDPipelineRasterizationStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineRasterizationState](reference.(RDPipelineRasterizationState))
 }
 
+// NewRefRDPipelineRasterizationStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDPipelineRasterizationStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDPipelineRasterizationState](reference.(RDPipelineRasterizationState))
+}
+
 // NewRefRDPipelineRasterizationStateGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDPipelineRasterizationStateWithGodotOwnerObject. Borrowing: dropping
@@ -11964,6 +15429,15 @@ func NewRefRDPipelineShader(reference RDPipelineShader) RefRDPipelineShader {
 
 func NewRefRDPipelineShaderAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineShader](reference.(RDPipelineShader))
+}
+
+// NewRefRDPipelineShaderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDPipelineShaderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDPipelineShader](reference.(RDPipelineShader))
 }
 
 // NewRefRDPipelineShaderGDExtensionIternalConstructor wraps an instance this
@@ -11997,6 +15471,15 @@ func NewRefRDPipelineSpecializationConstantAsRef(reference RefCounted) Ref {
 	return NewRef[RDPipelineSpecializationConstant](reference.(RDPipelineSpecializationConstant))
 }
 
+// NewRefRDPipelineSpecializationConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDPipelineSpecializationConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDPipelineSpecializationConstant](reference.(RDPipelineSpecializationConstant))
+}
+
 // NewRefRDPipelineSpecializationConstantGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDPipelineSpecializationConstantWithGodotOwnerObject. Borrowing: dropping
@@ -12026,6 +15509,15 @@ func NewRefRDSamplerState(reference RDSamplerState) RefRDSamplerState {
 
 func NewRefRDSamplerStateAsRef(reference RefCounted) Ref {
 	return NewRef[RDSamplerState](reference.(RDSamplerState))
+}
+
+// NewRefRDSamplerStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDSamplerStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDSamplerState](reference.(RDSamplerState))
 }
 
 // NewRefRDSamplerStateGDExtensionIternalConstructor wraps an instance this
@@ -12059,6 +15551,15 @@ func NewRefRDShaderFileAsRef(reference RefCounted) Ref {
 	return NewRef[RDShaderFile](reference.(RDShaderFile))
 }
 
+// NewRefRDShaderFileAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDShaderFileAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDShaderFile](reference.(RDShaderFile))
+}
+
 // NewRefRDShaderFileGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDShaderFileWithGodotOwnerObject. Borrowing: dropping
@@ -12088,6 +15589,15 @@ func NewRefRDShaderSPIRV(reference RDShaderSPIRV) RefRDShaderSPIRV {
 
 func NewRefRDShaderSPIRVAsRef(reference RefCounted) Ref {
 	return NewRef[RDShaderSPIRV](reference.(RDShaderSPIRV))
+}
+
+// NewRefRDShaderSPIRVAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDShaderSPIRVAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDShaderSPIRV](reference.(RDShaderSPIRV))
 }
 
 // NewRefRDShaderSPIRVGDExtensionIternalConstructor wraps an instance this
@@ -12121,6 +15631,15 @@ func NewRefRDShaderSourceAsRef(reference RefCounted) Ref {
 	return NewRef[RDShaderSource](reference.(RDShaderSource))
 }
 
+// NewRefRDShaderSourceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDShaderSourceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDShaderSource](reference.(RDShaderSource))
+}
+
 // NewRefRDShaderSourceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDShaderSourceWithGodotOwnerObject. Borrowing: dropping
@@ -12150,6 +15669,15 @@ func NewRefRDTextureFormat(reference RDTextureFormat) RefRDTextureFormat {
 
 func NewRefRDTextureFormatAsRef(reference RefCounted) Ref {
 	return NewRef[RDTextureFormat](reference.(RDTextureFormat))
+}
+
+// NewRefRDTextureFormatAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDTextureFormatAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDTextureFormat](reference.(RDTextureFormat))
 }
 
 // NewRefRDTextureFormatGDExtensionIternalConstructor wraps an instance this
@@ -12183,6 +15711,15 @@ func NewRefRDTextureViewAsRef(reference RefCounted) Ref {
 	return NewRef[RDTextureView](reference.(RDTextureView))
 }
 
+// NewRefRDTextureViewAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDTextureViewAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDTextureView](reference.(RDTextureView))
+}
+
 // NewRefRDTextureViewGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDTextureViewWithGodotOwnerObject. Borrowing: dropping
@@ -12212,6 +15749,15 @@ func NewRefRDUniform(reference RDUniform) RefRDUniform {
 
 func NewRefRDUniformAsRef(reference RefCounted) Ref {
 	return NewRef[RDUniform](reference.(RDUniform))
+}
+
+// NewRefRDUniformAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDUniformAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDUniform](reference.(RDUniform))
 }
 
 // NewRefRDUniformGDExtensionIternalConstructor wraps an instance this
@@ -12245,6 +15791,15 @@ func NewRefRDVertexAttributeAsRef(reference RefCounted) Ref {
 	return NewRef[RDVertexAttribute](reference.(RDVertexAttribute))
 }
 
+// NewRefRDVertexAttributeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRDVertexAttributeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RDVertexAttribute](reference.(RDVertexAttribute))
+}
+
 // NewRefRDVertexAttributeGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRDVertexAttributeWithGodotOwnerObject. Borrowing: dropping
@@ -12274,6 +15829,15 @@ func NewRefRandomNumberGenerator(reference RandomNumberGenerator) RefRandomNumbe
 
 func NewRefRandomNumberGeneratorAsRef(reference RefCounted) Ref {
 	return NewRef[RandomNumberGenerator](reference.(RandomNumberGenerator))
+}
+
+// NewRefRandomNumberGeneratorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRandomNumberGeneratorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RandomNumberGenerator](reference.(RandomNumberGenerator))
 }
 
 // NewRefRandomNumberGeneratorGDExtensionIternalConstructor wraps an instance this
@@ -12307,6 +15871,15 @@ func NewRefRectangleShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[RectangleShape2D](reference.(RectangleShape2D))
 }
 
+// NewRefRectangleShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRectangleShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RectangleShape2D](reference.(RectangleShape2D))
+}
+
 // NewRefRectangleShape2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRectangleShape2DWithGodotOwnerObject. Borrowing: dropping
@@ -12336,6 +15909,15 @@ func NewRefRefCounted(reference RefCounted) RefRefCounted {
 
 func NewRefRefCountedAsRef(reference RefCounted) Ref {
 	return NewRef[RefCounted](reference.(RefCounted))
+}
+
+// NewRefRefCountedAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRefCountedAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RefCounted](reference.(RefCounted))
 }
 
 // NewRefRefCountedGDExtensionIternalConstructor wraps an instance this
@@ -12369,6 +15951,15 @@ func NewRefRegExAsRef(reference RefCounted) Ref {
 	return NewRef[RegEx](reference.(RegEx))
 }
 
+// NewRefRegExAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRegExAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RegEx](reference.(RegEx))
+}
+
 // NewRefRegExGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRegExWithGodotOwnerObject. Borrowing: dropping
@@ -12398,6 +15989,15 @@ func NewRefRegExMatch(reference RegExMatch) RefRegExMatch {
 
 func NewRefRegExMatchAsRef(reference RefCounted) Ref {
 	return NewRef[RegExMatch](reference.(RegExMatch))
+}
+
+// NewRefRegExMatchAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRegExMatchAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RegExMatch](reference.(RegExMatch))
 }
 
 // NewRefRegExMatchGDExtensionIternalConstructor wraps an instance this
@@ -12431,6 +16031,15 @@ func NewRefRenderSceneBuffersAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffers](reference.(RenderSceneBuffers))
 }
 
+// NewRefRenderSceneBuffersAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRenderSceneBuffersAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RenderSceneBuffers](reference.(RenderSceneBuffers))
+}
+
 // NewRefRenderSceneBuffersGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRenderSceneBuffersWithGodotOwnerObject. Borrowing: dropping
@@ -12460,6 +16069,15 @@ func NewRefRenderSceneBuffersConfiguration(reference RenderSceneBuffersConfigura
 
 func NewRefRenderSceneBuffersConfigurationAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffersConfiguration](reference.(RenderSceneBuffersConfiguration))
+}
+
+// NewRefRenderSceneBuffersConfigurationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRenderSceneBuffersConfigurationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RenderSceneBuffersConfiguration](reference.(RenderSceneBuffersConfiguration))
 }
 
 // NewRefRenderSceneBuffersConfigurationGDExtensionIternalConstructor wraps an instance this
@@ -12493,6 +16111,15 @@ func NewRefRenderSceneBuffersExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffersExtension](reference.(RenderSceneBuffersExtension))
 }
 
+// NewRefRenderSceneBuffersExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRenderSceneBuffersExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RenderSceneBuffersExtension](reference.(RenderSceneBuffersExtension))
+}
+
 // NewRefRenderSceneBuffersExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRenderSceneBuffersExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -12522,6 +16149,15 @@ func NewRefRenderSceneBuffersRD(reference RenderSceneBuffersRD) RefRenderSceneBu
 
 func NewRefRenderSceneBuffersRDAsRef(reference RefCounted) Ref {
 	return NewRef[RenderSceneBuffersRD](reference.(RenderSceneBuffersRD))
+}
+
+// NewRefRenderSceneBuffersRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRenderSceneBuffersRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RenderSceneBuffersRD](reference.(RenderSceneBuffersRD))
 }
 
 // NewRefRenderSceneBuffersRDGDExtensionIternalConstructor wraps an instance this
@@ -12555,6 +16191,15 @@ func NewRefResourceAsRef(reference RefCounted) Ref {
 	return NewRef[Resource](reference.(Resource))
 }
 
+// NewRefResourceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Resource](reference.(Resource))
+}
+
 // NewRefResourceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceWithGodotOwnerObject. Borrowing: dropping
@@ -12584,6 +16229,15 @@ func NewRefResourceFormatLoader(reference ResourceFormatLoader) RefResourceForma
 
 func NewRefResourceFormatLoaderAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceFormatLoader](reference.(ResourceFormatLoader))
+}
+
+// NewRefResourceFormatLoaderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceFormatLoaderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceFormatLoader](reference.(ResourceFormatLoader))
 }
 
 // NewRefResourceFormatLoaderGDExtensionIternalConstructor wraps an instance this
@@ -12617,6 +16271,15 @@ func NewRefResourceFormatSaverAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceFormatSaver](reference.(ResourceFormatSaver))
 }
 
+// NewRefResourceFormatSaverAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceFormatSaverAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceFormatSaver](reference.(ResourceFormatSaver))
+}
+
 // NewRefResourceFormatSaverGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceFormatSaverWithGodotOwnerObject. Borrowing: dropping
@@ -12646,6 +16309,15 @@ func NewRefResourceImporter(reference ResourceImporter) RefResourceImporter {
 
 func NewRefResourceImporterAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporter](reference.(ResourceImporter))
+}
+
+// NewRefResourceImporterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporter](reference.(ResourceImporter))
 }
 
 // NewRefResourceImporterGDExtensionIternalConstructor wraps an instance this
@@ -12679,6 +16351,15 @@ func NewRefResourceImporterBMFontAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterBMFont](reference.(ResourceImporterBMFont))
 }
 
+// NewRefResourceImporterBMFontAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterBMFontAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterBMFont](reference.(ResourceImporterBMFont))
+}
+
 // NewRefResourceImporterBMFontGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterBMFontWithGodotOwnerObject. Borrowing: dropping
@@ -12708,6 +16389,15 @@ func NewRefResourceImporterBitMap(reference ResourceImporterBitMap) RefResourceI
 
 func NewRefResourceImporterBitMapAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterBitMap](reference.(ResourceImporterBitMap))
+}
+
+// NewRefResourceImporterBitMapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterBitMapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterBitMap](reference.(ResourceImporterBitMap))
 }
 
 // NewRefResourceImporterBitMapGDExtensionIternalConstructor wraps an instance this
@@ -12741,6 +16431,15 @@ func NewRefResourceImporterCSVTranslationAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterCSVTranslation](reference.(ResourceImporterCSVTranslation))
 }
 
+// NewRefResourceImporterCSVTranslationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterCSVTranslationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterCSVTranslation](reference.(ResourceImporterCSVTranslation))
+}
+
 // NewRefResourceImporterCSVTranslationGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterCSVTranslationWithGodotOwnerObject. Borrowing: dropping
@@ -12770,6 +16469,15 @@ func NewRefResourceImporterDynamicFont(reference ResourceImporterDynamicFont) Re
 
 func NewRefResourceImporterDynamicFontAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterDynamicFont](reference.(ResourceImporterDynamicFont))
+}
+
+// NewRefResourceImporterDynamicFontAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterDynamicFontAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterDynamicFont](reference.(ResourceImporterDynamicFont))
 }
 
 // NewRefResourceImporterDynamicFontGDExtensionIternalConstructor wraps an instance this
@@ -12803,6 +16511,15 @@ func NewRefResourceImporterImageAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterImage](reference.(ResourceImporterImage))
 }
 
+// NewRefResourceImporterImageAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterImageAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterImage](reference.(ResourceImporterImage))
+}
+
 // NewRefResourceImporterImageGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterImageWithGodotOwnerObject. Borrowing: dropping
@@ -12832,6 +16549,15 @@ func NewRefResourceImporterImageFont(reference ResourceImporterImageFont) RefRes
 
 func NewRefResourceImporterImageFontAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterImageFont](reference.(ResourceImporterImageFont))
+}
+
+// NewRefResourceImporterImageFontAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterImageFontAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterImageFont](reference.(ResourceImporterImageFont))
 }
 
 // NewRefResourceImporterImageFontGDExtensionIternalConstructor wraps an instance this
@@ -12865,6 +16591,15 @@ func NewRefResourceImporterLayeredTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterLayeredTexture](reference.(ResourceImporterLayeredTexture))
 }
 
+// NewRefResourceImporterLayeredTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterLayeredTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterLayeredTexture](reference.(ResourceImporterLayeredTexture))
+}
+
 // NewRefResourceImporterLayeredTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterLayeredTextureWithGodotOwnerObject. Borrowing: dropping
@@ -12894,6 +16629,15 @@ func NewRefResourceImporterMP3(reference ResourceImporterMP3) RefResourceImporte
 
 func NewRefResourceImporterMP3AsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterMP3](reference.(ResourceImporterMP3))
+}
+
+// NewRefResourceImporterMP3AsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterMP3AsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterMP3](reference.(ResourceImporterMP3))
 }
 
 // NewRefResourceImporterMP3GDExtensionIternalConstructor wraps an instance this
@@ -12927,6 +16671,15 @@ func NewRefResourceImporterOBJAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterOBJ](reference.(ResourceImporterOBJ))
 }
 
+// NewRefResourceImporterOBJAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterOBJAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterOBJ](reference.(ResourceImporterOBJ))
+}
+
 // NewRefResourceImporterOBJGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterOBJWithGodotOwnerObject. Borrowing: dropping
@@ -12956,6 +16709,15 @@ func NewRefResourceImporterOggVorbis(reference ResourceImporterOggVorbis) RefRes
 
 func NewRefResourceImporterOggVorbisAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterOggVorbis](reference.(ResourceImporterOggVorbis))
+}
+
+// NewRefResourceImporterOggVorbisAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterOggVorbisAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterOggVorbis](reference.(ResourceImporterOggVorbis))
 }
 
 // NewRefResourceImporterOggVorbisGDExtensionIternalConstructor wraps an instance this
@@ -12989,6 +16751,15 @@ func NewRefResourceImporterSVGAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterSVG](reference.(ResourceImporterSVG))
 }
 
+// NewRefResourceImporterSVGAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterSVGAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterSVG](reference.(ResourceImporterSVG))
+}
+
 // NewRefResourceImporterSVGGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterSVGWithGodotOwnerObject. Borrowing: dropping
@@ -13018,6 +16789,15 @@ func NewRefResourceImporterScene(reference ResourceImporterScene) RefResourceImp
 
 func NewRefResourceImporterSceneAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterScene](reference.(ResourceImporterScene))
+}
+
+// NewRefResourceImporterSceneAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterSceneAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterScene](reference.(ResourceImporterScene))
 }
 
 // NewRefResourceImporterSceneGDExtensionIternalConstructor wraps an instance this
@@ -13051,6 +16831,15 @@ func NewRefResourceImporterShaderFileAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterShaderFile](reference.(ResourceImporterShaderFile))
 }
 
+// NewRefResourceImporterShaderFileAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterShaderFileAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterShaderFile](reference.(ResourceImporterShaderFile))
+}
+
 // NewRefResourceImporterShaderFileGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterShaderFileWithGodotOwnerObject. Borrowing: dropping
@@ -13080,6 +16869,15 @@ func NewRefResourceImporterTexture(reference ResourceImporterTexture) RefResourc
 
 func NewRefResourceImporterTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterTexture](reference.(ResourceImporterTexture))
+}
+
+// NewRefResourceImporterTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterTexture](reference.(ResourceImporterTexture))
 }
 
 // NewRefResourceImporterTextureGDExtensionIternalConstructor wraps an instance this
@@ -13113,6 +16911,15 @@ func NewRefResourceImporterTextureAtlasAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterTextureAtlas](reference.(ResourceImporterTextureAtlas))
 }
 
+// NewRefResourceImporterTextureAtlasAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterTextureAtlasAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterTextureAtlas](reference.(ResourceImporterTextureAtlas))
+}
+
 // NewRefResourceImporterTextureAtlasGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewResourceImporterTextureAtlasWithGodotOwnerObject. Borrowing: dropping
@@ -13142,6 +16949,15 @@ func NewRefResourceImporterWAV(reference ResourceImporterWAV) RefResourceImporte
 
 func NewRefResourceImporterWAVAsRef(reference RefCounted) Ref {
 	return NewRef[ResourceImporterWAV](reference.(ResourceImporterWAV))
+}
+
+// NewRefResourceImporterWAVAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefResourceImporterWAVAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ResourceImporterWAV](reference.(ResourceImporterWAV))
 }
 
 // NewRefResourceImporterWAVGDExtensionIternalConstructor wraps an instance this
@@ -13175,6 +16991,15 @@ func NewRefRibbonTrailMeshAsRef(reference RefCounted) Ref {
 	return NewRef[RibbonTrailMesh](reference.(RibbonTrailMesh))
 }
 
+// NewRefRibbonTrailMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRibbonTrailMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RibbonTrailMesh](reference.(RibbonTrailMesh))
+}
+
 // NewRefRibbonTrailMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewRibbonTrailMeshWithGodotOwnerObject. Borrowing: dropping
@@ -13204,6 +17029,15 @@ func NewRefRichTextEffect(reference RichTextEffect) RefRichTextEffect {
 
 func NewRefRichTextEffectAsRef(reference RefCounted) Ref {
 	return NewRef[RichTextEffect](reference.(RichTextEffect))
+}
+
+// NewRefRichTextEffectAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefRichTextEffectAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[RichTextEffect](reference.(RichTextEffect))
 }
 
 // NewRefRichTextEffectGDExtensionIternalConstructor wraps an instance this
@@ -13237,6 +17071,15 @@ func NewRefSceneMultiplayerAsRef(reference RefCounted) Ref {
 	return NewRef[SceneMultiplayer](reference.(SceneMultiplayer))
 }
 
+// NewRefSceneMultiplayerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSceneMultiplayerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SceneMultiplayer](reference.(SceneMultiplayer))
+}
+
 // NewRefSceneMultiplayerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSceneMultiplayerWithGodotOwnerObject. Borrowing: dropping
@@ -13266,6 +17109,15 @@ func NewRefSceneReplicationConfig(reference SceneReplicationConfig) RefSceneRepl
 
 func NewRefSceneReplicationConfigAsRef(reference RefCounted) Ref {
 	return NewRef[SceneReplicationConfig](reference.(SceneReplicationConfig))
+}
+
+// NewRefSceneReplicationConfigAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSceneReplicationConfigAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SceneReplicationConfig](reference.(SceneReplicationConfig))
 }
 
 // NewRefSceneReplicationConfigGDExtensionIternalConstructor wraps an instance this
@@ -13299,6 +17151,15 @@ func NewRefSceneStateAsRef(reference RefCounted) Ref {
 	return NewRef[SceneState](reference.(SceneState))
 }
 
+// NewRefSceneStateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSceneStateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SceneState](reference.(SceneState))
+}
+
 // NewRefSceneStateGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSceneStateWithGodotOwnerObject. Borrowing: dropping
@@ -13328,6 +17189,15 @@ func NewRefSceneTreeTimer(reference SceneTreeTimer) RefSceneTreeTimer {
 
 func NewRefSceneTreeTimerAsRef(reference RefCounted) Ref {
 	return NewRef[SceneTreeTimer](reference.(SceneTreeTimer))
+}
+
+// NewRefSceneTreeTimerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSceneTreeTimerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SceneTreeTimer](reference.(SceneTreeTimer))
 }
 
 // NewRefSceneTreeTimerGDExtensionIternalConstructor wraps an instance this
@@ -13361,6 +17231,15 @@ func NewRefScriptAsRef(reference RefCounted) Ref {
 	return NewRef[Script](reference.(Script))
 }
 
+// NewRefScriptAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefScriptAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Script](reference.(Script))
+}
+
 // NewRefScriptGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewScriptWithGodotOwnerObject. Borrowing: dropping
@@ -13390,6 +17269,15 @@ func NewRefScriptBacktrace(reference ScriptBacktrace) RefScriptBacktrace {
 
 func NewRefScriptBacktraceAsRef(reference RefCounted) Ref {
 	return NewRef[ScriptBacktrace](reference.(ScriptBacktrace))
+}
+
+// NewRefScriptBacktraceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefScriptBacktraceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ScriptBacktrace](reference.(ScriptBacktrace))
 }
 
 // NewRefScriptBacktraceGDExtensionIternalConstructor wraps an instance this
@@ -13423,6 +17311,15 @@ func NewRefScriptExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[ScriptExtension](reference.(ScriptExtension))
 }
 
+// NewRefScriptExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefScriptExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ScriptExtension](reference.(ScriptExtension))
+}
+
 // NewRefScriptExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewScriptExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -13452,6 +17349,15 @@ func NewRefSegmentShape2D(reference SegmentShape2D) RefSegmentShape2D {
 
 func NewRefSegmentShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[SegmentShape2D](reference.(SegmentShape2D))
+}
+
+// NewRefSegmentShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSegmentShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SegmentShape2D](reference.(SegmentShape2D))
 }
 
 // NewRefSegmentShape2DGDExtensionIternalConstructor wraps an instance this
@@ -13485,6 +17391,15 @@ func NewRefSemaphoreAsRef(reference RefCounted) Ref {
 	return NewRef[Semaphore](reference.(Semaphore))
 }
 
+// NewRefSemaphoreAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSemaphoreAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Semaphore](reference.(Semaphore))
+}
+
 // NewRefSemaphoreGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSemaphoreWithGodotOwnerObject. Borrowing: dropping
@@ -13514,6 +17429,15 @@ func NewRefSeparationRayShape2D(reference SeparationRayShape2D) RefSeparationRay
 
 func NewRefSeparationRayShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[SeparationRayShape2D](reference.(SeparationRayShape2D))
+}
+
+// NewRefSeparationRayShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSeparationRayShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SeparationRayShape2D](reference.(SeparationRayShape2D))
 }
 
 // NewRefSeparationRayShape2DGDExtensionIternalConstructor wraps an instance this
@@ -13547,6 +17471,15 @@ func NewRefSeparationRayShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[SeparationRayShape3D](reference.(SeparationRayShape3D))
 }
 
+// NewRefSeparationRayShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSeparationRayShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SeparationRayShape3D](reference.(SeparationRayShape3D))
+}
+
 // NewRefSeparationRayShape3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSeparationRayShape3DWithGodotOwnerObject. Borrowing: dropping
@@ -13576,6 +17509,15 @@ func NewRefShader(reference Shader) RefShader {
 
 func NewRefShaderAsRef(reference RefCounted) Ref {
 	return NewRef[Shader](reference.(Shader))
+}
+
+// NewRefShaderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefShaderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Shader](reference.(Shader))
 }
 
 // NewRefShaderGDExtensionIternalConstructor wraps an instance this
@@ -13609,6 +17551,15 @@ func NewRefShaderIncludeAsRef(reference RefCounted) Ref {
 	return NewRef[ShaderInclude](reference.(ShaderInclude))
 }
 
+// NewRefShaderIncludeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefShaderIncludeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ShaderInclude](reference.(ShaderInclude))
+}
+
 // NewRefShaderIncludeGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewShaderIncludeWithGodotOwnerObject. Borrowing: dropping
@@ -13638,6 +17589,15 @@ func NewRefShaderMaterial(reference ShaderMaterial) RefShaderMaterial {
 
 func NewRefShaderMaterialAsRef(reference RefCounted) Ref {
 	return NewRef[ShaderMaterial](reference.(ShaderMaterial))
+}
+
+// NewRefShaderMaterialAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefShaderMaterialAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ShaderMaterial](reference.(ShaderMaterial))
 }
 
 // NewRefShaderMaterialGDExtensionIternalConstructor wraps an instance this
@@ -13671,6 +17631,15 @@ func NewRefShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[Shape2D](reference.(Shape2D))
 }
 
+// NewRefShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Shape2D](reference.(Shape2D))
+}
+
 // NewRefShape2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewShape2DWithGodotOwnerObject. Borrowing: dropping
@@ -13700,6 +17669,15 @@ func NewRefShape3D(reference Shape3D) RefShape3D {
 
 func NewRefShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[Shape3D](reference.(Shape3D))
+}
+
+// NewRefShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Shape3D](reference.(Shape3D))
 }
 
 // NewRefShape3DGDExtensionIternalConstructor wraps an instance this
@@ -13733,6 +17711,15 @@ func NewRefShortcutAsRef(reference RefCounted) Ref {
 	return NewRef[Shortcut](reference.(Shortcut))
 }
 
+// NewRefShortcutAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefShortcutAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Shortcut](reference.(Shortcut))
+}
+
 // NewRefShortcutGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewShortcutWithGodotOwnerObject. Borrowing: dropping
@@ -13762,6 +17749,15 @@ func NewRefSkeletonModification2D(reference SkeletonModification2D) RefSkeletonM
 
 func NewRefSkeletonModification2DAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2D](reference.(SkeletonModification2D))
+}
+
+// NewRefSkeletonModification2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2D](reference.(SkeletonModification2D))
 }
 
 // NewRefSkeletonModification2DGDExtensionIternalConstructor wraps an instance this
@@ -13795,6 +17791,15 @@ func NewRefSkeletonModification2DCCDIKAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DCCDIK](reference.(SkeletonModification2DCCDIK))
 }
 
+// NewRefSkeletonModification2DCCDIKAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DCCDIKAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2DCCDIK](reference.(SkeletonModification2DCCDIK))
+}
+
 // NewRefSkeletonModification2DCCDIKGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSkeletonModification2DCCDIKWithGodotOwnerObject. Borrowing: dropping
@@ -13824,6 +17829,15 @@ func NewRefSkeletonModification2DFABRIK(reference SkeletonModification2DFABRIK) 
 
 func NewRefSkeletonModification2DFABRIKAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DFABRIK](reference.(SkeletonModification2DFABRIK))
+}
+
+// NewRefSkeletonModification2DFABRIKAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DFABRIKAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2DFABRIK](reference.(SkeletonModification2DFABRIK))
 }
 
 // NewRefSkeletonModification2DFABRIKGDExtensionIternalConstructor wraps an instance this
@@ -13857,6 +17871,15 @@ func NewRefSkeletonModification2DJiggleAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DJiggle](reference.(SkeletonModification2DJiggle))
 }
 
+// NewRefSkeletonModification2DJiggleAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DJiggleAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2DJiggle](reference.(SkeletonModification2DJiggle))
+}
+
 // NewRefSkeletonModification2DJiggleGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSkeletonModification2DJiggleWithGodotOwnerObject. Borrowing: dropping
@@ -13886,6 +17909,15 @@ func NewRefSkeletonModification2DLookAt(reference SkeletonModification2DLookAt) 
 
 func NewRefSkeletonModification2DLookAtAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DLookAt](reference.(SkeletonModification2DLookAt))
+}
+
+// NewRefSkeletonModification2DLookAtAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DLookAtAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2DLookAt](reference.(SkeletonModification2DLookAt))
 }
 
 // NewRefSkeletonModification2DLookAtGDExtensionIternalConstructor wraps an instance this
@@ -13919,6 +17951,15 @@ func NewRefSkeletonModification2DPhysicalBonesAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DPhysicalBones](reference.(SkeletonModification2DPhysicalBones))
 }
 
+// NewRefSkeletonModification2DPhysicalBonesAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DPhysicalBonesAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2DPhysicalBones](reference.(SkeletonModification2DPhysicalBones))
+}
+
 // NewRefSkeletonModification2DPhysicalBonesGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSkeletonModification2DPhysicalBonesWithGodotOwnerObject. Borrowing: dropping
@@ -13948,6 +17989,15 @@ func NewRefSkeletonModification2DStackHolder(reference SkeletonModification2DSta
 
 func NewRefSkeletonModification2DStackHolderAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DStackHolder](reference.(SkeletonModification2DStackHolder))
+}
+
+// NewRefSkeletonModification2DStackHolderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DStackHolderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2DStackHolder](reference.(SkeletonModification2DStackHolder))
 }
 
 // NewRefSkeletonModification2DStackHolderGDExtensionIternalConstructor wraps an instance this
@@ -13981,6 +18031,15 @@ func NewRefSkeletonModification2DTwoBoneIKAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModification2DTwoBoneIK](reference.(SkeletonModification2DTwoBoneIK))
 }
 
+// NewRefSkeletonModification2DTwoBoneIKAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModification2DTwoBoneIKAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModification2DTwoBoneIK](reference.(SkeletonModification2DTwoBoneIK))
+}
+
 // NewRefSkeletonModification2DTwoBoneIKGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSkeletonModification2DTwoBoneIKWithGodotOwnerObject. Borrowing: dropping
@@ -14010,6 +18069,15 @@ func NewRefSkeletonModificationStack2D(reference SkeletonModificationStack2D) Re
 
 func NewRefSkeletonModificationStack2DAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonModificationStack2D](reference.(SkeletonModificationStack2D))
+}
+
+// NewRefSkeletonModificationStack2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonModificationStack2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonModificationStack2D](reference.(SkeletonModificationStack2D))
 }
 
 // NewRefSkeletonModificationStack2DGDExtensionIternalConstructor wraps an instance this
@@ -14043,6 +18111,15 @@ func NewRefSkeletonProfileAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonProfile](reference.(SkeletonProfile))
 }
 
+// NewRefSkeletonProfileAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonProfileAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonProfile](reference.(SkeletonProfile))
+}
+
 // NewRefSkeletonProfileGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSkeletonProfileWithGodotOwnerObject. Borrowing: dropping
@@ -14072,6 +18149,15 @@ func NewRefSkeletonProfileHumanoid(reference SkeletonProfileHumanoid) RefSkeleto
 
 func NewRefSkeletonProfileHumanoidAsRef(reference RefCounted) Ref {
 	return NewRef[SkeletonProfileHumanoid](reference.(SkeletonProfileHumanoid))
+}
+
+// NewRefSkeletonProfileHumanoidAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkeletonProfileHumanoidAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkeletonProfileHumanoid](reference.(SkeletonProfileHumanoid))
 }
 
 // NewRefSkeletonProfileHumanoidGDExtensionIternalConstructor wraps an instance this
@@ -14105,6 +18191,15 @@ func NewRefSkinAsRef(reference RefCounted) Ref {
 	return NewRef[Skin](reference.(Skin))
 }
 
+// NewRefSkinAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkinAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Skin](reference.(Skin))
+}
+
 // NewRefSkinGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSkinWithGodotOwnerObject. Borrowing: dropping
@@ -14134,6 +18229,15 @@ func NewRefSkinReference(reference SkinReference) RefSkinReference {
 
 func NewRefSkinReferenceAsRef(reference RefCounted) Ref {
 	return NewRef[SkinReference](reference.(SkinReference))
+}
+
+// NewRefSkinReferenceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkinReferenceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SkinReference](reference.(SkinReference))
 }
 
 // NewRefSkinReferenceGDExtensionIternalConstructor wraps an instance this
@@ -14167,6 +18271,15 @@ func NewRefSkyAsRef(reference RefCounted) Ref {
 	return NewRef[Sky](reference.(Sky))
 }
 
+// NewRefSkyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSkyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Sky](reference.(Sky))
+}
+
 // NewRefSkyGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSkyWithGodotOwnerObject. Borrowing: dropping
@@ -14196,6 +18309,15 @@ func NewRefSocketServer(reference SocketServer) RefSocketServer {
 
 func NewRefSocketServerAsRef(reference RefCounted) Ref {
 	return NewRef[SocketServer](reference.(SocketServer))
+}
+
+// NewRefSocketServerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSocketServerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SocketServer](reference.(SocketServer))
 }
 
 // NewRefSocketServerGDExtensionIternalConstructor wraps an instance this
@@ -14229,6 +18351,15 @@ func NewRefSphereMeshAsRef(reference RefCounted) Ref {
 	return NewRef[SphereMesh](reference.(SphereMesh))
 }
 
+// NewRefSphereMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSphereMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SphereMesh](reference.(SphereMesh))
+}
+
 // NewRefSphereMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSphereMeshWithGodotOwnerObject. Borrowing: dropping
@@ -14258,6 +18389,15 @@ func NewRefSphereOccluder3D(reference SphereOccluder3D) RefSphereOccluder3D {
 
 func NewRefSphereOccluder3DAsRef(reference RefCounted) Ref {
 	return NewRef[SphereOccluder3D](reference.(SphereOccluder3D))
+}
+
+// NewRefSphereOccluder3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSphereOccluder3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SphereOccluder3D](reference.(SphereOccluder3D))
 }
 
 // NewRefSphereOccluder3DGDExtensionIternalConstructor wraps an instance this
@@ -14291,6 +18431,15 @@ func NewRefSphereShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[SphereShape3D](reference.(SphereShape3D))
 }
 
+// NewRefSphereShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSphereShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SphereShape3D](reference.(SphereShape3D))
+}
+
 // NewRefSphereShape3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSphereShape3DWithGodotOwnerObject. Borrowing: dropping
@@ -14320,6 +18469,15 @@ func NewRefSpriteFrames(reference SpriteFrames) RefSpriteFrames {
 
 func NewRefSpriteFramesAsRef(reference RefCounted) Ref {
 	return NewRef[SpriteFrames](reference.(SpriteFrames))
+}
+
+// NewRefSpriteFramesAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSpriteFramesAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SpriteFrames](reference.(SpriteFrames))
 }
 
 // NewRefSpriteFramesGDExtensionIternalConstructor wraps an instance this
@@ -14353,6 +18511,15 @@ func NewRefStandardMaterial3DAsRef(reference RefCounted) Ref {
 	return NewRef[StandardMaterial3D](reference.(StandardMaterial3D))
 }
 
+// NewRefStandardMaterial3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStandardMaterial3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StandardMaterial3D](reference.(StandardMaterial3D))
+}
+
 // NewRefStandardMaterial3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewStandardMaterial3DWithGodotOwnerObject. Borrowing: dropping
@@ -14382,6 +18549,15 @@ func NewRefStreamPeer(reference StreamPeer) RefStreamPeer {
 
 func NewRefStreamPeerAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeer](reference.(StreamPeer))
+}
+
+// NewRefStreamPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeer](reference.(StreamPeer))
 }
 
 // NewRefStreamPeerGDExtensionIternalConstructor wraps an instance this
@@ -14415,6 +18591,15 @@ func NewRefStreamPeerBufferAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerBuffer](reference.(StreamPeerBuffer))
 }
 
+// NewRefStreamPeerBufferAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerBufferAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeerBuffer](reference.(StreamPeerBuffer))
+}
+
 // NewRefStreamPeerBufferGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewStreamPeerBufferWithGodotOwnerObject. Borrowing: dropping
@@ -14444,6 +18629,15 @@ func NewRefStreamPeerExtension(reference StreamPeerExtension) RefStreamPeerExten
 
 func NewRefStreamPeerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerExtension](reference.(StreamPeerExtension))
+}
+
+// NewRefStreamPeerExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeerExtension](reference.(StreamPeerExtension))
 }
 
 // NewRefStreamPeerExtensionGDExtensionIternalConstructor wraps an instance this
@@ -14477,6 +18671,15 @@ func NewRefStreamPeerGZIPAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerGZIP](reference.(StreamPeerGZIP))
 }
 
+// NewRefStreamPeerGZIPAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerGZIPAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeerGZIP](reference.(StreamPeerGZIP))
+}
+
 // NewRefStreamPeerGZIPGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewStreamPeerGZIPWithGodotOwnerObject. Borrowing: dropping
@@ -14506,6 +18709,15 @@ func NewRefStreamPeerSocket(reference StreamPeerSocket) RefStreamPeerSocket {
 
 func NewRefStreamPeerSocketAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerSocket](reference.(StreamPeerSocket))
+}
+
+// NewRefStreamPeerSocketAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerSocketAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeerSocket](reference.(StreamPeerSocket))
 }
 
 // NewRefStreamPeerSocketGDExtensionIternalConstructor wraps an instance this
@@ -14539,6 +18751,15 @@ func NewRefStreamPeerTCPAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerTCP](reference.(StreamPeerTCP))
 }
 
+// NewRefStreamPeerTCPAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerTCPAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeerTCP](reference.(StreamPeerTCP))
+}
+
 // NewRefStreamPeerTCPGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewStreamPeerTCPWithGodotOwnerObject. Borrowing: dropping
@@ -14568,6 +18789,15 @@ func NewRefStreamPeerTLS(reference StreamPeerTLS) RefStreamPeerTLS {
 
 func NewRefStreamPeerTLSAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerTLS](reference.(StreamPeerTLS))
+}
+
+// NewRefStreamPeerTLSAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerTLSAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeerTLS](reference.(StreamPeerTLS))
 }
 
 // NewRefStreamPeerTLSGDExtensionIternalConstructor wraps an instance this
@@ -14601,6 +18831,15 @@ func NewRefStreamPeerUDSAsRef(reference RefCounted) Ref {
 	return NewRef[StreamPeerUDS](reference.(StreamPeerUDS))
 }
 
+// NewRefStreamPeerUDSAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStreamPeerUDSAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StreamPeerUDS](reference.(StreamPeerUDS))
+}
+
 // NewRefStreamPeerUDSGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewStreamPeerUDSWithGodotOwnerObject. Borrowing: dropping
@@ -14630,6 +18869,15 @@ func NewRefStyleBox(reference StyleBox) RefStyleBox {
 
 func NewRefStyleBoxAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBox](reference.(StyleBox))
+}
+
+// NewRefStyleBoxAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStyleBoxAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StyleBox](reference.(StyleBox))
 }
 
 // NewRefStyleBoxGDExtensionIternalConstructor wraps an instance this
@@ -14663,6 +18911,15 @@ func NewRefStyleBoxEmptyAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxEmpty](reference.(StyleBoxEmpty))
 }
 
+// NewRefStyleBoxEmptyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStyleBoxEmptyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StyleBoxEmpty](reference.(StyleBoxEmpty))
+}
+
 // NewRefStyleBoxEmptyGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewStyleBoxEmptyWithGodotOwnerObject. Borrowing: dropping
@@ -14692,6 +18949,15 @@ func NewRefStyleBoxFlat(reference StyleBoxFlat) RefStyleBoxFlat {
 
 func NewRefStyleBoxFlatAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxFlat](reference.(StyleBoxFlat))
+}
+
+// NewRefStyleBoxFlatAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStyleBoxFlatAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StyleBoxFlat](reference.(StyleBoxFlat))
 }
 
 // NewRefStyleBoxFlatGDExtensionIternalConstructor wraps an instance this
@@ -14725,6 +18991,15 @@ func NewRefStyleBoxLineAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxLine](reference.(StyleBoxLine))
 }
 
+// NewRefStyleBoxLineAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStyleBoxLineAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StyleBoxLine](reference.(StyleBoxLine))
+}
+
 // NewRefStyleBoxLineGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewStyleBoxLineWithGodotOwnerObject. Borrowing: dropping
@@ -14754,6 +19029,15 @@ func NewRefStyleBoxTexture(reference StyleBoxTexture) RefStyleBoxTexture {
 
 func NewRefStyleBoxTextureAsRef(reference RefCounted) Ref {
 	return NewRef[StyleBoxTexture](reference.(StyleBoxTexture))
+}
+
+// NewRefStyleBoxTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefStyleBoxTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[StyleBoxTexture](reference.(StyleBoxTexture))
 }
 
 // NewRefStyleBoxTextureGDExtensionIternalConstructor wraps an instance this
@@ -14787,6 +19071,15 @@ func NewRefSubtweenTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[SubtweenTweener](reference.(SubtweenTweener))
 }
 
+// NewRefSubtweenTweenerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSubtweenTweenerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SubtweenTweener](reference.(SubtweenTweener))
+}
+
 // NewRefSubtweenTweenerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSubtweenTweenerWithGodotOwnerObject. Borrowing: dropping
@@ -14816,6 +19109,15 @@ func NewRefSurfaceTool(reference SurfaceTool) RefSurfaceTool {
 
 func NewRefSurfaceToolAsRef(reference RefCounted) Ref {
 	return NewRef[SurfaceTool](reference.(SurfaceTool))
+}
+
+// NewRefSurfaceToolAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSurfaceToolAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SurfaceTool](reference.(SurfaceTool))
 }
 
 // NewRefSurfaceToolGDExtensionIternalConstructor wraps an instance this
@@ -14849,6 +19151,15 @@ func NewRefSyntaxHighlighterAsRef(reference RefCounted) Ref {
 	return NewRef[SyntaxHighlighter](reference.(SyntaxHighlighter))
 }
 
+// NewRefSyntaxHighlighterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSyntaxHighlighterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SyntaxHighlighter](reference.(SyntaxHighlighter))
+}
+
 // NewRefSyntaxHighlighterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewSyntaxHighlighterWithGodotOwnerObject. Borrowing: dropping
@@ -14878,6 +19189,15 @@ func NewRefSystemFont(reference SystemFont) RefSystemFont {
 
 func NewRefSystemFontAsRef(reference RefCounted) Ref {
 	return NewRef[SystemFont](reference.(SystemFont))
+}
+
+// NewRefSystemFontAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefSystemFontAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[SystemFont](reference.(SystemFont))
 }
 
 // NewRefSystemFontGDExtensionIternalConstructor wraps an instance this
@@ -14911,6 +19231,15 @@ func NewRefTCPServerAsRef(reference RefCounted) Ref {
 	return NewRef[TCPServer](reference.(TCPServer))
 }
 
+// NewRefTCPServerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTCPServerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TCPServer](reference.(TCPServer))
+}
+
 // NewRefTCPServerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTCPServerWithGodotOwnerObject. Borrowing: dropping
@@ -14940,6 +19269,15 @@ func NewRefTLSOptions(reference TLSOptions) RefTLSOptions {
 
 func NewRefTLSOptionsAsRef(reference RefCounted) Ref {
 	return NewRef[TLSOptions](reference.(TLSOptions))
+}
+
+// NewRefTLSOptionsAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTLSOptionsAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TLSOptions](reference.(TLSOptions))
 }
 
 // NewRefTLSOptionsGDExtensionIternalConstructor wraps an instance this
@@ -14973,6 +19311,15 @@ func NewRefTextLineAsRef(reference RefCounted) Ref {
 	return NewRef[TextLine](reference.(TextLine))
 }
 
+// NewRefTextLineAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextLineAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextLine](reference.(TextLine))
+}
+
 // NewRefTextLineGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTextLineWithGodotOwnerObject. Borrowing: dropping
@@ -15002,6 +19349,15 @@ func NewRefTextMesh(reference TextMesh) RefTextMesh {
 
 func NewRefTextMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TextMesh](reference.(TextMesh))
+}
+
+// NewRefTextMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextMesh](reference.(TextMesh))
 }
 
 // NewRefTextMeshGDExtensionIternalConstructor wraps an instance this
@@ -15035,6 +19391,15 @@ func NewRefTextParagraphAsRef(reference RefCounted) Ref {
 	return NewRef[TextParagraph](reference.(TextParagraph))
 }
 
+// NewRefTextParagraphAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextParagraphAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextParagraph](reference.(TextParagraph))
+}
+
 // NewRefTextParagraphGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTextParagraphWithGodotOwnerObject. Borrowing: dropping
@@ -15064,6 +19429,15 @@ func NewRefTextServer(reference TextServer) RefTextServer {
 
 func NewRefTextServerAsRef(reference RefCounted) Ref {
 	return NewRef[TextServer](reference.(TextServer))
+}
+
+// NewRefTextServerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextServerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextServer](reference.(TextServer))
 }
 
 // NewRefTextServerGDExtensionIternalConstructor wraps an instance this
@@ -15097,6 +19471,15 @@ func NewRefTextServerAdvancedAsRef(reference RefCounted) Ref {
 	return NewRef[TextServerAdvanced](reference.(TextServerAdvanced))
 }
 
+// NewRefTextServerAdvancedAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextServerAdvancedAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextServerAdvanced](reference.(TextServerAdvanced))
+}
+
 // NewRefTextServerAdvancedGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTextServerAdvancedWithGodotOwnerObject. Borrowing: dropping
@@ -15126,6 +19509,15 @@ func NewRefTextServerDummy(reference TextServerDummy) RefTextServerDummy {
 
 func NewRefTextServerDummyAsRef(reference RefCounted) Ref {
 	return NewRef[TextServerDummy](reference.(TextServerDummy))
+}
+
+// NewRefTextServerDummyAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextServerDummyAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextServerDummy](reference.(TextServerDummy))
 }
 
 // NewRefTextServerDummyGDExtensionIternalConstructor wraps an instance this
@@ -15159,6 +19551,15 @@ func NewRefTextServerExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[TextServerExtension](reference.(TextServerExtension))
 }
 
+// NewRefTextServerExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextServerExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextServerExtension](reference.(TextServerExtension))
+}
+
 // NewRefTextServerExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTextServerExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -15188,6 +19589,15 @@ func NewRefTexture(reference Texture) RefTexture {
 
 func NewRefTextureAsRef(reference RefCounted) Ref {
 	return NewRef[Texture](reference.(Texture))
+}
+
+// NewRefTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Texture](reference.(Texture))
 }
 
 // NewRefTextureGDExtensionIternalConstructor wraps an instance this
@@ -15221,6 +19631,15 @@ func NewRefTexture2DAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2D](reference.(Texture2D))
 }
 
+// NewRefTexture2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTexture2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Texture2D](reference.(Texture2D))
+}
+
 // NewRefTexture2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTexture2DWithGodotOwnerObject. Borrowing: dropping
@@ -15250,6 +19669,15 @@ func NewRefTexture2DArray(reference Texture2DArray) RefTexture2DArray {
 
 func NewRefTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2DArray](reference.(Texture2DArray))
+}
+
+// NewRefTexture2DArrayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTexture2DArrayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Texture2DArray](reference.(Texture2DArray))
 }
 
 // NewRefTexture2DArrayGDExtensionIternalConstructor wraps an instance this
@@ -15283,6 +19711,15 @@ func NewRefTexture2DArrayRDAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2DArrayRD](reference.(Texture2DArrayRD))
 }
 
+// NewRefTexture2DArrayRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTexture2DArrayRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Texture2DArrayRD](reference.(Texture2DArrayRD))
+}
+
 // NewRefTexture2DArrayRDGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTexture2DArrayRDWithGodotOwnerObject. Borrowing: dropping
@@ -15312,6 +19749,15 @@ func NewRefTexture2DRD(reference Texture2DRD) RefTexture2DRD {
 
 func NewRefTexture2DRDAsRef(reference RefCounted) Ref {
 	return NewRef[Texture2DRD](reference.(Texture2DRD))
+}
+
+// NewRefTexture2DRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTexture2DRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Texture2DRD](reference.(Texture2DRD))
 }
 
 // NewRefTexture2DRDGDExtensionIternalConstructor wraps an instance this
@@ -15345,6 +19791,15 @@ func NewRefTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[Texture3D](reference.(Texture3D))
 }
 
+// NewRefTexture3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTexture3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Texture3D](reference.(Texture3D))
+}
+
 // NewRefTexture3DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTexture3DWithGodotOwnerObject. Borrowing: dropping
@@ -15374,6 +19829,15 @@ func NewRefTexture3DRD(reference Texture3DRD) RefTexture3DRD {
 
 func NewRefTexture3DRDAsRef(reference RefCounted) Ref {
 	return NewRef[Texture3DRD](reference.(Texture3DRD))
+}
+
+// NewRefTexture3DRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTexture3DRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Texture3DRD](reference.(Texture3DRD))
 }
 
 // NewRefTexture3DRDGDExtensionIternalConstructor wraps an instance this
@@ -15407,6 +19871,15 @@ func NewRefTextureCubemapArrayRDAsRef(reference RefCounted) Ref {
 	return NewRef[TextureCubemapArrayRD](reference.(TextureCubemapArrayRD))
 }
 
+// NewRefTextureCubemapArrayRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextureCubemapArrayRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextureCubemapArrayRD](reference.(TextureCubemapArrayRD))
+}
+
 // NewRefTextureCubemapArrayRDGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTextureCubemapArrayRDWithGodotOwnerObject. Borrowing: dropping
@@ -15436,6 +19909,15 @@ func NewRefTextureCubemapRD(reference TextureCubemapRD) RefTextureCubemapRD {
 
 func NewRefTextureCubemapRDAsRef(reference RefCounted) Ref {
 	return NewRef[TextureCubemapRD](reference.(TextureCubemapRD))
+}
+
+// NewRefTextureCubemapRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextureCubemapRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextureCubemapRD](reference.(TextureCubemapRD))
 }
 
 // NewRefTextureCubemapRDGDExtensionIternalConstructor wraps an instance this
@@ -15469,6 +19951,15 @@ func NewRefTextureLayeredAsRef(reference RefCounted) Ref {
 	return NewRef[TextureLayered](reference.(TextureLayered))
 }
 
+// NewRefTextureLayeredAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextureLayeredAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextureLayered](reference.(TextureLayered))
+}
+
 // NewRefTextureLayeredGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTextureLayeredWithGodotOwnerObject. Borrowing: dropping
@@ -15498,6 +19989,15 @@ func NewRefTextureLayeredRD(reference TextureLayeredRD) RefTextureLayeredRD {
 
 func NewRefTextureLayeredRDAsRef(reference RefCounted) Ref {
 	return NewRef[TextureLayeredRD](reference.(TextureLayeredRD))
+}
+
+// NewRefTextureLayeredRDAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTextureLayeredRDAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TextureLayeredRD](reference.(TextureLayeredRD))
 }
 
 // NewRefTextureLayeredRDGDExtensionIternalConstructor wraps an instance this
@@ -15531,6 +20031,15 @@ func NewRefThemeAsRef(reference RefCounted) Ref {
 	return NewRef[Theme](reference.(Theme))
 }
 
+// NewRefThemeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefThemeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Theme](reference.(Theme))
+}
+
 // NewRefThemeGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewThemeWithGodotOwnerObject. Borrowing: dropping
@@ -15560,6 +20069,15 @@ func NewRefThread(reference Thread) RefThread {
 
 func NewRefThreadAsRef(reference RefCounted) Ref {
 	return NewRef[Thread](reference.(Thread))
+}
+
+// NewRefThreadAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefThreadAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Thread](reference.(Thread))
 }
 
 // NewRefThreadGDExtensionIternalConstructor wraps an instance this
@@ -15593,6 +20111,15 @@ func NewRefTileMapPatternAsRef(reference RefCounted) Ref {
 	return NewRef[TileMapPattern](reference.(TileMapPattern))
 }
 
+// NewRefTileMapPatternAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTileMapPatternAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TileMapPattern](reference.(TileMapPattern))
+}
+
 // NewRefTileMapPatternGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTileMapPatternWithGodotOwnerObject. Borrowing: dropping
@@ -15622,6 +20149,15 @@ func NewRefTileSet(reference TileSet) RefTileSet {
 
 func NewRefTileSetAsRef(reference RefCounted) Ref {
 	return NewRef[TileSet](reference.(TileSet))
+}
+
+// NewRefTileSetAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTileSetAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TileSet](reference.(TileSet))
 }
 
 // NewRefTileSetGDExtensionIternalConstructor wraps an instance this
@@ -15655,6 +20191,15 @@ func NewRefTileSetAtlasSourceAsRef(reference RefCounted) Ref {
 	return NewRef[TileSetAtlasSource](reference.(TileSetAtlasSource))
 }
 
+// NewRefTileSetAtlasSourceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTileSetAtlasSourceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TileSetAtlasSource](reference.(TileSetAtlasSource))
+}
+
 // NewRefTileSetAtlasSourceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTileSetAtlasSourceWithGodotOwnerObject. Borrowing: dropping
@@ -15684,6 +20229,15 @@ func NewRefTileSetScenesCollectionSource(reference TileSetScenesCollectionSource
 
 func NewRefTileSetScenesCollectionSourceAsRef(reference RefCounted) Ref {
 	return NewRef[TileSetScenesCollectionSource](reference.(TileSetScenesCollectionSource))
+}
+
+// NewRefTileSetScenesCollectionSourceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTileSetScenesCollectionSourceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TileSetScenesCollectionSource](reference.(TileSetScenesCollectionSource))
 }
 
 // NewRefTileSetScenesCollectionSourceGDExtensionIternalConstructor wraps an instance this
@@ -15717,6 +20271,15 @@ func NewRefTileSetSourceAsRef(reference RefCounted) Ref {
 	return NewRef[TileSetSource](reference.(TileSetSource))
 }
 
+// NewRefTileSetSourceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTileSetSourceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TileSetSource](reference.(TileSetSource))
+}
+
 // NewRefTileSetSourceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTileSetSourceWithGodotOwnerObject. Borrowing: dropping
@@ -15746,6 +20309,15 @@ func NewRefTorusMesh(reference TorusMesh) RefTorusMesh {
 
 func NewRefTorusMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TorusMesh](reference.(TorusMesh))
+}
+
+// NewRefTorusMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTorusMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TorusMesh](reference.(TorusMesh))
 }
 
 // NewRefTorusMeshGDExtensionIternalConstructor wraps an instance this
@@ -15779,6 +20351,15 @@ func NewRefTranslationAsRef(reference RefCounted) Ref {
 	return NewRef[Translation](reference.(Translation))
 }
 
+// NewRefTranslationAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTranslationAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Translation](reference.(Translation))
+}
+
 // NewRefTranslationGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTranslationWithGodotOwnerObject. Borrowing: dropping
@@ -15808,6 +20389,15 @@ func NewRefTranslationDomain(reference TranslationDomain) RefTranslationDomain {
 
 func NewRefTranslationDomainAsRef(reference RefCounted) Ref {
 	return NewRef[TranslationDomain](reference.(TranslationDomain))
+}
+
+// NewRefTranslationDomainAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTranslationDomainAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TranslationDomain](reference.(TranslationDomain))
 }
 
 // NewRefTranslationDomainGDExtensionIternalConstructor wraps an instance this
@@ -15841,6 +20431,15 @@ func NewRefTriangleMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TriangleMesh](reference.(TriangleMesh))
 }
 
+// NewRefTriangleMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTriangleMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TriangleMesh](reference.(TriangleMesh))
+}
+
 // NewRefTriangleMeshGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTriangleMeshWithGodotOwnerObject. Borrowing: dropping
@@ -15870,6 +20469,15 @@ func NewRefTubeTrailMesh(reference TubeTrailMesh) RefTubeTrailMesh {
 
 func NewRefTubeTrailMeshAsRef(reference RefCounted) Ref {
 	return NewRef[TubeTrailMesh](reference.(TubeTrailMesh))
+}
+
+// NewRefTubeTrailMeshAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTubeTrailMeshAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[TubeTrailMesh](reference.(TubeTrailMesh))
 }
 
 // NewRefTubeTrailMeshGDExtensionIternalConstructor wraps an instance this
@@ -15903,6 +20511,15 @@ func NewRefTweenAsRef(reference RefCounted) Ref {
 	return NewRef[Tween](reference.(Tween))
 }
 
+// NewRefTweenAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTweenAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Tween](reference.(Tween))
+}
+
 // NewRefTweenGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewTweenWithGodotOwnerObject. Borrowing: dropping
@@ -15932,6 +20549,15 @@ func NewRefTweener(reference Tweener) RefTweener {
 
 func NewRefTweenerAsRef(reference RefCounted) Ref {
 	return NewRef[Tweener](reference.(Tweener))
+}
+
+// NewRefTweenerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefTweenerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[Tweener](reference.(Tweener))
 }
 
 // NewRefTweenerGDExtensionIternalConstructor wraps an instance this
@@ -15965,6 +20591,15 @@ func NewRefUDPServerAsRef(reference RefCounted) Ref {
 	return NewRef[UDPServer](reference.(UDPServer))
 }
 
+// NewRefUDPServerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefUDPServerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[UDPServer](reference.(UDPServer))
+}
+
 // NewRefUDPServerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewUDPServerWithGodotOwnerObject. Borrowing: dropping
@@ -15994,6 +20629,15 @@ func NewRefUDSServer(reference UDSServer) RefUDSServer {
 
 func NewRefUDSServerAsRef(reference RefCounted) Ref {
 	return NewRef[UDSServer](reference.(UDSServer))
+}
+
+// NewRefUDSServerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefUDSServerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[UDSServer](reference.(UDSServer))
 }
 
 // NewRefUDSServerGDExtensionIternalConstructor wraps an instance this
@@ -16027,6 +20671,15 @@ func NewRefUPNPAsRef(reference RefCounted) Ref {
 	return NewRef[UPNP](reference.(UPNP))
 }
 
+// NewRefUPNPAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefUPNPAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[UPNP](reference.(UPNP))
+}
+
 // NewRefUPNPGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewUPNPWithGodotOwnerObject. Borrowing: dropping
@@ -16056,6 +20709,15 @@ func NewRefUPNPDevice(reference UPNPDevice) RefUPNPDevice {
 
 func NewRefUPNPDeviceAsRef(reference RefCounted) Ref {
 	return NewRef[UPNPDevice](reference.(UPNPDevice))
+}
+
+// NewRefUPNPDeviceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefUPNPDeviceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[UPNPDevice](reference.(UPNPDevice))
 }
 
 // NewRefUPNPDeviceGDExtensionIternalConstructor wraps an instance this
@@ -16089,6 +20751,15 @@ func NewRefVideoStreamAsRef(reference RefCounted) Ref {
 	return NewRef[VideoStream](reference.(VideoStream))
 }
 
+// NewRefVideoStreamAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVideoStreamAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VideoStream](reference.(VideoStream))
+}
+
 // NewRefVideoStreamGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVideoStreamWithGodotOwnerObject. Borrowing: dropping
@@ -16118,6 +20789,15 @@ func NewRefVideoStreamPlayback(reference VideoStreamPlayback) RefVideoStreamPlay
 
 func NewRefVideoStreamPlaybackAsRef(reference RefCounted) Ref {
 	return NewRef[VideoStreamPlayback](reference.(VideoStreamPlayback))
+}
+
+// NewRefVideoStreamPlaybackAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVideoStreamPlaybackAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VideoStreamPlayback](reference.(VideoStreamPlayback))
 }
 
 // NewRefVideoStreamPlaybackGDExtensionIternalConstructor wraps an instance this
@@ -16151,6 +20831,15 @@ func NewRefVideoStreamTheoraAsRef(reference RefCounted) Ref {
 	return NewRef[VideoStreamTheora](reference.(VideoStreamTheora))
 }
 
+// NewRefVideoStreamTheoraAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVideoStreamTheoraAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VideoStreamTheora](reference.(VideoStreamTheora))
+}
+
 // NewRefVideoStreamTheoraGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVideoStreamTheoraWithGodotOwnerObject. Borrowing: dropping
@@ -16180,6 +20869,15 @@ func NewRefViewportTexture(reference ViewportTexture) RefViewportTexture {
 
 func NewRefViewportTextureAsRef(reference RefCounted) Ref {
 	return NewRef[ViewportTexture](reference.(ViewportTexture))
+}
+
+// NewRefViewportTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefViewportTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ViewportTexture](reference.(ViewportTexture))
 }
 
 // NewRefViewportTextureGDExtensionIternalConstructor wraps an instance this
@@ -16213,6 +20911,15 @@ func NewRefVisualShaderAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShader](reference.(VisualShader))
 }
 
+// NewRefVisualShaderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShader](reference.(VisualShader))
+}
+
 // NewRefVisualShaderGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderWithGodotOwnerObject. Borrowing: dropping
@@ -16242,6 +20949,15 @@ func NewRefVisualShaderNode(reference VisualShaderNode) RefVisualShaderNode {
 
 func NewRefVisualShaderNodeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNode](reference.(VisualShaderNode))
+}
+
+// NewRefVisualShaderNodeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNode](reference.(VisualShaderNode))
 }
 
 // NewRefVisualShaderNodeGDExtensionIternalConstructor wraps an instance this
@@ -16275,6 +20991,15 @@ func NewRefVisualShaderNodeBillboardAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeBillboard](reference.(VisualShaderNodeBillboard))
 }
 
+// NewRefVisualShaderNodeBillboardAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeBillboardAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeBillboard](reference.(VisualShaderNodeBillboard))
+}
+
 // NewRefVisualShaderNodeBillboardGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeBillboardWithGodotOwnerObject. Borrowing: dropping
@@ -16304,6 +21029,15 @@ func NewRefVisualShaderNodeBooleanConstant(reference VisualShaderNodeBooleanCons
 
 func NewRefVisualShaderNodeBooleanConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeBooleanConstant](reference.(VisualShaderNodeBooleanConstant))
+}
+
+// NewRefVisualShaderNodeBooleanConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeBooleanConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeBooleanConstant](reference.(VisualShaderNodeBooleanConstant))
 }
 
 // NewRefVisualShaderNodeBooleanConstantGDExtensionIternalConstructor wraps an instance this
@@ -16337,6 +21071,15 @@ func NewRefVisualShaderNodeBooleanParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeBooleanParameter](reference.(VisualShaderNodeBooleanParameter))
 }
 
+// NewRefVisualShaderNodeBooleanParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeBooleanParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeBooleanParameter](reference.(VisualShaderNodeBooleanParameter))
+}
+
 // NewRefVisualShaderNodeBooleanParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeBooleanParameterWithGodotOwnerObject. Borrowing: dropping
@@ -16366,6 +21109,15 @@ func NewRefVisualShaderNodeClamp(reference VisualShaderNodeClamp) RefVisualShade
 
 func NewRefVisualShaderNodeClampAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeClamp](reference.(VisualShaderNodeClamp))
+}
+
+// NewRefVisualShaderNodeClampAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeClampAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeClamp](reference.(VisualShaderNodeClamp))
 }
 
 // NewRefVisualShaderNodeClampGDExtensionIternalConstructor wraps an instance this
@@ -16399,6 +21151,15 @@ func NewRefVisualShaderNodeColorConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorConstant](reference.(VisualShaderNodeColorConstant))
 }
 
+// NewRefVisualShaderNodeColorConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeColorConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeColorConstant](reference.(VisualShaderNodeColorConstant))
+}
+
 // NewRefVisualShaderNodeColorConstantGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeColorConstantWithGodotOwnerObject. Borrowing: dropping
@@ -16428,6 +21189,15 @@ func NewRefVisualShaderNodeColorFunc(reference VisualShaderNodeColorFunc) RefVis
 
 func NewRefVisualShaderNodeColorFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorFunc](reference.(VisualShaderNodeColorFunc))
+}
+
+// NewRefVisualShaderNodeColorFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeColorFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeColorFunc](reference.(VisualShaderNodeColorFunc))
 }
 
 // NewRefVisualShaderNodeColorFuncGDExtensionIternalConstructor wraps an instance this
@@ -16461,6 +21231,15 @@ func NewRefVisualShaderNodeColorOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorOp](reference.(VisualShaderNodeColorOp))
 }
 
+// NewRefVisualShaderNodeColorOpAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeColorOpAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeColorOp](reference.(VisualShaderNodeColorOp))
+}
+
 // NewRefVisualShaderNodeColorOpGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeColorOpWithGodotOwnerObject. Borrowing: dropping
@@ -16490,6 +21269,15 @@ func NewRefVisualShaderNodeColorParameter(reference VisualShaderNodeColorParamet
 
 func NewRefVisualShaderNodeColorParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeColorParameter](reference.(VisualShaderNodeColorParameter))
+}
+
+// NewRefVisualShaderNodeColorParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeColorParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeColorParameter](reference.(VisualShaderNodeColorParameter))
 }
 
 // NewRefVisualShaderNodeColorParameterGDExtensionIternalConstructor wraps an instance this
@@ -16523,6 +21311,15 @@ func NewRefVisualShaderNodeCommentAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeComment](reference.(VisualShaderNodeComment))
 }
 
+// NewRefVisualShaderNodeCommentAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeCommentAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeComment](reference.(VisualShaderNodeComment))
+}
+
 // NewRefVisualShaderNodeCommentGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeCommentWithGodotOwnerObject. Borrowing: dropping
@@ -16552,6 +21349,15 @@ func NewRefVisualShaderNodeCompare(reference VisualShaderNodeCompare) RefVisualS
 
 func NewRefVisualShaderNodeCompareAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCompare](reference.(VisualShaderNodeCompare))
+}
+
+// NewRefVisualShaderNodeCompareAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeCompareAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeCompare](reference.(VisualShaderNodeCompare))
 }
 
 // NewRefVisualShaderNodeCompareGDExtensionIternalConstructor wraps an instance this
@@ -16585,6 +21391,15 @@ func NewRefVisualShaderNodeConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeConstant](reference.(VisualShaderNodeConstant))
 }
 
+// NewRefVisualShaderNodeConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeConstant](reference.(VisualShaderNodeConstant))
+}
+
 // NewRefVisualShaderNodeConstantGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeConstantWithGodotOwnerObject. Borrowing: dropping
@@ -16614,6 +21429,15 @@ func NewRefVisualShaderNodeCubemap(reference VisualShaderNodeCubemap) RefVisualS
 
 func NewRefVisualShaderNodeCubemapAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCubemap](reference.(VisualShaderNodeCubemap))
+}
+
+// NewRefVisualShaderNodeCubemapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeCubemapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeCubemap](reference.(VisualShaderNodeCubemap))
 }
 
 // NewRefVisualShaderNodeCubemapGDExtensionIternalConstructor wraps an instance this
@@ -16647,6 +21471,15 @@ func NewRefVisualShaderNodeCubemapParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCubemapParameter](reference.(VisualShaderNodeCubemapParameter))
 }
 
+// NewRefVisualShaderNodeCubemapParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeCubemapParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeCubemapParameter](reference.(VisualShaderNodeCubemapParameter))
+}
+
 // NewRefVisualShaderNodeCubemapParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeCubemapParameterWithGodotOwnerObject. Borrowing: dropping
@@ -16676,6 +21509,15 @@ func NewRefVisualShaderNodeCurveTexture(reference VisualShaderNodeCurveTexture) 
 
 func NewRefVisualShaderNodeCurveTextureAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCurveTexture](reference.(VisualShaderNodeCurveTexture))
+}
+
+// NewRefVisualShaderNodeCurveTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeCurveTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeCurveTexture](reference.(VisualShaderNodeCurveTexture))
 }
 
 // NewRefVisualShaderNodeCurveTextureGDExtensionIternalConstructor wraps an instance this
@@ -16709,6 +21551,15 @@ func NewRefVisualShaderNodeCurveXYZTextureAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCurveXYZTexture](reference.(VisualShaderNodeCurveXYZTexture))
 }
 
+// NewRefVisualShaderNodeCurveXYZTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeCurveXYZTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeCurveXYZTexture](reference.(VisualShaderNodeCurveXYZTexture))
+}
+
 // NewRefVisualShaderNodeCurveXYZTextureGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeCurveXYZTextureWithGodotOwnerObject. Borrowing: dropping
@@ -16738,6 +21589,15 @@ func NewRefVisualShaderNodeCustom(reference VisualShaderNodeCustom) RefVisualSha
 
 func NewRefVisualShaderNodeCustomAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeCustom](reference.(VisualShaderNodeCustom))
+}
+
+// NewRefVisualShaderNodeCustomAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeCustomAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeCustom](reference.(VisualShaderNodeCustom))
 }
 
 // NewRefVisualShaderNodeCustomGDExtensionIternalConstructor wraps an instance this
@@ -16771,6 +21631,15 @@ func NewRefVisualShaderNodeDerivativeFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDerivativeFunc](reference.(VisualShaderNodeDerivativeFunc))
 }
 
+// NewRefVisualShaderNodeDerivativeFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeDerivativeFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeDerivativeFunc](reference.(VisualShaderNodeDerivativeFunc))
+}
+
 // NewRefVisualShaderNodeDerivativeFuncGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeDerivativeFuncWithGodotOwnerObject. Borrowing: dropping
@@ -16800,6 +21669,15 @@ func NewRefVisualShaderNodeDeterminant(reference VisualShaderNodeDeterminant) Re
 
 func NewRefVisualShaderNodeDeterminantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDeterminant](reference.(VisualShaderNodeDeterminant))
+}
+
+// NewRefVisualShaderNodeDeterminantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeDeterminantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeDeterminant](reference.(VisualShaderNodeDeterminant))
 }
 
 // NewRefVisualShaderNodeDeterminantGDExtensionIternalConstructor wraps an instance this
@@ -16833,6 +21711,15 @@ func NewRefVisualShaderNodeDistanceFadeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDistanceFade](reference.(VisualShaderNodeDistanceFade))
 }
 
+// NewRefVisualShaderNodeDistanceFadeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeDistanceFadeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeDistanceFade](reference.(VisualShaderNodeDistanceFade))
+}
+
 // NewRefVisualShaderNodeDistanceFadeGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeDistanceFadeWithGodotOwnerObject. Borrowing: dropping
@@ -16862,6 +21749,15 @@ func NewRefVisualShaderNodeDotProduct(reference VisualShaderNodeDotProduct) RefV
 
 func NewRefVisualShaderNodeDotProductAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeDotProduct](reference.(VisualShaderNodeDotProduct))
+}
+
+// NewRefVisualShaderNodeDotProductAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeDotProductAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeDotProduct](reference.(VisualShaderNodeDotProduct))
 }
 
 // NewRefVisualShaderNodeDotProductGDExtensionIternalConstructor wraps an instance this
@@ -16895,6 +21791,15 @@ func NewRefVisualShaderNodeExpressionAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeExpression](reference.(VisualShaderNodeExpression))
 }
 
+// NewRefVisualShaderNodeExpressionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeExpressionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeExpression](reference.(VisualShaderNodeExpression))
+}
+
 // NewRefVisualShaderNodeExpressionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeExpressionWithGodotOwnerObject. Borrowing: dropping
@@ -16924,6 +21829,15 @@ func NewRefVisualShaderNodeFaceForward(reference VisualShaderNodeFaceForward) Re
 
 func NewRefVisualShaderNodeFaceForwardAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFaceForward](reference.(VisualShaderNodeFaceForward))
+}
+
+// NewRefVisualShaderNodeFaceForwardAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeFaceForwardAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeFaceForward](reference.(VisualShaderNodeFaceForward))
 }
 
 // NewRefVisualShaderNodeFaceForwardGDExtensionIternalConstructor wraps an instance this
@@ -16957,6 +21871,15 @@ func NewRefVisualShaderNodeFloatConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatConstant](reference.(VisualShaderNodeFloatConstant))
 }
 
+// NewRefVisualShaderNodeFloatConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeFloatConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeFloatConstant](reference.(VisualShaderNodeFloatConstant))
+}
+
 // NewRefVisualShaderNodeFloatConstantGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeFloatConstantWithGodotOwnerObject. Borrowing: dropping
@@ -16986,6 +21909,15 @@ func NewRefVisualShaderNodeFloatFunc(reference VisualShaderNodeFloatFunc) RefVis
 
 func NewRefVisualShaderNodeFloatFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatFunc](reference.(VisualShaderNodeFloatFunc))
+}
+
+// NewRefVisualShaderNodeFloatFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeFloatFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeFloatFunc](reference.(VisualShaderNodeFloatFunc))
 }
 
 // NewRefVisualShaderNodeFloatFuncGDExtensionIternalConstructor wraps an instance this
@@ -17019,6 +21951,15 @@ func NewRefVisualShaderNodeFloatOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatOp](reference.(VisualShaderNodeFloatOp))
 }
 
+// NewRefVisualShaderNodeFloatOpAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeFloatOpAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeFloatOp](reference.(VisualShaderNodeFloatOp))
+}
+
 // NewRefVisualShaderNodeFloatOpGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeFloatOpWithGodotOwnerObject. Borrowing: dropping
@@ -17048,6 +21989,15 @@ func NewRefVisualShaderNodeFloatParameter(reference VisualShaderNodeFloatParamet
 
 func NewRefVisualShaderNodeFloatParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFloatParameter](reference.(VisualShaderNodeFloatParameter))
+}
+
+// NewRefVisualShaderNodeFloatParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeFloatParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeFloatParameter](reference.(VisualShaderNodeFloatParameter))
 }
 
 // NewRefVisualShaderNodeFloatParameterGDExtensionIternalConstructor wraps an instance this
@@ -17081,6 +22031,15 @@ func NewRefVisualShaderNodeFrameAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFrame](reference.(VisualShaderNodeFrame))
 }
 
+// NewRefVisualShaderNodeFrameAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeFrameAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeFrame](reference.(VisualShaderNodeFrame))
+}
+
 // NewRefVisualShaderNodeFrameGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeFrameWithGodotOwnerObject. Borrowing: dropping
@@ -17110,6 +22069,15 @@ func NewRefVisualShaderNodeFresnel(reference VisualShaderNodeFresnel) RefVisualS
 
 func NewRefVisualShaderNodeFresnelAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeFresnel](reference.(VisualShaderNodeFresnel))
+}
+
+// NewRefVisualShaderNodeFresnelAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeFresnelAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeFresnel](reference.(VisualShaderNodeFresnel))
 }
 
 // NewRefVisualShaderNodeFresnelGDExtensionIternalConstructor wraps an instance this
@@ -17143,6 +22111,15 @@ func NewRefVisualShaderNodeGlobalExpressionAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeGlobalExpression](reference.(VisualShaderNodeGlobalExpression))
 }
 
+// NewRefVisualShaderNodeGlobalExpressionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeGlobalExpressionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeGlobalExpression](reference.(VisualShaderNodeGlobalExpression))
+}
+
 // NewRefVisualShaderNodeGlobalExpressionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeGlobalExpressionWithGodotOwnerObject. Borrowing: dropping
@@ -17172,6 +22149,15 @@ func NewRefVisualShaderNodeGroupBase(reference VisualShaderNodeGroupBase) RefVis
 
 func NewRefVisualShaderNodeGroupBaseAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeGroupBase](reference.(VisualShaderNodeGroupBase))
+}
+
+// NewRefVisualShaderNodeGroupBaseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeGroupBaseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeGroupBase](reference.(VisualShaderNodeGroupBase))
 }
 
 // NewRefVisualShaderNodeGroupBaseGDExtensionIternalConstructor wraps an instance this
@@ -17205,6 +22191,15 @@ func NewRefVisualShaderNodeIfAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIf](reference.(VisualShaderNodeIf))
 }
 
+// NewRefVisualShaderNodeIfAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeIfAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeIf](reference.(VisualShaderNodeIf))
+}
+
 // NewRefVisualShaderNodeIfGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeIfWithGodotOwnerObject. Borrowing: dropping
@@ -17234,6 +22229,15 @@ func NewRefVisualShaderNodeInput(reference VisualShaderNodeInput) RefVisualShade
 
 func NewRefVisualShaderNodeInputAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeInput](reference.(VisualShaderNodeInput))
+}
+
+// NewRefVisualShaderNodeInputAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeInputAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeInput](reference.(VisualShaderNodeInput))
 }
 
 // NewRefVisualShaderNodeInputGDExtensionIternalConstructor wraps an instance this
@@ -17267,6 +22271,15 @@ func NewRefVisualShaderNodeIntConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntConstant](reference.(VisualShaderNodeIntConstant))
 }
 
+// NewRefVisualShaderNodeIntConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeIntConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeIntConstant](reference.(VisualShaderNodeIntConstant))
+}
+
 // NewRefVisualShaderNodeIntConstantGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeIntConstantWithGodotOwnerObject. Borrowing: dropping
@@ -17296,6 +22309,15 @@ func NewRefVisualShaderNodeIntFunc(reference VisualShaderNodeIntFunc) RefVisualS
 
 func NewRefVisualShaderNodeIntFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntFunc](reference.(VisualShaderNodeIntFunc))
+}
+
+// NewRefVisualShaderNodeIntFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeIntFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeIntFunc](reference.(VisualShaderNodeIntFunc))
 }
 
 // NewRefVisualShaderNodeIntFuncGDExtensionIternalConstructor wraps an instance this
@@ -17329,6 +22351,15 @@ func NewRefVisualShaderNodeIntOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntOp](reference.(VisualShaderNodeIntOp))
 }
 
+// NewRefVisualShaderNodeIntOpAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeIntOpAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeIntOp](reference.(VisualShaderNodeIntOp))
+}
+
 // NewRefVisualShaderNodeIntOpGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeIntOpWithGodotOwnerObject. Borrowing: dropping
@@ -17358,6 +22389,15 @@ func NewRefVisualShaderNodeIntParameter(reference VisualShaderNodeIntParameter) 
 
 func NewRefVisualShaderNodeIntParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIntParameter](reference.(VisualShaderNodeIntParameter))
+}
+
+// NewRefVisualShaderNodeIntParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeIntParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeIntParameter](reference.(VisualShaderNodeIntParameter))
 }
 
 // NewRefVisualShaderNodeIntParameterGDExtensionIternalConstructor wraps an instance this
@@ -17391,6 +22431,15 @@ func NewRefVisualShaderNodeIsAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeIs](reference.(VisualShaderNodeIs))
 }
 
+// NewRefVisualShaderNodeIsAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeIsAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeIs](reference.(VisualShaderNodeIs))
+}
+
 // NewRefVisualShaderNodeIsGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeIsWithGodotOwnerObject. Borrowing: dropping
@@ -17420,6 +22469,15 @@ func NewRefVisualShaderNodeLinearSceneDepth(reference VisualShaderNodeLinearScen
 
 func NewRefVisualShaderNodeLinearSceneDepthAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeLinearSceneDepth](reference.(VisualShaderNodeLinearSceneDepth))
+}
+
+// NewRefVisualShaderNodeLinearSceneDepthAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeLinearSceneDepthAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeLinearSceneDepth](reference.(VisualShaderNodeLinearSceneDepth))
 }
 
 // NewRefVisualShaderNodeLinearSceneDepthGDExtensionIternalConstructor wraps an instance this
@@ -17453,6 +22511,15 @@ func NewRefVisualShaderNodeMixAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeMix](reference.(VisualShaderNodeMix))
 }
 
+// NewRefVisualShaderNodeMixAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeMixAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeMix](reference.(VisualShaderNodeMix))
+}
+
 // NewRefVisualShaderNodeMixGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeMixWithGodotOwnerObject. Borrowing: dropping
@@ -17482,6 +22549,15 @@ func NewRefVisualShaderNodeMultiplyAdd(reference VisualShaderNodeMultiplyAdd) Re
 
 func NewRefVisualShaderNodeMultiplyAddAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeMultiplyAdd](reference.(VisualShaderNodeMultiplyAdd))
+}
+
+// NewRefVisualShaderNodeMultiplyAddAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeMultiplyAddAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeMultiplyAdd](reference.(VisualShaderNodeMultiplyAdd))
 }
 
 // NewRefVisualShaderNodeMultiplyAddGDExtensionIternalConstructor wraps an instance this
@@ -17515,6 +22591,15 @@ func NewRefVisualShaderNodeOuterProductAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeOuterProduct](reference.(VisualShaderNodeOuterProduct))
 }
 
+// NewRefVisualShaderNodeOuterProductAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeOuterProductAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeOuterProduct](reference.(VisualShaderNodeOuterProduct))
+}
+
 // NewRefVisualShaderNodeOuterProductGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeOuterProductWithGodotOwnerObject. Borrowing: dropping
@@ -17544,6 +22629,15 @@ func NewRefVisualShaderNodeOutput(reference VisualShaderNodeOutput) RefVisualSha
 
 func NewRefVisualShaderNodeOutputAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeOutput](reference.(VisualShaderNodeOutput))
+}
+
+// NewRefVisualShaderNodeOutputAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeOutputAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeOutput](reference.(VisualShaderNodeOutput))
 }
 
 // NewRefVisualShaderNodeOutputGDExtensionIternalConstructor wraps an instance this
@@ -17577,6 +22671,15 @@ func NewRefVisualShaderNodeParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParameter](reference.(VisualShaderNodeParameter))
 }
 
+// NewRefVisualShaderNodeParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParameter](reference.(VisualShaderNodeParameter))
+}
+
 // NewRefVisualShaderNodeParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeParameterWithGodotOwnerObject. Borrowing: dropping
@@ -17606,6 +22709,15 @@ func NewRefVisualShaderNodeParameterRef(reference VisualShaderNodeParameterRef) 
 
 func NewRefVisualShaderNodeParameterRefAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParameterRef](reference.(VisualShaderNodeParameterRef))
+}
+
+// NewRefVisualShaderNodeParameterRefAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParameterRefAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParameterRef](reference.(VisualShaderNodeParameterRef))
 }
 
 // NewRefVisualShaderNodeParameterRefGDExtensionIternalConstructor wraps an instance this
@@ -17639,6 +22751,15 @@ func NewRefVisualShaderNodeParticleAcceleratorAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleAccelerator](reference.(VisualShaderNodeParticleAccelerator))
 }
 
+// NewRefVisualShaderNodeParticleAcceleratorAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleAcceleratorAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleAccelerator](reference.(VisualShaderNodeParticleAccelerator))
+}
+
 // NewRefVisualShaderNodeParticleAcceleratorGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeParticleAcceleratorWithGodotOwnerObject. Borrowing: dropping
@@ -17668,6 +22789,15 @@ func NewRefVisualShaderNodeParticleBoxEmitter(reference VisualShaderNodeParticle
 
 func NewRefVisualShaderNodeParticleBoxEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleBoxEmitter](reference.(VisualShaderNodeParticleBoxEmitter))
+}
+
+// NewRefVisualShaderNodeParticleBoxEmitterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleBoxEmitterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleBoxEmitter](reference.(VisualShaderNodeParticleBoxEmitter))
 }
 
 // NewRefVisualShaderNodeParticleBoxEmitterGDExtensionIternalConstructor wraps an instance this
@@ -17701,6 +22831,15 @@ func NewRefVisualShaderNodeParticleConeVelocityAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleConeVelocity](reference.(VisualShaderNodeParticleConeVelocity))
 }
 
+// NewRefVisualShaderNodeParticleConeVelocityAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleConeVelocityAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleConeVelocity](reference.(VisualShaderNodeParticleConeVelocity))
+}
+
 // NewRefVisualShaderNodeParticleConeVelocityGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeParticleConeVelocityWithGodotOwnerObject. Borrowing: dropping
@@ -17730,6 +22869,15 @@ func NewRefVisualShaderNodeParticleEmit(reference VisualShaderNodeParticleEmit) 
 
 func NewRefVisualShaderNodeParticleEmitAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleEmit](reference.(VisualShaderNodeParticleEmit))
+}
+
+// NewRefVisualShaderNodeParticleEmitAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleEmitAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleEmit](reference.(VisualShaderNodeParticleEmit))
 }
 
 // NewRefVisualShaderNodeParticleEmitGDExtensionIternalConstructor wraps an instance this
@@ -17763,6 +22911,15 @@ func NewRefVisualShaderNodeParticleEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleEmitter](reference.(VisualShaderNodeParticleEmitter))
 }
 
+// NewRefVisualShaderNodeParticleEmitterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleEmitterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleEmitter](reference.(VisualShaderNodeParticleEmitter))
+}
+
 // NewRefVisualShaderNodeParticleEmitterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeParticleEmitterWithGodotOwnerObject. Borrowing: dropping
@@ -17792,6 +22949,15 @@ func NewRefVisualShaderNodeParticleMeshEmitter(reference VisualShaderNodeParticl
 
 func NewRefVisualShaderNodeParticleMeshEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleMeshEmitter](reference.(VisualShaderNodeParticleMeshEmitter))
+}
+
+// NewRefVisualShaderNodeParticleMeshEmitterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleMeshEmitterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleMeshEmitter](reference.(VisualShaderNodeParticleMeshEmitter))
 }
 
 // NewRefVisualShaderNodeParticleMeshEmitterGDExtensionIternalConstructor wraps an instance this
@@ -17825,6 +22991,15 @@ func NewRefVisualShaderNodeParticleMultiplyByAxisAngleAsRef(reference RefCounted
 	return NewRef[VisualShaderNodeParticleMultiplyByAxisAngle](reference.(VisualShaderNodeParticleMultiplyByAxisAngle))
 }
 
+// NewRefVisualShaderNodeParticleMultiplyByAxisAngleAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleMultiplyByAxisAngleAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleMultiplyByAxisAngle](reference.(VisualShaderNodeParticleMultiplyByAxisAngle))
+}
+
 // NewRefVisualShaderNodeParticleMultiplyByAxisAngleGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeParticleMultiplyByAxisAngleWithGodotOwnerObject. Borrowing: dropping
@@ -17854,6 +23029,15 @@ func NewRefVisualShaderNodeParticleOutput(reference VisualShaderNodeParticleOutp
 
 func NewRefVisualShaderNodeParticleOutputAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleOutput](reference.(VisualShaderNodeParticleOutput))
+}
+
+// NewRefVisualShaderNodeParticleOutputAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleOutputAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleOutput](reference.(VisualShaderNodeParticleOutput))
 }
 
 // NewRefVisualShaderNodeParticleOutputGDExtensionIternalConstructor wraps an instance this
@@ -17887,6 +23071,15 @@ func NewRefVisualShaderNodeParticleRandomnessAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleRandomness](reference.(VisualShaderNodeParticleRandomness))
 }
 
+// NewRefVisualShaderNodeParticleRandomnessAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleRandomnessAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleRandomness](reference.(VisualShaderNodeParticleRandomness))
+}
+
 // NewRefVisualShaderNodeParticleRandomnessGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeParticleRandomnessWithGodotOwnerObject. Borrowing: dropping
@@ -17916,6 +23109,15 @@ func NewRefVisualShaderNodeParticleRingEmitter(reference VisualShaderNodeParticl
 
 func NewRefVisualShaderNodeParticleRingEmitterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeParticleRingEmitter](reference.(VisualShaderNodeParticleRingEmitter))
+}
+
+// NewRefVisualShaderNodeParticleRingEmitterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleRingEmitterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleRingEmitter](reference.(VisualShaderNodeParticleRingEmitter))
 }
 
 // NewRefVisualShaderNodeParticleRingEmitterGDExtensionIternalConstructor wraps an instance this
@@ -17949,6 +23151,15 @@ func NewRefVisualShaderNodeParticleSphereEmitterAsRef(reference RefCounted) Ref 
 	return NewRef[VisualShaderNodeParticleSphereEmitter](reference.(VisualShaderNodeParticleSphereEmitter))
 }
 
+// NewRefVisualShaderNodeParticleSphereEmitterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeParticleSphereEmitterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeParticleSphereEmitter](reference.(VisualShaderNodeParticleSphereEmitter))
+}
+
 // NewRefVisualShaderNodeParticleSphereEmitterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeParticleSphereEmitterWithGodotOwnerObject. Borrowing: dropping
@@ -17978,6 +23189,15 @@ func NewRefVisualShaderNodeProximityFade(reference VisualShaderNodeProximityFade
 
 func NewRefVisualShaderNodeProximityFadeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeProximityFade](reference.(VisualShaderNodeProximityFade))
+}
+
+// NewRefVisualShaderNodeProximityFadeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeProximityFadeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeProximityFade](reference.(VisualShaderNodeProximityFade))
 }
 
 // NewRefVisualShaderNodeProximityFadeGDExtensionIternalConstructor wraps an instance this
@@ -18011,6 +23231,15 @@ func NewRefVisualShaderNodeRandomRangeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeRandomRange](reference.(VisualShaderNodeRandomRange))
 }
 
+// NewRefVisualShaderNodeRandomRangeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeRandomRangeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeRandomRange](reference.(VisualShaderNodeRandomRange))
+}
+
 // NewRefVisualShaderNodeRandomRangeGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeRandomRangeWithGodotOwnerObject. Borrowing: dropping
@@ -18040,6 +23269,15 @@ func NewRefVisualShaderNodeRemap(reference VisualShaderNodeRemap) RefVisualShade
 
 func NewRefVisualShaderNodeRemapAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeRemap](reference.(VisualShaderNodeRemap))
+}
+
+// NewRefVisualShaderNodeRemapAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeRemapAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeRemap](reference.(VisualShaderNodeRemap))
 }
 
 // NewRefVisualShaderNodeRemapGDExtensionIternalConstructor wraps an instance this
@@ -18073,6 +23311,15 @@ func NewRefVisualShaderNodeRerouteAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeReroute](reference.(VisualShaderNodeReroute))
 }
 
+// NewRefVisualShaderNodeRerouteAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeRerouteAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeReroute](reference.(VisualShaderNodeReroute))
+}
+
 // NewRefVisualShaderNodeRerouteGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeRerouteWithGodotOwnerObject. Borrowing: dropping
@@ -18102,6 +23349,15 @@ func NewRefVisualShaderNodeResizableBase(reference VisualShaderNodeResizableBase
 
 func NewRefVisualShaderNodeResizableBaseAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeResizableBase](reference.(VisualShaderNodeResizableBase))
+}
+
+// NewRefVisualShaderNodeResizableBaseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeResizableBaseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeResizableBase](reference.(VisualShaderNodeResizableBase))
 }
 
 // NewRefVisualShaderNodeResizableBaseGDExtensionIternalConstructor wraps an instance this
@@ -18135,6 +23391,15 @@ func NewRefVisualShaderNodeRotationByAxisAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeRotationByAxis](reference.(VisualShaderNodeRotationByAxis))
 }
 
+// NewRefVisualShaderNodeRotationByAxisAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeRotationByAxisAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeRotationByAxis](reference.(VisualShaderNodeRotationByAxis))
+}
+
 // NewRefVisualShaderNodeRotationByAxisGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeRotationByAxisWithGodotOwnerObject. Borrowing: dropping
@@ -18164,6 +23429,15 @@ func NewRefVisualShaderNodeSDFRaymarch(reference VisualShaderNodeSDFRaymarch) Re
 
 func NewRefVisualShaderNodeSDFRaymarchAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSDFRaymarch](reference.(VisualShaderNodeSDFRaymarch))
+}
+
+// NewRefVisualShaderNodeSDFRaymarchAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeSDFRaymarchAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeSDFRaymarch](reference.(VisualShaderNodeSDFRaymarch))
 }
 
 // NewRefVisualShaderNodeSDFRaymarchGDExtensionIternalConstructor wraps an instance this
@@ -18197,6 +23471,15 @@ func NewRefVisualShaderNodeSDFToScreenUVAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSDFToScreenUV](reference.(VisualShaderNodeSDFToScreenUV))
 }
 
+// NewRefVisualShaderNodeSDFToScreenUVAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeSDFToScreenUVAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeSDFToScreenUV](reference.(VisualShaderNodeSDFToScreenUV))
+}
+
 // NewRefVisualShaderNodeSDFToScreenUVGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeSDFToScreenUVWithGodotOwnerObject. Borrowing: dropping
@@ -18226,6 +23509,15 @@ func NewRefVisualShaderNodeSample3D(reference VisualShaderNodeSample3D) RefVisua
 
 func NewRefVisualShaderNodeSample3DAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSample3D](reference.(VisualShaderNodeSample3D))
+}
+
+// NewRefVisualShaderNodeSample3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeSample3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeSample3D](reference.(VisualShaderNodeSample3D))
 }
 
 // NewRefVisualShaderNodeSample3DGDExtensionIternalConstructor wraps an instance this
@@ -18259,6 +23551,15 @@ func NewRefVisualShaderNodeScreenNormalWorldSpaceAsRef(reference RefCounted) Ref
 	return NewRef[VisualShaderNodeScreenNormalWorldSpace](reference.(VisualShaderNodeScreenNormalWorldSpace))
 }
 
+// NewRefVisualShaderNodeScreenNormalWorldSpaceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeScreenNormalWorldSpaceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeScreenNormalWorldSpace](reference.(VisualShaderNodeScreenNormalWorldSpace))
+}
+
 // NewRefVisualShaderNodeScreenNormalWorldSpaceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeScreenNormalWorldSpaceWithGodotOwnerObject. Borrowing: dropping
@@ -18288,6 +23589,15 @@ func NewRefVisualShaderNodeScreenUVToSDF(reference VisualShaderNodeScreenUVToSDF
 
 func NewRefVisualShaderNodeScreenUVToSDFAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeScreenUVToSDF](reference.(VisualShaderNodeScreenUVToSDF))
+}
+
+// NewRefVisualShaderNodeScreenUVToSDFAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeScreenUVToSDFAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeScreenUVToSDF](reference.(VisualShaderNodeScreenUVToSDF))
 }
 
 // NewRefVisualShaderNodeScreenUVToSDFGDExtensionIternalConstructor wraps an instance this
@@ -18321,6 +23631,15 @@ func NewRefVisualShaderNodeSmoothStepAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSmoothStep](reference.(VisualShaderNodeSmoothStep))
 }
 
+// NewRefVisualShaderNodeSmoothStepAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeSmoothStepAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeSmoothStep](reference.(VisualShaderNodeSmoothStep))
+}
+
 // NewRefVisualShaderNodeSmoothStepGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeSmoothStepWithGodotOwnerObject. Borrowing: dropping
@@ -18350,6 +23669,15 @@ func NewRefVisualShaderNodeStep(reference VisualShaderNodeStep) RefVisualShaderN
 
 func NewRefVisualShaderNodeStepAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeStep](reference.(VisualShaderNodeStep))
+}
+
+// NewRefVisualShaderNodeStepAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeStepAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeStep](reference.(VisualShaderNodeStep))
 }
 
 // NewRefVisualShaderNodeStepGDExtensionIternalConstructor wraps an instance this
@@ -18383,6 +23711,15 @@ func NewRefVisualShaderNodeSwitchAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeSwitch](reference.(VisualShaderNodeSwitch))
 }
 
+// NewRefVisualShaderNodeSwitchAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeSwitchAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeSwitch](reference.(VisualShaderNodeSwitch))
+}
+
 // NewRefVisualShaderNodeSwitchGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeSwitchWithGodotOwnerObject. Borrowing: dropping
@@ -18412,6 +23749,15 @@ func NewRefVisualShaderNodeTexture(reference VisualShaderNodeTexture) RefVisualS
 
 func NewRefVisualShaderNodeTextureAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture](reference.(VisualShaderNodeTexture))
+}
+
+// NewRefVisualShaderNodeTextureAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTextureAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTexture](reference.(VisualShaderNodeTexture))
 }
 
 // NewRefVisualShaderNodeTextureGDExtensionIternalConstructor wraps an instance this
@@ -18445,6 +23791,15 @@ func NewRefVisualShaderNodeTexture2DArrayAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture2DArray](reference.(VisualShaderNodeTexture2DArray))
 }
 
+// NewRefVisualShaderNodeTexture2DArrayAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTexture2DArrayAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTexture2DArray](reference.(VisualShaderNodeTexture2DArray))
+}
+
 // NewRefVisualShaderNodeTexture2DArrayGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTexture2DArrayWithGodotOwnerObject. Borrowing: dropping
@@ -18474,6 +23829,15 @@ func NewRefVisualShaderNodeTexture2DArrayParameter(reference VisualShaderNodeTex
 
 func NewRefVisualShaderNodeTexture2DArrayParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture2DArrayParameter](reference.(VisualShaderNodeTexture2DArrayParameter))
+}
+
+// NewRefVisualShaderNodeTexture2DArrayParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTexture2DArrayParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTexture2DArrayParameter](reference.(VisualShaderNodeTexture2DArrayParameter))
 }
 
 // NewRefVisualShaderNodeTexture2DArrayParameterGDExtensionIternalConstructor wraps an instance this
@@ -18507,6 +23871,15 @@ func NewRefVisualShaderNodeTexture2DParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture2DParameter](reference.(VisualShaderNodeTexture2DParameter))
 }
 
+// NewRefVisualShaderNodeTexture2DParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTexture2DParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTexture2DParameter](reference.(VisualShaderNodeTexture2DParameter))
+}
+
 // NewRefVisualShaderNodeTexture2DParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTexture2DParameterWithGodotOwnerObject. Borrowing: dropping
@@ -18536,6 +23909,15 @@ func NewRefVisualShaderNodeTexture3D(reference VisualShaderNodeTexture3D) RefVis
 
 func NewRefVisualShaderNodeTexture3DAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture3D](reference.(VisualShaderNodeTexture3D))
+}
+
+// NewRefVisualShaderNodeTexture3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTexture3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTexture3D](reference.(VisualShaderNodeTexture3D))
 }
 
 // NewRefVisualShaderNodeTexture3DGDExtensionIternalConstructor wraps an instance this
@@ -18569,6 +23951,15 @@ func NewRefVisualShaderNodeTexture3DParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTexture3DParameter](reference.(VisualShaderNodeTexture3DParameter))
 }
 
+// NewRefVisualShaderNodeTexture3DParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTexture3DParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTexture3DParameter](reference.(VisualShaderNodeTexture3DParameter))
+}
+
 // NewRefVisualShaderNodeTexture3DParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTexture3DParameterWithGodotOwnerObject. Borrowing: dropping
@@ -18598,6 +23989,15 @@ func NewRefVisualShaderNodeTextureParameter(reference VisualShaderNodeTexturePar
 
 func NewRefVisualShaderNodeTextureParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTextureParameter](reference.(VisualShaderNodeTextureParameter))
+}
+
+// NewRefVisualShaderNodeTextureParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTextureParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTextureParameter](reference.(VisualShaderNodeTextureParameter))
 }
 
 // NewRefVisualShaderNodeTextureParameterGDExtensionIternalConstructor wraps an instance this
@@ -18631,6 +24031,15 @@ func NewRefVisualShaderNodeTextureParameterTriplanarAsRef(reference RefCounted) 
 	return NewRef[VisualShaderNodeTextureParameterTriplanar](reference.(VisualShaderNodeTextureParameterTriplanar))
 }
 
+// NewRefVisualShaderNodeTextureParameterTriplanarAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTextureParameterTriplanarAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTextureParameterTriplanar](reference.(VisualShaderNodeTextureParameterTriplanar))
+}
+
 // NewRefVisualShaderNodeTextureParameterTriplanarGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTextureParameterTriplanarWithGodotOwnerObject. Borrowing: dropping
@@ -18660,6 +24069,15 @@ func NewRefVisualShaderNodeTextureSDF(reference VisualShaderNodeTextureSDF) RefV
 
 func NewRefVisualShaderNodeTextureSDFAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTextureSDF](reference.(VisualShaderNodeTextureSDF))
+}
+
+// NewRefVisualShaderNodeTextureSDFAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTextureSDFAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTextureSDF](reference.(VisualShaderNodeTextureSDF))
 }
 
 // NewRefVisualShaderNodeTextureSDFGDExtensionIternalConstructor wraps an instance this
@@ -18693,6 +24111,15 @@ func NewRefVisualShaderNodeTextureSDFNormalAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTextureSDFNormal](reference.(VisualShaderNodeTextureSDFNormal))
 }
 
+// NewRefVisualShaderNodeTextureSDFNormalAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTextureSDFNormalAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTextureSDFNormal](reference.(VisualShaderNodeTextureSDFNormal))
+}
+
 // NewRefVisualShaderNodeTextureSDFNormalGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTextureSDFNormalWithGodotOwnerObject. Borrowing: dropping
@@ -18722,6 +24149,15 @@ func NewRefVisualShaderNodeTransformCompose(reference VisualShaderNodeTransformC
 
 func NewRefVisualShaderNodeTransformComposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformCompose](reference.(VisualShaderNodeTransformCompose))
+}
+
+// NewRefVisualShaderNodeTransformComposeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTransformComposeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTransformCompose](reference.(VisualShaderNodeTransformCompose))
 }
 
 // NewRefVisualShaderNodeTransformComposeGDExtensionIternalConstructor wraps an instance this
@@ -18755,6 +24191,15 @@ func NewRefVisualShaderNodeTransformConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformConstant](reference.(VisualShaderNodeTransformConstant))
 }
 
+// NewRefVisualShaderNodeTransformConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTransformConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTransformConstant](reference.(VisualShaderNodeTransformConstant))
+}
+
 // NewRefVisualShaderNodeTransformConstantGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTransformConstantWithGodotOwnerObject. Borrowing: dropping
@@ -18784,6 +24229,15 @@ func NewRefVisualShaderNodeTransformDecompose(reference VisualShaderNodeTransfor
 
 func NewRefVisualShaderNodeTransformDecomposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformDecompose](reference.(VisualShaderNodeTransformDecompose))
+}
+
+// NewRefVisualShaderNodeTransformDecomposeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTransformDecomposeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTransformDecompose](reference.(VisualShaderNodeTransformDecompose))
 }
 
 // NewRefVisualShaderNodeTransformDecomposeGDExtensionIternalConstructor wraps an instance this
@@ -18817,6 +24271,15 @@ func NewRefVisualShaderNodeTransformFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformFunc](reference.(VisualShaderNodeTransformFunc))
 }
 
+// NewRefVisualShaderNodeTransformFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTransformFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTransformFunc](reference.(VisualShaderNodeTransformFunc))
+}
+
 // NewRefVisualShaderNodeTransformFuncGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTransformFuncWithGodotOwnerObject. Borrowing: dropping
@@ -18846,6 +24309,15 @@ func NewRefVisualShaderNodeTransformOp(reference VisualShaderNodeTransformOp) Re
 
 func NewRefVisualShaderNodeTransformOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformOp](reference.(VisualShaderNodeTransformOp))
+}
+
+// NewRefVisualShaderNodeTransformOpAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTransformOpAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTransformOp](reference.(VisualShaderNodeTransformOp))
 }
 
 // NewRefVisualShaderNodeTransformOpGDExtensionIternalConstructor wraps an instance this
@@ -18879,6 +24351,15 @@ func NewRefVisualShaderNodeTransformParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformParameter](reference.(VisualShaderNodeTransformParameter))
 }
 
+// NewRefVisualShaderNodeTransformParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTransformParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTransformParameter](reference.(VisualShaderNodeTransformParameter))
+}
+
 // NewRefVisualShaderNodeTransformParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeTransformParameterWithGodotOwnerObject. Borrowing: dropping
@@ -18908,6 +24389,15 @@ func NewRefVisualShaderNodeTransformVecMult(reference VisualShaderNodeTransformV
 
 func NewRefVisualShaderNodeTransformVecMultAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeTransformVecMult](reference.(VisualShaderNodeTransformVecMult))
+}
+
+// NewRefVisualShaderNodeTransformVecMultAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeTransformVecMultAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeTransformVecMult](reference.(VisualShaderNodeTransformVecMult))
 }
 
 // NewRefVisualShaderNodeTransformVecMultGDExtensionIternalConstructor wraps an instance this
@@ -18941,6 +24431,15 @@ func NewRefVisualShaderNodeUIntConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntConstant](reference.(VisualShaderNodeUIntConstant))
 }
 
+// NewRefVisualShaderNodeUIntConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeUIntConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeUIntConstant](reference.(VisualShaderNodeUIntConstant))
+}
+
 // NewRefVisualShaderNodeUIntConstantGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeUIntConstantWithGodotOwnerObject. Borrowing: dropping
@@ -18970,6 +24469,15 @@ func NewRefVisualShaderNodeUIntFunc(reference VisualShaderNodeUIntFunc) RefVisua
 
 func NewRefVisualShaderNodeUIntFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntFunc](reference.(VisualShaderNodeUIntFunc))
+}
+
+// NewRefVisualShaderNodeUIntFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeUIntFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeUIntFunc](reference.(VisualShaderNodeUIntFunc))
 }
 
 // NewRefVisualShaderNodeUIntFuncGDExtensionIternalConstructor wraps an instance this
@@ -19003,6 +24511,15 @@ func NewRefVisualShaderNodeUIntOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntOp](reference.(VisualShaderNodeUIntOp))
 }
 
+// NewRefVisualShaderNodeUIntOpAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeUIntOpAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeUIntOp](reference.(VisualShaderNodeUIntOp))
+}
+
 // NewRefVisualShaderNodeUIntOpGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeUIntOpWithGodotOwnerObject. Borrowing: dropping
@@ -19032,6 +24549,15 @@ func NewRefVisualShaderNodeUIntParameter(reference VisualShaderNodeUIntParameter
 
 func NewRefVisualShaderNodeUIntParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUIntParameter](reference.(VisualShaderNodeUIntParameter))
+}
+
+// NewRefVisualShaderNodeUIntParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeUIntParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeUIntParameter](reference.(VisualShaderNodeUIntParameter))
 }
 
 // NewRefVisualShaderNodeUIntParameterGDExtensionIternalConstructor wraps an instance this
@@ -19065,6 +24591,15 @@ func NewRefVisualShaderNodeUVFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUVFunc](reference.(VisualShaderNodeUVFunc))
 }
 
+// NewRefVisualShaderNodeUVFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeUVFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeUVFunc](reference.(VisualShaderNodeUVFunc))
+}
+
 // NewRefVisualShaderNodeUVFuncGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeUVFuncWithGodotOwnerObject. Borrowing: dropping
@@ -19094,6 +24629,15 @@ func NewRefVisualShaderNodeUVPolarCoord(reference VisualShaderNodeUVPolarCoord) 
 
 func NewRefVisualShaderNodeUVPolarCoordAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeUVPolarCoord](reference.(VisualShaderNodeUVPolarCoord))
+}
+
+// NewRefVisualShaderNodeUVPolarCoordAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeUVPolarCoordAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeUVPolarCoord](reference.(VisualShaderNodeUVPolarCoord))
 }
 
 // NewRefVisualShaderNodeUVPolarCoordGDExtensionIternalConstructor wraps an instance this
@@ -19127,6 +24671,15 @@ func NewRefVisualShaderNodeVaryingAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVarying](reference.(VisualShaderNodeVarying))
 }
 
+// NewRefVisualShaderNodeVaryingAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVaryingAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVarying](reference.(VisualShaderNodeVarying))
+}
+
 // NewRefVisualShaderNodeVaryingGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVaryingWithGodotOwnerObject. Borrowing: dropping
@@ -19156,6 +24709,15 @@ func NewRefVisualShaderNodeVaryingGetter(reference VisualShaderNodeVaryingGetter
 
 func NewRefVisualShaderNodeVaryingGetterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVaryingGetter](reference.(VisualShaderNodeVaryingGetter))
+}
+
+// NewRefVisualShaderNodeVaryingGetterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVaryingGetterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVaryingGetter](reference.(VisualShaderNodeVaryingGetter))
 }
 
 // NewRefVisualShaderNodeVaryingGetterGDExtensionIternalConstructor wraps an instance this
@@ -19189,6 +24751,15 @@ func NewRefVisualShaderNodeVaryingSetterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVaryingSetter](reference.(VisualShaderNodeVaryingSetter))
 }
 
+// NewRefVisualShaderNodeVaryingSetterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVaryingSetterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVaryingSetter](reference.(VisualShaderNodeVaryingSetter))
+}
+
 // NewRefVisualShaderNodeVaryingSetterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVaryingSetterWithGodotOwnerObject. Borrowing: dropping
@@ -19218,6 +24789,15 @@ func NewRefVisualShaderNodeVec2Constant(reference VisualShaderNodeVec2Constant) 
 
 func NewRefVisualShaderNodeVec2ConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec2Constant](reference.(VisualShaderNodeVec2Constant))
+}
+
+// NewRefVisualShaderNodeVec2ConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVec2ConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVec2Constant](reference.(VisualShaderNodeVec2Constant))
 }
 
 // NewRefVisualShaderNodeVec2ConstantGDExtensionIternalConstructor wraps an instance this
@@ -19251,6 +24831,15 @@ func NewRefVisualShaderNodeVec2ParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec2Parameter](reference.(VisualShaderNodeVec2Parameter))
 }
 
+// NewRefVisualShaderNodeVec2ParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVec2ParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVec2Parameter](reference.(VisualShaderNodeVec2Parameter))
+}
+
 // NewRefVisualShaderNodeVec2ParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVec2ParameterWithGodotOwnerObject. Borrowing: dropping
@@ -19280,6 +24869,15 @@ func NewRefVisualShaderNodeVec3Constant(reference VisualShaderNodeVec3Constant) 
 
 func NewRefVisualShaderNodeVec3ConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec3Constant](reference.(VisualShaderNodeVec3Constant))
+}
+
+// NewRefVisualShaderNodeVec3ConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVec3ConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVec3Constant](reference.(VisualShaderNodeVec3Constant))
 }
 
 // NewRefVisualShaderNodeVec3ConstantGDExtensionIternalConstructor wraps an instance this
@@ -19313,6 +24911,15 @@ func NewRefVisualShaderNodeVec3ParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec3Parameter](reference.(VisualShaderNodeVec3Parameter))
 }
 
+// NewRefVisualShaderNodeVec3ParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVec3ParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVec3Parameter](reference.(VisualShaderNodeVec3Parameter))
+}
+
 // NewRefVisualShaderNodeVec3ParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVec3ParameterWithGodotOwnerObject. Borrowing: dropping
@@ -19342,6 +24949,15 @@ func NewRefVisualShaderNodeVec4Constant(reference VisualShaderNodeVec4Constant) 
 
 func NewRefVisualShaderNodeVec4ConstantAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec4Constant](reference.(VisualShaderNodeVec4Constant))
+}
+
+// NewRefVisualShaderNodeVec4ConstantAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVec4ConstantAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVec4Constant](reference.(VisualShaderNodeVec4Constant))
 }
 
 // NewRefVisualShaderNodeVec4ConstantGDExtensionIternalConstructor wraps an instance this
@@ -19375,6 +24991,15 @@ func NewRefVisualShaderNodeVec4ParameterAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVec4Parameter](reference.(VisualShaderNodeVec4Parameter))
 }
 
+// NewRefVisualShaderNodeVec4ParameterAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVec4ParameterAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVec4Parameter](reference.(VisualShaderNodeVec4Parameter))
+}
+
 // NewRefVisualShaderNodeVec4ParameterGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVec4ParameterWithGodotOwnerObject. Borrowing: dropping
@@ -19404,6 +25029,15 @@ func NewRefVisualShaderNodeVectorBase(reference VisualShaderNodeVectorBase) RefV
 
 func NewRefVisualShaderNodeVectorBaseAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorBase](reference.(VisualShaderNodeVectorBase))
+}
+
+// NewRefVisualShaderNodeVectorBaseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorBaseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorBase](reference.(VisualShaderNodeVectorBase))
 }
 
 // NewRefVisualShaderNodeVectorBaseGDExtensionIternalConstructor wraps an instance this
@@ -19437,6 +25071,15 @@ func NewRefVisualShaderNodeVectorComposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorCompose](reference.(VisualShaderNodeVectorCompose))
 }
 
+// NewRefVisualShaderNodeVectorComposeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorComposeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorCompose](reference.(VisualShaderNodeVectorCompose))
+}
+
 // NewRefVisualShaderNodeVectorComposeGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVectorComposeWithGodotOwnerObject. Borrowing: dropping
@@ -19466,6 +25109,15 @@ func NewRefVisualShaderNodeVectorDecompose(reference VisualShaderNodeVectorDecom
 
 func NewRefVisualShaderNodeVectorDecomposeAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorDecompose](reference.(VisualShaderNodeVectorDecompose))
+}
+
+// NewRefVisualShaderNodeVectorDecomposeAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorDecomposeAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorDecompose](reference.(VisualShaderNodeVectorDecompose))
 }
 
 // NewRefVisualShaderNodeVectorDecomposeGDExtensionIternalConstructor wraps an instance this
@@ -19499,6 +25151,15 @@ func NewRefVisualShaderNodeVectorDistanceAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorDistance](reference.(VisualShaderNodeVectorDistance))
 }
 
+// NewRefVisualShaderNodeVectorDistanceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorDistanceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorDistance](reference.(VisualShaderNodeVectorDistance))
+}
+
 // NewRefVisualShaderNodeVectorDistanceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVectorDistanceWithGodotOwnerObject. Borrowing: dropping
@@ -19528,6 +25189,15 @@ func NewRefVisualShaderNodeVectorFunc(reference VisualShaderNodeVectorFunc) RefV
 
 func NewRefVisualShaderNodeVectorFuncAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorFunc](reference.(VisualShaderNodeVectorFunc))
+}
+
+// NewRefVisualShaderNodeVectorFuncAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorFuncAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorFunc](reference.(VisualShaderNodeVectorFunc))
 }
 
 // NewRefVisualShaderNodeVectorFuncGDExtensionIternalConstructor wraps an instance this
@@ -19561,6 +25231,15 @@ func NewRefVisualShaderNodeVectorLenAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorLen](reference.(VisualShaderNodeVectorLen))
 }
 
+// NewRefVisualShaderNodeVectorLenAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorLenAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorLen](reference.(VisualShaderNodeVectorLen))
+}
+
 // NewRefVisualShaderNodeVectorLenGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVectorLenWithGodotOwnerObject. Borrowing: dropping
@@ -19590,6 +25269,15 @@ func NewRefVisualShaderNodeVectorOp(reference VisualShaderNodeVectorOp) RefVisua
 
 func NewRefVisualShaderNodeVectorOpAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorOp](reference.(VisualShaderNodeVectorOp))
+}
+
+// NewRefVisualShaderNodeVectorOpAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorOpAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorOp](reference.(VisualShaderNodeVectorOp))
 }
 
 // NewRefVisualShaderNodeVectorOpGDExtensionIternalConstructor wraps an instance this
@@ -19623,6 +25311,15 @@ func NewRefVisualShaderNodeVectorRefractAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeVectorRefract](reference.(VisualShaderNodeVectorRefract))
 }
 
+// NewRefVisualShaderNodeVectorRefractAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeVectorRefractAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeVectorRefract](reference.(VisualShaderNodeVectorRefract))
+}
+
 // NewRefVisualShaderNodeVectorRefractGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVisualShaderNodeVectorRefractWithGodotOwnerObject. Borrowing: dropping
@@ -19652,6 +25349,15 @@ func NewRefVisualShaderNodeWorldPositionFromDepth(reference VisualShaderNodeWorl
 
 func NewRefVisualShaderNodeWorldPositionFromDepthAsRef(reference RefCounted) Ref {
 	return NewRef[VisualShaderNodeWorldPositionFromDepth](reference.(VisualShaderNodeWorldPositionFromDepth))
+}
+
+// NewRefVisualShaderNodeWorldPositionFromDepthAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVisualShaderNodeWorldPositionFromDepthAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VisualShaderNodeWorldPositionFromDepth](reference.(VisualShaderNodeWorldPositionFromDepth))
 }
 
 // NewRefVisualShaderNodeWorldPositionFromDepthGDExtensionIternalConstructor wraps an instance this
@@ -19685,6 +25391,15 @@ func NewRefVoxelGIDataAsRef(reference RefCounted) Ref {
 	return NewRef[VoxelGIData](reference.(VoxelGIData))
 }
 
+// NewRefVoxelGIDataAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefVoxelGIDataAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[VoxelGIData](reference.(VoxelGIData))
+}
+
 // NewRefVoxelGIDataGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewVoxelGIDataWithGodotOwnerObject. Borrowing: dropping
@@ -19714,6 +25429,15 @@ func NewRefWeakRef(reference WeakRef) RefWeakRef {
 
 func NewRefWeakRefAsRef(reference RefCounted) Ref {
 	return NewRef[WeakRef](reference.(WeakRef))
+}
+
+// NewRefWeakRefAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWeakRefAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WeakRef](reference.(WeakRef))
 }
 
 // NewRefWeakRefGDExtensionIternalConstructor wraps an instance this
@@ -19747,6 +25471,15 @@ func NewRefWebRTCDataChannelAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCDataChannel](reference.(WebRTCDataChannel))
 }
 
+// NewRefWebRTCDataChannelAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebRTCDataChannelAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebRTCDataChannel](reference.(WebRTCDataChannel))
+}
+
 // NewRefWebRTCDataChannelGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewWebRTCDataChannelWithGodotOwnerObject. Borrowing: dropping
@@ -19776,6 +25509,15 @@ func NewRefWebRTCDataChannelExtension(reference WebRTCDataChannelExtension) RefW
 
 func NewRefWebRTCDataChannelExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCDataChannelExtension](reference.(WebRTCDataChannelExtension))
+}
+
+// NewRefWebRTCDataChannelExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebRTCDataChannelExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebRTCDataChannelExtension](reference.(WebRTCDataChannelExtension))
 }
 
 // NewRefWebRTCDataChannelExtensionGDExtensionIternalConstructor wraps an instance this
@@ -19809,6 +25551,15 @@ func NewRefWebRTCMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCMultiplayerPeer](reference.(WebRTCMultiplayerPeer))
 }
 
+// NewRefWebRTCMultiplayerPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebRTCMultiplayerPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebRTCMultiplayerPeer](reference.(WebRTCMultiplayerPeer))
+}
+
 // NewRefWebRTCMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewWebRTCMultiplayerPeerWithGodotOwnerObject. Borrowing: dropping
@@ -19838,6 +25589,15 @@ func NewRefWebRTCPeerConnection(reference WebRTCPeerConnection) RefWebRTCPeerCon
 
 func NewRefWebRTCPeerConnectionAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCPeerConnection](reference.(WebRTCPeerConnection))
+}
+
+// NewRefWebRTCPeerConnectionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebRTCPeerConnectionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebRTCPeerConnection](reference.(WebRTCPeerConnection))
 }
 
 // NewRefWebRTCPeerConnectionGDExtensionIternalConstructor wraps an instance this
@@ -19871,6 +25631,15 @@ func NewRefWebRTCPeerConnectionExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[WebRTCPeerConnectionExtension](reference.(WebRTCPeerConnectionExtension))
 }
 
+// NewRefWebRTCPeerConnectionExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebRTCPeerConnectionExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebRTCPeerConnectionExtension](reference.(WebRTCPeerConnectionExtension))
+}
+
 // NewRefWebRTCPeerConnectionExtensionGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewWebRTCPeerConnectionExtensionWithGodotOwnerObject. Borrowing: dropping
@@ -19900,6 +25669,15 @@ func NewRefWebSocketMultiplayerPeer(reference WebSocketMultiplayerPeer) RefWebSo
 
 func NewRefWebSocketMultiplayerPeerAsRef(reference RefCounted) Ref {
 	return NewRef[WebSocketMultiplayerPeer](reference.(WebSocketMultiplayerPeer))
+}
+
+// NewRefWebSocketMultiplayerPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebSocketMultiplayerPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebSocketMultiplayerPeer](reference.(WebSocketMultiplayerPeer))
 }
 
 // NewRefWebSocketMultiplayerPeerGDExtensionIternalConstructor wraps an instance this
@@ -19933,6 +25711,15 @@ func NewRefWebSocketPeerAsRef(reference RefCounted) Ref {
 	return NewRef[WebSocketPeer](reference.(WebSocketPeer))
 }
 
+// NewRefWebSocketPeerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebSocketPeerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebSocketPeer](reference.(WebSocketPeer))
+}
+
 // NewRefWebSocketPeerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewWebSocketPeerWithGodotOwnerObject. Borrowing: dropping
@@ -19962,6 +25749,15 @@ func NewRefWebXRInterface(reference WebXRInterface) RefWebXRInterface {
 
 func NewRefWebXRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[WebXRInterface](reference.(WebXRInterface))
+}
+
+// NewRefWebXRInterfaceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWebXRInterfaceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WebXRInterface](reference.(WebXRInterface))
 }
 
 // NewRefWebXRInterfaceGDExtensionIternalConstructor wraps an instance this
@@ -19995,6 +25791,15 @@ func NewRefWorld2DAsRef(reference RefCounted) Ref {
 	return NewRef[World2D](reference.(World2D))
 }
 
+// NewRefWorld2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWorld2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[World2D](reference.(World2D))
+}
+
 // NewRefWorld2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewWorld2DWithGodotOwnerObject. Borrowing: dropping
@@ -20024,6 +25829,15 @@ func NewRefWorld3D(reference World3D) RefWorld3D {
 
 func NewRefWorld3DAsRef(reference RefCounted) Ref {
 	return NewRef[World3D](reference.(World3D))
+}
+
+// NewRefWorld3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWorld3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[World3D](reference.(World3D))
 }
 
 // NewRefWorld3DGDExtensionIternalConstructor wraps an instance this
@@ -20057,6 +25871,15 @@ func NewRefWorldBoundaryShape2DAsRef(reference RefCounted) Ref {
 	return NewRef[WorldBoundaryShape2D](reference.(WorldBoundaryShape2D))
 }
 
+// NewRefWorldBoundaryShape2DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWorldBoundaryShape2DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WorldBoundaryShape2D](reference.(WorldBoundaryShape2D))
+}
+
 // NewRefWorldBoundaryShape2DGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewWorldBoundaryShape2DWithGodotOwnerObject. Borrowing: dropping
@@ -20086,6 +25909,15 @@ func NewRefWorldBoundaryShape3D(reference WorldBoundaryShape3D) RefWorldBoundary
 
 func NewRefWorldBoundaryShape3DAsRef(reference RefCounted) Ref {
 	return NewRef[WorldBoundaryShape3D](reference.(WorldBoundaryShape3D))
+}
+
+// NewRefWorldBoundaryShape3DAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefWorldBoundaryShape3DAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[WorldBoundaryShape3D](reference.(WorldBoundaryShape3D))
 }
 
 // NewRefWorldBoundaryShape3DGDExtensionIternalConstructor wraps an instance this
@@ -20119,6 +25951,15 @@ func NewRefX509CertificateAsRef(reference RefCounted) Ref {
 	return NewRef[X509Certificate](reference.(X509Certificate))
 }
 
+// NewRefX509CertificateAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefX509CertificateAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[X509Certificate](reference.(X509Certificate))
+}
+
 // NewRefX509CertificateGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewX509CertificateWithGodotOwnerObject. Borrowing: dropping
@@ -20148,6 +25989,15 @@ func NewRefXMLParser(reference XMLParser) RefXMLParser {
 
 func NewRefXMLParserAsRef(reference RefCounted) Ref {
 	return NewRef[XMLParser](reference.(XMLParser))
+}
+
+// NewRefXMLParserAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXMLParserAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XMLParser](reference.(XMLParser))
 }
 
 // NewRefXMLParserGDExtensionIternalConstructor wraps an instance this
@@ -20181,6 +26031,15 @@ func NewRefXRBodyTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRBodyTracker](reference.(XRBodyTracker))
 }
 
+// NewRefXRBodyTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRBodyTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRBodyTracker](reference.(XRBodyTracker))
+}
+
 // NewRefXRBodyTrackerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewXRBodyTrackerWithGodotOwnerObject. Borrowing: dropping
@@ -20210,6 +26069,15 @@ func NewRefXRControllerTracker(reference XRControllerTracker) RefXRControllerTra
 
 func NewRefXRControllerTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRControllerTracker](reference.(XRControllerTracker))
+}
+
+// NewRefXRControllerTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRControllerTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRControllerTracker](reference.(XRControllerTracker))
 }
 
 // NewRefXRControllerTrackerGDExtensionIternalConstructor wraps an instance this
@@ -20243,6 +26111,15 @@ func NewRefXRFaceTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRFaceTracker](reference.(XRFaceTracker))
 }
 
+// NewRefXRFaceTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRFaceTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRFaceTracker](reference.(XRFaceTracker))
+}
+
 // NewRefXRFaceTrackerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewXRFaceTrackerWithGodotOwnerObject. Borrowing: dropping
@@ -20272,6 +26149,15 @@ func NewRefXRHandTracker(reference XRHandTracker) RefXRHandTracker {
 
 func NewRefXRHandTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRHandTracker](reference.(XRHandTracker))
+}
+
+// NewRefXRHandTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRHandTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRHandTracker](reference.(XRHandTracker))
 }
 
 // NewRefXRHandTrackerGDExtensionIternalConstructor wraps an instance this
@@ -20305,6 +26191,15 @@ func NewRefXRInterfaceAsRef(reference RefCounted) Ref {
 	return NewRef[XRInterface](reference.(XRInterface))
 }
 
+// NewRefXRInterfaceAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRInterfaceAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRInterface](reference.(XRInterface))
+}
+
 // NewRefXRInterfaceGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewXRInterfaceWithGodotOwnerObject. Borrowing: dropping
@@ -20334,6 +26229,15 @@ func NewRefXRInterfaceExtension(reference XRInterfaceExtension) RefXRInterfaceEx
 
 func NewRefXRInterfaceExtensionAsRef(reference RefCounted) Ref {
 	return NewRef[XRInterfaceExtension](reference.(XRInterfaceExtension))
+}
+
+// NewRefXRInterfaceExtensionAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRInterfaceExtensionAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRInterfaceExtension](reference.(XRInterfaceExtension))
 }
 
 // NewRefXRInterfaceExtensionGDExtensionIternalConstructor wraps an instance this
@@ -20367,6 +26271,15 @@ func NewRefXRPoseAsRef(reference RefCounted) Ref {
 	return NewRef[XRPose](reference.(XRPose))
 }
 
+// NewRefXRPoseAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRPoseAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRPose](reference.(XRPose))
+}
+
 // NewRefXRPoseGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewXRPoseWithGodotOwnerObject. Borrowing: dropping
@@ -20396,6 +26309,15 @@ func NewRefXRPositionalTracker(reference XRPositionalTracker) RefXRPositionalTra
 
 func NewRefXRPositionalTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRPositionalTracker](reference.(XRPositionalTracker))
+}
+
+// NewRefXRPositionalTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRPositionalTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRPositionalTracker](reference.(XRPositionalTracker))
 }
 
 // NewRefXRPositionalTrackerGDExtensionIternalConstructor wraps an instance this
@@ -20429,6 +26351,15 @@ func NewRefXRTrackerAsRef(reference RefCounted) Ref {
 	return NewRef[XRTracker](reference.(XRTracker))
 }
 
+// NewRefXRTrackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefXRTrackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[XRTracker](reference.(XRTracker))
+}
+
 // NewRefXRTrackerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewXRTrackerWithGodotOwnerObject. Borrowing: dropping
@@ -20460,6 +26391,15 @@ func NewRefZIPPackerAsRef(reference RefCounted) Ref {
 	return NewRef[ZIPPacker](reference.(ZIPPacker))
 }
 
+// NewRefZIPPackerAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefZIPPackerAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ZIPPacker](reference.(ZIPPacker))
+}
+
 // NewRefZIPPackerGDExtensionIternalConstructor wraps an instance this
 // binding constructed but does not hold an engine reference to, such as the
 // Go-side object built by NewZIPPackerWithGodotOwnerObject. Borrowing: dropping
@@ -20489,6 +26429,15 @@ func NewRefZIPReader(reference ZIPReader) RefZIPReader {
 
 func NewRefZIPReaderAsRef(reference RefCounted) Ref {
 	return NewRef[ZIPReader](reference.(ZIPReader))
+}
+
+// NewRefZIPReaderAsRefAcquired wraps an object the caller merely
+// observes and takes a reference of its own, released by a finalizer on drop.
+// The method-argument decode paths register this flavor so a Go method that
+// stores its Ref parameter keeps the object alive, mirroring godot-cpp's
+// PtrToArg<Ref<T>>::convert; see builtin.NewRefAcquire.
+func NewRefZIPReaderAsRefAcquired(reference RefCounted) Ref {
+	return NewRefAcquire[ZIPReader](reference.(ZIPReader))
 }
 
 // NewRefZIPReaderGDExtensionIternalConstructor wraps an instance this

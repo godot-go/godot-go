@@ -50,6 +50,9 @@ type Example struct {
 	hintedNode    Node
 	storageOnly   int64
 	readonlyValue int64
+	// String-boundary retention fixture (ratify-string-marshalling): a
+	// borrowed StringName kept past its call via the owned Copy().
+	stringCopyHeld StringName
 }
 
 func (c *Example) GetClassName() string {
@@ -832,6 +835,83 @@ func (e *Example) TestGoStringRepeat() string {
 	return "repeat_me_string_for_leak_check"
 }
 
+// TestStringParamTextConversion receives a mixed-type value at a native
+// string parameter alongside the expected text and counts mismatches. The
+// value crosses the same decode path as the expected string, so a non-zero
+// return means the conversion produced different text than the engine's.
+func (e *Example) TestStringParamTextConversion(p_expected string, p_value string) int64 {
+	if p_value != p_expected {
+		return 1
+	}
+	return 0
+}
+
+// TestStringCopyStore receives a call-scoped borrow of a StringName, retains
+// it via the owned Copy(), and stores it for cross-frame verification.
+func (e *Example) TestStringCopyStore(p_name StringName) int64 {
+	e.stringCopyHeld = p_name.Copy()
+	return 0
+}
+
+// TestStringCopyVerifyRelease re-reads the StringName stored by an earlier
+// frame, proving the Copy() outlived the borrow's call, then releases the
+// owned reference.
+func (e *Example) TestStringCopyVerifyRelease(p_expected string) int64 {
+	failures := int64(0)
+	if e.stringCopyHeld.ToUtf8() != p_expected {
+		failures++
+	}
+	// Move the owned reference into a local cell before releasing it.
+	// Destroy on the field itself hands cgo an address inside the
+	// heap-allocated Example, and cgocheck=1 then scans the whole object
+	// for pointers to unpinned Go memory - sibling slice and interface
+	// fields trip that scan and panic. A local cell holds only the 8
+	// content bytes, so the scan finds nothing. Value-receiver reads like
+	// ToUtf8 above copy the cell to the stack first and are unaffected.
+	held := e.stringCopyHeld
+	e.stringCopyHeld = StringName{}
+	held.Destroy()
+	return failures
+}
+
+// TestCopyContentPreservation copies each of the three engine string types
+// and checks the copy's text against the source's before releasing both.
+func (e *Example) TestCopyContentPreservation() int64 {
+	failures := int64(0)
+
+	strOrig := NewStringWithUtf8Chars("copy_str_content")
+	strCopy := strOrig.Copy()
+	if strCopy.ToUtf8() != "copy_str_content" || strOrig.ToUtf8() != "copy_str_content" {
+		failures++
+	}
+	strOrig.Destroy()
+	strCopy.Destroy()
+
+	nameOrig := NewStringNameWithUtf8Chars("copy_name_content")
+	nameCopy := nameOrig.Copy()
+	if nameCopy.ToUtf8() != "copy_name_content" || nameOrig.ToUtf8() != "copy_name_content" {
+		failures++
+	}
+	nameOrig.Destroy()
+	nameCopy.Destroy()
+
+	pathStr := NewStringWithUtf8Chars("copy/path/content")
+	pathOrig := NewNodePathWithString(pathStr)
+	pathStr.Destroy()
+	pathCopy := pathOrig.Copy()
+	pathOrigText := NewStringWithNodePath(pathOrig)
+	pathCopyText := NewStringWithNodePath(pathCopy)
+	if pathCopyText.ToUtf8() != pathOrigText.ToUtf8() || pathOrigText.ToUtf8() != "copy/path/content" {
+		failures++
+	}
+	pathOrigText.Destroy()
+	pathCopyText.Destroy()
+	pathOrig.Destroy()
+	pathCopy.Destroy()
+
+	return failures
+}
+
 func (e *Example) TestEchoVector2i(p Vector2i) Vector2i                                 { return p }
 func (e *Example) TestEchoVector3(p Vector3) Vector3                                    { return p }
 func (e *Example) TestEchoVector3i(p Vector3i) Vector3i                                 { return p }
@@ -1138,6 +1218,10 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestReturnUint16", "test_return_uint16", nil, nil)
 		ClassDBBindMethod(t, "TestReturnFloat32", "test_return_float32", nil, nil)
 		ClassDBBindMethod(t, "TestGoStringRepeat", "test_go_string_repeat", nil, nil)
+		ClassDBBindMethod(t, "TestStringParamTextConversion", "test_string_param_text_conversion", []string{"p_expected", "p_value"}, nil)
+		ClassDBBindMethod(t, "TestStringCopyStore", "test_string_copy_store", []string{"p_name"}, nil)
+		ClassDBBindMethod(t, "TestStringCopyVerifyRelease", "test_string_copy_verify_release", []string{"p_expected"}, nil)
+		ClassDBBindMethod(t, "TestCopyContentPreservation", "test_copy_content_preservation", nil, nil)
 		ClassDBBindMethod(t, "TestEchoVector2i", "test_echo_vector2i", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoVector3", "test_echo_vector3", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoVector3i", "test_echo_vector3i", []string{"v"}, nil)

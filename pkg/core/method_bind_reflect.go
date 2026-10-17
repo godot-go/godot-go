@@ -196,7 +196,15 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 		)
 		return reflect.ValueOf(typedValue), nil
 	case reflect.String:
-		// TODO: how to support native go strings, StringName, and Godot String?
+		// Ratified by the string-boundary-marshalling spec: a native Go
+		// string parameter receives the converted text of any variant the
+		// engine converts to STRING (String, StringName, NodePath arrive as
+		// their text); variants with no STRING conversion are rejected at
+		// the engine's call layer before reaching this decode. The result is
+		// a retained Go copy, safe to hold past the call. Engine string
+		// types in signatures cross as call-scoped borrows, except Godot
+		// String, which the machinery owns and releases post-call; retain a
+		// borrow past the call with its Copy() helper.
 		typedValue := arg.ToGoString()
 		log.Debug("varcall arg parsed",
 			zap.Any("value", typedValue),

@@ -135,19 +135,22 @@ func GenerateGDExtensionWrapperGoFile(projectPath string, ast clang.CHeaderFileA
 }
 
 func GenerateGDExtensionInterfaceGoFile(projectPath string, ast clang.CHeaderFileAST) error {
+	interfaceNames := loadInterfaceNameMap(projectPath)
 	funcs := template.FuncMap{
-		"gdiVariableName":     gdiVariableName,
-		"snakeCase":           strcase.ToSnake,
-		"camelCase":           strcase.ToCamel,
-		"goReturnType":        goReturnType,
-		"goArgumentType":      goArgumentType,
-		"goEnumValue":         goEnumValue,
-		"add":                 add,
-		"cgoCastArgument":     cgoCastArgument,
-		"cgoCastReturnType":   cgoCastReturnType,
-		"cgoCleanUpArgument":  cgoCleanUpArgument,
-		"trimPrefix":          trimPrefix,
-		"loadProcAddressName": loadProcAddressName,
+		"gdiVariableName":    gdiVariableName,
+		"snakeCase":          strcase.ToSnake,
+		"camelCase":          strcase.ToCamel,
+		"goReturnType":       goReturnType,
+		"goArgumentType":     goArgumentType,
+		"goEnumValue":        goEnumValue,
+		"add":                add,
+		"cgoCastArgument":    cgoCastArgument,
+		"cgoCastReturnType":  cgoCastReturnType,
+		"cgoCleanUpArgument": cgoCleanUpArgument,
+		"trimPrefix":         trimPrefix,
+		"interfaceFunctionName": func(typeName string) string {
+			return interfaceFunctionName(interfaceNames, typeName)
+		},
 	}
 
 	tmpl, err := template.New("ffi.gen.go").

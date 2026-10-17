@@ -43,7 +43,7 @@ func (x *GDExtensionInterface) LoadProcAddresses(
 	pnr.Pin(x.Token) */}}
 	{{ range $i, $f := $view.CollectGDExtensionInterfaceFunctions -}}
 	{{ if eq $f.Name "GDExtensionInterfaceGetProcAddress" -}}{{ continue }}{{ end -}}
-	x.{{ trimPrefix $f.Name "GDExtensionInterface" }} = ({{ $f.Name }})(LoadProcAddress("{{ loadProcAddressName $f.Name }}"))
+	x.{{ trimPrefix $f.Name "GDExtensionInterface" }} = ({{ $f.Name }})(LoadProcAddress("{{ interfaceFunctionName $f.Name }}"))
 	{{ end -}}
 }
 

@@ -19,6 +19,10 @@ import (
 // goCallableEntry is the registry value behind a Go-backed custom Callable.
 type goCallableEntry struct {
 	fn func(args []Variant) (Variant, error)
+	// onFree optionally runs when the engine releases the last reference —
+	// the internal seam the signal-await bridge uses as its object-death
+	// oracle (see signal_await.go). It must never block.
+	onFree func()
 }
 
 // goCallableLive counts registered Go Callables. Incremented on creation and
@@ -45,10 +49,16 @@ var goCallableLive int64
 // The returned Callable holds one reference. Release it with Destroy when the
 // Go side is done; the engine releases its own copies independently.
 func NewGoCallable(fn func(args []Variant) (Variant, error)) Callable {
+	return newGoCallable(fn, nil)
+}
+
+// newGoCallable is the shared constructor; onFree extends the free callback
+// with a non-blocking notice that the last engine reference just died.
+func newGoCallable(fn func(args []Variant) (Variant, error), onFree func()) Callable {
 	if fn == nil {
 		log.Panic("NewGoCallable requires a non-nil function")
 	}
-	h := cgo.NewHandle(&goCallableEntry{fn: fn})
+	h := cgo.NewHandle(&goCallableEntry{fn: fn, onFree: onFree})
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 	info := NewGDExtensionCallableCustomInfo2(
@@ -170,6 +180,11 @@ func GoCallableRegistryCount() int64 {
 //export GoCallback_GoCallableFree
 func GoCallback_GoCallableFree(callableUserData unsafe.Pointer) {
 	ud := (cgo.Handle)(callableUserData)
+	// Run the optional death notice while the handle still resolves; the
+	// notice contract is non-blocking (await-state close only).
+	if entry, ok := ud.Value().(*goCallableEntry); ok && entry != nil && entry.onFree != nil {
+		entry.onFree()
+	}
 	ud.Delete()
 	atomic.AddInt64(&goCallableLive, -1)
 }

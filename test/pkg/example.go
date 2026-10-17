@@ -1371,6 +1371,18 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "AwaitShutdownArm", "await_shutdown_arm", []string{"target"}, nil)
 		ClassDBBindMethod(t, "AwaitTimerStart", "await_timer_start", []string{"timer"}, nil)
 		ClassDBBindMethod(t, "AwaitTimerCode", "await_timer_code", nil, nil)
+		// support-static-methods: Go package functions bound as class statics.
+		ClassDBBindStaticMethod(t, "static_add", ExampleStaticAdd, []string{"a", "b"}, nil)
+		ClassDBBindStaticMethod(t, "static_with_default", ExampleStaticWithDefault,
+			[]string{"base", "bonus"}, []Variant{NewVariantInt64(10)})
+		ClassDBBindStaticMethod(t, "static_sum_varargs", ExampleStaticSumVarargs, nil, nil)
+		ClassDBBindStaticMethod(t, "static_object_class", ExampleStaticObjectClass, []string{"node"}, nil)
+		ClassDBBindStaticMethod(t, "static_echo_node", ExampleStaticEchoNode, []string{"node"}, nil)
+		ClassDBBindStaticMethod(t, "static_arity_probe", ExampleStaticArityProbe, []string{"a"}, nil)
+		ClassDBBindMethod(t, "StaticBadArityRejected", "static_bad_arity_rejected", nil, nil)
+		ClassDBBindMethod(t, "StaticInstanceCallObservation", "static_instance_call_observation", nil, nil)
+		ClassDBBindMethod(t, "StaticDuplicateBindRecovered", "static_duplicate_bind_recovered", nil, nil)
+		ClassDBBindMethod(t, "StaticNonCallableRecovered", "static_non_callable_recovered", nil, nil)
 		// support-variant-reflect-completeness: 36-type matrix audit echoes.
 		ClassDBBindMethod(t, "TestAuditBool", "test_audit_bool", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestAuditInt", "test_audit_int", []string{"v"}, nil)

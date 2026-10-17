@@ -30,32 +30,42 @@ var (
 
 // reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs is called for each
 // function call argument that needs to be translated when GDScript calls into Go.
+// hasReceiver is false only for static binds, whose function has no receiver:
+// the slice then carries exactly the decoded parameters and the decode
+// bookkeeping ranges cover every entry.
 //
 // On a caller-induced decode failure it returns a *VarcallArgDecodeError naming
 // the argument index and declared type, after releasing every owned argument it
 // already decoded in this call. Ownership rule: the decoder owns the decoded
 // prefix on failure, and GoMethodMetadata.Call owns the full set on success, so
 // the two cleanup paths can never both fire.
-func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass, suppliedArgs []Variant, expectedArgTypes []reflect.Type) ([]reflect.Value, error) {
+func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass, suppliedArgs []Variant, expectedArgTypes []reflect.Type, hasReceiver bool) ([]reflect.Value, error) {
 	argsCount := len(expectedArgTypes)
-	args := make([]reflect.Value, argsCount+1)
-	// add receiver instance as the first argument
-	args[0] = reflect.ValueOf(reciever)
+	base := 0
+	if hasReceiver {
+		base = 1
+	}
+	args := make([]reflect.Value, argsCount+base)
+	if hasReceiver {
+		// add receiver instance as the first argument
+		args[0] = reflect.ValueOf(reciever)
+	}
 	for i := 0; i < argsCount; i++ {
 		v, err := convertVariantToGoTypeReflectValue(suppliedArgs[i], expectedArgTypes[i])
 		if err != nil {
-			// Entries args[1]..args[i] decoded successfully; args[i+1] onward
-			// is still the zero reflect.Value, which panics on Interface(), so
-			// only the decoded prefix is handed to the releaser.
-			destroyOwnedContainerArgs(args[1 : i+1])
-			releaseDecodedRefArgs(args[1 : i+1])
+			// Entries args[base]..args[i+base-1] decoded successfully; the
+			// remaining entries are still the zero reflect.Value, which
+			// panics on Interface(), so only the decoded prefix is handed
+			// to the releaser.
+			destroyOwnedContainerArgs(args[base : i+base])
+			releaseDecodedRefArgs(args[base : i+base])
 			return nil, &VarcallArgDecodeError{
 				Index:     i,
 				ParamType: expectedArgTypes[i].String(),
 				Err:       err,
 			}
 		}
-		args[i+1] = v
+		args[i+base] = v
 	}
 	log.Debug("argument converted",
 		zap.String("args", spew.Sdump(args)),
@@ -573,11 +583,17 @@ func convertVariantToGoTypeReflectValue(arg Variant, t reflect.Type) (reflect.Va
 	return out, nil
 }
 
-func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppliedArgs []GDExtensionConstTypePtr, expectedArgTypes []reflect.Type) []reflect.Value {
+func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppliedArgs []GDExtensionConstTypePtr, expectedArgTypes []reflect.Type, hasReceiver bool) []reflect.Value {
 	argsCount := len(expectedArgTypes)
-	args := make([]reflect.Value, argsCount+1)
-	// add receiver instance as the first argument
-	args[0] = reflect.ValueOf(inst)
+	base := 0
+	if hasReceiver {
+		base = 1
+	}
+	args := make([]reflect.Value, argsCount+base)
+	if hasReceiver {
+		// add receiver instance as the first argument
+		args[0] = reflect.ValueOf(inst)
+	}
 	for i := 0; i < argsCount; i++ {
 		arg := suppliedArgs[i]
 		t := expectedArgTypes[i]
@@ -590,7 +606,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "bool"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Int:
 			typedValue := *(*int)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -598,7 +614,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "int"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Int8:
 			typedValue := *(*int8)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -606,7 +622,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "int8"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Int16:
 			typedValue := *(*int16)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -614,7 +630,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "int16"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Int32:
 			typedValue := *(*int32)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -622,7 +638,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "int32"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Int64:
 			typedValue := *(*int64)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -630,7 +646,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "int64"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Uint:
 			typedValue := *(*uint)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -638,7 +654,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "uint"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Uint8:
 			typedValue := *(*uint8)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -646,7 +662,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "uint8"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Uint16:
 			typedValue := *(*uint16)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -654,7 +670,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "uint16"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Uint32:
 			typedValue := *(*uint32)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -662,7 +678,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "uint32"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Uint64:
 			typedValue := *(*uint64)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -670,7 +686,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "uint64"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Float32:
 			rawTypedValue := *(*float64)(arg)
 			typedValue := (float32)(rawTypedValue)
@@ -680,7 +696,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "float32"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.Float64:
 			typedValue := *(*float64)(arg)
 			log.Debug("ptrcall arg parsed",
@@ -688,7 +704,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "float64"),
 			)
-			args[i+1] = reflect.ValueOf(typedValue)
+			args[i+base] = reflect.ValueOf(typedValue)
 		case reflect.String:
 			typedValue := *(*String)(arg)
 			str := typedValue.ToUtf8()
@@ -697,7 +713,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", "string"),
 			)
-			args[i+1] = reflect.ValueOf(str)
+			args[i+base] = reflect.ValueOf(str)
 		case reflect.Slice:
 			// support-native-slice-marshalling: arg borrows the engine's
 			// Packed*K cell for this call; elements are deep-copied into
@@ -708,7 +724,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				zap.Int("arg_index", i),
 				zap.String("type", t.String()),
 			)
-			args[i+1] = sliceValue
+			args[i+base] = sliceValue
 		case reflect.Interface:
 			// Dispatch on the declared type itself. The previous form was
 			//   switch reflect.Zero(t).Interface().(type) { case Object: ... }
@@ -729,7 +745,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					// object_get_class_name through a null pointer is not a
 					// recoverable failure. Hand back the zero of the declared
 					// interface so the callee sees a nil object.
-					args[i+1] = reflect.Zero(t)
+					args[i+base] = reflect.Zero(t)
 					break
 				}
 				// Same resolution order as varcall -- instance binding first,
@@ -753,7 +769,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					zap.Int("arg_index", i),
 					zap.String("class", obj.GetClassName()),
 				)
-				args[i+1] = reflect.ValueOf(obj)
+				args[i+base] = reflect.ValueOf(obj)
 			case t.Implements(refType):
 				// The engine Ref<T> struct is one pointer wide, so the cell
 				// reads through ref_get_object whether GDScript handed a Ref
@@ -764,7 +780,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				if objPtr == nil {
 					// A null referenced object decodes to the zero Ref; no
 					// engine call may dereference the null pointer.
-					args[i+1] = reflect.Zero(t)
+					args[i+base] = reflect.Zero(t)
 					break
 				}
 				ref, err := decodeRefArgument(objPtr, t)
@@ -781,7 +797,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					zap.String("type", "Ref"),
 					zap.String("class_name", refArgumentClass(t)),
 				)
-				args[i+1] = reflect.ValueOf(ref)
+				args[i+base] = reflect.ValueOf(ref)
 			default:
 				// The type name and index go in the panic value as well as the
 				// structured fields, so a caller recovering from this can tell
@@ -804,7 +820,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector4WithVector4(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector2:
 				pV := (*Vector2)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -814,7 +830,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector2WithVector2(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector2i:
 				pV := (*Vector2i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -824,7 +840,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector2iWithVector2i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector3:
 				pV := (*Vector3)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -834,7 +850,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector3WithVector3(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector3i:
 				pV := (*Vector3i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -844,7 +860,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector3iWithVector3i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Rect2:
 				pV := (*Rect2)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -854,7 +870,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewRect2WithRect2(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Rect2i:
 				pV := (*Rect2i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -864,7 +880,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewRect2iWithRect2i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Transform2D:
 				pV := (*Transform2D)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -874,7 +890,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewTransform2DWithTransform2D(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector4i:
 				pV := (*Vector4i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -884,7 +900,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector4iWithVector4i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Plane:
 				pV := (*Plane)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -894,7 +910,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewPlaneWithPlane(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Quaternion:
 				pV := (*Quaternion)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -904,7 +920,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewQuaternionWithQuaternion(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case AABB:
 				pV := (*AABB)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -914,7 +930,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewAABBWithAABB(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Basis:
 				pV := (*Basis)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -924,7 +940,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewBasisWithBasis(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Transform3D:
 				pV := (*Transform3D)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -934,7 +950,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewTransform3DWithTransform3D(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Projection:
 				pV := (*Projection)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -944,43 +960,43 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewProjectionWithProjection(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Color:
 				// Audit gap: Color had no ptrcall branch either (the crash
 				// this fixture line exposed). POD value: borrowed raw copy,
 				// same discipline as the StringName/NodePath cases below.
 				v := *(*Color)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Variant:
 				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedInt64Array:
 				v := *(*PackedInt64Array)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Array:
 				v := *(*Array)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedByteArray:
 				v := *(*PackedByteArray)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedInt32Array:
 				v := *(*PackedInt32Array)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedFloat32Array:
 				v := *(*PackedFloat32Array)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedFloat64Array:
 				v := *(*PackedFloat64Array)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedStringArray:
 				v := *(*PackedStringArray)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedVector2Array:
 				v := *(*PackedVector2Array)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedVector3Array:
 				v := *(*PackedVector3Array)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedVector4Array:
 				pV := (*PackedVector4Array)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -990,37 +1006,37 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewPackedVector4ArrayWithPackedVector4Array(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case PackedColorArray:
 				v := *(*PackedColorArray)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case String:
 				v := *(*String)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case StringName:
 				v := *(*StringName)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case NodePath:
 				v := *(*NodePath)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case RID:
 				// support-variant-reflect-completeness (36-type audit): the
 				// interface exports no ref/unref for RID, so it crosses as a
 				// pure value handle, borrowed for the duration of the call.
 				v := *(*RID)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Callable:
 				// The engine keeps the cell's callable alive for the whole
 				// call; the copy is a borrow, released nowhere because nothing
 				// was acquired -- same discipline as the Array case above.
 				v := *(*Callable)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Signal:
 				v := *(*Signal)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Dictionary:
 				v := *(*Dictionary)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			default:
 				log.Panic(fmt.Sprintf("MethodBind.Ptrcall reflected as array does not support type: %s", t.Name()))
 			}
@@ -1037,7 +1053,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector4WithVector4(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector2:
 				pV := (*Vector2)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1047,7 +1063,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector2WithVector2(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector2i:
 				pV := (*Vector2i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1057,7 +1073,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector2iWithVector2i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector3:
 				pV := (*Vector3)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1067,7 +1083,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector3WithVector3(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector3i:
 				pV := (*Vector3i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1077,7 +1093,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector3iWithVector3i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Rect2:
 				pV := (*Rect2)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1087,7 +1103,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewRect2WithRect2(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Rect2i:
 				pV := (*Rect2i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1097,7 +1113,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewRect2iWithRect2i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Transform2D:
 				pV := (*Transform2D)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1107,7 +1123,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewTransform2DWithTransform2D(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Vector4i:
 				pV := (*Vector4i)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1117,7 +1133,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewVector4iWithVector4i(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Plane:
 				pV := (*Plane)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1127,7 +1143,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewPlaneWithPlane(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Quaternion:
 				pV := (*Quaternion)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1137,7 +1153,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewQuaternionWithQuaternion(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case AABB:
 				pV := (*AABB)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1147,7 +1163,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewAABBWithAABB(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Basis:
 				pV := (*Basis)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1157,7 +1173,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewBasisWithBasis(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Transform3D:
 				pV := (*Transform3D)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1167,7 +1183,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewTransform3DWithTransform3D(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Projection:
 				pV := (*Projection)(unsafe.Pointer(arg))
 				if pV == nil {
@@ -1177,13 +1193,13 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 					)
 				}
 				v := NewProjectionWithProjection(*pV)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Color:
 				v := *(*Color)(arg)
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			case Variant:
 				v := VariantViewFromConstPtr((GDExtensionConstVariantPtr)(arg))
-				args[i+1] = reflect.ValueOf(v)
+				args[i+base] = reflect.ValueOf(v)
 			default:
 				// No Array-kind type reaches here that could be a Ref: the
 				// former gdextension.Ref-prefixed block below it was dead for
@@ -1211,7 +1227,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 				}
 				owner := (**GodotObject)(arg)
 				obj := constructor(*owner)
-				args[i+1] = reflect.ValueOf(obj)
+				args[i+base] = reflect.ValueOf(obj)
 			default:
 				log.Panic("unsupported pointer type",
 					zap.Int("arg_index", i),

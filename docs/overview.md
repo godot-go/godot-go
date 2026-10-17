@@ -420,3 +420,24 @@ AddEditorPlugin(&MyPlugin{})
 | `Dictionary` | `Dictionary` | No additional work needed. |
 | `Signal` | `Signal` | No additional work needed. |
 | `Callable` | `Callable` | No additional work needed. |
+
+# Object Lifetime and Handle Ownership
+
+A Go wrapper that stands for an engine object is anchored by a `cgo.Handle` — stored either as the extension instance of a user-defined class or in the object's instance-binding slot under this library's token. The Handle (and everything reachable through it) is kept alive exactly as long as the engine can hand the object back to Go, and not longer.
+
+## One release owner per Handle
+
+Each Handle is deleted by exactly one of the engine's release notifications, and no other path deletes it:
+
+* **User-defined class instances** — `GoCallback_ClassCreationInfoFreeInstance` deletes the instance Handle after `Destroy()` returns (deferred LIFO, so re-entrant callbacks running during `Destroy` still see a live Handle). The binding free callback for this shape, `GoCallback_GDClassBindingFree`, is a deliberate no-op: its slot holds the same Handle and `FreeInstance` fires strictly earlier, from `Object::_predelete`.
+* **Engine-class bindings** created by the engine's binding create callback — `GoCallback_GDExtensionBindingFree` deletes the Handle stored in the binding slot. The engine runs it exactly once per created binding.
+
+Deleting a Handle makes later `Value()` lookups panic, so a stale slot read cannot silently return another object's wrapper; binding lookups recover those panics into typed errors (see `ObjectFromInstanceBinding`). This is safe because the engine nulls `_extension`/`_extension_instance` immediately after `free_instance` returns — no engine callback follows a freed instance with the stale pointer.
+
+## Handles cross the C boundary as integers
+
+A packed Handle is a small integer, and the Go runtime aborts (`invalid pointer found on stack`) when a GC stack scan finds a small integer in a GC pointer slot. The ffi generator therefore marks handle-carrying slots (`cmd/generate/ffi/handle_slots.go`) and renders them `uintptr_t` through the C shims and `cgo.Handle` on the Go side — binding `p_binding` parameters, `object_set_instance`'s `p_instance`, and the binding/userdata getters — and the engine→Go binding callbacks cross the value as `uintptr`. Struct userdata fields (`method_userdata`, `callable_userdata`) are written through the `cgo_set_handle_slot` shim so the cast lives in C.
+
+## Pinning discipline
+
+Per-instance values (class-name pointers, callback tables) are pinned only for the duration of the call that hands them to the engine (`runtime.Pinner` scoped to the construction path). The program-lifetime pinner retains registration-time data only — never per-instance state, which would outlive every release hook.

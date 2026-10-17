@@ -88,16 +88,25 @@ self-contained change; unblocks proper inspector UX for user classes.
 
 ### B2. Static methods and static variables
 
-Declared unsupported today, but not actually impossible: godot-cpp has
-`bind_static_method`, and a Go binding could accept plain package functions
-registered against a class name.
+**DONE (methods)** — implemented by change `support-static-methods` (2026-10-16):
+`core.ClassDBBindStaticMethod(inst, gdMethodName, fn, argNames, defaultValues)` binds a
+Go package function (no receiver) against the class name resolved from `inst` with
+`METHOD_FLAG_STATIC` — the parity counterpart of godot-cpp's `bind_static_method`. GDScript
+calls it through the class path (`MyClass.some_static(...)`); the engine dispatches with a
+null instance pointer, and static binds share the instance-path return-style, default-value,
+variadic, and object-marshalling rules. The old stub TODO ("TODO: golang does not have
+static methods") in `pkg/core/classdb.go` is gone, and `docs/overview.md` "Static Methods"
+documents the shipped capability.
 
-- `pkg/core/classdb.go:256` - "TODO: golang does not have static methods"
-- `docs/overview.md` "Static Methods" - registering static methods is not supported
-- `docs/overview.md` "Static Variables" - NOT YET IMPLEMENTED; global variables
-  can be registered as GDScript static variables
+**BLOCKED (variables)** — no GDExtension ABI exists for registering a class variable:
+`godot_headers/godot/gdextension_interface.h` has no `classdb_register_extension_class_variable`
+(or equivalent) entry point, so no binding can register one; the earlier idea of mapping Go
+globals onto GDScript static variables has no engine channel. Revisit if the experimental
+LanguageExtension interface (unvendored) reaches stable Godot.
 
-Scope: two related but separable proposals (methods, variables).
+Scope note: the `cmd/generate` "refactor for static instantiation" notes are engine-class
+call-side work and stay out of scope — engine functors already ignore the instance pointer
+for statics, so those call sites work unchanged.
 
 ### B3. Generated virtual interfaces (Category B catalog)
 
@@ -283,7 +292,7 @@ note naming the change that shipped it.
 | Done | Order | Item | Why here |
 |---|---|---|---|
 | [x] | 8 | C2 await / goroutine <-> signal bridge | Hard-blocked by C1; delivers the pattern `docs/overview.md` already promises |
-| [ ] | 9 | B2 static methods, then static variables | Wants settled marshalling for signatures; includes the `cmd/generate` "static instantiation" refactor notes |
+| [x] | 9 | B2 static methods (DONE); static variables ABI-blocked | Wants settled marshalling for signatures; the `cmd/generate` "static instantiation" refactor notes are call-side and out of scope |
 | [ ] | 10 | C4 editor plugin ergonomics | Soft-depends on C1 and C3 |
 
 ### Phase 4 - volume work against stable ground

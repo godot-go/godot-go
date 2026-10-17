@@ -232,11 +232,44 @@ A rejected call leaves a nil return, never runs the bound Go method body, and ke
 
 ## Static Methods
 
-Go does not support static methods in structs. Registering static methods is not supported.
+Go does not support static methods on structs, so godot-go binds a **package function** as a
+class static method: `ClassDBBindStaticMethod[T GDClass](inst T, gdMethodName string, fn any, argNames []string, defaultValues []Variant)`.
+The function carries no receiver — it is reflected with argument index base 0 — and `inst` is
+used only to resolve the class name to register against. The bind registers with the engine's
+static flag (mirroring godot-cpp's `bind_static_method`), so GDScript calls it through the class
+path and the engine dispatches with a null instance pointer:
+
+```go
+// package-level function, no receiver
+func ExampleStaticAdd(a int64, b int64) int64 { return a + b }
+
+// inside the class registration callback (t is *Example)
+core.ClassDBBindStaticMethod(t, "static_add", ExampleStaticAdd, []string{"a", "b"}, nil)
+```
+
+```gdscript
+assert_equal(Example.static_add(2, 3), 5)
+```
+
+Static binds share every marshalling rule of instance binds: return styles, trailing default
+arguments, a variadic `...Variant` tail (the engine's vararg flag is implied automatically),
+and object arguments/returns through the standard ownership paths. Both dispatch channels
+serve statics — the typed `ptrcall` fast path and the dynamic `varcall` path. A static bind
+fails fatally at bind time when `fn` is not a Go function (naming class and method), when the
+argument names or defaults outnumber the function's parameters, when the GDScript method name
+is already taken on the class (the prior registration stays intact), or when the virtual flag
+is combined with static (Godot has no static virtual dispatch). Calling a class static through
+an instance is not asserted here: the engine dispatches it (the static functor ignores the
+instance), which the harness records as an observation.
 
 ## Static Variables
 
-Go does not support static variables in structs. __(NOT YET IMPLEMENTED)__ Global variables can be registered as gdscript static variables.
+**BLOCKED** — the GDExtension ABI offers no interface to register a class variable.
+`godot_headers/godot/gdextension_interface.h` has no `classdb_register_extension_class_variable`
+equivalent, so there is nothing a binding can call; the earlier note that "global variables can be
+registered as gdscript static variables" has no engine channel. Go package-level variables remain
+plain Go globals. This can only move once the experimental LanguageExtension interface (not
+vendored here) reaches stable Godot.
 
 ## Packed Arrays
 

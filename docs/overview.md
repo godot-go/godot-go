@@ -254,7 +254,42 @@ slot keeps its predating registration and is unaffected.
 
 ## Coroutines
 
-Go does not support coroutines; this means we do not have access to `await` (or `yield`). Without a coroutine alternative, a cumbersome pattern of chaining method calls will be required. __(NOT YET IMPLEMENTED)__ Instead, we have goroutines to wrap `signal` and `callable`.
+Go does not support coroutines, so there is no `await` keyword that parks the
+current thread inside engine execution. The equivalent affordance is built on
+goroutines instead: `core.Await` bridges a Godot signal emission to a Go
+channel, so any goroutine can block on an event the way GDScript blocks on
+`await` — without stalling the engine's main thread.
+
+```go
+// GDScript:  var args = await enemy.defeated
+res, ok := <-core.Await(enemy, "defeated")
+if !ok {
+	// enemy was freed before emitting; the signal can never fire
+}
+for _, arg := range res.Args {
+	// Go-native payloads: int64, float64, string, Vector2, Object, ...
+}
+```
+
+The subscription is one-shot. Because the result is an ordinary channel it
+composes with the standard toolkit — `select` with `time.After` for timeouts,
+`context.Context` for cancellation, or racing several signals. Emissions
+deliver Go-owned values marshalled on the emitting thread; see the
+`core.Await` doc comment for the payload table and threading hazards.
+
+To keep observing a signal rather than awaiting one emission, connect a Go
+closure directly: `core.NewGoCallable` wraps a `func([]Variant) (Variant,
+error)` as an engine Callable, and any object's `Connect` accepts it like a
+script-bound callable:
+
+```go
+cb := core.NewGoCallable(func(args []builtin.Variant) (builtin.Variant, error) {
+	log.Info("hit", zap.Int64("penalty", args[0].ToInt64()))
+	return builtin.Variant{}, nil // nil Variant result
+})
+defer cb.Destroy()
+node.Connect(name, cb, uint32(constant.OBJECT_CONNECT_FLAGS_REFERENCE_COUNTED))
+```
 
 ## Built-in Types
 

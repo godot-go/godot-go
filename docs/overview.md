@@ -240,7 +240,17 @@ Go does not support static variables in structs. __(NOT YET IMPLEMENTED)__ Globa
 
 ## Packed Arrays
 
-The generated `Packed*Array` types work and are partially tested in the tests. Conversion to Go native slices (e.g. `[]Vector2`) is not yet implemented.
+The generated `Packed*Array` types work and are tested in the tests. Go-native
+slices cross the boundary directly: `[]byte`, `[]int32`, `[]int`/`[]int64`,
+`[]float32`, `[]float64`, `[]string`, `[]Vector2`, `[]Vector3`, `[]Vector4`, and
+`[]Color` map to the matching `Packed*K` container on arguments and returns.
+Decoded slices are Go-owned deep copies (mutating one side never touches the
+other, and a decoded slice stays valid after the call), and a nil or empty Go
+slice returns as an empty container, never `null`. Element types with no packed
+counterpart (`[]bool`, `[]uint16` and wider unsigned kinds, `[]Vector2i`/
+`[]Vector3i`, slices of refcounted cells such as `[]String`, nested slices) are
+rejected at bind time naming the element type. A trailing `...Variant` variadic
+slot keeps its predating registration and is unaffected.
 
 ## Coroutines
 

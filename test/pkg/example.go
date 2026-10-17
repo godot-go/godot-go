@@ -53,6 +53,9 @@ type Example struct {
 	// String-boundary retention fixture (ratify-string-marshalling): a
 	// borrowed StringName kept past its call via the owned Copy().
 	stringCopyHeld StringName
+	// Slice retention fixture (support-native-slice-marshalling): a decoded
+	// Go-owned []byte kept past its call for cross-frame re-reads.
+	sliceHeld []byte
 }
 
 func (c *Example) GetClassName() string {
@@ -912,6 +915,127 @@ func (e *Example) TestCopyContentPreservation() int64 {
 	return failures
 }
 
+// --- support-native-slice-marshalling fixtures ---------------------------
+// Probes exercise slice argument decoding without returning a slice (the
+// echo-return side ships with the return encoder). A decoded slice is a
+// Go-owned deep copy (design D1); length and checksum probes prove the
+// elements landed without corruption.
+
+func (e *Example) TestSliceLenBytes(p_in []byte) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenInt32(p_in []int32) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenInt64(p_in []int64) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenFloat32(p_in []float32) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenFloat64(p_in []float64) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenStrings(p_in []string) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenVector2(p_in []Vector2) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenVector3(p_in []Vector3) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenVector4(p_in []Vector4) int64 { return int64(len(p_in)) }
+
+func (e *Example) TestSliceLenColor(p_in []Color) int64 { return int64(len(p_in)) }
+
+// TestSliceChecksumBytes sums every decoded byte; paired with the length it
+// catches element corruption, ordering, and stride faults in the bulk copy.
+func (e *Example) TestSliceChecksumBytes(p_in []byte) int64 {
+	sum := int64(0)
+	for _, b := range p_in {
+		sum += int64(b)
+	}
+	return sum
+}
+
+func (e *Example) TestSliceChecksumInt64(p_in []int64) int64 {
+	sum := int64(0)
+	for _, v := range p_in {
+		sum += v
+	}
+	return sum
+}
+
+// TestSliceChecksumStrings sums the UTF-8 byte lengths, so multi-byte text
+// decodes as content and not as raw handles.
+func (e *Example) TestSliceChecksumStrings(p_in []string) int64 {
+	total := int64(0)
+	for _, s := range p_in {
+		total += int64(len(s))
+	}
+	return total
+}
+
+func (e *Example) TestSliceChecksumFloat64(p_in []float64) float64 {
+	sum := float64(0)
+	for _, v := range p_in {
+		sum += v
+	}
+	return sum
+}
+
+// TestSliceEcho*K return the decoded slice unchanged: the return encoder
+// builds a fresh Packed*K cell and GDScript asserts element equality against
+// the original argument on both the call() and direct paths.
+
+func (e *Example) TestSliceEchoBytes(p_in []byte) []byte         { return p_in }
+func (e *Example) TestSliceEchoInt32(p_in []int32) []int32       { return p_in }
+func (e *Example) TestSliceEchoInt64(p_in []int64) []int64       { return p_in }
+func (e *Example) TestSliceEchoFloat32(p_in []float32) []float32 { return p_in }
+func (e *Example) TestSliceEchoFloat64(p_in []float64) []float64 { return p_in }
+func (e *Example) TestSliceEchoStrings(p_in []string) []string   { return p_in }
+func (e *Example) TestSliceEchoVector2(p_in []Vector2) []Vector2 { return p_in }
+func (e *Example) TestSliceEchoVector3(p_in []Vector3) []Vector3 { return p_in }
+func (e *Example) TestSliceEchoVector4(p_in []Vector4) []Vector4 { return p_in }
+func (e *Example) TestSliceEchoColor(p_in []Color) []Color       { return p_in }
+
+// TestSliceEchoNilBytes returns a nil slice with no input: the encoding must
+// produce an empty PackedByteArray, never a null Variant (design D6).
+func (e *Example) TestSliceEchoNilBytes() []byte { return nil }
+
+// TestSliceRetainStore keeps a decoded slice on the Example, past the
+// call's borrow lifetime: the slice is Go-owned memory with nothing left to
+// release engine-side once the call returns (design D1).
+func (e *Example) TestSliceRetainStore(p_in []byte) int64 {
+	e.sliceHeld = p_in
+	return 0
+}
+
+// TestSliceRetainVerify re-reads the stored slice on a later frame, proving
+// the decoded copy has no dependence on the engine array that fed it.
+func (e *Example) TestSliceRetainVerify(p_expected_len int64, p_expected_sum int64) int64 {
+	failures := int64(0)
+	if int64(len(e.sliceHeld)) != p_expected_len {
+		failures++
+	}
+	sum := int64(0)
+	for _, b := range e.sliceHeld {
+		sum += int64(b)
+	}
+	if sum != p_expected_sum {
+		failures++
+	}
+	return failures
+}
+
+// TestSliceMutateProbe returns the sum of the decoded elements and then
+// scribbles 0xFF over every slot. If decoding had aliased the engine buffer,
+// the scribble would rewrite the GDScript-side original, which the driver
+// asserts against after the call.
+func (e *Example) TestSliceMutateProbe(p_in []byte) int64 {
+	sum := int64(0)
+	for _, b := range p_in {
+		sum += int64(b)
+	}
+	for i := range p_in {
+		p_in[i] = 0xFF
+	}
+	return sum
+}
+
 func (e *Example) TestEchoVector2i(p Vector2i) Vector2i                                 { return p }
 func (e *Example) TestEchoVector3(p Vector3) Vector3                                    { return p }
 func (e *Example) TestEchoVector3i(p Vector3i) Vector3i                                 { return p }
@@ -1222,6 +1346,34 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestStringCopyStore", "test_string_copy_store", []string{"p_name"}, nil)
 		ClassDBBindMethod(t, "TestStringCopyVerifyRelease", "test_string_copy_verify_release", []string{"p_expected"}, nil)
 		ClassDBBindMethod(t, "TestCopyContentPreservation", "test_copy_content_preservation", nil, nil)
+		ClassDBBindMethod(t, "TestSliceLenBytes", "test_slice_len_bytes", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenInt32", "test_slice_len_int32", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenInt64", "test_slice_len_int64", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenFloat32", "test_slice_len_float32", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenFloat64", "test_slice_len_float64", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenStrings", "test_slice_len_strings", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenVector2", "test_slice_len_vector2", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenVector3", "test_slice_len_vector3", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenVector4", "test_slice_len_vector4", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceLenColor", "test_slice_len_color", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceChecksumBytes", "test_slice_checksum_bytes", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceChecksumInt64", "test_slice_checksum_int64", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceChecksumStrings", "test_slice_checksum_strings", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceChecksumFloat64", "test_slice_checksum_float64", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoBytes", "test_slice_echo_bytes", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoInt32", "test_slice_echo_int32", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoInt64", "test_slice_echo_int64", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoFloat32", "test_slice_echo_float32", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoFloat64", "test_slice_echo_float64", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoStrings", "test_slice_echo_strings", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoVector2", "test_slice_echo_vector2", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoVector3", "test_slice_echo_vector3", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoVector4", "test_slice_echo_vector4", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoColor", "test_slice_echo_color", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceEchoNilBytes", "test_slice_echo_nil_bytes", nil, nil)
+		ClassDBBindMethod(t, "TestSliceRetainStore", "test_slice_retain_store", []string{"p_in"}, nil)
+		ClassDBBindMethod(t, "TestSliceRetainVerify", "test_slice_retain_verify", []string{"p_expected_len", "p_expected_sum"}, nil)
+		ClassDBBindMethod(t, "TestSliceMutateProbe", "test_slice_mutate_probe", []string{"p_in"}, nil)
 		ClassDBBindMethod(t, "TestEchoVector2i", "test_echo_vector2i", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoVector3", "test_echo_vector3", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestEchoVector3i", "test_echo_vector3i", []string{"v"}, nil)

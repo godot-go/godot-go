@@ -47,6 +47,11 @@ func GDExtensionTypePtrFromReflectValue(value reflect.Value, rOut GDExtensionUni
 		Float64Encoder.EncodeReflectTypePtrArg(value, rOut)
 	case reflect.String:
 		GoStringUtf8Encoder.EncodeReflectTypePtrArg(value, rOut)
+	case reflect.Slice:
+		// support-native-slice-marshalling: build an owned Packed*K from
+		// the Go slice and install it into rOut; the temporary is released
+		// (or moved) inside sliceEncodeReturn per the ratified idioms.
+		sliceEncodeReturn(rOut, value)
 	case reflect.Interface:
 		log.Debug("returing interface",
 			zap.String("name", value.Type().Name()),
@@ -353,6 +358,11 @@ func GDExtensionVariantPtrFromReflectValue(value reflect.Value, rOut GDExtension
 		Float64Encoder.EncodeReflectVariantPtrArg(value, rOut)
 	case reflect.String:
 		GoStringUtf8Encoder.EncodeReflectVariantPtrArg(value, rOut)
+	case reflect.Slice:
+		// support-native-slice-marshalling: build the Packed*K through the
+		// shared return builder, then move the cell into the Variant like
+		// the packed cell cases below (engine takes ownership).
+		sliceEncodeReturnVariant(rOut, value)
 	case reflect.Interface:
 		if value.IsNil() {
 			CallFunc_GDExtensionInterfaceVariantNewNil(rOut)

@@ -26,6 +26,7 @@ func _ready():
 	await test_main_loop_callbacks(example)
 	assert_equal(example.test_singleton_helpers(), 0)
 	await test_string_boundary_marshalling(example)
+	await test_native_slice_marshalling(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -638,7 +639,8 @@ func test_main_loop_callbacks(example: Example):
 	# process_frame dispatch that resumes this coroutine. The priming await
 	# absorbs that ordering boundary; every measurement await afterwards must
 	# observe the previous frame's hook (per-await delta >= 1). The run uses
-	# --quit-after 5 so several iterations complete before exit.
+	# --quit-after 12 so several iterations complete before exit even with the
+	# frame waits in the string- and slice-retention fixtures.
 	await get_tree().process_frame
 	var last := example.main_loop_frame_count()
 	for i in range(2):
@@ -884,3 +886,187 @@ func test_string_boundary_marshalling(example: Example) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	assert_equal(example.test_string_copy_verify_release("retained_name"), 0)
+
+
+# support-native-slice-marshalling fixtures: Go native slice parameters decode
+# from every Packed*K kind. These probes assert the decode side; the echo pass
+# that also asserts the return side accompanies the return encoder.
+func test_native_slice_marshalling(example: Example) -> void:
+	print("test native slice marshalling")
+
+	var bytes = PackedByteArray()
+	bytes.resize(1000)
+	var bytes_sum = 0
+	for i in 1000:
+		bytes[i] = i % 256
+		bytes_sum += i % 256
+
+	var i32 = PackedInt32Array([1, -2, 300000, -2147483648, 2147483647])
+	var i64 = PackedInt64Array([1, -2, 1099511627776, -1099511627769])
+	var f32 = PackedFloat32Array([1.5, -0.25, 448.0])
+	var f64 = PackedFloat64Array([1.5, -0.25, 448.0])
+	var strs = PackedStringArray(["a", "héllo", "日本", ""])
+	var strs_utf8_len = 0
+	for s in strs:
+		strs_utf8_len += s.to_utf8_buffer().size()
+	var v2 = PackedVector2Array([Vector2(1, 2), Vector2(-3.5, 4)])
+	var v3 = PackedVector3Array([Vector3(1, 2, 3), Vector3(-1, -2, -3)])
+	var v4 = PackedVector4Array([Vector4(1, 2, 3, 4), Vector4(-1, -2, -3, -4)])
+	var colors = PackedColorArray([Color(0.25, 0.5, 0.75, 1), Color(0, 0, 0, 0)])
+
+	# Varcall decode: lengths for all ten packed kinds.
+	assert_equal(example.call("test_slice_len_bytes", bytes), 1000)
+	assert_equal(example.call("test_slice_len_int32", i32), 5)
+	assert_equal(example.call("test_slice_len_int64", i64), 4)
+	assert_equal(example.call("test_slice_len_float32", f32), 3)
+	assert_equal(example.call("test_slice_len_float64", f64), 3)
+	assert_equal(example.call("test_slice_len_strings", strs), 4)
+	assert_equal(example.call("test_slice_len_vector2", v2), 2)
+	assert_equal(example.call("test_slice_len_vector3", v3), 2)
+	assert_equal(example.call("test_slice_len_vector4", v4), 2)
+	assert_equal(example.call("test_slice_len_color", colors), 2)
+
+	# Empty arrays decode to zero-length slices (D6).
+	assert_equal(example.call("test_slice_len_bytes", PackedByteArray()), 0)
+	assert_equal(example.call("test_slice_len_strings", PackedStringArray()), 0)
+
+	# Content: checksums catch corruption the length alone would hide.
+	assert_equal(example.call("test_slice_checksum_bytes", bytes), bytes_sum)
+	assert_equal(example.call("test_slice_checksum_int64", i64), 6)
+	assert_equal(example.call("test_slice_checksum_strings", strs), strs_utf8_len)
+	assert_equal(example.call("test_slice_checksum_float64", f64), 449.25)
+
+	# A variant with no packed conversion is rejected at the call layer
+	# before the Go method runs. Contained via expect_rejected_call so the
+	# engine rejection cannot abandon the rest of this function.
+	expect_rejected_call(example, "test_slice_len_bytes", [42])
+	assert_true(last_call_was_rejected)
+
+	# The strict conversion gate treats Nil as non-convertible to a packed
+	# parameter too: null is rejected at the call layer, it does not reach
+	# the Go decoder (engine evidence: "Cannot convert argument 2 from Nil
+	# to PackedByteArray"). Contained, and the surviving calls below prove
+	# the run continued past both rejections.
+	expect_rejected_call(example, "test_slice_len_bytes", [null])
+	assert_true(last_call_was_rejected)
+	assert_equal(example.test_slice_checksum_bytes(bytes), bytes_sum)
+
+	# Direct typed calls take the ptrcall path with the engine's borrowed
+	# cell: same fixtures must produce the same results. A direct call with
+	# a bad type is settled by the GDScript analyzer at parse time, so only
+	# the varcall path carries the contained-rejection pins above.
+	assert_equal(example.test_slice_len_bytes(bytes), 1000)
+	assert_equal(example.test_slice_len_int32(i32), 5)
+	assert_equal(example.test_slice_len_int64(i64), 4)
+	assert_equal(example.test_slice_len_float32(f32), 3)
+	assert_equal(example.test_slice_len_float64(f64), 3)
+	assert_equal(example.test_slice_len_strings(strs), 4)
+	assert_equal(example.test_slice_len_vector2(v2), 2)
+	assert_equal(example.test_slice_len_vector3(v3), 2)
+	assert_equal(example.test_slice_len_vector4(v4), 2)
+	assert_equal(example.test_slice_len_color(colors), 2)
+	assert_equal(example.test_slice_len_bytes(PackedByteArray()), 0)
+	assert_equal(example.test_slice_checksum_int64(i64), 6)
+	assert_equal(example.test_slice_checksum_strings(strs), strs_utf8_len)
+
+	# Return encoder: echoes must come back element-equal on both paths (GDScript
+	# == compares packed arrays element-for-element), proving the built cells
+	# carry the data across the boundary.
+	assert_equal(example.call("test_slice_echo_bytes", bytes), bytes)
+	assert_equal(example.call("test_slice_echo_int32", i32), i32)
+	assert_equal(example.call("test_slice_echo_int64", i64), i64)
+	assert_equal(example.call("test_slice_echo_float32", f32), f32)
+	assert_equal(example.call("test_slice_echo_float64", f64), f64)
+	assert_equal(example.call("test_slice_echo_strings", strs), strs)
+	assert_equal(example.call("test_slice_echo_vector2", v2), v2)
+	assert_equal(example.call("test_slice_echo_vector3", v3), v3)
+	assert_equal(example.call("test_slice_echo_vector4", v4), v4)
+	assert_equal(example.call("test_slice_echo_color", colors), colors)
+	assert_equal(example.test_slice_echo_bytes(bytes), bytes)
+	assert_equal(example.test_slice_echo_int32(i32), i32)
+	assert_equal(example.test_slice_echo_int64(i64), i64)
+	assert_equal(example.test_slice_echo_float32(f32), f32)
+	assert_equal(example.test_slice_echo_float64(f64), f64)
+	assert_equal(example.test_slice_echo_strings(strs), strs)
+	assert_equal(example.test_slice_echo_vector2(v2), v2)
+	assert_equal(example.test_slice_echo_vector3(v3), v3)
+	assert_equal(example.test_slice_echo_vector4(v4), v4)
+	assert_equal(example.test_slice_echo_color(colors), colors)
+
+	# A nil Go slice returns as an empty container, never null (design D6).
+	var nil_echo = example.test_slice_echo_nil_bytes()
+	assert_true(nil_echo != null)
+	assert_true(nil_echo.is_empty())
+
+	# Fidelity (spec requirement 4): exact text, 10,000-element payloads,
+	# int64 extremes, float edges, and per-component equality on both call
+	# paths. Component comparisons use values exactly representable in the
+	# engine's float32 storage (Vector2/Vector3/Vector4/Color components).
+	var utf8 = PackedStringArray(["héllo", "日本", "😀"])
+	var utf8_direct = example.test_slice_echo_strings(utf8)
+	var utf8_var = example.call("test_slice_echo_strings", utf8)
+	assert_true(utf8_direct[0] == "héllo")
+	assert_true(utf8_direct[1] == "日本")
+	assert_true(utf8_direct[2] == "😀")
+	assert_true(utf8_var[0] == "héllo")
+	assert_true(utf8_var[2] == "😀")
+
+	var big = PackedByteArray()
+	big.resize(10000)
+	for i in 10000:
+		big[i] = (i * 37 + 11) % 256
+	assert_equal(example.test_slice_echo_bytes(big), big)
+	assert_equal(example.call("test_slice_echo_bytes", big), big)
+
+	var extremes = PackedInt64Array([
+		-9223372036854775807 - 1, -4611686018427387903, -1, 0,
+		4611686018427387903, 9223372036854775807
+	])
+	assert_equal(example.test_slice_echo_int64(extremes), extremes)
+	assert_equal(example.call("test_slice_echo_int64", extremes), extremes)
+
+	var f32_edge = PackedFloat32Array([0.1, -0.0, 1e-30, 3.4028234663852886e38])
+	assert_equal(example.test_slice_echo_float32(f32_edge), f32_edge)
+	assert_equal(example.call("test_slice_echo_float32", f32_edge), f32_edge)
+	var f64_edge = PackedFloat64Array([0.1, -0.0, 1e-300, 1.7976931348623157e308])
+	assert_equal(example.test_slice_echo_float64(f64_edge), f64_edge)
+	assert_equal(example.call("test_slice_echo_float64", f64_edge), f64_edge)
+
+	var v2e = PackedVector2Array([Vector2(1.5, -2.25), Vector2(-0.5, 1024.5)])
+	var e2d = example.test_slice_echo_vector2(v2e)
+	var e2v = example.call("test_slice_echo_vector2", v2e)
+	assert_true(e2d[0].x == 1.5 and e2d[0].y == -2.25)
+	assert_true(e2v[1].x == -0.5 and e2v[1].y == 1024.5)
+
+	var v3e = PackedVector3Array([Vector3(-1.5, 2.25, -3.125)])
+	var e3d = example.test_slice_echo_vector3(v3e)
+	assert_true(e3d[0].x == -1.5 and e3d[0].y == 2.25 and e3d[0].z == -3.125)
+
+	var v4e = PackedVector4Array([Vector4(-1.5, 2.25, 3.125, 1024.5)])
+	var e4d = example.test_slice_echo_vector4(v4e)
+	var e4v = example.call("test_slice_echo_vector4", v4e)
+	assert_true(e4d[0].x == -1.5 and e4d[0].w == 1024.5)
+	assert_true(e4v[0].y == 2.25 and e4v[0].z == 3.125)
+
+	var cole = PackedColorArray([Color(0.25, 0.5, 0.75, 1), Color(0, 0, 0, 0.125)])
+	var ecd = example.test_slice_echo_color(cole)
+	var ecv = example.call("test_slice_echo_color", cole)
+	assert_true(ecd[0].r == 0.25 and ecd[0].g == 0.5 and ecd[0].b == 0.75 and ecd[0].a == 1)
+	assert_true(ecv[1].r == 0 and ecv[1].a == 0.125)
+
+	# Independence (spec requirement 5): Go mutates its decoded copy and the
+	# GDScript original must be untouched on both paths (the ptrcall path is
+	# the dangerous one: it decodes from the engine's borrowed cell).
+	var indep = PackedByteArray([10, 20, 30, 250])
+	assert_equal(example.test_slice_mutate_probe(indep), 310)
+	assert_true(indep[0] == 10 and indep[1] == 20 and indep[2] == 30 and indep[3] == 250)
+	assert_equal(example.call("test_slice_mutate_probe", indep), 310)
+	assert_true(indep[0] == 10 and indep[1] == 20 and indep[2] == 30 and indep[3] == 250)
+
+	# Retention: a decoded slice stored on the Go side stays intact across
+	# frames although the engine array it came from is long gone, with no
+	# cgocheck violation and no leaked engine objects (D1/D5a).
+	assert_equal(example.test_slice_retain_store(bytes), 0)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	assert_equal(example.test_slice_retain_verify(1000, bytes_sum), 0)

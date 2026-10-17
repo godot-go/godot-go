@@ -12,6 +12,17 @@ here; see `openspec/specs/` for what is contractually pinned.
 
 ### A1. Go-native slices <-> Packed*Array
 
+**DONE** — implemented by change `support-native-slice-marshalling` (2026-10-15):
+`[]byte`, `[]int32`, `[]int`/`[]int64`, `[]float32`, `[]float64`, `[]string`,
+`[]Vector2`, `[]Vector3`, `[]Vector4` and `[]Color` cross arguments and returns
+against the matching `Packed*K` — all 10 packed types (the "9" below missed
+`PackedVector4Array`). Decoded slices are Go-owned deep copies moved through
+the engine `operator_index` accessors; Nil arguments are rejected by the
+binder's strict conversion gate and unmappable elements (`[]bool`, wide unsigned,
+`[]Vector2i`/`[]Vector3i`, `[]String`, nested) fail at bind time, all ratified
+in spec `native-slice-marshalling`. Typed `Array[T]`/`Dictionary[K,V]`
+generics were split out as their own follow-on change. Original item:
+
 The loudest TODO in the codebase: any slice argument or return currently
 aborts at the boundary.
 
@@ -229,7 +240,7 @@ note naming the change that shipped it.
 | Done | Order | Item | Why here |
 |---|---|---|---|
 | [x] | 4 | A2 native Go strings | Small decision that A1, A3, C1 and B2 all inherit; decide strict-vs-convert once, early |
-| [ ] | 5 | A1 slices <-> Packed*Array (+ typed `Array[T]`) | Loudest TODO; builds directly on A2's string/element decisions |
+| [x] | 5 | A1 slices <-> Packed*Array (typed `Array[T]` split out) | Loudest TODO; builds directly on A2's string/element decisions |
 | [ ] | 6 | A3 variant reflect completeness | Its "what still can't cross" inventory is only accurate after A1/A2; also clears the Ref-output TODOs |
 
 ### Phase 2 - the keystone
@@ -269,7 +280,7 @@ gantt
     D3 typed singleton helpers         :done, d3, 2026-10-15, 2026-10-17
     section Phase 1 marshalling foundation
     A2 native Go strings               :done, a2, 2026-10-19, 2026-10-23
-    A1 slices and packed arrays        :a1, 2026-10-26, 2026-11-06
+    A1 slices and packed arrays        :done, a1, 2026-10-15, 2026-10-15
     A3 variant reflect completeness    :a3, 2026-11-09, 2026-11-13
     section Phase 2 keystone
     C1 spike - callable_custom audit   :done, c1s, 2026-10-13, 2026-10-21
@@ -298,7 +309,7 @@ gantt
     C1 spike - callable_custom audit   :done, s1, 2026-10-13, 2026-10-21
     section Freeze marshalling
     A2 native Go strings               :done, crit, s2, 2026-10-19, 2026-10-23
-    A1 slices and packed arrays        :crit, s3, 2026-10-26, 2026-11-06
+    A1 slices and packed arrays        :done, crit, s3, 2026-10-15, 2026-10-15
     A3 variant reflect completeness    :crit, s4, 2026-11-09, 2026-11-13
     section Keystone
     C1 Go func to Callable bridge      :crit, s5, 2026-11-16, 2026-11-27

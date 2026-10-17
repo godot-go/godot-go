@@ -12,7 +12,7 @@ rules:
     - Break tasks into chunks of max 2 hours
   retrospective:
     - Generate retrospective.md after completing a debugging/investigation-heavy change
-    - Document the investigation journey: what was tried, what worked, what didn't
+    - "Document the investigation journey: what was tried, what worked, what didn't"
     - Include root cause analysis for each fix (before/after code snippets)
     - Trace any remaining unresolved issues to their origin (Go-side vs Godot-side)
     - Include key learnings and architecture diagrams

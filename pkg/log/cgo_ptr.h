@@ -3,16 +3,13 @@
 
 #include <stdint.h>
 
-/* Packs a Go cgo.Handle into a void* slot that Godot stores for the lifetime
-   of the bound object (instance, binding, method userdata, extension class
-   binding). The cast lives in C so that go vet's unsafeptr analyzer (which
-   cannot know a Handle is pointer-stable) stays silent; the value round-trips
-   unchanged and is unpacked on the callback side as a cgo.Handle.
-
-   Shared by pkg/builtin, pkg/core, and pkg/ffi via the -I.../pkg/log cgo
-   include path; static inline keeps it collision-free across packages. */
-static inline void *cgo_handle_to_ptr(uintptr_t handle) {
-	return (void *)handle;
+/* Writes a packed cgo.Handle into a pointer-sized slot living in C memory
+   (e.g. a GDExtensionClassMethodInfo.method_userdata or
+   GDExtensionCallableCustomInfo2.callable_userdata field). The cast lives in
+   C so the integer never transits a Go pointer-typed variable that a GC
+   stack scan would reject (openspec fix-instance-handle-lifecycle). */
+static inline void cgo_set_handle_slot(uintptr_t *p_slot, uintptr_t p_handle) {
+	*p_slot = p_handle;
 }
 
 #endif

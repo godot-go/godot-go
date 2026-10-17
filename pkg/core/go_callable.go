@@ -62,7 +62,7 @@ func newGoCallable(fn func(args []Variant) (Variant, error), onFree func()) Call
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 	info := NewGDExtensionCallableCustomInfo2(
-		C.cgo_handle_to_ptr(C.uintptr_t(h)),
+		h,
 		unsafe.Pointer(FFI.Library),
 		GDObjectInstanceID(0),
 		(GDExtensionCallableCustomCall)(C.cgo_callcustom_call),

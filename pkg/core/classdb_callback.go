@@ -188,14 +188,17 @@ func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExten
 	}
 	ptrHandle := cgo.Handle(unsafe.Pointer(ptr))
 	wrapped := ptrHandle.Value().(*WrappedClassInstance)
+	// Deferred calls run LIFO: Delete is registered first so it runs LAST —
+	// after Destroy and after the SyncMap guard below. Any re-entrant callback
+	// issued while Destroy() executes still resolves a live Handle (openspec
+	// fix-instance-handle-lifecycle, issue #152). Godot clears its copies of
+	// _extension/_extension_instance immediately after free_instance returns
+	// (Object::_predelete), so the engine issues no further callback with the
+	// stale pointer; binding-slot readers already degrade a dead handle to a
+	// typed error (objectFromBindingPtr).
+	defer ptrHandle.Delete()
 	// Defer Destroy so the SyncMap guard below catches re-entrant calls.
 	defer wrapped.Instance.Destroy()
-	// Intentionally not calling ptrHandle.Delete() — deleting the Handle
-	// invalidates the raw pointer that Godot still holds internally.
-	// If Godot issues any subsequent callback (e.g., during re-entrant
-	// Destroy) with the stale pointer, cgo.Handle lookup returns garbage,
-	// causing heap corruption (glibc "corrupted double-linked list").
-	// Origin/main never deleted Handles; we follow the same pattern.
 	id := CallFunc_GDExtensionInterfaceObjectGetInstanceId((GDExtensionConstObjectPtr)(unsafe.Pointer(wrapped.Instance.GetGodotObjectOwner())))
 	if _, ok := Internal.GDClassInstances.Get(id); !ok {
 		log.Panic("GDClass instance not found to free", zap.Any("id", id))

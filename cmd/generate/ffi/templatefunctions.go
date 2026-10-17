@@ -14,20 +14,19 @@ func add(a int, b int) int {
 }
 
 func goArgumentType(t clang.PrimativeType, name string) string {
+	// Marked by markHandleSlots: the slot carries a cgo.Handle value, not
+	// an address (openspec fix-instance-handle-lifecycle).
+	if t.IsHandleSlot {
+		return "cgo.Handle"
+	}
+
 	n := strings.TrimSpace(t.Name)
 
 	hasReturnPrefix := strings.HasPrefix(name, "r_")
 
 	switch n {
 	case "void":
-		// Coupled to gdextension_interface.h's naming convention: every
-		// void* parameter called p_binding is a cgo.Handle slot, not a raw
-		// C pointer. If a future interface function introduces a p_binding
-		// carrying a real pointer, this typing (and cgoCastArgument's pack
-		// through C.cgo_handle_to_ptr) would silently lie.
-		if name == "p_binding" {
-			return "cgo.Handle"
-		} else if t.IsPointer {
+		if t.IsPointer {
 			return "unsafe.Pointer"
 		}
 		return ""
@@ -99,6 +98,11 @@ func goArgumentType(t clang.PrimativeType, name string) string {
 }
 
 func goReturnType(t clang.PrimativeType) string {
+	// Marked by markHandleSlots: the result is a packed cgo.Handle value.
+	if t.IsHandleSlot {
+		return "cgo.Handle"
+	}
+
 	n := strings.TrimSpace(t.Name)
 
 	switch n {
@@ -197,18 +201,20 @@ func cgoCastArgument(a clang.Argument, defaultName string) string {
 			goVarName = defaultName
 		}
 
+		// Marked by markHandleSlots: pass the packed Handle as an integer;
+		// the C shim casts to the void* the engine expects. Keeping the Go
+		// slot integer-typed is the point — a small handle value in a GC
+		// pointer slot is fatal under stack scans (openspec
+		// fix-instance-handle-lifecycle).
+		if t.IsHandleSlot {
+			return fmt.Sprintf("C.uintptr_t(%s)", goVarName)
+		}
+
 		hasReturnPrefix := strings.HasPrefix(a.Name, "r_")
 
 		switch n {
 		case "void":
 			if t.IsPointer {
-				// goArgumentType types the p_binding slot as cgo.Handle; pack
-				// it through C so go vet's unsafeptr analyzer stays silent on
-				// the integer-to-pointer cast (see pkg/log/cgo_ptr.h). This
-				// name-matches p_binding in lockstep with goArgumentType.
-				if goVarName == "p_binding" {
-					return fmt.Sprintf("C.cgo_handle_to_ptr(C.uintptr_t(%s))", goVarName)
-				}
 				return fmt.Sprintf("unsafe.Pointer(%s)", goVarName)
 			} else {
 				panic(fmt.Sprintf("unhandled type: %s", t.CStyleString()))
@@ -266,6 +272,12 @@ func cgoCleanUpArgument(a clang.Argument, index int) string {
 }
 
 func cgoCastReturnType(t clang.PrimativeType, argName string) string {
+	// Marked by markHandleSlots: reinterpret the integer shim result as
+	// the Handle value it carries.
+	if t.IsHandleSlot {
+		return fmt.Sprintf("cgo.Handle(%s)", argName)
+	}
+
 	n := strings.TrimSpace(t.Name)
 
 	switch n {

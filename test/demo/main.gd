@@ -52,6 +52,8 @@ func _ready():
 	await test_signal_await_shutdown_pending(example)
 	test_static_methods(example)
 	test_editor_plugin_runtime_guard(example)
+	test_instance_churn(example)
+	test_binding_release_accounting(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1536,3 +1538,31 @@ func test_editor_plugin_runtime_guard(example: Example) -> void:
 	# pretending to succeed is the failure mode guarded against. The
 	# recoverable PANIC logs this provokes are announced by the Go probe.
 	assert_equal(example.editor_plugin_rejected_outside_editor(), 1)
+
+func test_instance_churn(example: Example) -> void:
+	# Instance-scoped Go retention gates (openspec fix-instance-handle-lifecycle,
+	# issue #152): user-defined instances freed by the engine must stop
+	# retaining their Go wrappers, and engine-class binding churn must release
+	# every created binding handle exactly once.
+	for i in 250:
+		var warm := ExampleRef.new()
+		warm.set_id(i)
+	example.test_instance_churn_begin()
+	for i in 5000:
+		var r := ExampleRef.new()
+		r.set_id(i)
+		example.test_instance_churn_capture(r)
+	assert_equal(example.test_instance_churn_end(1, 5000), 1)
+	for i in 25000:
+		var r := ExampleRef.new()
+		r.set_id(i)
+		example.test_instance_churn_capture(r)
+	assert_equal(example.test_instance_churn_end(2, 25000), 1)
+	assert_equal(example.test_instance_churn_verify(), 1)
+
+func test_binding_release_accounting(example: Example) -> void:
+	example.test_binding_churn_begin()
+	for i in 5000:
+		var b := RefCounted.new()
+		example.test_binding_churn_capture(b)
+	assert_equal(example.test_binding_churn_verify(), 1)

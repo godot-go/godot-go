@@ -4,6 +4,7 @@ package gdclassinit
 import "C"
 import (
 	"runtime/cgo"
+	"sync/atomic"
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -11,8 +12,23 @@ import (
 	"go.uber.org/zap"
 )
 
+// Observability counters for the engine-class binding lifecycle (openspec
+// fix-instance-handle-lifecycle): the binding-churn gate asserts that every
+// created binding handle is released exactly once.
+var (
+	bindingCreateCount atomic.Uint64
+	bindingFreeCount   atomic.Uint64
+)
+
+// BindingCreateCount returns how many engine-class binding handles this
+// extension has created since start-up.
+func BindingCreateCount() uint64 { return bindingCreateCount.Load() }
+
+// BindingFreeCount returns how many engine-class binding releases have run.
+func BindingFreeCount() uint64 { return bindingFreeCount.Load() }
+
 //export GoCallback_GDExtensionBindingCreate
-func GoCallback_GDExtensionBindingCreate(p_type_name *C.char, p_token unsafe.Pointer, p_instance unsafe.Pointer) unsafe.Pointer {
+func GoCallback_GDExtensionBindingCreate(p_type_name *C.char, p_token unsafe.Pointer, p_instance unsafe.Pointer) uintptr {
 	typeName := C.GoString(p_type_name)
 	log.Debug("GoCallback_GDExtensionBindingCreate called",
 		zap.String("class", typeName),
@@ -33,23 +49,35 @@ func GoCallback_GDExtensionBindingCreate(p_type_name *C.char, p_token unsafe.Poi
 	// Every writer now stores a handle, which is also what the generated
 	// setter's p_binding cgo.Handle type asserts.
 	//
-	// The handle is deliberately never deleted: the engine keeps the value for
-	// the life of the object, and the previous shape pinned the interface
-	// header permanently. See the never-delete-after-retrieval policy.
+	// The Handle is the lifetime anchor for the wrapper and is released by
+	// GoCallback_GDExtensionBindingFree, the engine's free notification for
+	// this binding shape (openspec fix-instance-handle-lifecycle).
 	handle := cgo.NewHandle(inst)
-	// Packed through the C shim rather than unsafe.Pointer(uintptr(...)), which
-	// go vet's unsafeptr check cannot know is pointer-stable. See
-	// pkg/log/cgo_ptr.h.
-	return (unsafe.Pointer)(C.cgo_handle_to_ptr(C.uintptr_t(handle)))
+	bindingCreateCount.Add(1)
+	// Returned as an integer; the C thunk casts to the void* the engine
+	// stores. Keeping the Go value integer-typed means the packed Handle
+	// never occupies a GC pointer slot (openspec
+	// fix-instance-handle-lifecycle; see cmd/generate/ffi/handle_slots.go
+	// for the same rule on the call side).
+	return uintptr(handle)
 }
 
 //export GoCallback_GDExtensionBindingFree
-func GoCallback_GDExtensionBindingFree(p_type_name *C.char, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_binding unsafe.Pointer) {
+func GoCallback_GDExtensionBindingFree(p_type_name *C.char, p_token unsafe.Pointer, p_instance unsafe.Pointer, p_binding uintptr) {
 	// typeName := C.GoString(p_type_name)
 	// log.Debug("GoCallback_GDExtensionBindingFree called",
 	// 	zap.String("class", typeName),
 	// )
-	// GDNativeConstructors.Delete(typeName)
+	// The engine runs this exactly once per created binding slot (it removes
+	// the slot before notifying, so explicit frees, ~Object, and TOOLS
+	// hot-reload clear paths cannot double-notify). p_binding round-trips
+	// the Handle create returned as an integer (openspec
+	// fix-instance-handle-lifecycle).
+	bindingFreeCount.Add(1)
+	if p_binding == 0 {
+		return
+	}
+	cgo.Handle(p_binding).Delete()
 }
 
 //export GoCallback_GDExtensionBindingReference

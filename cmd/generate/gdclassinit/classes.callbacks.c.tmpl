@@ -17,12 +17,14 @@
 
 void *cgo_gdextension_class_binding_create_callback_{{ $c.Name }}(void *p_token, void *p_instance) {
 	printStacktrace();
-	return GoCallback_GDExtensionBindingCreate("{{ $c.Name }}", p_token, p_instance);
+	// The Handle value returns to the engine as a void* here, but crosses
+	// the Go boundary as an integer (openspec fix-instance-handle-lifecycle).
+	return (void *)GoCallback_GDExtensionBindingCreate("{{ $c.Name }}", p_token, p_instance);
 }
 
 void cgo_gdextension_class_binding_free_callback_{{ $c.Name }}(void *p_token, void *p_instance, void *p_binding) {
 	printStacktrace();
-	GoCallback_GDExtensionBindingFree("{{ $c.Name }}", p_token, p_instance, p_binding);
+	GoCallback_GDExtensionBindingFree("{{ $c.Name }}", p_token, p_instance, (uintptr_t)p_binding);
 }
 
 GDExtensionBool cgo_gdextension_class_binding_reference_callback_{{ $c.Name }}(void *p_token, void *p_instance, GDExtensionBool p_reference) {

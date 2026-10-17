@@ -21,9 +21,13 @@
 		{{- end -}}
 	) {
 		printStacktrace();
-		{{ if ne "void" $f.ReturnType.CStyleString -}} return {{- end }} fn(
+		{{- if ne "void" $f.ReturnType.CStyleString }}
+			return {{ if $f.ReturnType.IsHandleSlot }}(uintptr_t) {{ end }}
+		{{- end }}
+		fn(
 			{{- range $j, $arg := $f.Arguments }}
 				{{- if gt $j 0 }}, {{ end }}
+				{{- if and $arg.Type.Primative $arg.Type.Primative.IsHandleSlot }}(void *) {{ end -}}
 				{{- $arg.ResolvedName $j }}
 			{{- end -}}
 		);

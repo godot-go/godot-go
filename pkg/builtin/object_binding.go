@@ -51,12 +51,14 @@ func annotateClass(err error, class string) error {
 // objectFromBindingPtr decodes the instance-binding slot into the Go wrapper
 // that stands for the engine object.
 //
-// The slot is a cgo.Handle value, which is what the generated setter asserts:
-// cmd/generate/ffi/templatefunctions.go types any void* parameter named
-// p_binding as cgo.Handle, and the registration sites store cgo.NewHandle(...)
-// through it. Two value types arrive behind that handle: Wrapped (from
-// SetConstructInfo) and *WrappedClassInstance (from WrappedPostInitialize).
-// Both normalise to Object.
+// The slot is a cgo.Handle value, which is what the ffi generator asserts:
+// cmd/generate/ffi/handle_slots.go marks binding slots and types them
+// cgo.Handle on the Go side and uintptr_t through the C shims, so the packed
+// integer never sits in a GC pointer slot (openspec
+// fix-instance-handle-lifecycle). The registration sites store
+// cgo.NewHandle(...) through it. Two value types arrive behind that handle:
+// Wrapped (from SetConstructInfo) and *WrappedClassInstance (from
+// WrappedPostInitialize). Both normalise to Object.
 //
 // The parameter is a uintptr rather than an unsafe.Pointer because the thing
 // being decoded is a pointer-sized integer that must never be dereferenced, only
@@ -125,7 +127,7 @@ func ObjectFromInstanceBinding(engineObject *GodotObject) (Object, error) {
 		(GDExtensionObjectPtr)(engineObject),
 		FFI.Token,
 		nil,
-	); raw != nil {
+	); raw != 0 {
 		return objectFromBindingPtr(uintptr(raw))
 	}
 
@@ -159,7 +161,7 @@ func ObjectFromInstanceBinding(engineObject *GodotObject) (Object, error) {
 	runtime.KeepAlive(cbsPtr)
 	runtime.KeepAlive(FFI.Token)
 
-	if raw == nil {
+	if raw == 0 {
 		return nil, &ObjectBindingError{
 			Class:  className,
 			Reason: "the engine created no binding",

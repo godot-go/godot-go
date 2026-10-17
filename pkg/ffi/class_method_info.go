@@ -4,11 +4,13 @@ package ffi
 #cgo CFLAGS: -I${SRCDIR}/../../godot_headers -I${SRCDIR}/../../pkg/log -I${SRCDIR}/../../pkg/ffi
 #include <godot/gdextension_interface.h>
 #include "ffi_wrapper.gen.h"
+#include "cgo_ptr.h"
 #include <stdlib.h>
 #include <string.h>
 */
 import "C"
 import (
+	"runtime/cgo"
 	"unsafe"
 
 	"github.com/godot-go/godot-go/pkg/log"
@@ -17,7 +19,7 @@ import (
 
 func NewGDExtensionClassMethodInfo(
 	name GDExtensionConstStringNamePtr,
-	methodUserdata unsafe.Pointer,
+	methodUserdata cgo.Handle,
 	callFunc GDExtensionClassMethodCall,
 	ptrcallFunc GDExtensionClassMethodPtrCall,
 	methodFlags uint32,
@@ -40,7 +42,13 @@ func NewGDExtensionClassMethodInfo(
 	}
 	ret := (*GDExtensionClassMethodInfo)(cptr)
 	(*C.GDExtensionClassMethodInfo)(ret).name = (C.GDExtensionStringNamePtr)(name)
-	(*C.GDExtensionClassMethodInfo)(ret).method_userdata = methodUserdata
+	// The method userdata is a packed cgo.Handle; write it through the C
+	// shim so the integer never occupies a Go pointer slot (openspec
+	// fix-instance-handle-lifecycle).
+	C.cgo_set_handle_slot(
+		(*C.uintptr_t)(unsafe.Pointer(&(*C.GDExtensionClassMethodInfo)(ret).method_userdata)),
+		C.uintptr_t(methodUserdata),
+	)
 	(*C.GDExtensionClassMethodInfo)(ret).call_func = (C.GDExtensionClassMethodCall)(callFunc)
 	(*C.GDExtensionClassMethodInfo)(ret).ptrcall_func = (C.GDExtensionClassMethodPtrCall)(ptrcallFunc)
 	(*C.GDExtensionClassMethodInfo)(ret).method_flags = (C.uint32_t)(methodFlags)

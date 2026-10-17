@@ -42,5 +42,8 @@ func TestDemoInit(p_get_proc_address unsafe.Pointer, p_library unsafe.Pointer, r
 	)
 	initObj.RegisterSceneInitializer(RegisterExampleTypes)
 	initObj.RegisterSceneTerminator(UnregisterExampleTypes)
+	initObj.RegisterStartupCallback(RecordMainLoopStartup)
+	initObj.RegisterFrameCallback(RecordMainLoopFrame)
+	initObj.RegisterShutdownCallback(LogMainLoopShutdownMarker)
 	return initObj.Init()
 }

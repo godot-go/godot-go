@@ -23,6 +23,7 @@ func _ready():
 	# 	await t.create_timer(3.0).timeout
 	# test_suite(2, example)
 	test_property_hint_metadata_late(example)
+	await test_main_loop_callbacks(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -623,6 +624,27 @@ func test_property_hint_metadata_late(example: Example):
 			assert_equal(prop_info['class_name'], &"Texture2D")
 	assert_true(seen_range)
 	assert_true(seen_texture)
+
+# Main-loop callback tests (openspec: support-main-loop-callbacks).
+# The startup hook fires during engine startup (Main::start calls
+# GDExtensionManager::startup() before the first iteration), so its evidence
+# is already set while this scene's _ready runs.
+func test_main_loop_callbacks(example: Example):
+	assert_true(example.main_loop_startup_ran())
+
+	# The frame hook fires at the end of Main::iteration, after the
+	# process_frame dispatch that resumes this coroutine. The priming await
+	# absorbs that ordering boundary; every measurement await afterwards must
+	# observe the previous frame's hook (per-await delta >= 1). The run uses
+	# --quit-after 5 so several iterations complete before exit.
+	await get_tree().process_frame
+	var last := example.main_loop_frame_count()
+	for i in range(2):
+		await get_tree().process_frame
+		var now := example.main_loop_frame_count()
+		print("main-loop frame count: %d -> %d" % [last, now])
+		assert_true(now >= last + 1)
+		last = now
 
 # Object-argument encoding tests (openspec: fix-object-arg-ptrcall-encoding).
 # Each Go method returns 1 on success, a negative code on a failed assertion, or

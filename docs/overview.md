@@ -161,6 +161,35 @@ ClassDBAddPropertyInfo(t, PropertySpec{
   strings and manage nothing. Godot copies the `PropertyInfo` pointer data
   during the registration call.
 
+## Main-Loop Callbacks
+
+Extensions can receive Godot's main-loop phase callbacks (Godot 4.5+) by
+registering hooks on the `InitObject` **before** calling `Init()`:
+
+```go
+initObj.RegisterStartupCallback(func() { /* engine fully initialized, before scene processing */ })
+initObj.RegisterFrameCallback(func() { /* every process frame, after Node._process */ })
+initObj.RegisterShutdownCallback(func() { /* main loop shutting down, engine still initialized */ })
+return initObj.Init()
+```
+
+This mirrors godot-cpp's `register_startup_callback` /
+`register_frame_callback` / `register_shutdown_callback` exactly:
+
+- One hook slot per phase; assigning again replaces the previous hook
+  (last-write-wins). There is no deregistration.
+- Registration with the engine happens once at the core initialization
+  level, after the level's init callback has run — hooks assigned after the
+  core level has already fired do not reach the engine.
+- The frame hook runs on the engine main thread after all `_process()`
+  methods on `Node` and before `ScriptServer::frame()`. Keep it non-blocking;
+  it is the intended ledge for per-frame binding runtime.
+- Engines older than 4.5 lack the interface function: registration is
+  skipped with a debug log and the extension keeps loading.
+- Hook panics are **not** recovered. A panicking hook aborts the process,
+  the same policy as every other binding callback — a hook that can fail
+  should contain its own `recover()` if that is unacceptable.
+
 ## Default Argument Values
 
 Go does not support default parameter values in its syntax. Default argument values are instead passed through the `defaultValues` parameter of `ClassDBBindMethod` (and the `ClassDBBindMethodVirtual`/`ClassDBBindMethodVarargs` variants).

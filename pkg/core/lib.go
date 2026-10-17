@@ -35,6 +35,12 @@ var (
 	Internal                             InternalImpl
 	GDExtensionBindingInitCallbacks      [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
 	GDExtensionBindingTerminateCallbacks [GDEXTENSION_MAX_INITIALIZATION_LEVEL]GDExtensionBindingCallback
+	// Main-loop phase hooks (mirrors godot-cpp's GDExtensionMainLoopCallbacks
+	// struct fields). One slot per phase, last-write-wins; engine callbacks
+	// carry no user data, so dispatch resolves to this package state.
+	GDExtensionBindingMainLoopStartupCallback  GDExtensionBindingCallback
+	GDExtensionBindingMainLoopFrameCallback    GDExtensionBindingCallback
+	GDExtensionBindingMainLoopShutdownCallback GDExtensionBindingCallback
 	// pnr is for program-lifetime retention only: values the engine keeps a
 	// pointer to after the call that registers them returns. Per-call scratch
 	// must use a body-scoped runtime.Pinner with defer Unpin() instead.

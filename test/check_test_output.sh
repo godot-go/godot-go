@@ -5,8 +5,8 @@
 # Parses Godot's captured output and fails loudly, with one distinct message per
 # failure mode, whenever the harness did not genuinely run the suite. Exit 0 means
 # all of: the extension loaded, the driver parsed and completed, a positive number
-# of assertions ran, the driver reported zero failures, and no engine objects
-# leaked.
+# of assertions ran, the driver reported zero failures, the main-loop shutdown
+# marker fired, and no engine objects leaked.
 #
 # Before this gate existed, a run with no built library logged
 # "Can't open dynamic library" and a GDScript parse error, ran zero assertions,
@@ -112,7 +112,17 @@ if printf '%s\n' "$plain" | grep -qaE 'ObjectDB instances were leaked|Leaked ins
 		'ObjectDB instances were leaked|Leaked instance:'
 fi
 
-# 8. The gate found nothing wrong, yet godot still exited non-zero. Report it
+# 8. Main-loop shutdown marker. The test extension's shutdown hook logs
+#    GODOTGO_MAIN_LOOP_SHUTDOWN during engine teardown; a missing marker means
+#    the shutdown callback never fired (or was never registered), so the run
+#    cannot be trusted to have exercised the main-loop phases.
+if ! printf '%s\n' "$plain" | grep -qa 'GODOTGO_MAIN_LOOP_SHUTDOWN'; then
+	fail missing-main-loop-shutdown-marker \
+		"the test extension's main-loop shutdown marker is missing: the registered shutdown callback never ran during teardown" \
+		'MAIN_LOOP|GDExtensionManager'
+fi
+
+# 9. The gate found nothing wrong, yet godot still exited non-zero. Report it
 #    rather than passing: something outside the known modes went wrong.
 if [[ "$godot_status" -ne 0 ]]; then
 	fail godot-exited-non-zero \
@@ -120,5 +130,5 @@ if [[ "$godot_status" -ne 0 ]]; then
 		'ERROR|SCRIPT ERROR|handle_cr|Segmentation fault'
 fi
 
-echo "PASS: extension loaded, ${total} assertions ran, 0 failures, no leaked engine objects"
+echo "PASS: extension loaded, ${total} assertions ran, 0 failures, main-loop shutdown marker present, no leaked engine objects"
 exit 0

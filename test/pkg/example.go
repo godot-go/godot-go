@@ -13,6 +13,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"sync/atomic"
 )
 
 type ExampleEnum int64
@@ -333,6 +334,32 @@ func (e *Example) SetStorageOnly(value int64) { e.storageOnly = value }
 func (e *Example) GetStorageOnly() int64      { return e.storageOnly }
 
 func (e *Example) GetReadonlyValue() int64 { return e.readonlyValue }
+
+// Main-loop hook recorders (support-main-loop-callbacks). Hooks run on the
+// engine main thread; recorders stay allocation-free and never create engine
+// objects, so the shutdown recorder cannot race the exit leak check.
+var (
+	mainLoopStartupRan atomic.Bool
+	mainLoopFrameCount atomic.Int64
+)
+
+func RecordMainLoopStartup() {
+	mainLoopStartupRan.Store(true)
+}
+
+func RecordMainLoopFrame() {
+	mainLoopFrameCount.Add(1)
+}
+
+// LogMainLoopShutdownMarker logs the marker literal that
+// test/check_test_output.sh requires: evidence the shutdown phase really
+// fired in the headless run.
+func LogMainLoopShutdownMarker() {
+	log.Warn("GODOTGO_MAIN_LOOP_SHUTDOWN")
+}
+
+func (e *Example) MainLoopStartupRan() bool  { return mainLoopStartupRan.Load() }
+func (e *Example) MainLoopFrameCount() int64 { return mainLoopFrameCount.Load() }
 
 func (e *Example) SetPropertyFromList(v Vector3) {
 	e.propertyFromList = v
@@ -1199,6 +1226,10 @@ func RegisterClassExample() {
 			Name:        "readonly_value",
 			Getter:      "get_readonly_value",
 		})
+
+		// Main-loop hook evidence accessors (support-main-loop-callbacks).
+		ClassDBBindMethod(t, "MainLoopStartupRan", "main_loop_startup_ran", nil, nil)
+		ClassDBBindMethod(t, "MainLoopFrameCount", "main_loop_frame_count", nil, nil)
 
 		// Signals.
 		ClassDBAddSignal(t, "custom_signal",

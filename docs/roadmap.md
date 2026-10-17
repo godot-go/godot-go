@@ -123,6 +123,12 @@ Scope: goroutine-based bridge to signals and callables. Blocked by C1.
 
 ### C3. Main-loop callbacks
 
+**DONE** — implemented by change `support-main-loop-callbacks` (2026-10-13):
+`InitObject.RegisterStartupCallback` / `RegisterFrameCallback` /
+`RegisterShutdownCallback` mirror godot-cpp; CORE-level registration,
+exported trampolines, pre-4.5 skip guard, and a mandatory shutdown-marker
+gate in `make test`. Original item:
+
 Godot 4.5+ exposes `register_startup_callback` / `register_frame_callback` /
 `register_shutdown_callback` (godot-cpp `GDExtensionMainLoopCallbacks`).
 godot-go has init levels and terminators but no frame hook.
@@ -199,7 +205,7 @@ Ordering is driven by three axes:
 | Order | Item | Why now |
 |---|---|---|
 | 1 | B1 property hints (fold in D2) | Only `TODO.md` item; touches `classdb.go` / `property_info.go` and nothing else |
-| 2 | C3 main-loop callbacks | Independent addition to init plumbing; cheap godot-cpp parity; C2 will want frame hooks to sit on |
+| 2 | C3 main-loop callbacks **(DONE)** | Independent addition to init plumbing; cheap godot-cpp parity; C2 will want frame hooks to sit on |
 | 3 | D3 typed singleton helpers | Trivial codegen; clears a parity gap immediately |
 
 ### Phase 1 - settle the marshalling foundation (strictly ordered)
@@ -243,7 +249,7 @@ gantt
     excludes weekends
     section Phase 0 quick wins
     B1 property hints plus D2          :b1, 2026-10-13, 2026-10-17
-    C3 main-loop callbacks             :c3, 2026-10-13, 2026-10-14
+    C3 main-loop callbacks             :done, c3, 2026-10-13, 2026-10-14
     D3 typed singleton helpers         :d3, 2026-10-15, 2026-10-17
     section Phase 1 marshalling foundation
     A2 native Go strings               :a2, 2026-10-19, 2026-10-23

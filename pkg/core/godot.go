@@ -78,6 +78,16 @@ func GDExtensionBindingInitializeLevel(userdata unsafe.Pointer, pLevel C.GDExten
 		log.Debug("GDExtensionBindingInitializeLevel init", zap.Int32("level", (int32)(pLevel)))
 		fn()
 	}
+
+	// Mirror godot-cpp (godot.cpp initialize_level): hand the main loop
+	// callbacks to the engine once, at the core level, after the level's
+	// init callback has run, and only when at least one hook is assigned.
+	if classdbCurrentLevel == GDEXTENSION_INITIALIZATION_CORE &&
+		(GDExtensionBindingMainLoopStartupCallback != nil ||
+			GDExtensionBindingMainLoopFrameCallback != nil ||
+			GDExtensionBindingMainLoopShutdownCallback != nil) {
+		registerMainLoopCallbacks()
+	}
 }
 
 //export GDExtensionBindingDeinitializeLevel
@@ -125,6 +135,31 @@ func (o InitObject) RegisterSceneTerminator(pSceneTerminate GDExtensionBindingCa
 
 func (o InitObject) RegisterEditorTerminator(pEditorTerminate GDExtensionBindingCallback) {
 	GDExtensionBindingTerminateCallbacks[GDEXTENSION_INITIALIZATION_EDITOR] = pEditorTerminate
+}
+
+// RegisterStartupCallback sets the hook invoked once after Godot is started
+// and fully initialized, before scene processing begins. Assigning replaces
+// any previously assigned startup hook. Hooks must be registered before
+// Init() is called; registration with the engine happens at the core
+// initialization level.
+func (o InitObject) RegisterStartupCallback(pStartup GDExtensionBindingCallback) {
+	GDExtensionBindingMainLoopStartupCallback = pStartup
+}
+
+// RegisterFrameCallback sets the hook invoked for every process frame of the
+// main loop, after all `_process()` methods on Node and before
+// ScriptServer::frame(). Assigning replaces any previously assigned frame
+// hook. Hooks must be registered before Init() is called.
+func (o InitObject) RegisterFrameCallback(pFrame GDExtensionBindingCallback) {
+	GDExtensionBindingMainLoopFrameCallback = pFrame
+}
+
+// RegisterShutdownCallback sets the hook invoked when shutting down the main
+// loop, before Godot is shut down while it is still fully initialized.
+// Assigning replaces any previously assigned shutdown hook. Hooks must be
+// registered before Init() is called.
+func (o InitObject) RegisterShutdownCallback(pShutdown GDExtensionBindingCallback) {
+	GDExtensionBindingMainLoopShutdownCallback = pShutdown
 }
 
 func (o InitObject) Init() bool {

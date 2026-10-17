@@ -97,7 +97,7 @@ ci_gen_test_project_files: ## Generate test project files for CI
 		echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg; \
 	fi
 
-test: build ## Run headless tests (green only if the extension loaded, assertions ran, and none failed or leaked)
+test: build ## Run headless tests: runtime suite, then the editor-plugin run (green only if both gates pass)
 	@status=0; \
 	bash -o pipefail -ec ' \
 		CI=1 \
@@ -105,7 +105,15 @@ test: build ## Run headless tests (green only if the extension loaded, assertion
 		GOTRACEBACK=single \
 		GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
 		"$(GODOT)" --headless --verbose --path test/demo/ --quit-after 12 2>&1 | tee $(CURDIR)/test-output.log' || status=$$?; \
-	bash $(CURDIR)/test/check_test_output.sh $(CURDIR)/test-output.log $$status
+	bash $(CURDIR)/test/check_test_output.sh $(CURDIR)/test-output.log $$status || exit 1; \
+	edstatus=0; \
+	bash -o pipefail -ec ' \
+		CI=1 \
+		LOG_LEVEL=WARN \
+		GOTRACEBACK=single \
+		GODEBUG=asyncpreemptoff=1,cgocheck=1,invalidptr=1 \
+		"$(GODOT)" --headless --verbose --path test/demo/ --editor --quit-after 12 2>&1 | tee $(CURDIR)/editor-output.log' || edstatus=$$?; \
+	bash $(CURDIR)/test/check_editor_output.sh $(CURDIR)/editor-output.log $$edstatus
 
 test_gate: ## Run the fixture tests for the test-output gate itself (no Godot needed)
 	@bash $(CURDIR)/test/fixtures/run_fixture_tests.sh

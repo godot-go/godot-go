@@ -1380,6 +1380,7 @@ func RegisterClassExample() {
 		ClassDBBindStaticMethod(t, "static_echo_node", ExampleStaticEchoNode, []string{"node"}, nil)
 		ClassDBBindStaticMethod(t, "static_arity_probe", ExampleStaticArityProbe, []string{"a"}, nil)
 		ClassDBBindMethod(t, "StaticBadArityRejected", "static_bad_arity_rejected", nil, nil)
+		ClassDBBindMethod(t, "EditorPluginRejectedOutsideEditor", "editor_plugin_rejected_outside_editor", nil, nil)
 		ClassDBBindMethod(t, "StaticInstanceCallObservation", "static_instance_call_observation", nil, nil)
 		ClassDBBindMethod(t, "StaticDuplicateBindRecovered", "static_duplicate_bind_recovered", nil, nil)
 		ClassDBBindMethod(t, "StaticNonCallableRecovered", "static_non_callable_recovered", nil, nil)

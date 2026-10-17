@@ -93,9 +93,20 @@ func GDExtensionBindingInitializeLevel(userdata unsafe.Pointer, pLevel C.GDExten
 //export GDExtensionBindingDeinitializeLevel
 func GDExtensionBindingDeinitializeLevel(userdata unsafe.Pointer, pLevel C.GDExtensionInitializationLevel) {
 	classdbCurrentLevel = (GDExtensionInitializationLevel)(pLevel)
+	deinitializeBindingLevel(classdbCurrentLevel)
+}
 
-	if GDExtensionBindingTerminateCallbacks[pLevel] != nil {
-		GDExtensionBindingTerminateCallbacks[pLevel]()
+// deinitializeBindingLevel runs the level's user terminator, then drains the
+// editor plugin registry when the EDITOR level deinitializes, mirroring
+// godot-cpp GDExtensionBinding::deinitialize_level (user terminate callback,
+// then EditorPlugins::deinitialize). Extracted as a pure-Go seam so the
+// terminator-before-drain ordering is unit-testable without an engine.
+func deinitializeBindingLevel(level GDExtensionInitializationLevel) {
+	if GDExtensionBindingTerminateCallbacks[level] != nil {
+		GDExtensionBindingTerminateCallbacks[level]()
+	}
+	if level == GDEXTENSION_INITIALIZATION_EDITOR {
+		editorPluginRegistryInstance.drain()
 	}
 }
 

@@ -1,0 +1,10 @@
+Godot Engine v4.8.dev.custom_build.5ec4857b3 - https://godotengine.org
+ERROR: Can't open dynamic library: res://lib/libgodotgo-test-linux-amd64.so. Error: cannot open shared object file: No such file or directory
+   at: open_dynamic_library (platform/linux/linux_library_loader.cpp:71)
+ERROR: Method/on_loaded failed.
+   at: initialize (core/extension/gdextension_manager.cpp:357)
+CORE API HASH: 1457076171
+EDITOR API HASH: 683301128
+EditorSettings: Load OK!
+[ DONE ] loading_editor_layout
+XR: Clearing primary interface

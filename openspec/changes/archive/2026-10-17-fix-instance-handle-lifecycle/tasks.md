@@ -35,7 +35,7 @@
 ## 6. Documentation and spec sync
 
 - [x] 6.1 Update `docs/overview.md` (and `docs/roadmap.md` status if tracked) to describe instance-scoped handle ownership. Verify: docs mention the single-release-owner rule. (New "Object Lifetime and Handle Ownership" section: one-release-owner rule, integer FFI crossings, pinning discipline. Roadmap does not track this issue.)
-- [ ] 6.2 Sync delta specs into `openspec/specs/` (`class-instance-lifecycle`, `instance-binding-lookup`, `native-call-pinning`) at archive time per the repo's archive flow. Verify: `openspec validate fix-instance-handle-lifecycle --strict` passes before archive; main specs carry the reversed policy after archive.
+- [x] 6.2 Sync delta specs into `openspec/specs/` (`class-instance-lifecycle`, `instance-binding-lookup`, `native-call-pinning`) at archive time per the repo's archive flow. Verify: `openspec validate fix-instance-handle-lifecycle --strict` passes before archive; main specs carry the reversed policy after archive. (Sync verified: 2+1 MODIFIED and 1 ADDED in class-instance-lifecycle, 1 MODIFIED + 2 ADDED in instance-binding-lookup, 1 MODIFIED in native-call-pinning; untouched requirements intact.)
 
 ## Workflow follow-up
 

@@ -129,7 +129,7 @@ TODO comments disappear). Volume work.
 closure as an engine custom Callable via `callable_custom_create2` with three
 callbacks (call/free/to_string); the engine's `(call_func, callable_userdata)`
 pair-identity gives dedup and copy-equality for free, and the `cgo.Handle`
-registry releases entries deterministically in `free_func`.
+registry releases entries deterministically in `free_func`. Original item:
 
 `callable_custom_*` FFI wrappers were generated but unused; a Go closure or
 method cannot be handed to GDScript as a `Callable`. Connecting a Go method
@@ -228,8 +228,8 @@ singletons.
 
 ### Micro leftovers (not proposals)
 
-- `test/pkg/example.go:339` - "dig into why casting is important"
-- `test/pkg/example.go:899` - change bitfield test argument to
+- `test/pkg/example.go:453` - "dig into why casting is important"
+- `test/pkg/example.go:1211` - change bitfield test argument to
   `ExampleBitfieldFlag`
 - `cmd/generate/gdclassimpl/classes.go.tmpl` /
   `cmd/generate/gdutilfunc/utilityfunctions.go.tmpl` - "refactor for static
@@ -322,10 +322,10 @@ gantt
     A3 variant reflect completeness    :done, a3, 2026-10-15, 2026-10-16
     section Phase 2 keystone
     C1 spike - callable_custom audit   :done, c1s, 2026-10-13, 2026-10-21
-    C1 Go func to Callable bridge      :crit, c1, 2026-11-16, 2026-11-27
+    C1 Go func to Callable bridge      :done, crit, c1, 2026-11-16, 2026-11-27
     section Phase 3 blocked chips
-    C2 await and signal bridge         :c2, 2026-11-30, 2026-12-11
-    B2 static methods and variables    :b2, 2026-12-07, 2026-12-18
+    C2 await and signal bridge         :done, c2, 2026-11-30, 2026-12-11
+    B2 static methods                  :done, b2, 2026-12-07, 2026-12-18
     C4 editor plugin ergonomics        :c4, 2026-12-14, 2026-12-24
     section Phase 4 volume work
     D1 fatal-panic policy              :d1, 2026-12-28, 2026-12-31
@@ -350,9 +350,9 @@ gantt
     A1 slices and packed arrays        :done, crit, s3, 2026-10-15, 2026-10-15
     A3 variant reflect completeness    :done, crit, s4, 2026-10-15, 2026-10-16
     section Keystone
-    C1 Go func to Callable bridge      :crit, s5, 2026-11-16, 2026-11-27
+    C1 Go func to Callable bridge      :done, crit, s5, 2026-11-16, 2026-11-27
     section Payout
-    C2 await and signal bridge         :crit, s6, 2026-11-30, 2026-12-11
+    C2 await and signal bridge         :done, crit, s6, 2026-11-30, 2026-12-11
 ```
 
 Two deliberate contrarian calls: B3 goes **last** despite being easy

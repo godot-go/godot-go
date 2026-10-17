@@ -68,6 +68,13 @@ func (md *GoMethodMetadata) varcallArgumentConvertible(arg Variant, index int) b
 	}
 	from := arg.GetType()
 	to := md.gdeArgumentTypes[index]
+	// A Variant-typed Go parameter stores VARIANT_MAX and advertises NIL
+	// (untyped), mirroring godot-cpp's Variant binder, which accepts every
+	// value. variant_can_convert_strict would reject any source against the
+	// pseudo-type VARIANT_MAX, so short-circuit before the engine predicate.
+	if to == GDEXTENSION_VARIANT_TYPE_VARIANT_MAX {
+		return true
+	}
 	return CallFunc_GDExtensionInterfaceVariantCanConvertStrict(from, to) != 0
 }
 

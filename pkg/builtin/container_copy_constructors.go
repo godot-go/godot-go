@@ -80,3 +80,37 @@ func PackedColorArrayCopyConstructor(out GDExtensionUninitializedTypePtr, src GD
 	pinner.Pin(unsafe.Pointer(src))
 	CallBuiltinConstructor(globalPackedColorArrayMethodBindings.constructor_1, out, src)
 }
+
+func PackedVector4ArrayCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	pinner.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalPackedVector4ArrayMethodBindings.constructor_1, out, src)
+}
+
+// Dictionary, Callable, and Signal are refcounted too: echoing one out of a
+// ptrcall through the generic builtin-class encoder's raw struct copy hands
+// the caller an alias with no reference, and the caller's release then drops
+// the count under the owner. The engine copy constructor is the only correct
+// transfer (AGENTS.md: never memcpy a refcounted type).
+
+func DictionaryCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	pinner.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalDictionaryMethodBindings.constructor_1, out, src)
+}
+
+func CallableCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	pinner.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalCallableMethodBindings.constructor_1, out, src)
+}
+
+func SignalCopyConstructor(out GDExtensionUninitializedTypePtr, src GDExtensionConstTypePtr) {
+	var pinner runtime.Pinner
+	defer pinner.Unpin()
+	pinner.Pin(unsafe.Pointer(src))
+	CallBuiltinConstructor(globalSignalMethodBindings.constructor_1, out, src)
+}

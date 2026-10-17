@@ -124,7 +124,7 @@ func (c *Variant) ToObject() Object {
 	if c.IsNil() {
 		return nil
 	}
-	return getObjectInstanceBinding(godotObjectPtrFromVariant(c))
+	return getObjectInstanceBinding(GodotObjectPtrFromVariant(c))
 }
 
 func getObjectInstanceBinding(engineObject *GodotObject) Object {

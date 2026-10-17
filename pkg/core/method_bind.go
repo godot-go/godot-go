@@ -219,16 +219,31 @@ func NewGoMethodMetadata(
 		returnPropHintString          String
 	)
 	if returnType != GDEXTENSION_VARIANT_TYPE_NIL {
+		// A Variant return (ReflectTypeToGDExtensionVariantType maps
+		// builtin.Variant to VARIANT_MAX, a pseudo-type) must be advertised
+		// as NIL with the NIL_IS_VARIANT usage flag — the same spelling the
+		// engine itself uses for untyped Variant parameters (method_bind.h
+		// "PROPERTY_USAGE_NIL_IS_VARIANT"). Advertising VARIANT_MAX verbatim
+		// makes validated_call initialize the return slot to the invalid type
+		// 39 and hand ptrcall a 16-byte opaque storage pointer, so a full
+		// 24-byte Variant write overflows it and corrupts the caller.
+		advertisedReturnType := returnType
+		returnUsage := PROPERTY_USAGE_DEFAULT
+		if returnType == GDEXTENSION_VARIANT_TYPE_VARIANT_MAX {
+			advertisedReturnType = GDEXTENSION_VARIANT_TYPE_NIL
+			returnUsage = PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_NIL_IS_VARIANT
+		}
 		returnPropClassNameStringName = NewStringNameWithLatin1Chars(
 			objectClassForMetadata(className, gdMethodName, "return", goReturnType, returnType))
 		returnPropNameStringName = NewStringNameWithLatin1Chars(goReturnType.Name())
 		returnPropHintString = NewStringWithUtf8Chars("")
 		returnPropertyInfo = NewGDExtensionPropertyInfoFromNames(
 			&returnPropClassNameStringName,
-			returnType,
+			advertisedReturnType,
 			&returnPropNameStringName,
 			&returnPropHintString,
 		)
+		returnPropertyInfo.SetUsage(returnUsage)
 	}
 	defaultArgumentPtrs := make([]GDExtensionVariantPtr, len(defaultArguments))
 	for i := range defaultArgumentPtrs {
@@ -251,9 +266,16 @@ func NewGoMethodMetadata(
 			objectClassForMetadata(className, gdMethodName, fmt.Sprintf("argument %d", i), t, variantTypes[i]))
 		argPropNameStringNames[i] = NewStringNameWithLatin1Chars(t.Name())
 		argPropHintStrings[i] = NewStringWithUtf8Chars("")
+		// Same NIL-advertisement rule as the return: Variant parameters
+		// must not surface VARIANT_MAX, which the analyzer cannot name. The
+		// stored variantTypes entry keeps VARIANT_MAX for Go-side dispatch.
+		advertisedArgType := variantTypes[i]
+		if advertisedArgType == GDEXTENSION_VARIANT_TYPE_VARIANT_MAX {
+			advertisedArgType = GDEXTENSION_VARIANT_TYPE_NIL
+		}
 		argumentsInfo[i] = NewGDExtensionPropertyInfoFromNames(
 			&argPropClassNameStringNames[i],
-			variantTypes[i],
+			advertisedArgType,
 			&argPropNameStringNames[i],
 			&argPropHintStrings[i],
 		)
@@ -442,6 +464,7 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 		// may encode an echoed container argument into a new Variant) has been
 		// produced; the encoded return holds its own reference.
 		destroyOwnedContainerArgs(args)
+		releaseDecodedRefArgs(args)
 		if md.GoReturnStyle == NoneReturnStyle {
 			return NewVariantNil(), nil
 		}
@@ -475,6 +498,10 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 			zap.Any("value", ret),
 		)
 	}
+	// Released after the return value is encoded, for every return style:
+	// a void method still acquired references on its decoded Ref arguments,
+	// and those must be dropped whether or not there is a return slot.
+	releaseDecodedRefArgs(args)
 }
 
 // isPtrcallBorrowEcho reports whether the return value is a byte-for-byte
@@ -495,9 +522,11 @@ func isPtrcallBorrowEcho(ret reflect.Value, args []reflect.Value) bool {
 	// can be borrow echoes.
 	switch ret.Interface().(type) {
 	case StringName, NodePath,
-		Array, PackedByteArray, PackedInt32Array, PackedInt64Array,
+		Array, Dictionary, Callable, Signal,
+		PackedByteArray, PackedInt32Array, PackedInt64Array,
 		PackedFloat32Array, PackedFloat64Array, PackedStringArray,
-		PackedVector2Array, PackedVector3Array, PackedColorArray:
+		PackedVector2Array, PackedVector3Array, PackedVector4Array,
+		PackedColorArray:
 	default:
 		return false
 	}

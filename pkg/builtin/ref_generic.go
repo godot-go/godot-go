@@ -1,6 +1,10 @@
 package builtin
 
-import "runtime"
+import (
+	"runtime"
+
+	. "github.com/godot-go/godot-go/pkg/ffi"
+)
 
 // Ref is the refcount protocol implemented by all reference wrappers.
 // Note: the concrete generic implementation is RefBase[T]; the interface
@@ -68,7 +72,13 @@ func (r *RefBase[T]) Unref() {
 	runtime.SetFinalizer(r, nil)
 	var zero T
 	if r.m_ref != zero {
-		r.m_ref.Unreference()
+		// Godot 4.8's RefCounted::unreference() no longer self-deletes: it
+		// returns whether the object should be destroyed and leaves the delete
+		// to the caller (godot-cpp's Ref destructor does the same). Ignoring
+		// the return leaks the object at reference count 0.
+		if r.m_ref.Unreference() {
+			CallFunc_GDExtensionInterfaceObjectDestroy(ObjectArgPtr(r.m_ref))
+		}
 	}
 	r.m_ref = zero
 }
@@ -104,6 +114,27 @@ func NewRefTransfer[T RefCountedT](obj T) *RefBase[T] {
 	if ObjectArgPtr(obj) != nil {
 		runtime.SetFinalizer(r, (*RefBase[T]).Unref)
 	}
+	return r
+}
+
+// NewRefAcquire wraps an object the caller merely observes and takes a
+// reference of its own: Reference() bumps the count now and a finalizer
+// releases that same reference exactly once when the wrapper becomes
+// unreachable, mirroring godot-cpp's PtrToArg<Ref<T>>::convert, which
+// constructs a Ref (reference()) whose C++ destructor releases it.
+//
+// Use this where the engine did not transfer a reference but the wrapper must
+// outlive the call that received the object -- a decoded method argument, for
+// instance -- so storing the argument keeps the object alive. A wrapper built
+// over no engine object takes no reference and gets no finalizer: Unref would
+// issue an unreference ptrcall against a null owner.
+func NewRefAcquire[T RefCountedT](obj T) *RefBase[T] {
+	if ObjectArgPtr(obj) == nil {
+		return &RefBase[T]{}
+	}
+	obj.Reference()
+	r := &RefBase[T]{m_ref: obj}
+	runtime.SetFinalizer(r, (*RefBase[T]).Unref)
 	return r
 }
 

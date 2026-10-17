@@ -47,6 +47,10 @@ The "some real signatures still can't cross" bucket; A1/A2 feed into it.
 
 ### B1. Property hints + PropertyInfo polish
 
+**DONE** — implemented by change `support-property-hints` (2026-10-14):
+`ClassDBAddPropertyInfo` + `PropertySpec` in `pkg/core`, class-name
+derivation ported, hint/hint-string/usage delivered. Original item:
+
 The only item in `TODO.md` itself: the ported `PROPERTY_HINT_RESOURCE_TYPE`
 -> className logic has "no place to live".
 
@@ -144,8 +148,9 @@ Scope: make resolution failures reported/recoverable instead of process-fatal.
 
 ### D2. Local StringName allocation
 
-`pkg/ffi/property_info.go:25` - "TODO: create StringName locally here".
-Micro item; folds into B1.
+**DONE** — folded into B1 by change `support-property-hints`: the TODO was
+replaced with an explicit ownership contract on `NewGDExtensionPropertyInfo`,
+and `pkg/core` now owns all registration temporaries. Micro item; folds into B1.
 
 ### D3. Typed singleton helpers
 

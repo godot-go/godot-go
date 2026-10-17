@@ -120,6 +120,47 @@ Once a virtual is registered, an override of an engine GDVIRTUAL replaces its be
 
 The constraint is pinned, not just documented: `TestDelegationRepro` (`test/pkg/delegation_repro.go`) registers a `_get_maximum_size` override that delegates through the plain wrapper, caps the re-entry depth, and panics with a `delegation recursion confirmed` diagnostic; `make test_delegation_trap` runs it in a separate godot invocation and fails unless the process aborts non-zero with that diagnostic. To extend engine or base behavior, delegate explicitly to a named level implementation (see Explicit delegation replaces super-calls above) — do not call the plain wrapper from inside an override.
 
+## Property Registration
+
+Properties are registered on Go-defined classes with `ClassDBAddProperty`,
+which registers hint-free metadata (`PROPERTY_HINT_NONE`, empty hint string,
+`PROPERTY_USAGE_DEFAULT`):
+
+```go
+ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_VECTOR2, "custom_position", "set_custom_position", "get_custom_position")
+```
+
+For full inspector metadata, use `ClassDBAddPropertyInfo` with a
+`PropertySpec`:
+
+```go
+ClassDBAddPropertyInfo(t, PropertySpec{
+	VariantType: GDEXTENSION_VARIANT_TYPE_OBJECT,
+	Name:        "icon",
+	Setter:      "set_icon",
+	Getter:      "get_icon",
+	Hint:        PROPERTY_HINT_RESOURCE_TYPE,
+	HintString:  "Texture2D",
+})
+```
+
+- `Hint`/`HintString` carry the `PROPERTY_HINT_*` inspector behavior (range
+  strings, enum name lists, resource class filters, ...). The zero value of
+  `Hint` is `PROPERTY_HINT_NONE`.
+- `Usage` zero is a sentinel meaning `PROPERTY_USAGE_DEFAULT`; to reduce
+  flags, OR real ones (e.g. `Usage: PROPERTY_USAGE_STORAGE` for a
+  non-editor property).
+- `class_name` derivation is ported from godot-cpp: with
+  `PROPERTY_HINT_RESOURCE_TYPE`, the property's `class_name` is the resource
+  class named by `HintString`; otherwise an explicit `ClassName` qualifier
+  wins; otherwise the owning class name is used. `PROPERTY_HINT_RESOURCE_TYPE`
+  with an empty `HintString` panics at registration (authoring fault).
+- An empty `Setter` registers a read-only property.
+- All `StringName`/`String` temporaries backing the registration are created
+  and destroyed inside `ClassDBAddPropertyInfo`; callers pass plain Go
+  strings and manage nothing. Godot copies the `PropertyInfo` pointer data
+  during the registration call.
+
 ## Default Argument Values
 
 Go does not support default parameter values in its syntax. Default argument values are instead passed through the `defaultValues` parameter of `ClassDBBindMethod` (and the `ClassDBBindMethodVirtual`/`ClassDBBindMethodVarargs` variants).

@@ -15,12 +15,14 @@ func _ready():
 	test_ptrcall_object_decode(example)
 	test_user_defined_object_args(example)
 	test_varcall_arg_rejection(example)
+	test_property_hints(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
 	# var t = get_tree()
 	# if t != null:
 	# 	await t.create_timer(3.0).timeout
 	# test_suite(2, example)
+	test_property_hint_metadata_late(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -554,6 +556,73 @@ func test_suite(i: int, example: Example):
 
 func _on_Example_custom_signal(signal_name, value):
 	custom_signal_emitted = [signal_name, value]
+
+# Property hint metadata tests (openspec: support-property-hints). Registers
+# hinted properties on Example in Go and reads them back through the engine.
+func test_property_hints(example: Example):
+	var props := {}
+	for prop_info in example.get_property_list():
+		props[prop_info['name']] = prop_info
+
+	# Range hint reports unchanged.
+	assert_true(props.has("hinted_range"))
+	assert_equal(props["hinted_range"]['type'], TYPE_FLOAT)
+	assert_equal(props["hinted_range"]['hint'], PROPERTY_HINT_RANGE)
+	assert_equal(props["hinted_range"]['hint_string'], "0:100:1")
+
+	# Enum hint reports unchanged.
+	assert_true(props.has("hinted_enum"))
+	assert_equal(props["hinted_enum"]['hint'], PROPERTY_HINT_ENUM)
+	assert_equal(props["hinted_enum"]['hint_string'], "idle,walk,run")
+
+	# Resource-type hint binds class_name from the hint string.
+	assert_true(props.has("hinted_texture"))
+	assert_equal(props["hinted_texture"]['hint'], PROPERTY_HINT_RESOURCE_TYPE)
+	assert_equal(props["hinted_texture"]['hint_string'], "Texture2D")
+	assert_equal(props["hinted_texture"]['class_name'], &"Texture2D")
+
+	# Explicit qualifier applies when no resource-type hint.
+	assert_true(props.has("hinted_node"))
+	assert_equal(props["hinted_node"]['hint'], PROPERTY_HINT_NONE)
+	assert_equal(props["hinted_node"]['class_name'], &"Node")
+
+	# Storage-only usage reports unchanged and is not editor-visible.
+	assert_true(props.has("storage_only"))
+	assert_equal(props["storage_only"]['usage'], PROPERTY_USAGE_STORAGE)
+	assert_equal(props["storage_only"]['usage'] & PROPERTY_USAGE_EDITOR, 0)
+
+	# The legacy hint-free fixture still reports defaults.
+	assert_true(props.has("group_subgroup_custom_position"))
+	assert_equal(props["group_subgroup_custom_position"]['hint'], PROPERTY_HINT_NONE)
+	assert_equal(props["group_subgroup_custom_position"]['hint_string'], "")
+	assert_equal(props["group_subgroup_custom_position"]['usage'], PROPERTY_USAGE_DEFAULT)
+
+	# Read-only property (no setter name) registers successfully.
+	assert_true(props.has("readonly_value"))
+
+	# Read/write through the hinted properties works.
+	example.hinted_range = 42.5
+	assert_equal(example.hinted_range, 42.5)
+	example.hinted_enum = 2
+	assert_equal(example.hinted_enum, 2)
+
+# Late re-read of hint metadata after all other suites have run: the
+# registration-time StringName/String temporaries were released right after
+# ClassDBAddPropertyInfo, so corrupted or dangling metadata text here would
+# surface in this final read.
+func test_property_hint_metadata_late(example: Example):
+	var seen_range := false
+	var seen_texture := false
+	for prop_info in example.get_property_list():
+		if prop_info['name'] == "hinted_range":
+			seen_range = true
+			assert_equal(prop_info['hint_string'], "0:100:1")
+		elif prop_info['name'] == "hinted_texture":
+			seen_texture = true
+			assert_equal(prop_info['hint_string'], "Texture2D")
+			assert_equal(prop_info['class_name'], &"Texture2D")
+	assert_true(seen_range)
+	assert_true(seen_texture)
 
 # Object-argument encoding tests (openspec: fix-object-arg-ptrcall-encoding).
 # Each Go method returns 1 on success, a negative code on a failed assertion, or

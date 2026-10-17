@@ -324,6 +324,46 @@ defer cb.Destroy()
 node.Connect(name, cb, uint32(constant.OBJECT_CONNECT_FLAGS_REFERENCE_COUNTED))
 ```
 
+## Editor Plugins
+
+A registered class descending from `EditorPlugin` becomes an active editor
+plugin through `AddEditorPlugin` / `RemoveEditorPlugin`, mirroring godot-cpp's
+`EditorPlugins::add_by_type<T>()` / `remove_by_type<T>()`:
+
+```go
+type MyPlugin struct {
+	gdclassimpl.EditorPluginImpl
+}
+
+func (p *MyPlugin) GetClassName() string       { return "MyPlugin" }
+func (p *MyPlugin) GetParentClassName() string { return "EditorPlugin" }
+
+// from the extension's editor-level init callback:
+ClassDBRegisterClass(newMyPlugin, nil, nil, func(t *MyPlugin) {})
+AddEditorPlugin(&MyPlugin{})
+```
+
+- The instance argument carries only the registered class name. The engine
+  instantiates the class itself when the add reaches `EditorNode` — an add
+  issued during editor-level initialization is queued and drained when the
+  `EditorNode` is constructed — so the editor init level is a fine call
+  site, and the instantiated instance is a fresh Go object (the binding
+  builds instances reflectively from the registered struct).
+- Duplicate adds and removals of classes that were never added panic
+  (`log.Panic`) before anything crosses to the engine; the panic is
+  recoverable.
+- Outside an actual editor session both operations panic instead of
+  silently pretending: TOOLS-enabled engine builds dispatch the EDITOR
+  init level even while running the project as a game, and there the
+  `EditorInterface` singleton is absent. Gate plugin registration on the
+  editor session — `GetEngineSingleton().IsEditorHint()` — and unregister
+  the class from the symmetric editor terminator.
+- Plugins left added are removed automatically when the editor-level
+  deinitialization runs, after that level's terminator callback and in
+  insertion order, mirroring godot-cpp
+  `GDExtensionBinding::deinitialize_level`. Explicit `RemoveEditorPlugin`
+  during the session is symmetric and stays fully supported.
+
 ## Built-in Types
 
 ### Basic Built-in Types

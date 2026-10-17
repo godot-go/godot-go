@@ -160,6 +160,11 @@ and `pkg/core` now owns all registration temporaries. Micro item; folds into B1.
 
 ### D3. Typed singleton helpers
 
+**DONE** — implemented by change `support-singleton-accessors` (2026-10-13):
+`singletons.go.tmpl` generates one typed, identity-stable accessor per
+`singletons` entry into `pkg/gdclassimpl/singletons.gen.go`; the handwritten
+`GetInputSingleton()` is replaced by the generated one. Original item:
+
 Only `GetInputSingleton()` ships (`pkg/gdclassimpl/lib.go`); everything else
 goes through `builtin.GetSingleton(name)` plus a manual
 `New<Class>WithGodotOwnerObject`. Trivial, good codegen candidate for all
@@ -206,7 +211,7 @@ Ordering is driven by three axes:
 |---|---|---|
 | 1 | B1 property hints (fold in D2) | Only `TODO.md` item; touches `classdb.go` / `property_info.go` and nothing else |
 | 2 | C3 main-loop callbacks **(DONE)** | Independent addition to init plumbing; cheap godot-cpp parity; C2 will want frame hooks to sit on |
-| 3 | D3 typed singleton helpers | Trivial codegen; clears a parity gap immediately |
+| 3 | D3 typed singleton helpers **(DONE)** | Trivial codegen; clears a parity gap immediately |
 
 ### Phase 1 - settle the marshalling foundation (strictly ordered)
 
@@ -250,7 +255,7 @@ gantt
     section Phase 0 quick wins
     B1 property hints plus D2          :b1, 2026-10-13, 2026-10-17
     C3 main-loop callbacks             :done, c3, 2026-10-13, 2026-10-14
-    D3 typed singleton helpers         :d3, 2026-10-15, 2026-10-17
+    D3 typed singleton helpers         :done, d3, 2026-10-15, 2026-10-17
     section Phase 1 marshalling foundation
     A2 native Go strings               :a2, 2026-10-19, 2026-10-23
     A1 slices and packed arrays        :a1, 2026-10-26, 2026-11-06

@@ -190,6 +190,30 @@ This mirrors godot-cpp's `register_startup_callback` /
   the same policy as every other binding callback — a hook that can fail
   should contain its own `recover()` if that is unacceptable.
 
+## Singleton Accessors
+
+Every engine singleton declared in the extension API metadata gets a
+generated typed accessor in `pkg/gdclassimpl`:
+
+```go
+engine := GetEngineSingleton()
+if editor := GetEditorInterfaceSingleton(); editor != nil {
+    // editor-only singleton: nil outside the editor
+}
+```
+
+- Generation covers the API's `singletons` list verbatim — all entries,
+  editor and platform ones included — via `singletons.go.tmpl` into
+  `singletons.gen.go`. Adding or removing an API entry and regenerating adds
+  or removes exactly one accessor; no handwritten per-singleton code.
+- Identity-stable: the wrapper is resolved at most once per process and every
+  call returns the same value. Publication is atomic and the cold path is
+  mutex-guarded, so calling an accessor from any goroutine is safe.
+- A singleton the engine does not currently provide returns a nil interface
+  — check it like any other interface value. Absence is never cached: if the
+  singleton appears later (`Engine.register_singleton`), the next call
+  returns a live wrapper.
+
 ## Default Argument Values
 
 Go does not support default parameter values in its syntax. Default argument values are instead passed through the `defaultValues` parameter of `ClassDBBindMethod` (and the `ClassDBBindMethodVirtual`/`ClassDBBindMethodVarargs` variants).

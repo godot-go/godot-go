@@ -225,6 +225,61 @@ func (e *Example) TestCallErrorReporting() int64 {
 	return failures
 }
 
+// TestSingletonHelpers exercises the generated typed singleton accessors
+// (openspec: support-singleton-accessors): wrapper identity, runtime
+// availability, nil for engine-absent singletons with absence never frozen,
+// and identical wrappers for concurrent cold-path callers. Returns a failure
+// count.
+func (e *Example) TestSingletonHelpers() int64 {
+	var failures int64
+
+	// Identity: every call returns the same wrapper value.
+	if GetEngineSingleton() != GetEngineSingleton() {
+		failures++
+	}
+
+	// Runtime singletons resolve non-nil; the wrapper answers to its class.
+	if GetOSSingleton() == nil || GetProjectSettingsSingleton() == nil ||
+		GetInputSingleton() == nil {
+		failures++
+	}
+	if os := GetOSSingleton(); os == nil || os.GetClassName() != "OS" {
+		failures++
+	}
+
+	// Editor-only singleton in a runtime build: nil on repeated calls. Two
+	// lookups prove absence is returned safely and re-attempted rather than
+	// frozen as a broken wrapper (the never-store-on-NULL cold path).
+	if GetEditorInterfaceSingleton() != nil || GetEditorInterfaceSingleton() != nil {
+		failures++
+	}
+
+	// Concurrent cold path: TranslationServer is untouched until here, so all
+	// racers enter the builder; the atomic holder must publish one wrapper to
+	// every caller with no torn interface value observable.
+	const racers = 8
+	gate := make(chan struct{})
+	results := make(chan TranslationServer, racers)
+	for i := 0; i < racers; i++ {
+		go func() {
+			<-gate
+			results <- GetTranslationServerSingleton()
+		}()
+	}
+	close(gate)
+	first := <-results
+	if first == nil {
+		failures++
+	}
+	for i := 1; i < racers; i++ {
+		if got := <-results; got != first {
+			failures++
+		}
+	}
+
+	return failures
+}
+
 func (e *Example) TestArray() Array {
 	arr := NewArray()
 	arr.Insert(0, NewVariantInt64(1))
@@ -1147,6 +1202,7 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestPartialDefArgsRejectsShort", "test_partial_def_args_rejects_short", nil, nil)
 		ClassDBBindMethod(t, "CallErrorProbe", "call_error_probe", []string{"p1"}, nil)
 		ClassDBBindMethod(t, "TestCallErrorReporting", "test_call_error_reporting", nil, nil)
+		ClassDBBindMethod(t, "TestSingletonHelpers", "test_singleton_helpers", nil, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic", "test_static", []string{"a", "b"}, nil)
 		// ClassDBBindMethodStatic(t, "TestStatic2", "test_static2", nil, nil)
 

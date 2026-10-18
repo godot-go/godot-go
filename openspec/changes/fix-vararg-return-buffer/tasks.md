@@ -2,14 +2,14 @@
 
 ## 1. Audit vararg return buffers
 
-- [ ] 1.1 Script a check over `godot_headers/extension_api.json` that lists every vararg method in classes, built-in classes, and utility functions with its declared return type, and verify the output matches the audit table in design.md (27 class, 6 built-in, 12 utility).
-- [ ] 1.2 Confirm the built-in and utility vararg paths (`CallBuiltinMethodPtrRet`, utility ptrcall) size their buffers to the declared type, and record the result in design.md; verify with a grep showing no `Variant`-declared buffer is undersized.
+- [x] 1.1 Script a check over `godot_headers/extension_api.json` that lists every vararg method in classes, built-in classes, and utility functions with its declared return type, and verify the output matches the audit table in design.md (15 class, 6 built-in, 12 utility).
+- [x] 1.2 Confirm the built-in and utility vararg paths (`CallBuiltinMethodPtrRet`, utility ptrcall) size their buffers to the declared type, and record the result in design.md; verify with a grep showing no `Variant`-declared buffer is undersized.
 
 ## 2. Fix generated vararg class calls
 
-- [ ] 2.1 In `cmd/generate/gdclassimpl/classes.go.tmpl`, make vararg methods always use a `Variant` return buffer and convert to the declared type (`Error` via `ToInt64`, `Variant` returned as-is, void unchanged); verify with `make generate` and a diff showing only `emit_signal`, `rpc`, and `rpc_id` change in `pkg/gdclassimpl/classes.gen.go`.
-- [ ] 2.2 Add the generator guard that fails for a vararg method whose return type has no supported conversion, naming the method and type; verify by a generator unit test that an unsupported type returns an error and a supported type generates code.
-- [ ] 2.3 Destroy the `Variant` buffer after converting an `Error` return and verify with `make build` and a grep of the regenerated methods showing a `Destroy` call on the return `Variant`.
+- [x] 2.1 In `cmd/generate/gdclassimpl/classes.go.tmpl`, make vararg methods always use a `Variant` return buffer and convert to the declared type (`Error` via `ToInt64`, `Variant` returned as-is, void unchanged); verify with `make generate` and a diff showing only `emit_signal`, `rpc`, and `rpc_id` change in `pkg/gdclassimpl/classes.gen.go`.
+- [x] 2.2 Add the generator guard that fails for a vararg method whose return type has no supported conversion, naming the method and type; verify by a generator unit test that an unsupported type returns an error and a supported type generates code.
+- [x] 2.3 Destroy the `Variant` buffer after converting an `Error` return and verify with `make build` and a grep of the regenerated methods showing a `Destroy` call on the return `Variant`.
 
 ## 3. Regression tests
 

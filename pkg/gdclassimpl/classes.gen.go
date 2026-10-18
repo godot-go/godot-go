@@ -348543,9 +348543,10 @@ func (cx *NodeImpl) Rpc(
 		panic("could not find method function Node.rpc (4047867050)")
 	}
 
-	var ret Error
+	var retVariant Variant
+	defer retVariant.Destroy()
 
-	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&retVariant))
 
 	pinner.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
@@ -348567,7 +348568,7 @@ func (cx *NodeImpl) Rpc(
 	if !err.Ok() {
 		log.Panic("method bind call error", zap.Error(&err))
 	}
-	return ret
+	return Error(retVariant.ToInt64())
 }
 
 /* RpcId implements Node.rpc_id:
@@ -348599,9 +348600,10 @@ func (cx *NodeImpl) RpcId(
 		panic("could not find method function Node.rpc_id (361499283)")
 	}
 
-	var ret Error
+	var retVariant Variant
+	defer retVariant.Destroy()
 
-	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&retVariant))
 
 	pinner.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
@@ -348627,7 +348629,7 @@ func (cx *NodeImpl) RpcId(
 	if !err.Ok() {
 		log.Panic("method bind call error", zap.Error(&err))
 	}
-	return ret
+	return Error(retVariant.ToInt64())
 }
 
 /* UpdateConfigurationWarnings implements Node.update_configuration_warnings:
@@ -359909,9 +359911,10 @@ func (cx *ObjectImpl) EmitSignal(
 		panic("could not find method function Object.emit_signal (4047867050)")
 	}
 
-	var ret Error
+	var retVariant Variant
+	defer retVariant.Destroy()
 
-	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&ret))
+	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&retVariant))
 
 	pinner.Pin(retPtr)
 	cOwner := cx.AsGDExtensionObjectPtr()
@@ -359933,7 +359936,7 @@ func (cx *ObjectImpl) EmitSignal(
 	if !err.Ok() {
 		log.Panic("method bind call error", zap.Error(&err))
 	}
-	return ret
+	return Error(retVariant.ToInt64())
 }
 
 /* Call implements Object.call:

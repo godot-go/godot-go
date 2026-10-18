@@ -225,6 +225,10 @@ func GenerateVirtuals(projectPath string, eapi extensionapiparser.ExtensionApi) 
 }
 
 func GenerateClasses(projectPath string, extensionApi extensionapiparser.ExtensionApi) error {
+	if err := checkVarargReturnTypes(extensionApi); err != nil {
+		return err
+	}
+
 	tmpl, err := template.New("classes.gen.go").
 		Funcs(template.FuncMap{
 			"isSetterMethodName":   isSetterMethodName,
@@ -241,6 +245,7 @@ func GenerateClasses(projectPath string, extensionApi extensionapiparser.Extensi
 			"goEncodeIsReference":  goEncodeIsReference,
 			"coalesce":             coalesce,
 			"typeOrMeta":           typeOrMeta,
+			"varargReturnExpr":     varargReturnExpr,
 		}).
 		Parse(classesText)
 

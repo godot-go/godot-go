@@ -8,11 +8,15 @@ Audit of `godot_headers/extension_api.json` (current API):
 
 | Source | Vararg methods | Declared return | Buffer today | Status |
 |---|---|---|---|---|
-| Class methods | 27 | 17 void, 7 `Variant`, 3 `Error` (`emit_signal`, `rpc`, `rpc_id`) | `Error` for the 3 | **Broken** |
+| Class methods | 15 | 5 void, 7 `Variant`, 3 `Error` (`emit_signal`, `rpc`, `rpc_id`) | `Error` for the 3 | **Broken** |
 | Built-in class methods (`Callable`, `Signal`) | 6 | `Variant` (`call`), `Callable` (`bind`), void (4) | Typed `CallBuiltinMethodPtrRet[T]` | Buffer sized to `T` (ptrcall, not varcall), see below |
 | Utility functions | 12 | `Variant` (`max`, `min`), `String` (`str`), void (9) | Typed `ret` via ptrcall | Buffer sized to `T` |
 
+The per-source audit is encoded as the generator fixture `cmd/generate/gdclassimpl/vararg_census.json`, verified by `TestVarargCensusMatchesApiSurface`.
+
 Built-in and utility vararg calls go through ptrcall with a typed buffer, so the engine writes a value of the declared size. The audit confirms they are not affected by the varcall issue. The `Variant`-returning class methods already use a `Variant` buffer. Void methods pass a null return pointer.
+
+Verified at implementation time: `CallBuiltinMethodPtrRet[T]` declares `var ret T` (`pkg/ffi/builtin_ptrcall.go`), so `Callable.call` gets a 24-byte Variant buffer; utility `Max`/`Min` render `var ret Variant` and `Str` renders `var ret String` with `NativePtr()` buffers. `TestGeneratedVarargBuffersAreVariantSized` in `cmd/generate/gdclassimpl/vararg_audit_test.go` scans the committed `classes.gen.go` so no varcall buffer regresses.
 
 ## Goals / Non-Goals
 

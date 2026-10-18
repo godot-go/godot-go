@@ -112,3 +112,29 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
+
+  build_alpine:
+    name: "build on alpine (musl)"
+    runs-on: ubuntu-latest
+    container:
+      image: golang:1.26.5-alpine
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install C toolchain
+        run: apk add --no-cache build-base
+
+      - name: Code Generation
+        run: make generate
+
+      - name: Build (musl default, C backtrace compiled out)
+        run: make build
+
+      - name: Build (musl opt-in C backtrace via libexecinfo)
+        run: |
+          apk add --no-cache libexecinfo-dev
+          make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO' EXTRA_CGO_LDFLAGS='-lexecinfo'
+
+      - name: List Artifacts Directory
+        run: ls -alh test/demo/lib

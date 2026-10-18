@@ -11,6 +11,11 @@ CWD=$(shell pwd)
 OUTPUT_PATH=test/demo/lib
 CGO_ENABLED=1
 TEST_MAIN=test/main.go
+# Extra flags appended to CGO_CFLAGS / CGO_LDFLAGS in build and build-full.
+# Example (Alpine/musl C backtraces via libexecinfo):
+#   make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO' EXTRA_CGO_LDFLAGS='-lexecinfo'
+EXTRA_CGO_CFLAGS?=
+EXTRA_CGO_LDFLAGS?=
 
 ifeq ($(GOOS),windows)
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-windows-$(GOARCH).dll
@@ -56,8 +61,8 @@ build: goenv ## Build GDExtension library (debug mode)
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
 	GOAMD64=v3 \
-	CGO_CFLAGS='-fno-omit-frame-pointer -fPIC -g -ggdb -O0 -I$(CWD)' \
-	CGO_LDFLAGS='-g3 -g -O0' \
+	CGO_CFLAGS='-fno-omit-frame-pointer -fPIC -g -ggdb -O0 -I$(CWD) $(EXTRA_CGO_CFLAGS)' \
+	CGO_LDFLAGS='-g3 -g -O0 $(EXTRA_CGO_LDFLAGS)' \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
@@ -66,8 +71,8 @@ build-full: goenv ## Build GDExtension library with full debug symbols
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
 	GOAMD64=v3 \
-	CGO_CFLAGS='-fno-omit-frame-pointer -g3 -g -gdwarf -DX86=1 -fPIC -O0 -I$(CWD)' \
-	CGO_LDFLAGS='-g3 -g' \
+	CGO_CFLAGS='-fno-omit-frame-pointer -g3 -g -gdwarf -DX86=1 -fPIC -O0 -I$(CWD) $(EXTRA_CGO_CFLAGS)' \
+	CGO_LDFLAGS='-g3 -g $(EXTRA_CGO_LDFLAGS)' \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags="-N -l" -ldflags="-compressdwarf=0" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 

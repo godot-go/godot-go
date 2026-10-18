@@ -1,5 +1,25 @@
 #include "stacktrace.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#include <dbghelp.h>
+#elif defined(GODOT_GO_ENABLE_EXECINFO)
+/* User-forced path: link an external execinfo implementation,
+   e.g. libexecinfo-dev on Alpine/musl. See README. */
+#include <execinfo.h>
+#define GODOT_GO_HAVE_EXECINFO 1
+#elif defined(__has_include)
+#if __has_include(<execinfo.h>)
+/* glibc and Apple platforms ship execinfo natively. */
+#include <execinfo.h>
+#define GODOT_GO_HAVE_EXECINFO 1
+#endif
+#elif defined(__GLIBC__) || defined(__APPLE__)
+/* Fallback for compilers without __has_include (pre GCC 5 / clang 3.3). */
+#include <execinfo.h>
+#define GODOT_GO_HAVE_EXECINFO 1
+#endif
+
 bool enablePrintStacktrace = false;
 
 void printStacktrace() {
@@ -71,7 +91,7 @@ void printStacktrace() {
         // }
 
         // SymCleanup(process);
-    #else
+    #elif defined(GODOT_GO_HAVE_EXECINFO)
         printf("___ C start backtrace ___________\n");
         void* callstack[128];
         int i, frames = backtrace(callstack, 128);
@@ -81,6 +101,10 @@ void printStacktrace() {
         }
         free(strs);
         printf("___ C end backtrace   ___________\n\n");
+    #else
+        /* Platform provides no execinfo backtrace interface (e.g. musl);
+           capture is compiled out. Define GODOT_GO_ENABLE_EXECINFO and link
+           an implementation to restore it. */
     #endif
     }
 }

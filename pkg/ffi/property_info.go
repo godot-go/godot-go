@@ -48,6 +48,14 @@ func (p *GDExtensionPropertyInfo) Name() GDExtensionStringNamePtr {
 	return (GDExtensionStringNamePtr)(typed.name)
 }
 
+// Destroy releases the engine StringName/String objects behind this struct's
+// string cell fields. Ownership: only the code that CREATED the objects
+// referenced by name/class_name/hint_string may call this. In particular it
+// MUST NOT be called on elements of an array produced by the class
+// get_property_list callback — those cells point at engine strings owned by
+// the class registration and destroyed once in ClassInfo.Destroy
+// (openspec fix-class-property-list-lifecycle); the query array itself is
+// released by the paired free callback without touching the cells.
 func (p *GDExtensionPropertyInfo) Destroy() {
 	cp := (*C.GDExtensionPropertyInfo)(p)
 	stringNameDestructor := (GDExtensionPtrDestructor)(CallFunc_GDExtensionInterfaceVariantGetPtrDestructor(GDEXTENSION_VARIANT_TYPE_STRING_NAME))

@@ -1257,7 +1257,7 @@ func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 // are built per-class by registration (openspec
 // fix-class-property-list-lifecycle).
 func GetExamplePropertyList() []PropertyDescriptor {
-	props := make([]PropertyDescriptor, 4)
+	props := make([]PropertyDescriptor, 5)
 
 	makeProp := func(className, propName string, vt GDExtensionVariantType) PropertyDescriptor {
 		return PropertyDescriptor{
@@ -1273,6 +1273,17 @@ func GetExamplePropertyList() []PropertyDescriptor {
 	props[0] = makeProp("Example", "property_from_list", GDEXTENSION_VARIANT_TYPE_VECTOR3)
 	for i := 0; i < 3; i++ {
 		props[i+1] = makeProp("Example", fmt.Sprintf("dproperty_%d", i), GDEXTENSION_VARIANT_TYPE_VECTOR2)
+	}
+	// Carries a non-empty hint string through the class callback so the
+	// persistence gate can assert hint-string content end to end
+	// (openspec fix-class-property-list-lifecycle review).
+	props[4] = PropertyDescriptor{
+		ClassName:  "Example",
+		Type:       GDEXTENSION_VARIANT_TYPE_STRING,
+		Name:       "property_hint_string",
+		Hint:       uint32(PROPERTY_HINT_NONE),
+		HintString: "review-carrier",
+		Usage:      uint32(PROPERTY_USAGE_DEFAULT),
 	}
 
 	return props

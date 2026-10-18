@@ -164,7 +164,11 @@ ClassDBAddPropertyInfo(t, PropertySpec{
 ### Class-Level Property List Callback
 
 `ClassDBRegisterClass` also accepts `[]PropertyDescriptor` entries whose
-properties are exposed through the class `get_property_list` callback:
+properties are exposed through the class `get_property_list` callback. This
+input replaces the previous `[]GDExtensionPropertyInfo` parameter (and the
+removed `ClassInfo.PropertyList` field): descriptors carry plain Go strings,
+and the raw C structs plus the engine strings behind them are owned by the
+library internals.
 
 ```go
 props := []PropertyDescriptor{

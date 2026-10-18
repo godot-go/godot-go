@@ -671,7 +671,7 @@ func test_property_list_persistence(example: Example):
 	var second := {}
 	for prop_info in example.get_property_list():
 		second[prop_info['name']] = prop_info
-	for prop_name in ["property_from_list", "dproperty_0", "dproperty_1", "dproperty_2"]:
+	for prop_name in ["property_from_list", "dproperty_0", "dproperty_1", "dproperty_2", "property_hint_string"]:
 		assert_true(first.has(prop_name))
 		assert_true(second.has(prop_name))
 		if first.has(prop_name) and second.has(prop_name):
@@ -683,6 +683,11 @@ func test_property_list_persistence(example: Example):
 		assert_equal(first["property_from_list"]['type'], TYPE_VECTOR3)
 		assert_equal(first["property_from_list"]['usage'], PROPERTY_USAGE_DEFAULT)
 		assert_equal(first["property_from_list"]['class_name'], &"Example")
+	if first.has("property_hint_string"):
+		# Positive content check: a non-empty hint string must round-trip
+		# through the class callback in both reads.
+		assert_equal(first["property_hint_string"]['hint_string'], "review-carrier")
+		assert_equal(second["property_hint_string"]['hint_string'], "review-carrier")
 
 # Main-loop callback tests (openspec: support-main-loop-callbacks).
 # The startup hook fires during engine startup (Main::start calls
@@ -1587,6 +1592,7 @@ func test_instance_churn(example: Example) -> void:
 		r.set_id(i)
 		example.test_instance_churn_capture(r)
 	assert_equal(example.test_instance_churn_end(2, 25000), 1)
+	assert_equal(example.test_instance_churn_verify(), 1)
 
 # Query/release retention gate for the per-query property arrays (openspec
 # fix-class-property-list-lifecycle): thousands of get_property_list cycles
@@ -1605,7 +1611,6 @@ func test_property_list_churn(example: Example) -> void:
 		last_size = example.get_property_list().size()
 	assert_true(last_size > 0)
 	assert_equal(example.test_prop_list_churn_end(4000), 1)
-	assert_equal(example.test_instance_churn_verify(), 1)
 
 func test_binding_release_accounting(example: Example) -> void:
 	example.test_binding_churn_begin()

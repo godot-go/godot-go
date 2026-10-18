@@ -38,6 +38,6 @@ On platforms without `execinfo`, the capture facility SHALL compile to a no-op: 
 ### Requirement: Opt-in restore via external execinfo implementation
 The build SHALL allow a user on a platform without native `execinfo` to restore real capture without source modifications, by passing a documented preprocessor define that selects the execinfo code path and linking an external implementation.
 
-#### Scenario: Alpine with libexecinfo
-- **WHEN** the documented preprocessor define and `-lexecinfo` linker flag are used on Alpine with `libexecinfo-dev` installed
-- **THEN** the execinfo capture path is compiled in and setting the enable flag produces real backtrace output
+#### Scenario: Alpine with an external execinfo implementation
+- **WHEN** the documented preprocessor define and linker flags pointing at an external library that provides the glibc-compatible `execinfo` interface are used on Alpine (Alpine ships no installable implementation, so the library is user-supplied)
+- **THEN** the execinfo capture path is compiled in and linking succeeds against that library

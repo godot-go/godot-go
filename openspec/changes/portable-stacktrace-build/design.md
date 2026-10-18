@@ -17,7 +17,7 @@ Constraints:
 
 - Build succeeds on musl with only the base toolchain; glibc/Apple/Windows behavior byte-identical.
 - The public header stays platform-neutral; platform specifics live in the one `.c` file.
-- A user who wants real C backtraces on musl can get them via build flags only (libexecinfo), no source edits.
+- A user who wants real C backtraces on musl can get them via build flags only, linking a user-supplied execinfo-ABI library, no source edits.
 - A CI job keeps musl compilability from regressing.
 
 **Non-Goals:**
@@ -39,7 +39,7 @@ In `stacktrace.c`:
 
 ```c
 #if defined(GODOT_GO_ENABLE_EXECINFO)
-#  include <execinfo.h>            /* user forced: external impl, e.g. libexecinfo */
+#  include <execinfo.h>            /* user forced: external execinfo-ABI library */
 #  define GODOT_GO_HAVE_EXECINFO 1
 #elif defined(__has_include)
 #  if __has_include(<execinfo.h>)  /* glibc and Apple ship it; musl does not */
@@ -61,18 +61,20 @@ The existing backtrace body compiles under `#if defined(GODOT_GO_HAVE_EXECINFO)`
 
 ### D3: Makefile pass-through for the opt-in
 
-Add `EXTRA_CGO_CFLAGS` and `EXTRA_CGO_LDFLAGS` (empty defaults) appended to the inline `CGO_CFLAGS`/`CGO_LDFLAGS` values in the `build` and `build-full` recipes. The Alpine restore command becomes:
+Add `EXTRA_CGO_CFLAGS` and `EXTRA_CGO_LDFLAGS` (empty defaults) appended to the inline `CGO_CFLAGS`/`CGO_LDFLAGS` values in the `build` and `build-full` recipes. The opt-in command shape is:
 
 ```
-make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO' EXTRA_CGO_LDFLAGS='-lexecinfo'
+make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/path/to/execinfo/include' EXTRA_CGO_LDFLAGS='-L/path/to/execinfo/lib -lexecinfo'
 ```
+
+- Reality check (2026-10, second CI run): Alpine's repositories ship no `libexecinfo` package in main/community/testing, and neither `libunwind` nor `gcompat` exports `backtrace`/`backtrace_symbols` (verified against the v3.23/edge APKINDEXes and `nm -D` on the shipped `.so`s). The original design assumed `apk add libexecinfo-dev` existed; it does not. The flag contract itself is unchanged and libc-agnostic — the external implementation is user-supplied on Alpine, and the CI job verifies the path against a minimal execinfo-ABI shim compiled in the job.
 
 - Alternative: document `go build` directly — bypasses the Makefile's flags and duplicates them.
 - Alternative: `GOFLAGS`-based injection — awkward with per-env assignments in recipes.
 
 ### D4: Build-only Alpine CI job in `ci_linux.yaml`
 
-New job `build_alpine`: `runs-on: ubuntu-latest`, `container: golang:1.27-alpine`, steps: `apk add --no-cache build-base`, `make generate`, `make build`. No Godot download and no `make test`: `make generate` consumes the committed `godot_headers/`, so the pipeline is fully headless, and there is no Alpine Godot runtime harness. `paths` filters gain `.github/workflows/ci_linux.yaml` already covers itself; no new filter needed.
+New job `build_alpine`: `runs-on: ubuntu-latest`, `container: golang:1.27-alpine`, steps: `apk add --no-cache build-base`, `make generate`, `make build` (default, backtrace compiled out), then the opt-in build against a minimal execinfo-ABI shim compiled in the job (see D3 reality check). No Godot download and no `make test`: `make generate` consumes the committed `godot_headers/`, so the pipeline is fully headless, and there is no Alpine Godot runtime harness. `paths` filters gain `.github/workflows/ci_linux.yaml` already covers itself; no new filter needed.
 
 - Image pin: `go.mod` requires `go >= 1.27.0`, and official `golang:*` images set `GOTOOLCHAIN=local`, so the container must run the 1.27 line directly. (The ubuntu job's `setup-go` "1.26.5" does not constrain what actually runs: setup-go resolves `go.mod` toolchain directives itself; first CI run proved `golang:1.26.5-alpine` fails at `go generate`.)
 
@@ -80,15 +82,15 @@ New job `build_alpine`: `runs-on: ubuntu-latest`, `container: golang:1.27-alpine
 
 ### D5: README note in "Building Godot-Go"
 
-Under `README.md` -> Getting Started -> Building Godot-Go: one short paragraph — on Alpine the extension builds as-is with the C backtrace disabled; for real C backtraces run `apk add libexecinfo-dev` and use the D3 command.
+Under `README.md` -> Getting Started -> Building Godot-Go: one short paragraph — on Alpine the extension builds as-is with the C backtrace disabled; Alpine ships no installable execinfo package (D3 reality check), so real capture requires a user-supplied execinfo-ABI library plus the D3 command pointing `-I`/`-L` at it.
 
 ## Risks / Trade-offs
 
-- [musl users silently lose C backtraces] → Feature is default-off and unreachable at runtime today (enable site commented out); documented opt-in (D3/D5) restores it; Go-side zap stacktraces remain at Warn+.
+- [musl users silently lose C backtraces] → Feature is default-off and unreachable at runtime today (enable site commented out); documented opt-in (D3/D5) restores it with a user-supplied library; Go-side zap stacktraces remain at Warn+.
 - [`__has_include` missing on an exotic compiler misselects the branch] → Legacy macro fallback covers glibc/Apple; explicit `-DGODOT_GO_ENABLE_EXECINFO` override; Alpine CI pins the musl case.
 - [Future edit re-adds an execinfo include to a shared header] → Alpine CI job fails on exactly that regression.
 - [Alpine container misses a build dependency] → `build-base` provides gcc/ar; `golang:alpine` ships git; job is compile-only so no runtime deps.
-- [`-DGODOT_GO_ENABLE_EXECINFO` without libexecinfo installed] → Link error with a clear `undefined reference to backtrace`, which points at the missing package; the README lists both halves of the opt-in together.
+- [`-DGODOT_GO_ENABLE_EXECINFO` without a linked execinfo implementation] → Link error with a clear `undefined reference to backtrace`, which points at the missing library; the README lists both halves of the opt-in (define + `-I`/`-L`/`-lexecinfo`) together.
 
 ## Migration Plan
 

@@ -42,6 +42,16 @@ In order for godot-go to work correctly, you must make sure the godot_headers ar
     # build godot-go
     make build
 
+#### Alpine / musl libc
+
+On musl-based systems such as Alpine Linux, godot-go builds as-is with the optional
+C-side backtrace printing compiled out (musl provides no `execinfo` interface). To
+build with real C backtraces, install the portable execinfo implementation and
+enable it at build time:
+
+    apk add libexecinfo-dev
+    make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO' EXTRA_CGO_LDFLAGS='-lexecinfo'
+
 ### Test
 
 Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time (don't be concerned if it fails):

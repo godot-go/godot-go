@@ -39,6 +39,15 @@ fi
 # so strip escapes before parsing anything or the numbers never match.
 plain="$(sed -e 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$log")"
 
+# Membership checks test $plain with `grep -q ... <<<"$plain"`, never
+# `printf '%s\n' "$plain" | grep -q`. Under `set -o pipefail` the piped form
+# is racy: grep -q exits at the first match, and if printf has not finished
+# writing (the log is far larger than the pipe buffer once gctrace lines pile
+# up) printf dies of SIGPIPE with status 141, so the pipeline reports failure
+# even though grep matched -- a green run can falsely fail as
+# "missing-main-loop-shutdown-marker". A here-string reads from a temp file:
+# no pipe, no SIGPIPE, no inversion.
+
 # evidence <regex> -- print matching lines so the failure carries its own proof.
 evidence() {
 	local matches
@@ -58,21 +67,21 @@ fail() {
 
 # 1. Extension failed to load. Checked first: when the library is missing the
 #    driver also fails to parse, and "extension not loaded" is the real cause.
-if printf '%s\n' "$plain" | grep -qaE "Can't open dynamic library|GDExtension dynamic library not found"; then
+if grep -qaE "Can't open dynamic library|GDExtension dynamic library not found" <<<"$plain"; then
 	fail extension-not-loaded \
 		"the GDExtension could not be loaded, so no Go code ran and no test result is meaningful. Was 'make build' run?" \
 		"Can't open dynamic library|GDExtension dynamic library not found|Cannot get class"
 fi
 
 # 2. Driver script failed to parse.
-if printf '%s\n' "$plain" | grep -qaE 'Failed to load script.*Parse error'; then
+if grep -qaE 'Failed to load script.*Parse error' <<<"$plain"; then
 	fail test-script-parse-error \
 		"the GDScript test driver failed to parse, so no assertions ran" \
 		'Failed to load script|Parse error'
 fi
 
 # 3. No summary banner. The catch-all that makes "silently did nothing" impossible.
-if ! printf '%s\n' "$plain" | grep -qa 'TESTS FINISHED'; then
+if ! grep -qa 'TESTS FINISHED' <<<"$plain"; then
 	fail no-driver-summary \
 		"the test driver never printed its 'TESTS FINISHED' banner, so the suite did not complete (godot exit status ${godot_status})" \
 		'ERROR|SCRIPT ERROR|handle_cr'
@@ -106,7 +115,7 @@ if [[ "$failures" -gt 0 ]]; then
 fi
 
 # 7. Leak detection, preserved from the original inline gate.
-if printf '%s\n' "$plain" | grep -qaE 'ObjectDB instances were leaked|Leaked instance:'; then
+if grep -qaE 'ObjectDB instances were leaked|Leaked instance:' <<<"$plain"; then
 	fail leaked-engine-objects \
 		"leaked engine objects detected in test output" \
 		'ObjectDB instances were leaked|Leaked instance:'
@@ -116,7 +125,7 @@ fi
 #    GODOTGO_MAIN_LOOP_SHUTDOWN during engine teardown; a missing marker means
 #    the shutdown callback never fired (or was never registered), so the run
 #    cannot be trusted to have exercised the main-loop phases.
-if ! printf '%s\n' "$plain" | grep -qa 'GODOTGO_MAIN_LOOP_SHUTDOWN'; then
+if ! grep -qa 'GODOTGO_MAIN_LOOP_SHUTDOWN' <<<"$plain"; then
 	fail missing-main-loop-shutdown-marker \
 		"the test extension's main-loop shutdown marker is missing: the registered shutdown callback never ran during teardown" \
 		'MAIN_LOOP|GDExtensionManager'

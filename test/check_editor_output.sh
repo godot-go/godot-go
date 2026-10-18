@@ -39,6 +39,11 @@ fi
 
 plain="$(sed -e 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$log")"
 
+# Membership checks use here-strings, never `printf | grep -q`: under
+# `set -o pipefail` the piped form can falsely fail when grep -q exits early
+# and the writer dies of SIGPIPE. See check_test_output.sh for the full
+# mechanism.
+
 evidence() {
 	local matches
 	matches="$(printf '%s\n' "$plain" | grep -aE "$1" | tail -5)"
@@ -56,7 +61,7 @@ fail() {
 }
 
 # 1. Extension failed to load: nothing Go-side could have run.
-if printf '%s\n' "$plain" | grep -qaE "Can't open dynamic library|GDExtension dynamic library not found"; then
+if grep -qaE "Can't open dynamic library|GDExtension dynamic library not found" <<<"$plain"; then
 	fail extension-not-loaded \
 		"the GDExtension could not be loaded in the editor, so no Go code ran and no plugin result is meaningful. Was 'make build' run?" \
 		"Can't open dynamic library|GDExtension dynamic library not found"
@@ -66,7 +71,7 @@ fi
 #    when the EditorNode drains the queued add; the bound _enter_tree virtual
 #    prints this marker from Go. Missing means the registration never took
 #    effect (or the editor never reached that startup phase).
-if ! printf '%s\n' "$plain" | grep -qa 'GODOTGO_EDITOR_PLUGIN_ENTERED'; then
+if ! grep -qa 'GODOTGO_EDITOR_PLUGIN_ENTERED' <<<"$plain"; then
 	fail no-fixture-marker \
 		"the editor plugin fixture was never instantiated by the editor (marker GODOTGO_EDITOR_PLUGIN_ENTERED missing); registration did not take effect (godot exit status ${godot_status})" \
 		'GODOTGO_EDITOR_PLUGIN|GDExtensionManager|ERROR'
@@ -74,14 +79,14 @@ fi
 
 # 3. Main-loop shutdown marker: the editor teardown must have run the
 #    registered main-loop shutdown hook.
-if ! printf '%s\n' "$plain" | grep -qa 'GODOTGO_MAIN_LOOP_SHUTDOWN'; then
+if ! grep -qa 'GODOTGO_MAIN_LOOP_SHUTDOWN' <<<"$plain"; then
 	fail missing-main-loop-shutdown-marker \
 		"the main-loop shutdown marker is missing: the editor teardown never reached the shutdown callback, so the run cannot be trusted to have exercised editor shutdown" \
 		'MAIN_LOOP|GDExtensionManager'
 fi
 
 # 4. ObjectDB leaks.
-if printf '%s\n' "$plain" | grep -qaE 'ObjectDB instances were leaked|Leaked instance:'; then
+if grep -qaE 'ObjectDB instances were leaked|Leaked instance:' <<<"$plain"; then
 	fail leaked-engine-objects \
 		"leaked engine objects detected in editor test output" \
 		'ObjectDB instances were leaked|Leaked instance:'
@@ -89,7 +94,7 @@ fi
 
 # 5. Heap-interned StringNames outliving the run (static: 0). Static SNAME
 #    interns (static: 1) are engine-internal and tolerated; see header.
-if printf '%s\n' "$plain" | grep -qaE 'Orphan StringName: .*\(static: 0,'; then
+if grep -qaE 'Orphan StringName: .*\(static: 0,' <<<"$plain"; then
 	fail orphaned-string-names \
 		"non-static orphan StringNames outlived the editor run: the extension allocated names it never released" \
 		'Orphan StringName'

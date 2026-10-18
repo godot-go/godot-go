@@ -1652,6 +1652,10 @@ func RegisterClassExample() {
 			})
 		ClassDBBindMethod(t, "EmitCustomSignal", "emit_custom_signal", []string{"name", "value"}, nil)
 
+		// Issue #151 regression: vararg call return buffers (see vararg_return_tests.go).
+		ClassDBBindMethod(t, "TestVarargReturnHeapIntegrity", "test_vararg_return_heap_integrity", []string{"iterations"}, nil)
+		ClassDBBindMethod(t, "TestVarargErrorReturns", "test_vararg_error_returns", []string{"node"}, nil)
+
 		// constants
 		ClassDBBindEnumConstant(t, "Example.ExampleEnum", "FIRST", int(ExampleFirst))
 		ClassDBBindEnumConstant(t, "Example.ExampleEnum", "ANSWER_TO_EVERYTHING", int(AnswerToEverything))

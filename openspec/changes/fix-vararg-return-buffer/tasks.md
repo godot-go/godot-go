@@ -13,9 +13,9 @@
 
 ## 3. Regression tests
 
-- [ ] 3.1 Add a `test/demo` class with a signal and a method returning a 1 KB Go string; add a test that loops several hundred `EmitSignal` calls interleaved with the string call under GC and checks each string; verify with `make test` passing.
-- [ ] 3.2 Add a test that `EmitSignal`, `Rpc`, and `RpcId` return the expected `Error` value; verify with `make test`.
-- [ ] 3.3 Run the regression test several times on the fixed build and record the pass count; verify all runs pass, and that the GOGC=off control is unaffected.
+- [x] 3.1 Add a `test/demo` class with a signal and a method returning a 1 KB Go string; add a test that loops several hundred `EmitSignal` calls interleaved with the string call under GC and checks each string; verify with `make test` passing.
+- [x] 3.2 Add a test that `EmitSignal`, `Rpc`, and `RpcId` return the expected `Error` value; verify with `make test`.
+- [x] 3.3 Run the regression test several times on the fixed build and record the pass count; verify all runs pass, and that the GOGC=off control is unaffected. (Record: 5/5 headless runs passed the suite gate; the `GOGC=off` control run passed with 1427 assertions, 0 failures.)
 
 ## 4. Verification
 

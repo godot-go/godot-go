@@ -56,6 +56,7 @@ func _ready():
 	test_instance_churn(example)
 	test_binding_release_accounting(example)
 	test_property_list_churn(example)
+	test_vararg_return_buffer(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1618,3 +1619,16 @@ func test_binding_release_accounting(example: Example) -> void:
 		var b := RefCounted.new()
 		example.test_binding_churn_capture(b)
 	assert_equal(example.test_binding_churn_verify(), 1)
+
+# Issue #151 regression: the generated vararg bindings (EmitSignal, Rpc,
+# RpcId) used to write the engine's 24-byte Variant return into an 8-byte
+# Error buffer, corrupting adjacent Go memory ~1 run in 15. See
+# test/pkg/vararg_return_tests.go for the Go side.
+func test_vararg_return_buffer(example: Example) -> void:
+	assert_equal(example.test_vararg_return_heap_integrity(400), 1)
+	# An out-of-tree Node makes rpc/rpc_id deterministically ERR_UNCONFIGURED
+	# (Node::rpcp fails before reading multiplayer state), so the Error
+	# conversion is checked against a value the engine guarantees.
+	var loose_node := Node.new()
+	assert_equal(example.test_vararg_error_returns(loose_node), 1)
+	loose_node.free()

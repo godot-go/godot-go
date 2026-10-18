@@ -45,12 +45,16 @@ In order for godot-go to work correctly, you must make sure the godot_headers ar
 #### Alpine / musl libc
 
 On musl-based systems such as Alpine Linux, godot-go builds as-is with the optional
-C-side backtrace printing compiled out (musl provides no `execinfo` interface). To
-build with real C backtraces, install the portable execinfo implementation and
-enable it at build time:
+C-side backtrace printing compiled out (musl provides no `execinfo` interface). Alpine's
+package repositories ship no installable execinfo implementation, so capture stays
+compiled out there unless you supply one: build or obtain a library providing the
+glibc-compatible `execinfo` interface (`execinfo.h` plus the `backtrace` /
+`backtrace_symbols` symbols) and point the build at it:
 
-    apk add libexecinfo-dev
-    make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO' EXTRA_CGO_LDFLAGS='-lexecinfo'
+    make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/path/to/execinfo/include' EXTRA_CGO_LDFLAGS='-L/path/to/execinfo/lib -lexecinfo'
+
+On glibc and Apple systems nothing extra is needed; the backtrace path is selected
+automatically.
 
 ### Test
 

@@ -52,12 +52,14 @@ Resolved in `fix: reseat churn verify and close property-list review gaps` (gate
 - [x] Minor 2: `(*GDExtensionPropertyInfo).Destroy()` documented creator-only — never callable on class-property-list elements, whose cells belong to `ClassInfo.Destroy`.
 - [x] Minor 3: new `property_hint_string` descriptor with non-empty `HintString: "review-carrier"`, content-asserted in both persistence reads — the "Late query still reports the hint string" scenario now has a positive end-to-end check (+8 asserts).
 
-Deferred polish (no behavior change; candidates for a future `chore:` change or drive-by cleanup):
+Polish follow-ups (no behavior change), implemented after the deferral note in the same follow-up round (`refactor: polish class property cache internals`; gate re-run identical: 1425 PASSES / 0 FAILURES, no leaks):
 
-- [ ] `allocPropertyArray` returns `(*C.GDExtensionPropertyInfo, []C.GDExtensionPropertyInfo)` but both callers discard the slice — trim to a pointer return; the slice is an internal fill detail.
-- [ ] `classPropertySpec.destroy()` re-fetches both variant destructors on every call, including fully-nil idempotent teardowns (3 engine FFI calls per spec) — cache them lazily.
-- [ ] `cellSize` is a generic package-level name in `pkg/core`, and `unsafe.Sizeof(uintptr(0))` reads more intentionally as pointer-cell size.
-- [ ] `RunPropertyCacheTeardownCheck` returns a bare `bool` across five distinct failure modes — return a reason string to speed up post-mortem.
+- [x] `allocPropertyArray` returns `(*C.GDExtensionPropertyInfo, []C.GDExtensionPropertyInfo)` but both callers discard the slice — trimmed to a pointer return; the slice stayed an internal fill detail.
+- [x] `classPropertySpec.destroy()` re-fetched both variant destructors on every call, including fully-nil idempotent teardowns — destructors now resolve once per process (`sync.Once`) and nil specs early-return with zero engine calls.
+- [x] `cellSize` renamed to `stringCellSize` with a comment stating the pointer-cell model; sizing expressed via `unsafe.Pointer` instead of `uintptr(0)`.
+- [x] `RunPropertyCacheTeardownCheck` now returns `error` — each failure phase carries its own reason (spec count, failed cycle index, balance mismatch); the demo fixture prints it.
+
+Also corrected the stale `newClassPropertySpec` docstring, which claimed the caller reports an empty property list on allocation failure when `buildClassPropertySpecs` actually releases and panics.
 
 ## Workflow follow-up
 

@@ -230,7 +230,7 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 	// exposed and nothing is pinned. The engine deep-copies the elements and
 	// calls FreePropertyList2 in the same scope (Object::get_property_list),
 	// which releases the array. Repeated queries always see the full list.
-	ptr, _ := allocPropertyArray(ci.propertySpecs)
+	ptr := allocPropertyArray(ci.propertySpecs)
 	if ptr == nil {
 		*rCount = (C.uint32_t)(0)
 		return (*C.GDExtensionPropertyInfo)(nil)

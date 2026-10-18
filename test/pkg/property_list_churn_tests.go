@@ -38,8 +38,8 @@ var (
 // double-free (task 2.2 verification).
 func (e *Example) TestPropListTeardownCheck() int32 {
 	return objectArgGuard("prop_list_teardown_check", func() int32 {
-		if !RunPropertyCacheTeardownCheck() {
-			fmt.Println("  prop_list_teardown: FAIL: cache lifecycle check reported unclean")
+		if err := RunPropertyCacheTeardownCheck(); err != nil {
+			fmt.Printf("  prop_list_teardown: FAIL: cache lifecycle check unclean: %v\n", err)
 			return -2
 		}
 		fmt.Println("  prop_list_teardown: zero/one/many-query teardown clean, arrays accounted, destroy idempotent")

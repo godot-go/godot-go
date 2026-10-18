@@ -29,6 +29,7 @@ func _ready():
 	await test_native_slice_marshalling(example)
 	test_variant_matrix_audit(example)
 	await test_ref_method_boundary(example)
+	await test_go_callable_bridge(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1288,3 +1289,103 @@ func test_variant_matrix_audit(example: Example) -> void:
 		PackedColorArray([Color(0.5, 0.25, 0.125, 1.0)]))
 	assert_equal(example.call("test_slice_echo_color", PackedColorArray([Color(1, 0, 0, 0.5)])),
 		PackedColorArray([Color(1, 0, 0, 0.5)]))
+
+# support-go-callable-bridge: Go closures as engine-native Callables.
+func test_go_callable_bridge(example: Example) -> void:
+	print("test go callable bridge")
+	await _go_callable_scenarios(example)
+
+func _go_callable_scenarios(example: Example) -> void:
+
+	# Creation, validity, and repeated invocations of a captured Go closure.
+	var counter_cb: Callable = example.create_counter_callable()
+	assert_true(counter_cb.is_valid())
+	assert_equal(counter_cb.call(), 1)
+	assert_equal(counter_cb.call(), 2)
+	assert_equal(counter_cb.call(), 3)
+	# The varcall path (dynamic call) reaches the same machinery.
+	assert_equal(example.call("create_counter_callable").call(), 1)
+
+	# to_string: the custom label replaces the generic fallback rendering.
+	assert_equal(str(counter_cb), "GoCallable")
+
+	# Copy-if-store: the stored copy outlives the borrowed argument it came
+	# from and reads back equal on a later invocation.
+	var copy_cb: Callable = example.create_copy_stored_callable()
+	assert_equal(copy_cb.call("stored string"), 1)
+	assert_equal(copy_cb.call(), "stored string")
+	assert_equal(copy_cb.call("replacement"), 1)
+	assert_equal(copy_cb.call(), "replacement")
+
+	# Identity and signal dedup: connecting the same Callable twice yields one
+	# connection; distinct creations yield distinct connections that both run.
+	var conns_before: int = example.custom_signal.get_connections().size()
+	example.reset_go_callable_invocation_count()
+	var probe_a: Callable = example.create_probe_callable()
+	var probe_b: Callable = example.create_probe_callable()
+	example.custom_signal.connect(probe_a)
+	example.custom_signal.connect(probe_a)
+	assert_equal(example.custom_signal.get_connections().size(), conns_before + 1)
+	example.emit_custom_signal("dedup", 1)
+	assert_equal(example.go_callable_invocation_count(), 1)
+	example.custom_signal.connect(probe_b)
+	assert_equal(example.custom_signal.get_connections().size(), conns_before + 2)
+	example.emit_custom_signal("dedup", 2)
+	assert_equal(example.go_callable_invocation_count(), 3)
+
+	# Copies of a Callable compare equal to their source; separate creations
+	# are distinct.
+	var counter_copy: Callable = counter_cb
+	assert_true(counter_copy == counter_cb)
+	assert_false(probe_a == probe_b)
+
+	# call_deferred runs the same body on a later frame. The two-frame wait
+	# absorbs the flush boundary before measuring.
+	var deferred_cb: Callable = example.create_probe_callable()
+	deferred_cb.call_deferred()
+	await get_tree().process_frame
+	await get_tree().process_frame
+	assert_equal(example.go_callable_invocation_count(), 4)
+	example.custom_signal.disconnect(probe_a)
+	example.custom_signal.disconnect(probe_b)
+
+	# Closure errors and panics fail the call without taking the process down;
+	# repeated calls on the same callable keep failing gracefully, and the
+	# bindings stay healthy afterwards.
+	assert_true(_try_go_callable_call(example.create_error_callable()) == null)
+	assert_true(_try_go_callable_call(example.create_error_callable()) == null)
+	assert_true(_try_go_callable_call(example.create_panic_callable()) == null)
+	assert_true(_try_go_callable_call(example.create_panic_callable()) == null)
+	var health_cb: Callable = example.create_counter_callable()
+	assert_equal(health_cb.call(), 1)
+
+	# Reentrancy: the closure calls Object.call inside its own invocation,
+	# which varcalls back into a Go-bound method (engine -> Go -> engine -> Go).
+	var reentrant_cb: Callable = example.create_reentrant_callable()
+	assert_equal(reentrant_cb.call(), 42)
+
+	# Deterministic release: entries appear with creation and disappear the
+	# moment the last script reference drops, with no Go-side action.
+	# Two GDScript call-site scratches pin one Callable each for the life of
+	# the script: the dynamic-call probe above and the last loop iteration of
+	# live.append. Those are engine-side references, not stale registry
+	# entries. The loop therefore creates one extra sacrificial entry so the
+	# post-clear count lands on a provable baseline + 1 instead of racing
+	# interpreter scratch lifetimes.
+	var baseline: int = example.go_callable_registry_count()
+	var live: Array = []
+	for i in range(11):
+		live.append(example.create_counter_callable())
+	assert_equal(example.go_callable_registry_count(), baseline + 11)
+	live.clear()
+	assert_equal(example.go_callable_registry_count(), baseline + 1)
+
+	# Release word: the stored String copy dies here with the fixture. The
+	# entries still registered are the named callables above, which drop with
+	# this frame; engine-side teardown then leaves nothing for the leak gate.
+	example.release_go_callable_stored_copy()
+
+# A failing Callable invocation must degrade to null, not abort; isolating the
+# call in a frame keeps a hypothetical interpreter-level abort contained.
+func _try_go_callable_call(cb: Callable) -> Variant:
+	return cb.call()

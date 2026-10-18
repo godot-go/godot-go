@@ -115,7 +115,14 @@ TODO comments disappear). Volume work.
 
 ### C1. Go func -> Callable bridge
 
-`callable_custom_*` FFI wrappers are generated but unused; a Go closure or
+**DONE** — implemented by change `support-go-callable-bridge` (2026-10-16):
+`core.NewGoCallable(func([]Variant) (Variant, error)) Callable` wraps a Go
+closure as an engine custom Callable via `callable_custom_create2` with three
+callbacks (call/free/to_string); the engine's `(call_func, callable_userdata)`
+pair-identity gives dedup and copy-equality for free, and the `cgo.Handle`
+registry releases entries deterministically in `free_func`.
+
+`callable_custom_*` FFI wrappers were generated but unused; a Go closure or
 method cannot be handed to GDScript as a `Callable`. Connecting a Go method
 to a signal currently requires exposing it as a bound class method and
 connecting from script.
@@ -124,9 +131,11 @@ Keystone dependency: C2, signal-connect-from-Go, and the
 `docs/overview.md`-promised "goroutines to wrap signal and callable" pattern
 all depend on this.
 
-Risk to spike first: `callable_custom_get_user_data` is listed as a missing
-engine interface function in AGENTS.md known issues on the current Godot
-build; verify whether that blocks a custom-callable implementation.
+The flagged spike never needed running: `callable_custom_get_user_data` was
+never missing from the engine. Four interface functions including it failed
+to load because the codegen loader derived snake-cased Go identifier names
+instead of the header `@name` metadata; change `fix-ffi-loader-names`
+corrected the loader and the functions load by their published names.
 
 ### C2. Await / coroutine bridge
 
@@ -253,7 +262,7 @@ note naming the change that shipped it.
 
 | Done | Order | Item | Why here |
 |---|---|---|---|
-| [ ] | 7 | C1 Go func -> Callable bridge (spike first) | Highest leverage; needs the encoder layer frozen from Phase 1; the availability spike starts immediately and runs in parallel with Phases 0-1 |
+| [x] | 7 | C1 Go func -> Callable bridge | Highest leverage; needs the encoder layer frozen from Phase 1; the availability "spike risk" turned out to be the loader name bug fixed by `fix-ffi-loader-names` |
 
 ### Phase 3 - cash the blocked chips
 

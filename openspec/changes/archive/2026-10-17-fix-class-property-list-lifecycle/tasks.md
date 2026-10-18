@@ -41,6 +41,24 @@
 - Gate evidence (two-stage `make test`): green run 1417 PASSES / 0 FAILURES (1386 baseline + 31 new asserts), editor stage PASS, no ObjectDB leaks; teardown check `zero/one/many-query` clean, churn `arrays_outstanding` balanced, `heap_delta` 0.
 - Mutation checks (one-off, both reverted, restore `diff`-proven identical): list-wipe-after-first-query → persistence gate fails (8 failures, `first/second.has()` × 4 properties); release-callback no-op → churn gate fails (imbalance +4000 = exact batch) while the Go-heap band stayed +2 KiB of 250 KiB, confirming counters are the load-bearing release gate for C memory.
 
+## Review round (post-archive addendum, PR #167)
+
+Review verdict: *with fixes* — 2 Important, 6 Minor. Review comment: `https://github.com/godot-go/godot-go/pull/167#issuecomment-6246660864`.
+
+Resolved in `fix: reseat churn verify and close property-list review gaps` (gate: 1425 PASSES / 0 FAILURES, editor stage green, no orphaned StringNames):
+
+- [x] Important 1: `test_instance_churn_verify()` had been stranded inside the new `test_property_list_churn` fixture by the insertion anchor; moved back to the end of `test_instance_churn` so the #152 gate stays owned by its own fixture.
+- [x] Important 2: `docs/overview.md` now states in changed-from framing that `[]PropertyDescriptor` replaces the `[]GDExtensionPropertyInfo` parameter and the removed `ClassInfo.PropertyList` field.
+- [x] Minor 2: `(*GDExtensionPropertyInfo).Destroy()` documented creator-only — never callable on class-property-list elements, whose cells belong to `ClassInfo.Destroy`.
+- [x] Minor 3: new `property_hint_string` descriptor with non-empty `HintString: "review-carrier"`, content-asserted in both persistence reads — the "Late query still reports the hint string" scenario now has a positive end-to-end check (+8 asserts).
+
+Deferred polish (no behavior change; candidates for a future `chore:` change or drive-by cleanup):
+
+- [ ] `allocPropertyArray` returns `(*C.GDExtensionPropertyInfo, []C.GDExtensionPropertyInfo)` but both callers discard the slice — trim to a pointer return; the slice is an internal fill detail.
+- [ ] `classPropertySpec.destroy()` re-fetches both variant destructors on every call, including fully-nil idempotent teardowns (3 engine FFI calls per spec) — cache them lazily.
+- [ ] `cellSize` is a generic package-level name in `pkg/core`, and `unsafe.Sizeof(uintptr(0))` reads more intentionally as pointer-cell size.
+- [ ] `RunPropertyCacheTeardownCheck` returns a bare `bool` across five distinct failure modes — return a reason string to speed up post-mortem.
+
 ## Workflow follow-up
 
 - Commit pattern per the `pull-request` skill: `docs: propose ...` (done) → implementation → `docs:` → `chore: archive ... change`; archive syncs the `class-property-list` and `native-call-pinning` deltas into `openspec/specs/`.

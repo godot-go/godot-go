@@ -41,7 +41,7 @@ type ClassInfo struct {
 	ParentPtr             *ClassInfo
 	ClassType             reflect.Type
 	InheritType           reflect.Type
-	PropertyList          []GDExtensionPropertyInfo
+	propertySpecs         []classPropertySpec // class-owned backing store for the exposed property list
 	ValidateProperty      func(*GDExtensionPropertyInfo)
 }
 
@@ -65,16 +65,14 @@ func (c *ClassInfo) String() string {
 }
 
 func (c *ClassInfo) Destroy() {
-	// Destroy StringNames in the property list only if FreePropertyList2
-	// hasn't already been called (which sets PropertyList to nil).
-	// If FreePropertyList2 was called, it already destroyed all StringNames
-	// in the property list — destroying them here would be a double-free.
-	if c.PropertyList != nil {
-		for i := range c.PropertyList {
-			c.PropertyList[i].Destroy()
-		}
-		c.PropertyList = nil
+	// The exposed-array ownership split (openspec fix-class-property-list-lifecycle):
+	// each query owns its C array (released by FreePropertyList2), the class owns
+	// the string cells and objects torn down here exactly once. No nil-check
+	// dance against query timing is needed anymore.
+	for i := range c.propertySpecs {
+		c.propertySpecs[i].destroy()
 	}
+	c.propertySpecs = nil
 
 	// Destroy signal name StringNames retained by Godot.
 	for _, sn := range c.SignalNameStringNames {
@@ -97,7 +95,7 @@ func NewClassInfo(
 	level GDExtensionInitializationLevel,
 	classType, inheritType reflect.Type,
 	parentPtr *ClassInfo,
-	propertyList []GDExtensionPropertyInfo,
+	properties []PropertyDescriptor,
 	validateProperty func(*GDExtensionPropertyInfo),
 ) *ClassInfo {
 	ret := &ClassInfo{
@@ -115,7 +113,7 @@ func NewClassInfo(
 		ParentPtr:             parentPtr,
 		ClassType:             classType,
 		InheritType:           inheritType,
-		PropertyList:          propertyList,
+		propertySpecs:         buildClassPropertySpecs(properties),
 		ValidateProperty:      validateProperty,
 	}
 	pnr.Pin(ret)

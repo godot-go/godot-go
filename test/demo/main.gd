@@ -36,6 +36,7 @@ func _ready():
 	# 	await t.create_timer(3.0).timeout
 	# test_suite(2, example)
 	test_property_hint_metadata_late(example)
+	test_property_list_persistence(example)
 	await test_main_loop_callbacks(example)
 	assert_equal(example.test_singleton_helpers(), 0)
 	await test_string_boundary_marshalling(example)
@@ -54,6 +55,7 @@ func _ready():
 	test_editor_plugin_runtime_guard(example)
 	test_instance_churn(example)
 	test_binding_release_accounting(example)
+	test_property_list_churn(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -654,6 +656,38 @@ func test_property_hint_metadata_late(example: Example):
 			assert_equal(prop_info['class_name'], &"Texture2D")
 	assert_true(seen_range)
 	assert_true(seen_texture)
+
+# Double-read gate for the list-declared custom properties (openspec
+# fix-class-property-list-lifecycle): the get_property_list callback used to
+# publish one Go-side array whose element strings were destroyed by the first
+# free_property_list2 call, wiping the list-declared properties out of every
+# later query. property_from_list and dproperty_* are reachable only through
+# the class callback, so the vanishing-list bug passed while every
+# add_property fixture above stayed green.
+func test_property_list_persistence(example: Example):
+	var first := {}
+	for prop_info in example.get_property_list():
+		first[prop_info['name']] = prop_info
+	var second := {}
+	for prop_info in example.get_property_list():
+		second[prop_info['name']] = prop_info
+	for prop_name in ["property_from_list", "dproperty_0", "dproperty_1", "dproperty_2", "property_hint_string"]:
+		assert_true(first.has(prop_name))
+		assert_true(second.has(prop_name))
+		if first.has(prop_name) and second.has(prop_name):
+			assert_equal(second[prop_name]['type'], first[prop_name]['type'])
+			assert_equal(second[prop_name]['hint'], first[prop_name]['hint'])
+			assert_equal(second[prop_name]['hint_string'], first[prop_name]['hint_string'])
+			assert_equal(second[prop_name]['usage'], first[prop_name]['usage'])
+	if first.has("property_from_list"):
+		assert_equal(first["property_from_list"]['type'], TYPE_VECTOR3)
+		assert_equal(first["property_from_list"]['usage'], PROPERTY_USAGE_DEFAULT)
+		assert_equal(first["property_from_list"]['class_name'], &"Example")
+	if first.has("property_hint_string"):
+		# Positive content check: a non-empty hint string must round-trip
+		# through the class callback in both reads.
+		assert_equal(first["property_hint_string"]['hint_string'], "review-carrier")
+		assert_equal(second["property_hint_string"]['hint_string'], "review-carrier")
 
 # Main-loop callback tests (openspec: support-main-loop-callbacks).
 # The startup hook fires during engine startup (Main::start calls
@@ -1559,6 +1593,24 @@ func test_instance_churn(example: Example) -> void:
 		example.test_instance_churn_capture(r)
 	assert_equal(example.test_instance_churn_end(2, 25000), 1)
 	assert_equal(example.test_instance_churn_verify(), 1)
+
+# Query/release retention gate for the per-query property arrays (openspec
+# fix-class-property-list-lifecycle): thousands of get_property_list cycles
+# must leave no query array outstanding (each released by the paired
+# free_property_list2) and must retain no Go heap. The arrays are C memory,
+# so the release accounting itself is asserted on the Go side. The teardown
+# check in the same fixture drives cache teardown after zero, one, and many
+# query cycles.
+func test_property_list_churn(example: Example) -> void:
+	assert_equal(example.test_prop_list_teardown_check(), 1)
+	for i in 200:
+		example.get_property_list()
+	assert_equal(example.test_prop_list_churn_begin(), 1)
+	var last_size := 0
+	for i in 4000:
+		last_size = example.get_property_list().size()
+	assert_true(last_size > 0)
+	assert_equal(example.test_prop_list_churn_end(4000), 1)
 
 func test_binding_release_accounting(example: Example) -> void:
 	example.test_binding_churn_begin()

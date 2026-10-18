@@ -555,7 +555,7 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 
 func ClassDBRegisterClass[T Object](
 	constructor GDClassGoConstructorFromOwner,
-	propertyList []GDExtensionPropertyInfo,
+	propertyList []PropertyDescriptor,
 	validateProperty func(*GDExtensionPropertyInfo),
 	bindMethodsFunc func(t T),
 ) {

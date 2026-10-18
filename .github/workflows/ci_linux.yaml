@@ -117,7 +117,7 @@ jobs:
     name: "build on alpine (musl)"
     runs-on: ubuntu-latest
     container:
-      image: golang:1.26.5-alpine
+      image: golang:1.27-alpine
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4

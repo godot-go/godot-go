@@ -72,7 +72,9 @@ make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO' EXTRA_CGO_LDFLAGS='-lex
 
 ### D4: Build-only Alpine CI job in `ci_linux.yaml`
 
-New job `build_alpine`: `runs-on: ubuntu-latest`, `container: golang:<version>-alpine` (same Go version as the existing job), steps: `apk add --no-cache build-base`, `make generate`, `make build`. No Godot download and no `make test`: `make generate` consumes the committed `godot_headers/`, so the pipeline is fully headless, and there is no Alpine Godot runtime harness. `paths` filters gain `.github/workflows/ci_linux.yaml` already covers itself; no new filter needed.
+New job `build_alpine`: `runs-on: ubuntu-latest`, `container: golang:1.27-alpine`, steps: `apk add --no-cache build-base`, `make generate`, `make build`. No Godot download and no `make test`: `make generate` consumes the committed `godot_headers/`, so the pipeline is fully headless, and there is no Alpine Godot runtime harness. `paths` filters gain `.github/workflows/ci_linux.yaml` already covers itself; no new filter needed.
+
+- Image pin: `go.mod` requires `go >= 1.27.0`, and official `golang:*` images set `GOTOOLCHAIN=local`, so the container must run the 1.27 line directly. (The ubuntu job's `setup-go` "1.26.5" does not constrain what actually runs: setup-go resolves `go.mod` toolchain directives itself; first CI run proved `golang:1.26.5-alpine` fails at `go generate`.)
 
 - Alternative: full test job with an Alpine Godot build — out of scope (see proposal Non-goals; would mirror `ci_build_godot_linux.yaml` under musl).
 

@@ -19,8 +19,8 @@
 
 ## 4. Verification
 
-- [ ] 4.1 Run `make generate`, `make build`, and `make test` on a clean tree and verify all three succeed with no new warnings.
-- [ ] 4.2 Run `openspec validate fix-vararg-return-buffer --strict` and verify it passes.
+- [x] 4.1 Run `make generate`, `make build`, and `make test` on a clean tree and verify all three succeed with no new warnings.
+- [x] 4.2 Run `openspec validate fix-vararg-return-buffer --strict` and verify it passes.
 
 ## Workflow follow-up
 

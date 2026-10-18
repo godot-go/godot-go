@@ -14,7 +14,7 @@
 ## 3. Alpine CI coverage
 
 - [x] 3.1 Add the `build_alpine` job to `.github/workflows/ci_linux.yaml` per design D4 (container `golang:1.27-alpine` per the go.mod `go >= 1.27.0` requirement — the nominal "existing job version" 1.26.5 fails under the image's `GOTOOLCHAIN=local`, `apk add --no-cache build-base`, `make generate`, `make build`; compile-only), and verify on PR CI: run 2 (job 117720678296) passed toolchain + generate + default build steps on musl
-- [ ] 3.2 Extend the `build_alpine` verification with the opt-in path. Revised after reality check: Alpine ships no `libexecinfo` package in any repo and neither `libunwind` nor `gcompat` provides the backtrace symbols (design D3), so the step compiles a minimal execinfo-ABI shim in the job and runs `make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/tmp/execinfo-shim' EXTRA_CGO_LDFLAGS='-L/tmp/execinfo-shim -lexecinfo'`; locally verified on the glibc host against the same shim (`DT_NEEDED libexecinfo.so` recorded); CI confirmation pending
+- [x] 3.2 Extend the `build_alpine` verification with the opt-in path. Revised after reality check: Alpine ships no `libexecinfo` package in any repo and neither `libunwind` nor `gcompat` provides the backtrace symbols (design D3), so the step compiles a minimal execinfo-ABI shim in the job and runs `make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/tmp/execinfo-shim' EXTRA_CGO_LDFLAGS='-L/tmp/execinfo-shim -lexecinfo'`; locally verified on the glibc host against the same shim (`DT_NEEDED libexecinfo.so` recorded); CI-verified on run 3 (job 117725500631: shim compiled on musl, define + `-L`/`-lexecinfo` reached `gcc`, opt-in `make build` linked, job success)
 
 ## 4. Integration checks
 

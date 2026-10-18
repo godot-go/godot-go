@@ -131,10 +131,27 @@ jobs:
       - name: Build (musl default, C backtrace compiled out)
         run: make build
 
-      - name: Build (musl opt-in C backtrace via libexecinfo)
+      - name: Build (musl opt-in C backtrace via external execinfo implementation)
         run: |
-          apk add --no-cache libexecinfo-dev
-          make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO' EXTRA_CGO_LDFLAGS='-lexecinfo'
+          # Alpine repos ship no installable execinfo implementation (verified
+          # 2026-10: no libexecinfo package in main/community/testing; libunwind
+          # and gcompat export no backtrace symbols), so exercise the opt-in
+          # path against a minimal execinfo-ABI shim -- the same contract any
+          # real external library must satisfy.
+          mkdir -p /tmp/execinfo-shim
+          printf '%s\n' \
+            '#ifndef GODOTGO_EXECINFO_SHIM_H' \
+            '#define GODOTGO_EXECINFO_SHIM_H' \
+            'int backtrace(void **buffer, int size);' \
+            'char **backtrace_symbols(void *const *buffer, int size);' \
+            '#endif' > /tmp/execinfo-shim/execinfo.h
+          printf '%s\n' \
+            '#include "execinfo.h"' \
+            '#include <stdlib.h>' \
+            'int backtrace(void **buffer, int size) { (void)buffer; (void)size; return 0; }' \
+            'char **backtrace_symbols(void *const *buffer, int size) { (void)buffer; (void)size; return calloc(1, sizeof(char *)); }' > /tmp/execinfo-shim/shim.c
+          cc -shared -fPIC -o /tmp/execinfo-shim/libexecinfo.so /tmp/execinfo-shim/shim.c
+          make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/tmp/execinfo-shim' EXTRA_CGO_LDFLAGS='-L/tmp/execinfo-shim -lexecinfo'
 
       - name: List Artifacts Directory
         run: ls -alh test/demo/lib

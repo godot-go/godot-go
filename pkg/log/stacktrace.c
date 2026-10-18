@@ -4,8 +4,8 @@
 #include <windows.h>
 #include <dbghelp.h>
 #elif defined(GODOT_GO_ENABLE_EXECINFO)
-/* User-forced path: link an external execinfo implementation,
-   e.g. libexecinfo-dev on Alpine/musl. See README. */
+/* User-forced path: link an external execinfo implementation
+   (header + backtrace/backtrace_symbols), e.g. on Alpine/musl. See README. */
 #include <execinfo.h>
 #define GODOT_GO_HAVE_EXECINFO 1
 #elif defined(__has_include)

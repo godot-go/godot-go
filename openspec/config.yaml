@@ -10,6 +10,8 @@ rules:
     - Always include a "Non-goals" section
   tasks:
     - Break tasks into chunks of max 2 hours
+  example:
+    - Generate sample code demonstrating the bug fix or new feature. This is mean as a layman's document to quickly understand the core purpose at a practical level.
   retrospective:
     - Generate retrospective.md after completing a debugging/investigation-heavy change
     - "Document the investigation journey: what was tried, what worked, what didn't"

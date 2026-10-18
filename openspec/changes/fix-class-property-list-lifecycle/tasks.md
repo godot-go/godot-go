@@ -43,5 +43,5 @@
 
 ## Workflow follow-up
 
-- Commit pattern per the `opening-pull-requests` skill: `docs: propose ...` (done) → implementation → `docs:` → `chore: archive ... change`; archive syncs the `class-property-list` and `native-call-pinning` deltas into `openspec/specs/`.
+- Commit pattern per the `pull-request` skill: `docs: propose ...` (done) → implementation → `docs:` → `chore: archive ... change`; archive syncs the `class-property-list` and `native-call-pinning` deltas into `openspec/specs/`.
 - PR body = archived `proposal.md` + `---` + `design.md`; no issue exists yet — if one is filed for the vanishing-properties bug, append `Closes #NNN`.

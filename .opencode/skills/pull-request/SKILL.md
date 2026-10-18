@@ -1,5 +1,5 @@
 ---
-name: opening-pull-requests
+name: pull-request
 description: Use when opening or updating a GitHub pull request in this repository — titling a PR, composing its body from OpenSpec artifacts, choosing the base branch for stacked work, linking an issue, or force-pushing a rebased stack branch. Supersedes generic PR-body templates for this repo.
 metadata:
   author: godot-go

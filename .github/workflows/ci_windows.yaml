@@ -33,7 +33,7 @@ jobs:
       GODOT: ./Godot_v4.7-stable_win64.exe
     timeout-minutes: 20
     steps:
-      - name: Add Go 1.26.5 To System Path
+      - name: Add Go 1.27 To System Path
         uses: actions/setup-go@v5
         with:
           go-version: '1.27'

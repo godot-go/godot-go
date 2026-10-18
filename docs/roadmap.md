@@ -193,6 +193,21 @@ Scope: cheap, standalone addition to `pkg/core` init plumbing.
 
 ### C4. Editor plugin ergonomics
 
+**DONE** — implemented by change `support-editor-plugins` (2026-10-17):
+`core.AddEditorPlugin[T](inst)` / `core.RemoveEditorPlugin[T](inst)` mirror
+godot-cpp `EditorPlugins::add_by_type<T>()` / `remove_by_type<T>()`. A
+mutex-guarded ordered class-name registry rejects duplicate adds and unknown
+removals before anything crosses FFI; outside an editor session both refuse
+with a recoverable panic (absent `EditorInterface` singleton — TOOLS-enabled
+builds dispatch the EDITOR init level even in game runs, so extensions gate
+on `Engine.is_editor_hint`). The registry auto-unloads at editor-level
+deinitialization after the user terminator, mirroring
+`GDExtensionBinding::deinitialize_level`. `make test` grew a second,
+headless editor stage (`--editor --quit-after 12`) with its own gate: a
+fixture plugin proves the engine instantiates Go plugin classes, a C1
+composition probe crosses `AddToolMenuItem` with a Go `Callable`, and the
+run must end leak- and orphan-clean. Original item:
+
 The EDITOR init level is registerable, but there is no
 `EditorPlugins::add_by_type<T>()`-equivalent registration or auto-unload
 lifecycle. Bigger, and the test demo exercises runtime only.
@@ -293,7 +308,7 @@ note naming the change that shipped it.
 |---|---|---|---|
 | [x] | 8 | C2 await / goroutine <-> signal bridge | Hard-blocked by C1; delivers the pattern `docs/overview.md` already promises |
 | [x] | 9 | B2 static methods (DONE); static variables ABI-blocked | Wants settled marshalling for signatures; the `cmd/generate` "static instantiation" refactor notes are call-side and out of scope |
-| [ ] | 10 | C4 editor plugin ergonomics | Soft-depends on C1 and C3 |
+| [x] | 10 | C4 editor plugin ergonomics (DONE) | Soft-depends on C1 and C3 |
 
 ### Phase 4 - volume work against stable ground
 
@@ -326,7 +341,7 @@ gantt
     section Phase 3 blocked chips
     C2 await and signal bridge         :done, c2, 2026-11-30, 2026-12-11
     B2 static methods                  :done, b2, 2026-12-07, 2026-12-18
-    C4 editor plugin ergonomics        :c4, 2026-12-14, 2026-12-24
+    C4 editor plugin ergonomics        :done, c4, 2026-12-14, 2026-12-24
     section Phase 4 volume work
     D1 fatal-panic policy              :d1, 2026-12-28, 2026-12-31
     B3 category-B virtual catalog      :b3, 2027-01-04, 2027-01-15

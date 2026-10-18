@@ -19,5 +19,8 @@ gdclass registered class=Example parent_type=Control
 
 [92m ******** PASSED ******** [39m[0m
 
+[33mWARN[0m	pkg/example.go:419	GODOTGO_MAIN_LOOP_SHUTDOWN
+github.com/godot-go/godot-go/test/pkg.LogMainLoopShutdownMarker
+
 ERROR: some shutdown failure
 

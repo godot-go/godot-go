@@ -51,6 +51,7 @@ func _ready():
 	await test_signal_await_timer(example)
 	await test_signal_await_shutdown_pending(example)
 	test_static_methods(example)
+	test_editor_plugin_runtime_guard(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1527,3 +1528,11 @@ func test_static_methods(example: Example) -> void:
 	# line is the liveness proof.
 	print("static-via-instance observation: %d" % example.static_instance_call_observation())
 	assert_equal(Example.static_add(10, 10), 20)
+
+func test_editor_plugin_runtime_guard(example: Example) -> void:
+	# Editor plugin operations outside an editor build must reject with a
+	# recoverable panic (openspec: support-editor-plugins): the engine-side
+	# registration is a silent no-op in runtime builds, so silently
+	# pretending to succeed is the failure mode guarded against. The
+	# recoverable PANIC logs this provokes are announced by the Go probe.
+	assert_equal(example.editor_plugin_rejected_outside_editor(), 1)

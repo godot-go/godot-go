@@ -1,0 +1,15 @@
+Godot Engine v4.8.dev.custom_build.5ec4857b3 - https://godotengine.org
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)" (advanced).
+CORE API HASH: 1457076171
+EDITOR API HASH: 683301128
+EditorSettings: Load OK!
+[ DONE ] first_scan_filesystem
+Loading resource: res://main.tscn
+WARN	pkg/editor_plugin_tests.go:43	GODOTGO_EDITOR_PLUGIN_ENTERED
+github.com/godot-go/godot-go/test/pkg.(*ExampleEditorPlugin).V_ExampleEditorPlugin_EnterTree
+[ DONE ] loading_editor_layout
+WARN	pkg/example.go:419	GODOTGO_MAIN_LOOP_SHUTDOWN
+github.com/godot-go/godot-go/test/pkg.LogMainLoopShutdownMarker
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"

@@ -1,0 +1,10 @@
+Godot Engine v4.8.dev.custom_build.5ec4857b3 - https://godotengine.org
+CORE API HASH: 1457076171
+EDITOR API HASH: 683301128
+[ DONE ] first_scan_filesystem
+WARN	pkg/editor_plugin_tests.go:43	GODOTGO_EDITOR_PLUGIN_ENTERED
+[ DONE ] loading_editor_layout
+WARN	pkg/example.go:419	GODOTGO_MAIN_LOOP_SHUTDOWN
+ObjectDB instances leaked at exit (run with --verbose for details).
+Leaked instance: ExampleEditorPlugin - Resource path:
+XR: Clearing primary interface

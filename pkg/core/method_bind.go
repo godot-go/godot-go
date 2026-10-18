@@ -64,6 +64,13 @@ type GoMethodMetadata struct {
 	gdeMethodNameStringName StringName
 }
 
+// IsStatic reports whether this bind carries the engine's static method
+// flag. Static binds dispatch without a receiver and tolerate the null
+// instance pointer the engine passes for them.
+func (md *GoMethodMetadata) IsStatic() bool {
+	return (md.MethodFlags & METHOD_FLAG_STATIC) == METHOD_FLAG_STATIC
+}
+
 // Destroy cleans up all StringName and String objects stored in this metadata.
 // Must be called once during class unregistration to prevent orphan StringNames.
 // IMPORTANT: Each StringName/String is copied to a local variable and pinned
@@ -120,7 +127,6 @@ func NewGoMethodMetadata(
 	methodFlags MethodFlags,
 ) *GoMethodMetadata {
 	mt := method.Type
-	fn := method.Func
 	recv := mt.In(0)
 	if recv.Kind() == reflect.Pointer {
 		recv = recv.Elem()
@@ -137,6 +143,36 @@ func NewGoMethodMetadata(
 			zap.String("reciover", recv.Name()),
 		)
 	}
+	validateBindSignature(mt, 1, argumentNames, defaultArguments, methodFlags, className, gdMethodName)
+	return newGoMethodMetadataFromFunc(
+		method.Func, mt, 1,
+		className, gdMethodName, goMethodName, defaultArguments, methodFlags,
+	)
+}
+
+// validateBindSignature applies the engine-free bind-time gates shared by the
+// instance-method and static-function constructors. argumentBase is 1 for
+// methods (In(0) is the receiver) and 0 for package functions (every
+// parameter is a bind argument). All failures are fatal at bind time, and
+// every gate runs before any engine-dependent setup so misuse is cheap and
+// unit-testable without a running engine.
+func validateBindSignature(
+	mt reflect.Type,
+	argumentBase int,
+	argumentNames []string,
+	defaultArguments []Variant,
+	methodFlags MethodFlags,
+	className string,
+	gdMethodName string,
+) {
+	isStaticFlag := (methodFlags & METHOD_FLAG_STATIC) == METHOD_FLAG_STATIC
+	isVirtualFlag := (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL
+	if isStaticFlag && isVirtualFlag {
+		log.Panic("static methods cannot be virtual",
+			zap.String("class", className),
+			zap.String("method", gdMethodName),
+		)
+	}
 	isVariadicTyped := mt.IsVariadic()
 	isVariadicFlaged := (methodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
 	if isVariadicTyped != isVariadicFlaged {
@@ -149,7 +185,7 @@ func NewGoMethodMetadata(
 	// preconditions are cheap and testable. The trailing-default fill maps
 	// DefaultArguments[k] to parameter (argumentCount - defaults + k), which
 	// requires defaults <= argumentCount; reject excess rather than misalign.
-	argumentCount := mt.NumIn() - 1
+	argumentCount := mt.NumIn() - argumentBase
 	if len(argumentNames) > argumentCount {
 		log.Panic(`Method definition has more arguments than the actual method.`,
 			zap.String("method", gdMethodName),
@@ -181,6 +217,58 @@ func NewGoMethodMetadata(
 			zap.String("method", gdMethodName),
 		)
 	}
+}
+
+// newGoMethodMetadataStatic builds metadata for a Go package function bound
+// as a class static method. The function is the callable -- there is no
+// receiver -- so reflection runs with argument base 0 and the receiver-name
+// check of the method constructor does not apply. The Go name used in logs
+// is derived from the function symbol.
+func newGoMethodMetadataStatic(
+	fn any,
+	className string,
+	gdMethodName string,
+	argumentNames []string,
+	defaultArguments []Variant,
+	methodFlags MethodFlags,
+) *GoMethodMetadata {
+	fnValue := reflect.ValueOf(fn)
+	if !fnValue.IsValid() || fnValue.Kind() != reflect.Func {
+		log.Panic(fmt.Sprintf(
+			"static bind %s.%s requires a Go function, got %v", className, gdMethodName, fn),
+			zap.String("class", className),
+			zap.String("method", gdMethodName),
+		)
+	}
+	mt := fnValue.Type()
+	validateBindSignature(mt, 0, argumentNames, defaultArguments, methodFlags, className, gdMethodName)
+	goMethodName := gdMethodName
+	if fnName := runtime.FuncForPC(fnValue.Pointer()); fnName != nil {
+		goMethodName = fnName.Name()
+	}
+	return newGoMethodMetadataFromFunc(
+		fnValue, mt, 0,
+		className, gdMethodName, goMethodName, defaultArguments, methodFlags,
+	)
+}
+
+// newGoMethodMetadataFromFunc is the shared metadata builder behind both
+// constructors. argumentBase is 1 when In(0) is a receiver and 0 for plain
+// functions; validation has already run in the calling constructor.
+func newGoMethodMetadataFromFunc(
+	fn reflect.Value,
+	mt reflect.Type,
+	argumentBase int,
+	className string,
+	gdMethodName string,
+	goMethodName string,
+	defaultArguments []Variant,
+	methodFlags MethodFlags,
+) *GoMethodMetadata {
+	isVirtual := (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL
+	isVariadicFlaged := (methodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
+	argumentCount := mt.NumIn() - argumentBase
+	returnCount := mt.NumOut()
 	var (
 		goReturnType       reflect.Type
 		returnStyle        ReturnStyle
@@ -259,7 +347,7 @@ func NewGoMethodMetadata(
 	argPropClassNameStringNames := make([]StringName, argumentCount)
 	argPropHintStrings := make([]String, argumentCount)
 	for i := 0; i < argumentCount; i++ {
-		t := mt.In(i + 1)
+		t := mt.In(i + argumentBase)
 		goArgumentTypes[i] = t
 		variantTypes[i] = ReflectTypeToGDExtensionVariantType(t)
 		argPropClassNameStringNames[i] = NewStringNameWithLatin1Chars(
@@ -394,9 +482,15 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 	callArgs := md.fillCallArgs(gdArgs)
 	exepctedTypes := md.GoArgumentTypes
 	if md.IsVariadic {
-		args := []reflect.Value{
-			reflect.ValueOf(inst),
-			reflect.ValueOf(gdArgs),
+		var args []reflect.Value
+		if md.IsStatic() {
+			// A static variadic bind takes only the collected Variants.
+			args = []reflect.Value{reflect.ValueOf(gdArgs)}
+		} else {
+			args = []reflect.Value{
+				reflect.ValueOf(inst),
+				reflect.ValueOf(gdArgs),
+			}
 		}
 		ret := md.Func.CallSlice(args)
 		log.Info("Call Variadic",
@@ -425,7 +519,7 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 		}
 		return NewVariantNil(), nil
 	} else {
-		args, err := reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst, callArgs, exepctedTypes)
+		args, err := reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(inst, callArgs, exepctedTypes, !md.IsStatic())
 		if err != nil {
 			// The decoder already released any owned arguments it decoded
 			// before the failure, so there is nothing left to unwind here.
@@ -453,7 +547,7 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 			v := Variant{}
 			ptr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(v.NativePtr()))
 			pinner.Pin(ptr)
-			GDExtensionVariantPtrFromReflectValue(ret[0], ptr, !isPtrcallBorrowEcho(ret[0], args))
+			GDExtensionVariantPtrFromReflectValue(ret[0], ptr, !isPtrcallBorrowEcho(ret[0], args, !md.IsStatic()))
 			retVariant = v
 		default:
 			log.Panic("unexpected MethodBindReturnStyle",
@@ -475,7 +569,7 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 // Ptrcall is called by GDScript to call into Go
 func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypePtr, rReturn GDExtensionUninitializedTypePtr) {
 	exepctedArgTypes := md.GoArgumentTypes
-	args := reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst, gdArgs, exepctedArgTypes)
+	args := reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst, gdArgs, exepctedArgTypes, !md.IsStatic())
 	ret := md.Func.Call(args)
 	log.Info("Ptrcall",
 		zap.String("bind", md.String()),
@@ -492,7 +586,7 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 		log.Warn("second return value ignored")
 		fallthrough
 	case ValueReturnStyle:
-		GDExtensionTypePtrFromReflectValue(ret[0], rReturn, !isPtrcallBorrowEcho(ret[0], args))
+		GDExtensionTypePtrFromReflectValue(ret[0], rReturn, !isPtrcallBorrowEcho(ret[0], args, !md.IsStatic()))
 	default:
 		log.Panic("unexpected MethodBindReturnStyle",
 			zap.Any("value", ret),
@@ -509,6 +603,9 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 // arguments are borrows holding no refcount of their own, so echoing one back
 // must not release a reference through either return path.
 //
+// hasReceiver is true when args[0] carries the dispatch receiver and must be
+// skipped; static-bind slices hold only parameters.
+//
 // The comparison runs on the wrapped dynamic values (args[i].Interface() and
 // ret.Interface()), not on the reflect.Value wrappers themselves. If
 // reflect.DeepEqual were applied to the two reflect.Values, it would compare
@@ -516,7 +613,7 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 // those differ between a decoded argument slot and a reflected return value
 // even when both wrap identical bytes. Comparing the wrappers would therefore
 // never detect an echo, and the borrow would be wrongly destroyed.
-func isPtrcallBorrowEcho(ret reflect.Value, args []reflect.Value) bool {
+func isPtrcallBorrowEcho(ret reflect.Value, args []reflect.Value, hasReceiver bool) bool {
 	// Only the types whose return encoding destroys the source (see
 	// GDExtensionTypePtrFromReflectValue and GDExtensionVariantPtrFromReflectValue)
 	// can be borrow echoes.
@@ -530,7 +627,11 @@ func isPtrcallBorrowEcho(ret reflect.Value, args []reflect.Value) bool {
 	default:
 		return false
 	}
-	for i := 1; i < len(args); i++ {
+	start := 0
+	if hasReceiver {
+		start = 1
+	}
+	for i := start; i < len(args); i++ {
 		if args[i].Type() == ret.Type() && reflect.DeepEqual(args[i].Interface(), ret.Interface()) {
 			return true
 		}

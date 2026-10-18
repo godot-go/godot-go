@@ -23,5 +23,5 @@ import (
 // The seam adds no policy of its own. The callback's decision about what to write
 // into the engine's error slot is exercised separately.
 func DecodeVarcallArgs(receiver GDClass, args []Variant, decls []reflect.Type) ([]reflect.Value, error) {
-	return reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(receiver, args, decls)
+	return reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(receiver, args, decls, true)
 }

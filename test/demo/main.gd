@@ -50,6 +50,7 @@ func _ready():
 	await test_signal_await_freed(example)
 	await test_signal_await_timer(example)
 	await test_signal_await_shutdown_pending(example)
+	test_static_methods(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1485,3 +1486,44 @@ func test_signal_await_shutdown_pending(example: Example) -> void:
 	example.await_shutdown_arm(target)
 	# No probe: teardown must drain the subscription; the suite gate
 	# (banner, zero failures, no leaks) judges the run.
+
+func test_static_methods(example: Example) -> void:
+	# Bind-side static methods (openspec: support-static-methods).
+	# Typed GDScript call through the class path: ptrcall fast path, engine
+	# passes a null instance pointer and the bind dispatches without receiver.
+	assert_equal(Example.static_add(2, 3), 5)
+	# Default-filled calls travel the varcall channel: the trailing bonus
+	# parameter is filled from the registered default.
+	assert_equal(Example.static_with_default(5), 15)
+	assert_equal(Example.static_with_default(5, 100), 105)
+	# Callable-routed and Variant-typed invocations take the varcall path.
+	var static_callable: Callable = Example.static_add
+	assert_equal(static_callable.call(40, 2), 42)
+	var boxed: Variant = 20
+	assert_equal(Example.static_add(boxed, 22), 42)
+	# Variadic static collects the raw Variants with no receiver prepended.
+	assert_equal(Example.static_sum_varargs(1, 2, 3, 4), 10)
+	assert_equal(Example.static_sum_varargs(), 0)
+	# Object argument and object return with no instance anywhere: the
+	# standard decoding and ownership paths serve static binds unchanged.
+	assert_equal(Example.static_object_class(example), "Example")
+	assert_equal(Example.static_echo_node(example), example)
+	# ClassDB introspection sees the static on the class, no instance needed.
+	assert_true(ClassDB.class_has_method(&"Example", &"static_add", true))
+	# Wrong arity on the static is rejected through the engine's call-error
+	# channel without dispatching the Go body, and a correctly-shaped call on
+	# the same bind works immediately after. Driven from Go because a
+	# GDScript-level bad call aborts this function instead of letting the
+	# rejection be observed (the engine still prints its own error line).
+	assert_equal(example.static_bad_arity_rejected(), 1)
+	# Bind-time misuse fails fatally and is recoverable; the rejected
+	# duplicate leaves the original registration answering.
+	assert_equal(example.static_duplicate_bind_recovered(), 1)
+	assert_equal(Example.static_add(1, 2), 3)
+	assert_equal(example.static_non_callable_recovered(), 1)
+	# Observation only (no legality asserted): the static invoked on the
+	# instance's generic Object.call channel, driven from Go so no script
+	# stack can abort on it. Whatever code prints, the assertion after this
+	# line is the liveness proof.
+	print("static-via-instance observation: %d" % example.static_instance_call_observation())
+	assert_equal(Example.static_add(10, 10), 20)

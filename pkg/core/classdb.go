@@ -179,10 +179,21 @@ func ClassDBBindMethod[T GDClass](
 	classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues)
 }
 
-// TODO: golang does not have static methods
-// func ClassDBBindMethodStatic(inst GDClass, goMethodName string, gdMethodName string, argNames []string, defaultValues []Variant) *MethodBindImpl {
-// 	return classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues)
-// }
+// ClassDBBindStaticMethod binds a Go package function as a static method of
+// T's registered class. inst is used only to resolve the class name; the
+// function is registered with METHOD_FLAG_STATIC, so GDScript calls it
+// through the class path (MyClass.some_static(...)) with no instance, and
+// the engine dispatches it with a null instance pointer. fn must be a Go
+// function; its parameters (no receiver) become the method arguments.
+func ClassDBBindStaticMethod[T GDClass](
+	inst T,
+	gdMethodName string,
+	fn any,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	classDBBindStaticMethod(inst, gdMethodName, METHOD_FLAG_STATIC, fn, argNames, defaultValues)
+}
 
 func ClassDBBindMethodVirtual[T GDClass](
 	inst T,
@@ -266,6 +277,43 @@ func ClassDBBindMethodVarargs[T GDClass](
 	classDBBindMethod(inst, goMethodName, gdMethodName, METHOD_FLAG_VARARG, argNames, defaultValues)
 }
 
+// ensureMethodNameAvailable is the pre-allocation duplicate guard: it
+// resolves the class registration and refuses a gdMethodName that is already
+// taken by a method or virtual bind. Both public bind paths call it before
+// constructing any engine-dependent metadata, so a rejected bind allocates
+// nothing to leak; classDBRegisterMethod keeps its own guards as the
+// authoritative last check before touching the engine.
+func ensureMethodNameAvailable(className string, gdMethodName string, goMethodName string) {
+	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
+	if !ok {
+		log.Panic("Class doesn't exist.", zap.String("class", className))
+		return
+	}
+	if err := ci.HasError(); err != nil {
+		log.Panic("ClassInfo not valid",
+			zap.String("class", className),
+			zap.Error(err),
+			zap.String("go_name", goMethodName),
+			zap.String("gd_name", gdMethodName),
+		)
+		return
+	}
+	if _, ok := ci.MethodMap[gdMethodName]; ok {
+		log.Panic("Binding duplicate method.",
+			zap.String("go_name", goMethodName),
+			zap.String("gd_name", gdMethodName),
+		)
+		return
+	}
+	if _, ok := ci.VirtualMethodMap[gdMethodName]; ok {
+		log.Panic("Method already bound as virtual.",
+			zap.String("go_name", goMethodName),
+			zap.String("gd_name", gdMethodName),
+		)
+		return
+	}
+}
+
 func classDBBindMethod[T GDClass](
 	inst T,
 	goMethodName string,
@@ -320,6 +368,9 @@ func classDBBindMethod[T GDClass](
 	log.Debug("method found",
 		zap.Reflect("method", m),
 	)
+	// Reject duplicate names before any engine-dependent metadata is
+	// allocated: a refused bind must leak nothing (StringNames included).
+	ensureMethodNameAvailable(className, gdMethodName, goMethodName)
 	md := NewGoMethodMetadata(m, className, gdMethodName, goMethodName, argNames, defaultValues, methodFlags)
 	if md.IsVirtual {
 		if !strings.HasPrefix(goMethodName, "V_") {
@@ -330,11 +381,46 @@ func classDBBindMethod[T GDClass](
 			log.Panic(`method name cannot have a prefix of "V_".`)
 		}
 	}
-	cmi := NewGDExtensionClassMethodInfoFromMethodBind(md)
-	bi := &MethodBindAndClassMethodInfo{
-		GoMethodMetadata: md,
-		ClassMethodInfo:  cmi,
+	classDBRegisterMethod(md, goMethodName)
+}
+
+// classDBBindStaticMethod is the internal path behind ClassDBBindStaticMethod.
+// Unlike classDBBindMethod there is no method-name resolution step: the
+// callable is the package function itself, reflected without a receiver.
+func classDBBindStaticMethod[T GDClass](
+	inst T,
+	gdMethodName string,
+	methodFlags MethodFlags,
+	fn any,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	className := inst.GetClassName()
+	log.Debug("classDBBindStaticMethod called",
+		zap.Any("inst", inst),
+		zap.String("gd_name", gdMethodName),
+		zap.Any("flags", methodFlags),
+		zap.Any("class", className),
+	)
+	// A variadic package function implies the engine's vararg flag; deriving
+	// it from the function's own signature keeps the flag/function alignment
+	// gate in validateBindSignature unfalsifiable by callers.
+	// Reject duplicate names before any engine-dependent metadata is
+	// allocated: a refused bind must leak nothing (StringNames included).
+	ensureMethodNameAvailable(className, gdMethodName, "")
+	if fv := reflect.ValueOf(fn); fv.IsValid() && fv.Kind() == reflect.Func && fv.Type().IsVariadic() {
+		methodFlags |= METHOD_FLAG_VARARG
 	}
+	md := newGoMethodMetadataStatic(fn, className, gdMethodName, argNames, defaultValues, methodFlags)
+	classDBRegisterMethod(md, md.GoMethodName)
+}
+
+// classDBRegisterMethod is the shared registration tail for every class
+// method bind (instance, virtual, static): build the class method info,
+// reject duplicate names in the per-class registries, record the bind, and
+// hand it to the engine under the class name StringName.
+func classDBRegisterMethod(md *GoMethodMetadata, goMethodName string) {
+	className := md.ClassName
 	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
 	if !ok {
 		log.Panic("Class doesn't exist.", zap.String("class", className))
@@ -345,41 +431,46 @@ func classDBBindMethod[T GDClass](
 			zap.String("class", className),
 			zap.Error(err),
 			zap.String("go_name", goMethodName),
-			zap.String("gd_name", gdMethodName),
+			zap.String("gd_name", md.GdMethodName),
 		)
 		return
 	}
-	if _, ok = ci.MethodMap[gdMethodName]; ok {
+	if _, ok = ci.MethodMap[md.GdMethodName]; ok {
 		log.Panic("Binding duplicate method.",
 			zap.String("go_name", goMethodName),
-			zap.String("gd_name", gdMethodName),
+			zap.String("gd_name", md.GdMethodName),
 		)
 		return
 	}
-	if _, ok = ci.VirtualMethodMap[gdMethodName]; ok {
+	if _, ok = ci.VirtualMethodMap[md.GdMethodName]; ok {
 		log.Panic("Method already bound as virtual.",
 			zap.String("go_name", goMethodName),
-			zap.String("gd_name", gdMethodName),
+			zap.String("gd_name", md.GdMethodName),
 		)
 		return
 	}
-	hasVarargs := (methodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
+	cmi := NewGDExtensionClassMethodInfoFromMethodBind(md)
+	bi := &MethodBindAndClassMethodInfo{
+		GoMethodMetadata: md,
+		ClassMethodInfo:  cmi,
+	}
+	hasVarargs := (md.MethodFlags & METHOD_FLAG_VARARG) == METHOD_FLAG_VARARG
 	// keep track of the method
-	if (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
-		ci.VirtualMethodMap[gdMethodName] = bi
+	if (md.MethodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL {
+		ci.VirtualMethodMap[md.GdMethodName] = bi
 		log.Info("register class virtual method",
 			zap.String("class", className),
 			zap.String("go_name", goMethodName),
-			zap.String("gd_name", gdMethodName),
+			zap.String("gd_name", md.GdMethodName),
 			zap.String("bind", bi.GoMethodMetadata.String()),
 			zap.Bool("has_varargs", hasVarargs),
 		)
 	} else {
-		ci.MethodMap[gdMethodName] = bi
+		ci.MethodMap[md.GdMethodName] = bi
 		log.Info("register class method",
 			zap.String("class", className),
 			zap.String("go_name", goMethodName),
-			zap.String("gd_name", gdMethodName),
+			zap.String("gd_name", md.GdMethodName),
 			zap.String("bind", bi.GoMethodMetadata.String()),
 			zap.Bool("has_varargs", hasVarargs),
 		)

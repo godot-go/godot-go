@@ -88,16 +88,25 @@ self-contained change; unblocks proper inspector UX for user classes.
 
 ### B2. Static methods and static variables
 
-Declared unsupported today, but not actually impossible: godot-cpp has
-`bind_static_method`, and a Go binding could accept plain package functions
-registered against a class name.
+**DONE (methods)** — implemented by change `support-static-methods` (2026-10-16):
+`core.ClassDBBindStaticMethod(inst, gdMethodName, fn, argNames, defaultValues)` binds a
+Go package function (no receiver) against the class name resolved from `inst` with
+`METHOD_FLAG_STATIC` — the parity counterpart of godot-cpp's `bind_static_method`. GDScript
+calls it through the class path (`MyClass.some_static(...)`); the engine dispatches with a
+null instance pointer, and static binds share the instance-path return-style, default-value,
+variadic, and object-marshalling rules. The old stub TODO ("TODO: golang does not have
+static methods") in `pkg/core/classdb.go` is gone, and `docs/overview.md` "Static Methods"
+documents the shipped capability.
 
-- `pkg/core/classdb.go:256` - "TODO: golang does not have static methods"
-- `docs/overview.md` "Static Methods" - registering static methods is not supported
-- `docs/overview.md` "Static Variables" - NOT YET IMPLEMENTED; global variables
-  can be registered as GDScript static variables
+**BLOCKED (variables)** — no GDExtension ABI exists for registering a class variable:
+`godot_headers/godot/gdextension_interface.h` has no `classdb_register_extension_class_variable`
+(or equivalent) entry point, so no binding can register one; the earlier idea of mapping Go
+globals onto GDScript static variables has no engine channel. Revisit if the experimental
+LanguageExtension interface (unvendored) reaches stable Godot.
 
-Scope: two related but separable proposals (methods, variables).
+Scope note: the `cmd/generate` "refactor for static instantiation" notes are engine-class
+call-side work and stay out of scope — engine functors already ignore the instance pointer
+for statics, so those call sites work unchanged.
 
 ### B3. Generated virtual interfaces (Category B catalog)
 
@@ -120,7 +129,7 @@ TODO comments disappear). Volume work.
 closure as an engine custom Callable via `callable_custom_create2` with three
 callbacks (call/free/to_string); the engine's `(call_func, callable_userdata)`
 pair-identity gives dedup and copy-equality for free, and the `cgo.Handle`
-registry releases entries deterministically in `free_func`.
+registry releases entries deterministically in `free_func`. Original item:
 
 `callable_custom_*` FFI wrappers were generated but unused; a Go closure or
 method cannot be handed to GDScript as a `Callable`. Connecting a Go method
@@ -219,8 +228,8 @@ singletons.
 
 ### Micro leftovers (not proposals)
 
-- `test/pkg/example.go:339` - "dig into why casting is important"
-- `test/pkg/example.go:899` - change bitfield test argument to
+- `test/pkg/example.go:453` - "dig into why casting is important"
+- `test/pkg/example.go:1211` - change bitfield test argument to
   `ExampleBitfieldFlag`
 - `cmd/generate/gdclassimpl/classes.go.tmpl` /
   `cmd/generate/gdutilfunc/utilityfunctions.go.tmpl` - "refactor for static
@@ -283,7 +292,7 @@ note naming the change that shipped it.
 | Done | Order | Item | Why here |
 |---|---|---|---|
 | [x] | 8 | C2 await / goroutine <-> signal bridge | Hard-blocked by C1; delivers the pattern `docs/overview.md` already promises |
-| [ ] | 9 | B2 static methods, then static variables | Wants settled marshalling for signatures; includes the `cmd/generate` "static instantiation" refactor notes |
+| [x] | 9 | B2 static methods (DONE); static variables ABI-blocked | Wants settled marshalling for signatures; the `cmd/generate` "static instantiation" refactor notes are call-side and out of scope |
 | [ ] | 10 | C4 editor plugin ergonomics | Soft-depends on C1 and C3 |
 
 ### Phase 4 - volume work against stable ground
@@ -313,10 +322,10 @@ gantt
     A3 variant reflect completeness    :done, a3, 2026-10-15, 2026-10-16
     section Phase 2 keystone
     C1 spike - callable_custom audit   :done, c1s, 2026-10-13, 2026-10-21
-    C1 Go func to Callable bridge      :crit, c1, 2026-11-16, 2026-11-27
+    C1 Go func to Callable bridge      :done, crit, c1, 2026-11-16, 2026-11-27
     section Phase 3 blocked chips
-    C2 await and signal bridge         :c2, 2026-11-30, 2026-12-11
-    B2 static methods and variables    :b2, 2026-12-07, 2026-12-18
+    C2 await and signal bridge         :done, c2, 2026-11-30, 2026-12-11
+    B2 static methods                  :done, b2, 2026-12-07, 2026-12-18
     C4 editor plugin ergonomics        :c4, 2026-12-14, 2026-12-24
     section Phase 4 volume work
     D1 fatal-panic policy              :d1, 2026-12-28, 2026-12-31
@@ -341,9 +350,9 @@ gantt
     A1 slices and packed arrays        :done, crit, s3, 2026-10-15, 2026-10-15
     A3 variant reflect completeness    :done, crit, s4, 2026-10-15, 2026-10-16
     section Keystone
-    C1 Go func to Callable bridge      :crit, s5, 2026-11-16, 2026-11-27
+    C1 Go func to Callable bridge      :done, crit, s5, 2026-11-16, 2026-11-27
     section Payout
-    C2 await and signal bridge         :crit, s6, 2026-11-30, 2026-12-11
+    C2 await and signal bridge         :done, crit, s6, 2026-11-30, 2026-12-11
 ```
 
 Two deliberate contrarian calls: B3 goes **last** despite being easy

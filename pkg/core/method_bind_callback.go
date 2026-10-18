@@ -28,11 +28,14 @@ func GoCallback_MethodBindMethodCall(
 	rReturn C.GDExtensionVariantPtr,
 	rError *C.GDExtensionCallError,
 ) {
-	// A null method handle or a null instance is an internal fault a caller
-	// cannot induce, so those remain fatal. Every other mismatch (argument
-	// count, argument type) is caller-induced and reported through rError
-	// instead of a panic that would abort the process from inside a cgo
-	// callback. This mirrors godot-cpp's call_with_variant_args validation.
+	// A null method handle is an internal fault a caller cannot induce, so it
+	// remains fatal, as does a null instance on a non-static bind. Static
+	// binds are invoked by the engine with a null instance by construction,
+	// so the instance is only resolved for instance binds. Every other
+	// mismatch (argument count, argument type) is caller-induced and reported
+	// through rError instead of a panic that would abort the process from
+	// inside a cgo callback. This mirrors godot-cpp's
+	// call_with_variant_args validation.
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 	ud := (cgo.Handle)(methodUserData)
@@ -40,12 +43,15 @@ func GoCallback_MethodBindMethodCall(
 	if !ok || bind == nil {
 		log.Panic("unable to retrieve methodUserData")
 	}
-	pinner.Pin(instPtr)
-	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
-	if inst == nil {
-		log.Panic("GDExtensionClassInstancePtr canoot be null")
+	var inst Object
+	if !bind.IsStatic() {
+		pinner.Pin(instPtr)
+		inst = ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
+		if inst == nil {
+			log.Panic("GDExtensionClassInstancePtr canoot be null")
+		}
+		pinner.Pin(inst)
 	}
-	pinner.Pin(inst)
 
 	// Reject argument-count mismatches before marshalling any arguments.
 	if arity, expected := bind.classifyVarcallArity(int(argumentCount)); arity != varcallArityOK {
@@ -81,10 +87,14 @@ func GoCallback_MethodBindMethodCall(
 		}
 	}
 
-	cn := inst.GetClass()
-	defer cn.Destroy()
+	logClassName := bind.ClassName
+	if inst != nil {
+		cn := inst.GetClass()
+		defer cn.Destroy()
+		logClassName = cn.ToUtf8()
+	}
 	log.Debug("GoCallback_MethodBindMethodCall called",
-		zap.String("class", cn.ToUtf8()),
+		zap.String("class", logClassName),
 		zap.String("method", bind.GdMethodName),
 		zap.String("bind", bind.String()),
 	)
@@ -223,14 +233,23 @@ func GoCallback_MethodBindMethodPtrcall(
 	if !ok || bind == nil {
 		log.Panic("unable to retrieve methodUserData")
 	}
-	inst := ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
-	if inst == nil {
-		log.Panic("GDExtensionClassInstancePtr canoot be null")
+	// Static binds arrive with a null instance by engine construction; the
+	// instance is resolved only for instance binds, where null stays fatal.
+	var inst Object
+	if !bind.IsStatic() {
+		inst = ObjectClassFromGDExtensionClassInstancePtr((GDExtensionClassInstancePtr)(instPtr))
+		if inst == nil {
+			log.Panic("GDExtensionClassInstancePtr canoot be null")
+		}
 	}
-	cn := inst.GetClass()
-	defer cn.Destroy()
+	logClassName := bind.ClassName
+	if inst != nil {
+		cn := inst.GetClass()
+		defer cn.Destroy()
+		logClassName = cn.ToUtf8()
+	}
 	log.Debug("GoCallback_MethodBindMethodPtrcall called",
-		zap.String("class", cn.ToUtf8()),
+		zap.String("class", logClassName),
 		zap.String("method", bind.String()),
 	)
 	sliceLen := len(bind.GoArgumentTypes)

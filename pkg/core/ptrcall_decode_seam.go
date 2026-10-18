@@ -21,5 +21,5 @@ import (
 // the cell's address is what goes in the slice, matching the outbound encoding in
 // cmd/generate/gdclassimpl/classes.go.tmpl.
 func DecodePtrcallArgs(receiver GDClass, args []GDExtensionConstTypePtr, decls []reflect.Type) []reflect.Value {
-	return reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(receiver, args, decls)
+	return reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(receiver, args, decls, true)
 }

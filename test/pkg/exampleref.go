@@ -39,7 +39,7 @@ func NewExampleRefFromOwnerObject(owner *GodotObject) GDClass {
 }
 
 func RegisterClassExampleRef() {
-	ClassDBRegisterClass(NewExampleRefFromOwnerObject, []GDExtensionPropertyInfo{}, nil, func(t *ExampleRef) {
+	ClassDBRegisterClass(NewExampleRefFromOwnerObject, nil, nil, func(t *ExampleRef) {
 		ClassDBBindMethod(t, "GetId", "get_id", nil, nil)
 		ClassDBBindMethod(t, "SetId", "set_id", []string{"id"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_INT, "group_subgroup_id", "set_id", "get_id")

@@ -161,6 +161,36 @@ ClassDBAddPropertyInfo(t, PropertySpec{
   strings and manage nothing. Godot copies the `PropertyInfo` pointer data
   during the registration call.
 
+### Class-Level Property List Callback
+
+`ClassDBRegisterClass` also accepts `[]PropertyDescriptor` entries whose
+properties are exposed through the class `get_property_list` callback:
+
+```go
+props := []PropertyDescriptor{
+	{ClassName: "Example", Type: GDEXTENSION_VARIANT_TYPE_VECTOR3,
+		Name: "property_from_list", Hint: PROPERTY_HINT_NONE,
+		Usage: PROPERTY_USAGE_DEFAULT},
+}
+ClassDBRegisterClass(NewExampleFromOwnerObject, props, ValidateExampleProperty, bind)
+```
+
+The lifetime of the backing data splits in two
+(`openspec fix-class-property-list-lifecycle`):
+
+- **Class-owned strings:** each descriptor's `ClassName`, `Name`, and
+  `HintString` materialize once as engine `StringName`/`String` objects in
+  stable C cells at registration. No Go memory backs them, so nothing is
+  pinned and the GC can never move them. `ClassInfo.Destroy` (reached via
+  `ClassDBUnregisterClass`) destroys each engine string exactly once.
+- **Query-owned array:** every callback invocation `calloc`s a fresh
+  `GDExtensionPropertyInfo` array from the class cells and returns it. The
+  engine deep-copies the elements and releases the array through the paired
+  `free_property_list2` callback in the same scope
+  (`Object::get_property_list`), which frees the array only — never the
+  class-owned strings. Repeated queries therefore always see the full list,
+  and query timing can never double-free anything.
+
 ## Main-Loop Callbacks
 
 Extensions can receive Godot's main-loop phase callbacks (Godot 4.5+) by

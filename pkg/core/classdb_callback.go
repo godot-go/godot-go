@@ -225,35 +225,28 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 			zap.String("class", className),
 		)
 	}
-	if ci.PropertyList == nil {
+	// Query-owned C array (openspec fix-class-property-list-lifecycle): built
+	// fresh per query from the class-owned spec cells, so no Go memory is
+	// exposed and nothing is pinned. The engine deep-copies the elements and
+	// calls FreePropertyList2 in the same scope (Object::get_property_list),
+	// which releases the array. Repeated queries always see the full list.
+	ptr, _ := allocPropertyArray(ci.propertySpecs)
+	if ptr == nil {
 		*rCount = (C.uint32_t)(0)
 		return (*C.GDExtensionPropertyInfo)(nil)
 	}
-	*rCount = (C.uint32_t)(len(ci.PropertyList))
-	ptr := unsafe.SliceData(ci.PropertyList)
-	pnr.Pin(ptr)
-	return (*C.GDExtensionPropertyInfo)(unsafe.Pointer(ptr))
+	*rCount = (C.uint32_t)(len(ci.propertySpecs))
+	return ptr
 }
 
 //export GoCallback_ClassCreationInfoFreePropertyList2
 func GoCallback_ClassCreationInfoFreePropertyList2(pInstance C.GDExtensionClassInstancePtr, pList *C.GDExtensionPropertyInfo, pCount C.uint32_t) {
-	wci := cgo.Handle(pInstance).Value().(*WrappedClassInstance)
-	if wci == nil {
-		return
-	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
-	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
-	if !ok {
-		return
-	}
-	ci.PropertyList = nil
-	listSlice := unsafe.Slice(pList, pCount)
-	for i := range listSlice {
-		cp := (*GDExtensionPropertyInfo)(unsafe.Pointer(&listSlice[i]))
-		cp.Destroy()
-	}
+	// Releases only the query-owned C array allocated by
+	// GoCallback_ClassCreationInfoGetPropertyList. The class-level string
+	// cells are owned by ClassInfo and destroyed with the registration, so
+	// query timing cannot double-free anything
+	// (openspec fix-class-property-list-lifecycle).
+	freePropertyArray(pList)
 }
 
 //export GoCallback_ClassCreationInfoPropertyCanRevert

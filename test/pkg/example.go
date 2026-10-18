@@ -1252,14 +1252,22 @@ func ValidateExampleProperty(property *GDExtensionPropertyInfo) {
 	}
 }
 
-func GetExamplePropertyList() []GDExtensionPropertyInfo {
-	props := make([]GDExtensionPropertyInfo, 4)
+// GetExamplePropertyList describes the Example properties exposed through the
+// class get_property_list callback. Backing engine strings and stable cells
+// are built per-class by registration (openspec
+// fix-class-property-list-lifecycle).
+func GetExamplePropertyList() []PropertyDescriptor {
+	props := make([]PropertyDescriptor, 4)
 
-	makeProp := func(className, propName string, vt GDExtensionVariantType) GDExtensionPropertyInfo {
-		cn := NewStringNameWithLatin1Chars(className)
-		pn := NewStringNameWithLatin1Chars(propName)
-		hs := NewStringWithUtf8Chars("")
-		return NewGDExtensionPropertyInfoFromNames(&cn, vt, &pn, &hs)
+	makeProp := func(className, propName string, vt GDExtensionVariantType) PropertyDescriptor {
+		return PropertyDescriptor{
+			ClassName:  className,
+			Type:       vt,
+			Name:       propName,
+			Hint:       uint32(PROPERTY_HINT_NONE),
+			HintString: "",
+			Usage:      uint32(PROPERTY_USAGE_DEFAULT),
+		}
 	}
 
 	props[0] = makeProp("Example", "property_from_list", GDEXTENSION_VARIANT_TYPE_VECTOR3)
@@ -1319,6 +1327,9 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestBindingChurnBegin", "test_binding_churn_begin", nil, nil)
 		ClassDBBindMethod(t, "TestBindingChurnCapture", "test_binding_churn_capture", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "TestBindingChurnVerify", "test_binding_churn_verify", nil, nil)
+		ClassDBBindMethod(t, "TestPropListTeardownCheck", "test_prop_list_teardown_check", nil, nil)
+		ClassDBBindMethod(t, "TestPropListChurnBegin", "test_prop_list_churn_begin", nil, nil)
+		ClassDBBindMethod(t, "TestPropListChurnEnd", "test_prop_list_churn_end", []string{"batch"}, nil)
 		ClassDBBindMethod(t, "TestObjectArgRelease", "test_object_arg_release", nil, nil)
 		ClassDBBindMethod(t, "TestReturnRefcountStability", "test_return_refcount_stability", []string{"owner", "iterations"}, nil)
 		ClassDBBindMethod(t, "TestReturnDroppedReleases", "test_return_dropped_releases", []string{"owner"}, nil)

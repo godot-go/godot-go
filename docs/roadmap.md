@@ -139,10 +139,24 @@ corrected the loader and the functions load by their published names.
 
 ### C2. Await / coroutine bridge
 
-- `docs/overview.md` "Coroutines" - Go has no coroutines, so no `await`
-  equivalent; NOT YET IMPLEMENTED
+**DONE** — implemented by change `support-signal-await` (2026-10-16):
+`core.Await(obj, signalName) <-chan AwaitResult` bridges one signal emission
+to a Go channel — the goroutine blocks like GDScript's `await` while the
+engine's main thread keeps running. Delivery is one-shot; the channel closes
+after the emission, or without a send (`ok == false`) when the awaited object
+is freed or teardown drops the connection, so a pending await can never hang
+past the lifetime of what it waits for. Payloads are marshalled to Go-native
+values on the emitting thread (scalars, strings, math POD structs, object
+handles, bounded recursive Array/Dictionary, `AwaitOpaque` fallback), and the
+returned channel composes with `select`, `time.After`, and `context`. The
+liveness oracle is C1's deterministic free callback: `Await` destroys its Go
+Callable reference immediately after the `CONNECT_ONE_SHOT` connect, so the
+engine connection holds the only reference and its death - emission or object
+death - finalizes the channel.
 
-Scope: goroutine-based bridge to signals and callables. Blocked by C1.
+Scope note: the goroutine-based bridge to signals landed here; the
+connect-a-Go-closure-to-a-signal pattern rides directly on C1
+(`NewGoCallable` + `Object.Connect`) and is documented in `docs/overview.md`.
 
 ```
    [C1 callable bridge]
@@ -268,7 +282,7 @@ note naming the change that shipped it.
 
 | Done | Order | Item | Why here |
 |---|---|---|---|
-| [ ] | 8 | C2 await / goroutine <-> signal bridge | Hard-blocked by C1; delivers the pattern `docs/overview.md` already promises |
+| [x] | 8 | C2 await / goroutine <-> signal bridge | Hard-blocked by C1; delivers the pattern `docs/overview.md` already promises |
 | [ ] | 9 | B2 static methods, then static variables | Wants settled marshalling for signatures; includes the `cmd/generate` "static instantiation" refactor notes |
 | [ ] | 10 | C4 editor plugin ergonomics | Soft-depends on C1 and C3 |
 

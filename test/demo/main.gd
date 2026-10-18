@@ -1,10 +1,23 @@
 extends "res://test_base.gd"
 
 var custom_signal_emitted = null
+var _pending_await_target = null
 
 class TestClass:
 	func test(p_msg: String) -> String:
 		return p_msg + " world"
+
+class AwaitTarget:
+	signal hit(penalty: int, kind: String)
+
+class AwaitMarshalTarget:
+	signal marshalled(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q)
+
+class AwaitOneShotTarget:
+	signal ping(v: int)
+
+class AwaitFreedTarget:
+	signal never()
 
 func _ready():
 	var example: Example = $Example
@@ -30,6 +43,13 @@ func _ready():
 	test_variant_matrix_audit(example)
 	await test_ref_method_boundary(example)
 	await test_go_callable_bridge(example)
+	await test_signal_await_delivery(example)
+	await test_signal_await_marshal(example)
+	await test_signal_await_oneshot(example)
+	await test_signal_await_misuse(example)
+	await test_signal_await_freed(example)
+	await test_signal_await_timer(example)
+	await test_signal_await_shutdown_pending(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1389,3 +1409,79 @@ func _go_callable_scenarios(example: Example) -> void:
 # call in a frame keeps a hypothetical interpreter-level abort contained.
 func _try_go_callable_call(cb: Callable) -> Variant:
 	return cb.call()
+
+func test_signal_await_delivery(example: Example) -> void:
+	print("test signal await delivery")
+	var target := AwaitTarget.new()
+	example.await_hit_start(target)
+	target.emit_signal("hit", 4, "critical")
+	# The probe joins the Go consumer directly, so no frames are burned.
+	assert_equal(example.await_hit_code(), 1)
+
+func test_signal_await_marshal(example: Example) -> void:
+	print("test signal await marshal table")
+	var target := AwaitMarshalTarget.new()
+	example.await_marshal_start(target, example)
+	target.emit_signal("marshalled", true, 7, 2.5, "text", &"sn_name",
+		NodePath("Node/sub"), Vector2(1.5, -2.25), example,
+		[1, [2, "deep"]], {"k": 1, "nest": {"m": true}},
+		target.marshalled.emit, null,
+		Vector3(1, 2, 3), Color(0.25, 0.5, 0.75, 1), Vector2i(7, -9),
+		Transform2D(Vector2(1, 0), Vector2(0, 1), Vector2(10, 20)), Basis())
+	assert_equal(example.await_marshal_code(), 1)
+
+func test_signal_await_oneshot(example: Example) -> void:
+	print("test signal await one-shot")
+	var target := AwaitOneShotTarget.new()
+	example.await_oneshot_start(target)
+	target.emit_signal("ping", 1)
+	# Delivered, and the engine freed the one-shot callable with the connection.
+	assert_equal(example.await_oneshot_code(), 1)
+	# A second emission finds no connection: the registry stays drained.
+	target.emit_signal("ping", 2)
+	assert_equal(example.await_oneshot_silence_code(), 1)
+	# A fresh Await re-subscribes and receives the next emission.
+	example.await_oneshot_rearm(target)
+	target.emit_signal("ping", 3)
+	assert_equal(example.await_oneshot_rearm_code(), 1)
+
+func test_signal_await_misuse(example: Example) -> void:
+	print("test signal await misuse")
+	var target := AwaitOneShotTarget.new()
+	var baseline: int = example.go_callable_registry_count()
+	# Unknown signal must panic at the call site...
+	assert_equal(example.await_misuse_recovered(target), 1)
+	# ...without leaving a dangling subscription behind.
+	assert_equal(example.go_callable_registry_count(), baseline)
+
+func test_signal_await_freed(example: Example) -> void:
+	print("test signal await freed object")
+	var target := AwaitFreedTarget.new()
+	example.await_freed_start(target)
+	# Drop the only reference: the object dies, the connection goes with it,
+	# and the free callback must close the channel without a send.
+	target = null
+	assert_equal(example.await_freed_code(), 1)
+
+func test_signal_await_timer(example: Example) -> void:
+	print("test signal await scene tree timer")
+	var timer := get_tree().create_timer(1.0)
+	example.await_timer_start(timer)
+	# The headless run throttles nothing: --quit-after counts iterations and
+	# each real delta is tens of microseconds, so wall-clock timers need a
+	# massive scale factor to cross 1.0 s within the frame budget (1e6 makes
+	# even a 10 us iteration contribute 10 ms of scaled time).
+	Engine.time_scale = 1000000.0
+	await get_tree().process_frame
+	await get_tree().process_frame
+	Engine.time_scale = 1.0
+	assert_equal(example.await_timer_code(), 1)
+
+func test_signal_await_shutdown_pending(example: Example) -> void:
+	print("test signal await pending at shutdown")
+	# Keep the target alive until engine teardown by parking it on self.
+	var target := AwaitFreedTarget.new()
+	_pending_await_target = target
+	example.await_shutdown_arm(target)
+	# No probe: teardown must drain the subscription; the suite gate
+	# (banner, zero failures, no leaks) judges the run.

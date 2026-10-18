@@ -68,10 +68,10 @@ void *cgo_callfn_GDExtensionInstanceBindingCreateCallback(
     void *p_instance);
 void cgo_callfn_GDExtensionInstanceBindingFreeCallback(
     const GDExtensionInstanceBindingFreeCallback fn, void *p_token,
-    void *p_instance, void *p_binding);
+    void *p_instance, uintptr_t p_binding);
 GDExtensionBool cgo_callfn_GDExtensionInstanceBindingReferenceCallback(
     const GDExtensionInstanceBindingReferenceCallback fn, void *p_token,
-    void *p_binding, GDExtensionBool p_reference);
+    uintptr_t p_binding, GDExtensionBool p_reference);
 GDExtensionBool cgo_callfn_GDExtensionClassSet(
     const GDExtensionClassSet fn, GDExtensionClassInstancePtr p_instance,
     GDExtensionConstStringNamePtr p_name, GDExtensionConstVariantPtr p_value);
@@ -799,21 +799,20 @@ void cgo_callfn_GDExtensionInterfaceObjectDestroy(
 GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceGlobalGetSingleton(
     const GDExtensionInterfaceGlobalGetSingleton fn,
     GDExtensionConstStringNamePtr p_name);
-void *cgo_callfn_GDExtensionInterfaceObjectGetInstanceBinding(
+uintptr_t cgo_callfn_GDExtensionInterfaceObjectGetInstanceBinding(
     const GDExtensionInterfaceObjectGetInstanceBinding fn,
     GDExtensionObjectPtr p_o, void *p_token,
     const GDExtensionInstanceBindingCallbacks *p_callbacks);
 void cgo_callfn_GDExtensionInterfaceObjectSetInstanceBinding(
     const GDExtensionInterfaceObjectSetInstanceBinding fn,
-    GDExtensionObjectPtr p_o, void *p_token, void *p_binding,
+    GDExtensionObjectPtr p_o, void *p_token, uintptr_t p_binding,
     const GDExtensionInstanceBindingCallbacks *p_callbacks);
 void cgo_callfn_GDExtensionInterfaceObjectFreeInstanceBinding(
     const GDExtensionInterfaceObjectFreeInstanceBinding fn,
     GDExtensionObjectPtr p_o, void *p_token);
 void cgo_callfn_GDExtensionInterfaceObjectSetInstance(
     const GDExtensionInterfaceObjectSetInstance fn, GDExtensionObjectPtr p_o,
-    GDExtensionConstStringNamePtr p_classname,
-    GDExtensionClassInstancePtr p_instance);
+    GDExtensionConstStringNamePtr p_classname, uintptr_t p_instance);
 GDExtensionBool cgo_callfn_GDExtensionInterfaceObjectGetClassName(
     const GDExtensionInterfaceObjectGetClassName fn,
     GDExtensionConstObjectPtr p_object, GDExtensionClassLibraryPtr p_library,
@@ -880,7 +879,7 @@ void cgo_callfn_GDExtensionInterfaceCallableCustomCreate2(
     const GDExtensionInterfaceCallableCustomCreate2 fn,
     GDExtensionUninitializedTypePtr r_callable,
     GDExtensionCallableCustomInfo2 *p_callable_custom_info);
-void *cgo_callfn_GDExtensionInterfaceCallableCustomGetUserData(
+uintptr_t cgo_callfn_GDExtensionInterfaceCallableCustomGetUserData(
     const GDExtensionInterfaceCallableCustomGetUserData fn,
     GDExtensionConstTypePtr p_callable, void *p_token);
 GDExtensionObjectPtr cgo_callfn_GDExtensionInterfaceClassdbConstructObject(

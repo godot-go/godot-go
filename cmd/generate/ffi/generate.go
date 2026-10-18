@@ -29,6 +29,8 @@ var (
 )
 
 func Generate(projectPath string, ast clang.CHeaderFileAST) {
+	markHandleSlots(ast)
+
 	err := GenerateGDExtensionWrapperHeaderFile(projectPath, ast)
 	if err != nil {
 		panic(err)

@@ -12,12 +12,16 @@
 #define CGO_GODOT_GO_CLASSES_CALLBACK_H
 
 #include <stdbool.h>
+#include <stdint.h>
 #include <godot/gdextension_interface.h>
 
 {{ range $i, $c := $view.Classes -}}
 
-extern void *GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
-extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, void *p_binding);
+/* The Go callbacks receive/return packed cgo.Handle values as integers: the
+   binding slot carries a Handle, and a small integer in a GC pointer slot is
+   fatal under stack scans (openspec fix-instance-handle-lifecycle). */
+extern uintptr_t GoCallback_GDExtensionBindingCreate(char *p_type_name, void *p_token, void *p_instance);
+extern void GoCallback_GDExtensionBindingFree(char *p_type_name, void *p_token, void *p_instance, uintptr_t p_binding);
 extern GDExtensionBool GoCallback_GDExtensionBindingReference(char *p_type_name, void *p_token, void *p_instance, bool p_reference);
 
 void *cgo_gdextension_class_binding_create_callback_{{ $c.Name }}(void *p_token, void *p_instance);

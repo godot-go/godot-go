@@ -3,7 +3,7 @@
 
 #include <godot/gdextension_interface.h>
 
-// cgo_handle_to_ptr is the shared handle-packing shim in pkg/log/cgo_ptr.h.
+// cgo_set_handle_slot is the shared handle-slot writer in pkg/log/cgo_ptr.h.
 #include "cgo_ptr.h"
 
 // cgo_callcustom_call signature must match GDExtensionCallableCustomCall

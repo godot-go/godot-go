@@ -4,7 +4,7 @@
 #include <godot/gdextension_interface.h>
 #include <stdint.h>
 
-// cgo_handle_to_ptr is the shared handle-packing shim in pkg/log/cgo_ptr.h.
+// cgo_set_handle_slot is the shared handle-slot writer in pkg/log/cgo_ptr.h.
 #include "cgo_ptr.h"
 
 void *cgo_gdclass_binding_create_callback(void *p_token, void *p_instance);

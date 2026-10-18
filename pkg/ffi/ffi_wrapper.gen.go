@@ -867,7 +867,7 @@ func CallFunc_GDExtensionInstanceBindingFreeCallback(
 	arg0 := (C.GDExtensionInstanceBindingFreeCallback)(fn)
 	arg1 := unsafe.Pointer(p_token)
 	arg2 := unsafe.Pointer(p_instance)
-	arg3 := C.cgo_handle_to_ptr(C.uintptr_t(p_binding))
+	arg3 := C.uintptr_t(p_binding)
 
 	log.Debug("called C.cgo_callfn_GDExtensionInstanceBindingFreeCallback")
 
@@ -883,7 +883,7 @@ func CallFunc_GDExtensionInstanceBindingReferenceCallback(
 ) GDExtensionBool {
 	arg0 := (C.GDExtensionInstanceBindingReferenceCallback)(fn)
 	arg1 := unsafe.Pointer(p_token)
-	arg2 := C.cgo_handle_to_ptr(C.uintptr_t(p_binding))
+	arg2 := C.uintptr_t(p_binding)
 	arg3 := (C.GDExtensionBool)(p_reference)
 
 	log.Debug("called C.cgo_callfn_GDExtensionInstanceBindingReferenceCallback")
@@ -4207,7 +4207,7 @@ func CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 	p_o GDExtensionObjectPtr,
 	p_token unsafe.Pointer,
 	p_callbacks *GDExtensionInstanceBindingCallbacks,
-) unsafe.Pointer {
+) cgo.Handle {
 	arg0 := (C.GDExtensionInterfaceObjectGetInstanceBinding)(FFI.ObjectGetInstanceBinding)
 	arg1 := (C.GDExtensionObjectPtr)(p_o)
 	arg2 := unsafe.Pointer(p_token)
@@ -4217,7 +4217,7 @@ func CallFunc_GDExtensionInterfaceObjectGetInstanceBinding(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceObjectGetInstanceBinding(arg0, arg1, arg2, arg3)
 
-	return unsafe.Pointer(ret)
+	return cgo.Handle(ret)
 }
 
 func CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
@@ -4229,7 +4229,7 @@ func CallFunc_GDExtensionInterfaceObjectSetInstanceBinding(
 	arg0 := (C.GDExtensionInterfaceObjectSetInstanceBinding)(FFI.ObjectSetInstanceBinding)
 	arg1 := (C.GDExtensionObjectPtr)(p_o)
 	arg2 := unsafe.Pointer(p_token)
-	arg3 := C.cgo_handle_to_ptr(C.uintptr_t(p_binding))
+	arg3 := C.uintptr_t(p_binding)
 	arg4 := (*C.GDExtensionInstanceBindingCallbacks)(p_callbacks)
 
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceObjectSetInstanceBinding")
@@ -4255,12 +4255,12 @@ func CallFunc_GDExtensionInterfaceObjectFreeInstanceBinding(
 func CallFunc_GDExtensionInterfaceObjectSetInstance(
 	p_o GDExtensionObjectPtr,
 	p_classname GDExtensionConstStringNamePtr,
-	p_instance GDExtensionClassInstancePtr,
+	p_instance cgo.Handle,
 ) {
 	arg0 := (C.GDExtensionInterfaceObjectSetInstance)(FFI.ObjectSetInstance)
 	arg1 := (C.GDExtensionObjectPtr)(p_o)
 	arg2 := (C.GDExtensionConstStringNamePtr)(p_classname)
-	arg3 := (C.GDExtensionClassInstancePtr)(p_instance)
+	arg3 := C.uintptr_t(p_instance)
 
 	log.Debug("called C.cgo_callfn_GDExtensionInterfaceObjectSetInstance")
 
@@ -4528,7 +4528,7 @@ func CallFunc_GDExtensionInterfaceCallableCustomCreate2(
 func CallFunc_GDExtensionInterfaceCallableCustomGetUserData(
 	p_callable GDExtensionConstTypePtr,
 	p_token unsafe.Pointer,
-) unsafe.Pointer {
+) cgo.Handle {
 	arg0 := (C.GDExtensionInterfaceCallableCustomGetUserData)(FFI.CallableCustomGetUserData)
 	arg1 := (C.GDExtensionConstTypePtr)(p_callable)
 	arg2 := unsafe.Pointer(p_token)
@@ -4537,7 +4537,7 @@ func CallFunc_GDExtensionInterfaceCallableCustomGetUserData(
 
 	ret := C.cgo_callfn_GDExtensionInterfaceCallableCustomGetUserData(arg0, arg1, arg2)
 
-	return unsafe.Pointer(ret)
+	return cgo.Handle(ret)
 }
 
 func CallFunc_GDExtensionInterfaceClassdbConstructObject(

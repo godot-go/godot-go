@@ -195,9 +195,21 @@ type PrimativeType struct {
 	IsConst   bool   `parser:" @'const'? " json:",omitempty"`
 	Name      string `parser:" @Ident    " json:",omitempty"`
 	IsPointer bool   `parser:" @'*'?     " json:",omitempty"`
+
+	// IsHandleSlot marks a pointer type that carries a cgo.Handle value
+	// (a small integer) rather than a real memory address. Set by the ffi
+	// generator before rendering; it makes the C shims pass the slot as
+	// uintptr_t so the packed value never occupies a GC-tracked pointer
+	// slot on the Go side (openspec fix-instance-handle-lifecycle).
+	// Untagged: ignored by the participle grammar.
+	IsHandleSlot bool
 }
 
 func (t PrimativeType) CStyleString() string {
+	if t.IsHandleSlot {
+		return "uintptr_t"
+	}
+
 	sb := strings.Builder{}
 
 	if t.IsConst {

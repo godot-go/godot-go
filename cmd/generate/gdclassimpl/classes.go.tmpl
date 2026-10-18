@@ -129,6 +129,17 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	}
 	{{/* init return type */}}
 	{{ if $fnReturnType -}}
+	{{ if and $m.IsVararg (ne $fnReturnType "Variant") -}}
+	{{/* A vararg call is a varcall: the engine writes a full Variant into
+	   r_return whatever the declared return type (godot-cpp declares
+	   "Variant ret;" for every vararg binding). The buffer must be a
+	   Variant; an Error-sized buffer here would let the engine overwrite
+	   16 bytes past it. Convert to the declared type after the call. */}}
+	var retVariant Variant
+	defer retVariant.Destroy()
+
+	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&retVariant))
+	{{ else -}}
 	{{ if $view.ContainsClassName $fnReturnType -}}
 	var ret {{ goClassStructName $fnReturnType }}
 	{{ else -}}
@@ -138,6 +149,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	retPtr := (GDExtensionUninitializedVariantPtr)(unsafe.Pointer(&ret))
 	{{ else -}}
 	retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+	{{ end -}}
 	{{ end }}
 	{{ else -}}
 	{{ if $m.IsVararg}}
@@ -202,7 +214,9 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
 	{{ end -}}
 	{{ with $fnReturnType -}}
-	{{ if $view.IsRefcountedClassName $fnReturnType -}}
+	{{ if and $m.IsVararg (ne $fnReturnType "Variant") -}}
+	return {{ varargReturnExpr $fnReturnType }}
+	{{ else if $view.IsRefcountedClassName $fnReturnType -}}
 	return NewRef{{ $fnReturnType }}GDExtensionReturnOwner(&ret)
 	{{ else if $view.ContainsClassName $fnReturnType -}}
 	return &ret

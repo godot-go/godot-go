@@ -1,0 +1,208 @@
+{
+ "comment": "Audit of every is_vararg method in extension_api.json with its declared return type, backing the audit table in openspec/changes/fix-vararg-return-buffer/design.md. The engine writes a full Variant into the r_return buffer of a varcall, so any class-method vararg whose return type is neither Variant nor void needs a Variant return buffer plus conversion in classes.go.tmpl. Built-in and utility vararg paths use ptrcall with buffers sized to the declared type.",
+ "counts": {
+  "class": 15,
+  "builtin": 6,
+  "utility": 12
+ },
+ "entries": [
+  {
+   "source": "class",
+   "class": "ClassDB",
+   "method": "class_call_static",
+   "return_type": "Variant"
+  },
+  {
+   "source": "class",
+   "class": "EditorUndoRedoManager",
+   "method": "add_do_method",
+   "return_type": "void"
+  },
+  {
+   "source": "class",
+   "class": "EditorUndoRedoManager",
+   "method": "add_undo_method",
+   "return_type": "void"
+  },
+  {
+   "source": "class",
+   "class": "GDScript",
+   "method": "new",
+   "return_type": "Variant"
+  },
+  {
+   "source": "class",
+   "class": "JavaScriptBridge",
+   "method": "create_object",
+   "return_type": "Variant"
+  },
+  {
+   "source": "class",
+   "class": "Node",
+   "method": "call_deferred_thread_group",
+   "return_type": "Variant"
+  },
+  {
+   "source": "class",
+   "class": "Node",
+   "method": "call_thread_safe",
+   "return_type": "Variant"
+  },
+  {
+   "source": "class",
+   "class": "Node",
+   "method": "rpc",
+   "return_type": "enum::Error"
+  },
+  {
+   "source": "class",
+   "class": "Node",
+   "method": "rpc_id",
+   "return_type": "enum::Error"
+  },
+  {
+   "source": "class",
+   "class": "Object",
+   "method": "call",
+   "return_type": "Variant"
+  },
+  {
+   "source": "class",
+   "class": "Object",
+   "method": "call_deferred",
+   "return_type": "Variant"
+  },
+  {
+   "source": "class",
+   "class": "Object",
+   "method": "emit_signal",
+   "return_type": "enum::Error"
+  },
+  {
+   "source": "class",
+   "class": "SceneTree",
+   "method": "call_group",
+   "return_type": "void"
+  },
+  {
+   "source": "class",
+   "class": "SceneTree",
+   "method": "call_group_flags",
+   "return_type": "void"
+  },
+  {
+   "source": "class",
+   "class": "TreeItem",
+   "method": "call_recursive",
+   "return_type": "void"
+  },
+  {
+   "source": "builtin",
+   "class": "Callable",
+   "method": "bind",
+   "return_type": "Callable"
+  },
+  {
+   "source": "builtin",
+   "class": "Callable",
+   "method": "call",
+   "return_type": "Variant"
+  },
+  {
+   "source": "builtin",
+   "class": "Callable",
+   "method": "call_deferred",
+   "return_type": "void"
+  },
+  {
+   "source": "builtin",
+   "class": "Callable",
+   "method": "rpc",
+   "return_type": "void"
+  },
+  {
+   "source": "builtin",
+   "class": "Callable",
+   "method": "rpc_id",
+   "return_type": "void"
+  },
+  {
+   "source": "builtin",
+   "class": "Signal",
+   "method": "emit",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "max",
+   "return_type": "Variant"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "min",
+   "return_type": "Variant"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "print",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "print_rich",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "print_verbose",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "printerr",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "printraw",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "prints",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "printt",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "push_error",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "push_warning",
+   "return_type": "void"
+  },
+  {
+   "source": "utility",
+   "class": "",
+   "method": "str",
+   "return_type": "String"
+  }
+ ]
+}

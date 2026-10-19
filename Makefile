@@ -40,7 +40,14 @@ endif
 DEBUG_INFO_CFLAGS=-ggdb
 DEBUG_INFO_LDFLAGS=
 ifeq ($(GOOS),windows)
-	DEBUG_INFO_LDFLAGS=-Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/$(patsubst %.dll,%.pdb,$(notdir $(TEST_BINARY_PATH)))
+	# binutils 2.45.1 (the runner's ld) emits a malformed DBI stream from
+	# --pdb (binutils bug 34605: file-info substream not 4-byte aligned);
+	# dbghelp refuses to load that PDB, so live line lookups silently fail.
+	# The fix is on binutils master only, not any mingw release. lld is the
+	# reference PDB writer and produces a PDB dbghelp loads, so the windows
+	# test link goes through lld instead. /DEBUG must be slash-form (the
+	# lld COFF spelling); --pdb= works for both linkers.
+	DEBUG_INFO_LDFLAGS=-fuse-ld=lld -Wl,/DEBUG -Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/$(patsubst %.dll,%.pdb,$(notdir $(TEST_BINARY_PATH)))
 endif
 
 .PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_delegation_trap interactive_test open_demo_in_editor

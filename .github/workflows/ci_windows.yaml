@@ -77,6 +77,11 @@ jobs:
 
       - name: Build
         run: |
+          # the windows link uses lld (see Makefile DEBUG_INFO_LDFLAGS); make
+          # sure the runner's LLVM bin dir (which holds ld.lld) is reachable
+          export PATH="/c/Program Files/LLVM/bin:$PATH"
+          command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
+          ld.lld --version
           make build
         shell: bash
 
@@ -145,5 +150,9 @@ jobs:
             test-output.log
             test/demo/lib/*.dll
             test/demo/lib/*.pdb
+            # exclude the temp copies godot makes of the loaded extension
+            # (libgodotgo…dll -> ~libgodotgo…dll and ~libgodotgo…_N.pdb);
+            # they are load-time scratch files, not build artifacts
+            !test/demo/lib/~*
           if-no-files-found: warn
           retention-days: 14

@@ -10,9 +10,9 @@
 
 GCC's debug-info formats are an exclusive selection (`debug_type_masks[]` in `opts.cc`; combining formats beyond the legacy VMS+DWARF case is explicitly discouraged). For `GOOS=windows` the `build` target's debug C flags become `-g -gcodeview -O0 …`; every other platform keeps `-g -ggdb`. Consequence, accepted: the C portion of the DLL loses DWARF line tables (they move to the PDB); Go portions keep their own DWARF/gopclntab because `gc` does not read `CGO_CFLAGS`, so the existing `go tool addr2line` recipe still resolves Go frames offline.
 
-### D2: PDB name is the bare basename of the library with `.pdb`
+### D2: The PDB sits next to the library and shares its basename
 
-ld embeds the `--pdb=` string verbatim into the CodeView RSDS debug record. Passing a name without a directory makes dbghelp's default lookup (module directory first, then symbol path) find `libgodotgo-test-windows-amd64.pdb` sitting next to the DLL — which is where the build places it and where the CI artifact upload already globs `*.pdb`. Absolute build-machine paths in the record would fail on any other machine.
+ld embeds the `--pdb=` string verbatim into the CodeView RSDS debug record, and writes the file relative to the linker's CWD — which during `go build` is the repo root, not the output directory. So the flag passes the explicit `$(CURDIR)/$(OUTPUT_PATH)/<basename>.pdb`: on the build machine (CI runs there too) the embedded absolute path hits directly, and dbghelp's documented fallback — search the image's own directory by PDB basename — covers relocated use such as CI artifacts, where the upload keeps the PDB beside the DLL. An absolute build-machine path in the record is therefore deliberate, not sloppiness; a directory-free name would land the file in the wrong place at link time.
 
 ### D3: Frame format gains a trailing ` file:line` only on line lookup success
 

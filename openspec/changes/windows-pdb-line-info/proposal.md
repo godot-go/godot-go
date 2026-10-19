@@ -6,7 +6,7 @@ The Windows capture prints frames as `symbol+0xdisplacement` or `module+0xoffset
 
 ## What Changes
 
-- Windows debug builds compile C sources with `-gcodeview` (replacing `-ggdb` when `GOOS=windows`) and link a PDB named as the bare basename of the library (`libgodotgo-test-windows-amd64.pdb`), so the embedded CodeView record names a file dbghelp finds next to the loaded DLL.
+- Windows debug builds compile C sources with `-gcodeview` (replacing `-ggdb` when `GOOS=windows`) and link the PDB next to the library (`test/demo/lib/libgodotgo-test-windows-amd64.pdb`): the embedded absolute path hits directly on the build machine, and dbghelp's same-directory basename fallback covers relocated artifacts.
 - The DbgHelp walk appends ` file:line` to frames where `SymGetLineFromAddr64` succeeds; every other frame form is unchanged.
 - The Windows CI `Verify Stacktrace Capture Evidence` step additionally requires at least one banner frame carrying `file.ext:line`, so a build that silently loses line info (missing PDB, GUID mismatch) cannot pass.
 - README: Windows offline recipe updated — C frames resolve via the uploaded PDB (`llvm-symbolizer`), Go frames stay on `go tool addr2line`.

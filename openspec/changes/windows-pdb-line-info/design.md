@@ -6,9 +6,9 @@
 
 ## Decisions
 
-### D1: Replace `-ggdb` with `-gcodeview` for windows rather than combine
+### D1: CodeView is a per-package opt-in via `#cgo windows CFLAGS`, not a global flag
 
-GCC's debug-info formats are an exclusive selection (`debug_type_masks[]` in `opts.cc`; combining formats beyond the legacy VMS+DWARF case is explicitly discouraged). For `GOOS=windows` the `build` target's debug C flags become `-g -gcodeview -O0 …`; every other platform keeps `-g -ggdb`. Consequence, accepted: the C portion of the DLL loses DWARF line tables (they move to the PDB); Go portions keep their own DWARF/gopclntab because `gc` does not read `CGO_CFLAGS`, so the existing `go tool addr2line` recipe still resolves Go frames offline.
+GCC's debug-info formats are an exclusive selection (`debug_type_masks[]` in `opts.cc`); the last `-g*` format flag on the command line wins. The original design switched `GOOS=windows` build-target C flags from `-ggdb` to `-gcodeview` globally, and that died when the runner's compiler ICEd on generated TUs (D6). The build's `CGO_CFLAGS` now keep `-ggdb` everywhere, and the packages whose C frames appear in captured backtraces — `pkg/log` (the capture code) and `pkg/core` (the `GoCallback_*` glue) — append `-gcodeview` via `#cgo windows CFLAGS:` directives; cgo places package-directive flags after the environment flags, so the directive wins for those packages. Consequence, accepted: the remaining C TUs (e.g. `pkg/ffi`) keep DWARF line tables inside the DLL — they print in the symbol-only/module+offset forms live and stay resolvable offline with standard DWARF tools against the DLL itself. Go portions keep their own DWARF/gopclntab because `gc` does not read `CGO_CFLAGS`, so the existing `go tool addr2line` recipe still resolves Go frames offline.
 
 ### D2: The PDB sits next to the library and shares its basename
 
@@ -30,6 +30,8 @@ Frames whose line is unknown (Go runtime, engine DLLs) print exactly as before, 
 ### D6: The Win32 walk uses `CaptureStackBackTrace` because dwarf2codeview ICEs on `STACKFRAME64`
 
 The first `-gcodeview` build segfaulted the compiler (`stacktrace.c:178:1: internal compiler error: Segmentation fault`) while every other cgo TU compiled fine with the same flags. A minimal-TU bisect on the runner (GCC 15.2.0) pinned the trigger: an empty function, a function-`static` `SRWLOCK`, and a local `CONTEXT` (even with `RtlCaptureContext`) all compile, but a function declaring a local `STACKFRAME64` — which mingw declares with nested anonymous `DUMMYUNIONNAME` unions — reliably segfaults the CodeView writer, independent of optimization level (`-O1` crashes too; `-g1` instead emits assembly gas cannot resolve: `can't resolve .debug$T`). This is the same GCC `dwarf2codeview` ICE family as the empty-struct and artificial-variable fixes. The response is structural, not flag-surgical: `printStacktrace()` calls `CaptureStackBackTrace(0, 25, …)` for a plain array of return addresses and resolves each with the unchanged `SymFromAddr` / `SymGetLineFromAddr64` / module+offset chain — no `STACKFRAME64`, no `CONTEXT`, and the x64/x86 register-selection `#if`s disappear. The replacement shape was pre-validated as a minimal TU on the very runner that crashed. Accepted behavior deltas: frame[0] is `printStacktrace` itself (the seeded `StackWalk64` emitted the same self-frame), and return addresses walk fine through optimized code where an RBP chain would stall.
+
+The next run proved the writer is fragile beyond our hand-written TU: with `stacktrace.c` fixed, `-gcodeview` then ICEd on `pkg/ffi/ffi_wrapper.gen.c:1842` and on `pkg/ffi`'s cgo export prologue (`cgo-gcc-prolog:4890`) — generated code that cannot be restructured, while every other hand-written cgo TU compiled clean (2 ICEs out of 34 compiles). No flag shape avoids this class of bug, so the response generalizes into the per-package opt-in of D1 rather than further TU surgery.
 
 
 ### D5: Evidence gate extension is the TDD surface

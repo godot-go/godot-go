@@ -6,10 +6,11 @@
 
 ## 2. Implementation
 
-- [x] 2.1 `Makefile`: windows-scoped debug info for the `build` target — `-gcodeview` replaces `-ggdb` when `GOOS=windows`, and `-Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/<basename>.pdb` pins the PDB next to the DLL (a bare name would write into the linker's CWD, the repo root — see design D2). Verified via `make -n` expansion for both GOOS values; the Linux expansion is semantically unchanged.
+- [x] 2.1 `Makefile`: the `build` target's windows link gains `-Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/<basename>.pdb`, pinning the PDB next to the DLL (a bare name would write into the linker's CWD, the repo root — see design D2). Global `CGO_CFLAGS` keep `-ggdb` after the D1 opt-in pivot; verified via `make -n` expansion for both GOOS values.
 - [x] 2.2 `pkg/log/stacktrace.c`: after `SymFromAddr` succeeds, try `SymGetLineFromAddr64` and append ` file:line` to the frame line on success. Syntax-checked the `_WIN32` branch against the extended stub headers (`IMAGEHLP_LINE64`, `SymGetLineFromAddr64`) with `-fsyntax-only -Wall -std=gnu90`; Windows CI is the real compile.
 - [ ] 2.3 Confirm the artifact upload step (already on this branch from the stacked base) publishes the `.pdb` alongside the DLL.
 - [x] 2.4 Restructured the Win32 walk around the runner's dwarf2codeview ICE (design D6): replaced the `RtlCaptureContext`+`StackWalk64`/`STACKFRAME64` block with a `CaptureStackBackTrace` return-address walk — the `STACKFRAME64` local is the verified crash trigger on MinGW-Builds GCC 15.2.0, and the replacement shape was pre-validated as a minimal TU on the same runner. Host stub syntax checks clean on both `_WIN32` and host paths; host build, full suite, and fixtures green.
+- [x] 2.5 After the generated `pkg/ffi` TUs also ICEd (design D6, second paragraph), scoped `-gcodeview` down to a `#cgo windows CFLAGS:` directive in `pkg/log/lib.go` and `pkg/core/method_bind_callback.go` (design D1 opt-in): global flags reverted to DWARF, CodeView only where capture frames live. `pkg/core` compiles under the directive or the fall-off is documented; the CI run is the proof surface.
 
 ## 3. Proof
 

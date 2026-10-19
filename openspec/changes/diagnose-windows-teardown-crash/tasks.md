@@ -2,10 +2,10 @@
 
 ## 1. Diagnostics workflow
 
-- [ ] 1.1 Create `.github/workflows/ci_windows_crash_debug.yaml` (`on: workflow_dispatch` only): godot 4.7 download + window setup mirroring `ci_windows.yaml` (env vars `CI=1 LOG_LEVEL=WARN LANG`, Go setup, checkout), plus `scoop install gdb`.
-- [ ] 1.2 Add the gdb run (design D1): `--editor --quit` repro under `gdb --batch` with the exception-stop transcript (`bt 40`, `info registers rip rsp rbp`, `info sharedlibrary`, `thread apply all bt 30`), a second gdb pass of the full-suite commands only if the first transcript stops on something else, and generous step timeouts.
-- [ ] 1.3 Add the WER LocalDumps fallback (design D2): registry keys for `Godot_v4.7-stable_win64.exe` (DumpFolder `C:\crashdumps`, DumpType 1), grep the folder after the run.
-- [ ] 1.4 Add the success assertion + artifact upload (design D3): `GODOTGO_CRASH_EVIDENCE: captured` printed only on a real faulting-stop indicator in the transcript; final assertion step fails the job when evidence is absent; upload the gdb transcript(s), dump(s), and `test-output.log` as `windows-crash-evidence` with `if: always()`.
+- [x] 1.1 Create `.github/workflows/ci_windows_crash_debug.yaml` (`on: workflow_dispatch` only): godot 4.7 download + window setup mirroring `ci_windows.yaml` (env vars `CI=1 LOG_LEVEL=WARN LANG`, Go setup, checkout), plus `scoop install gdb`.
+- [x] 1.2 Add the gdb run (design D1): `--editor --quit` repro under `gdb --batch` with the exception-stop transcript (`bt 40`, `info registers rip rsp rbp`, `info sharedlibrary`, `thread apply all bt 30`), a second gdb pass of the full-suite commands only if the first transcript stops on something else, and generous step timeouts.
+- [x] 1.3 Add the WER LocalDumps fallback (design D2): registry keys for `Godot_v4.7-stable_win64.exe` (DumpFolder `C:\crashdumps`, DumpType 1), grep the folder after the run.
+- [x] 1.4 Add the success assertion + artifact upload (design D3): `GODOTGO_CRASH_EVIDENCE: captured` printed only on a real faulting-stop indicator in the transcript; final assertion step fails the job when evidence is absent; upload the gdb transcript(s), dump(s), and `test-output.log` as `windows-crash-evidence` with `if: always()`.
 
 ## 2. Evidence
 

@@ -1,0 +1,161 @@
+name: godot-go CI on Windows (teardown crash debug)
+
+# Diagnostics-only for issue #172: nothing here gates normal PR CI (the
+# workflow is dispatch-only). It runs the deterministic teardown-crash
+# repro under gdb under an external debugger, which sees the faulting
+# exception even though the process's own handlers are demonstrably
+# silent at that phase (see the change's design.md D1). See
+# openspec/changes/diagnose-windows-teardown-crash/.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  crash_debug:
+    name: "capture teardown crash stack"
+    runs-on: windows-latest
+    timeout-minutes: 35
+    env:
+      GODOT: ./Godot_v4.7-stable_win64.exe
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Add Go 1.27 To System Path
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.27'
+      - run: go version
+      - name: Set up scoop
+        uses: MinoruSekine/setup-scoop@main
+        with:
+          scoop_checkup: 'true'
+      - name: Set up scoop extras
+        run: scoop bucket add extras
+      - name: Install scoop packages
+        run: scoop install wget unzip gdb
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install Godot 4.7 stable
+        run: |
+          wget https://github.com/godotengine/godot-builds/releases/download/4.7-stable/Godot_v4.7-stable_win64.exe.zip
+          unzip Godot_v4.7-stable_win64.exe.zip -d ./
+
+      - name: Update Godot Headers
+        run: make update_godot_headers_from_binary
+
+      - name: Code Generation
+        run: PATH=$PATH:$(go env GOPATH)/bin make generate
+
+      - name: Build
+        timeout-minutes: 10
+        # the windows link uses lld (see Makefile DEBUG_INFO_EXTLDFLAGS); make
+        # sure the runner's LLVM bin dir (which holds ld.lld) is reachable
+        run: |
+          export PATH="/c/Program Files/LLVM/bin:$PATH"
+          command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
+          command -v gdb || { echo "::error::gdb not found on PATH"; exit 1; }
+          make build
+
+      # WER LocalDumps is the fallback evidence path: if gdb's stop cannot be
+      # produced for some reason, the killed godot process still leaves a
+      # minidump behind (design D2). Registry keys because no in-process
+      # handler survives this phase.
+      - name: Register WER LocalDumps
+        shell: pwsh
+        run: |
+          reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\Godot_v4.7-stable_win64.exe" /v DumpFolder /t REG_EXPAND_SZ /d "C:\crashdumps" /f
+          reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\Godot_v4.7-stable_win64.exe" /v DumpType /t REG_DWORD /d 1 /f
+          reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\Godot_v4.7-stable_win64.exe" /v DumpCount /t REG_DWORD /d 10 /f
+
+      # Pass 1 is the gen-step repro itself: `godot --headless --verbose
+      # --path test/demo/ --editor --quit` crashes with Error 2816 in the
+      # normal CI gen step, so it is the ~10 s deterministic version of the
+      # same teardown crash. First-chance exceptions (Go's internal guard
+      # pages etc.) are passed to the process exactly like a real run; the
+      # unhandled teardown AV still stops the debugger (second-chance
+      # notification cannot be passed on).
+      - name: gdb repro pass 1 (editor quit, ~10s repro)
+        timeout-minutes: 20
+        run: |
+          WIN_GODOT="$(cygpath -m "$GODOT")"
+          CI=1 LOG_LEVEL=info GOTRACEBACK=1 \
+          GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+          gdb --batch \
+            -ex 'set pagination off' \
+            -ex 'set confirm off' \
+            -ex 'set auto-solib-add off' \
+            -ex 'handle SIGSEGV nostop noprint pass' \
+            -ex 'handle SIGILL nostop noprint pass' \
+            -ex 'handle SIGFPE nostop noprint pass' \
+            -ex run \
+            -ex 'bt 40' \
+            -ex 'info registers rip rsp rbp' \
+            -ex 'info sharedlibrary' \
+            -ex 'thread apply all bt 30' \
+            --args "$WIN_GODOT" --headless --verbose --path test/demo/ --editor --quit \
+            2>&1 | tee gdb-editor-quit.log || true
+
+      # Only if pass 1 did not stop on the fault, replay the entire suite
+      # phase-1 command line from `make test` (the mode where the crash was
+      # originally observed, exit 139) under gdb as well. The extension_list
+      # cfg hack matches ci_gen_test_project_files' post-run patch.
+      - name: gdb repro pass 2 (full suite phase 1, only if pass 1 did not stop)
+        timeout-minutes: 25
+        run: |
+          if grep -qa 'received signal' gdb-editor-quit.log; then
+            echo "pass 1 stopped on the fault; skipping suite pass"
+            exit 0
+          fi
+          WIN_GODOT="$(cygpath -m "$GODOT")"
+          CI=1 LOG_LEVEL=WARN GOTRACEBACK=single \
+          GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
+          gdb --batch \
+            -ex 'set pagination off' \
+            -ex 'set confirm off' \
+            -ex 'set auto-solib-add off' \
+            -ex 'handle SIGSEGV nostop noprint pass' \
+            -ex 'handle SIGILL nostop noprint pass' \
+            -ex 'handle SIGFPE nostop noprint pass' \
+            -ex run \
+            -ex 'bt 40' \
+            -ex 'info registers rip rsp rbp' \
+            -ex 'info sharedlibrary' \
+            -ex 'thread apply all bt 30' \
+            --args "$WIN_GODOT" --headless --verbose --path test/demo/ --quit-after 12 \
+            2>&1 | tee gdb-suite.log || true
+          cp gdb-suite.log test-output.log
+
+      # The job is red unless a gdb pass actually stopped on the fault AND
+      # produced a backtrace. Silent empty runs are impossible (design D3).
+      - name: Assert crash evidence captured
+        timeout-minutes: 3
+        run: |
+          { grep -qa 'received signal' gdb-editor-quit.log || grep -qa 'received signal' gdb-suite.log; } || {
+            echo "::error::no gdb stop on any pass — the teardown crash did not reproduce, or gdb's signal handling is misconfigured"
+            exit 1
+          }
+          grep -qa '^#0 ' gdb-editor-quit.log gdb-suite.log || {
+            echo '::error::gdb stopped but produced no backtrace'
+            exit 1
+          }
+          echo "GODOTGO_CRASH_EVIDENCE: captured"
+
+      - name: Check crashdumps
+        run: ls -alh /c/crashdumps 2>/dev/null || echo "no WER dumps were written"
+
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-crash-evidence
+          path: |
+            gdb-editor-quit.log
+            gdb-suite.log
+            test-output.log
+            C:\crashdumps\**
+          if-no-files-found: warn
+          retention-days: 14

@@ -53,6 +53,25 @@ On Windows builds the library SHALL print a native call stack from `printStacktr
 - **WHEN** a captured frame cannot be attributed to a symbol name (e.g. no PDB is available for a mingw build carrying DWARF)
 - **THEN** that frame line still prints the module name plus the offset into the module and the raw instruction address
 
+### Requirement: Windows frames carry source line info when a PDB is linked
+
+Captured Windows frames whose addresses resolve to source through the linked PDB SHALL print the source file and line alongside the symbol, and the Windows CI capture-evidence step SHALL fail a run where no captured frame carries file:line information.
+
+#### Scenario: Resolved frame prints file and line
+
+- **WHEN** the capture window prints a frame that resolves through the PDB
+- **THEN** the frame line includes the source file name and line number in addition to the symbol and displacement
+
+#### Scenario: Frames without line info keep the offline form
+
+- **WHEN** a captured frame's module carries no line information (for example Go runtime or engine DLLs)
+- **THEN** the frame prints unchanged from the symbol+offset or `module+0xoffset (ip 0x…)` forms
+
+#### Scenario: Missing line evidence fails the Windows job
+
+- **WHEN** a Windows CI run's captured banners contain no frame with file:line
+- **THEN** the stacktrace evidence verification step fails the job naming the missing line-info evidence
+
 ### Requirement: CI-visible capture probe
 The test suite SHALL, on every platform run, emit exactly one probe line reporting whether native capture is compiled in, and SHALL perform at least one enabled capture window around a bound callback. The runtime output gate SHALL treat a claimed-available capture with no produced banner as a test failure, and SHALL treat the probe line's absence as a test failure.
 

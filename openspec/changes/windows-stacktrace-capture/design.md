@@ -26,7 +26,7 @@ The system `dbghelp.dll` cannot read mingw's DWARF, so `SymFromAddr` will usuall
 
 ### D3: Link via `#cgo windows LDFLAGS: -ldbghelp`
 
-Placed in the preamble of the Go file that includes `stacktrace.h` (`pkg/core/godot.go`), so the dependency travels with the code that needs it on every build path, not just the Makefile. GOOS-conditioned by cgo itself; no Makefile change.
+Placed in the cgo preamble of `pkg/log/lib.go` — the package that compiles `stacktrace.c` — so the dependency travels with the code that needs it on every build path, not just the Makefile. GOOS-conditioned by cgo itself; no Makefile change.
 
 ### D4: Availability predicate instead of platform guessing in tests
 
@@ -41,6 +41,10 @@ Placed in the preamble of the Go file that includes `stacktrace.h` (`pkg/core/go
 ### D6: Gate rule placement and strictness
 
 Rules appended after the main-loop-shutdown check and before the catch-all `godot-exited-non-zero` check, so a real stacktrace failure reports as itself instead of being masked. Probe-absent is a hard failure (the driver is the suite; a silently vanishing section is drift); `capture=1`-without-banner is a hard failure (the only in-repo proof Windows/Linux capture actually prints). `capture=0` without banner passes (musl stub). Fixtures: three new logs + updates to the two pass-path existing fixtures; the six earlier failure fixtures exit before these rules and are untouched.
+
+### D7: Windows capture proof gets its own gating step (found during implementation)
+
+The Windows `Test` step runs `make test` under `continue-on-error: true`: godot segfaults during process teardown (exit 139) after the driver reports a fully clean run, and that crash reproduces on `main` without this change's code. While the step stays masked, the in-suite gate's probe/banner rules cannot fail the Windows job — a silent capture regression would still go green. So `ci_windows.yaml` gains a final step that greps the tee'd `test-output.log` for the probe line and at least one banner and fails loudly if either is missing. The gate keeps its rules unchanged: they still hard-gate the Linux job and every local run, and they give the Windows step the same failure vocabulary. Removing `continue-on-error` belongs to fixing the teardown segfault itself, not to this change.
 
 ## Risks / Trade-offs
 

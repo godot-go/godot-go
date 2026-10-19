@@ -23,6 +23,11 @@
 - [x] 4.1 `GODOT=/path/to/godot make test` fully green on the glibc host (Known Issues ignored) and `make test_gate` green.
 - [x] 4.2 `openspec validate windows-stacktrace-capture` passes.
 
+## 5. Implementation-discovered follow-ups
+
+- [x] 5.1 Windows `Test` step found to run `make test` under `continue-on-error: true` (pre-existing godot teardown segfault, exit 139, reproduces on `main` without this change) — the in-suite gate cannot fail that job. Added a final `Verify Stacktrace Capture Evidence` step to `ci_windows.yaml` grepping `test-output.log` for the probe line and banner (design D7).
+- [ ] 5.2 Confirm the new verify step passes on this PR's Windows CI run ("windows stacktrace capture verified").
+
 ## Workflow follow-up
 
 - PR base: `fix-portable-stacktrace-build` (stacked; merge bottom-up per the pull-request skill).

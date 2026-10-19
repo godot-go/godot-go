@@ -57,6 +57,7 @@ func _ready():
 	test_binding_release_accounting(example)
 	test_property_list_churn(example)
 	test_vararg_return_buffer(example)
+	test_stacktrace_probe(example)
 	exit_with_status()
 
 func test_suite(i: int, example: Example):
@@ -1632,3 +1633,14 @@ func test_vararg_return_buffer(example: Example) -> void:
 	var loose_node := Node.new()
 	assert_equal(example.test_vararg_error_returns(loose_node), 1)
 	loose_node.free()
+
+# Drives the C-side capture at GDExtension callback boundaries (openspec:
+# windows-stacktrace-capture). The Go side prints "stacktrace-probe
+# capture=<0|1>" from the binary's compile-time truth and opens a narrow
+# capture window around the calls below. The runtime gate requires at least
+# one "___ C start backtrace ___" banner whenever capture=1 is claimed, and
+# these value assertions pass identically on stub platforms.
+func test_stacktrace_probe(example: Example) -> void:
+	assert_equal(example.test_stacktrace_probe("start"), "on")
+	assert_equal(example.test_stacktrace_probe("hit"), "hit")
+	assert_equal(example.test_stacktrace_probe("stop"), "off")

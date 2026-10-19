@@ -38,6 +38,10 @@ cases=(
 	"failures_one.log|1|1|FAIL[driver-reported-failures]"
 	"leaked.log|0|1|FAIL[leaked-engine-objects]"
 	"godot_nonzero.log|1|1|FAIL[godot-exited-non-zero]"
+	"stacktrace_silent.log|0|1|FAIL[stacktrace-capture-claimed-but-silent]"
+	"stacktrace_stub.log|0|0|PASS: extension loaded"
+	"stacktrace_probe_missing.log|0|1|FAIL[stacktrace-probe-missing]"
+	"stacktrace_no_go_stack.log|0|1|FAIL[stacktrace-go-stack-missing]"
 )
 
 # editor gate fixture | godot_status | want_gate_exit | want_message_substring

@@ -104,3 +104,37 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
+
+      # The Test step above is continue-on-error (the pre-existing teardown
+      # segfault is tracked separately), so the runtime gate's stacktrace
+      # rules alone cannot fail this job. test-output.log is tee'd by make
+      # test and survives that masked failure; assert the capture evidence
+      # directly so a silently broken Windows capture can never go green.
+      - name: Verify Stacktrace Capture Evidence
+        run: |
+          grep -qa 'stacktrace-probe capture=1' test-output.log || {
+            echo "::error::stacktrace probe did not report native capture available"
+            exit 1
+          }
+          grep -qa '___ C start backtrace ___' test-output.log || {
+            echo "::error::capture reported available but no backtrace banner was printed"
+            exit 1
+          }
+          echo "windows stacktrace capture verified"
+        shell: bash
+
+      # A trace pasted from CI must be resolvable after the fact: keep the
+      # debug library and the run log so module+0xoffset frames can be fed to
+      # `go tool addr2line` offline. Uploaded unconditionally so the evidence
+      # exists even when a later step trips over the masked teardown failure.
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-test-lib
+          path: |
+            test-output.log
+            test/demo/lib/*.dll
+            test/demo/lib/*.pdb
+          if-no-files-found: warn
+          retention-days: 14

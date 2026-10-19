@@ -54,7 +54,29 @@ glibc-compatible `execinfo` interface (`execinfo.h` plus the `backtrace` /
     make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/path/to/execinfo/include' EXTRA_CGO_LDFLAGS='-L/path/to/execinfo/lib -lexecinfo'
 
 On glibc and Apple systems nothing extra is needed; the backtrace path is selected
-automatically.
+automatically. On Windows, capture is built on the native DbgHelp stack-walking API
+(no extra packages needed): frames print symbol names when a PDB is available and
+`module.dll+0xoffset (ip 0x…)` otherwise — a form addr2line/gdb can resolve offline.
+The test suite proves capture end-to-end on every CI platform with a narrow probe
+window (`stacktrace-probe capture=<0|1>`).
+
+Captured frames resolve offline to function plus file:line — feed any printed
+`module+0xoffset` to Go's own resolver against the debug-built library:
+
+    echo 0x536e61 | go tool addr2line test/demo/lib/libgodotgo-test-linux-amd64.so
+
+Use `go tool addr2line`, not GNU `addr2line`, which effectively hangs on the
+Go DWARF in these debug builds. Inside the probe window the Go side also
+prints its own stack (`stacktrace-probe go-stack`), giving live file:line for
+Go frames on every platform, including ones where native capture is stubbed
+out.
+
+The same works for Windows frames against the DLL from the `windows-test-lib`
+CI artifact — that platform wants addresses rebased onto the library's
+preferred image base, which `llvm-objdump -p` reports:
+
+    BASE=$(llvm-objdump -p libgodotgo-test-windows-amd64.dll | awk '/ImageBase/{print "0x"$2}')
+    echo $((BASE + 0x987ad)) | go tool addr2line libgodotgo-test-windows-amd64.dll
 
 ### Test
 

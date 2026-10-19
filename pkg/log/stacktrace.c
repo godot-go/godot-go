@@ -63,6 +63,8 @@ void printStacktrace() {
         STACKFRAME64 stackframe;
         char symbolBuffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(CHAR)];
         PSYMBOL_INFO symbol = (PSYMBOL_INFO)symbolBuffer;
+        IMAGEHLP_LINE64 sourceLine;
+        DWORD lineDisplacement;
         DWORD64 displacement;
         DWORD64 moduleBase;
         HMODULE module;
@@ -111,8 +113,21 @@ void printStacktrace() {
             symbol->MaxNameLen = MAX_SYM_NAME;
             displacement = 0;
             if (SymFromAddr(process, stackframe.AddrPC.Offset, &displacement, symbol)) {
-                printf("[%i] %s+0x%llx\n", frames, symbol->Name,
-                    (unsigned long long)displacement);
+                /* The build links a CodeView PDB next to the library
+                   (-gcodeview + ld --pdb), so SYMOPT_LOAD_LINES can resolve
+                   the exact source line; Go-runtime and engine frames have
+                   no PDB and simply keep the symbol-only form. */
+                memset(&sourceLine, 0, sizeof(sourceLine));
+                sourceLine.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
+                lineDisplacement = 0;
+                if (SymGetLineFromAddr64(process, stackframe.AddrPC.Offset, &lineDisplacement, &sourceLine)) {
+                    printf("[%i] %s+0x%llx %s:%lu\n", frames, symbol->Name,
+                        (unsigned long long)displacement, sourceLine.FileName,
+                        sourceLine.LineNumber);
+                } else {
+                    printf("[%i] %s+0x%llx\n", frames, symbol->Name,
+                        (unsigned long long)displacement);
+                }
             } else {
                 /* System dbghelp.dll cannot read mingw DWARF, so names often
                    resolve to nothing; module+offset+ip is the form addr2line

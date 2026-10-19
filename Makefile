@@ -27,6 +27,19 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
+# Debug info format for the build target. Default DWARF; Windows native
+# backtraces go through dbghelp.dll, which reads only PDB/COFF, so there the
+# C code emits CodeView instead (-gcodeview, GCC >= 13) and the link produces
+# a PDB named as the bare basename of the DLL (-Wl,--pdb=, GNU ld >= 2.40) so
+# dbghelp finds it next to the loaded module. See
+# openspec/changes/windows-pdb-line-info/.
+DEBUG_INFO_CFLAGS=-ggdb
+DEBUG_INFO_LDFLAGS=
+ifeq ($(GOOS),windows)
+	DEBUG_INFO_CFLAGS=-gcodeview
+	DEBUG_INFO_LDFLAGS=-Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/$(patsubst %.dll,%.pdb,$(notdir $(TEST_BINARY_PATH)))
+endif
+
 .PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_delegation_trap interactive_test open_demo_in_editor
 
 goenv: ## Print Go environment variables
@@ -61,8 +74,8 @@ build: goenv ## Build GDExtension library (debug mode)
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
 	GOAMD64=v3 \
-	CGO_CFLAGS='-fno-omit-frame-pointer -fPIC -g -ggdb -O0 -I$(CWD) $(EXTRA_CGO_CFLAGS)' \
-	CGO_LDFLAGS='-g3 -g -O0 $(EXTRA_CGO_LDFLAGS)' \
+	CGO_CFLAGS='-fno-omit-frame-pointer -fPIC -g $(DEBUG_INFO_CFLAGS) -O0 -I$(CWD) $(EXTRA_CGO_CFLAGS)' \
+	CGO_LDFLAGS='-g3 -g -O0 $(DEBUG_INFO_LDFLAGS) $(EXTRA_CGO_LDFLAGS)' \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
 	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 

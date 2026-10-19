@@ -35,6 +35,12 @@
 - [x] 6.3 `Example.TestStacktraceProbe("hit")` prints `stacktrace-probe go-stack` + `runtime.Stack` output; host `make test` green at 1430 assertions with real frames (`test/pkg/example.go:…` plus the reflect dispatch chain).
 - [x] 6.4 README: offline `go tool addr2line` recipe with the GNU-addr2line-hangs warning, and the companion-stack note.
 
+## 7. Offline resolution artifacts (follow-on, approved in chat)
+
+- [x] 7.1 `Upload Test Artifacts` step in `ci_windows.yaml` (`upload-artifact@v4`, `if: always()`, 14-day retention): `test-output.log`, `test/demo/lib/*.dll`, plus a `*.pdb` glob reserved for the stacked line-info change.
+- [x] 7.2 Downloaded the artifact (run 39193759198) and verified against the real mingw-linked DLL: preferred base `0x1e8d10000` (not the conventional `0x140000000` — discovered via `llvm-objdump -p`, must not be assumed); the run's own frames `+0x98823`/`+0x8f6b2` resolve to `runtime.asmcgocall` `runtime/asm_amd64.s:973` and `runtime.cgocall` `runtime/cgocall.go:185`.
+- [x] 7.3 README: Windows offline recipe (`llvm-objdump -p` base discovery + `go tool addr2line`) exactly as executed against the artifact.
+
 ## Workflow follow-up
 
 - PR base: `fix-portable-stacktrace-build` (stacked; merge bottom-up per the pull-request skill).

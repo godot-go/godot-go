@@ -52,6 +52,12 @@ For live file:line, a spike compared the options: the system `dbghelp.dll` canno
 
 Gate rule: any run with the probe line MUST show the `stacktrace-probe go-stack` marker followed (within a few lines) by a `file.go:line` frame. The marker is a single contiguous Go-side write, so it is immune to the stdout interleaving between C `printf` buffers and Go writes that can split C banner text mid-line.
 
+### D9: Published Windows test artifacts keep CI traces resolvable offline
+
+A trace pasted from a CI log must be decodable after the job ends, but the Windows test job never published the debug library (the repo's only upload step belongs to the godot-editor build workflow, and the test workflow's artifact lines were commented out). An `Upload Test Artifacts` step (`actions/upload-artifact@v4`, `if: always()`, 14-day retention) publishes `test-output.log` plus `test/demo/lib/*.dll` and a `*.pdb` glob reserved for the stacked line-info work. `if: always()` because the masked teardown segfault (#172) or a failing capture-evidence step are exactly the situations where the evidence matters most.
+
+Offline resolver facts, measured against the real CI-linked Windows DLL (artifact of run 39193759198): `go tool addr2line` parses the PE and prints function + file:line, and wants the **full virtual address including the preferred image base** — a bare RVA answers `?:0`. The base is not the conventional `0x140000000` (that link chose `0x1e8d10000`), so the documented recipe discovers it with `llvm-objdump -p ... | awk '/ImageBase/…'` and adds the printed `module+0xoffset` before feeding the Go tool. LLVM's resolver (`llvm-addr2line`) parses PE headers but returns `??:0` for Go line tables, so the Go tool is the documented resolver.
+
 ## Risks / Trade-offs
 
 - [SymInitialize/Cleanup per call is heavyweight] → acceptable: debug aid, narrow probe window; the per-call form matches the existing scaffolding.

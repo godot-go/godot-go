@@ -13,6 +13,7 @@
 - Extend the runtime gate `test/check_test_output.sh`: when the log claims `capture=1`, at least one `___ C start backtrace ___` banner MUST appear; a run without the probe line at all fails. New fixtures pin both failure modes and the stub (`capture=0`) pass.
 - Add a companion Go stack inside the probe window: the `hit` phase prints the current goroutine's stack (`stacktrace-probe go-stack`), giving live function + file:line for the Go side on every platform, independent of native capture availability. The runtime gate fails a probe run whose companion stack is missing.
 - README: document offline frame resolution (`go tool addr2line` on printed `module+0xoffset` values — GNU `addr2line` is unusable on the debug build's Go DWARF) and the companion stack.
+- Publish Windows test artifacts (debug library + run log) so a `module+0xoffset` trace pasted from CI stays resolvable after the job ends; README documents the verified recipe.
 - Add a dedicated Windows CI step asserting the capture evidence in `test-output.log`. Discovered during implementation: the Windows `Test` step runs `make test` with `continue-on-error: true` (a pre-existing teardown segfault, tracked as #172), so the in-suite gate alone cannot fail that job.
 
 The Linux job gates `make test` normally, so the probe is enforced there through the existing gate.

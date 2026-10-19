@@ -30,13 +30,13 @@ endif
 # Debug info for the build target. Global C flags stay DWARF on every
 # platform; Windows native backtraces go through dbghelp.dll, which reads
 # only PDB/COFF, so on windows the link additionally produces a PDB pinned
-# by absolute path next to the DLL (-Wl,--pdb=, GNU ld >= 2.40). Packages
-# whose C frames appear in captured backtraces (pkg/log, pkg/core) opt into
-# CodeView with a `#cgo windows CFLAGS: -gcodeview` directive rather than a
-# global flag: dwarf2codeview in MinGW-Builds GCC 15.2.0 compiles those
-# fine but ICEs on generated TUs such as pkg/ffi/ffi_wrapper.gen.c. Other
-# C code keeps DWARF in the DLL for offline resolution. See
-# openspec/changes/windows-pdb-line-info/.
+# by absolute path next to the DLL (-Wl,--pdb=, GNU ld >= 2.40). The one
+# package whose C frames appear in captured backtraces and compiles safely,
+# pkg/log, opts into CodeView with a `#cgo windows CFLAGS: -gcodeview`
+# directive rather than a global flag: dwarf2codeview in MinGW-Builds
+# GCC 15.2.0 ICEs on the generated pkg/ffi TUs and on every pkg/core cgo
+# preamble TU. Other C code keeps DWARF in the DLL for offline resolution.
+# See openspec/changes/windows-pdb-line-info/.
 DEBUG_INFO_CFLAGS=-ggdb
 DEBUG_INFO_LDFLAGS=
 ifeq ($(GOOS),windows)

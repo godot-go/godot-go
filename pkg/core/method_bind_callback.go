@@ -1,12 +1,5 @@
 package core
 
-// CodeView records for this package are enabled on windows so dbghelp can
-// print file:line for the GoCallback_* glue frames in captured backtraces
-// (per-package opt-in; see pkg/log/lib.go and
-// openspec/changes/windows-pdb-line-info/).
-
-// #cgo windows CFLAGS: -gcodeview
-//
 // #include <godot/gdextension_interface.h>
 // #include "method_bind.h"
 // #include <stdio.h>

@@ -1,3 +1,15 @@
+/* mingw's headers gate the SRWLOCK primitives (INIT_SRWLOCK and friends)
+   behind _WIN32_WINNT >= Vista, and some toolchains default below that.
+   Pin Windows 7 semantics for this translation unit before any system
+   header reads the value; Godot 4.x already requires Windows 10+ at
+   runtime, so this adds no practical constraint. */
+#ifdef _WIN32
+#undef _WIN32_WINNT
+#define _WIN32_WINNT 0x0601
+#undef WINVER
+#define WINVER 0x0601
+#endif
+
 #include "stacktrace.h"
 
 #ifdef _WIN32

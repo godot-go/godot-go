@@ -28,6 +28,13 @@
 - [x] 5.1 Windows `Test` step found to run `make test` under `continue-on-error: true` (pre-existing godot teardown segfault, exit 139, reproduces on `main` without this change) — the in-suite gate cannot fail that job. Added a final `Verify Stacktrace Capture Evidence` step to `ci_windows.yaml` grepping `test-output.log` for the probe line and banner (design D7).
 - [x] 5.2 Confirm the new verify step passes on this PR's Windows CI run ("windows stacktrace capture verified") — run 39182125987, with the masked `FAIL[godot-exited-non-zero]` (#172) still visible underneath, proving the evidence step gates independently of the red `make test` step.
 
+## 6. Companion Go stack + offline resolution docs (follow-on, approved in chat)
+
+- [x] 6.1 Gate-first: added the `stacktrace-go-stack-missing` rule (probe line present requires the marker followed by a `file.go:line` frame). RED: `clean_pass.log`, `godot_nonzero.log`, `stacktrace_stub.log` fail with the new code (`stacktrace_silent.log` keeps failing its own earlier silent-capture rule by design).
+- [x] 6.2 Fixtures: go-stack block added to the four probe-bearing logs, new `stacktrace_no_go_stack.log` (clean run minus the companion) pinned to `FAIL[stacktrace-go-stack-missing]`; 22/22 fixture cases green. Product RED confirmed (`make test` -> `FAIL[stacktrace-go-stack-missing]`).
+- [x] 6.3 `Example.TestStacktraceProbe("hit")` prints `stacktrace-probe go-stack` + `runtime.Stack` output; host `make test` green at 1430 assertions with real frames (`test/pkg/example.go:…` plus the reflect dispatch chain).
+- [x] 6.4 README: offline `go tool addr2line` recipe with the GNU-addr2line-hangs warning, and the companion-stack note.
+
 ## Workflow follow-up
 
 - PR base: `fix-portable-stacktrace-build` (stacked; merge bottom-up per the pull-request skill).

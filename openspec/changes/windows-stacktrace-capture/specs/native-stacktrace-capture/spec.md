@@ -31,3 +31,7 @@ The test suite SHALL, on every platform run, emit exactly one probe line reporti
 #### Scenario: Capture state does not leak
 - **WHEN** the probe's capture window closes
 - **THEN** subsequent callbacks produce no further banner output for the rest of the run
+
+#### Scenario: Companion Go stack prints
+- **WHEN** the probe's hit phase runs on any platform, including one whose native capture is stubbed out
+- **THEN** the output contains a companion marker line followed by Go frames carrying source file and line numbers, and the runtime gate fails the run if that companion stack is absent while the probe ran

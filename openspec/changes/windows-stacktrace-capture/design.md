@@ -46,6 +46,12 @@ Rules appended after the main-loop-shutdown check and before the catch-all `godo
 
 The Windows `Test` step runs `make test` under `continue-on-error: true`: godot segfaults during process teardown (exit 139) after the driver reports a fully clean run, and that crash reproduces on `main` without this change's code (tracked as issue #172). While the step stays masked, the in-suite gate's probe/banner rules cannot fail the Windows job — a silent capture regression would still go green. So `ci_windows.yaml` gains a final step that greps the tee'd `test-output.log` for the probe line and at least one banner and fails loudly if either is missing. The gate keeps its rules unchanged: they still hard-gate the Linux job and every local run, and they give the Windows step the same failure vocabulary. Removing `continue-on-error` belongs to fixing the teardown segfault itself (#172), not to this change.
 
+### D8: Companion Go stack via `runtime.Stack` instead of live native file:line
+
+For live file:line, a spike compared the options: the system `dbghelp.dll` cannot read mingw DWARF (Windows line lookup needs PDBs via `-gcodeview`, a global build-flag change), vendoring `libbacktrace` for glibc adds a real dependency to a debug aid, and engine/GDScript frames are unreachable from the native unwinder anyway (stripped release binaries; the script debugger is not GDExtension-visible). The Go runtime already knows func + file:line for every Go frame — `runtime.Stack` in the probe's `hit` phase prints them live on every platform with zero native dependencies and zero new build flags. Offline resolution covers the remaining C frames: the libraries carry DWARF and the printed `module+0xoffset` form feeds `go tool addr2line` directly. The spike found GNU `addr2line` unusable here (>100 s timeouts on the debug build's Go DWARF), so the README prescribes the Go tool.
+
+Gate rule: any run with the probe line MUST show the `stacktrace-probe go-stack` marker followed (within a few lines) by a `file.go:line` frame. The marker is a single contiguous Go-side write, so it is immune to the stdout interleaving between C `printf` buffers and Go writes that can split C banner text mid-line.
+
 ## Risks / Trade-offs
 
 - [SymInitialize/Cleanup per call is heavyweight] → acceptable: debug aid, narrow probe window; the per-call form matches the existing scaffolding.

@@ -101,20 +101,24 @@ jobs:
       # (second-chance debug event reaches a debug client even though no
       # in-process handler survives; design D1 v3). No symbol resolution,
       # so no gdb-style synchronous first-chance storm.
-      - name: Procdump capture (editor quit repro)
-        timeout-minutes: 8
+      # Discriminator (design D1 v4): display mode logs every exception
+      # code/name without writing dumps — if ANY access violation appears
+      # here, the fault fires under attach and is delivery-suppressed;
+      # if none, instrumented scheduling avoids the fault entirely.
+      - name: Procdump display mode (editor quit, exception watcher)
+        continue-on-error: true
+        timeout-minutes: 10
         shell: pwsh
         run: |
           $env:CI = '1'
           $env:LOG_LEVEL = 'info'
           $env:GOTRACEBACK = '1'
           $env:GODEBUG = 'gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5'
-          # documented -x grammar: -x <Dump_Folder> <Image_File> [args...];
-          # -o is a bare overwrite flag, NOT the dump path (run 39224719383)
-          .\procdump\procdump.exe -accepteula -mm -e -x C:\crashdumps .\Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --editor --quit 2>&1 | Tee-Object procdump-editor-quit.log
+          .\procdump\procdump.exe -accepteula -e 1 -f '' -x C:\crashdumps .\Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --editor --quit 2>&1 | Tee-Object procdump-editor-quit.log
           Write-Output "procdump editor-quit exit: $LASTEXITCODE"
 
       - name: Procdump capture (suite phase 1)
+        continue-on-error: true
         timeout-minutes: 12
         shell: pwsh
         run: |

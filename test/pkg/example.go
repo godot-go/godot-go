@@ -1218,8 +1218,10 @@ func (e *Example) TestBitfield(flags int64) ExampleBitfieldFlag {
 // capture is compiled in (one line, `stacktrace-probe capture=<0|1>`,
 // straight from stacktraceCaptureAvailable) and enables capture; "hit" is
 // called while capture is on, so its callback prints the backtrace before
-// the body runs; "stop" turns capture off so no further output leaks into
-// the rest of the run.
+// the body runs, and the body then prints this goroutine's Go stack — file
+// and line for the Go side on every platform, independent of whether the
+// native capture is compiled in; "stop" turns capture off so no further
+// output leaks into the rest of the run.
 func (e *Example) TestStacktraceProbe(p_phase String) String {
 	switch p_phase.ToUtf8() {
 	case "start":
@@ -1231,6 +1233,9 @@ func (e *Example) TestStacktraceProbe(p_phase String) String {
 		SetPrintStacktrace(true)
 		return NewStringWithUtf8Chars("on")
 	case "hit":
+		stack := make([]byte, 8192)
+		n := runtime.Stack(stack, false)
+		fmt.Print("stacktrace-probe go-stack\n", string(stack[:n]))
 		return NewStringWithUtf8Chars("hit")
 	case "stop":
 		SetPrintStacktrace(false)

@@ -13,6 +13,10 @@ ERROR: Attempt to get non-existent interface function: 'classdb_register_extensi
 gdclass registered class=Example parent_type=Control
 
 stacktrace-probe capture=1
+stacktrace-probe go-stack
+goroutine 1 [running]:
+github.com/godot-go/godot-go/test/pkg.(*Example).TestStacktraceProbe(0xc0000e4018, 0x1)
+	/workspace/godot-go/test/pkg/example.go:1237 +0x45
 [92m ==== TESTS FINISHED ==== [39m[0m
 
    PASSES: [92m1079[39m[0m

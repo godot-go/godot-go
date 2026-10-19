@@ -148,6 +148,16 @@ if grep -qa 'stacktrace-probe capture=1' <<<"$plain" &&
 		"the build reported native stacktrace capture available, but the enabled capture window printed no banner (expected '___ C start backtrace ___')" \
 		'stacktrace-probe|___ C '
 fi
+#    Companion Go stack: the probe's hit phase prints the current goroutine's
+#    stack via runtime.Stack -- file:line for the Go side on every platform,
+#    independent of the native capture. Pure Go, so its absence means the
+#    probe body regressed even where capture itself is stubbed out.
+if grep -qa 'stacktrace-probe capture=' <<<"$plain" &&
+	! grep -A4 'stacktrace-probe go-stack' <<<"$plain" | grep -q '\.go:[0-9]\+'; then
+	fail stacktrace-go-stack-missing \
+		"the stacktrace probe did not print its companion Go stack: expected a 'stacktrace-probe go-stack' line followed by frames carrying file.go:line" \
+		'stacktrace-probe|\.go:'
+fi
 
 # 10. The gate found nothing wrong, yet godot still exited non-zero. Report it
 #    rather than passing: something outside the known modes went wrong.

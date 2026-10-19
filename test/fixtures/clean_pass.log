@@ -24,6 +24,10 @@ ___ C start backtrace ___________
 [1] Godot_v4.7-stable_win64.exe+0x2c8b341 (ip 0x7ff6b2c8b341)
 ___ C end backtrace   ___________
 
+stacktrace-probe go-stack
+goroutine 1 [running]:
+github.com/godot-go/godot-go/test/pkg.(*Example).TestStacktraceProbe(0xc0000e4018, 0x1)
+	/workspace/godot-go/test/pkg/example.go:1237 +0x45
 [92m ==== TESTS FINISHED ==== [39m[0m
 
    PASSES: [92m1079[39m[0m

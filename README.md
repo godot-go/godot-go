@@ -78,6 +78,18 @@ preferred image base, which `llvm-objdump -p` reports:
     BASE=$(llvm-objdump -p libgodotgo-test-windows-amd64.dll | awk '/ImageBase/{print "0x"$2}')
     echo $((BASE + 0x987ad)) | go tool addr2line libgodotgo-test-windows-amd64.dll
 
+For packages compiled with `-gcodeview` (currently `pkg/log`) the C line
+information lives in the PDB shipped next to the DLL in that same artifact;
+resolve those frames with `llvm-symbolizer` and an explicit `--pdb`, since the
+path embedded in the DLL points at the build machine:
+
+    echo $((BASE + 0x2358246)) | \
+      llvm-symbolizer --obj=libgodotgo-test-windows-amd64.dll \
+                      --pdb=libgodotgo-test-windows-amd64.pdb -f -i
+
+That address prints `printStacktrace` at `pkg/log/stacktrace.c:81`. Every other
+C frame and all Go frames keep the `go tool addr2line` DWARF path above.
+
 ### Test
 
 Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time (don't be concerned if it fails):

@@ -27,6 +27,40 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
+# Debug info for the build target. Global C flags stay DWARF on every
+# platform; Windows native backtraces go through dbghelp.dll, which reads
+# only PDB/COFF, so on windows the link additionally produces a PDB pinned
+# by absolute path next to the DLL (-Wl,--pdb=; the linker that must write
+# it and why are covered below). The one
+# package whose C frames appear in captured backtraces and compiles safely,
+# pkg/log, opts into CodeView with a `#cgo windows CFLAGS: -gcodeview`
+# directive rather than a global flag: dwarf2codeview in MinGW-Builds
+# GCC 15.2.0 ICEs on the generated pkg/ffi TUs and on every pkg/core cgo
+# preamble TU. Other C code keeps DWARF in the DLL for offline resolution.
+# See openspec/changes/windows-pdb-line-info/.
+DEBUG_INFO_CFLAGS=-ggdb
+# The windows PDB link needs lld (design D7): binutils 2.45.1's --pdb emits
+# an unaligned DBI stream (binutils bug 34605) that dbghelp refuses to load,
+# and no shipped mingw carries the master-branch fix yet. These flags go to
+# go's link via -extldflags, NOT to CGO_LDFLAGS: go's external linker sniffs
+# the toolchain (gcc -Wl,--version must print "LLD") to decide whether to
+# pass GNU-ld-only arguments; the sniff reads link's extldflags, so a linker
+# choice hidden in CGO_LDFLAGS makes it inject `-Wl,-T,fix_debug_gdb_scripts.ld`
+# and lld dies on the unknown -T.
+DEBUG_INFO_EXTLDFLAGS=
+ifeq ($(GOOS),windows)
+	DEBUG_INFO_EXTLDFLAGS=-fuse-ld=lld -Wl,/DEBUG -Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/$(patsubst %.dll,%.pdb,$(notdir $(TEST_BINARY_PATH)))
+endif
+
+# An empty -extldflags="" still reaches extld as a bare argument and breaks
+# the link, so the whole -ldflags is omitted when there is nothing to add.
+# quoting rule (cmd/go quoted.Split): quotes only group when a FIELD starts
+# with them, so the flag list rides as one quoted field after -extldflags.
+GO_LINK_LDFLAGS=
+ifneq ($(DEBUG_INFO_EXTLDFLAGS),)
+	GO_LINK_LDFLAGS=-ldflags="-extldflags \"$(DEBUG_INFO_EXTLDFLAGS)\""
+endif
+
 .PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_delegation_trap interactive_test open_demo_in_editor
 
 goenv: ## Print Go environment variables
@@ -57,14 +91,19 @@ update_godot_headers_from_binary: ## update godot_headers from the godot binary
 
 # https://medium.com/@aviad.hayumi/debug-golang-applications-with-c-c-bindings-f254b3f1259e
 build: goenv ## Build GDExtension library (debug mode)
+	# On windows the external linker writes the --pdb file during linking,
+	# before go build creates the -o destination's parent directory; ld's
+	# ENOENT there is only a warning and silently drops the PDB, so the
+	# directory must exist first.
+	@mkdir -p "$(OUTPUT_PATH)"
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \
 	GOAMD64=v3 \
-	CGO_CFLAGS='-fno-omit-frame-pointer -fPIC -g -ggdb -O0 -I$(CWD) $(EXTRA_CGO_CFLAGS)' \
+	CGO_CFLAGS='-fno-omit-frame-pointer -fPIC -g $(DEBUG_INFO_CFLAGS) -O0 -I$(CWD) $(EXTRA_CGO_CFLAGS)' \
 	CGO_LDFLAGS='-g3 -g -O0 $(EXTRA_CGO_LDFLAGS)' \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
-	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
+	go build -gcflags=all="-N -l" $(GO_LINK_LDFLAGS) -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 build-full: goenv ## Build GDExtension library with full debug symbols
 	CGO_ENABLED=1 \

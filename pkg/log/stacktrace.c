@@ -56,69 +56,60 @@ void printStacktrace() {
         AcquireSRWLockExclusive(&traceLock);
         printf("___ C start backtrace ___________\n");
 
-#if defined(_M_X64) || defined(__x86_64__) || defined(_M_IX86) || defined(__i386__)
         {
+        void *callstack[25];
+        unsigned short count;
+        int frames;
         HANDLE process;
-        CONTEXT context;
-        STACKFRAME64 stackframe;
         char symbolBuffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(CHAR)];
         PSYMBOL_INFO symbol = (PSYMBOL_INFO)symbolBuffer;
+        IMAGEHLP_LINE64 sourceLine;
+        DWORD lineDisplacement;
         DWORD64 displacement;
         DWORD64 moduleBase;
         HMODULE module;
         char moduleName[MAX_PATH];
         char *basename;
-        int frames;
+
+        /* CaptureStackBackTrace (ntdll) yields a plain array of return
+           addresses. Do NOT reintroduce a STACKFRAME64 local here:
+           dwarf2codeview (verified on MinGW-Builds GCC 15.2.0) segfaults
+           emitting that type's nested anonymous-union graph under
+           -gcodeview (see openspec/changes/windows-pdb-line-info design
+           D6). The return-address form also survives optimized frames
+           where an RBP chain would stall the walk. */
+        count = CaptureStackBackTrace(0, 25, callstack, NULL);
 
         process = GetCurrentProcess();
-        memset(&context, 0, sizeof(CONTEXT));
-        context.ContextFlags = CONTEXT_FULL;
-        RtlCaptureContext(&context);
-
         SymSetOptions(SYMOPT_UNDNAME | SYMOPT_DEFERRED_LOADS | SYMOPT_LOAD_LINES);
         SymInitialize(process, NULL, TRUE);
 
-        ZeroMemory(&stackframe, sizeof(STACKFRAME64));
-#if defined(_M_X64) || defined(__x86_64__)
-        stackframe.AddrPC.Offset = context.Rip;
-        stackframe.AddrPC.Mode = AddrModeFlat;
-        stackframe.AddrFrame.Offset = context.Rbp;
-        stackframe.AddrFrame.Mode = AddrModeFlat;
-        stackframe.AddrStack.Offset = context.Rsp;
-        stackframe.AddrStack.Mode = AddrModeFlat;
-#elif defined(_M_IX86) || defined(__i386__)
-        stackframe.AddrPC.Offset = context.Eip;
-        stackframe.AddrPC.Mode = AddrModeFlat;
-        stackframe.AddrFrame.Offset = context.Ebp;
-        stackframe.AddrFrame.Mode = AddrModeFlat;
-        stackframe.AddrStack.Offset = context.Esp;
-        stackframe.AddrStack.Mode = AddrModeFlat;
-#endif
-        for (frames = 0; frames < 25; frames++) {
-            BOOL ok = StackWalk64(
-#if defined(_M_X64) || defined(__x86_64__)
-                IMAGE_FILE_MACHINE_AMD64,
-#else
-                IMAGE_FILE_MACHINE_I386,
-#endif
-                process, GetCurrentThread(),
-                &stackframe, &context, NULL,
-                SymFunctionTableAccess64, SymGetModuleBase64, NULL);
-            if (!ok) {
-                break;
-            }
+        for (frames = 0; frames < (int)count; frames++) {
             symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
             symbol->MaxNameLen = MAX_SYM_NAME;
             displacement = 0;
-            if (SymFromAddr(process, stackframe.AddrPC.Offset, &displacement, symbol)) {
-                printf("[%i] %s+0x%llx\n", frames, symbol->Name,
-                    (unsigned long long)displacement);
+            if (SymFromAddr(process, (DWORD64)callstack[frames], &displacement, symbol)) {
+                /* The build links a CodeView PDB next to the library
+                   (-gcodeview + ld --pdb), so SYMOPT_LOAD_LINES can resolve
+                   the exact source line; Go-runtime and engine frames have
+                   no PDB and simply keep the symbol-only form. */
+                memset(&sourceLine, 0, sizeof(sourceLine));
+                sourceLine.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
+                lineDisplacement = 0;
+                if (SymGetLineFromAddr64(process, (DWORD64)callstack[frames], &lineDisplacement, &sourceLine)) {
+                    printf("[%i] %s+0x%llx %s:%lu\n", frames, symbol->Name,
+                        (unsigned long long)displacement, sourceLine.FileName,
+                        sourceLine.LineNumber);
+                } else {
+                    printf("[%i] %s+0x%llx\n", frames, symbol->Name,
+                        (unsigned long long)displacement);
+                }
             } else {
                 /* System dbghelp.dll cannot read mingw DWARF, so names often
                    resolve to nothing; module+offset+ip is the form addr2line
                    and gdb can still resolve offline. */
                 module = 0;
-                moduleBase = SymGetModuleBase64(process, stackframe.AddrPC.Offset);
+                moduleBase = SymGetModuleBase64(process, (DWORD64)callstack[frames]);
                 if (moduleBase != 0) {
                     module = (HMODULE)(DWORD_PTR)moduleBase;
                 }
@@ -130,18 +121,17 @@ void printStacktrace() {
                         basename++;
                     }
                     printf("[%i] %s+0x%llx (ip 0x%llx)\n", frames, basename,
-                        (unsigned long long)(stackframe.AddrPC.Offset - moduleBase),
-                        (unsigned long long)stackframe.AddrPC.Offset);
+                        (unsigned long long)((DWORD64)callstack[frames] - moduleBase),
+                        (unsigned long long)(DWORD64)callstack[frames]);
                 } else {
                     printf("[%i] ??? (ip 0x%llx)\n", frames,
-                        (unsigned long long)stackframe.AddrPC.Offset);
+                        (unsigned long long)(DWORD64)callstack[frames]);
                 }
             }
         }
 
         SymCleanup(process);
         }
-#endif
         printf("___ C end backtrace   ___________\n\n");
         ReleaseSRWLockExclusive(&traceLock);
     #elif defined(GODOT_GO_HAVE_EXECINFO)

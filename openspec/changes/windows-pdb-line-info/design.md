@@ -23,9 +23,14 @@ ld embeds the `--pdb=` string verbatim into the CodeView RSDS debug record, and 
 
 Frames whose line is unknown (Go runtime, engine DLLs) print exactly as before, and existing gate/verify anchors (banner lines, probe markers) are untouched. `IMAGEHLP_LINE64` needs only `SizeOfStruct`, `FileName`, `LineNumber`; `SymSetOptions(… | SYMOPT_LOAD_LINES)` is already in place and must stay before `SymInitialize`.
 
-### D4: Toolchain floors are proven by CI, not probed
+### D4: Toolchain floors are probe-verified, and the probe caught a real ICE
 
-`--pdb=` requires binutils >= 2.40 (patch series merged October 2022); `-gcodeview` requires GCC >= 13. `windows-latest` MSYS2 ships far above both. No version sniffing is added to the Makefile: an ld too old for `--pdb` fails the link loudly rather than degrading silently, and the verify step (D5) catches debug-info regressions that link clean.
+`--pdb=` requires binutils >= 2.40 (patch series merged October 2022); `-gcodeview` requires GCC >= 14 (not 13 — GCC 13 rejects it as an unrecognized debug output level). The `windows-latest` runner ships MinGW-Builds GCC 15.2.0 (`x86_64-posix-seh-rev1`) with binutils far above both floors — established by the runner diagnostics, and no version sniffing is added to the Makefile: an ld too old for `--pdb` fails the link loudly rather than degrading silently, and the verify step (D5) catches debug-info regressions that link clean. The same diagnostics surfaced a compiler crash that shaped the capture code — D6.
+
+### D6: The Win32 walk uses `CaptureStackBackTrace` because dwarf2codeview ICEs on `STACKFRAME64`
+
+The first `-gcodeview` build segfaulted the compiler (`stacktrace.c:178:1: internal compiler error: Segmentation fault`) while every other cgo TU compiled fine with the same flags. A minimal-TU bisect on the runner (GCC 15.2.0) pinned the trigger: an empty function, a function-`static` `SRWLOCK`, and a local `CONTEXT` (even with `RtlCaptureContext`) all compile, but a function declaring a local `STACKFRAME64` — which mingw declares with nested anonymous `DUMMYUNIONNAME` unions — reliably segfaults the CodeView writer, independent of optimization level (`-O1` crashes too; `-g1` instead emits assembly gas cannot resolve: `can't resolve .debug$T`). This is the same GCC `dwarf2codeview` ICE family as the empty-struct and artificial-variable fixes. The response is structural, not flag-surgical: `printStacktrace()` calls `CaptureStackBackTrace(0, 25, …)` for a plain array of return addresses and resolves each with the unchanged `SymFromAddr` / `SymGetLineFromAddr64` / module+offset chain — no `STACKFRAME64`, no `CONTEXT`, and the x64/x86 register-selection `#if`s disappear. The replacement shape was pre-validated as a minimal TU on the very runner that crashed. Accepted behavior deltas: frame[0] is `printStacktrace` itself (the seeded `StackWalk64` emitted the same self-frame), and return addresses walk fine through optimized code where an RBP chain would stall.
+
 
 ### D5: Evidence gate extension is the TDD surface
 

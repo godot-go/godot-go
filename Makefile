@@ -29,9 +29,9 @@ endif
 
 # Debug info format for the build target. Default DWARF; Windows native
 # backtraces go through dbghelp.dll, which reads only PDB/COFF, so there the
-# C code emits CodeView instead (-gcodeview, GCC >= 13) and the link produces
-# a PDB named as the bare basename of the DLL (-Wl,--pdb=, GNU ld >= 2.40) so
-# dbghelp finds it next to the loaded module. See
+# C code emits CodeView instead (-gcodeview, GCC >= 14) and the link produces
+# a PDB pinned by absolute path next to the DLL (-Wl,--pdb=, GNU ld >= 2.40)
+# so dbghelp finds it beside the loaded module. See
 # openspec/changes/windows-pdb-line-info/.
 DEBUG_INFO_CFLAGS=-ggdb
 DEBUG_INFO_LDFLAGS=

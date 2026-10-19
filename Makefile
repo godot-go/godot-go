@@ -30,7 +30,8 @@ endif
 # Debug info for the build target. Global C flags stay DWARF on every
 # platform; Windows native backtraces go through dbghelp.dll, which reads
 # only PDB/COFF, so on windows the link additionally produces a PDB pinned
-# by absolute path next to the DLL (-Wl,--pdb=, GNU ld >= 2.40). The one
+# by absolute path next to the DLL (-Wl,--pdb=; the linker that must write
+# it and why are covered below). The one
 # package whose C frames appear in captured backtraces and compiles safely,
 # pkg/log, opts into CodeView with a `#cgo windows CFLAGS: -gcodeview`
 # directive rather than a global flag: dwarf2codeview in MinGW-Builds

@@ -28,7 +28,7 @@ Frames whose line is unknown — Go runtime, engine DLLs, and the C TUs that sta
 
 ### D4: Toolchain floors are probe-verified, and the probe caught a real ICE
 
-`--pdb=` requires binutils >= 2.40 (patch series merged October 2022); `-gcodeview` requires GCC >= 14 (not 13 — GCC 13 rejects it as an unrecognized debug output level). The `windows-latest` runner ships MinGW-Builds GCC 15.2.0 (`x86_64-posix-seh-rev1`) with binutils far above both floors — established by the runner diagnostics, and no version sniffing is added to the Makefile: an ld too old for `--pdb` fails the link loudly rather than degrading silently, and the verify step (D5) catches debug-info regressions that link clean. The same diagnostics surfaced a compiler crash that shaped the capture code — D6. A third floor arrived post-mortem (D7): the windows test link needs LLVM `lld`, so the Build step prepends the runner's LLVM bin dir to PATH and hard-fails when `ld.lld` is missing rather than degrading to a PDB-less link.
+`--pdb=` requires binutils >= 2.40 (patch series merged October 2022); `-gcodeview` requires GCC >= 14 (not 13 — GCC 13 rejects it as an unrecognized debug output level). The `windows-latest` runner ships MinGW-Builds GCC 15.2.0 (`x86_64-posix-seh-rev1`) with binutils far above both floors — established by the runner diagnostics, and no version sniffing is added to the Makefile: an ld too old for `--pdb` fails the link loudly rather than degrading silently, and the verify step (D5) catches debug-info regressions that link clean. The same diagnostics surfaced a compiler crash that shaped the capture code — D6. A third floor arrived post-mortem (D7): the windows test link needs LLVM `lld`, so the Build and Test steps prepend the runner's LLVM bin dir to PATH and hard-fail when `ld.lld` is missing rather than degrading to a PDB-less link.
 
 ### D6: The Win32 walk uses `CaptureStackBackTrace` because dwarf2codeview ICEs on `STACKFRAME64`
 
@@ -47,6 +47,6 @@ The evidence gate caught the unreadable-PDB case before any line-bearing frame e
 
 ## Risks / Trade-offs
 
-- The windows link now depends on the runner's `lld` existing (Build step asserts `ld.lld`) and on lld handling the whole external link (go's extld flags, the ~185 MB image, mixed DWARF/CodeView inputs). Mitigations: the link is a hard failure if any of that goes wrong, linux/alpine never touch lld, and the alternative — trusting binutils' `--pdb` output — already burned us once (D7).
+- The windows link now depends on the runner's `lld` existing (Build and Test steps assert `ld.lld`) and on lld handling the whole external link (go's extld flags, the ~185 MB image, mixed DWARF/CodeView inputs). Mitigations: the link is a hard failure if any of that goes wrong, linux/alpine never touch lld, and the alternative — trusting binutils' `--pdb` output — already burned us once (D7).
 - Losing DWARF in the C portion means `go tool addr2line` no longer resolves *C* frame lines in the Windows DLL; the PDB (uploaded as an artifact alongside) plus `llvm-symbolizer` covers that case.
 - PDB size on disk (debug build, -O0) is large; it lives only in `test/demo/lib` and CI artifacts, never in distributions.

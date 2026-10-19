@@ -77,7 +77,7 @@ jobs:
 
       - name: Build
         run: |
-          # the windows link uses lld (see Makefile DEBUG_INFO_LDFLAGS); make
+          # the windows link uses lld (see Makefile DEBUG_INFO_EXTLDFLAGS); make
           # sure the runner's LLVM bin dir (which holds ld.lld) is reachable
           export PATH="/c/Program Files/LLVM/bin:$PATH"
           command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
@@ -102,7 +102,14 @@ jobs:
 
       - name: Test
         timeout-minutes: 7
-        run: make test
+        # test depends on the phony build target; a build-cache miss here
+        # re-runs the windows external link, which needs ld.lld on PATH
+        # exactly like the Build step above (make GO_LINK_LDFLAGS windows
+        # branch)
+        run: |
+          export PATH="/c/Program Files/LLVM/bin:$PATH"
+          command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
+          make test
         continue-on-error: true
         shell: bash
         env:

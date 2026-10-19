@@ -71,6 +71,13 @@ prints its own stack (`stacktrace-probe go-stack`), giving live file:line for
 Go frames on every platform, including ones where native capture is stubbed
 out.
 
+The same works for Windows frames against the DLL from the `windows-test-lib`
+CI artifact — that platform wants addresses rebased onto the library's
+preferred image base, which `llvm-objdump -p` reports:
+
+    BASE=$(llvm-objdump -p libgodotgo-test-windows-amd64.dll | awk '/ImageBase/{print "0x"$2}')
+    echo $((BASE + 0x987ad)) | go tool addr2line libgodotgo-test-windows-amd64.dll
+
 ### Test
 
 Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time (don't be concerned if it fails):

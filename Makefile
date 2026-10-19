@@ -73,6 +73,11 @@ update_godot_headers_from_binary: ## update godot_headers from the godot binary
 
 # https://medium.com/@aviad.hayumi/debug-golang-applications-with-c-c-bindings-f254b3f1259e
 build: goenv ## Build GDExtension library (debug mode)
+	# On windows the external linker writes the --pdb file during linking,
+	# before go build creates the -o destination's parent directory; ld's
+	# ENOENT there is only a warning and silently drops the PDB, so the
+	# directory must exist first.
+	@mkdir -p "$(OUTPUT_PATH)"
 	CGO_ENABLED=1 \
 	GOOS=$(GOOS) \
 	GOARCH=$(GOARCH) \

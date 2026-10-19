@@ -11,7 +11,7 @@
 - Link `-ldbghelp` for Windows targets via `#cgo windows LDFLAGS` in the package that includes the header.
 - Add a narrow capture probe to the test suite: `Example.test_stacktrace_probe("start"|"hit"|"stop")` prints one `stacktrace-probe capture=<0|1>` line, opens a three-call capture window (≈2 banners per run — no log spam), and the GDScript driver asserts the phase returns.
 - Extend the runtime gate `test/check_test_output.sh`: when the log claims `capture=1`, at least one `___ C start backtrace ___` banner MUST appear; a run without the probe line at all fails. New fixtures pin both failure modes and the stub (`capture=0`) pass.
-- Add a dedicated Windows CI step asserting the capture evidence in `test-output.log`. Discovered during implementation: the Windows `Test` step runs `make test` with `continue-on-error: true` (a pre-existing teardown segfault, tracked separately), so the in-suite gate alone cannot fail that job.
+- Add a dedicated Windows CI step asserting the capture evidence in `test-output.log`. Discovered during implementation: the Windows `Test` step runs `make test` with `continue-on-error: true` (a pre-existing teardown segfault, tracked as #172), so the in-suite gate alone cannot fail that job.
 
 The Linux job gates `make test` normally, so the probe is enforced there through the existing gate.
 

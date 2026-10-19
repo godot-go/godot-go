@@ -75,6 +75,24 @@ jobs:
           PATH=$PATH:$(go env GOPATH)/bin make generate
         shell: bash
 
+      # Temporary diagnostic (windows-pdb-line-info): the runner GCC segfaults
+      # in dwarf2codeview at -O0 (gcc PR 124432 family). Probe which debug-flag
+      # combination this exact toolchain compiles without the ICE; the
+      # Makefile pins the winner and this step comes out.
+      - name: Probe CodeView Compiler Flags
+        continue-on-error: true
+        run: |
+          gcc --version | head -1
+          for flags in "-g -gcodeview" "-gcodeview" "-gcodeview -g1" "-gcodeview -O1"; do
+            if gcc $flags -I pkg/log -c pkg/log/stacktrace.c -o /tmp/codeview-probe.o 2>/tmp/codeview-probe.err; then
+              echo "PROBE-OK gcc $flags"
+            else
+              echo "PROBE-FAIL gcc $flags"
+              head -2 /tmp/codeview-probe.err
+            fi
+          done
+        shell: bash
+
       - name: Build
         run: |
           make build

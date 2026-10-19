@@ -29,7 +29,7 @@ Frames whose line is unknown (Go runtime, engine DLLs) print exactly as before, 
 
 ### D5: Evidence gate extension is the TDD surface
 
-The Windows verify step gains one check after the existing probe/banner greps: extract a banner block (`awk` between the start/end markers) and require `/[A-Za-z0-9_.-]+\.(c|h|s):[0-9]+/`. Committed before the implementation, this is the RED state on the Windows CI job — the only place this behavior can be tested (no local mingw; host stub headers model compilation, not debug-info loading).
+The Windows verify step gains one check after the existing probe/banner greps: extract a banner block (`awk` between the start/end markers) and require `/[A-Za-z0-9_.-]+\.(c|h|s):[0-9]+/`. The rule was committed before the implementation, but CI never saw that intermediate commit (the branch push predates the PR), so RED was established on the host instead: the committed pipeline run verbatim against the real pre-implementation artifact log exits 1 on its `::error::` branch, and passes synthetic line-bearing banners (including Windows `C:\…\file.c:12` paths — the character class excludes backslashes and colons, so the basename still matches). CI's GREEN run remains the product-side proof; the host stub headers model compilation, not debug-info loading.
 
 ## Risks / Trade-offs
 

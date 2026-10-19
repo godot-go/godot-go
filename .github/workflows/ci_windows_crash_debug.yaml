@@ -2,10 +2,12 @@ name: godot-go CI on Windows (teardown crash debug)
 
 # Diagnostics-only for issue #172: nothing here gates normal PR CI (the
 # workflow is dispatch-only). The teardown crash fires where the process's
-# own exception handlers are demonstrably silent, so the crash capture is
-# WER LocalDumps on plain (uninstrumented) repro runs; gdb was measured
-# infeasible (run 39220040720: 6 s repro -> >12 min with no stop).
-# See openspec/changes/diagnose-windows-teardown-crash/.
+# own exception handlers are demonstrably silent AND where the kernel-side
+# WER reporting does not dispatch (measured: run 39222394609 reproduced the
+# crash twice with no minidump). The only path that still observes the
+# event is a debug client — procdump catches the unhandled-exception
+# debug event without gdb's synchronous event storm (measured: run
+# 39220040720). See openspec/changes/diagnose-windows-teardown-crash/.
 
 on:
   workflow_dispatch:
@@ -33,7 +35,7 @@ jobs:
       - name: Set up scoop extras
         run: scoop bucket add extras
       - name: Install scoop packages
-        run: scoop install wget unzip
+        run: scoop install wget unzip procdump
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -57,25 +59,22 @@ jobs:
         run: |
           export PATH="/c/Program Files/LLVM/bin:$PATH"
           command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
+          command -v procdump || { echo "::error::procdump not found on PATH"; exit 1; }
           make build
 
-      # WER LocalDumps captures the dying process from the kernel side — the
-      # only mechanism that still observes the crash where in-process
-      # exception dispatch is dead (design D1/D2).
-      - name: Register WER LocalDumps
+      # WER LocalDumps stays registered as secondary evidence; the kernel
+      # side of WER measured absent for this teardown phase, but keeping
+      # the keys costs nothing and a dump appearing would be a bonus.
+      - name: Register WER LocalDumps and prepare dump folder
         shell: pwsh
         run: |
           reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\Godot_v4.7-stable_win64.exe" /v DumpFolder /t REG_EXPAND_SZ /d "C:\crashdumps" /f
           reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\Godot_v4.7-stable_win64.exe" /v DumpType /t REG_DWORD /d 1 /f
           reg add "HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\Godot_v4.7-stable_win64.exe" /v DumpCount /t REG_DWORD /d 10 /f
+          New-Item -ItemType Directory -Force -Path C:\crashdumps | Out-Null
+          Get-Command procdump -ErrorAction Stop | Out-Null
 
-      # Repro 1 is the gen-step crash itself: `godot --headless --verbose
-      # --path test/demo/ --editor --quit` hits Error 2816 (access violation)
-      # in the normal CI gen step, so this is the ~10 s deterministic
-      # version of the same teardown crash. The pipeline records the exit
-      # code of the godot subprocess; 139 (msys decoration of STATUS_
-      # ACCESS_VIOLATION) is the crash signature here.
-      - name: Plain repro run (editor quit)
+      - name: Plain control run (editor quit)
         timeout-minutes: 6
         run: |
           set +e
@@ -87,47 +86,54 @@ jobs:
           echo "$?" > plain-editor-quit.rc
           echo "plain-editor-quit exit code: $(cat plain-editor-quit.rc)"
 
-      # Repro 2 replays the entire suite phase-1 command line from `make
-      # test` (the mode where the crash was originally observed, exit 139).
-      - name: Plain repro run (suite phase 1)
-        timeout-minutes: 15
+      # The procdump runs launch the repro with procdump as its debugger:
+      # -e writes a dump when the process dies with an unhandled exception
+      # (second-chance debug event reaches a debug client even though no
+      # in-process handler survives; design D1 v3). No symbol resolution,
+      # so no gdb-style synchronous first-chance storm.
+      - name: Procdump capture (editor quit repro)
+        timeout-minutes: 8
+        shell: pwsh
         run: |
-          set +e
-          bash -o pipefail -ec '
-            CI=1 LOG_LEVEL=WARN GOTRACEBACK=single \
-            GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
-            "$0" --headless --verbose --path test/demo/ --quit-after 12 2>&1 | tee test-output.log
-          ' "$GODOT"
-          echo "$?" > plain-suite.rc
-          echo "plain-suite exit code: $(cat plain-suite.rc)"
+          $env:CI = '1'
+          $env:LOG_LEVEL = 'info'
+          $env:GOTRACEBACK = '1'
+          $env:GODEBUG = 'gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5'
+          procdump -accepteula -e -o C:\crashdumps\editor-quit.dmp -x $env:GODOT --headless --verbose --path test/demo/ --editor --quit 2>&1 | Tee-Object procdump-editor-quit.log
+          Write-Output "procdump editor-quit exit: $LASTEXITCODE"
 
-      # The job is red unless at least one crash signature was captured:
-      # either WER wrote a minidump, or a run's exit code records the access
-      # violation. Silent empty runs are impossible (design D3).
-      - name: Assert crash evidence captured
-        timeout-minutes: 3
+      - name: Procdump capture (suite phase 1)
+        timeout-minutes: 12
+        shell: pwsh
         run: |
-          captured=0
-          if [ -d /c/crashdumps ] && compgen -G '/c/crashdumps/*.dmp' >/dev/null; then
-            echo "WER LocalDumps produced crash dumps"
-            captured=1
-          fi
-          for rcfile in plain-editor-quit.rc plain-suite.rc; do
-            [ -f "$rcfile" ] || continue
-            rc="$(cat "$rcfile")"
-            if [ "$rc" = "139" ] || [ "$rc" = "2816" ]; then
-              echo "$rcfile records crash exit code $rc"
-              captured=1
-            fi
-          done
-          if [ "$captured" -ne 1 ]; then
-            echo "::error::none of the repro runs recorded a crash (no WER dump, no 139/2816 exit code) — the teardown crash did not reproduce"
+          $env:CI = '1'
+          $env:LOG_LEVEL = 'warn'
+          $env:GOTRACEBACK = 'single'
+          $env:GODEBUG = 'gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1'
+          procdump -accepteula -e -o C:\crashdumps\suite.dmp -x $env:GODOT --headless --verbose --path test/demo/ --quit-after 12 2>&1 | Tee-Object procdump-suite.log
+          Write-Output "procdump suite exit: $LASTEXITCODE"
+
+      # The job is red unless a symbolizable minidump exists — an
+      # exit-code-only reproduction no longer paints the job green, because
+      # the whole point is the faulting stack (design D2/D3).
+      - name: Assert a minidump was captured
+        timeout-minutes: 3
+        shell: pwsh
+        run: |
+          $dumps = Get-ChildItem -Path C:\crashdumps -Filter *.dmp -ErrorAction SilentlyContinue
+          if (-not $dumps -or @($dumps).Count -lt 1) {
+            Write-Output "::error::no minidump captured — the teardown crash did not reach the procdump debug event (check the plain control run reproduced it at all)"
             exit 1
-          fi
-          echo "GODOTGO_CRASH_EVIDENCE: captured"
+          }
+          foreach ($d in $dumps) {
+            Write-Output ("dump: " + $d.FullName + " (" + [math]::Round($d.Length / 1MB, 1) + " MB)")
+          }
+          Write-Output "GODOTGO_CRASH_EVIDENCE: captured"
 
       - name: Check crashdumps
-        run: ls -alh /c/crashdumps 2>/dev/null || echo "no WER dumps were written"
+        shell: pwsh
+        run: |
+          if (Test-Path C:\crashdumps) { Get-ChildItem C:\crashdumps | Format-Table Name, Length } else { Write-Output "no crashdumps folder" }
 
       - name: Upload Test Artifacts
         if: always()
@@ -137,8 +143,11 @@ jobs:
           path: |
             plain-editor-quit.log
             plain-editor-quit.rc
-            plain-suite.rc
-            test-output.log
+            procdump-editor-quit.log
+            procdump-suite.log
+            test/demo/lib/*.dll
+            test/demo/lib/*.pdb
+            !test/demo/lib/~*
             C:\crashdumps\**
           if-no-files-found: warn
           retention-days: 14

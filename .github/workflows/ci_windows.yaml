@@ -150,9 +150,6 @@ jobs:
             test-output.log
             test/demo/lib/*.dll
             test/demo/lib/*.pdb
-            # exclude the temp copies godot makes of the loaded extension
-            # (libgodotgo…dll -> ~libgodotgo…dll and ~libgodotgo…_N.pdb);
-            # they are load-time scratch files, not build artifacts
             !test/demo/lib/~*
           if-no-files-found: warn
           retention-days: 14

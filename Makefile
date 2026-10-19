@@ -53,9 +53,11 @@ endif
 
 # An empty -extldflags="" still reaches extld as a bare argument and breaks
 # the link, so the whole -ldflags is omitted when there is nothing to add.
+# quoting rule (cmd/go quoted.Split): quotes only group when a FIELD starts
+# with them, so the flag list rides as one quoted field after -extldflags.
 GO_LINK_LDFLAGS=
 ifneq ($(DEBUG_INFO_EXTLDFLAGS),)
-	GO_LINK_LDFLAGS='-ldflags=-extldflags="$(DEBUG_INFO_EXTLDFLAGS)"'
+	GO_LINK_LDFLAGS=-ldflags="-extldflags \"$(DEBUG_INFO_EXTLDFLAGS)\""
 endif
 
 .PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_delegation_trap interactive_test open_demo_in_editor

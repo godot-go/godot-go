@@ -104,3 +104,21 @@ jobs:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
+
+      # The Test step above is continue-on-error (the pre-existing teardown
+      # segfault is tracked separately), so the runtime gate's stacktrace
+      # rules alone cannot fail this job. test-output.log is tee'd by make
+      # test and survives that masked failure; assert the capture evidence
+      # directly so a silently broken Windows capture can never go green.
+      - name: Verify Stacktrace Capture Evidence
+        run: |
+          grep -qa 'stacktrace-probe capture=1' test-output.log || {
+            echo "::error::stacktrace probe did not report native capture available"
+            exit 1
+          }
+          grep -qa '___ C start backtrace ___' test-output.log || {
+            echo "::error::capture reported available but no backtrace banner was printed"
+            exit 1
+          }
+          echo "windows stacktrace capture verified"
+        shell: bash

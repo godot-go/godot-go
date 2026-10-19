@@ -3,22 +3,14 @@ name: godot-go CI on Windows
 on:
   workflow_dispatch:
   pull_request:
-    paths:
-      - "**/*.go"
-      - "**/*.c"
-      - "**/*.h"
-      - "**/*.gdextension"
-      - ".github/workflows/**"
+    paths-ignore:
+      - "openspec/**"
 
   push:
     branches:
       - main
-    paths:
-      - "**/*.go"
-      - "**/*.c"
-      - "**/*.h"
-      - "**/*.gdextension"
-      - ".github/workflows/**"
+    paths-ignore:
+      - "openspec/**"
 
 jobs:
   run_test:

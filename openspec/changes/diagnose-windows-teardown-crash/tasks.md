@@ -3,9 +3,9 @@
 ## 1. Diagnostics workflow
 
 - [x] 1.1 Create `.github/workflows/ci_windows_crash_debug.yaml` (`on: workflow_dispatch` only): godot 4.7 download + window setup mirroring `ci_windows.yaml` (env vars `CI=1 LOG_LEVEL=WARN LANG`, Go setup, checkout), plus `scoop install gdb`.
-- [x] 1.2 Add the gdb run (design D1): `--editor --quit` repro under `gdb --batch` with the exception-stop transcript (`bt 40`, `info registers rip rsp rbp`, `info sharedlibrary`, `thread apply all bt 30`), a second gdb pass of the full-suite commands only if the first transcript stops on something else, and generous step timeouts.
-- [x] 1.3 Add the WER LocalDumps fallback (design D2): registry keys for `Godot_v4.7-stable_win64.exe` (DumpFolder `C:\crashdumps`, DumpType 1), grep the folder after the run.
-- [x] 1.4 Add the success assertion + artifact upload (design D3): `GODOTGO_CRASH_EVIDENCE: captured` printed only on a real faulting-stop indicator in the transcript; final assertion step fails the job when evidence is absent; upload the gdb transcript(s), dump(s), and `test-output.log` as `windows-crash-evidence` with `if: always()`.
+- [x] 1.2 Implement the plain-run capture (design D1, v2): the `--editor --quit` repro and the suite phase-1 command run without instrumentation, each recording its exit code (`139` / `2816` are the crash signatures via `${PIPESTATUS[0]}`) into a `.rc` file. The gdb-based v1 was measured infeasible in run 39220040720 (6 s repro → >12 min with no stop; gdb's synchronous first-chance handling amplifies godot's exception traffic) and is retained only as a manual fallback recipe.
+- [x] 1.3 Add the WER LocalDumps capture (design D2): registry keys for `Godot_v4.7-stable_win64.exe` (DumpFolder `C:\crashdumps`, DumpType 1), and after the runs list the folder contents.
+- [x] 1.4 Add the success assertion + artifact upload (design D3, v2): `GODOTGO_CRASH_EVIDENCE: captured` printed only when a `.dmp` exists in `C:\crashdumps` **or** a run's `.rc` records a crash signature (`139` / `2816`); final assertion step fails the job when neither reproduced; upload the run logs, `.rc` files, and dumps as `windows-crash-evidence` with `if: always()`.
 
 ## 2. Evidence
 

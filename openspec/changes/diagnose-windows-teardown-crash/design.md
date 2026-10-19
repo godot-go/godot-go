@@ -48,33 +48,19 @@ Toolchain facts that constrain the evidence mechanism: `windows-latest` runners 
 
 ## Decisions
 
-### D1: gdb in a dispatch-only workflow captures the faulting stack
+### D1: The dump-first strategy: WER LocalDumps captures the faulting context; gdb is a documented manual fallback, not the automated path
 
-An `m:\\` `--editor --quit` repro run under `gdb --batch` with explicit exception handling: gdb sees the first-chance STATUS_ACCESS_VIOLATION on the dying process even when the in-process dispatch chain is gone — the debugger intercepts events the process's own handlers never reach. Practical shape:
+The first implementation wrapped the repro in `gdb --batch` with first-chance SIGSEGV/ILL/FPE passed through, expecting the unhandled teardown AV to stop the debugger cheaply at the very end. Run 39220040720 measured the opposite: the uninstrumented `--editor --quit` repro completes (and crashes) in ~6 s, but under gdb's synchronous debug-event handling it was still inside godot's editor help-cache generation after 12+ minutes with no stop occurred — every first-chance exception (constant under a Go c-shared DLL: guard-page stack growth, thread events, module loads) triggers a synchronous gdb round-trip, and all that overhead buys nothing because the crash only stops gdb at the end. The cancelled run's `gdb-editor-quit.log` transcript is retained as evidence of the amplification.
 
-```
-gdb --batch
-  -ex 'set pagination off'
-  -ex 'set confirm off'
-  -ex 'set auto-solib-add off'        # load our DLL's symbols lazily/symbolically
-  -ex run                             # stops at SEGV/AV
-  -ex 'bt 40'                         # faulting thread
-  -ex 'info registers rip rsp rbp'
-  -ex 'info sharedlibrary'            # which module owns the fault site
-  -ex 'thread apply all bt 30'        # all threads; distinguishes thread-kill
-                                      # variants (H2) from main-thread detach (H1/H3)
-  --args ./Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --editor --quit
-```
+The crash website is therefore not captured by a debugger. Instead, the plain (uninstrumented) repro runs fire the crash in normal time, and Windows Error Reporting's `LocalDumps` captures it: keys are registered for `Godot_v4.7-stable_win64.exe` (`DumpFolder=C:\crashdumps`, `DumpType=1` minidump), and the crash's dying process leaves a `.dmp` regardless of which in-process handler is dead. LocalDumps is invoked by the kernel-side WER path, not by the process's exception chain, so it covers the dispatch-dead phase.
 
-gdb is installed in the debug workflow via `scoop install gdb` (mingw-w64 gdb), matching the repo's existing scoop usage. A first-chance AV stop is consistent with the exception code already observed (`2816 = 0x0B00`, exception 11).
+The gold evidence from a minidump is extractable offline without cdb/windbg: the minidump format is documented, and a small offline reader yields the exception record (faulting thread, exception code, `TargetRip`), the module list with base addresses, and raw stack memory. Return addresses are harvestable by pointer-scanning the stack against the module ranges, then symbolized with the README's `llvm-symbolizer --obj=… --pdb=…` recipe (base+RVA → VMA) against the demo DLL's linked PDB (windows-pdb-line-info).
 
-Considered alternatives and why they are fallbacks, not primary: WER LocalDumps (D2) yields a binary dump whose offline analysis needs cdb/windbg we do not have on the host; godot's or Go's in-process handlers are already proven silent; a custom in-module VEH reuses our stacktrace.c machinery but registers through the same dispatch chain the crash demonstrably avoids.
+Run detection without gdb relies on process exit codes: each plain run records `${PIPESTATUS[0]}` into a `.rc` file — `139` (the msys bash decoration of STATUS_ACCESS_VIOLATION) or the make-style `2816` are the crash signatures — so "the crash did not reproduce" is still detectable when WER silently refuses (see Risks).
 
-`set auto-solib-add off` keeps gdb from grinding on all loaded DLLs; the trace still lists module base addresses so the faulting module can be resolved by offset from the gdb transcript alone.
+### D2: WER LocalDumps is also self-asserting
 
-### D2: WER LocalDumps as a machine-readable fallback
-
-The same job pre-registers the LocalDumps keys for `Godot_v4.7-stable_win64.exe` (`DumpFolder=C:\\crashdumps`, `DumpType=1` minidump), uploads any produced `.dmp`. If gdb's mingw staging misbehaves (H2-class cracks can tickle debuggers with weird loader-state events), the dump at least records exception code, faulting module, and raw stacks for later analysis by whatever tooling the fix work introduces.
+LocalDumps keys are registered for `Godot_v4.7-stable_win64.exe` (`DumpFolder=C:\crashdumps`, `DumpType=1`, `DumpCount=10`) in the debug workflow, and the dump folder is uploaded. The offline reader (D1) consumes the dumps directly; no windbg toolchain is introduced. gdb remains available as a manual, runner-side fallback recipe for an engineer debugging interactively, but no automated gdb steps remain in the workflow.
 
 ### D3: The diagnostics job asserts its own success and remains dispatch-only
 

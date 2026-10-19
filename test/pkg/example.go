@@ -1213,6 +1213,32 @@ func (e *Example) TestBitfield(flags int64) ExampleBitfieldFlag {
 	return (ExampleBitfieldFlag)(flags)
 }
 
+// TestStacktraceProbe drives a short C-side capture window so the runtime
+// gate can verify native backtraces actually print. "start" reports whether
+// capture is compiled in (one line, `stacktrace-probe capture=<0|1>`,
+// straight from stacktraceCaptureAvailable) and enables capture; "hit" is
+// called while capture is on, so its callback prints the backtrace before
+// the body runs; "stop" turns capture off so no further output leaks into
+// the rest of the run.
+func (e *Example) TestStacktraceProbe(p_phase String) String {
+	switch p_phase.ToUtf8() {
+	case "start":
+		capture := 0
+		if StacktraceCaptureAvailable() {
+			capture = 1
+		}
+		fmt.Printf("stacktrace-probe capture=%d\n", capture)
+		SetPrintStacktrace(true)
+		return NewStringWithUtf8Chars("on")
+	case "hit":
+		return NewStringWithUtf8Chars("hit")
+	case "stop":
+		SetPrintStacktrace(false)
+		return NewStringWithUtf8Chars("off")
+	}
+	return NewStringWithUtf8Chars("unknown-phase")
+}
+
 func (e *Example) CallableBind() {
 	methodName := NewStringNameWithLatin1Chars("emit_custom_signal")
 	defer methodName.Destroy()
@@ -1664,6 +1690,8 @@ func RegisterClassExample() {
 		ClassDBBindBitfieldFlag(t, "Example.ExampleBitfieldFlag", "FLAG_TWO", int(FlagTwo))
 
 		ClassDBBindMethod(t, "TestBitfield", "test_bitfield", []string{"flags"}, nil)
+
+		ClassDBBindMethod(t, "TestStacktraceProbe", "test_stacktrace_probe", []string{"phase"}, nil)
 
 		ClassDBBindMethod(t, "CallableBind", "callable_bind", nil, nil)
 		ClassDBBindMethod(t, "TestVariantVector2iConversion", "test_variant_vector2i_conversion", []string{"variant"}, nil)

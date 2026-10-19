@@ -13,4 +13,9 @@ extern bool enablePrintStacktrace;
 
 void printStacktrace();
 
+// stacktraceCaptureAvailable reports whether printStacktrace() captures a
+// real native callstack in this build (Windows DbgHelp or execinfo), or is
+// compiled to a no-op (no platform backtrace interface, e.g. musl).
+bool stacktraceCaptureAvailable(void);
+
 #endif

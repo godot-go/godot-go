@@ -131,7 +131,25 @@ if ! grep -qa 'GODOTGO_MAIN_LOOP_SHUTDOWN' <<<"$plain"; then
 		'MAIN_LOOP|GDExtensionManager'
 fi
 
-# 9. The gate found nothing wrong, yet godot still exited non-zero. Report it
+# 9. Stacktrace capture probe. The Go suite opens one narrow capture window
+#    (Example.test_stacktrace_probe) and prints "stacktrace-probe capture=<0|1>"
+#    straight from the binary's compile-time truth. Two failure modes:
+#    the section vanished entirely (driver drift), or the build CLAIMS capture
+#    is available but no banner was printed (the Windows DbgHelp path or the
+#    execinfo path silently failing -- this is the only in-repo proof they run).
+if ! grep -qa 'stacktrace-probe capture=' <<<"$plain"; then
+	fail stacktrace-probe-missing \
+		"the stacktrace probe section did not run: expected a 'stacktrace-probe capture=<0|1>' line from Example.test_stacktrace_probe" \
+		'stacktrace-probe|TESTS FINISHED'
+fi
+if grep -qa 'stacktrace-probe capture=1' <<<"$plain" &&
+	! grep -qa '___ C start backtrace ___' <<<"$plain"; then
+	fail stacktrace-capture-claimed-but-silent \
+		"the build reported native stacktrace capture available, but the enabled capture window printed no banner (expected '___ C start backtrace ___')" \
+		'stacktrace-probe|___ C '
+fi
+
+# 10. The gate found nothing wrong, yet godot still exited non-zero. Report it
 #    rather than passing: something outside the known modes went wrong.
 if [[ "$godot_status" -ne 0 ]]; then
 	fail godot-exited-non-zero \

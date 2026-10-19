@@ -1,13 +1,10 @@
 #ifndef CGO_GODOT_GO_STACKTRACE_H
 #define CGO_GODOT_GO_STACKTRACE_H
 
-#ifdef _WIN32
-#include <windows.h>
-#include <dbghelp.h>
-#else
-#include <execinfo.h>
-#endif
-
+// Platform-specific backtrace headers (execinfo.h, windows.h/dbghelp.h)
+// belong in stacktrace.c only. Including them here would impose a glibc
+// dependency on every package that includes this header, breaking builds
+// on libc implementations without execinfo (e.g. musl). See issue #127.
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>

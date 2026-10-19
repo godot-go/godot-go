@@ -48,8 +48,10 @@ void printStacktrace() {
     #ifdef _WIN32
         /* DbgHelp is process-global and not thread-safe; callback fire on
            whatever engine thread runs them, so serialize every walk.
-           INIT_SRWLOCK needs no init call, keeping this valid gnu90. */
-        static SRWLOCK traceLock = INIT_SRWLOCK;
+           The static zero pattern IS an initialized SRWLOCK (SRWLOCK_INIT
+           and mingw's INIT_SRWLOCK both expand to it); spelling it
+           directly avoids mingw toolchains that ship no such macro. */
+        static SRWLOCK traceLock = {0};
 
         AcquireSRWLockExclusive(&traceLock);
         printf("___ C start backtrace ___________\n");

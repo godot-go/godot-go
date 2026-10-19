@@ -27,16 +27,19 @@ else
 	TEST_BINARY_PATH=$(OUTPUT_PATH)/libgodotgo-test-$(GOOS)-$(GOARCH).so
 endif
 
-# Debug info format for the build target. Default DWARF; Windows native
-# backtraces go through dbghelp.dll, which reads only PDB/COFF, so there the
-# C code emits CodeView instead (-gcodeview, GCC >= 14) and the link produces
-# a PDB pinned by absolute path next to the DLL (-Wl,--pdb=, GNU ld >= 2.40)
-# so dbghelp finds it beside the loaded module. See
+# Debug info for the build target. Global C flags stay DWARF on every
+# platform; Windows native backtraces go through dbghelp.dll, which reads
+# only PDB/COFF, so on windows the link additionally produces a PDB pinned
+# by absolute path next to the DLL (-Wl,--pdb=, GNU ld >= 2.40). Packages
+# whose C frames appear in captured backtraces (pkg/log, pkg/core) opt into
+# CodeView with a `#cgo windows CFLAGS: -gcodeview` directive rather than a
+# global flag: dwarf2codeview in MinGW-Builds GCC 15.2.0 compiles those
+# fine but ICEs on generated TUs such as pkg/ffi/ffi_wrapper.gen.c. Other
+# C code keeps DWARF in the DLL for offline resolution. See
 # openspec/changes/windows-pdb-line-info/.
 DEBUG_INFO_CFLAGS=-ggdb
 DEBUG_INFO_LDFLAGS=
 ifeq ($(GOOS),windows)
-	DEBUG_INFO_CFLAGS=-gcodeview
 	DEBUG_INFO_LDFLAGS=-Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/$(patsubst %.dll,%.pdb,$(notdir $(TEST_BINARY_PATH)))
 endif
 

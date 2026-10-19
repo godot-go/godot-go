@@ -60,6 +60,17 @@ automatically. On Windows, capture is built on the native DbgHelp stack-walking 
 The test suite proves capture end-to-end on every CI platform with a narrow probe
 window (`stacktrace-probe capture=<0|1>`).
 
+Captured frames resolve offline to function plus file:line — feed any printed
+`module+0xoffset` to Go's own resolver against the debug-built library:
+
+    echo 0x536e61 | go tool addr2line test/demo/lib/libgodotgo-test-linux-amd64.so
+
+Use `go tool addr2line`, not GNU `addr2line`, which effectively hangs on the
+Go DWARF in these debug builds. Inside the probe window the Go side also
+prints its own stack (`stacktrace-probe go-stack`), giving live file:line for
+Go frames on every platform, including ones where native capture is stubbed
+out.
+
 ### Test
 
 Once the project successfully builds, run the following commands to generate cached files for the test demo project for the first time (don't be concerned if it fails):

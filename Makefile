@@ -38,16 +38,24 @@ endif
 # preamble TU. Other C code keeps DWARF in the DLL for offline resolution.
 # See openspec/changes/windows-pdb-line-info/.
 DEBUG_INFO_CFLAGS=-ggdb
-DEBUG_INFO_LDFLAGS=
+# The windows PDB link needs lld (design D7): binutils 2.45.1's --pdb emits
+# an unaligned DBI stream (binutils bug 34605) that dbghelp refuses to load,
+# and no shipped mingw carries the master-branch fix yet. These flags go to
+# go's link via -extldflags, NOT to CGO_LDFLAGS: go's external linker sniffs
+# the toolchain (gcc -Wl,--version must print "LLD") to decide whether to
+# pass GNU-ld-only arguments; the sniff reads link's extldflags, so a linker
+# choice hidden in CGO_LDFLAGS makes it inject `-Wl,-T,fix_debug_gdb_scripts.ld`
+# and lld dies on the unknown -T.
+DEBUG_INFO_EXTLDFLAGS=
 ifeq ($(GOOS),windows)
-	# binutils 2.45.1 (the runner's ld) emits a malformed DBI stream from
-	# --pdb (binutils bug 34605: file-info substream not 4-byte aligned);
-	# dbghelp refuses to load that PDB, so live line lookups silently fail.
-	# The fix is on binutils master only, not any mingw release. lld is the
-	# reference PDB writer and produces a PDB dbghelp loads, so the windows
-	# test link goes through lld instead. /DEBUG must be slash-form (the
-	# lld COFF spelling); --pdb= works for both linkers.
-	DEBUG_INFO_LDFLAGS=-fuse-ld=lld -Wl,/DEBUG -Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/$(patsubst %.dll,%.pdb,$(notdir $(TEST_BINARY_PATH)))
+	DEBUG_INFO_EXTLDFLAGS=-fuse-ld=lld -Wl,/DEBUG -Wl,--pdb=$(CURDIR)/$(OUTPUT_PATH)/$(patsubst %.dll,%.pdb,$(notdir $(TEST_BINARY_PATH)))
+endif
+
+# An empty -extldflags="" still reaches extld as a bare argument and breaks
+# the link, so the whole -ldflags is omitted when there is nothing to add.
+GO_LINK_LDFLAGS=
+ifneq ($(DEBUG_INFO_EXTLDFLAGS),)
+	GO_LINK_LDFLAGS='-ldflags=-extldflags="$(DEBUG_INFO_EXTLDFLAGS)"'
 endif
 
 .PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_delegation_trap interactive_test open_demo_in_editor
@@ -90,9 +98,9 @@ build: goenv ## Build GDExtension library (debug mode)
 	GOARCH=$(GOARCH) \
 	GOAMD64=v3 \
 	CGO_CFLAGS='-fno-omit-frame-pointer -fPIC -g $(DEBUG_INFO_CFLAGS) -O0 -I$(CWD) $(EXTRA_CGO_CFLAGS)' \
-	CGO_LDFLAGS='-g3 -g -O0 $(DEBUG_INFO_LDFLAGS) $(EXTRA_CGO_LDFLAGS)' \
+	CGO_LDFLAGS='-g3 -g -O0 $(EXTRA_CGO_LDFLAGS)' \
 	GOEXPERIMENT=$(GOEXPERIMENT) \
-	go build -gcflags=all="-N -l" -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
+	go build -gcflags=all="-N -l" $(GO_LINK_LDFLAGS) -tags tools -buildmode=c-shared -v -x -trimpath -o "$(TEST_BINARY_PATH)" $(TEST_MAIN)
 
 build-full: goenv ## Build GDExtension library with full debug symbols
 	CGO_ENABLED=1 \

@@ -109,7 +109,9 @@ jobs:
           $env:LOG_LEVEL = 'info'
           $env:GOTRACEBACK = '1'
           $env:GODEBUG = 'gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5'
-          .\procdump\procdump.exe -accepteula -e -o C:\crashdumps\editor-quit.dmp -x .\Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --editor --quit 2>&1 | Tee-Object procdump-editor-quit.log
+          # documented -x grammar: -x <Dump_Folder> <Image_File> [args...];
+          # -o is a bare overwrite flag, NOT the dump path (run 39224719383)
+          .\procdump\procdump.exe -accepteula -mm -e -x C:\crashdumps .\Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --editor --quit 2>&1 | Tee-Object procdump-editor-quit.log
           Write-Output "procdump editor-quit exit: $LASTEXITCODE"
 
       - name: Procdump capture (suite phase 1)
@@ -120,7 +122,7 @@ jobs:
           $env:LOG_LEVEL = 'warn'
           $env:GOTRACEBACK = 'single'
           $env:GODEBUG = 'gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1'
-          .\procdump\procdump.exe -accepteula -e -o C:\crashdumps\suite.dmp -x .\Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --quit-after 12 2>&1 | Tee-Object procdump-suite.log
+          .\procdump\procdump.exe -accepteula -mm -e -x C:\crashdumps .\Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --quit-after 12 2>&1 | Tee-Object procdump-suite.log
           Write-Output "procdump suite exit: $LASTEXITCODE"
 
       # The job is red unless a symbolizable minidump exists — an

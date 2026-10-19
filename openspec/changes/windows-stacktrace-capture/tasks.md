@@ -26,7 +26,7 @@
 ## 5. Implementation-discovered follow-ups
 
 - [x] 5.1 Windows `Test` step found to run `make test` under `continue-on-error: true` (pre-existing godot teardown segfault, exit 139, reproduces on `main` without this change) — the in-suite gate cannot fail that job. Added a final `Verify Stacktrace Capture Evidence` step to `ci_windows.yaml` grepping `test-output.log` for the probe line and banner (design D7).
-- [ ] 5.2 Confirm the new verify step passes on this PR's Windows CI run ("windows stacktrace capture verified").
+- [x] 5.2 Confirm the new verify step passes on this PR's Windows CI run ("windows stacktrace capture verified") — run 39182125987, with the masked `FAIL[godot-exited-non-zero]` (#172) still visible underneath, proving the evidence step gates independently of the red `make test` step.
 
 ## Workflow follow-up
 

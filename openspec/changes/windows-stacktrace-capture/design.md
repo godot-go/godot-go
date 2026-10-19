@@ -16,6 +16,8 @@
 
 `RtlCaptureContext` -> `SymInitialize(process, NULL, TRUE)` -> `StackWalk64` loop (cap 25) -> per-frame `SymFromAddr`, then `SymCleanup`. The whole sequence is wrapped in a process-wide `SRWLOCK` (statically initializable via `INIT_SRWLOCK`, no init call): the DbgHelp API set is not thread-safe and callbacks fire on whatever engine thread runs them; a racy crash during a debug window would poison CI nondeterministically. The scaffolding's IA64 branch is dropped (dead platform, was never compiled); amd64 and x86 branches are implemented, keyed on both `_M_X64`/`_M_IX86` and mingw's `__x86_64__`/`__i386__` macro families.
 
+- Toolchain gate found by the first Windows CI compile: mingw hides `INIT_SRWLOCK`/`AcquireSRWLockExclusive` behind `_WIN32_WINNT >= _WIN32_WINNT_VISTA` and its default can be lower, so the TU pins `_WIN32_WINNT`/`WINVER` to `0x0601` before including any system header.
+
 - Alternative: `RtlCaptureStackBackTrace` (ntdll) — simpler but skips the symbol layer entirely; the existing scaffolding and the glibc path's shape (names when possible) argue for DbgHelp.
 
 ### D2: Unresolved frames print `module.dll+0xoffset (ip 0x…)`

@@ -3,14 +3,22 @@ name: godot-go CI on Linux
 on:
   workflow_dispatch:
   pull_request:
-    paths-ignore:
-      - "openspec/**"
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - "**/*.gdextension"
+      - ".github/workflows/ci_linux.yaml"
 
   push:
     branches:
       - main
-    paths-ignore:
-      - "openspec/**"
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - "**/*.gdextension"
+      - ".github/workflows/ci_linux.yaml"
 
 jobs:
   run_test:

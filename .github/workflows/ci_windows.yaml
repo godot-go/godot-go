@@ -120,6 +120,15 @@ jobs:
             echo "::error::capture reported available but no backtrace banner was printed"
             exit 1
           }
+          # With a linked PDB (windows-pdb-line-info) at least one captured
+          # frame must name its source line. If debug-info loading silently
+          # stops (PDB missing, GUID mismatch), frames degrade to offset-only
+          # and every check above still looks healthy.
+          awk '/___ C start backtrace ___/{inb=1} inb{print} /___ C end backtrace/{if(inb) exit}' test-output.log \
+            | grep -qaE '[A-Za-z0-9_.-]+\.(c|h|s):[0-9]+' || {
+            echo "::error::no captured frame carried file:line — the PDB is missing, stale, or not loaded next to the DLL"
+            exit 1
+          }
           echo "windows stacktrace capture verified"
         shell: bash
 

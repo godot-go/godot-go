@@ -54,7 +54,11 @@ glibc-compatible `execinfo` interface (`execinfo.h` plus the `backtrace` /
     make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/path/to/execinfo/include' EXTRA_CGO_LDFLAGS='-L/path/to/execinfo/lib -lexecinfo'
 
 On glibc and Apple systems nothing extra is needed; the backtrace path is selected
-automatically.
+automatically. On Windows, capture is built on the native DbgHelp stack-walking API
+(no extra packages needed): frames print symbol names when a PDB is available and
+`module.dll+0xoffset (ip 0x…)` otherwise — a form addr2line/gdb can resolve offline.
+The test suite proves capture end-to-end on every CI platform with a narrow probe
+window (`stacktrace-probe capture=<0|1>`).
 
 ### Test
 

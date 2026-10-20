@@ -75,6 +75,23 @@ The gdb run ends with a marker line (`GODOTGO_CRASH_EVIDENCE: captured` printed 
 
 Only if the gdb transcript is ambiguous about the two leading hypothesis families (H1/H3 "detach-region fault" vs H2 "Go-thread termination fault"): a temporary branch makes the Go shutdown callback call `os.Exit(<driver status>)` so the engine never returns from the shutdown callback; a single dispatch run tells us whether the crash disappears (supporting the game "engine-return-path/CRT" family) or persists (pointing at the engine-internal cleanup or load-time Go state). It must be reverted immediately after the evidence lands — it never merges, and it changes exit semantics that the runtime gate elsewhere depends on.
 
+### D6: v6 — the silent fault is post-unload, and pinning the module both proves it and fixes it
+
+The v5 conclusion ("the fault executes where exception dispatch is already dead") was directionally right but pinpointed the wrong region. Three measurements resolved it:
+
+1. **A stack-safe in-process VEH works for faults before the unload.** Taking the handler lock before any call, caching the log path and opening the file handle at install, and reserving stack with `SetThreadStackGuarantee` captured the `--editor --quit` fault (run 39369282023): `EXCEPTION 0xC0000005`, `ACCESS type=0 fault=0x8`, faulting RIP `rva=0x53e90a2`, unwound with `RtlVirtualUnwind` to `HashMap::_insert` ← `DocTools::generate` (`this = 0x8`) ← `EditorHelp::_gen_extensions_docs` ← `MessageQueue::_call_function` ← `MessageQueue::flush`. That is an engine deferred-call use-after-null: the doc-cache worker queues `_gen_extensions_docs`, `EditorHelp`'s predestructor nulls `doc`, then cleanup's flush runs the deferred call. The engine-only control (empty project, no extension) exits 0; the extension only widens the startup window in which the call is still queued.
+2. **The suite and `--editor --quit-after 12` faults are silent because they happen after the module is unmapped.** Raw exit codes from `Start-Process` were `0xC0000005` for both (run 39371788796). The hardened handler still logged nothing for them while logging the pre-unload fault in the same job. Godot releases the extension in `Main::cleanup` → `unregister_core_types()` → `memdelete(gdextension_manager)` → `~GDExtension` → `FreeLibrary`; once unmapped, the handler (and Go's own handlers) are gone, so the access violation cannot be reported in-process.
+3. **Pinning the module is decisive.** `GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS, ...)` at package init turned both faults into clean exits in the same job (run 39373187014):
+
+| run | module pinned | raw exit |
+| --- | --- | --- |
+| suite `--quit-after 12` | no | `0xC0000005` |
+| suite `--quit-after 12` | yes | `0x00000000` |
+| editor `--quit-after 12` | no | `0xC0000005` |
+| editor `--quit-after 12` | yes | `0x00000000` |
+
+Verdict: H2 (Go runtime state outliving the module) is the only family consistent with all observations — the fault exists only while the module is unmapped, and keeping it mapped eliminates it. H1/H3 (detach-region decorators) are not involved. The fix is `fix-windows-teardown-unload` (merged as #180); the `--editor --quit` DocTools fault is a separate engine bug, left tolerated in `Gen Test Project Files`.
+
 ## Risks / Trade-offs
 
 - gdb's symbol load for the ~185 MB extension DLL can be slow even with `auto-solib-add off`; the workflow keeps a generous step timeout and, failing that, the D2 dump path still yields module+offset facts from the dump headers.

@@ -124,6 +124,14 @@ jobs:
       # directly so a silently broken Windows capture can never go green.
       - name: Verify Stacktrace Capture Evidence
         run: |
+          # Native capture is opt-in on Windows (issue #172 mitigation): a
+          # default build compiles DbgHelp out, and a capture=0 probe line is
+          # that explicit, healthy state. Only a claimed-but-silent capture
+          # fails the job.
+          if grep -qa 'stacktrace-probe capture=0' test-output.log; then
+            echo "windows native capture compiled out (GODOT_GO_ENABLE_DBGHELP not set; issue #172 mitigation)"
+            exit 0
+          fi
           grep -qa 'stacktrace-probe capture=1' test-output.log || {
             echo "::error::stacktrace probe did not report native capture available"
             exit 1

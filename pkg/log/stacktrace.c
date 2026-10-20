@@ -13,9 +13,17 @@
 #include "stacktrace.h"
 
 #ifdef _WIN32
+/* Windows capture is OPT-IN behind GODOT_GO_ENABLE_DBGHELP for now: the
+   include is gated together with the body so a default build does not
+   import dbghelp.dll at all. dbghelp's process-detach path is a suspect in
+   the Windows teardown crash (issue #172); compiling it out confirms or
+   clears that suspicion while capture stays available on request:
+   EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_DBGHELP'. */
+#if defined(GODOT_GO_ENABLE_DBGHELP)
 #include <string.h>
 #include <windows.h>
 #include <dbghelp.h>
+#endif
 #elif defined(GODOT_GO_ENABLE_EXECINFO)
 /* User-forced path: link an external execinfo implementation
    (header + backtrace/backtrace_symbols), e.g. on Alpine/musl. See README. */
@@ -36,7 +44,15 @@
 bool enablePrintStacktrace = false;
 
 bool stacktraceCaptureAvailable(void) {
-#if defined(_WIN32) || defined(GODOT_GO_HAVE_EXECINFO)
+#if defined(_WIN32)
+#if defined(GODOT_GO_ENABLE_DBGHELP)
+	return true;
+#else
+	/* Windows capture is compiled out unless GODOT_GO_ENABLE_DBGHELP is
+	   defined; see the include block at the top of this file. */
+	return false;
+#endif
+#elif defined(GODOT_GO_HAVE_EXECINFO)
 	return true;
 #else
 	return false;
@@ -45,7 +61,7 @@ bool stacktraceCaptureAvailable(void) {
 
 void printStacktrace() {
     if (enablePrintStacktrace) {
-    #ifdef _WIN32
+    #if defined(_WIN32) && defined(GODOT_GO_ENABLE_DBGHELP)
         /* DbgHelp is process-global and not thread-safe; callback fire on
            whatever engine thread runs them, so serialize every walk.
            The static zero pattern IS an initialized SRWLOCK (SRWLOCK_INIT
@@ -145,9 +161,9 @@ void printStacktrace() {
         free(strs);
         printf("___ C end backtrace   ___________\n\n");
     #else
-        /* Platform provides no execinfo backtrace interface (e.g. musl);
-           capture is compiled out. Define GODOT_GO_ENABLE_EXECINFO and link
-           an implementation to restore it. */
+        /* Compiled out: Windows without GODOT_GO_ENABLE_DBGHELP, or a libc
+           with no execinfo interface (e.g. musl). See the include block at
+           the top of this file for how to restore capture on each. */
     #endif
     }
 }

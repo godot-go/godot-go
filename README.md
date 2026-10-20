@@ -55,10 +55,17 @@ glibc-compatible `execinfo` interface (`execinfo.h` plus the `backtrace` /
 
 On glibc and Apple systems nothing extra is needed; the backtrace path is selected
 automatically. On Windows, capture is built on the native DbgHelp stack-walking API
-(no extra packages needed): frames print symbol names when a PDB is available and
+and is **opt-in for now**: a default Windows build compiles it out and does not
+even import `dbghelp.dll`, because dbghelp's process-detach path is a suspect in
+the Windows teardown crash tracked in issue #172. Enable it with:
+
+    make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_DBGHELP'
+
+With it enabled, frames print symbol names when a PDB is available and
 `module.dll+0xoffset (ip 0x…)` otherwise — a form addr2line/gdb can resolve offline.
 The test suite proves capture end-to-end on every CI platform with a narrow probe
-window (`stacktrace-probe capture=<0|1>`).
+window (`stacktrace-probe capture=<0|1>`); a `capture=0` Windows run means the
+DbgHelp capture was compiled out.
 
 Captured frames resolve offline to function plus file:line — feed any printed
 `module+0xoffset` to Go's own resolver against the debug-built library:

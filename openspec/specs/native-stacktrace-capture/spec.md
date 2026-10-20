@@ -43,11 +43,16 @@ The build SHALL allow a user on a platform without native `execinfo` to restore 
 - **THEN** the execinfo capture path is compiled in and linking succeeds against that library
 
 ### Requirement: Windows native capture via DbgHelp
-On Windows builds the library SHALL print a native call stack from `printStacktrace()` when the global enable flag is set, walking frames with the process's stack-walking facilities. Each frame line SHALL carry a symbol name with displacement when the resolver can attribute it, and otherwise the containing module name with the instruction offset into the module (plus the raw instruction pointer), so unresolved frames remain actionable offline.
+
+On Windows builds where the DbgHelp capture path is compiled in via the documented build-time opt-in, the library SHALL print a native call stack from `printStacktrace()` when the global enable flag is set, walking frames with the process's stack-walking facilities. Each frame line SHALL carry a symbol name with displacement when the resolver can attribute it, and otherwise the containing module name with the instruction offset into the module (plus the raw instruction pointer), so unresolved frames remain actionable offline. A default Windows build SHALL compile the capture path out entirely, SHALL NOT load the DbgHelp component, and its availability report SHALL state that native capture is unavailable while leaving the enable flag settable.
 
 #### Scenario: Enabled on Windows
-- **WHEN** the global enable flag is true and a bound GDExtension callback fires on Windows
+- **WHEN** the build was compiled with the documented DbgHelp opt-in, the global enable flag is true, and a bound GDExtension callback fires on Windows
 - **THEN** the captured native callstack frames are printed between the standard start/end banner lines
+
+#### Scenario: Default build compiles capture out
+- **WHEN** a default Windows build runs and the capture availability is queried (including with the global enable flag set)
+- **THEN** availability reports capture unavailable, no DbgHelp module is loaded into the process, and no native stacktrace output is produced
 
 #### Scenario: Unresolved frames stay actionable
 - **WHEN** a captured frame cannot be attributed to a symbol name (e.g. no PDB is available for a mingw build carrying DWARF)
@@ -55,7 +60,7 @@ On Windows builds the library SHALL print a native call stack from `printStacktr
 
 ### Requirement: Windows frames carry source line info when a PDB is linked
 
-Captured Windows frames whose addresses resolve to source through the linked PDB SHALL print the source file and line alongside the symbol, and the Windows CI capture-evidence step SHALL fail a run where no captured frame carries file:line information.
+When the Windows capture path is compiled in, captured frames whose addresses resolve to source through the linked PDB SHALL print the source file and line alongside the symbol, and the Windows CI capture-evidence step SHALL fail a run in which capture is compiled in but no captured frame carries file:line information. When the capture path is compiled out, the evidence step SHALL accept the explicit unavailable report as a healthy state and SHALL NOT require banner or line evidence.
 
 #### Scenario: Resolved frame prints file and line
 
@@ -69,8 +74,13 @@ Captured Windows frames whose addresses resolve to source through the linked PDB
 
 #### Scenario: Missing line evidence fails the Windows job
 
-- **WHEN** a Windows CI run's captured banners contain no frame with file:line
+- **WHEN** a Windows CI run reports capture available but its captured banners contain no frame with file:line
 - **THEN** the stacktrace evidence verification step fails the job naming the missing line-info evidence
+
+#### Scenario: Compiled-out capture passes the evidence step
+
+- **WHEN** a Windows CI run's probe reports capture unavailable because the capture path was compiled out
+- **THEN** the stacktrace evidence verification step passes without requiring banner or line evidence
 
 ### Requirement: CI-visible capture probe
 The test suite SHALL, on every platform run, emit exactly one probe line reporting whether native capture is compiled in, and SHALL perform at least one enabled capture window around a bound callback. The runtime output gate SHALL treat a claimed-available capture with no produced banner as a test failure, and SHALL treat the probe line's absence as a test failure.

@@ -110,18 +110,16 @@ jobs:
           export PATH="/c/Program Files/LLVM/bin:$PATH"
           command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
           make test
-        continue-on-error: true
         shell: bash
         env:
           CI: 1
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
 
-      # The Test step above is continue-on-error (the pre-existing teardown
-      # segfault is tracked separately), so the runtime gate's stacktrace
-      # rules alone cannot fail this job. test-output.log is tee'd by make
-      # test and survives that masked failure; assert the capture evidence
-      # directly so a silently broken Windows capture can never go green.
+      # The teardown fault is fixed by pinning the Go module (the runtime
+      # cannot be unloaded), so the Test step gates the job again. Keep the
+      # capture-evidence assertion: the runtime gate's stacktrace rules alone
+      # would not catch a silently broken Windows capture.
       - name: Verify Stacktrace Capture Evidence
         run: |
           # Native capture is opt-in on Windows (issue #172 mitigation): a

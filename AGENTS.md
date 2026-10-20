@@ -93,6 +93,10 @@ This project provides Go bindings for Godot 4.3+ through the GDExtension API usi
 - Supports Linux (.so), Windows (.dll), and macOS (.framework)
 - Debug builds include extensive debugging symbols and flags
 
+**Module Lifetime (Windows):**
+- The extension DLL is pinned in the process at load (`GetModuleHandleEx` with `GET_MODULE_HANDLE_EX_FLAG_PIN`, `pkg/core/module_windows.go`). A Go c-shared library cannot be unloaded safely: the Go runtime keeps its own threads (sysmon, GC) running, so unmapping the module turns their next instruction into an access violation. Without the pin, Godot's shutdown `FreeLibrary` unmaps the DLL and the process dies with `0xC0000005` after a clean test run (issue #172).
+- Consequence: extension hot-reload/unload is unsupported on Windows; restart the process instead.
+
 ### Go-GDScript Mapping
 The project handles Go-to-GDScript language differences:
 

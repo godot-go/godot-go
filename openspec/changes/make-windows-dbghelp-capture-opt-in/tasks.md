@@ -16,7 +16,7 @@
 ## 4. Integration verification
 
 - [ ] 4.1 Run the Windows CI suite on the branch and confirm the probe reports `capture=0`, the evidence step passes, and no DbgHelp-related output appears. Verify: run logs show `stacktrace-probe capture=0` and a green evidence step.
-- [ ] 4.2 Record whether the teardown crash persists without DbgHelp loaded (plain uninstrumented repro exit code: 139 = dbghelp cleared, 0 = suspect confirmed) and feed the result to `openspec/changes/diagnose-windows-teardown-crash/`. Verify: the exit-code observation is recorded in that change's artifacts or issue #172.
+- [x] 4.2 Record whether the teardown crash persists without DbgHelp loaded (plain uninstrumented repro exit code: 139 = dbghelp cleared, 0 = suspect confirmed) and feed the result to `openspec/changes/diagnose-windows-teardown-crash/`. Measured on run 39360425245 (v4 workflow + this branch): the plain editor repro still exits 139 with capture compiled out and the probe reporting `capture=0` — the teardown crash is independent of DbgHelp, so dbghelp is cleared as a cause and the opt-in is an isolation/mitigation, not a fix. The suite second-chance procdump pass again produced no dump (same instrumentation-aversion as before).
 
 ## Workflow follow-up
 

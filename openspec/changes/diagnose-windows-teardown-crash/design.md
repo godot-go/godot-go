@@ -48,33 +48,24 @@ Toolchain facts that constrain the evidence mechanism: `windows-latest` runners 
 
 ## Decisions
 
-### D1: gdb in a dispatch-only workflow captures the faulting stack
+### D1: The dump-first strategy: WER LocalDumps captures the faulting context; gdb is a documented manual fallback, not the automated path
 
-An `m:\\` `--editor --quit` repro run under `gdb --batch` with explicit exception handling: gdb sees the first-chance STATUS_ACCESS_VIOLATION on the dying process even when the in-process dispatch chain is gone — the debugger intercepts events the process's own handlers never reach. Practical shape:
+The first implementation wrapped the repro in `gdb --batch` with first-chance SIGSEGV/ILL/FPE passed through, expecting the unhandled teardown AV to stop the debugger cheaply at the very end. Run 39220040720 measured the opposite: the uninstrumented `--editor --quit` repro completes (and crashes) in ~6 s, but under gdb's synchronous debug-event handling it was still inside godot's editor help-cache generation after 12+ minutes with no stop occurred — every first-chance exception (constant under a Go c-shared DLL: guard-page stack growth, thread events, module loads) triggers a synchronous gdb round-trip, and all that overhead buys nothing because the crash only stops gdb at the end. The cancelled run's `gdb-editor-quit.log` transcript is retained as evidence of the amplification.
 
-```
-gdb --batch
-  -ex 'set pagination off'
-  -ex 'set confirm off'
-  -ex 'set auto-solib-add off'        # load our DLL's symbols lazily/symbolically
-  -ex run                             # stops at SEGV/AV
-  -ex 'bt 40'                         # faulting thread
-  -ex 'info registers rip rsp rbp'
-  -ex 'info sharedlibrary'            # which module owns the fault site
-  -ex 'thread apply all bt 30'        # all threads; distinguishes thread-kill
-                                      # variants (H2) from main-thread detach (H1/H3)
-  --args ./Godot_v4.7-stable_win64.exe --headless --verbose --path test/demo/ --editor --quit
-```
+The crash website is therefore not captured by in-process handlers, and the two external capture routes divide up what survives:
 
-gdb is installed in the debug workflow via `scoop install gdb` (mingw-w64 gdb), matching the repo's existing scoop usage. A first-chance AV stop is consistent with the exception code already observed (`2816 = 0x0B00`, exception 11).
+- **WER LocalDumps was measured absent**: run 39222394609 reproduced the crash in both plain repros (exit codes 139 in both `.rc` files, ~21 s each) yet produced **no** minidump — the kernel-side unhandled-exception reporting does not dispatch during `ExitProcess`'s teardown phase, so WER cannot be the corpus.
+- **What survives is the debug-event route, minus gdb's cost**: an attached debug client receives the unhandled exception as a debug event *directly*, regardless of whether in-process dispatch runs. The automated capture is therefore **procdump** (Sysinternals): `procdump -accepteula -mm -e -x C:\crashdumps .\Godot_v4.7-stable_win64.exe <args>` starts the repro with procdump as its debugger (`-x` grammar: dump folder, then image; `-o` is a bare overwrite flag, not the dump path — measured in run 39224719377). procdump does not resolve symbols or load debug info, so it does not reproduce gdb's synchronous first-chance storm. WER keys stay registered as harmless secondary evidence, and gdb remains a documented manual fallback recipe for interactive debugging.
 
-Considered alternatives and why they are fallbacks, not primary: WER LocalDumps (D2) yields a binary dump whose offline analysis needs cdb/windbg we do not have on the host; godot's or Go's in-process handlers are already proven silent; a custom in-module VEH reuses our stacktrace.c machinery but registers through the same dispatch chain the crash demonstrably avoids.
+**v3 measured the fault's relationship to instrumentation** (run 39225647458): under procdump as full monitor, the editor repro took ~5 min (vs 21 s plain), ran to completion, and exited `0x00000000` — **no second-chance event, no dump** — while the plain control run in the same job still crashed with exit 139. gdb (run 39220040720) similarly never stopped through 12+ minutes. **v4 completed the discriminator** (run 39227973049): in the same job, the plain control editor repro still crashed (exit 139), but both procdump-monitored runs — a full second-chance monitor on the suite repro and a display-mode watcher (`-e 1 -f ''`, first+second chance, include-all filter confirmed in the monitor banner) on the editor repro — ran to completion and logged **zero exception events of any kind**, exiting `0x00000000`. A godot+Go process produces benign first-chance exceptions in normal runs, so the empty watcher log rules reading (a) out: instrumented scheduling avoids the fault entirely; external debug-event capture cannot observe this crash. The remaining evidence routes are in-process breadcrumbs that survive on the plain (crashing, uninstrumented) runs — e.g. teardown-boundary markers with `CaptureStackBackTrace` module+RVA output symbolized offline with the README recipe — or the D4 `os.Exit` discriminator to localize the crash region without a stack. **v5 cleared the DbgHelp suspect** (run 39360425245): with the Windows capture compiled out entirely (`GODOT_GO_ENABLE_DBGHELP` absent, probe reports `capture=0`, so `dbghelp.dll` never loads), the plain editor repro still exits 139 — the crash is independent of DbgHelp. The suite second-chance procdump pass again produced no dump (same instrumentation aversion as v3/v4).
 
-`set auto-solib-add off` keeps gdb from grinding on all loaded DLLs; the trace still lists module base addresses so the faulting module can be resolved by offset from the gdb transcript alone.
+The gold evidence from a minidump is extractable offline without cdb/windbg: the minidump format is documented, and a small offline reader yields the exception record (faulting thread, exception code, `TargetRip`), the module list with base addresses, and raw stack memory. Return addresses are harvestable by pointer-scanning the stack against the module ranges, then symbolized with the README's `llvm-symbolizer --obj=… --pdb=…` recipe (base+RVA → VMA) against the demo DLL's linked PDB (windows-pdb-line-info) — which is why the upload step now also carries the built `libgodotgo` DLL and PDB next to the dumps.
 
-### D2: WER LocalDumps as a machine-readable fallback
+Run detection without a debugger relies on process exit codes: each plain run records `${PIPESTATUS[0]}` into a `.rc` file — `139` (the msys bash decoration of STATUS_ACCESS_VIOLATION) or the make-style `2816` are the crash signatures — so "the crash did not reproduce" is still detectable, but a green job now requires a dump (the whole point is symbolizable evidence, not just reproduction).
 
-The same job pre-registers the LocalDumps keys for `Godot_v4.7-stable_win64.exe` (`DumpFolder=C:\\crashdumps`, `DumpType=1` minidump), uploads any produced `.dmp`. If gdb's mingw staging misbehaves (H2-class cracks can tickle debuggers with weird loader-state events), the dump at least records exception code, faulting module, and raw stacks for later analysis by whatever tooling the fix work introduces.
+### D2: The procdump run is self-asserting, and the artifact carries the offline-analysis inputs
+
+LocalDumps keys are registered as secondary evidence; the enforced evidence is a procdump minidump. The assertion step accepts a run only when at least one `.dmp` exists on the dump path — an exit-code-only reproduction no longer paints the job green, because the change's deliverable is a symbolizable stack. Uploads carry, next to the dumps: the plain-run logs and `.rc` files, plus `test/demo/lib/*.dll` and `*.pdb` (the DLL rebuilt on the same runner) so `llvm-symbolizer --obj=… --pdb=…` can run offline on the dump-extracted faulting addresses. gdb remains available as a manual, runner-side fallback recipe for an engineer debugging interactively, but no automated gdb steps remain in the workflow.
 
 ### D3: The diagnostics job asserts its own success and remains dispatch-only
 

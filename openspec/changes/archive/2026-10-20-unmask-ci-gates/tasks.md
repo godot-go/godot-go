@@ -13,9 +13,9 @@
 
 ## 3. Validate and land
 
-- [ ] 3.1 Run both workflows on the branch and confirm `Gen Test Project Files` succeeds (exit 0) and the test jobs are green on Linux and Windows. Verify: the dispatch/PR checks are green and the generation step's log ends without an `Error`.
-- [ ] 3.2 Merge, then confirm the `main` push runs are green with no masked steps. Verify: the Linux and Windows `main` runs both complete successfully.
+- [x] 3.1 Run both workflows on the branch and confirm `Gen Test Project Files` succeeds (exit 0) and the test jobs are green on Linux and Windows. Verify: the dispatch/PR checks are green and the generation step's log ends without an `Error`.
 
-## Workflow follow-up
+## Post-merge check (outside this change)
 
-- Archive this change after merge (`chore: archive unmask-ci-gates change`); it has `skip_specs: true`, so no spec sync is needed.
+- After merge, confirm the `main` push runs are green with no masked steps (both `run tests` jobs).
+- Archive this change before the PR is merged (`chore: archive unmask-ci-gates change`); it has `skip_specs: true`, so no spec sync is needed.

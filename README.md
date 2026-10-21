@@ -54,18 +54,16 @@ glibc-compatible `execinfo` interface (`execinfo.h` plus the `backtrace` /
     make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_EXECINFO -I/path/to/execinfo/include' EXTRA_CGO_LDFLAGS='-L/path/to/execinfo/lib -lexecinfo'
 
 On glibc and Apple systems nothing extra is needed; the backtrace path is selected
-automatically. On Windows, capture is built on the native DbgHelp stack-walking API
-and is **opt-in for now**: a default Windows build compiles it out and does not
-even import `dbghelp.dll`, because dbghelp's process-detach path is a suspect in
-the Windows teardown crash tracked in issue #172. Enable it with:
-
-    make build EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_DBGHELP'
-
-With it enabled, frames print symbol names when a PDB is available and
-`module.dll+0xoffset (ip 0x…)` otherwise — a form addr2line/gdb can resolve offline.
-The test suite proves capture end-to-end on every CI platform with a narrow probe
-window (`stacktrace-probe capture=<0|1>`); a `capture=0` Windows run means the
-DbgHelp capture was compiled out.
+automatically. On Windows, capture is compiled in by default and uses the same
+PE/COFF libbacktrace copy that Godot bundles for MinGW builds. It reads the DWARF
+embedded in the extension DLL, so no PDB or CodeView link step is needed and the
+DLL does not import `dbghelp.dll`. Frames in the DLL print
+`function (file:line) (ip 0x…)`; frames in other modules keep the
+`module.dll+0xoffset (ip 0x…)` form. The test suite proves capture end-to-end on
+every CI platform with a narrow probe window (`stacktrace-probe capture=<0|1>`);
+on Windows `capture=0` now means the build is broken. The vendored copy is
+BSD-3-Clause; see `pkg/log/libbacktrace/LICENSE` and its `README.md` for
+provenance.
 
 Captured frames resolve offline to function plus file:line — feed any printed
 `module+0xoffset` to Go's own resolver against the debug-built library:
@@ -85,17 +83,7 @@ preferred image base, which `llvm-objdump -p` reports:
     BASE=$(llvm-objdump -p libgodotgo-test-windows-amd64.dll | awk '/ImageBase/{print "0x"$2}')
     echo $((BASE + 0x987ad)) | go tool addr2line libgodotgo-test-windows-amd64.dll
 
-For packages compiled with `-gcodeview` (currently `pkg/log`) the C line
-information lives in the PDB shipped next to the DLL in that same artifact;
-resolve those frames with `llvm-symbolizer` and an explicit `--pdb`, since the
-path embedded in the DLL points at the build machine:
-
-    echo $((BASE + 0x2358246)) | \
-      llvm-symbolizer --obj=libgodotgo-test-windows-amd64.dll \
-                      --pdb=libgodotgo-test-windows-amd64.pdb -f -i
-
-That address prints `printStacktrace` at `pkg/log/stacktrace.c:81`. Every other
-C frame and all Go frames keep the `go tool addr2line` DWARF path above.
+The DLL carries DWARF for both C and Go frames; no PDB is produced or shipped.
 
 ### Test
 

@@ -2,7 +2,7 @@
 
 ## Why
 
-macOS is already a first-class build target in-tree — the Makefile has a `darwin` branch, `test/demo/example.gdextension` maps both macOS architectures, and `pkg/log/stacktrace.c` uses the native execinfo path on Apple — but no workflow ever runs it. Linux and Windows are covered; macOS regressions (build, extension load, teardown, capture probe) stay invisible until a user hits them. A macOS run today would also fail spuriously: both gate scripts strip ANSI with GNU-only `sed` escapes, so BSD `sed` leaves the colour codes in place and the summary banner never parses.
+macOS is already a first-class build target in-tree — the Makefile has a `darwin` branch, `test/demo/example.gdextension` maps both macOS architectures, and `pkg/log/stacktrace.c` uses the native execinfo path on Apple — but no workflow ever runs it. Linux and Windows are covered; macOS regressions (build, extension load, teardown, capture probe) stay invisible until a user hits them. A macOS run today would also fail spuriously: both gate scripts strip ANSI with GNU-only `sed` escapes, so BSD `sed` leaves the colour codes in place and the summary banner never parses. The first CI run of this change proved how untested that path was: the darwin build does not compile, because `util.SetThreadName` only exists for linux and windows.
 
 ## What Changes
 
@@ -13,6 +13,7 @@ macOS is already a first-class build target in-tree — the Makefile has a `darw
 - Each leg mirrors the Windows job: Godot 4.7 stable install, `update_godot_headers_from_binary`, `make generate`, `make build`, `make ci_gen_test_project_files`, `make test`, capture evidence, artifact upload. Artifacts carry the architecture in the name (`macos-<arch>-test-lib`) to avoid collisions.
 - Capture evidence is scoped to what macOS can prove: `stacktrace-probe capture=1` and the `___ C start backtrace ___` banner. The Windows `file:line` assertion is **not** ported — execinfo prints `backtrace_symbols` output, not DWARF source lines.
 - Make the ANSI strip in `test/check_test_output.sh` and `test/check_editor_output.sh` POSIX-portable (emit a literal ESC byte instead of GNU `\x1b`), so the same gate semantics hold under BSD and GNU `sed`.
+- Add the missing darwin implementation of `util.SetThreadName` (a no-op, matching the Windows one), so the test extension compiles for macOS at all. The first CI run proved the `darwin` build had never been exercised: `test/pkg/lib.go` calls the function, and only linux and windows had files providing it.
 - Add a macOS badge to `README.md` alongside the existing Linux and Windows badges.
 
 ## Capabilities
@@ -27,10 +28,10 @@ None.
 
 ## Impact
 
-- New: `.github/workflows/ci_macos.yaml`.
+- New: `.github/workflows/ci_macos.yaml`, `pkg/util/threadname_darwin.go`.
 - Changed: `test/check_test_output.sh`, `test/check_editor_output.sh`, `README.md`.
 - CI: one new workflow, two jobs per PR that touches Go/C/header/GDExtension files (macOS runners are free on this public repository).
-- No Go, C, generated, or API changes.
+- No C, generated, or API changes; the only Go change is the darwin thread-name stub the build requires.
 
 ## Non-goals
 

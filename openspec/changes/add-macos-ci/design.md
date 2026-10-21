@@ -11,6 +11,7 @@ See `proposal.md` for motivation. Constraints that shape the approach:
 - Runner facts (Oct 2026): `macos-latest` is macOS 26 **arm64**, 3-core M1 / 7 GB; Intel is `macos-26-intel`, 4-core / 14 GB. `macos-14` retires 2026-11-02.
 - Godot asset: `Godot_v4.7-stable_macos.universal.zip` → `Godot.app/Contents/MacOS/Godot`.
 - Godot's `OS_MacOS::get_framework_executable` (`../godot/platform/macos/os_macos.mm:366`) returns the path unchanged when it is not a bundle directory, and `open_dynamic_library` `dlopen`s it — so a plain Mach-O file named `*.framework` loads.
+- `pkg/util` supplies `SetThreadName` only for linux (`prctl`) and windows (a no-op). `test/pkg/lib.go:38` calls it, so `GOOS=darwin` fails to compile; the first run of this change's own workflow surfaced it as `undefined: util.SetThreadName`.
 - Measured sibling runtimes: Linux `make build` 111 s, `make test` 13 s; whole Windows job ~5 min.
 
 ## Goals / Non-Goals
@@ -42,6 +43,8 @@ See `proposal.md` for motivation. Constraints that shape the approach:
 **Portable ANSI strip via a literal ESC byte.** `esc=$(printf '\033')` then `sed "s/${esc}\\[[0-9;?]*[a-zA-Z]//g"`. Considered: `perl -pe` (extra runtime dependency), Homebrew `gsed` (not guaranteed present), bash ANSI-C quoting inside the pattern (works, but embeds a raw control character in the source line).
 
 **Artifact names carry the architecture** (`macos-arm64-test-lib`, `macos-amd64-test-lib`); `upload-artifact` rejects duplicate names across matrix legs.
+
+**The darwin build gap is closed with a no-op stub, matching Windows.** macOS does have `pthread_setname_np`, but its one-argument form renames only the calling thread, and using it would add cgo to `pkg/util` for a test-only diagnostic; `threadname_windows.go` is already a no-op, so parity beats a new dependency. A real implementation is deferred until something consumes the thread name on darwin.
 
 ## Risks / Trade-offs
 

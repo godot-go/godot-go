@@ -54,39 +54,58 @@ func (e *Example) TestPinScratchStaysFlat(small int64, large int64) int32 {
 			return -1
 		}
 
-		// Warm the code paths so first-call allocations are not read as drift.
-		e.mixedGeneratedCalls(250)
-		runtime.GC()
-		runtime.GC()
-		base := liveHeap()
+		// measure runs one warm-up and one small/large pair, sampling live heap
+		// after forced collection. The warm-up keeps first-call allocations out
+		// of the baseline; the label distinguishes the confirming sample.
+		measure := func(label string) (int64, int64) {
+			e.mixedGeneratedCalls(250)
+			runtime.GC()
+			runtime.GC()
+			base := int64(liveHeap())
 
-		e.mixedGeneratedCalls(small)
-		runtime.GC()
-		runtime.GC()
-		smallDelta := int64(liveHeap()) - int64(base)
+			e.mixedGeneratedCalls(small)
+			runtime.GC()
+			runtime.GC()
+			smallDelta := int64(liveHeap()) - base
 
-		e.mixedGeneratedCalls(large)
-		runtime.GC()
-		runtime.GC()
-		largeDelta := int64(liveHeap()) - int64(base)
+			e.mixedGeneratedCalls(large)
+			runtime.GC()
+			runtime.GC()
+			largeDelta := int64(liveHeap()) - base
 
-		fmt.Printf("  pin_flatness: base=%d KiB, +%d iters -> %+d KiB, +%d iters -> %+d KiB\n",
-			base/1024, small, smallDelta/1024, large, largeDelta/1024)
+			fmt.Printf("  pin_flatness: %sbase=%d KiB, +%d iters -> %+d KiB, +%d iters -> %+d KiB\n",
+				label, base/1024, small, smallDelta/1024, large, largeDelta/1024)
+			return smallDelta, largeDelta
+		}
 
 		// A permanently-pinned call retains on the order of a hundred bytes of Go
 		// heap, so tens of thousands of calls drift by megabytes. Anything inside
 		// this band is allocator and cache noise rather than retained pins.
 		const band = 1 << 20
+
+		// The absolute band alone could be passed by luck, so also require that the
+		// larger burst does not scale with its iteration count relative to the
+		// smaller one.
+		const slack = band / 4
+
+		smallDelta, largeDelta := measure("")
+
+		// A heap can step once for reasons unrelated to the iteration count:
+		// darwin/arm64 grew 416 KiB in one sample yet retained nothing over 40k
+		// iterations on the next. Those steps survive the forced collections but
+		// do not repeat, while retained pins accumulate in every burst. So an
+		// out-of-band sample is confirmed by a second measurement before it fails.
+		if smallDelta > band || largeDelta > band || largeDelta > smallDelta*3+slack {
+			fmt.Println("  pin_flatness: first sample out of band; re-measuring before failing")
+			smallDelta, largeDelta = measure("re-measured ")
+		}
+
 		if smallDelta > band || largeDelta > band {
 			fmt.Printf("  pin_flatness: FAIL: drift exceeds %d KiB band, pins are being retained\n",
 				band/1024)
 			return -2
 		}
 
-		// The absolute band alone could be passed by luck, so also require that the
-		// larger burst does not scale with its iteration count relative to the
-		// smaller one.
-		const slack = band / 4
 		if largeDelta > smallDelta*3+slack {
 			fmt.Printf("  pin_flatness: FAIL: drift scales with iterations (+%d KiB for %d iters vs +%d KiB for %d)\n",
 				smallDelta/1024, small, largeDelta/1024, large)

@@ -1,5 +1,6 @@
 [![godot-go CI on Linux](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml/badge.svg?branch=main)](https://github.com/godot-go/godot-go/actions/workflows/ci_linux.yaml)
 [![godot-go CI on Windows](https://github.com/godot-go/godot-go/actions/workflows/ci_windows.yaml/badge.svg?branch=main)](https://github.com/godot-go/godot-go/actions/workflows/ci_windows.yaml)
+[![godot-go CI on macOS](https://github.com/godot-go/godot-go/actions/workflows/ci_macos.yaml/badge.svg?branch=main)](https://github.com/godot-go/godot-go/actions/workflows/ci_macos.yaml)
 
 ---
 

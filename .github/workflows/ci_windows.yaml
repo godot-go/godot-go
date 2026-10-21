@@ -76,13 +76,7 @@ jobs:
         shell: bash
 
       - name: Build
-        run: |
-          # the windows link uses lld (see Makefile DEBUG_INFO_EXTLDFLAGS); make
-          # sure the runner's LLVM bin dir (which holds ld.lld) is reachable
-          export PATH="/c/Program Files/LLVM/bin:$PATH"
-          command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
-          ld.lld --version
-          make build
+        run: make build
         shell: bash
 
       - name: List Artifacts Directory
@@ -101,14 +95,7 @@ jobs:
 
       - name: Test
         timeout-minutes: 7
-        # test depends on the phony build target; a build-cache miss here
-        # re-runs the windows external link, which needs ld.lld on PATH
-        # exactly like the Build step above (make GO_LINK_LDFLAGS windows
-        # branch)
-        run: |
-          export PATH="/c/Program Files/LLVM/bin:$PATH"
-          command -v ld.lld || { echo "::error::ld.lld not found on PATH"; exit 1; }
-          make test
+        run: make test
         shell: bash
         env:
           CI: 1
@@ -121,14 +108,9 @@ jobs:
       # would not catch a silently broken Windows capture.
       - name: Verify Stacktrace Capture Evidence
         run: |
-          # Native capture is opt-in on Windows (issue #172 mitigation): a
-          # default build compiles DbgHelp out, and a capture=0 probe line is
-          # that explicit, healthy state. Only a claimed-but-silent capture
-          # fails the job.
-          if grep -qa 'stacktrace-probe capture=0' test-output.log; then
-            echo "windows native capture compiled out (GODOT_GO_ENABLE_DBGHELP not set; issue #172 mitigation)"
-            exit 0
-          fi
+          # Windows capture is compiled in by default and resolves frames from
+          # the DLL's embedded DWARF. A capture=0 probe line now means the
+          # build is broken, not that it opted out.
           grep -qa 'stacktrace-probe capture=1' test-output.log || {
             echo "::error::stacktrace probe did not report native capture available"
             exit 1
@@ -137,15 +119,20 @@ jobs:
             echo "::error::capture reported available but no backtrace banner was printed"
             exit 1
           }
-          # With a linked PDB (windows-pdb-line-info) at least one captured
-          # frame must name its source line. If debug-info loading silently
-          # stops (PDB missing, GUID mismatch), frames degrade to offset-only
-          # and every check above still looks healthy.
+          # At least one captured frame must name its source line. If DWARF
+          # loading silently stops, frames degrade to offset-only and every
+          # check above still looks healthy.
           awk '/___ C start backtrace ___/{inb=1} inb{print} /___ C end backtrace/{if(inb) exit}' test-output.log \
             | grep -qaE '[A-Za-z0-9_.-]+\.(c|h|s):[0-9]+' || {
-            echo "::error::no captured frame carried file:line — the PDB is missing, stale, or not loaded next to the DLL"
+            echo "::error::no captured frame carried file:line — the DLL's embedded DWARF was not resolved"
             exit 1
           }
+          # DbgHelp must be gone: the string would only be present if the DLL
+          # still imported it (or a source path mentioned it).
+          if grep -aqi 'dbghelp.dll' test/demo/lib/*.dll; then
+            echo "::error::the extension DLL still references dbghelp.dll"
+            exit 1
+          fi
           echo "windows stacktrace capture verified"
         shell: bash
 
@@ -161,7 +148,6 @@ jobs:
           path: |
             test-output.log
             test/demo/lib/*.dll
-            test/demo/lib/*.pdb
             !test/demo/lib/~*
           if-no-files-found: warn
           retention-days: 14

@@ -13,17 +13,14 @@
 #include "stacktrace.h"
 
 #ifdef _WIN32
-/* Windows capture is OPT-IN behind GODOT_GO_ENABLE_DBGHELP for now: the
-   include is gated together with the body so a default build does not
-   import dbghelp.dll at all. dbghelp's process-detach path is a suspect in
-   the Windows teardown crash (issue #172); compiling it out confirms or
-   clears that suspicion while capture stays available on request:
-   EXTRA_CGO_CFLAGS='-DGODOT_GO_ENABLE_DBGHELP'. */
-#if defined(GODOT_GO_ENABLE_DBGHELP)
+#include <stdint.h>
 #include <string.h>
 #include <windows.h>
-#include <dbghelp.h>
-#endif
+
+/* PE/COFF libbacktrace bundled by Godot 4.7-stable. On Windows it resolves
+   frames in the extension DLL from the DWARF embedded by mingw, so capture
+   no longer depends on dbghelp.dll, CodeView, or a PDB. */
+#include "libbacktrace/backtrace.h"
 #elif defined(GODOT_GO_ENABLE_EXECINFO)
 /* User-forced path: link an external execinfo implementation
    (header + backtrace/backtrace_symbols), e.g. on Alpine/musl. See README. */
@@ -43,15 +40,159 @@
 
 bool enablePrintStacktrace = false;
 
+#ifdef _WIN32
+/* libbacktrace has no free API and caches DWARF data in the state, so the
+   state lives for the process lifetime. That is safe here because the Go
+   extension module is pinned in the process on Windows (issue #172): it is
+   never unloaded, and the static filename buffer stays valid. */
+static SRWLOCK traceLock = {0};
+static struct backtrace_state *backtraceState = NULL;
+static uintptr_t backtraceRuntimeBase = 0;
+static uintptr_t backtraceImageBase = 0;
+static size_t backtraceImageSize = 0;
+static int backtraceStateInitialized = 0;
+static char backtraceModulePath[MAX_PATH];
+
+typedef struct {
+	int frame;
+	uintptr_t pc;
+	int printed;
+} resolve_context;
+
+static void backtraceError(void *data, const char *msg, int errnum) {
+	(void)data;
+	(void)msg;
+	(void)errnum;
+}
+
+/* Windows rewrites OptionalHeader.ImageBase in the mapped image to the
+   actual load address. The DWARF addresses in the file use the preferred
+   base, so read that value back from the DLL on disk. */
+static uintptr_t getFileImageBase(const char *path) {
+	FILE *file;
+	IMAGE_DOS_HEADER dos;
+	IMAGE_NT_HEADERS nt;
+	uintptr_t imageBase = 0;
+
+	file = fopen(path, "rb");
+	if (file == NULL) {
+		return 0;
+	}
+	if (fread(&dos, sizeof(dos), 1, file) == 1 &&
+			dos.e_magic == IMAGE_DOS_SIGNATURE && dos.e_lfanew >= 0 &&
+			fseek(file, (long)dos.e_lfanew, SEEK_SET) == 0 &&
+			fread(&nt, sizeof(nt), 1, file) == 1 &&
+			nt.Signature == IMAGE_NT_SIGNATURE) {
+		imageBase = (uintptr_t)nt.OptionalHeader.ImageBase;
+	}
+	fclose(file);
+	return imageBase;
+}
+
+static void getModuleImageInfo(HMODULE module, const char *path, uintptr_t *imageBase, size_t *imageSize) {
+	const IMAGE_DOS_HEADER *dos;
+	const IMAGE_NT_HEADERS *nt;
+
+	*imageBase = 0;
+	*imageSize = 0;
+	if (module == NULL) {
+		return;
+	}
+	dos = (const IMAGE_DOS_HEADER *)(const void *)module;
+	if (dos->e_magic != IMAGE_DOS_SIGNATURE || dos->e_lfanew < 0) {
+		return;
+	}
+	nt = (const IMAGE_NT_HEADERS *)((const BYTE *)module + dos->e_lfanew);
+	if (nt->Signature != IMAGE_NT_SIGNATURE) {
+		return;
+	}
+	*imageSize = (size_t)nt->OptionalHeader.SizeOfImage;
+	*imageBase = getFileImageBase(path);
+}
+
+static void ensureBacktraceState(void) {
+	HMODULE module = NULL;
+	DWORD pathLength;
+
+	if (backtraceStateInitialized) {
+		return;
+	}
+	backtraceStateInitialized = 1;
+
+	/* Use an address in this module's data, not a function pointer: the
+	   extension DLL owns both it and the capture code calling this. */
+	if (!GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+			(LPCSTR)(const void *)&enablePrintStacktrace, &module) ||
+			module == NULL) {
+		return;
+	}
+	pathLength = GetModuleFileNameA(module, backtraceModulePath, (DWORD)sizeof(backtraceModulePath));
+	if (pathLength == 0 || pathLength >= (DWORD)sizeof(backtraceModulePath)) {
+		return;
+	}
+	getModuleImageInfo(module, backtraceModulePath, &backtraceImageBase, &backtraceImageSize);
+	if (backtraceImageBase == 0 || backtraceImageSize == 0) {
+		return;
+	}
+
+	/* threaded=1: callbacks can fire on more than one engine thread. The
+	   capture lock below serializes the printed window, but the state
+	   itself must still be safe if that policy changes later. */
+	backtraceState = backtrace_create_state(backtraceModulePath, 1, backtraceError, NULL);
+	if (backtraceState == NULL) {
+		return;
+	}
+	backtraceRuntimeBase = (uintptr_t)module;
+}
+
+static int resolveFrame(void *data, uintptr_t pc, const char *filename, int lineno, const char *function) {
+	resolve_context *ctx = (resolve_context *)data;
+	(void)pc;
+
+	/* Only treat a frame as resolved when both pieces the spec promises
+	   are present. A function name without a line still falls back to the
+	   module+offset form, which addr2line and gdb can resolve offline. */
+	if (filename != NULL && lineno > 0 && function != NULL) {
+		printf("[%i] %s (%s:%d) (ip 0x%llx)\n", ctx->frame, function, filename, lineno,
+			(unsigned long long)ctx->pc);
+		ctx->printed = 1;
+	}
+	return 0;
+}
+
+static void printFrameFallback(int frame, uintptr_t pc) {
+	HMODULE module = NULL;
+	char moduleName[MAX_PATH];
+	char *basename;
+	DWORD length;
+
+	if (GetModuleHandleExA(GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS | GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT,
+			(LPCSTR)(uintptr_t)pc, &module) &&
+			module != NULL) {
+		length = GetModuleFileNameA(module, moduleName, (DWORD)sizeof(moduleName));
+		if (length > 0 && length < (DWORD)sizeof(moduleName)) {
+			basename = strrchr(moduleName, '\\');
+			if (basename == NULL) {
+				basename = strrchr(moduleName, '/');
+			}
+			if (basename == NULL) {
+				basename = moduleName;
+			} else {
+				basename++;
+			}
+			printf("[%i] %s+0x%llx (ip 0x%llx)\n", frame, basename,
+				(unsigned long long)(pc - (uintptr_t)module),
+				(unsigned long long)pc);
+			return;
+		}
+	}
+	printf("[%i] ??? (ip 0x%llx)\n", frame, (unsigned long long)pc);
+}
+#endif
+
 bool stacktraceCaptureAvailable(void) {
 #if defined(_WIN32)
-#if defined(GODOT_GO_ENABLE_DBGHELP)
 	return true;
-#else
-	/* Windows capture is compiled out unless GODOT_GO_ENABLE_DBGHELP is
-	   defined; see the include block at the top of this file. */
-	return false;
-#endif
 #elif defined(GODOT_GO_HAVE_EXECINFO)
 	return true;
 #else
@@ -61,93 +202,52 @@ bool stacktraceCaptureAvailable(void) {
 
 void printStacktrace() {
     if (enablePrintStacktrace) {
-    #if defined(_WIN32) && defined(GODOT_GO_ENABLE_DBGHELP)
-        /* DbgHelp is process-global and not thread-safe; callback fire on
-           whatever engine thread runs them, so serialize every walk.
-           The static zero pattern IS an initialized SRWLOCK (SRWLOCK_INIT
-           and mingw's INIT_SRWLOCK both expand to it); spelling it
-           directly avoids mingw toolchains that ship no such macro. */
-        static SRWLOCK traceLock = {0};
+    #if defined(_WIN32)
+        /* The print window is serialized so concurrent callbacks cannot
+           interleave banners and frames. The libbacktrace state is also
+           created under this lock. */
+        void *callstack[25];
+        unsigned short count;
+        int frame;
+        intptr_t delta;
 
         AcquireSRWLockExclusive(&traceLock);
         printf("___ C start backtrace ___________\n");
 
-        {
-        void *callstack[25];
-        unsigned short count;
-        int frames;
-        HANDLE process;
-        char symbolBuffer[sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(CHAR)];
-        PSYMBOL_INFO symbol = (PSYMBOL_INFO)symbolBuffer;
-        IMAGEHLP_LINE64 sourceLine;
-        DWORD lineDisplacement;
-        DWORD64 displacement;
-        DWORD64 moduleBase;
-        HMODULE module;
-        char moduleName[MAX_PATH];
-        char *basename;
-
-        /* CaptureStackBackTrace (ntdll) yields a plain array of return
-           addresses. Do NOT reintroduce a STACKFRAME64 local here:
-           dwarf2codeview (verified on MinGW-Builds GCC 15.2.0) segfaults
-           emitting that type's nested anonymous-union graph under
-           -gcodeview (see openspec/changes/windows-pdb-line-info design
-           D6). The return-address form also survives optimized frames
-           where an RBP chain would stall the walk. */
+        ensureBacktraceState();
+        delta = (intptr_t)(backtraceRuntimeBase - backtraceImageBase);
         count = CaptureStackBackTrace(0, 25, callstack, NULL);
 
-        process = GetCurrentProcess();
-        SymSetOptions(SYMOPT_UNDNAME | SYMOPT_DEFERRED_LOADS | SYMOPT_LOAD_LINES);
-        SymInitialize(process, NULL, TRUE);
+        for (frame = 0; frame < (int)count; frame++) {
+            uintptr_t pc = (uintptr_t)callstack[frame];
+            uintptr_t lookupPc;
+            resolve_context ctx;
 
-        for (frames = 0; frames < (int)count; frames++) {
-            symbol->SizeOfStruct = sizeof(SYMBOL_INFO);
-            symbol->MaxNameLen = MAX_SYM_NAME;
-            displacement = 0;
-            if (SymFromAddr(process, (DWORD64)callstack[frames], &displacement, symbol)) {
-                /* The build links a CodeView PDB next to the library
-                   (-gcodeview + ld --pdb), so SYMOPT_LOAD_LINES can resolve
-                   the exact source line; Go-runtime and engine frames have
-                   no PDB and simply keep the symbol-only form. */
-                memset(&sourceLine, 0, sizeof(sourceLine));
-                sourceLine.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
-                lineDisplacement = 0;
-                if (SymGetLineFromAddr64(process, (DWORD64)callstack[frames], &lineDisplacement, &sourceLine)) {
-                    printf("[%i] %s+0x%llx %s:%lu\n", frames, symbol->Name,
-                        (unsigned long long)displacement, sourceLine.FileName,
-                        sourceLine.LineNumber);
-                } else {
-                    printf("[%i] %s+0x%llx\n", frames, symbol->Name,
-                        (unsigned long long)displacement);
-                }
-            } else {
-                /* System dbghelp.dll cannot read mingw DWARF, so names often
-                   resolve to nothing; module+offset+ip is the form addr2line
-                   and gdb can still resolve offline. */
-                module = 0;
-                moduleBase = SymGetModuleBase64(process, (DWORD64)callstack[frames]);
-                if (moduleBase != 0) {
-                    module = (HMODULE)(DWORD_PTR)moduleBase;
-                }
-                if (module != 0 && GetModuleFileNameA(module, moduleName, MAX_PATH) > 0) {
-                    basename = strrchr(moduleName, '\\');
-                    if (basename == NULL) {
-                        basename = moduleName;
-                    } else {
-                        basename++;
-                    }
-                    printf("[%i] %s+0x%llx (ip 0x%llx)\n", frames, basename,
-                        (unsigned long long)((DWORD64)callstack[frames] - moduleBase),
-                        (unsigned long long)(DWORD64)callstack[frames]);
-                } else {
-                    printf("[%i] ??? (ip 0x%llx)\n", frames,
-                        (unsigned long long)(DWORD64)callstack[frames]);
-                }
+            if (backtraceState == NULL ||
+                    pc < backtraceRuntimeBase ||
+                    pc - backtraceRuntimeBase >= backtraceImageSize) {
+                printFrameFallback(frame, pc);
+                continue;
+            }
+
+            /* CaptureStackBackTrace returns return addresses. Step back one
+               byte for symbolization so the line belongs to the call, not
+               the instruction after it. The DWARF addresses are preferred
+               image VAs, so subtract the ASLR delta first. */
+            lookupPc = (uintptr_t)((intptr_t)pc - delta);
+            if (lookupPc > backtraceImageBase) {
+                lookupPc -= 1;
+            }
+
+            ctx.frame = frame;
+            ctx.pc = pc;
+            ctx.printed = 0;
+            backtrace_pcinfo(backtraceState, lookupPc, resolveFrame, backtraceError, &ctx);
+            if (!ctx.printed) {
+                printFrameFallback(frame, pc);
             }
         }
 
-        SymCleanup(process);
-        }
         printf("___ C end backtrace   ___________\n\n");
         ReleaseSRWLockExclusive(&traceLock);
     #elif defined(GODOT_GO_HAVE_EXECINFO)
@@ -161,9 +261,9 @@ void printStacktrace() {
         free(strs);
         printf("___ C end backtrace   ___________\n\n");
     #else
-        /* Compiled out: Windows without GODOT_GO_ENABLE_DBGHELP, or a libc
-           with no execinfo interface (e.g. musl). See the include block at
-           the top of this file for how to restore capture on each. */
+        /* Compiled out: a libc with no execinfo interface (e.g. musl). See
+           the include block at the top for how to opt into an external
+           implementation. */
     #endif
     }
 }

@@ -135,8 +135,9 @@ fi
 #    (Example.test_stacktrace_probe) and prints "stacktrace-probe capture=<0|1>"
 #    straight from the binary's compile-time truth. Two failure modes:
 #    the section vanished entirely (driver drift), or the build CLAIMS capture
-#    is available but no banner was printed (the Windows DbgHelp path or the
-#    execinfo path silently failing -- this is the only in-repo proof they run).
+#    is available but no banner was printed (the Windows libbacktrace path or
+#    the execinfo path silently failing -- this is the only in-repo proof they
+#    run).
 if ! grep -qa 'stacktrace-probe capture=' <<<"$plain"; then
 	fail stacktrace-probe-missing \
 		"the stacktrace probe section did not run: expected a 'stacktrace-probe capture=<0|1>' line from Example.test_stacktrace_probe" \

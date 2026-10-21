@@ -131,11 +131,19 @@ remote_debug_test: ## Start Godot with gdbserver for remote debugging
 	gdbserver --once :55555 "$(GODOT)" --headless --verbose --debug --path test/demo/
 
 ci_gen_test_project_files: ## Generate test project files for CI
+	# Do not quit during startup: the first-time doc-cache worker would still
+	# be running when EditorHelp nulls `doc`, and Main::cleanup's deferred
+	# flush then runs _gen_extensions_docs/DocTools::generate on a null `this`
+	# (abort on Linux, access violation on Windows). --quit-after counts
+	# iterations, not seconds, so pair it with --frame-delay to guarantee the
+	# worker has ~10s of main-loop time after startup to finish while `doc`
+	# is still alive. The frame budget costs that much on a warm cache too;
+	# it only has to cover the cold first run on a fresh CI checkout.
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
 	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
-	"$(GODOT)" --headless --verbose --path test/demo/ --editor --quit
+	"$(GODOT)" --headless --verbose --path test/demo/ --editor --frame-delay 16 --quit-after 600
 	# hack until fix lands: https://github.com/godotengine/godot/issues/84460
 	if [ ! -f "test/demo/.godot/extension_list.cfg" ]; then \
 		echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg; \

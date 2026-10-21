@@ -37,7 +37,11 @@ fi
 
 # print_rich wraps the counts in ANSI colour codes ("PASSES: \e[92m1079\e[39m"),
 # so strip escapes before parsing anything or the numbers never match.
-plain="$(sed -e 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$log")"
+# The escape byte is built with printf rather than written as a sed hex escape:
+# GNU sed understands one, BSD sed (macOS CI) does not, and would leave the
+# colour codes in place, so every clean run would fail as "no driver summary".
+esc="$(printf '\033')"
+plain="$(sed -e "s/${esc}\\[[0-9;?]*[a-zA-Z]//g" "$log")"
 
 # Membership checks test $plain with `grep -q ... <<<"$plain"`, never
 # `printf '%s\n' "$plain" | grep -q`. Under `set -o pipefail` the piped form

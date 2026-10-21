@@ -37,7 +37,11 @@ if [[ ! -f "$log" ]]; then
 	exit 1
 fi
 
-plain="$(sed -e 's/\x1b\[[0-9;?]*[a-zA-Z]//g' "$log")"
+# print_rich colour-wraps the markers this gate looks for, so strip escapes
+# first. The byte comes from printf, not a sed hex escape: BSD sed (macOS CI)
+# has no such escape and would leave the ANSI codes embedded in $plain.
+esc="$(printf '\033')"
+plain="$(sed -e "s/${esc}\\[[0-9;?]*[a-zA-Z]//g" "$log")"
 
 # Membership checks use here-strings, never `printf | grep -q`: under
 # `set -o pipefail` the piped form can falsely fail when grep -q exits early

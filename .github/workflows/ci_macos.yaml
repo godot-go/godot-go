@@ -1,0 +1,140 @@
+name: godot-go CI on macOS
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - "**/*.gdextension"
+      - ".github/workflows/ci_macos.yaml"
+
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.go"
+      - "**/*.c"
+      - "**/*.h"
+      - "**/*.gdextension"
+      - ".github/workflows/ci_macos.yaml"
+
+jobs:
+  run_test:
+    name: "run tests (${{ matrix.arch }})"
+    strategy:
+      # Both architectures are the evidence: while macOS support is new, an
+      # arm64 failure must not cancel the Intel leg, or the other way round.
+      fail-fast: false
+      matrix:
+        include:
+          # Each architecture runs on a native runner. cgo cannot be
+          # cross-compiled to x86_64 from an arm64 host without -arch plumbing
+          # the Makefile does not do, and the built library must be loaded by an
+          # engine of the same architecture (example.gdextension selects the
+          # entry per arch).
+          - runner: macos-latest      # macOS 26, arm64
+            arch: arm64
+          - runner: macos-26-intel    # macOS 26, x86_64
+            arch: amd64
+    runs-on: ${{ matrix.runner }}
+    env:
+      GODOT: ./Godot.app/Contents/MacOS/Godot
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add Go 1.27 To System Path
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.27'
+
+      - run: go version
+
+      - name: Install Godot 4.7 stable
+        run: |
+          # curl rather than wget: macOS runners ship no wget, and curl does not
+          # set the quarantine attribute a browser download would.
+          curl -fsSL -o godot.zip \
+            https://github.com/godotengine/godot-builds/releases/download/4.7-stable/Godot_v4.7-stable_macos.universal.zip
+          unzip -q godot.zip
+          xattr -dr com.apple.quarantine Godot.app || true
+          ls -alh Godot.app/Contents/MacOS/
+
+      - name: Setup Godot binary
+        run: |
+          chmod +x "$GODOT"
+          "$GODOT" --version
+
+      - name: Update Godot Headers
+        run: make update_godot_headers_from_binary
+
+      - name: Code Generation
+        run: PATH=$PATH:$(go env GOPATH)/bin make generate
+
+      - run: git diff
+
+      - name: Build
+        run: make build
+        env:
+          GOOS: darwin
+          GOARCH: ${{ matrix.arch }}
+
+      - name: List Artifacts Directory
+        run: |
+          # The extension is a plain Mach-O dylib named *.framework, not a bundle
+          # directory: Godot's macOS loader falls back to dlopen for a path that
+          # is not a framework bundle, which is what makes this name work.
+          ls -alh test/demo/lib
+          file "test/demo/lib/libgodotgo-test-macos-${{ matrix.arch }}.framework"
+
+      - name: Gen Test Project Files
+        timeout-minutes: 3
+        run: make ci_gen_test_project_files
+        env:
+          CI: 1
+          LOG_LEVEL: "debug"
+          # macOS spells the locale with a hyphen and upper-case encoding; the
+          # other workflows' "en_US.utf8" is a glibc spelling.
+          LANG: "en_US.UTF-8"
+
+      - name: Test
+        timeout-minutes: 7
+        run: make test
+        env:
+          CI: 1
+          LOG_LEVEL: "debug"
+          LANG: "en_US.UTF-8"
+
+      - name: Verify Stacktrace Capture Evidence
+        run: |
+          # macOS capture is compiled in by default (execinfo) and resolves
+          # symbols, not DWARF source lines. Assert capture is available and
+          # actually printed a banner -- the same pair the shared gate enforces.
+          # No file:line assertion: execinfo cannot produce one.
+          grep -qa 'stacktrace-probe capture=1' test-output.log || {
+            echo "::error::stacktrace probe did not report native capture available"
+            exit 1
+          }
+          grep -qa '___ C start backtrace ___' test-output.log || {
+            echo "::error::capture reported available but no backtrace banner was printed"
+            exit 1
+          }
+          echo "macOS stacktrace capture verified"
+        shell: bash
+
+      # Keep the library and both run logs so a shutdown fault can be inspected
+      # after the fact. Uploaded unconditionally: the evidence must exist even
+      # when a later step fails.
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-${{ matrix.arch }}-test-lib
+          path: |
+            test-output.log
+            editor-output.log
+            test/demo/lib/libgodotgo-test-macos-${{ matrix.arch }}.framework
+          if-no-files-found: warn
+          retention-days: 14

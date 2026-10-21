@@ -46,6 +46,8 @@ See `proposal.md` for motivation. Constraints that shape the approach:
 
 **The darwin build gap is closed with a no-op stub, matching Windows.** macOS does have `pthread_setname_np`, but its one-argument form renames only the calling thread, and using it would add cgo to `pkg/util` for a test-only diagnostic; `threadname_windows.go` is already a no-op, so parity beats a new dependency. A real implementation is deferred until something consumes the thread name on darwin.
 
+**A tripped pin-flatness rule is re-measured, not softened.** One sample cannot separate a retained pin from a heap step that survives forced collection: arm64 grew 416 KiB in one sample and retained nothing at 10k, 20k or 40k in the next. On a trip the measurement repeats from a fresh baseline — retained pins accumulate again, a heap step does not. The 1 MiB band and the 3×+256 KiB rule stay unchanged, unlike a darwin-only allowance, which would narrow macOS sensitivity for a flake that is not macOS-specific.
+
 ## Risks / Trade-offs
 
 - **macOS shutdown `dlclose` faults like the Windows teardown crash** → out of scope per the proposal; the first run is the probe. Mitigation is a follow-up change, not masking; the job stays off branch protection meanwhile.
@@ -53,6 +55,7 @@ See `proposal.md` for motivation. Constraints that shape the approach:
 - **7 GB arm64 runner vs a heavy `-gcflags=all="-N -l"` build** → 30 min job budget with 3/7 min step timeouts; if it OOMs, the follow-up is a CI-specific build profile, not a quieter gate.
 - **BSD userland differences beyond `sed`** → the gate already uses `grep -aE`, bash here-strings and portable `awk`; the evidence step must avoid GNU-only flags when it is written.
 - **`make generate` output formatting depends on installed `clang-format`/`goimports`** → the `git diff` step stays informational, and the build uses the regenerated sources either way.
+- **The pin-flatness probe trips on a single heap step** → arm64 retained 416 KiB in one sample and 0 KiB at 10k/20k/40k in the next; an out-of-band sample is now re-measured before failing, so a repeatable leak still fails while a one-off step does not.
 - **Godot.app quarantine on the runner** → `curl` does not set the attribute; `xattr -dr com.apple.quarantine` is applied defensively and ignored if absent.
 
 ## Migration Plan

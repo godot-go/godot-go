@@ -243,7 +243,6 @@ singletons.
 
 ### Micro leftovers (not proposals)
 
-- `test/pkg/example.go:453` - "dig into why casting is important"
 - `test/pkg/example.go:1211` - change bitfield test argument to
   `ExampleBitfieldFlag`
 - `cmd/generate/gdclassimpl/classes.go.tmpl` /

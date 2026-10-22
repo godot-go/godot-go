@@ -18,3 +18,10 @@
 ## Workflow follow-up
 
 - Archive the change once the demo suite is green, so the delta removes the cast requirement; verify the archived `openspec/specs/object-wrapper-cast/spec.md` lists five requirements and `openspec validate object-wrapper-cast --type spec --strict` passes.
+
+## 4. Review follow-ups
+
+- [x] 4.1 Correct the breaking-change migration text in the archived delta and proposal: widening to an ancestor is the assertion alone, while narrowing a wrapper typed to its declared class requires re-resolving through `ObjectFromInstanceBinding(wrapper.GetGodotObjectOwner())`; verify both texts state the direction and name the recipe, and that D2 is scoped to wrappers that already carry their runtime class.
+- [x] 4.2 Correct the witness comments so they no longer advertise a cast entry point: `TestObjectCast` in `test/pkg/example.go` and the `test_binding_substrate` group in `test/demo/main.gd` say widening to an ancestor keeps the owner and that an unrelated class fails.
+- [x] 4.3 Remove the dangling `test/pkg/example.go:453` "dig into why casting is important" bullet from `docs/roadmap.md`; verify `grep -rn "casting is important" docs/ test/` returns nothing.
+- [x] 4.4 Verify the follow-ups: `go build ./...`, `openspec validate --archived`, and a grep for stale wording (`cast identity`, `supported cast`, `reuse the wrapper already in hand`) show nothing; commit and push to the PR branch.

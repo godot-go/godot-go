@@ -460,9 +460,9 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 	)
 }
 
-// TestObjectCast exercises the supported cast contract end to end: a wrapper
+// TestObjectCast exercises the binding-identity contract end to end: a wrapper
 // resolves through the instance binding to the wrapper standing for the same
-// engine object, narrowing it to a parent keeps that owner, narrowing it to an
+// engine object, widening it to an ancestor keeps that owner, asserting it to an
 // unrelated class fails instead of yielding a wrong wrapper, and the inheritance
 // predicate accepts ancestors while rejecting unrelated classes. It returns a
 // non-zero failure code so the GDScript assertion names which clause broke.

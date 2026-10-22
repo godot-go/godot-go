@@ -65,6 +65,11 @@ so `V_Example_Input` becomes `event.(InputEventKey)`. Re-resolving from the engi
 pointer inside the handler would perform a second lookup and, worse, would paper
 over a wrapper/class disagreement instead of surfacing it as a failed assertion.
 
+This holds for a wrapper that already carries its runtime class, as the decoded ref
+does. A wrapper returned by a generated method is typed to the method's declared
+class, so narrowing one needs the binding re-resolution described in the migration
+text; asserting on it directly reports false for every subclass.
+
 ### D3 — The witness asserts the same three facts through the surviving API
 
 `TestObjectCast` keeps its name and its GDScript assertion, and covers:

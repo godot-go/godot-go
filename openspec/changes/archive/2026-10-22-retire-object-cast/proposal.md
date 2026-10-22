@@ -15,10 +15,11 @@ what callers actually do.
 
 ## What Changes
 
-- Remove `builtin.ObjectCastTo`. Narrowing a wrapper becomes a Go type assertion
-  on the wrapper the binding resolved, which works because generated wrappers
-  embed their ancestor chain; asking whether an object is an instance of a class
-  or subclass stays `builtin.ObjectInheritsClass`.
+- Remove `builtin.ObjectCastTo`. A wrapper is narrowed by re-resolving it through
+  `ObjectFromInstanceBinding` — a generated method returns a wrapper typed to its
+  declared class, not the runtime one — and then asserting the Go interface;
+  widening to an ancestor, and asking whether an object is an instance of a class
+  or subclass (`builtin.ObjectInheritsClass`), need no re-resolution.
 - Rewrite the demo witness `Example.TestObjectCast` against that pair: identity
   through `ObjectFromInstanceBinding`, rejection through a failed assertion, and
   the inheritance predicate for ancestors and unrelated classes.
@@ -27,8 +28,9 @@ what callers actually do.
 - Drop the `ObjectCastTo` entry from the pin-scoping allowlist, whose documented
   reason (a retained callbacks pointer) no longer exists in the implementation.
 - **BREAKING**: downstream code that called `builtin.ObjectCastTo` must use
-  `ObjectFromInstanceBinding` (or the wrapper it already holds) plus a type
-  assertion. The project's API is experimental and unversioned.
+  `ObjectFromInstanceBinding` plus a type assertion, re-resolving from
+  `GetGodotObjectOwner()` when narrowing a wrapper typed to its declared class.
+  The project's API is experimental and unversioned.
 
 ## Capabilities
 

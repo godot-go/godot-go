@@ -1646,12 +1646,12 @@ func test_vararg_return_buffer(example: Example) -> void:
 
 # Witnesses for openspec document-binding-substrate. The demo already exercises
 # most of the substrate; these assertions pin the parts that had no direct
-# caller: cast identity, the registration bookkeeping, the handled get/set path
+# caller: binding identity, the registration bookkeeping, the handled get/set path
 # as a plain property round-trip, a variadic bind with a second return, and the
 # advertised shape of Variant slots.
 func test_binding_substrate(example: Example) -> void:
-	# Narrowing contract: resolving the instance binding yields the wrapper for
-	# the same engine object, a Go type assertion to a parent keeps it, an
+	# Binding identity: resolving the instance binding yields the wrapper for
+	# the same engine object, widening it to an ancestor keeps that owner, an
 	# assertion to an unrelated class fails, and inheritance accepts ancestors
 	# only.
 	assert_equal(example.test_object_cast(), 0)

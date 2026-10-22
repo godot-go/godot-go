@@ -9,6 +9,7 @@ import "C"
 import (
 	"fmt"
 	"reflect"
+	"runtime"
 	"strings"
 	"unsafe"
 
@@ -98,6 +99,75 @@ type SignalParam struct {
 	Name string
 }
 
+// classDBSignalProbe returns a probe answering ClassDB.class_has_signal for
+// className — the engine's inheritance-inclusive member set, the same set the
+// engine's own add_signal guard consults, so the answer cannot disagree with
+// the registration it protects. The second result reports whether the engine
+// could be consulted at all: a missing ClassDB singleton or method bind
+// yields (false, false) so the caller can degrade to the Go-side record. The
+// method hash 471820014 is ClassDB.class_has_signal per extension_api.json,
+// matching the generated ClassDBImpl.ClassHasSignal call body.
+func classDBSignalProbe(className string) func(signalName string) (carries bool, available bool) {
+	return func(signalName string) (bool, bool) {
+		singleton := GetSingleton("ClassDB")
+		if singleton == nil {
+			return false, false
+		}
+		var pinner runtime.Pinner
+		defer pinner.Unpin()
+
+		tableName := NewStringNameWithLatin1Chars("ClassDB")
+		defer tableName.Destroy()
+		methodName := NewStringNameWithLatin1Chars("class_has_signal")
+		defer methodName.Destroy()
+		fn := CallFunc_GDExtensionInterfaceClassdbGetMethodBind(
+			tableName.AsGDExtensionConstStringNamePtrPinned(&pinner),
+			methodName.AsGDExtensionConstStringNamePtrPinned(&pinner),
+			471820014,
+		)
+		if fn == nil {
+			return false, false
+		}
+
+		classSn := NewStringNameWithLatin1Chars(className)
+		defer classSn.Destroy()
+		signalSn := NewStringNameWithLatin1Chars(signalName)
+		defer signalSn.Destroy()
+
+		var ret bool
+		retPtr := (GDExtensionTypePtr)(unsafe.Pointer(&ret))
+		pinner.Pin(retPtr)
+		argPtrSlice := make([]GDExtensionConstTypePtr, 2)
+		cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
+		pinner.Pin(cArgs)
+		argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&classSn))
+		pinner.Pin(argPtrSlice[0])
+		argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&signalSn))
+		pinner.Pin(argPtrSlice[1])
+		CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, singleton, cArgs, retPtr)
+		return ret, true
+	}
+}
+
+// signalNameCollision reports whether the class behind ci already carries
+// signalName: either a name the class itself recorded, or — when the engine
+// could be consulted — any name the engine says the class carries, which
+// includes names inherited from ancestors. When probe is nil or reports the
+// engine unavailable and no recorded name collides, the decision degrades to
+// the recorded names and the second result is false: inheritance was not
+// checked, and the caller warns. A recorded collision is decisive either way.
+func signalNameCollision(ci *ClassInfo, signalName string, probe func(signalName string) (carries bool, available bool)) (collision bool, inheritanceChecked bool) {
+	if _, ok := ci.SignalNameSet[signalName]; ok {
+		return true, true
+	}
+	if probe != nil {
+		if carries, available := probe(signalName); available {
+			return carries, true
+		}
+	}
+	return false, false
+}
+
 func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 	log.Debug("ClassDBAddSignal called",
 		zap.String("signalName", signalName),
@@ -109,9 +179,19 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		log.Panic("Class doesn't exist.", zap.String("class", typeName))
 		return
 	}
-	if _, ok = ci.SignalNameSet[signalName]; ok {
-		log.Panic("Constant already registered.", zap.String("class", typeName))
+	collision, inheritanceChecked := signalNameCollision(ci, signalName, classDBSignalProbe(typeName))
+	if collision {
+		log.Panic(fmt.Sprintf("Signal already registered: class %q already carries signal %q", typeName, signalName),
+			zap.String("class", typeName),
+			zap.String("signal", signalName),
+		)
 		return
+	}
+	if !inheritanceChecked {
+		log.Warn("signal duplicate check consulted recorded names only; inheritance was not checked",
+			zap.String("class", typeName),
+			zap.String("signal", signalName),
+		)
 	}
 	ci.SignalNameSet[signalName] = struct{}{}
 
@@ -496,9 +576,12 @@ func ClassDBBindEnumConstant(t GDClass, p_enum_name, p_constant_name string, p_c
 	classDBBindIntegerConstant(t, p_enum_name, p_constant_name, (GDExtensionInt)(p_constant_value), false)
 }
 
-// ClassDBBindBitfieldFlag binds a bitfield value in godot.
+// ClassDBBindBitfieldFlag binds a bitfield value in godot. The flag is bound
+// under p_enum_name so the enum member exists and records bitfield-ness. A
+// name qualified as "Class.EnumName" is accepted: the engine registers the
+// enum under the portion following its first separator.
 func ClassDBBindBitfieldFlag(t GDClass, p_enum_name, p_constant_name string, p_constant_value int) {
-	classDBBindIntegerConstant(t, "", p_constant_name, (GDExtensionInt)(p_constant_value), true)
+	classDBBindIntegerConstant(t, p_enum_name, p_constant_name, (GDExtensionInt)(p_constant_value), true)
 }
 
 func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, p_constant_value GDExtensionInt, p_is_bitfield bool) {
@@ -518,7 +601,10 @@ func classDBBindIntegerConstant(t GDClass, p_enum_name, p_constant_name string, 
 		return
 	}
 	if _, ok = ci.ConstantNameSet[p_constant_name]; ok {
-		log.Panic("Constant already registered.", zap.String("class", typeName))
+		log.Panic(fmt.Sprintf("Constant already registered: class %q already binds constant %q", typeName, p_constant_name),
+			zap.String("class", typeName),
+			zap.String("constant", p_constant_name),
+		)
 		return
 	}
 	ci.ConstantNameSet[p_constant_name] = struct{}{}

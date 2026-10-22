@@ -42,6 +42,7 @@ cases=(
 	"stacktrace_stub.log|0|0|PASS: extension loaded"
 	"stacktrace_probe_missing.log|0|1|FAIL[stacktrace-probe-missing]"
 	"stacktrace_no_go_stack.log|0|1|FAIL[stacktrace-go-stack-missing]"
+	"callable_panic_silent.log|0|1|FAIL[callable-panic-entry-missing]"
 )
 
 # editor gate fixture | godot_status | want_gate_exit | want_message_substring

@@ -73,6 +73,14 @@ registered, so keep the existing write-through after a successful engine answer,
 keep the rejection *before* any name is retained so a rejected registration leaves no
 trace.
 
+Spike outcome (task 1.1, confirmed — no fallback needed): from inside
+`RegisterClassExample` at scene-initialization time, `class_has_signal("Example", …)`
+reported `true` for `ready` (carried only by inheritance from `Node`), `true` for
+`custom_signal` (registered moments earlier in the same pass), and `false` for an
+unused name (`test-output.log`, three `ratify-1.1 class_has_signal` WARN lines). The
+boolean query answers correctly during class registration, so the gate uses
+`class_has_signal` and does not switch to `class_get_signal_list(class, false)`.
+
 ### D2 — Fail loudly rather than decline
 
 An inherited-name collision aborts with a diagnostic naming class and signal, matching

@@ -164,7 +164,18 @@ if grep -qa 'stacktrace-probe capture=' <<<"$plain" &&
 		'stacktrace-probe|\.go:'
 fi
 
-# 10. The gate found nothing wrong, yet godot still exited non-zero. Report it
+# 10. User-callable panic barrier. The driver invokes a callable whose closure
+#     panics (Example.create_panic_callable, openspec:
+#     diagnostic-output-channel). The boundary must recover, report the failed
+#     call, and record an entry; the GDScript assertions prove recovery and a
+#     live run, this proves the entry was recorded.
+if ! grep -qa 'go callable panicked' <<<"$plain"; then
+	fail callable-panic-entry-missing \
+		"a user callable closure panicked in the suite but the recoverable-panic boundary recorded no 'go callable panicked' entry" \
+		'go callable panicked|TESTS FINISHED'
+fi
+
+# 11. The gate found nothing wrong, yet godot still exited non-zero. Report it
 #    rather than passing: something outside the known modes went wrong.
 if [[ "$godot_status" -ne 0 ]]; then
 	fail godot-exited-non-zero \

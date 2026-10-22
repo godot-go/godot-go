@@ -81,6 +81,15 @@ unused name (`test-output.log`, three `ratify-1.1 class_has_signal` WARN lines).
 boolean query answers correctly during class registration, so the gate uses
 `class_has_signal` and does not switch to `class_get_signal_list(class, false)`.
 
+Hand-written boundary and its drift sentinel: `pkg/core` cannot import
+`pkg/gdclassimpl` (the dependency runs the other way), so the probe hand-writes the
+method-bind call and duplicates the `class_has_signal` hash literal from the generated
+`ClassDBImpl.ClassHasSignal` body. To keep that copy from going stale unnoticed, the
+run-output gate fails the suite on the degradation warning (`signal-gate-degraded` in
+`test/check_test_output.sh`): the demo registers signals on every run, so a hash that
+drifts after an extension-api refresh turns CI red instead of quietly reverting to the
+engine-side silent drop.
+
 ### D2 — Fail loudly rather than decline
 
 An inherited-name collision aborts with a diagnostic naming class and signal, matching
@@ -137,10 +146,13 @@ print-interface routing stays unloaded-by-use and is specified as not used.
 - **Engine call during registration could fail if the singleton is unavailable** → The
   singleton accessor yields nil rather than faulting, so check for nil and fall back to
   the existing Go-side set, logging a warning that inheritance was not checked. A
-  degraded check is no worse than today's.
+  degraded check is no worse than today's, and the run-output gate fails the suite when
+  that warning appears, so the degraded path cannot persist unnoticed (D1's sentinel).
 - **Passing the enum name through surfaces new engine-side enum collisions** → Add a
   witness binding two distinct flag enums and one intentionally distinct constant name,
-  and confirm the run is clean; enum-name collisions remain engine-reported.
+  and confirm the run is clean; enum-name collisions remain engine-reported. The release
+  note should state that an enum name now becomes a class member, so a name colliding
+  with an existing or parent-owned member is rejected where it once registered.
 - **The gate cannot see engine errors** → Metadata witnesses assert metadata positively
   from GDScript instead of relying on output absence.
 - **Ratifying the parameter class-name field cements a divergence from the reference** →

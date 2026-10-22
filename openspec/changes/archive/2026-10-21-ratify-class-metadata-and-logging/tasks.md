@@ -3,7 +3,7 @@
 ## 1. Prove the engine answers the duplicate question
 
 - [x] 1.1 From inside the class-registration path, query `ClassDB.class_has_signal` for a signal the class carries only by inheritance, a name the class owns, and an unused name, logging all three answers at warning level so the gated run shows them, and verify with `GODOT=/path/to/godot make test` that `test-output.log` shows the inherited name reporting true at registration time while the unused name reports false.
-- [ ] 1.2 Record the outcome of 1.1 against decision D1 in `design.md`, confirming the boolean query or switching the gate to `class_get_signal_list(class, false)`, and verify the recorded outcome matches the observed log lines before any gate code is written.
+- [x] 1.2 Record the outcome of 1.1 against decision D1 in `design.md`, confirming the boolean query or switching the gate to `class_get_signal_list(class, false)`, and verify the recorded outcome matches the observed log lines before any gate code is written.
 
 ## 2. Inheritance-aware signal name gating
 
@@ -42,6 +42,13 @@
 
 - [x] 7.1 Run `go build ./...` and `go test ./pkg/core ./pkg/log ./pkg/builtin -skip 'TestRefAcquireUnrefReleasesExactlyOnce|TestRefAcquireFinalizerReleasesWhenUnreachable'` and confirm both are green with the pre-existing engine-dependent exclusions unchanged.
 - [x] 7.2 Run `GODOT=/path/to/godot make test` and confirm the runtime suite reports `FAILURES: 0` and the editor-plugin gate reports PASS with no new engine errors in the captured output.
+
+## 8. Review fixes
+
+- [x] 8.1 Fail the gated run when the signal duplicate gate degrades: add a `signal-gate-degraded` check to `test/check_test_output.sh` for the `inheritance was not checked` warning, with a `signal_gate_degraded.log` fixture and table row, and verify the fixture suite reports zero failures.
+- [x] 8.2 Condition the callable-panic gate check on the probe's own marker: have the driver print `callable-panic-probe attempted=<n>` after the panicking-callable assertions, gate on it like the stacktrace check, carry the marker into the four full-run fixtures, and verify the fixture suite and `GODOT=/path/to/godot make test`.
+- [x] 8.3 Rename `signalNameCollision`'s completeness result to `decisive` so the flag says what it means on the recorded-name path, and verify with `go test ./pkg/core`.
+- [x] 8.4 Correct the proposal's gate-query name to `class_has_signal` and record the bitfield enum-name consequence and the gate sentinel in the proposal and design, and verify `openspec validate "ratify-class-metadata-and-logging" --strict`.
 
 ## Workflow follow-up
 

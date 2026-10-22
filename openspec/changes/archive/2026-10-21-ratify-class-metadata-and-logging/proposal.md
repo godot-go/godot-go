@@ -17,19 +17,22 @@ channel" that nothing defines.
   the engine, duplicate-name gating, enum grouping and bitfield-ness, constant-name
   uniqueness, property-group registration and its diagnostics.
 - Fix: duplicate signal detection consults inherited signal names via engine
-  introspection (`ClassDB.class_get_signal_list`) instead of only this class's own
+  introspection (`ClassDB.class_has_signal`) instead of only this class's own
   set, and fails loudly naming the class and the signal. **BREAKING** a registration
   that today silently registers nothing now aborts startup with a clear diagnostic.
 - Fix: `ClassDBBindBitfieldFlag` passes its `p_enum_name` through to the engine, so
   the enum member exists and records bitfield-ness. That argument stops being inert;
-  its signature is unchanged.
+  its signature is unchanged. The enum name becomes a class member, so a name colliding
+  with an existing or parent-owned member is now rejected by the engine where it
+  previously registered anonymously — a release-note item.
 - Fix: the duplicate-signal diagnostic reports a signal collision, not a constant one.
 - New `diagnostic-output-channel` spec: level selection and its single configuration
   point, output destination, stack-trace policy, the fatal path binding faults use,
   the one boundary that recovers a user closure panic, and logging during engine
   teardown.
 - Witnesses: GDScript metadata-introspection assertions for enum, bitfield-ness and
-  inherited-signal rejection; a recovered-panic probe for the new fatal.
+  inherited-signal rejection; a recovered-panic probe for the new fatal; a run-output
+  gate sentinel that fails the suite when the duplicate gate degrades.
 
 ## Capabilities
 

@@ -12,6 +12,10 @@ ERROR: Attempt to get non-existent interface function: 'classdb_register_extensi
 [33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "classdb_register_extension_class_6"}
 gdclass registered class=Example parent_type=Control
 
+[31mERROR[0m	core/go_callable.go:117	go callable panicked	{"panic": "go callable fixture panic", "stack": "goroutine 22 [running]:
+github.com/godot-go/godot-go/test/pkg.(*Example).CreatePanicCallable.func1
+	/workspace/godot-go/test/pkg/go_callable_tests.go:64 +0x1c"}
+callable-panic-probe attempted=2
 stacktrace-probe capture=0
 stacktrace-probe go-stack
 goroutine 1 [running]:

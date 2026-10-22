@@ -17,6 +17,37 @@ governs. The specs live under `openspec/specs/`.
 | Vararg method binding | [`vararg-method-binding`](../openspec/specs/vararg-method-binding/spec.md) | `core.ClassDBBindMethodVarargs`, `core.ClassDBBindStaticMethod` (variadic statics) |
 | Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectCastTo`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr` |
 
+# Class Metadata and Diagnostics
+
+Two capability specs own how a class publishes its non-method metadata and
+how the binding talks to the operator. Each row names the contract, the spec
+that pins it, and the public entry points it governs. The specs live under
+`openspec/specs/`.
+
+| Capability | Spec | Public entry points |
+| --- | --- | --- |
+| Class metadata registration | [`class-metadata-registration`](../openspec/specs/class-metadata-registration/spec.md) | `core.ClassDBAddSignal`, `core.ClassDBBindConstant`, `core.ClassDBBindEnumConstant`, `core.ClassDBBindBitfieldFlag`, `core.ClassDBAddPropertyGroup`, `core.ClassDBAddPropertySubgroup` |
+| Diagnostic output channel | [`diagnostic-output-channel`](../openspec/specs/diagnostic-output-channel/spec.md) | `log.Debug`, `log.Info`, `log.Warn`, `log.Error`, `log.Panic`, the `LOG_LEVEL` environment variable |
+
+Binding notes:
+
+- A signal name already carried by the class — including one it inherits from
+  an engine ancestor, answered by `ClassDB.class_has_signal` — is rejected at
+  registration with a fatal diagnostic naming class and signal. Before this
+  gate, such a registration passed the Go check and was silently dropped by
+  the engine.
+- `ClassDBBindBitfieldFlag` forwards its enum name to the engine so the enum
+  member exists and records bitfield-ness. An enum name qualified as
+  `Class.EnumName` is accepted: the engine registers the portion following
+  its first separator.
+- The log threshold comes from `LOG_LEVEL` at process start; an absent or
+  unparseable value falls back to warning level. Entries go to standard
+  output, serialized per entry, and carry a call stack at warning and above.
+- `log.Panic` is the binding-fault path: the entry is recorded, then a
+  recoverable panic unwinds. The only boundary that recovers on the
+  binding's behalf is the user-callable closure call (see Coroutines);
+  every other callback lets a panic reach the process.
+
 # GDScript Language Feature Mapping
 
 There are a lot of language features supported by GDScript that does not map cleanly to Go.

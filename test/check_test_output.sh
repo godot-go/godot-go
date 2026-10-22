@@ -164,7 +164,37 @@ if grep -qa 'stacktrace-probe capture=' <<<"$plain" &&
 		'stacktrace-probe|\.go:'
 fi
 
-# 10. The gate found nothing wrong, yet godot still exited non-zero. Report it
+# 10. User-callable panic barrier. The driver invokes callables whose closures
+#     panic (Example.create_panic_callable, openspec:
+#     diagnostic-output-channel) and prints 'callable-panic-probe attempted=<n>'
+#     afterwards. Conditioned on that marker like check 9 conditions on its
+#     probe line, so a suite variant that skips the probe cannot fail here for
+#     the wrong reason; when the probe did run, the boundary must have
+#     recovered, reported the failed call, and recorded an entry -- the
+#     GDScript assertions prove recovery and a live run, this proves the entry.
+if grep -qa 'callable-panic-probe attempted=' <<<"$plain" &&
+	! grep -qa 'go callable panicked' <<<"$plain"; then
+	fail callable-panic-entry-missing \
+		"a user callable closure panicked in the suite but the recoverable-panic boundary recorded no 'go callable panicked' entry" \
+		'callable-panic-probe|go callable panicked|TESTS FINISHED'
+fi
+
+# 11. Signal duplicate gate degraded. ClassDBAddSignal consults the engine's
+#     inheritance-inclusive member set (openspec: class-metadata-registration);
+#     this warning means the consult failed and only Go-recorded names were
+#     checked. The suite registers signals on every run, so the warning's
+#     presence here always means drift: most likely the hand-written
+#     class_has_signal method-bind hash in pkg/core/classdb.go no longer
+#     matches the generated ClassDBImpl.ClassHasSignal body after an
+#     extension_api refresh -- the silent engine-side drop this gate exists to
+#     catch would otherwise return unnoticed.
+if grep -qa 'inheritance was not checked' <<<"$plain"; then
+	fail signal-gate-degraded \
+		"the signal duplicate gate degraded to Go-recorded names only; re-check the class_has_signal method-bind hash in pkg/core/classdb.go against the generated ClassDBImpl.ClassHasSignal body" \
+		'inheritance was not checked'
+fi
+
+# 12. The gate found nothing wrong, yet godot still exited non-zero. Report it
 #    rather than passing: something outside the known modes went wrong.
 if [[ "$godot_status" -ne 0 ]]; then
 	fail godot-exited-non-zero \

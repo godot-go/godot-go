@@ -10,20 +10,22 @@ rules:
     - Always include a "Non-goals" section
   tasks:
     - Break tasks into chunks of max 2 hours
-  example:
-    - Generate sample code demonstrating the bug fix or new feature. The example is meant as an "explain it like I'm 5" document: the core purpose should be graspable at a practical level with no prior context about the codebase.
-  retrospective:
-    - Generate retrospective.md after completing a debugging/investigation-heavy change
-    - "Document the investigation journey: what was tried, what worked, what didn't"
-    - Include root cause analysis for each fix (before/after code snippets)
-    - Trace any remaining unresolved issues to their origin (Go-side vs Godot-side)
-    - Include key learnings and architecture diagrams
-    - Keep under 1500 words; focus on patterns, not line-by-line diffs
 
 # Additional artifacts (not managed by openspec CLI)
+# Their guidance lives here as comments because the spec-driven schema has no
+# matching artifact id; an active rules key for them makes every openspec CLI
+# invocation warn "Unknown artifact ID".
 # retrospective.md — Investigation journey and root cause analysis
-# Generated after impl, alongside proposal.md, design.md, tasks.md
-# Used for: debugging, deep dives, non-trivial investigation
+#   - Generate retrospective.md after completing a debugging/investigation-heavy change
+#   - Document the investigation journey: what was tried, what worked, what didn't
+#   - Include root cause analysis for each fix (before/after code snippets)
+#   - Trace any remaining unresolved issues to their origin (Go-side vs Godot-side)
+#   - Include key learnings and architecture diagrams
+#   - Keep under 1500 words; focus on patterns, not line-by-line diffs
+# example — Generate sample code demonstrating the bug fix or new feature.
+#   The example is meant as an "explain it like I'm 5" document: the core
+#   purpose should be graspable at a practical level with no prior context
+#   about the codebase.
 
 # Project context (optional)
 # This is shown to AI when creating artifacts.

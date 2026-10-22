@@ -35,6 +35,9 @@ type ExampleBitfieldFlag int64
 const (
 	FlagOne ExampleBitfieldFlag = 1
 	FlagTwo ExampleBitfieldFlag = 1 << 1
+	// SecondFlag belongs to the second, distinct bitfield enum (witness for
+	// enum independence).
+	SecondFlag ExampleBitfieldFlag = 1 << 2
 )
 
 // Example implements GDClass evidence
@@ -417,7 +420,11 @@ func RecordMainLoopFrame() {
 
 // LogMainLoopShutdownMarker logs the marker literal that
 // test/check_test_output.sh requires: evidence the shutdown phase really
-// fired in the headless run.
+// fired in the headless run. Writing it through the log package while the
+// engine tears down is also the live witness for the
+// diagnostic-output-channel requirement "Diagnostics remain available while
+// the engine tears down": the entry reaches captured output without any
+// engine-provided output facility.
 func LogMainLoopShutdownMarker() {
 	log.Warn("GODOTGO_MAIN_LOOP_SHUTDOWN")
 }
@@ -1758,7 +1765,11 @@ func RegisterClassExample() {
 				Type: GDEXTENSION_VARIANT_TYPE_INT,
 				Name: "value",
 			})
+		ClassDBAddSignal(t, "empty_signal")
 		ClassDBBindMethod(t, "EmitCustomSignal", "emit_custom_signal", []string{"name", "value"}, nil)
+		ClassDBBindMethod(t, "TestDuplicateSignalRejection", "test_duplicate_signal_rejection", nil, nil)
+		ClassDBBindMethod(t, "TestConstantCollisionRejection", "test_constant_collision_rejection", nil, nil)
+		ClassDBBindMethod(t, "TestPropertyGroupUnknownClass", "test_property_group_unknown_class", nil, nil)
 
 		// Issue #151 regression: vararg call return buffers (see vararg_return_tests.go).
 		ClassDBBindMethod(t, "TestVarargReturnHeapIntegrity", "test_vararg_return_heap_integrity", []string{"iterations"}, nil)
@@ -1770,6 +1781,7 @@ func RegisterClassExample() {
 		ClassDBBindConstant(t, "CONSTANT_WITHOUT_ENUM", int(EXAMPLE_ENUM_CONSTANT_WITHOUT_ENUM))
 		ClassDBBindBitfieldFlag(t, "Example.ExampleBitfieldFlag", "FLAG_ONE", int(FlagOne))
 		ClassDBBindBitfieldFlag(t, "Example.ExampleBitfieldFlag", "FLAG_TWO", int(FlagTwo))
+		ClassDBBindBitfieldFlag(t, "Example.SecondBitfield", "SECOND_FLAG", int(SecondFlag))
 
 		ClassDBBindMethod(t, "TestBitfield", "test_bitfield", []string{"flags"}, nil)
 

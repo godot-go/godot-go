@@ -58,6 +58,12 @@ func _ready():
 	test_property_list_churn(example)
 	test_vararg_return_buffer(example)
 	test_binding_substrate(example)
+	test_signal_duplicate_rejection(example)
+	test_enum_bitfield_metadata(example)
+	test_constant_collision_rejection(example)
+	test_property_group_placement(example)
+	test_property_group_unknown_class(example)
+	test_signal_parameter_metadata(example)
 	test_stacktrace_probe(example)
 	exit_with_status()
 
@@ -1417,6 +1423,9 @@ func _go_callable_scenarios(example: Example) -> void:
 	assert_true(_try_go_callable_call(example.create_error_callable()) == null)
 	assert_true(_try_go_callable_call(example.create_panic_callable()) == null)
 	assert_true(_try_go_callable_call(example.create_panic_callable()) == null)
+	# Marker for the runtime gate's callable-panic check (check_test_output.sh
+	# check 10): the probe ran, so the boundary must have recorded an entry.
+	print("callable-panic-probe attempted=2")
 	var health_cb: Callable = example.create_counter_callable()
 	assert_equal(health_cb.call(), 1)
 
@@ -1685,6 +1694,102 @@ func test_binding_substrate(example: Example) -> void:
 	assert_true((variant_arg["usage"] & PROPERTY_USAGE_NIL_IS_VARIANT) == 0)
 	assert_equal(example.test_variant_vector2i_conversion(Vector2i(1, 1)), Vector2i(1, 1))
 	assert_equal(example.test_variant_vector2i_conversion(Vector2(1.0, 1.0)), Vector2i(1, 1))
+
+# A colliding signal registration must fail fatally before reaching the
+# engine: both a name inherited from an engine class and a second copy of a
+# name the class already registered. The Go fixture catches the fault so the
+# run survives (openspec: class-metadata-registration).
+func test_signal_duplicate_rejection(example: Example) -> void:
+	assert_equal(example.test_duplicate_signal_rejection(), 1)
+
+# Enum grouping and bitfield-ness as delivered to the engine (openspec:
+# class-metadata-registration). The metadata assertions fail while the
+# bitfield binding drops the enum name; the value assertions beside them pass
+# either way, proving the pair is wired to the metadata question and not to
+# constant readability.
+func test_enum_bitfield_metadata(example: Example) -> void:
+	var enums = ClassDB.class_get_enum_list("Example")
+	assert_true("ExampleEnum" in enums)
+	assert_true("ExampleBitfieldFlag" in enums)
+	assert_false(ClassDB.is_class_enum_bitfield("Example", "ExampleEnum"))
+	assert_true(ClassDB.is_class_enum_bitfield("Example", "ExampleBitfieldFlag"))
+	assert_equal(String(ClassDB.class_get_integer_constant_enum("Example", "FIRST")), "ExampleEnum")
+	assert_equal(String(ClassDB.class_get_integer_constant_enum("Example", "FLAG_ONE")), "ExampleBitfieldFlag")
+	assert_equal(String(ClassDB.class_get_integer_constant_enum("Example", "FLAG_TWO")), "ExampleBitfieldFlag")
+	assert_equal(String(ClassDB.class_get_integer_constant_enum("Example", "CONSTANT_WITHOUT_ENUM")), "")
+	assert_equal(Example.FLAG_ONE, 1)
+	assert_equal(Example.FLAG_TWO, 2)
+	# Two distinct flag enums coexist independently: each reports as its own
+	# bitfield and each constant keeps its own owning enum.
+	assert_true("SecondBitfield" in enums)
+	assert_true(ClassDB.is_class_enum_bitfield("Example", "SecondBitfield"))
+	assert_equal(String(ClassDB.class_get_integer_constant_enum("Example", "SECOND_FLAG")), "SecondBitfield")
+	assert_equal(Example.SECOND_FLAG, 4)
+
+# Re-binding a constant name the class already owns — here under a different
+# enum — must fail fatally naming the class and the constant, and the first
+# binding must be the one the engine keeps (openspec:
+# class-metadata-registration).
+func test_constant_collision_rejection(example: Example) -> void:
+	assert_equal(example.test_constant_collision_rejection(), 1)
+	assert_equal(Example.FIRST, 0)
+
+# Property groups reach the engine with their display name and prefix and are
+# published in registration order: the group, then the subgroup, then the
+# property whose name carries the longer prefix; a property matching no prefix
+# is reported ungrouped (openspec: class-metadata-registration).
+func test_property_group_placement(example: Example) -> void:
+	var names = PackedStringArray()
+	var group_prefix = ""
+	var subgroup_prefix = ""
+	var ungrouped_usage = -1
+	for entry in ClassDB.class_get_property_list("Example", true):
+		names.append(entry["name"])
+		if (entry["usage"] & PROPERTY_USAGE_GROUP) != 0 and entry["name"] == "Test group":
+			group_prefix = entry["hint_string"]
+		elif (entry["usage"] & PROPERTY_USAGE_SUBGROUP) != 0 and entry["name"] == "Test subgroup":
+			subgroup_prefix = entry["hint_string"]
+		elif entry["name"] == "hinted_range":
+			ungrouped_usage = entry["usage"]
+	assert_equal(group_prefix, "group_")
+	assert_equal(subgroup_prefix, "group_subgroup_")
+	assert_true(names.find("Test subgroup") > names.find("Test group"))
+	assert_true(names.find("group_subgroup_custom_position") > names.find("Test subgroup"))
+	assert_true(ungrouped_usage != -1)
+	assert_true((ungrouped_usage & PROPERTY_USAGE_GROUP) == 0)
+	assert_true((ungrouped_usage & PROPERTY_USAGE_SUBGROUP) == 0)
+
+# A property group registered for a class that was never registered must fail
+# loudly, naming the class, before the engine is called (openspec:
+# class-metadata-registration).
+func test_property_group_unknown_class(example: Example) -> void:
+	assert_equal(example.test_property_group_unknown_class(), 1)
+
+# A registered signal publishes one parameter description per declared
+# parameter, in declaration order, with no usage hint and the declaring class
+# in each parameter's class-name field; a parameterless signal registers with
+# no descriptions at all (openspec: class-metadata-registration).
+func test_signal_parameter_metadata(example: Example) -> void:
+	var custom = null
+	var empty = null
+	for entry in ClassDB.class_get_signal_list("Example", true):
+		if entry["name"] == "custom_signal":
+			custom = entry
+		elif entry["name"] == "empty_signal":
+			empty = entry
+	assert_true(custom != null)
+	var args = custom["args"]
+	assert_equal(args.size(), 2)
+	assert_equal(args[0]["name"], "name")
+	assert_equal(args[0]["type"], TYPE_STRING)
+	assert_equal(args[1]["name"], "value")
+	assert_equal(args[1]["type"], TYPE_INT)
+	assert_equal(args[0]["hint"], PROPERTY_HINT_NONE)
+	assert_equal(args[0]["hint_string"], "")
+	assert_equal(args[0]["class_name"], "Example")
+	assert_equal(args[1]["class_name"], "Example")
+	assert_true(empty != null)
+	assert_equal(empty["args"].size(), 0)
 
 # Drives the C-side capture at GDExtension callback boundaries (openspec:
 # windows-stacktrace-capture). The Go side prints "stacktrace-probe

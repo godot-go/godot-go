@@ -57,6 +57,7 @@ func _ready():
 	test_binding_release_accounting(example)
 	test_property_list_churn(example)
 	test_vararg_return_buffer(example)
+	test_binding_substrate(example)
 	test_stacktrace_probe(example)
 	exit_with_status()
 
@@ -1633,6 +1634,57 @@ func test_vararg_return_buffer(example: Example) -> void:
 	var loose_node := Node.new()
 	assert_equal(example.test_vararg_error_returns(loose_node), 1)
 	loose_node.free()
+
+# Witnesses for openspec document-binding-substrate. The demo already exercises
+# most of the substrate; these assertions pin the parts that had no direct
+# caller: cast identity, the registration bookkeeping, the handled get/set path
+# as a plain property round-trip, a variadic bind with a second return, and the
+# advertised shape of Variant slots.
+func test_binding_substrate(example: Example) -> void:
+	# Cast contract: identity for the extension class and its parent, nil for an
+	# incompatible class, and inheritance accepts ancestors only.
+	assert_equal(example.test_object_cast(), 0)
+
+	# Registration leaves the class in the registry at the scene level, with a
+	# callable constructor and an encoder that accepts an instance.
+	assert_equal(example.test_registration_bookkeeping(), 0)
+
+	# _get/_set handled path: dproperty_* is reachable only through the class
+	# callbacks, so a round-trip proves the value went through both.
+	example.dproperty_0 = Vector2(1, 2)
+	example.dproperty_1 = Vector2(3, 4)
+	example.dproperty_2 = Vector2(5, 6)
+	assert_equal(example.dproperty_0, Vector2(1, 2))
+	assert_equal(example.dproperty_1, Vector2(3, 4))
+	assert_equal(example.dproperty_2, Vector2(5, 6))
+
+	# A variadic bind with two declared returns delivers only the first.
+	assert_equal(example.varargs_func_nv_bool(), 70)
+	assert_equal(example.varargs_func_nv_bool("a", "b"), 72)
+
+	# Static variadic dispatch passes the caller's arguments with no receiver.
+	assert_equal(Example.static_sum_varargs(), 0)
+	assert_equal(Example.static_sum_varargs(1, 2, 3, 4), 10)
+
+	# A Variant return advertises nil plus the NIL_IS_VARIANT usage flag; a
+	# Variant parameter advertises nil without that flag. The calls below prove
+	# the parameter still dispatches, so a metadata-only assertion cannot pass
+	# while decoding is dead.
+	var vararg_return = null
+	var variant_arg = null
+	for entry in example.get_method_list():
+		if entry["name"] == "varargs_func":
+			vararg_return = entry["return"]
+		elif entry["name"] == "test_variant_vector2i_conversion":
+			variant_arg = entry["args"][0]
+	assert_true(vararg_return != null)
+	assert_equal(vararg_return["type"], TYPE_NIL)
+	assert_true((vararg_return["usage"] & PROPERTY_USAGE_NIL_IS_VARIANT) != 0)
+	assert_true(variant_arg != null)
+	assert_equal(variant_arg["type"], TYPE_NIL)
+	assert_true((variant_arg["usage"] & PROPERTY_USAGE_NIL_IS_VARIANT) == 0)
+	assert_equal(example.test_variant_vector2i_conversion(Vector2i(1, 1)), Vector2i(1, 1))
+	assert_equal(example.test_variant_vector2i_conversion(Vector2(1.0, 1.0)), Vector2i(1, 1))
 
 # Drives the C-side capture at GDExtension callback boundaries (openspec:
 # windows-stacktrace-capture). The Go side prints "stacktrace-probe

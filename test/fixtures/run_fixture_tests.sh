@@ -6,7 +6,7 @@
 # Each fixture is a captured-shaped Godot run log. The table below pins, for each
 # one, the godot exit status to feed the gate, the exit status the gate must
 # produce, and the message fragment that identifies the failure mode. This is
-# what keeps the six failure modes distinguishable from each other: a gate that
+# what keeps the failure modes distinguishable from each other: a gate that
 # failed every case with the same message would pass a naive "exits non-zero"
 # test and still be useless.
 #
@@ -43,6 +43,7 @@ cases=(
 	"stacktrace_probe_missing.log|0|1|FAIL[stacktrace-probe-missing]"
 	"stacktrace_no_go_stack.log|0|1|FAIL[stacktrace-go-stack-missing]"
 	"callable_panic_silent.log|0|1|FAIL[callable-panic-entry-missing]"
+	"signal_gate_degraded.log|0|1|FAIL[signal-gate-degraded]"
 )
 
 # editor gate fixture | godot_status | want_gate_exit | want_message_substring

@@ -15,6 +15,7 @@ gdclass registered class=Example parent_type=Control
 [31mERROR[0m	core/go_callable.go:117	go callable panicked	{"panic": "go callable fixture panic", "stack": "goroutine 22 [running]:
 github.com/godot-go/godot-go/test/pkg.(*Example).CreatePanicCallable.func1
 	/workspace/godot-go/test/pkg/go_callable_tests.go:64 +0x1c"}
+callable-panic-probe attempted=2
 stacktrace-probe capture=1
 ___ C start backtrace ___________
 [0] godotgo!cgo_callfn_GDExtensionVariantFromTypeConstructorFunc+0x0

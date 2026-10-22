@@ -1423,6 +1423,9 @@ func _go_callable_scenarios(example: Example) -> void:
 	assert_true(_try_go_callable_call(example.create_error_callable()) == null)
 	assert_true(_try_go_callable_call(example.create_panic_callable()) == null)
 	assert_true(_try_go_callable_call(example.create_panic_callable()) == null)
+	# Marker for the runtime gate's callable-panic check (check_test_output.sh
+	# check 10): the probe ran, so the boundary must have recorded an entry.
+	print("callable-panic-probe attempted=2")
 	var health_cb: Callable = example.create_counter_callable()
 	assert_equal(health_cb.call(), 1)
 

@@ -1,5 +1,3 @@
-# class-metadata-registration Specification
-
 ## Purpose
 
 Governs how a Go-defined class publishes its metadata to the engine class database:

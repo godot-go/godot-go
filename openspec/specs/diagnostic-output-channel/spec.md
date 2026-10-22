@@ -1,5 +1,3 @@
-# diagnostic-output-channel Specification
-
 ## Purpose
 
 Defines the binding's single diagnostic surface: how the entry threshold is chosen,

@@ -1650,8 +1650,10 @@ func test_vararg_return_buffer(example: Example) -> void:
 # as a plain property round-trip, a variadic bind with a second return, and the
 # advertised shape of Variant slots.
 func test_binding_substrate(example: Example) -> void:
-	# Cast contract: identity for the extension class and its parent, nil for an
-	# incompatible class, and inheritance accepts ancestors only.
+	# Narrowing contract: resolving the instance binding yields the wrapper for
+	# the same engine object, a Go type assertion to a parent keeps it, an
+	# assertion to an unrelated class fails, and inheritance accepts ancestors
+	# only.
 	assert_equal(example.test_object_cast(), 0)
 
 	# Registration leaves the class in the registry at the scene level, with a

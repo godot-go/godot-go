@@ -15,7 +15,7 @@ governs. The specs live under `openspec/specs/`.
 | Variant type mapping | [`variant-type-mapping`](../openspec/specs/variant-type-mapping/spec.md) | `core.ReflectTypeToGDExtensionVariantType`, the `ArgumentEncoder` registered for each class |
 | Property access dispatch | [`property-access-dispatch`](../openspec/specs/property-access-dispatch/spec.md) | The `_get`/`_set`/`_property_can_revert`/`_property_get_revert` virtuals bound with `core.ClassDBBindMethodVirtual`, and the validator passed to `core.ClassDBRegisterClass` |
 | Vararg method binding | [`vararg-method-binding`](../openspec/specs/vararg-method-binding/spec.md) | `core.ClassDBBindMethodVarargs`, `core.ClassDBBindStaticMethod` (variadic statics) |
-| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectCastTo`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr` |
+| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr` |
 
 # Class Metadata and Diagnostics
 

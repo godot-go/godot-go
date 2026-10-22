@@ -94,15 +94,12 @@ var handWrittenCallPaths = []string{
 // packagePinnerAllowlist names functions that legitimately pin on the package
 // pinner inside an otherwise per-call file, with the reason they outlive the call.
 //
-//   - ObjectCastTo: the instance-binding callbacks pointer it hands the engine is
-//     stored with the binding and read again after the call returns.
 //   - GoCallback_ClassCreationInfoGetPropertyList: the engine keeps the returned
 //     property-info slice until the paired free-property-list callback runs.
 //   - GoMethodMetadata.Destroy / NewGoMethodMetadata /
 //     NewGDExtensionClassMethodInfoFromMethodBind: registration and teardown of
 //     metadata the engine holds pointers to.
 var packagePinnerAllowlist = map[string]string{
-	"ObjectCastTo": "binding callbacks retained by the engine with the binding",
 	"GoCallback_ClassCreationInfoGetPropertyList": "property list retained until the paired free callback",
 	"Destroy":             "metadata teardown",
 	"NewGoMethodMetadata": "registration-time metadata",

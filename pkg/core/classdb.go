@@ -152,11 +152,11 @@ func classDBSignalProbe(className string) func(signalName string) (carries bool,
 // signalNameCollision reports whether the class behind ci already carries
 // signalName: either a name the class itself recorded, or — when the engine
 // could be consulted — any name the engine says the class carries, which
-// includes names inherited from ancestors. When probe is nil or reports the
-// engine unavailable and no recorded name collides, the decision degrades to
-// the recorded names and the second result is false: inheritance was not
-// checked, and the caller warns. A recorded collision is decisive either way.
-func signalNameCollision(ci *ClassInfo, signalName string, probe func(signalName string) (carries bool, available bool)) (collision bool, inheritanceChecked bool) {
+// includes names inherited from ancestors. The second result reports whether
+// the answer is final: a recorded collision is decisive without the engine,
+// and an engine-consulted answer is final. False means the decision degraded
+// to the recorded names — inheritance was not checked — and the caller warns.
+func signalNameCollision(ci *ClassInfo, signalName string, probe func(signalName string) (carries bool, available bool)) (collision bool, decisive bool) {
 	if _, ok := ci.SignalNameSet[signalName]; ok {
 		return true, true
 	}
@@ -179,7 +179,7 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		log.Panic("Class doesn't exist.", zap.String("class", typeName))
 		return
 	}
-	collision, inheritanceChecked := signalNameCollision(ci, signalName, classDBSignalProbe(typeName))
+	collision, decisive := signalNameCollision(ci, signalName, classDBSignalProbe(typeName))
 	if collision {
 		log.Panic(fmt.Sprintf("Signal already registered: class %q already carries signal %q", typeName, signalName),
 			zap.String("class", typeName),
@@ -187,7 +187,7 @@ func ClassDBAddSignal(t GDClass, signalName string, params ...SignalParam) {
 		)
 		return
 	}
-	if !inheritanceChecked {
+	if !decisive {
 		log.Warn("signal duplicate check consulted recorded names only; inheritance was not checked",
 			zap.String("class", typeName),
 			zap.String("signal", signalName),

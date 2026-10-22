@@ -131,6 +131,19 @@ func TestWrappedClassInstanceIsNil(t *testing.T) {
 	}
 }
 
+// The nil check follows the wrapped instance, so a wrapper carrying no instance
+// faults instead of reporting nil. Only the object-pointer accessors are
+// hardened; this pins the ratified shape so a silent hardening is a visible
+// spec change.
+func TestWrappedClassInstanceIsNilWithoutInstanceFaults(t *testing.T) {
+	defer func() {
+		if recover() == nil {
+			t.Fatal("IsNil on a wrapper with no instance must fault")
+		}
+	}()
+	_ = (&WrappedClassInstance{}).IsNil()
+}
+
 func TestWrappedClassInstanceDestroyIsNoOp(t *testing.T) {
 	var nilWrapper *WrappedClassInstance
 	nilWrapper.Destroy()

@@ -137,8 +137,14 @@ func TestVariantTypeUnsupportedKindRejectionPanics(t *testing.T) {
 // constructor table, so the probe needs an entry for the name.
 func TestVariantTypeEngineClassInterfaceMapping(t *testing.T) {
 	for _, name := range []string{"Node", "Object"} {
+		// Restore an existing entry rather than deleting it: the seeded names
+		// may be populated by the time this runs in a full-process suite.
+		if previous, existed := gdclassinit.GDNativeConstructors.Get(name); existed {
+			defer gdclassinit.GDNativeConstructors.Set(name, previous)
+		} else {
+			defer gdclassinit.GDNativeConstructors.Delete(name)
+		}
 		gdclassinit.GDNativeConstructors.Set(name, nil)
-		defer gdclassinit.GDNativeConstructors.Delete(name)
 	}
 
 	withRegisteredClasses(t, map[string]*ClassInfo{}, func() {

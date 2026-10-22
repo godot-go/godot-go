@@ -1666,10 +1666,10 @@ func test_binding_substrate(example: Example) -> void:
 	assert_equal(Example.static_sum_varargs(), 0)
 	assert_equal(Example.static_sum_varargs(1, 2, 3, 4), 10)
 
-	# A Variant return advertises nil plus the NIL_IS_VARIANT usage flag
-	# (131072); a Variant parameter advertises nil without that flag. The calls
-	# below prove the parameter still dispatches, so a metadata-only assertion
-	# cannot pass while decoding is dead.
+	# A Variant return advertises nil plus the NIL_IS_VARIANT usage flag; a
+	# Variant parameter advertises nil without that flag. The calls below prove
+	# the parameter still dispatches, so a metadata-only assertion cannot pass
+	# while decoding is dead.
 	var vararg_return = null
 	var variant_arg = null
 	for entry in example.get_method_list():
@@ -1679,9 +1679,10 @@ func test_binding_substrate(example: Example) -> void:
 			variant_arg = entry["args"][0]
 	assert_true(vararg_return != null)
 	assert_equal(vararg_return["type"], TYPE_NIL)
-	assert_true((vararg_return["usage"] & 131072) != 0)
+	assert_true((vararg_return["usage"] & PROPERTY_USAGE_NIL_IS_VARIANT) != 0)
 	assert_true(variant_arg != null)
 	assert_equal(variant_arg["type"], TYPE_NIL)
+	assert_true((variant_arg["usage"] & PROPERTY_USAGE_NIL_IS_VARIANT) == 0)
 	assert_equal(example.test_variant_vector2i_conversion(Vector2i(1, 1)), Vector2i(1, 1))
 	assert_equal(example.test_variant_vector2i_conversion(Vector2(1.0, 1.0)), Vector2i(1, 1))
 

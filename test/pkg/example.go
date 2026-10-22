@@ -7,13 +7,16 @@ import (
 	. "github.com/godot-go/godot-go/pkg/core"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 	. "github.com/godot-go/godot-go/pkg/gdclassimpl"
+	"github.com/godot-go/godot-go/pkg/gdclassinit"
 	. "github.com/godot-go/godot-go/pkg/gdutilfunc"
 	"github.com/godot-go/godot-go/pkg/log"
 	"go.uber.org/zap"
+	"reflect"
 	"runtime"
 	"strconv"
 	"strings"
 	"sync/atomic"
+	"unsafe"
 )
 
 type ExampleEnum int64
@@ -459,6 +462,36 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 // 	log.Debug("TestCastTo called", zap.Any("class", n.GetClassName()))
 // }
 
+// TestObjectCast exercises the cast contract end to end: casting to a class and
+// to a parent keeps the same engine object and the same Go wrapper, an
+// incompatible cast yields nil, and the inheritance predicate accepts ancestors
+// while rejecting unrelated classes. It returns a non-zero failure code so the
+// GDScript assertion names which clause broke.
+func (e *Example) TestObjectCast() int {
+	owner := e.GetGodotObjectOwner()
+	self := ObjectCastTo(e, "Example")
+	if self == nil || self.GetGodotObjectOwner() != owner {
+		return 1
+	}
+	asControl := ObjectCastTo(e, "Control")
+	if asControl == nil || asControl.GetGodotObjectOwner() != owner {
+		return 2
+	}
+	if got := ObjectCastTo(e, "Image"); got != nil {
+		return 3
+	}
+	if !ObjectInheritsClass(e.AsGDExtensionObjectPtr(), "Control") {
+		return 4
+	}
+	if !ObjectInheritsClass(e.AsGDExtensionObjectPtr(), "Node") {
+		return 5
+	}
+	if ObjectInheritsClass(e.AsGDExtensionObjectPtr(), "Image") {
+		return 6
+	}
+	return 0
+}
+
 func (e *Example) TestStatic(p_a, p_b int32) int32 {
 	return p_a + p_b
 }
@@ -496,6 +529,12 @@ func (e *Example) VarargsFuncVoid(args ...Variant) {
 
 func (e *Example) VarargsFuncNv(args ...Variant) int {
 	return 42 + len(args)
+}
+
+// VarargsFuncNvBool declares a second return value on a variadic bind. Only the
+// first value is delivered to the engine; the bool is dropped with a warning.
+func (e *Example) VarargsFuncNvBool(args ...Variant) (int, bool) {
+	return 70 + len(args), true
 }
 
 func (e *Example) V_Example_PropertyCanRevert(p_name StringName) bool {
@@ -1260,6 +1299,43 @@ func (e *Example) TestVariantVector2iConversion(v Variant) Vector2i {
 	return v.ToVector2i()
 }
 
+// TestRegistrationBookkeeping asserts what registration left behind: the class
+// is in the registration registry at the scene level, its constructor is
+// callable, and the encoder installed for it accepts an instance. Non-zero codes
+// identify the failing clause.
+func (e *Example) TestRegistrationBookkeeping() int {
+	ci, ok := Internal.GDRegisteredGDClasses.Get("Example")
+	if !ok {
+		return 1
+	}
+	if ci.Level != GDEXTENSION_INITIALIZATION_SCENE {
+		return 2
+	}
+	ctor, ok := Internal.GDClassConstructors.Get("Example")
+	if !ok {
+		return 3
+	}
+	enc, ok := gdclassinit.GDRegisteredGDClassEncoders.Get("Example")
+	if !ok || enc == nil {
+		return 4
+	}
+	marker := 0
+	owner := (*GodotObject)(unsafe.Pointer(&marker))
+	inst := ctor(owner)
+	if inst == nil {
+		return 5
+	}
+	var out *GodotObject
+	enc.EncodeReflectTypePtrArg(
+		reflect.ValueOf(inst),
+		(GDExtensionUninitializedTypePtr)(unsafe.Pointer(&out)),
+	)
+	if out != owner {
+		return 6
+	}
+	return 0
+}
+
 func (e *Example) V_Example_ToString() string {
 	// Deliberately unlike the binding's default format, and carrying non-ASCII.
 	// The default format is ASCII-only and is also what a *failed* dispatch
@@ -1580,6 +1656,7 @@ func RegisterClassExample() {
 		// varargs
 		ClassDBBindMethodVarargs(t, "VarargsFunc", "varargs_func", nil, nil)
 		ClassDBBindMethodVarargs(t, "VarargsFuncNv", "varargs_func_nv", nil, nil)
+		ClassDBBindMethodVarargs(t, "VarargsFuncNvBool", "varargs_func_nv_bool", nil, nil)
 		ClassDBBindMethodVarargs(t, "VarargsFuncVoid", "varargs_func_void", nil, nil)
 
 		ClassDBBindMethod(t, "DefArgs", "def_args", []string{"a", "b"}, []Variant{NewVariantInt64(100), NewVariantInt64(200)})
@@ -1700,6 +1777,10 @@ func RegisterClassExample() {
 
 		ClassDBBindMethod(t, "CallableBind", "callable_bind", nil, nil)
 		ClassDBBindMethod(t, "TestVariantVector2iConversion", "test_variant_vector2i_conversion", []string{"variant"}, nil)
+		// document-binding-substrate witnesses: wrapper identity, inheritance,
+		// and the bookkeeping registration leaves behind.
+		ClassDBBindMethod(t, "TestObjectCast", "test_object_cast", nil, nil)
+		ClassDBBindMethod(t, "TestRegistrationBookkeeping", "test_registration_bookkeeping", nil, nil)
 
 		// others
 		// ClassDBBindMethod(t, "TestCastTo", "test_cast_to", nil, nil)

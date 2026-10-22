@@ -97,6 +97,45 @@ func TestWrappedClassInstanceAsGDExtensionObjectPtrNilInstance(t *testing.T) {
 	}
 }
 
+// --- nil reporting and base destruction ---
+
+func TestWrappedImplIsNil(t *testing.T) {
+	var nilWrapper *WrappedImpl
+	if !nilWrapper.IsNil() {
+		t.Fatal("nil receiver must report nil")
+	}
+	if !(&WrappedImpl{}).IsNil() {
+		t.Fatal("ownerless wrapper must report nil")
+	}
+	if (&WrappedImpl{Owner: sentinelOwner(7)}).IsNil() {
+		t.Fatal("wrapper with an owner must not report nil")
+	}
+}
+
+func TestWrappedImplDestroyIsNoOp(t *testing.T) {
+	owner := sentinelOwner(0x99)
+	w := &WrappedImpl{Owner: owner}
+	w.Destroy()
+	if w.Owner != owner {
+		t.Fatalf("base Destroy changed the owner: got %v, want %v", w.Owner, owner)
+	}
+	// A nil receiver is a legal no-op too: callers may destroy a zero wrapper.
+	var nilWrapper *WrappedImpl
+	nilWrapper.Destroy()
+}
+
+func TestWrappedClassInstanceIsNil(t *testing.T) {
+	var nilWrapper *WrappedClassInstance
+	if !nilWrapper.IsNil() {
+		t.Fatal("nil receiver must report nil")
+	}
+}
+
+func TestWrappedClassInstanceDestroyIsNoOp(t *testing.T) {
+	var nilWrapper *WrappedClassInstance
+	nilWrapper.Destroy()
+}
+
 // --- ObjectArgPtr: the shape the generated code actually uses ---
 
 func TestObjectArgPtrNilInterface(t *testing.T) {

@@ -2,6 +2,21 @@
 
 This will be a living doc which will provide an overview of key concepts in the godot-go bindings.
 
+# Binding Substrate Contracts
+
+Six capability specs own the substrate every bind path is built on. Each row
+names the contract, the spec that pins it, and the public entry points it
+governs. The specs live under `openspec/specs/`.
+
+| Capability | Spec | Public entry points |
+| --- | --- | --- |
+| Extension bootstrap | [`extension-bootstrap`](../openspec/specs/extension-bootstrap/spec.md) | `core.NewInitObject`, `InitObject.Init`, `Register{Core,Server,Scene,Editor}Initializer`, `Register{Core,Server,Scene,Editor}Terminator`, `RegisterStartupCallback`, `RegisterFrameCallback`, `RegisterShutdownCallback` |
+| Class registration | [`class-registration`](../openspec/specs/class-registration/spec.md) | `core.ClassDBRegisterClass`, `core.ClassDBUnregisterClass`, `core.Internal.GDRegisteredGDClasses`, `core.Internal.GDClassConstructors` |
+| Variant type mapping | [`variant-type-mapping`](../openspec/specs/variant-type-mapping/spec.md) | `core.ReflectTypeToGDExtensionVariantType`, the `ArgumentEncoder` registered for each class |
+| Property access dispatch | [`property-access-dispatch`](../openspec/specs/property-access-dispatch/spec.md) | The `_get`/`_set`/`_property_can_revert`/`_property_get_revert` virtuals bound with `core.ClassDBBindMethodVirtual`, and the validator passed to `core.ClassDBRegisterClass` |
+| Vararg method binding | [`vararg-method-binding`](../openspec/specs/vararg-method-binding/spec.md) | `core.ClassDBBindMethodVarargs`, `core.ClassDBBindStaticMethod` (variadic statics) |
+| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectCastTo`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr` |
+
 # GDScript Language Feature Mapping
 
 There are a lot of language features supported by GDScript that does not map cleanly to Go.

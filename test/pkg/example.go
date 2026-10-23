@@ -491,6 +491,36 @@ func (e *Example) TestObjectCast() int {
 	return 0
 }
 
+// TestObjectCasting witnesses both directions of a class change against a live
+// engine object: widening to an ancestor is the assertion alone, while narrowing
+// a wrapper typed to its declared class needs the binding re-resolved first,
+// because the assertion cannot see the runtime class. It returns a non-zero
+// failure code so the GDScript assertion names which clause broke.
+func (e *Example) TestObjectCasting() int {
+	// A method declared to return Node produces a *NodeImpl, whatever the engine
+	// object's runtime class is: this Label is not a Label to Go.
+	node := e.GetNode(NewNodePathWithString(NewStringWithUtf8Chars("Label")))
+	if _, ok := node.(Label); ok {
+		return 1
+	}
+
+	wrapper, err := ObjectFromInstanceBinding(node.GetGodotObjectOwner())
+	if err != nil || wrapper == nil {
+		return 2
+	}
+	label, ok := wrapper.(Label)
+	if !ok || label.GetGodotObjectOwner() != node.GetGodotObjectOwner() {
+		return 3
+	}
+
+	// Widening needs no lookup: the Label wrapper embeds every ancestor.
+	widened, ok := label.(Node)
+	if !ok || widened.GetGodotObjectOwner() != node.GetGodotObjectOwner() {
+		return 4
+	}
+	return 0
+}
+
 func (e *Example) TestStatic(p_a, p_b int32) int32 {
 	return p_a + p_b
 }
@@ -1784,6 +1814,7 @@ func RegisterClassExample() {
 		// document-binding-substrate witnesses: wrapper identity, inheritance,
 		// and the bookkeeping registration leaves behind.
 		ClassDBBindMethod(t, "TestObjectCast", "test_object_cast", nil, nil)
+		ClassDBBindMethod(t, "TestObjectCasting", "test_object_casting", nil, nil)
 		ClassDBBindMethod(t, "TestRegistrationBookkeeping", "test_registration_bookkeeping", nil, nil)
 
 		// others

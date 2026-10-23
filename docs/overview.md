@@ -15,7 +15,7 @@ governs. The specs live under `openspec/specs/`.
 | Variant type mapping | [`variant-type-mapping`](../openspec/specs/variant-type-mapping/spec.md) | `core.ReflectTypeToGDExtensionVariantType`, the `ArgumentEncoder` registered for each class |
 | Property access dispatch | [`property-access-dispatch`](../openspec/specs/property-access-dispatch/spec.md) | The `_get`/`_set`/`_property_can_revert`/`_property_get_revert` virtuals bound with `core.ClassDBBindMethodVirtual`, and the validator passed to `core.ClassDBRegisterClass` |
 | Vararg method binding | [`vararg-method-binding`](../openspec/specs/vararg-method-binding/spec.md) | `core.ClassDBBindMethodVarargs`, `core.ClassDBBindStaticMethod` (variadic statics) |
-| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr` |
+| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectFromInstanceBinding`, `builtin.ObjectFromVariant`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr` |
 
 # Class Metadata and Diagnostics
 
@@ -500,6 +500,88 @@ AddEditorPlugin(&MyPlugin{})
 | `Dictionary` | `Dictionary` | No additional work needed. |
 | `Signal` | `Signal` | No additional work needed. |
 | `Callable` | `Callable` | No additional work needed. |
+
+# Object Wrappers and Casting
+
+A Go value standing for an engine object is a wrapper: a generated interface
+(`Node`, `Control`, `Label`, …) implemented by the generated `*NodeImpl`,
+`*ControlImpl`, `*LabelImpl`, … structs. There is no cast entry point. Changing
+class in either direction is ordinary Go — an assertion or an assignment — and
+the direction decides whether the binding has to be resolved first.
+
+## Narrowing to a subclass
+
+A method declared to return `Node` produces a wrapper typed to `Node`, whatever
+the engine object's runtime class is. Asserting a subclass on that wrapper fails,
+and the failure is indistinguishable from "this object is not a `Label`":
+
+```go
+node := example.GetNode(NewNodePathWithString(NewStringWithUtf8Chars("Label")))
+// node's dynamic type is *NodeImpl, although the engine object is a Label.
+
+_, ok := node.(Label) // false
+```
+
+Narrow by re-resolving from the engine object first. If no binding exists yet, the
+call is answered by the callbacks registered for the object's runtime class, so
+the wrapper returned is typed to the class the object actually has:
+
+```go
+func asLabel(node Node) (Label, error) {
+	wrapper, err := ObjectFromInstanceBinding(node.GetGodotObjectOwner())
+	if err != nil {
+		return nil, err // *ObjectBindingError, naming the class where it is known
+	}
+	label, ok := wrapper.(Label)
+	if !ok {
+		return nil, errors.New("engine object is not a Label")
+	}
+	return label, nil
+}
+```
+
+Resolve once and keep the result. For a live object the call returns a wrapper for
+the same engine object rather than constructing a second one, so narrowing on
+every access costs a lookup but cannot split the object's identity.
+
+## Widening to an ancestor
+
+Generated implementations embed their ancestors' implementations, so a wrapper
+standing for a subclass already implements every ancestor interface. Widening is
+plain Go: an assignment, or an assertion when the wrapper is held as a wider
+interface. No engine call, no binding lookup, and it cannot fail for an object
+that really is an instance of that ancestor.
+
+```go
+label, err := asLabel(node) // narrowed above
+if err != nil {
+	return err
+}
+
+var nodeView Node = label // *LabelImpl embeds *ControlImpl … *NodeImpl
+nodeView.SetName(NewStringWithUtf8Chars("Renamed"))
+```
+
+`ObjectFromInstanceBinding` returns an `Object`-typed wrapper, so the same
+widening is the assertion `wrapper.(Node)`; it succeeds for every wrapper whose
+runtime class descends from `Node`.
+
+## Asking without narrowing
+
+When the only question is "is this object of that class or a subclass", ask it
+directly — no wrapper is produced, and no binding is created:
+
+```go
+if ObjectInheritsClass(engineObject, "Control") {
+	// a null object, an empty class name, an unknown class, and a non-inheriting
+	// object all answer false
+}
+```
+
+Both failure modes are visible: `ObjectFromInstanceBinding(nil)` returns an
+`*ObjectBindingError` rather than a nil wrapper, and a successful resolution can
+still yield a wrapper whose assertion to an unrelated class is `false`. Check the
+error and the assertion's `ok`.
 
 # Object Lifetime and Handle Ownership
 

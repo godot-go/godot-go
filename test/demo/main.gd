@@ -1656,6 +1656,10 @@ func test_binding_substrate(example: Example) -> void:
 	# only.
 	assert_equal(example.test_object_cast(), 0)
 
+	# Casting contract: widening to an ancestor is the assertion alone, while
+	# narrowing a declared-class wrapper needs the binding re-resolved first.
+	assert_equal(example.test_object_casting(), 0)
+
 	# Registration leaves the class in the registry at the scene level, with a
 	# callable constructor and an encoder that accepts an instance.
 	assert_equal(example.test_registration_bookkeeping(), 0)

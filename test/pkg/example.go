@@ -460,31 +460,23 @@ func (e *Example) EmitCustomSignal(name string, value int64) {
 	)
 }
 
-// TODO: dig into why casting is important
-// func (e *Example) TestCastTo() {
-// 	n := ObjectCastTo(e, "Node").(Node)
-// 	if n == nil {
-// 		log.Panic("failed to cast to cast Example to Node")
-// 	}
-// 	log.Debug("TestCastTo called", zap.Any("class", n.GetClassName()))
-// }
-
-// TestObjectCast exercises the cast contract end to end: casting to a class and
-// to a parent keeps the same engine object and the same Go wrapper, an
-// incompatible cast yields nil, and the inheritance predicate accepts ancestors
-// while rejecting unrelated classes. It returns a non-zero failure code so the
-// GDScript assertion names which clause broke.
+// TestObjectCast exercises the binding-identity contract end to end: a wrapper
+// resolves through the instance binding to the wrapper standing for the same
+// engine object, widening it to an ancestor keeps that owner, asserting it to an
+// unrelated class fails instead of yielding a wrong wrapper, and the inheritance
+// predicate accepts ancestors while rejecting unrelated classes. It returns a
+// non-zero failure code so the GDScript assertion names which clause broke.
 func (e *Example) TestObjectCast() int {
 	owner := e.GetGodotObjectOwner()
-	self := ObjectCastTo(e, "Example")
-	if self == nil || self.GetGodotObjectOwner() != owner {
+	self, err := ObjectFromInstanceBinding(owner)
+	if err != nil || self == nil || self.GetGodotObjectOwner() != owner {
 		return 1
 	}
-	asControl := ObjectCastTo(e, "Control")
-	if asControl == nil || asControl.GetGodotObjectOwner() != owner {
+	asControl, ok := self.(Control)
+	if !ok || asControl.GetGodotObjectOwner() != owner {
 		return 2
 	}
-	if got := ObjectCastTo(e, "Image"); got != nil {
+	if _, ok := self.(Image); ok {
 		return 3
 	}
 	if !ObjectInheritsClass(e.AsGDExtensionObjectPtr(), "Control") {
@@ -696,7 +688,7 @@ func (e *Example) V_Example_Input(refEvent RefInputEvent) {
 		log.Warn("Example.V_Input: null refEvent parameter")
 		return
 	}
-	keyEvent, ok := ObjectCastTo(event, "InputEventKey").(InputEventKey)
+	keyEvent, ok := event.(InputEventKey)
 	if !ok {
 		log.Warn("event not InputEventKey")
 		return

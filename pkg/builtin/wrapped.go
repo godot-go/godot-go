@@ -4,8 +4,6 @@ import (
 	"unsafe"
 
 	. "github.com/godot-go/godot-go/pkg/ffi"
-	"github.com/godot-go/godot-go/pkg/log"
-	"go.uber.org/zap"
 )
 
 type WrappedImpl struct {
@@ -63,53 +61,6 @@ func NewWrappedFromGodotObject(owner *GodotObject) *WrappedImpl {
 	return &WrappedImpl{
 		Owner: owner,
 	}
-}
-
-func ObjectCastTo(obj Object, className string) Object {
-	if obj == nil {
-		return nil
-	}
-	gdStrCn := obj.GetClass()
-	defer gdStrCn.Destroy()
-	log.Info("ObjectCastTo called",
-		zap.String("class", gdStrCn.ToUtf8()),
-		zap.String("className", obj.GetClassName()),
-		zap.String("otherClassName", className),
-	)
-	owner := obj.GetGodotObjectOwner()
-	cn := NewStringNameWithLatin1Chars(className)
-	defer cn.Destroy()
-	tag := CallFunc_GDExtensionInterfaceClassdbGetClassTag(
-		cn.AsGDExtensionConstStringNamePtr(),
-	)
-	if tag == nil {
-		log.Panic("classTag unexpectedly came back nil", zap.String("type", className))
-	}
-	casted := CallFunc_GDExtensionInterfaceObjectCastTo(
-		(GDExtensionConstObjectPtr)(owner),
-		tag,
-	)
-	if casted == nil {
-		return nil
-	}
-	// The binding slot is a cgo.Handle value, not a *WrappedClassInstance
-	// pointer. This function used to cast it as one and dereference
-	// wci.Instance, the same defect this change removes from the other two
-	// readers; it never surfaced because ObjectCastTo has no callers. The
-	// lookup and any binding creation are delegated so that
-	// objectFromBindingPtr is the only place that knows the shape.
-	resolved, err := ObjectFromInstanceBinding((*GodotObject)(casted))
-	if err != nil {
-		log.Warn("unable to resolve binding for cast object", zap.Error(err))
-		return nil
-	}
-	gdStrClassName := resolved.GetClass()
-	defer gdStrClassName.Destroy()
-	log.Info("ObjectCastTo casted",
-		zap.String("class", gdStrClassName.ToUtf8()),
-		zap.String("className", resolved.GetClassName()),
-	)
-	return resolved
 }
 
 type WrappedClassInstance struct {

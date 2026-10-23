@@ -1,8 +1,8 @@
 ## Purpose
 
 Defines the base value every Go wrapper of a Godot object provides — owner
-pointer, nil reporting, and destruction — and how one wrapper is cast to another
-engine class through the engine's class tags.
+pointer, nil reporting, and destruction — and how to ask whether an object is an
+instance of a named engine class or one of its subclasses.
 
 ## Requirements
 
@@ -62,39 +62,6 @@ nil-safe when no instance is carried at all.
 
 - **WHEN** the class-instance wrapper carries no instance
 - **THEN** its object-pointer accessors return null rather than panicking
-
-### Requirement: Casting uses the engine's class tag and resolves through the instance binding
-
-A cast of a non-nil wrapper SHALL look up the target class's engine class tag,
-perform an inheritance-aware engine cast, and resolve the cast object through this
-library's instance binding. A failed cast SHALL yield nil; a successful cast whose
-binding cannot be resolved SHALL yield nil with a warning; a null wrapper SHALL
-yield nil.
-
-#### Scenario: Cast to a valid class
-
-- **WHEN** a wrapper for a `Node` that is a `Sprite2D` is cast to `Sprite2D`
-- **THEN** the result is the same Go wrapper that stands for that engine object
-
-#### Scenario: Cast of an object not yet wrapped
-
-- **WHEN** a cast succeeds and no wrapper is bound to the cast object yet
-- **THEN** the engine creates the binding from the callbacks registered for that object's class
-
-#### Scenario: Cast to an incompatible class
-
-- **WHEN** a wrapper for an `Image` is cast to a `Node`
-- **THEN** the result is nil
-
-#### Scenario: Null wrapper
-
-- **WHEN** a nil wrapper is cast to any class
-- **THEN** the result is nil without an engine call
-
-#### Scenario: Target class unknown to the engine
-
-- **WHEN** a wrapper is cast to a class name for which the engine publishes no class tag
-- **THEN** the cast fails loudly instead of returning a wrong wrapper
 
 ### Requirement: Inheritance checks accept the class and its subclasses
 

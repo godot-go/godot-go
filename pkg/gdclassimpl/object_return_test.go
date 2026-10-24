@@ -1,0 +1,69 @@
+package gdclassimpl
+
+import (
+	"errors"
+	"testing"
+
+	"github.com/godot-go/godot-go/pkg/builtin"
+)
+
+// fakeObject satisfies builtin.Object without an engine by embedding the
+// interface. The tests only exercise type identity and assertion, so the
+// promoted methods are never called.
+type fakeObject struct {
+	builtin.Object
+	owner *builtin.GodotObject
+}
+
+func (f *fakeObject) GetGodotObjectOwner() *builtin.GodotObject { return f.owner }
+
+// fakeLabel is narrower than builtin.Object, so a *fakeObject does not satisfy
+// it: that is the "bound wrapper disagrees with the declared class" branch.
+type fakeLabel interface {
+	builtin.Object
+	fakeLabelMarker()
+}
+
+type fakeLabelImpl struct {
+	fakeObject
+}
+
+func (*fakeLabelImpl) fakeLabelMarker() {}
+
+func TestResolveGoStructObjectReturnTypedNil(t *testing.T) {
+	var declared *fakeLabelImpl
+
+	got := resolveGoStructObjectReturn[fakeLabel](declared)
+	if got != nil {
+		t.Fatalf("typed-nil declared wrapper resolved to %v, want nil", got)
+	}
+}
+
+func TestResolveObjectReturnFromBoundWrapper(t *testing.T) {
+	declared := &fakeLabelImpl{}
+	bound := &fakeLabelImpl{}
+
+	got := resolveObjectReturnFrom[fakeLabel](declared, bound, nil)
+	if got != fakeLabel(bound) {
+		t.Fatalf("bound wrapper: got %v, want %v", got, bound)
+	}
+}
+
+func TestResolveObjectReturnFromBoundWrapperMismatch(t *testing.T) {
+	declared := &fakeLabelImpl{}
+	bound := &fakeObject{}
+
+	got := resolveObjectReturnFrom[fakeLabel](declared, bound, nil)
+	if got != fakeLabel(declared) {
+		t.Fatalf("mismatched bound wrapper: got %v, want the declared wrapper", got)
+	}
+}
+
+func TestResolveObjectReturnFromUnresolved(t *testing.T) {
+	declared := &fakeLabelImpl{}
+
+	got := resolveObjectReturnFrom[fakeLabel](declared, nil, errors.New("no binding"))
+	if got != fakeLabel(declared) {
+		t.Fatalf("unresolved binding: got %v, want the declared wrapper", got)
+	}
+}

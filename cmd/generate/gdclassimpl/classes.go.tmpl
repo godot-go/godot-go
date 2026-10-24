@@ -219,7 +219,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ else if $view.IsRefcountedClassName $fnReturnType -}}
 	return NewRef{{ $fnReturnType }}GDExtensionReturnOwner(&ret)
 	{{ else if $view.ContainsClassName $fnReturnType -}}
-	return &ret
+	return resolveGoStructObjectReturn[{{ $fnReturnType }}](&ret)
 	{{ else -}}
 	return ret
 	{{ end -}}

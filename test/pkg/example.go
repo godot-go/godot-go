@@ -492,31 +492,48 @@ func (e *Example) TestObjectCast() int {
 }
 
 // TestObjectCasting witnesses both directions of a class change against a live
-// engine object: widening to an ancestor is the assertion alone, while narrowing
-// a wrapper typed to its declared class needs the binding re-resolved first,
-// because the assertion cannot see the runtime class. It returns a non-zero
+// engine object. A generated object return already stands for the object's
+// runtime class, so narrowing it is the assertion alone and repeated returns are
+// the identical wrapper; re-resolving the binding remains as coverage for
+// wrappers that did not come from a generated return. It returns a non-zero
 // failure code so the GDScript assertion names which clause broke.
 func (e *Example) TestObjectCasting() int {
-	// A method declared to return Node produces a *NodeImpl, whatever the engine
-	// object's runtime class is: this Label is not a Label to Go.
-	node := e.GetNode(NewNodePathWithString(NewStringWithUtf8Chars("Label")))
-	if _, ok := node.(Label); ok {
+	// One NodePath for both calls: NodePath stores its components as
+	// StringNames, so a throwaway path per call would leave an interned
+	// reference outstanding at engine exit.
+	name := NewStringWithUtf8Chars("Label")
+	defer name.Destroy()
+	path := NewNodePathWithString(name)
+	defer path.Destroy()
+
+	// The method declares Node, but the wrapper stands for the runtime class:
+	// this Label is a Label to Go, with no helper call in between.
+	node := e.GetNode(path)
+	label, ok := node.(Label)
+	if !ok {
 		return 1
 	}
 
-	wrapper, err := ObjectFromInstanceBinding(node.GetGodotObjectOwner())
-	if err != nil || wrapper == nil {
+	// Two returns of the same engine object are the identical wrapper.
+	again := e.GetNode(path)
+	if again != node {
 		return 2
 	}
-	label, ok := wrapper.(Label)
-	if !ok || label.GetGodotObjectOwner() != node.GetGodotObjectOwner() {
+
+	// Re-resolving the binding is still the path for wrappers that did not come
+	// from a generated return, and it yields that same wrapper.
+	wrapper, err := ObjectFromInstanceBinding(node.GetGodotObjectOwner())
+	if err != nil || wrapper == nil {
 		return 3
+	}
+	if wrapper != node {
+		return 4
 	}
 
 	// Widening needs no lookup: the Label wrapper embeds every ancestor.
 	widened, ok := label.(Node)
 	if !ok || widened.GetGodotObjectOwner() != node.GetGodotObjectOwner() {
-		return 4
+		return 5
 	}
 	return 0
 }

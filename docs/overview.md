@@ -15,7 +15,7 @@ governs. The specs live under `openspec/specs/`.
 | Variant type mapping | [`variant-type-mapping`](../openspec/specs/variant-type-mapping/spec.md) | `core.ReflectTypeToGDExtensionVariantType`, the `ArgumentEncoder` registered for each class |
 | Property access dispatch | [`property-access-dispatch`](../openspec/specs/property-access-dispatch/spec.md) | The `_get`/`_set`/`_property_can_revert`/`_property_get_revert` virtuals bound with `core.ClassDBBindMethodVirtual`, and the validator passed to `core.ClassDBRegisterClass` |
 | Vararg method binding | [`vararg-method-binding`](../openspec/specs/vararg-method-binding/spec.md) | `core.ClassDBBindMethodVarargs`, `core.ClassDBBindStaticMethod` (variadic statics) |
-| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectFromInstanceBinding`, `builtin.ObjectFromVariant`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr` |
+| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectFromInstanceBinding`, `builtin.ObjectFromVariant`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr`; generated non-ref returns already resolve to the runtime-class wrapper, so narrowing them is a plain assertion |
 
 # Class Metadata and Diagnostics
 
@@ -506,25 +506,31 @@ AddEditorPlugin(&MyPlugin{})
 A Go value standing for an engine object is a wrapper: a generated interface
 (`Node`, `Control`, `Label`, …) implemented by the generated `*NodeImpl`,
 `*ControlImpl`, `*LabelImpl`, … structs. There is no cast entry point. Changing
-class in either direction is ordinary Go — an assertion or an assignment — and
-the direction decides whether the binding has to be resolved first.
+class in either direction is ordinary Go — an assertion or an assignment —
+because a generated object return already stands for the object's runtime class.
 
 ## Narrowing to a subclass
 
-A method declared to return `Node` produces a wrapper typed to `Node`, whatever
-the engine object's runtime class is. Asserting a subclass on that wrapper fails,
-and the failure is indistinguishable from "this object is not a `Label`":
+A generated method that returns a non-reference-counted engine object returns
+the wrapper bound for the object's runtime class. The declared return type is
+unchanged, so existing code compiles as before, and narrowing is the assertion
+alone:
 
 ```go
 node := example.GetNode(NewNodePathWithString(NewStringWithUtf8Chars("Label")))
-// node's dynamic type is *NodeImpl, although the engine object is a Label.
+// node is declared Node; the wrapper stands for the Label the engine returned.
 
-_, ok := node.(Label) // false
+label, ok := node.(Label) // true
 ```
 
-Narrow by re-resolving from the engine object first. If no binding exists yet, the
-call is answered by the callbacks registered for the object's runtime class, so
-the wrapper returned is typed to the class the object actually has:
+The resolution happens inside the generated method, with no helper call or
+binding lookup at the call site, and two returns of the same engine object are
+the identical wrapper. Reference-counted returns keep their declared `Ref`,
+which owns the reference the return slot transfers.
+
+A wrapper that did not come from a generated return — one built directly, such
+as `NewNodeWithGodotOwnerObject(engineObject)` — is still typed to the class it
+was built for. Narrow it by re-resolving from the engine object:
 
 ```go
 func asLabel(node Node) (Label, error) {
@@ -553,9 +559,9 @@ interface. No engine call, no binding lookup, and it cannot fail for an object
 that really is an instance of that ancestor.
 
 ```go
-label, err := asLabel(node) // narrowed above
-if err != nil {
-	return err
+label, ok := node.(Label) // narrowed above
+if !ok {
+	return
 }
 
 var nodeView Node = label // *LabelImpl embeds *ControlImpl … *NodeImpl

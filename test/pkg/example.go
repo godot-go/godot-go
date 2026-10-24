@@ -1501,6 +1501,8 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestBorrowedRefNeverReleases", "test_borrowed_ref_never_releases", []string{"owner"}, nil)
 		ClassDBBindMethod(t, "TestNullReturnSchedulesNoRelease", "test_null_return_schedules_no_release", []string{"owner"}, nil)
 		ClassDBBindMethod(t, "TestReturnOwnershipRelease", "test_return_ownership_release", nil, nil)
+		ClassDBBindMethod(t, "TestReturnRefPointeeNarrowing", "test_return_ref_pointee_narrowing", []string{"owner"}, nil)
+		ClassDBBindMethod(t, "TestReturnRefPointeeIdentity", "test_return_ref_pointee_identity", []string{"owner"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodePlainObject", "test_ptrcall_decode_plain_object", []string{"node"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeSubclass", "test_ptrcall_decode_subclass", []string{"shape"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeNullObject", "test_ptrcall_decode_null_object", nil, nil)

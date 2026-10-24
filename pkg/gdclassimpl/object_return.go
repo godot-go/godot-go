@@ -19,9 +19,10 @@ import (
 )
 
 // resolveGoStructObjectReturn returns what a generated method should return for
-// a non-refcounted engine object: the wrapper bound for the object's runtime
-// class when one resolves and satisfies T, otherwise the declared-class wrapper
-// the method built.
+// an engine object: the wrapper bound for the object's runtime class when one
+// resolves and satisfies T, otherwise the declared-class wrapper the method
+// built. Used by both non-refcounted returns and refcounted returns (as the
+// pointee inside the Ref).
 //
 // T is the method's declared return type, passed explicitly by the generated
 // call (`resolveGoStructObjectReturn[Node](&ret)`). It must not be left to

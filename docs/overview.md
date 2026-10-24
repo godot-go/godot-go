@@ -15,7 +15,7 @@ governs. The specs live under `openspec/specs/`.
 | Variant type mapping | [`variant-type-mapping`](../openspec/specs/variant-type-mapping/spec.md) | `core.ReflectTypeToGDExtensionVariantType`, the `ArgumentEncoder` registered for each class |
 | Property access dispatch | [`property-access-dispatch`](../openspec/specs/property-access-dispatch/spec.md) | The `_get`/`_set`/`_property_can_revert`/`_property_get_revert` virtuals bound with `core.ClassDBBindMethodVirtual`, and the validator passed to `core.ClassDBRegisterClass` |
 | Vararg method binding | [`vararg-method-binding`](../openspec/specs/vararg-method-binding/spec.md) | `core.ClassDBBindMethodVarargs`, `core.ClassDBBindStaticMethod` (variadic statics) |
-| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectFromInstanceBinding`, `builtin.ObjectFromVariant`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr`; generated non-ref returns already resolve to the runtime-class wrapper, so narrowing them is a plain assertion |
+| Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectFromInstanceBinding`, `builtin.ObjectFromVariant`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr`; generated returns resolve to the runtime-class wrapper (non-ref directly, ref via `Ptr()`), so narrowing them is a plain assertion |
 
 # Class Metadata and Diagnostics
 
@@ -525,8 +525,16 @@ label, ok := node.(Label) // true
 
 The resolution happens inside the generated method, with no helper call or
 binding lookup at the call site, and two returns of the same engine object are
-the identical wrapper. Reference-counted returns keep their declared `Ref`,
-which owns the reference the return slot transfers.
+the identical wrapper. Reference-counted returns keep their declared `Ref` type,
+but the pointee inside the `Ref` is resolved the same way: `Ptr()` yields the
+runtime-class wrapper, so subclass methods are reachable through it:
+
+```go
+shape := collisionShape.GetShape() // declared RefShape2D
+// Ptr() returns Shape2D; the wrapper stands for the CircleShape2D inside.
+
+circle, ok := shape.Ptr().(CircleShape2D) // true
+```
 
 A wrapper that did not come from a generated return — one built directly, such
 as `NewNodeWithGodotOwnerObject(engineObject)` — is still typed to the class it

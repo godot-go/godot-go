@@ -3966,7 +3966,7 @@ func (cx *AcceptDialogImpl) GetOkButton() Button {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Button](&ret)
 }
 
 /* GetLabel implements AcceptDialog.get_label:
@@ -4006,7 +4006,7 @@ func (cx *AcceptDialogImpl) GetLabel() Label {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Label](&ret)
 }
 
 /* SetHideOnOk implements AcceptDialog.set_hide_on_ok:
@@ -4218,7 +4218,7 @@ func (cx *AcceptDialogImpl) AddButton(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Button](&ret)
 }
 
 /* AddCancelButton implements AcceptDialog.add_cancel_button:
@@ -4262,7 +4262,7 @@ func (cx *AcceptDialogImpl) AddCancelButton(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Button](&ret)
 }
 
 /* RemoveButton implements AcceptDialog.remove_button:
@@ -30032,7 +30032,7 @@ func (cx *Area2DImpl) GetOverlappingBodies() Node2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node2D](&ret)
 }
 
 /* GetOverlappingAreas implements Area2D.get_overlapping_areas:
@@ -30072,7 +30072,7 @@ func (cx *Area2DImpl) GetOverlappingAreas() Area2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Area2D](&ret)
 }
 
 /* HasOverlappingBodies implements Area2D.has_overlapping_bodies:
@@ -31771,7 +31771,7 @@ func (cx *Area3DImpl) GetOverlappingBodies() Node3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node3D](&ret)
 }
 
 /* GetOverlappingAreas implements Area3D.get_overlapping_areas:
@@ -31811,7 +31811,7 @@ func (cx *Area3DImpl) GetOverlappingAreas() Area3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Area3D](&ret)
 }
 
 /* HasOverlappingBodies implements Area3D.has_overlapping_bodies:
@@ -64678,7 +64678,7 @@ func (cx *BoneAttachment3DImpl) GetSkeleton() Skeleton3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Skeleton3D](&ret)
 }
 
 /* SetBoneName implements BoneAttachment3D.set_bone_name:
@@ -67712,7 +67712,7 @@ func (cx *BoxContainerImpl) AddSpacer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&begin))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* SetAlignment implements BoxContainer.set_alignment:
@@ -69591,7 +69591,7 @@ func (cx *ButtonGroupImpl) GetPressedButton() BaseButton {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[BaseButton](&ret)
 }
 
 /* GetButtons implements ButtonGroup.get_buttons:
@@ -69631,7 +69631,7 @@ func (cx *ButtonGroupImpl) GetButtons() BaseButton {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[BaseButton](&ret)
 }
 
 /* SetAllowUnpress implements ButtonGroup.set_allow_unpress:
@@ -82663,7 +82663,7 @@ func (cx *Camera2DImpl) GetCustomViewport() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* SetPositionSmoothingSpeed implements Camera2D.set_position_smoothing_speed:
@@ -92153,7 +92153,7 @@ func (cx *CanvasItemImpl) GetCanvasLayerNode() CanvasLayer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[CanvasLayer](&ret)
 }
 
 /* GetWorld2D implements CanvasItem.get_world_2d:
@@ -94615,7 +94615,7 @@ func (cx *CanvasLayerImpl) GetCustomViewport() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetCanvas implements CanvasLayer.get_canvas:
@@ -110610,7 +110610,7 @@ func (cx *CollisionObject2DImpl) ShapeOwnerGetOwner(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner_id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* ShapeOwnerSetDisabled implements CollisionObject2D.shape_owner_set_disabled:
@@ -112265,7 +112265,7 @@ func (cx *CollisionObject3DImpl) ShapeOwnerGetOwner(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owner_id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* ShapeOwnerSetDisabled implements CollisionObject3D.shape_owner_set_disabled:
@@ -116143,7 +116143,7 @@ func (cx *ColorPickerButtonImpl) GetPicker() ColorPicker {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[ColorPicker](&ret)
 }
 
 /* GetPopup implements ColorPickerButton.get_popup:
@@ -116183,7 +116183,7 @@ func (cx *ColorPickerButtonImpl) GetPopup() PopupPanel {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupPanel](&ret)
 }
 
 /* SetEditAlpha implements ColorPickerButton.set_edit_alpha:
@@ -118805,7 +118805,7 @@ func (cx *ConfirmationDialogImpl) GetCancelButton() Button {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Button](&ret)
 }
 
 /* SetCancelButtonText implements ConfirmationDialog.set_cancel_button_text:
@@ -121375,7 +121375,7 @@ func (cx *ControlImpl) FindPrevValidFocus() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* FindNextValidFocus implements Control.find_next_valid_focus:
@@ -121415,7 +121415,7 @@ func (cx *ControlImpl) FindNextValidFocus() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* FindValidFocusNeighbor implements Control.find_valid_focus_neighbor:
@@ -121459,7 +121459,7 @@ func (cx *ControlImpl) FindValidFocusNeighbor(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&side))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* SetHSizeFlags implements Control.set_h_size_flags:
@@ -124096,7 +124096,7 @@ func (cx *ControlImpl) GetParentControl() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* SetHGrowDirection implements Control.set_h_grow_direction:
@@ -126265,7 +126265,7 @@ func (cx *ControlImpl) GetShortcutContext() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* UpdateMaximumSize implements Control.update_maximum_size:
@@ -160827,7 +160827,7 @@ func (cx *EditorFileSystemImpl) GetFilesystem() EditorFileSystemDirectory {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorFileSystemDirectory](&ret)
 }
 
 /* IsScanning implements EditorFileSystem.is_scanning:
@@ -161106,7 +161106,7 @@ func (cx *EditorFileSystemImpl) GetFilesystemPath(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorFileSystemDirectory](&ret)
 }
 
 /* GetFileType implements EditorFileSystem.get_file_type:
@@ -161302,7 +161302,7 @@ func (cx *EditorFileSystemDirectoryImpl) GetSubdir(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorFileSystemDirectory](&ret)
 }
 
 /* GetFileCount implements EditorFileSystemDirectory.get_file_count:
@@ -161726,7 +161726,7 @@ func (cx *EditorFileSystemDirectoryImpl) GetParent() EditorFileSystemDirectory {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorFileSystemDirectory](&ret)
 }
 
 /* FindFileIndex implements EditorFileSystemDirectory.find_file_index:
@@ -162072,7 +162072,7 @@ func (cx *EditorInspectorImpl) GetEditedObject() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* CollapseAllFolding implements EditorInspector.collapse_all_folding:
@@ -162248,7 +162248,7 @@ func (cx *EditorInspectorImpl) InstantiatePropertyEditor(
 	argPtrSlice[6] = (GDExtensionConstTypePtr)(unsafe.Pointer(&wide))
 	pinner.Pin(argPtrSlice[6])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorProperty](&ret)
 }
 
 /* CreateDefaultInspector implements EditorInspector.create_default_inspector:
@@ -162295,7 +162295,7 @@ func (cx *EditorInspectorImpl) CreateDefaultInspector(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorInspector](&ret)
 }
 
 type EditorInspectorPluginImpl struct {
@@ -162577,7 +162577,7 @@ func (cx *EditorInterfaceImpl) GetCommandPalette() EditorCommandPalette {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorCommandPalette](&ret)
 }
 
 /* GetResourceFilesystem implements EditorInterface.get_resource_filesystem:
@@ -162617,7 +162617,7 @@ func (cx *EditorInterfaceImpl) GetResourceFilesystem() EditorFileSystem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorFileSystem](&ret)
 }
 
 /* GetEditorPaths implements EditorInterface.get_editor_paths:
@@ -162657,7 +162657,7 @@ func (cx *EditorInterfaceImpl) GetEditorPaths() EditorPaths {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorPaths](&ret)
 }
 
 /* GetResourcePreviewer implements EditorInterface.get_resource_previewer:
@@ -162697,7 +162697,7 @@ func (cx *EditorInterfaceImpl) GetResourcePreviewer() EditorResourcePreview {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorResourcePreview](&ret)
 }
 
 /* GetSelection implements EditorInterface.get_selection:
@@ -162737,7 +162737,7 @@ func (cx *EditorInterfaceImpl) GetSelection() EditorSelection {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorSelection](&ret)
 }
 
 /* GetEditorSettings implements EditorInterface.get_editor_settings:
@@ -162817,7 +162817,7 @@ func (cx *EditorInterfaceImpl) GetEditorToaster() EditorToaster {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorToaster](&ret)
 }
 
 /* GetEditorUndoRedo implements EditorInterface.get_editor_undo_redo:
@@ -162857,7 +162857,7 @@ func (cx *EditorInterfaceImpl) GetEditorUndoRedo() EditorUndoRedoManager {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorUndoRedoManager](&ret)
 }
 
 /* MakeMeshPreviews implements EditorInterface.make_mesh_previews:
@@ -163075,7 +163075,7 @@ func (cx *EditorInterfaceImpl) GetBaseControl() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* GetEditorMainScreen implements EditorInterface.get_editor_main_screen:
@@ -163115,7 +163115,7 @@ func (cx *EditorInterfaceImpl) GetEditorMainScreen() VBoxContainer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[VBoxContainer](&ret)
 }
 
 /* GetScriptEditor implements EditorInterface.get_script_editor:
@@ -163155,7 +163155,7 @@ func (cx *EditorInterfaceImpl) GetScriptEditor() ScriptEditor {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[ScriptEditor](&ret)
 }
 
 /* GetEditorViewport2D implements EditorInterface.get_editor_viewport_2d:
@@ -163195,7 +163195,7 @@ func (cx *EditorInterfaceImpl) GetEditorViewport2D() SubViewport {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[SubViewport](&ret)
 }
 
 /* GetEditorViewport3D implements EditorInterface.get_editor_viewport_3d:
@@ -163239,7 +163239,7 @@ func (cx *EditorInterfaceImpl) GetEditorViewport3D(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[SubViewport](&ret)
 }
 
 /* SetMainScreenEditor implements EditorInterface.set_main_screen_editor:
@@ -164203,7 +164203,7 @@ func (cx *EditorInterfaceImpl) GetFileSystemDock() FileSystemDock {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[FileSystemDock](&ret)
 }
 
 /* SelectFile implements EditorInterface.select_file:
@@ -164404,7 +164404,7 @@ func (cx *EditorInterfaceImpl) GetInspector() EditorInspector {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorInspector](&ret)
 }
 
 /* InspectObject implements EditorInterface.inspect_object:
@@ -164894,7 +164894,7 @@ func (cx *EditorInterfaceImpl) GetOpenSceneRoots() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetEditedSceneRoot implements EditorInterface.get_edited_scene_root:
@@ -164934,7 +164934,7 @@ func (cx *EditorInterfaceImpl) GetEditedSceneRoot() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* AddRootNode implements EditorInterface.add_root_node:
@@ -165903,7 +165903,7 @@ func (cx *EditorNode3DGizmoImpl) GetNode3D() Node3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node3D](&ret)
 }
 
 /* GetPlugin implements EditorNode3DGizmo.get_plugin:
@@ -167033,7 +167033,7 @@ func (cx *EditorPluginImpl) GetExportAsMenu() PopupMenu {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 /* AddCustomType implements EditorPlugin.add_custom_type:
@@ -167333,7 +167333,7 @@ func (cx *EditorPluginImpl) AddControlToBottomPanel(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Button](&ret)
 }
 
 /* RemoveControlFromBottomPanel implements EditorPlugin.remove_control_from_bottom_panel:
@@ -167623,7 +167623,7 @@ func (cx *EditorPluginImpl) GetUndoRedo() EditorUndoRedoManager {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorUndoRedoManager](&ret)
 }
 
 /* AddUndoRedoInspectorHookCallback implements EditorPlugin.add_undo_redo_inspector_hook_callback:
@@ -168748,7 +168748,7 @@ func (cx *EditorPluginImpl) GetEditorInterface() EditorInterface {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorInterface](&ret)
 }
 
 /* GetScriptCreateDialog implements EditorPlugin.get_script_create_dialog:
@@ -168788,7 +168788,7 @@ func (cx *EditorPluginImpl) GetScriptCreateDialog() ScriptCreateDialog {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[ScriptCreateDialog](&ret)
 }
 
 /* AddDebuggerPlugin implements EditorPlugin.add_debugger_plugin:
@@ -169752,7 +169752,7 @@ func (cx *EditorPropertyImpl) GetEditedObject() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* UpdateProperty implements EditorProperty.update_property:
@@ -171796,7 +171796,7 @@ func (cx *EditorScriptImpl) GetScene() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetEditorInterface implements EditorScript.get_editor_interface:
@@ -171836,7 +171836,7 @@ func (cx *EditorScriptImpl) GetEditorInterface() EditorInterface {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[EditorInterface](&ret)
 }
 
 type EditorScriptPickerImpl struct {
@@ -171947,7 +171947,7 @@ func (cx *EditorScriptPickerImpl) GetScriptOwner() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 type EditorSelectionImpl struct {
@@ -172139,7 +172139,7 @@ func (cx *EditorSelectionImpl) GetSelectedNodes() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetTopSelectedNodes implements EditorSelection.get_top_selected_nodes:
@@ -172179,7 +172179,7 @@ func (cx *EditorSelectionImpl) GetTopSelectedNodes() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetTransformableSelectedNodes implements EditorSelection.get_transformable_selected_nodes:
@@ -172219,7 +172219,7 @@ func (cx *EditorSelectionImpl) GetTransformableSelectedNodes() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 type EditorSettingsImpl struct {
@@ -174599,7 +174599,7 @@ func (cx *EditorUndoRedoManagerImpl) GetHistoryUndoRedo(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[UndoRedo](&ret)
 }
 
 /* ClearHistory implements EditorUndoRedoManager.clear_history:
@@ -175844,7 +175844,7 @@ func (cx *EngineImpl) GetMainLoop() MainLoop {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[MainLoop](&ret)
 }
 
 /* GetVersionInfo implements Engine.get_version_info:
@@ -176252,7 +176252,7 @@ func (cx *EngineImpl) GetSingleton(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* RegisterSingleton implements Engine.register_singleton:
@@ -176558,7 +176558,7 @@ func (cx *EngineImpl) GetScriptLanguage(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[ScriptLanguage](&ret)
 }
 
 /* CaptureScriptBacktraces implements Engine.capture_script_backtraces:
@@ -192064,7 +192064,7 @@ func (cx *FileDialogImpl) GetVbox() VBoxContainer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[VBoxContainer](&ret)
 }
 
 /* GetLineEdit implements FileDialog.get_line_edit:
@@ -192104,7 +192104,7 @@ func (cx *FileDialogImpl) GetLineEdit() LineEdit {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[LineEdit](&ret)
 }
 
 /* SetAccess implements FileDialog.set_access:
@@ -195114,7 +195114,7 @@ func (cx *FoldableGroupImpl) GetExpandedContainer() FoldableContainer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[FoldableContainer](&ret)
 }
 
 /* GetContainers implements FoldableGroup.get_containers:
@@ -195154,7 +195154,7 @@ func (cx *FoldableGroupImpl) GetContainers() FoldableContainer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[FoldableContainer](&ret)
 }
 
 /* SetAllowFoldingAll implements FoldableGroup.set_allow_folding_all:
@@ -207220,7 +207220,7 @@ func (cx *GLTFCameraImpl) ToNode() Camera3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Camera3D](&ret)
 }
 
 /* FromDictionary implements GLTFCamera.from_dictionary:
@@ -208527,7 +208527,7 @@ func (cx *GLTFDocumentImpl) GenerateScene(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&remove_immutable_tracks))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GenerateBuffer implements GLTFDocument.generate_buffer:
@@ -209023,7 +209023,7 @@ func (cx *GLTFLightImpl) ToNode() Light3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Light3D](&ret)
 }
 
 /* FromDictionary implements GLTFLight.from_dictionary:
@@ -212348,7 +212348,7 @@ func (cx *GLTFPhysicsBodyImpl) ToNode() CollisionObject3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[CollisionObject3D](&ret)
 }
 
 /* FromDictionary implements GLTFPhysicsBody.from_dictionary:
@@ -213198,7 +213198,7 @@ func (cx *GLTFPhysicsShapeImpl) ToNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&cache_shapes))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[CollisionShape3D](&ret)
 }
 
 /* FromResource implements GLTFPhysicsShape.from_resource:
@@ -214172,7 +214172,7 @@ func (cx *GLTFSkeletonImpl) GetGodotSkeleton() Skeleton3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Skeleton3D](&ret)
 }
 
 /* GetUniqueNames implements GLTFSkeleton.get_unique_names:
@@ -214418,7 +214418,7 @@ func (cx *GLTFSkeletonImpl) GetBoneAttachment(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[BoneAttachment3D](&ret)
 }
 
 type GLTFSkinImpl struct {
@@ -216861,7 +216861,7 @@ func (cx *GLTFStateImpl) GetAnimationPlayer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&anim_player_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[AnimationPlayer](&ret)
 }
 
 /* GetMaterials implements GLTFState.get_materials:
@@ -218309,7 +218309,7 @@ func (cx *GLTFStateImpl) GetSceneNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gltf_node_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetNodeIndex implements GLTFState.get_node_index:
@@ -233265,7 +233265,7 @@ func (cx *GraphEditImpl) GetElementFrame(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&element))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[GraphFrame](&ret)
 }
 
 /* GetAttachedNodesOfFrame implements GraphEdit.get_attached_nodes_of_frame:
@@ -235212,7 +235212,7 @@ func (cx *GraphEditImpl) GetMenuHbox() HBoxContainer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[HBoxContainer](&ret)
 }
 
 /* ArrangeNodes implements GraphEdit.arrange_nodes:
@@ -235954,7 +235954,7 @@ func (cx *GraphFrameImpl) GetTitlebarHbox() HBoxContainer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[HBoxContainer](&ret)
 }
 
 /* SetAutoshrinkEnabled implements GraphFrame.set_autoshrink_enabled:
@@ -236507,7 +236507,7 @@ func (cx *GraphNodeImpl) GetTitlebarHbox() HBoxContainer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[HBoxContainer](&ret)
 }
 
 /* SetSlot implements GraphNode.set_slot:
@@ -240777,7 +240777,7 @@ func (cx *GridMapEditorPluginImpl) GetCurrentGridMap() GridMap {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[GridMap](&ret)
 }
 
 /* SetSelection implements GridMapEditorPlugin.set_selection:
@@ -261698,7 +261698,7 @@ func (cx *InstancePlaceholderImpl) CreateInstance(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetInstancePath implements InstancePlaceholder.get_instance_path:
@@ -264963,7 +264963,7 @@ func (cx *ItemListImpl) GetVScrollBar() VScrollBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[VScrollBar](&ret)
 }
 
 /* GetHScrollBar implements ItemList.get_h_scroll_bar:
@@ -265003,7 +265003,7 @@ func (cx *ItemListImpl) GetHScrollBar() HScrollBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[HScrollBar](&ret)
 }
 
 /* SetScrollHintMode implements ItemList.set_scroll_hint_mode:
@@ -269503,7 +269503,7 @@ func (cx *KinematicCollision2DImpl) GetLocalShape() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetCollider implements KinematicCollision2D.get_collider:
@@ -269543,7 +269543,7 @@ func (cx *KinematicCollision2DImpl) GetCollider() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderId implements KinematicCollision2D.get_collider_id:
@@ -269663,7 +269663,7 @@ func (cx *KinematicCollision2DImpl) GetColliderShape() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderShapeIndex implements KinematicCollision2D.get_collider_shape_index:
@@ -270109,7 +270109,7 @@ func (cx *KinematicCollision3DImpl) GetLocalShape(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&collision_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetCollider implements KinematicCollision3D.get_collider:
@@ -270153,7 +270153,7 @@ func (cx *KinematicCollision3DImpl) GetCollider(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&collision_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderId implements KinematicCollision3D.get_collider_id:
@@ -270285,7 +270285,7 @@ func (cx *KinematicCollision3DImpl) GetColliderShape(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&collision_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderShapeIndex implements KinematicCollision3D.get_collider_shape_index:
@@ -286525,7 +286525,7 @@ func (cx *LineEditImpl) GetMenu() PopupMenu {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 /* IsMenuVisible implements LineEdit.is_menu_visible:
@@ -293162,7 +293162,7 @@ func (cx *MenuBarImpl) GetMenuPopup(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&menu))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 type MenuButtonImpl struct {
@@ -293229,7 +293229,7 @@ func (cx *MenuButtonImpl) GetPopup() PopupMenu {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 /* ShowPopup implements MenuButton.show_popup:
@@ -304360,7 +304360,7 @@ func (cx *MultiplayerSpawnerImpl) Spawn(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetSpawnPath implements MultiplayerSpawner.get_spawn_path:
@@ -344269,7 +344269,7 @@ func (cx *NodeImpl) GetChildren(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&include_internal))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetChild implements Node.get_child:
@@ -344316,7 +344316,7 @@ func (cx *NodeImpl) GetChild(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&include_internal))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* HasNode implements Node.has_node:
@@ -344404,7 +344404,7 @@ func (cx *NodeImpl) GetNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetNodeOrNull implements Node.get_node_or_null:
@@ -344448,7 +344448,7 @@ func (cx *NodeImpl) GetNodeOrNull(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetParent implements Node.get_parent:
@@ -344488,7 +344488,7 @@ func (cx *NodeImpl) GetParent() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* FindChild implements Node.find_child:
@@ -344538,7 +344538,7 @@ func (cx *NodeImpl) FindChild(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owned))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* FindChildren implements Node.find_children:
@@ -344591,7 +344591,7 @@ func (cx *NodeImpl) FindChildren(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&owned))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* FindParent implements Node.find_parent:
@@ -344635,7 +344635,7 @@ func (cx *NodeImpl) FindParent(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pattern))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* HasNodeAndResource implements Node.has_node_and_resource:
@@ -345287,7 +345287,7 @@ func (cx *NodeImpl) GetOwner() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetIndex implements Node.get_index:
@@ -347462,7 +347462,7 @@ func (cx *NodeImpl) GetWindow() Window {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Window](&ret)
 }
 
 /* GetLastExclusiveWindow implements Node.get_last_exclusive_window:
@@ -347502,7 +347502,7 @@ func (cx *NodeImpl) GetLastExclusiveWindow() Window {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Window](&ret)
 }
 
 /* GetTree implements Node.get_tree:
@@ -347542,7 +347542,7 @@ func (cx *NodeImpl) GetTree() SceneTree {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[SceneTree](&ret)
 }
 
 /* CreateTween implements Node.create_tween:
@@ -347626,7 +347626,7 @@ func (cx *NodeImpl) Duplicate(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* ReplaceBy implements Node.replace_by:
@@ -347888,7 +347888,7 @@ func (cx *NodeImpl) GetViewport() Viewport {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Viewport](&ret)
 }
 
 /* QueueFree implements Node.queue_free:
@@ -351578,7 +351578,7 @@ func (cx *Node3DImpl) GetParentNode3D() Node3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node3D](&ret)
 }
 
 /* SetIgnoreTransformNotification implements Node3D.set_ignore_transform_notification:
@@ -366591,7 +366591,7 @@ func (cx *OpenXRCompositionLayerImpl) GetLayerViewport() SubViewport {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[SubViewport](&ret)
 }
 
 /* SetUseAndroidSurface implements OpenXRCompositionLayer.set_use_android_surface:
@@ -375491,7 +375491,7 @@ func (cx *OpenXRRenderModelExtensionImpl) RenderModelNewSceneInstance(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&render_model))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node3D](&ret)
 }
 
 /* RenderModelGetSubactionPaths implements OpenXRRenderModelExtension.render_model_get_subaction_paths:
@@ -382901,7 +382901,7 @@ func (cx *OptionButtonImpl) GetPopup() PopupMenu {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 /* ShowPopup implements OptionButton.show_popup:
@@ -383870,7 +383870,7 @@ func (cx *PackedSceneImpl) Instantiate(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&edit_state))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* CanInstantiate implements PackedScene.can_instantiate:
@@ -394249,7 +394249,7 @@ func (cx *PhysicalBone2DImpl) GetJoint() Joint2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Joint2D](&ret)
 }
 
 /* GetAutoConfigureJoint implements PhysicalBone2D.get_auto_configure_joint:
@@ -397589,7 +397589,7 @@ func (cx *PhysicsBody2DImpl) GetCollisionExceptions() PhysicsBody2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsBody2D](&ret)
 }
 
 /* AddCollisionExceptionWith implements PhysicsBody2D.add_collision_exception_with:
@@ -397990,7 +397990,7 @@ func (cx *PhysicsBody3DImpl) GetCollisionExceptions() PhysicsBody3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsBody3D](&ret)
 }
 
 /* AddCollisionExceptionWith implements PhysicsBody3D.add_collision_exception_with:
@@ -399847,7 +399847,7 @@ func (cx *PhysicsDirectBodyState2DImpl) GetContactColliderObject(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&contact_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetContactColliderShape implements PhysicsDirectBodyState2D.get_contact_collider_shape:
@@ -400096,7 +400096,7 @@ func (cx *PhysicsDirectBodyState2DImpl) GetSpaceState() PhysicsDirectSpaceState2
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectSpaceState2D](&ret)
 }
 
 type PhysicsDirectBodyState2DExtensionImpl struct {
@@ -402016,7 +402016,7 @@ func (cx *PhysicsDirectBodyState3DImpl) GetContactColliderObject(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&contact_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetContactColliderShape implements PhysicsDirectBodyState3D.get_contact_collider_shape:
@@ -402221,7 +402221,7 @@ func (cx *PhysicsDirectBodyState3DImpl) GetSpaceState() PhysicsDirectSpaceState3
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectSpaceState3D](&ret)
 }
 
 type PhysicsDirectBodyState3DExtensionImpl struct {
@@ -406442,7 +406442,7 @@ func (cx *PhysicsServer2DImpl) SpaceGetDirectState(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&space))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectSpaceState2D](&ret)
 }
 
 /* AreaCreate implements PhysicsServer2D.area_create:
@@ -410170,7 +410170,7 @@ func (cx *PhysicsServer2DImpl) BodyGetDirectState(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectBodyState2D](&ret)
 }
 
 /* JointCreate implements PhysicsServer2D.joint_create:
@@ -412187,7 +412187,7 @@ func (cx *PhysicsServer3DImpl) SpaceGetDirectState(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&space))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectSpaceState3D](&ret)
 }
 
 /* AreaCreate implements PhysicsServer3D.area_create:
@@ -415868,7 +415868,7 @@ func (cx *PhysicsServer3DImpl) BodyGetDirectState(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&body))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectBodyState3D](&ret)
 }
 
 /* SoftBodyCreate implements PhysicsServer3D.soft_body_create:
@@ -422662,7 +422662,7 @@ func (cx *PhysicsTestMotionResult2DImpl) GetCollider() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderShape implements PhysicsTestMotionResult2D.get_collider_shape:
@@ -423353,7 +423353,7 @@ func (cx *PhysicsTestMotionResult3DImpl) GetCollider(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&collision_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderShape implements PhysicsTestMotionResult3D.get_collider_shape:
@@ -430173,7 +430173,7 @@ func (cx *PopupMenuImpl) GetItemSubmenuNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 /* IsItemSeparator implements PopupMenu.is_item_separator:
@@ -449179,7 +449179,7 @@ func (cx *RayCast2DImpl) GetCollider() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderRid implements RayCast2D.get_collider_rid:
@@ -450345,7 +450345,7 @@ func (cx *RayCast3DImpl) GetCollider() Object {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderRid implements RayCast3D.get_collider_rid:
@@ -455133,7 +455133,7 @@ func (cx *RenderDataImpl) GetRenderSceneData() RenderSceneData {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[RenderSceneData](&ret)
 }
 
 /* GetEnvironment implements RenderData.get_environment:
@@ -463280,7 +463280,7 @@ func (cx *RenderingDeviceImpl) CreateLocalDevice() RenderingDevice {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[RenderingDevice](&ret)
 }
 
 /* SetResourceName implements RenderingDevice.set_resource_name:
@@ -488231,7 +488231,7 @@ func (cx *RenderingServerImpl) GetRenderingDevice() RenderingDevice {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[RenderingDevice](&ret)
 }
 
 /* CreateLocalRenderingDevice implements RenderingServer.create_local_rendering_device:
@@ -488271,7 +488271,7 @@ func (cx *RenderingServerImpl) CreateLocalRenderingDevice() RenderingDevice {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[RenderingDevice](&ret)
 }
 
 /* IsOnRenderThread implements RenderingServer.is_on_render_thread:
@@ -488828,7 +488828,7 @@ func (cx *ResourceImpl) GetLocalScene() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* SetupLocalToScene implements Resource.setup_local_to_scene:
@@ -495882,7 +495882,7 @@ func (cx *RichTextLabelImpl) GetVScrollBar() VScrollBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[VScrollBar](&ret)
 }
 
 /* ScrollToLine implements RichTextLabel.scroll_to_line:
@@ -498361,7 +498361,7 @@ func (cx *RichTextLabelImpl) GetMenu() PopupMenu {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 /* IsMenuVisible implements RichTextLabel.is_menu_visible:
@@ -500834,7 +500834,7 @@ func (cx *RigidBody2DImpl) GetCollidingBodies() Node2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node2D](&ret)
 }
 
 type RigidBody3DImpl struct {
@@ -503266,7 +503266,7 @@ func (cx *RigidBody3DImpl) GetCollidingBodies() Node3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node3D](&ret)
 }
 
 type RootMotionViewImpl struct {
@@ -506326,7 +506326,7 @@ func (cx *SceneTreeImpl) GetRoot() Window {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Window](&ret)
 }
 
 /* HasGroup implements SceneTree.has_group:
@@ -506939,7 +506939,7 @@ func (cx *SceneTreeImpl) GetEditedSceneRoot() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* SetPause implements SceneTree.set_pause:
@@ -507748,7 +507748,7 @@ func (cx *SceneTreeImpl) GetNodesInGroup(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&group))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetFirstNodeInGroup implements SceneTree.get_first_node_in_group:
@@ -507792,7 +507792,7 @@ func (cx *SceneTreeImpl) GetFirstNodeInGroup(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&group))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* GetNodeCountInGroup implements SceneTree.get_node_count_in_group:
@@ -507920,7 +507920,7 @@ func (cx *SceneTreeImpl) GetCurrentScene() Node {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node](&ret)
 }
 
 /* ChangeSceneToFile implements SceneTree.change_scene_to_file:
@@ -510100,7 +510100,7 @@ func (cx *ScriptEditorImpl) GetCurrentEditor() ScriptEditorBase {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[ScriptEditorBase](&ret)
 }
 
 /* GetOpenScriptEditors implements ScriptEditor.get_open_script_editors:
@@ -510140,7 +510140,7 @@ func (cx *ScriptEditorImpl) GetOpenScriptEditors() ScriptEditorBase {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[ScriptEditorBase](&ret)
 }
 
 /* GetBreakpoints implements ScriptEditor.get_breakpoints:
@@ -510831,7 +510831,7 @@ func (cx *ScriptEditorBaseImpl) GetBaseEditor() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 type ScriptExtensionImpl struct {
@@ -511969,7 +511969,7 @@ func (cx *ScrollContainerImpl) GetHScrollBar() HScrollBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[HScrollBar](&ret)
 }
 
 /* GetVScrollBar implements ScrollContainer.get_v_scroll_bar:
@@ -512009,7 +512009,7 @@ func (cx *ScrollContainerImpl) GetVScrollBar() VScrollBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[VScrollBar](&ret)
 }
 
 /* EnsureControlVisible implements ScrollContainer.ensure_control_visible:
@@ -514911,7 +514911,7 @@ func (cx *ShapeCast2DImpl) GetCollider(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderRid implements ShapeCast2D.get_collider_rid:
@@ -516466,7 +516466,7 @@ func (cx *ShapeCast3DImpl) GetCollider(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Object](&ret)
 }
 
 /* GetColliderRid implements ShapeCast3D.get_collider_rid:
@@ -517808,7 +517808,7 @@ func (cx *Skeleton2DImpl) GetBone(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Bone2D](&ret)
 }
 
 /* GetSkeleton implements Skeleton2D.get_skeleton:
@@ -521102,7 +521102,7 @@ func (cx *SkeletonIK3DImpl) GetParentSkeleton() Skeleton3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Skeleton3D](&ret)
 }
 
 /* IsRunning implements SkeletonIK3D.is_running:
@@ -527255,7 +527255,7 @@ func (cx *SkeletonModificationStack2DImpl) GetSkeleton() Skeleton2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Skeleton2D](&ret)
 }
 
 type SkeletonModifier3DImpl struct {
@@ -527322,7 +527322,7 @@ func (cx *SkeletonModifier3DImpl) GetSkeleton() Skeleton3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Skeleton3D](&ret)
 }
 
 /* SetActive implements SkeletonModifier3D.set_active:
@@ -530995,7 +530995,7 @@ func (cx *SoftBody3DImpl) GetCollisionExceptions() PhysicsBody3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsBody3D](&ret)
 }
 
 /* AddCollisionExceptionWith implements SoftBody3D.add_collision_exception_with:
@@ -533439,7 +533439,7 @@ func (cx *SpinBoxImpl) GetLineEdit() LineEdit {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[LineEdit](&ret)
 }
 
 type SplineIK3DImpl struct {
@@ -534655,7 +534655,7 @@ func (cx *SplitContainerImpl) GetDragAreaControls() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* SetTouchDraggerEnabled implements SplitContainer.set_touch_dragger_enabled:
@@ -534857,7 +534857,7 @@ func (cx *SplitContainerImpl) GetDragAreaControl() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* SetSplitOffset implements SplitContainer.set_split_offset:
@@ -535539,7 +535539,7 @@ func (cx *SpringBoneCollision3DImpl) GetSkeleton() Skeleton3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Skeleton3D](&ret)
 }
 
 /* SetBoneName implements SpringBoneCollision3D.set_bone_name:
@@ -548373,7 +548373,7 @@ func (cx *StyleBoxImpl) GetCurrentItemDrawn() CanvasItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[CanvasItem](&ret)
 }
 
 /* TestMask implements StyleBox.test_mask:
@@ -553453,7 +553453,7 @@ func (cx *SyntaxHighlighterImpl) GetTextEdit() TextEdit {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TextEdit](&ret)
 }
 
 type SystemFontImpl struct {
@@ -558201,7 +558201,7 @@ func (cx *TabContainerImpl) GetCurrentTabControl() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* GetTabBar implements TabContainer.get_tab_bar:
@@ -558241,7 +558241,7 @@ func (cx *TabContainerImpl) GetTabBar() TabBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TabBar](&ret)
 }
 
 /* GetTabControl implements TabContainer.get_tab_control:
@@ -558285,7 +558285,7 @@ func (cx *TabContainerImpl) GetTabControl(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* SetTabAlignment implements TabContainer.set_tab_alignment:
@@ -559575,7 +559575,7 @@ func (cx *TabContainerImpl) GetPopup() Popup {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Popup](&ret)
 }
 
 /* SetSwitchOnDragHover implements TabContainer.set_switch_on_drag_hover:
@@ -567170,7 +567170,7 @@ func (cx *TextEditImpl) GetVScrollBar() VScrollBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[VScrollBar](&ret)
 }
 
 /* GetHScrollBar implements TextEdit.get_h_scroll_bar:
@@ -567210,7 +567210,7 @@ func (cx *TextEditImpl) GetHScrollBar() HScrollBar {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[HScrollBar](&ret)
 }
 
 /* SetVScroll implements TextEdit.set_v_scroll:
@@ -570318,7 +570318,7 @@ func (cx *TextEditImpl) GetMenu() PopupMenu {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PopupMenu](&ret)
 }
 
 /* IsMenuVisible implements TextEdit.is_menu_visible:
@@ -600201,7 +600201,7 @@ func (cx *TileMapImpl) GetCellTileData(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&use_proxies))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TileData](&ret)
 }
 
 /* IsCellFlippedH implements TileMap.is_cell_flipped_h:
@@ -601572,7 +601572,7 @@ func (cx *TileMapLayerImpl) GetCellTileData(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&coords))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TileData](&ret)
 }
 
 /* IsCellFlippedH implements TileMapLayer.is_cell_flipped_h:
@@ -609613,7 +609613,7 @@ func (cx *TileSetAtlasSourceImpl) GetTileData(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&alternative_tile))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TileData](&ret)
 }
 
 /* GetAtlasGridSize implements TileSetAtlasSource.get_atlas_grid_size:
@@ -616940,7 +616940,7 @@ func (cx *TreeImpl) CreateItem(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetRoot implements Tree.get_root:
@@ -616980,7 +616980,7 @@ func (cx *TreeImpl) GetRoot() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* SetColumnCustomMinimumWidth implements Tree.set_column_custom_minimum_width:
@@ -617500,7 +617500,7 @@ func (cx *TreeImpl) GetNextSelected(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetSelected implements Tree.get_selected:
@@ -617540,7 +617540,7 @@ func (cx *TreeImpl) GetSelected() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* SetSelected implements Tree.set_selected:
@@ -617906,7 +617906,7 @@ func (cx *TreeImpl) GetEdited() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetEditedColumn implements Tree.get_edited_column:
@@ -618127,7 +618127,7 @@ func (cx *TreeImpl) GetItemAtPosition(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&position))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetColumnAtPosition implements Tree.get_column_at_position:
@@ -624627,7 +624627,7 @@ func (cx *TreeItemImpl) CreateChild(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* AddChild implements TreeItem.add_child:
@@ -624755,7 +624755,7 @@ func (cx *TreeItemImpl) GetTree() Tree {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Tree](&ret)
 }
 
 /* GetNext implements TreeItem.get_next:
@@ -624795,7 +624795,7 @@ func (cx *TreeItemImpl) GetNext() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetPrev implements TreeItem.get_prev:
@@ -624835,7 +624835,7 @@ func (cx *TreeItemImpl) GetPrev() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetParent implements TreeItem.get_parent:
@@ -624875,7 +624875,7 @@ func (cx *TreeItemImpl) GetParent() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetFirstChild implements TreeItem.get_first_child:
@@ -624915,7 +624915,7 @@ func (cx *TreeItemImpl) GetFirstChild() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetNextInTree implements TreeItem.get_next_in_tree:
@@ -624959,7 +624959,7 @@ func (cx *TreeItemImpl) GetNextInTree(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&wrap))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetPrevInTree implements TreeItem.get_prev_in_tree:
@@ -625003,7 +625003,7 @@ func (cx *TreeItemImpl) GetPrevInTree(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&wrap))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetNextVisible implements TreeItem.get_next_visible:
@@ -625047,7 +625047,7 @@ func (cx *TreeItemImpl) GetNextVisible(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&wrap))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetPrevVisible implements TreeItem.get_prev_visible:
@@ -625091,7 +625091,7 @@ func (cx *TreeItemImpl) GetPrevVisible(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&wrap))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetChild implements TreeItem.get_child:
@@ -625135,7 +625135,7 @@ func (cx *TreeItemImpl) GetChild(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetChildCount implements TreeItem.get_child_count:
@@ -625215,7 +625215,7 @@ func (cx *TreeItemImpl) GetChildren() TreeItem {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[TreeItem](&ret)
 }
 
 /* GetIndex implements TreeItem.get_index:
@@ -633114,7 +633114,7 @@ func (cx *VehicleWheel3DImpl) GetContactBody() Node3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Node3D](&ret)
 }
 
 /* GetContactPoint implements VehicleWheel3D.get_contact_point:
@@ -637453,7 +637453,7 @@ func (cx *ViewportImpl) GuiGetFocusOwner() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* GuiGetHoveredControl implements Viewport.gui_get_hovered_control:
@@ -637493,7 +637493,7 @@ func (cx *ViewportImpl) GuiGetHoveredControl() Control {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Control](&ret)
 }
 
 /* SetDisableInput implements Viewport.set_disable_input:
@@ -638427,7 +638427,7 @@ func (cx *ViewportImpl) GetEmbeddedSubwindows() Window {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Window](&ret)
 }
 
 /* SetDragThreshold implements Viewport.set_drag_threshold:
@@ -639122,7 +639122,7 @@ func (cx *ViewportImpl) GetAudioListener2D() AudioListener2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[AudioListener2D](&ret)
 }
 
 /* GetCamera2D implements Viewport.get_camera_2d:
@@ -639162,7 +639162,7 @@ func (cx *ViewportImpl) GetCamera2D() Camera2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Camera2D](&ret)
 }
 
 /* SetWorld3D implements Viewport.set_world_3d:
@@ -639407,7 +639407,7 @@ func (cx *ViewportImpl) GetAudioListener3D() AudioListener3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[AudioListener3D](&ret)
 }
 
 /* GetCamera3D implements Viewport.get_camera_3d:
@@ -639447,7 +639447,7 @@ func (cx *ViewportImpl) GetCamera3D() Camera3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Camera3D](&ret)
 }
 
 /* SetAsAudioListener3D implements Viewport.set_as_audio_listener_3d:
@@ -666929,7 +666929,7 @@ func (cx *WindowImpl) GetFocusedWindow() Window {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[Window](&ret)
 }
 
 /* SetLayoutDirection implements Window.set_layout_direction:
@@ -668275,7 +668275,7 @@ func (cx *World2DImpl) GetDirectSpaceState() PhysicsDirectSpaceState2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectSpaceState2D](&ret)
 }
 
 type World3DImpl struct {
@@ -668714,7 +668714,7 @@ func (cx *World3DImpl) GetDirectSpaceState() PhysicsDirectSpaceState3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return &ret
+	return resolveGoStructObjectReturn[PhysicsDirectSpaceState3D](&ret)
 }
 
 type WorldBoundaryShape2DImpl struct {

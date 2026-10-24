@@ -217,7 +217,7 @@ func (cx *{{ goClassStructName $c.Name }}) {{ goMethodName $m.Name }}(
 	{{ if and $m.IsVararg (ne $fnReturnType "Variant") -}}
 	return {{ varargReturnExpr $fnReturnType }}
 	{{ else if $view.IsRefcountedClassName $fnReturnType -}}
-	return NewRef{{ $fnReturnType }}GDExtensionReturnOwner(&ret)
+	return NewRef{{ $fnReturnType }}GDExtensionReturnOwner(resolveGoStructObjectReturn[{{ $fnReturnType }}](&ret))
 	{{ else if $view.ContainsClassName $fnReturnType -}}
 	return resolveGoStructObjectReturn[{{ $fnReturnType }}](&ret)
 	{{ else -}}

@@ -73,8 +73,9 @@ func (e *Example) TestRefBoundaryBareRefValid(r Ref) int64 {
 }
 
 // TestRefBoundarySubclassSliced takes a RefShape2D while the script passes a
-// RectangleShape2D. The Ref slices to the declared pointee (Ptr() yields the
-// declared class) while the object keeps its runtime identity.
+// RectangleShape2D. The Ref interface type stays RefShape2D (Go invariance), but
+// Ptr() yields the runtime-class wrapper resolved through the instance binding,
+// so the object keeps its runtime identity and subclass methods are reachable.
 func (e *Example) TestRefBoundarySubclassSliced(shape RefShape2D) int64 {
 	if shape == nil || !shape.IsValid() {
 		return -1

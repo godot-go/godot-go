@@ -273,3 +273,46 @@ func (e *Example) TestReturnOwnershipRelease() int32 {
 		return 1
 	})
 }
+
+// TestReturnRefPointeeNarrowing proves that Ptr() on a generated refcounted
+// return yields the runtime-class wrapper: GetShape() on a CollisionShape2D
+// holding a CircleShape2D returns RefShape2D whose Ptr() satisfies CircleShape2D.
+func (e *Example) TestReturnRefPointeeNarrowing(owner CollisionShape2D) int32 {
+	return objectArgGuard("return_ref_pointee_narrowing", func() int32 {
+		if isNullObject(owner) {
+			return -1
+		}
+		ref := owner.GetShape()
+		if isNullRef(ref) {
+			return -2
+		}
+		_, ok := ref.Ptr().(CircleShape2D)
+		if !ok {
+			fmt.Printf("  return_ref_pointee_narrowing: FAIL: Ptr() does not satisfy CircleShape2D\n")
+			return -3
+		}
+		fmt.Printf("  return_ref_pointee_narrowing: Ptr().(CircleShape2D) succeeds\n")
+		return 1
+	})
+}
+
+// TestReturnRefPointeeIdentity proves that two calls returning the same engine
+// object yield Ref values whose Ptr() are the identical wrapper.
+func (e *Example) TestReturnRefPointeeIdentity(owner CollisionShape2D) int32 {
+	return objectArgGuard("return_ref_pointee_identity", func() int32 {
+		if isNullObject(owner) {
+			return -1
+		}
+		ref1 := owner.GetShape()
+		ref2 := owner.GetShape()
+		if isNullRef(ref1) || isNullRef(ref2) {
+			return -2
+		}
+		if ref1.Ptr() != ref2.Ptr() {
+			fmt.Printf("  return_ref_pointee_identity: FAIL: Ptr() values differ across calls\n")
+			return -3
+		}
+		fmt.Printf("  return_ref_pointee_identity: Ptr() identity holds across calls\n")
+		return 1
+	})
+}

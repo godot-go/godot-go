@@ -8770,7 +8770,7 @@ func (cx *AnimatedSprite2DImpl) GetSpriteFrames() RefSpriteFrames {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSpriteFramesGDExtensionReturnOwner(&ret)
+	return NewRefSpriteFramesGDExtensionReturnOwner(resolveGoStructObjectReturn[SpriteFrames](&ret))
 }
 
 /* SetAnimation implements AnimatedSprite2D.set_animation:
@@ -9896,7 +9896,7 @@ func (cx *AnimatedSprite3DImpl) GetSpriteFrames() RefSpriteFrames {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSpriteFramesGDExtensionReturnOwner(&ret)
+	return NewRefSpriteFramesGDExtensionReturnOwner(resolveGoStructObjectReturn[SpriteFrames](&ret))
 }
 
 /* SetAnimation implements AnimatedSprite3D.set_animation:
@@ -11110,7 +11110,7 @@ func (cx *AnimatedTextureImpl) GetFrameTexture(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&frame))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetFrameDuration implements AnimatedTexture.set_frame_duration:
@@ -13894,7 +13894,7 @@ func (cx *AnimationImpl) AudioTrackGetKeyStream(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&key_idx))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* AudioTrackGetKeyStartOffset implements Animation.audio_track_get_key_start_offset:
@@ -15364,7 +15364,7 @@ func (cx *AnimationLibraryImpl) GetAnimation(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationGDExtensionReturnOwner(&ret)
+	return NewRefAnimationGDExtensionReturnOwner(resolveGoStructObjectReturn[Animation](&ret))
 }
 
 /* GetAnimationList implements AnimationLibrary.get_animation_list:
@@ -15694,7 +15694,7 @@ func (cx *AnimationMixerImpl) GetAnimationLibrary(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationLibraryGDExtensionReturnOwner(&ret)
+	return NewRefAnimationLibraryGDExtensionReturnOwner(resolveGoStructObjectReturn[AnimationLibrary](&ret))
 }
 
 /* GetAnimationLibraryList implements AnimationMixer.get_animation_library_list:
@@ -15822,7 +15822,7 @@ func (cx *AnimationMixerImpl) GetAnimation(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationGDExtensionReturnOwner(&ret)
+	return NewRefAnimationGDExtensionReturnOwner(resolveGoStructObjectReturn[Animation](&ret))
 }
 
 /* GetAnimationList implements AnimationMixer.get_animation_list:
@@ -18959,7 +18959,7 @@ func (cx *AnimationNodeBlendSpace1DImpl) GetBlendPointNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&point))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationRootNodeGDExtensionReturnOwner(&ret)
+	return NewRefAnimationRootNodeGDExtensionReturnOwner(resolveGoStructObjectReturn[AnimationRootNode](&ret))
 }
 
 /* SetBlendPointName implements AnimationNodeBlendSpace1D.set_blend_point_name:
@@ -20123,7 +20123,7 @@ func (cx *AnimationNodeBlendSpace2DImpl) GetBlendPointNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&point))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationRootNodeGDExtensionReturnOwner(&ret)
+	return NewRefAnimationRootNodeGDExtensionReturnOwner(resolveGoStructObjectReturn[AnimationRootNode](&ret))
 }
 
 /* SetBlendPointName implements AnimationNodeBlendSpace2D.set_blend_point_name:
@@ -21489,7 +21489,7 @@ func (cx *AnimationNodeBlendTreeImpl) GetNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationNodeGDExtensionReturnOwner(&ret)
+	return NewRefAnimationNodeGDExtensionReturnOwner(resolveGoStructObjectReturn[AnimationNode](&ret))
 }
 
 /* RemoveNode implements AnimationNodeBlendTree.remove_node:
@@ -22228,7 +22228,7 @@ func (cx *AnimationNodeOneShotImpl) GetFadeinCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetFadeoutTime implements AnimationNodeOneShot.set_fadeout_time:
@@ -22393,7 +22393,7 @@ func (cx *AnimationNodeOneShotImpl) GetFadeoutCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetBreakLoopAtEnd implements AnimationNodeOneShot.set_break_loop_at_end:
@@ -23065,7 +23065,7 @@ func (cx *AnimationNodeStateMachineImpl) GetNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationNodeGDExtensionReturnOwner(&ret)
+	return NewRefAnimationNodeGDExtensionReturnOwner(resolveGoStructObjectReturn[AnimationNode](&ret))
 }
 
 /* RemoveNode implements AnimationNodeStateMachine.remove_node:
@@ -23510,7 +23510,7 @@ func (cx *AnimationNodeStateMachineImpl) GetTransition(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationNodeStateMachineTransitionGDExtensionReturnOwner(&ret)
+	return NewRefAnimationNodeStateMachineTransitionGDExtensionReturnOwner(resolveGoStructObjectReturn[AnimationNodeStateMachineTransition](&ret))
 }
 
 /* GetTransitionFrom implements AnimationNodeStateMachine.get_transition_from:
@@ -25071,7 +25071,7 @@ func (cx *AnimationNodeStateMachineTransitionImpl) GetXfadeCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetBreakLoopAtEnd implements AnimationNodeStateMachineTransition.set_break_loop_at_end:
@@ -26144,7 +26144,7 @@ func (cx *AnimationNodeTransitionImpl) GetXfadeCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetAllowTransitionToSelf implements AnimationNodeTransition.set_allow_transition_to_self:
@@ -28669,7 +28669,7 @@ func (cx *AnimationTreeImpl) GetTreeRoot() RefAnimationRootNode {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAnimationRootNodeGDExtensionReturnOwner(&ret)
+	return NewRefAnimationRootNodeGDExtensionReturnOwner(resolveGoStructObjectReturn[AnimationRootNode](&ret))
 }
 
 /* SetAdvanceExpressionBaseNode implements AnimationTree.set_advance_expression_base_node:
@@ -32582,7 +32582,7 @@ func (cx *AreaLight3DImpl) GetAreaTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetAreaSize implements AreaLight3D.set_area_size:
@@ -33887,7 +33887,7 @@ func (cx *ArrayMeshImpl) GetShadowMesh() RefArrayMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefArrayMeshGDExtensionReturnOwner(&ret)
+	return NewRefArrayMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ArrayMesh](&ret))
 }
 
 type ArrayOccluder3DImpl struct {
@@ -34502,7 +34502,7 @@ func (cx *AtlasTextureImpl) GetAtlas() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetRegion implements AtlasTexture.set_region:
@@ -40649,7 +40649,7 @@ func (cx *AudioEffectRecordImpl) GetRecording() RefAudioStreamWAV {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamWAVGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamWAVGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamWAV](&ret))
 }
 
 type AudioEffectReverbImpl struct {
@@ -43422,7 +43422,7 @@ func (cx *AudioServerImpl) GetBusEffect(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&effect_idx))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioEffectGDExtensionReturnOwner(&ret)
+	return NewRefAudioEffectGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioEffect](&ret))
 }
 
 /* GetBusEffectInstance implements AudioServer.get_bus_effect_instance:
@@ -43472,7 +43472,7 @@ func (cx *AudioServerImpl) GetBusEffectInstance(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&channel))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioEffectInstanceGDExtensionReturnOwner(&ret)
+	return NewRefAudioEffectInstanceGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioEffectInstance](&ret))
 }
 
 /* SwapBusEffects implements AudioServer.swap_bus_effects:
@@ -44636,7 +44636,7 @@ func (cx *AudioServerImpl) GenerateBusLayout() RefAudioBusLayout {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioBusLayoutGDExtensionReturnOwner(&ret)
+	return NewRefAudioBusLayoutGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioBusLayout](&ret))
 }
 
 /* SetEnableTaggingUsedAudioStreams implements AudioServer.set_enable_tagging_used_audio_streams:
@@ -44915,7 +44915,7 @@ func (cx *AudioStreamImpl) InstantiatePlayback() RefAudioStreamPlayback {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamPlayback](&ret))
 }
 
 /* CanBeSampled implements AudioStream.can_be_sampled:
@@ -44995,7 +44995,7 @@ func (cx *AudioStreamImpl) GenerateSample() RefAudioSample {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioSampleGDExtensionReturnOwner(&ret)
+	return NewRefAudioSampleGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioSample](&ret))
 }
 
 /* IsMetaStream implements AudioStream.is_meta_stream:
@@ -45949,7 +45949,7 @@ func (cx *AudioStreamInteractiveImpl) GetClipStream(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&clip_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStream](&ret))
 }
 
 /* SetClipAutoAdvance implements AudioStreamInteractive.set_clip_auto_advance:
@@ -46721,7 +46721,7 @@ func (cx *AudioStreamMP3Impl) LoadFromBuffer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream_data))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamMP3GDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamMP3GDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamMP3](&ret))
 }
 
 /* LoadFromFile implements AudioStreamMP3.load_from_file:
@@ -46765,7 +46765,7 @@ func (cx *AudioStreamMP3Impl) LoadFromFile(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamMP3GDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamMP3GDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamMP3](&ret))
 }
 
 /* SetData implements AudioStreamMP3.set_data:
@@ -47340,7 +47340,7 @@ func (cx *AudioStreamOggVorbisImpl) LoadFromBuffer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream_data))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamOggVorbis](&ret))
 }
 
 /* LoadFromFile implements AudioStreamOggVorbis.load_from_file:
@@ -47384,7 +47384,7 @@ func (cx *AudioStreamOggVorbisImpl) LoadFromFile(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamOggVorbis](&ret))
 }
 
 /* SetPacketSequence implements AudioStreamOggVorbis.set_packet_sequence:
@@ -47468,7 +47468,7 @@ func (cx *AudioStreamOggVorbisImpl) GetPacketSequence() RefOggPacketSequence {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOggPacketSequenceGDExtensionReturnOwner(&ret)
+	return NewRefOggPacketSequenceGDExtensionReturnOwner(resolveGoStructObjectReturn[OggPacketSequence](&ret))
 }
 
 /* SetLoop implements AudioStreamOggVorbis.set_loop:
@@ -48065,7 +48065,7 @@ func (cx *AudioStreamPlaybackImpl) GetSamplePlayback() RefAudioSamplePlayback {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioSamplePlaybackGDExtensionReturnOwner(&ret)
+	return NewRefAudioSamplePlaybackGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioSamplePlayback](&ret))
 }
 
 /* MixAudio implements AudioStreamPlayback.mix_audio:
@@ -48991,7 +48991,7 @@ func (cx *AudioStreamPlayerImpl) GetStream() RefAudioStream {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStream](&ret))
 }
 
 /* SetVolumeDb implements AudioStreamPlayer.set_volume_db:
@@ -49959,7 +49959,7 @@ func (cx *AudioStreamPlayerImpl) GetStreamPlayback() RefAudioStreamPlayback {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamPlayback](&ret))
 }
 
 /* SetPlaybackType implements AudioStreamPlayer.set_playback_type:
@@ -50151,7 +50151,7 @@ func (cx *AudioStreamPlayer2DImpl) GetStream() RefAudioStream {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStream](&ret))
 }
 
 /* SetVolumeDb implements AudioStreamPlayer2D.set_volume_db:
@@ -51362,7 +51362,7 @@ func (cx *AudioStreamPlayer2DImpl) GetStreamPlayback() RefAudioStreamPlayback {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamPlayback](&ret))
 }
 
 /* SetPlaybackType implements AudioStreamPlayer2D.set_playback_type:
@@ -51554,7 +51554,7 @@ func (cx *AudioStreamPlayer3DImpl) GetStream() RefAudioStream {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStream](&ret))
 }
 
 /* SetVolumeDb implements AudioStreamPlayer3D.set_volume_db:
@@ -53413,7 +53413,7 @@ func (cx *AudioStreamPlayer3DImpl) GetStreamPlayback() RefAudioStreamPlayback {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamPlaybackGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamPlayback](&ret))
 }
 
 /* SetPlaybackType implements AudioStreamPlayer3D.set_playback_type:
@@ -53733,7 +53733,7 @@ func (cx *AudioStreamPlaylistImpl) GetListStream(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStream](&ret))
 }
 
 /* SetShuffle implements AudioStreamPlaylist.set_shuffle:
@@ -54337,7 +54337,7 @@ func (cx *AudioStreamRandomizerImpl) GetStream(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStream](&ret))
 }
 
 /* SetStreamProbabilityWeight implements AudioStreamRandomizer.set_stream_probability_weight:
@@ -55029,7 +55029,7 @@ func (cx *AudioStreamSynchronizedImpl) GetSyncStream(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStream](&ret))
 }
 
 /* SetSyncStreamVolume implements AudioStreamSynchronized.set_sync_stream_volume:
@@ -55191,7 +55191,7 @@ func (cx *AudioStreamWAVImpl) LoadFromBuffer(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&options))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamWAVGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamWAVGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamWAV](&ret))
 }
 
 /* LoadFromFile implements AudioStreamWAV.load_from_file:
@@ -55238,7 +55238,7 @@ func (cx *AudioStreamWAVImpl) LoadFromFile(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&options))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamWAVGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamWAVGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamWAV](&ret))
 }
 
 /* SetData implements AudioStreamWAV.set_data:
@@ -56001,7 +56001,7 @@ func (cx *AwaitTweenerImpl) SetTimeout(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&timeout))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAwaitTweenerGDExtensionReturnOwner(&ret)
+	return NewRefAwaitTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[AwaitTweener](&ret))
 }
 
 type BackBufferCopyImpl struct {
@@ -57070,7 +57070,7 @@ func (cx *BaseButtonImpl) GetShortcut() RefShortcut {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShortcutGDExtensionReturnOwner(&ret)
+	return NewRefShortcutGDExtensionReturnOwner(resolveGoStructObjectReturn[Shortcut](&ret))
 }
 
 /* SetButtonGroup implements BaseButton.set_button_group:
@@ -57154,7 +57154,7 @@ func (cx *BaseButtonImpl) GetButtonGroup() RefButtonGroup {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefButtonGroupGDExtensionReturnOwner(&ret)
+	return NewRefButtonGroupGDExtensionReturnOwner(resolveGoStructObjectReturn[ButtonGroup](&ret))
 }
 
 type BaseMaterial3DImpl struct {
@@ -60121,7 +60121,7 @@ func (cx *BaseMaterial3DImpl) GetTexture(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetDetailBlendMode implements BaseMaterial3D.set_detail_blend_mode:
@@ -63988,7 +63988,7 @@ func (cx *BitMapImpl) ConvertToImage() RefImage {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* OpaqueToPolygons implements BitMap.opaque_to_polygons:
@@ -65948,7 +65948,7 @@ func (cx *BoneMapImpl) GetProfile() RefSkeletonProfile {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkeletonProfileGDExtensionReturnOwner(&ret)
+	return NewRefSkeletonProfileGDExtensionReturnOwner(resolveGoStructObjectReturn[SkeletonProfile](&ret))
 }
 
 /* SetProfile implements BoneMap.set_profile:
@@ -67409,7 +67409,7 @@ func (cx *BoneTwistDisperser3DImpl) GetDampingCurve(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* GetJointBoneName implements BoneTwistDisperser3D.get_joint_bone_name:
@@ -69038,7 +69038,7 @@ func (cx *ButtonImpl) GetButtonIcon() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetFlat implements Button.set_flat:
@@ -71100,7 +71100,7 @@ func (cx *CPUParticles2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* Restart implements CPUParticles2D.restart:
@@ -71570,7 +71570,7 @@ func (cx *CPUParticles2DImpl) GetParamCurve(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetColor implements CPUParticles2D.set_color:
@@ -71735,7 +71735,7 @@ func (cx *CPUParticles2DImpl) GetColorRamp() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetColorInitialRamp implements CPUParticles2D.set_color_initial_ramp:
@@ -71819,7 +71819,7 @@ func (cx *CPUParticles2DImpl) GetColorInitialRamp() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetParticleFlag implements CPUParticles2D.set_particle_flag:
@@ -72757,7 +72757,7 @@ func (cx *CPUParticles2DImpl) GetScaleCurveX() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetScaleCurveX implements CPUParticles2D.set_scale_curve_x:
@@ -72841,7 +72841,7 @@ func (cx *CPUParticles2DImpl) GetScaleCurveY() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetScaleCurveY implements CPUParticles2D.set_scale_curve_y:
@@ -74174,7 +74174,7 @@ func (cx *CPUParticles3DImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetUseFixedSeed implements CPUParticles3D.set_use_fixed_seed:
@@ -74971,7 +74971,7 @@ func (cx *CPUParticles3DImpl) GetParamCurve(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetColor implements CPUParticles3D.set_color:
@@ -75136,7 +75136,7 @@ func (cx *CPUParticles3DImpl) GetColorRamp() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetColorInitialRamp implements CPUParticles3D.set_color_initial_ramp:
@@ -75220,7 +75220,7 @@ func (cx *CPUParticles3DImpl) GetColorInitialRamp() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetParticleFlag implements CPUParticles3D.set_particle_flag:
@@ -76401,7 +76401,7 @@ func (cx *CPUParticles3DImpl) GetScaleCurveX() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetScaleCurveX implements CPUParticles3D.set_scale_curve_x:
@@ -76485,7 +76485,7 @@ func (cx *CPUParticles3DImpl) GetScaleCurveY() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetScaleCurveY implements CPUParticles3D.set_scale_curve_y:
@@ -76569,7 +76569,7 @@ func (cx *CPUParticles3DImpl) GetScaleCurveZ() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetScaleCurveZ implements CPUParticles3D.set_scale_curve_z:
@@ -76849,7 +76849,7 @@ func (cx *CSGBox3DImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 type CSGCombiner3DImpl struct {
@@ -77302,7 +77302,7 @@ func (cx *CSGCylinder3DImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetSmoothFaces implements CSGCylinder3D.set_smooth_faces:
@@ -77494,7 +77494,7 @@ func (cx *CSGMesh3DImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetMaterial implements CSGMesh3D.set_material:
@@ -77578,7 +77578,7 @@ func (cx *CSGMesh3DImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 type CSGPolygon3DImpl struct {
@@ -78904,7 +78904,7 @@ func (cx *CSGPolygon3DImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetSmoothFaces implements CSGPolygon3D.set_smooth_faces:
@@ -79862,7 +79862,7 @@ func (cx *CSGShape3DImpl) BakeCollisionShape() RefConcavePolygonShape3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefConcavePolygonShape3DGDExtensionReturnOwner(&ret)
+	return NewRefConcavePolygonShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[ConcavePolygonShape3D](&ret))
 }
 
 /* SetCalculateTangents implements CSGShape3D.set_calculate_tangents:
@@ -80023,7 +80023,7 @@ func (cx *CSGShape3DImpl) BakeStaticMesh() RefArrayMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefArrayMeshGDExtensionReturnOwner(&ret)
+	return NewRefArrayMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ArrayMesh](&ret))
 }
 
 /* SetAutosmooth implements CSGShape3D.set_autosmooth:
@@ -80620,7 +80620,7 @@ func (cx *CSGSphere3DImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 type CSGTorus3DImpl struct {
@@ -81055,7 +81055,7 @@ func (cx *CSGTorus3DImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetSmoothFaces implements CSGTorus3D.set_smooth_faces:
@@ -81207,7 +81207,7 @@ func (cx *CallbackTweenerImpl) SetDelay(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&delay))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCallbackTweenerGDExtensionReturnOwner(&ret)
+	return NewRefCallbackTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[CallbackTweener](&ret))
 }
 
 type Camera2DImpl struct {
@@ -84831,7 +84831,7 @@ func (cx *Camera3DImpl) GetEnvironment() RefEnvironment {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEnvironmentGDExtensionReturnOwner(&ret)
+	return NewRefEnvironmentGDExtensionReturnOwner(resolveGoStructObjectReturn[Environment](&ret))
 }
 
 /* SetAttributes implements Camera3D.set_attributes:
@@ -84915,7 +84915,7 @@ func (cx *Camera3DImpl) GetAttributes() RefCameraAttributes {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCameraAttributesGDExtensionReturnOwner(&ret)
+	return NewRefCameraAttributesGDExtensionReturnOwner(resolveGoStructObjectReturn[CameraAttributes](&ret))
 }
 
 /* SetCompositor implements Camera3D.set_compositor:
@@ -84999,7 +84999,7 @@ func (cx *Camera3DImpl) GetCompositor() RefCompositor {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCompositorGDExtensionReturnOwner(&ret)
+	return NewRefCompositorGDExtensionReturnOwner(resolveGoStructObjectReturn[Compositor](&ret))
 }
 
 /* SetKeepAspectMode implements Camera3D.set_keep_aspect_mode:
@@ -88212,7 +88212,7 @@ func (cx *CameraServerImpl) GetFeed(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCameraFeedGDExtensionReturnOwner(&ret)
+	return NewRefCameraFeedGDExtensionReturnOwner(resolveGoStructObjectReturn[CameraFeed](&ret))
 }
 
 /* GetFeedCount implements CameraServer.get_feed_count:
@@ -88292,7 +88292,7 @@ func (cx *CameraServerImpl) Feeds() RefCameraFeed {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCameraFeedGDExtensionReturnOwner(&ret)
+	return NewRefCameraFeedGDExtensionReturnOwner(resolveGoStructObjectReturn[CameraFeed](&ret))
 }
 
 /* AddFeed implements CameraServer.add_feed:
@@ -92193,7 +92193,7 @@ func (cx *CanvasItemImpl) GetWorld2D() RefWorld2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWorld2DGDExtensionReturnOwner(&ret)
+	return NewRefWorld2DGDExtensionReturnOwner(resolveGoStructObjectReturn[World2D](&ret))
 }
 
 /* SetMaterial implements CanvasItem.set_material:
@@ -92277,7 +92277,7 @@ func (cx *CanvasItemImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetInstanceShaderParameter implements CanvasItem.set_instance_shader_parameter:
@@ -92736,7 +92736,7 @@ func (cx *CanvasItemImpl) MakeInputLocal(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefInputEventGDExtensionReturnOwner(&ret)
+	return NewRefInputEventGDExtensionReturnOwner(resolveGoStructObjectReturn[InputEvent](&ret))
 }
 
 /* SetVisibilityLayer implements CanvasItem.set_visibility_layer:
@@ -94874,7 +94874,7 @@ func (cx *CanvasTextureImpl) GetDiffuseTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetNormalTexture implements CanvasTexture.set_normal_texture:
@@ -94958,7 +94958,7 @@ func (cx *CanvasTextureImpl) GetNormalTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetSpecularTexture implements CanvasTexture.set_specular_texture:
@@ -95042,7 +95042,7 @@ func (cx *CanvasTextureImpl) GetSpecularTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetSpecularColor implements CanvasTexture.set_specular_color:
@@ -100153,7 +100153,7 @@ func (cx *CharacterBody2DImpl) GetSlideCollision(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slide_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefKinematicCollision2DGDExtensionReturnOwner(&ret)
+	return NewRefKinematicCollision2DGDExtensionReturnOwner(resolveGoStructObjectReturn[KinematicCollision2D](&ret))
 }
 
 /* GetLastSlideCollision implements CharacterBody2D.get_last_slide_collision:
@@ -100193,7 +100193,7 @@ func (cx *CharacterBody2DImpl) GetLastSlideCollision() RefKinematicCollision2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefKinematicCollision2DGDExtensionReturnOwner(&ret)
+	return NewRefKinematicCollision2DGDExtensionReturnOwner(resolveGoStructObjectReturn[KinematicCollision2D](&ret))
 }
 
 type CharacterBody3DImpl struct {
@@ -102160,7 +102160,7 @@ func (cx *CharacterBody3DImpl) GetSlideCollision(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slide_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefKinematicCollision3DGDExtensionReturnOwner(&ret)
+	return NewRefKinematicCollision3DGDExtensionReturnOwner(resolveGoStructObjectReturn[KinematicCollision3D](&ret))
 }
 
 /* GetLastSlideCollision implements CharacterBody3D.get_last_slide_collision:
@@ -102200,7 +102200,7 @@ func (cx *CharacterBody3DImpl) GetLastSlideCollision() RefKinematicCollision3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefKinematicCollision3DGDExtensionReturnOwner(&ret)
+	return NewRefKinematicCollision3DGDExtensionReturnOwner(resolveGoStructObjectReturn[KinematicCollision3D](&ret))
 }
 
 type CheckBoxImpl struct {
@@ -111100,7 +111100,7 @@ func (cx *CollisionObject2DImpl) ShapeOwnerGetShape(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_id))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape2DGDExtensionReturnOwner(&ret)
+	return NewRefShape2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape2D](&ret))
 }
 
 /* ShapeOwnerGetShapeIndex implements CollisionObject2D.shape_owner_get_shape_index:
@@ -112491,7 +112491,7 @@ func (cx *CollisionObject3DImpl) ShapeOwnerGetShape(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&shape_id))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape3DGDExtensionReturnOwner(&ret)
+	return NewRefShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape3D](&ret))
 }
 
 /* ShapeOwnerGetShapeIndex implements CollisionObject3D.shape_owner_get_shape_index:
@@ -113804,7 +113804,7 @@ func (cx *CollisionShape2DImpl) GetShape() RefShape2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape2DGDExtensionReturnOwner(&ret)
+	return NewRefShape2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape2D](&ret))
 }
 
 /* SetDisabled implements CollisionShape2D.set_disabled:
@@ -114364,7 +114364,7 @@ func (cx *CollisionShape3DImpl) GetShape() RefShape3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape3DGDExtensionReturnOwner(&ret)
+	return NewRefShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape3D](&ret))
 }
 
 /* SetDisabled implements CollisionShape3D.set_disabled:
@@ -116564,7 +116564,7 @@ func (cx *CompositorImpl) GetCompositorEffects() RefCompositorEffect {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCompositorEffectGDExtensionReturnOwner(&ret)
+	return NewRefCompositorEffectGDExtensionReturnOwner(resolveGoStructObjectReturn[CompositorEffect](&ret))
 }
 
 type CompositorEffectImpl struct {
@@ -122434,7 +122434,7 @@ func (cx *ControlImpl) GetTheme() RefTheme {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefThemeGDExtensionReturnOwner(&ret)
+	return NewRefThemeGDExtensionReturnOwner(resolveGoStructObjectReturn[Theme](&ret))
 }
 
 /* SetThemeTypeVariation implements Control.set_theme_type_variation:
@@ -123155,7 +123155,7 @@ func (cx *ControlImpl) GetThemeIcon(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetThemeStylebox implements Control.get_theme_stylebox:
@@ -123202,7 +123202,7 @@ func (cx *ControlImpl) GetThemeStylebox(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStyleBoxGDExtensionReturnOwner(&ret)
+	return NewRefStyleBoxGDExtensionReturnOwner(resolveGoStructObjectReturn[StyleBox](&ret))
 }
 
 /* GetThemeFont implements Control.get_theme_font:
@@ -123249,7 +123249,7 @@ func (cx *ControlImpl) GetThemeFont(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* GetThemeFontSize implements Control.get_theme_font_size:
@@ -124016,7 +124016,7 @@ func (cx *ControlImpl) GetThemeDefaultFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* GetThemeDefaultFontSize implements Control.get_theme_default_font_size:
@@ -129160,7 +129160,7 @@ func (cx *CryptoImpl) GenerateRsa(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&size))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCryptoKeyGDExtensionReturnOwner(&ret)
+	return NewRefCryptoKeyGDExtensionReturnOwner(resolveGoStructObjectReturn[CryptoKey](&ret))
 }
 
 /* GenerateSelfSignedCertificate implements Crypto.generate_self_signed_certificate:
@@ -129216,7 +129216,7 @@ func (cx *CryptoImpl) GenerateSelfSignedCertificate(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&not_after))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefX509CertificateGDExtensionReturnOwner(&ret)
+	return NewRefX509CertificateGDExtensionReturnOwner(resolveGoStructObjectReturn[X509Certificate](&ret))
 }
 
 /* Sign implements Crypto.sign:
@@ -129841,7 +129841,7 @@ func (cx *CubemapImpl) CreatePlaceholder() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 type CubemapArrayImpl struct {
@@ -129908,7 +129908,7 @@ func (cx *CubemapArrayImpl) CreatePlaceholder() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 type CurveImpl struct {
@@ -133872,7 +133872,7 @@ func (cx *CurveTextureImpl) GetCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetTextureMode implements CurveTexture.set_texture_mode:
@@ -134105,7 +134105,7 @@ func (cx *CurveXYZTextureImpl) GetCurveX() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetCurveY implements CurveXYZTexture.set_curve_y:
@@ -134189,7 +134189,7 @@ func (cx *CurveXYZTextureImpl) GetCurveY() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetCurveZ implements CurveXYZTexture.set_curve_z:
@@ -134273,7 +134273,7 @@ func (cx *CurveXYZTextureImpl) GetCurveZ() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 type CylinderMeshImpl struct {
@@ -135136,7 +135136,7 @@ func (cx *DPITextureImpl) CreateFromString(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&color_map))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefDPITextureGDExtensionReturnOwner(&ret)
+	return NewRefDPITextureGDExtensionReturnOwner(resolveGoStructObjectReturn[DPITexture](&ret))
 }
 
 /* SetSource implements DPITexture.set_source:
@@ -135824,7 +135824,7 @@ func (cx *DTLSServerImpl) TakeConnection(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPacketPeerDTLSGDExtensionReturnOwner(&ret)
+	return NewRefPacketPeerDTLSGDExtensionReturnOwner(resolveGoStructObjectReturn[PacketPeerDTLS](&ret))
 }
 
 type DampedSpringJoint2DImpl struct {
@@ -136374,7 +136374,7 @@ func (cx *DecalImpl) GetTexture(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&typeName))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetEmissionEnergy implements Decal.set_emission_energy:
@@ -137255,7 +137255,7 @@ func (cx *DirAccessImpl) Open(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefDirAccessGDExtensionReturnOwner(&ret)
+	return NewRefDirAccessGDExtensionReturnOwner(resolveGoStructObjectReturn[DirAccess](&ret))
 }
 
 /* GetOpenError implements DirAccess.get_open_error:
@@ -137342,7 +137342,7 @@ func (cx *DirAccessImpl) CreateTemp(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&keep))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefDirAccessGDExtensionReturnOwner(&ret)
+	return NewRefDirAccessGDExtensionReturnOwner(resolveGoStructObjectReturn[DirAccess](&ret))
 }
 
 /* ListDirBegin implements DirAccess.list_dir_begin:
@@ -140962,7 +140962,7 @@ func (cx *DisplayServerImpl) GlobalMenuGetItemIcon(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GlobalMenuGetItemIndentationLevel implements DisplayServer.global_menu_get_item_indentation_level:
@@ -142882,7 +142882,7 @@ func (cx *DisplayServerImpl) ClipboardGetImage() RefImage {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* ClipboardHas implements DisplayServer.clipboard_has:
@@ -143719,7 +143719,7 @@ func (cx *DisplayServerImpl) ScreenGetImage(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&screen))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* ScreenGetImageRect implements DisplayServer.screen_get_image_rect:
@@ -143763,7 +143763,7 @@ func (cx *DisplayServerImpl) ScreenGetImageRect(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&rect))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* ScreenSetOrientation implements DisplayServer.screen_set_orientation:
@@ -152816,7 +152816,7 @@ func (cx *ENetConnectionImpl) ConnectToHost(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefENetPacketPeerGDExtensionReturnOwner(&ret)
+	return NewRefENetPacketPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[ENetPacketPeer](&ret))
 }
 
 /* Service implements ENetConnection.service:
@@ -153372,7 +153372,7 @@ func (cx *ENetConnectionImpl) GetPeers() RefENetPacketPeer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefENetPacketPeerGDExtensionReturnOwner(&ret)
+	return NewRefENetPacketPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[ENetPacketPeer](&ret))
 }
 
 /* SocketSend implements ENetConnection.socket_send:
@@ -153736,7 +153736,7 @@ func (cx *ENetMultiplayerPeerImpl) GetHost() RefENetConnection {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefENetConnectionGDExtensionReturnOwner(&ret)
+	return NewRefENetConnectionGDExtensionReturnOwner(resolveGoStructObjectReturn[ENetConnection](&ret))
 }
 
 /* GetPeer implements ENetMultiplayerPeer.get_peer:
@@ -153780,7 +153780,7 @@ func (cx *ENetMultiplayerPeerImpl) GetPeer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefENetPacketPeerGDExtensionReturnOwner(&ret)
+	return NewRefENetPacketPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[ENetPacketPeer](&ret))
 }
 
 type ENetPacketPeerImpl struct {
@@ -154892,7 +154892,7 @@ func (cx *EditorDebuggerPluginImpl) GetSession(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEditorDebuggerSessionGDExtensionReturnOwner(&ret)
+	return NewRefEditorDebuggerSessionGDExtensionReturnOwner(resolveGoStructObjectReturn[EditorDebuggerSession](&ret))
 }
 
 /* GetSessions implements EditorDebuggerPlugin.get_sessions:
@@ -156013,7 +156013,7 @@ func (cx *EditorDockImpl) GetDockIcon() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetForceShowIcon implements EditorDock.set_force_show_icon:
@@ -156259,7 +156259,7 @@ func (cx *EditorDockImpl) GetDockShortcut() RefShortcut {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShortcutGDExtensionReturnOwner(&ret)
+	return NewRefShortcutGDExtensionReturnOwner(resolveGoStructObjectReturn[Shortcut](&ret))
 }
 
 /* SetDefaultSlot implements EditorDock.set_default_slot:
@@ -156528,7 +156528,7 @@ func (cx *EditorExportPlatformImpl) CreatePreset() RefEditorExportPreset {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEditorExportPresetGDExtensionReturnOwner(&ret)
+	return NewRefEditorExportPresetGDExtensionReturnOwner(resolveGoStructObjectReturn[EditorExportPreset](&ret))
 }
 
 /* FindExportTemplate implements EditorExportPlatform.find_export_template:
@@ -158988,7 +158988,7 @@ func (cx *EditorExportPluginImpl) GetExportPreset() RefEditorExportPreset {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEditorExportPresetGDExtensionReturnOwner(&ret)
+	return NewRefEditorExportPresetGDExtensionReturnOwner(resolveGoStructObjectReturn[EditorExportPreset](&ret))
 }
 
 /* GetExportPlatform implements EditorExportPlugin.get_export_platform:
@@ -159028,7 +159028,7 @@ func (cx *EditorExportPluginImpl) GetExportPlatform() RefEditorExportPlatform {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEditorExportPlatformGDExtensionReturnOwner(&ret)
+	return NewRefEditorExportPlatformGDExtensionReturnOwner(resolveGoStructObjectReturn[EditorExportPlatform](&ret))
 }
 
 type EditorExportPresetImpl struct {
@@ -162777,7 +162777,7 @@ func (cx *EditorInterfaceImpl) GetEditorSettings() RefEditorSettings {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEditorSettingsGDExtensionReturnOwner(&ret)
+	return NewRefEditorSettingsGDExtensionReturnOwner(resolveGoStructObjectReturn[EditorSettings](&ret))
 }
 
 /* GetEditorToaster implements EditorInterface.get_editor_toaster:
@@ -162907,7 +162907,7 @@ func (cx *EditorInterfaceImpl) MakeMeshPreviews(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&preview_size))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetPluginEnabled implements EditorInterface.set_plugin_enabled:
@@ -163035,7 +163035,7 @@ func (cx *EditorInterfaceImpl) GetEditorTheme() RefTheme {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefThemeGDExtensionReturnOwner(&ret)
+	return NewRefThemeGDExtensionReturnOwner(resolveGoStructObjectReturn[Theme](&ret))
 }
 
 /* GetBaseControl implements EditorInterface.get_base_control:
@@ -165943,7 +165943,7 @@ func (cx *EditorNode3DGizmoImpl) GetPlugin() RefEditorNode3DGizmoPlugin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEditorNode3DGizmoPluginGDExtensionReturnOwner(&ret)
+	return NewRefEditorNode3DGizmoPluginGDExtensionReturnOwner(resolveGoStructObjectReturn[EditorNode3DGizmoPlugin](&ret))
 }
 
 /* Clear implements EditorNode3DGizmo.clear:
@@ -166385,7 +166385,7 @@ func (cx *EditorNode3DGizmoPluginImpl) GetMaterial(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStandardMaterial3DGDExtensionReturnOwner(&ret)
+	return NewRefStandardMaterial3DGDExtensionReturnOwner(resolveGoStructObjectReturn[StandardMaterial3D](&ret))
 }
 
 type EditorPathsImpl struct {
@@ -170638,7 +170638,7 @@ func (cx *EditorResourcePickerImpl) GetEditedResource() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* SetToggleMode implements EditorResourcePicker.set_toggle_mode:
@@ -173039,7 +173039,7 @@ func (cx *EditorSettingsImpl) GetShortcut(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShortcutGDExtensionReturnOwner(&ret)
+	return NewRefShortcutGDExtensionReturnOwner(resolveGoStructObjectReturn[Shortcut](&ret))
 }
 
 /* GetShortcutList implements EditorSettings.get_shortcut_list:
@@ -176602,7 +176602,7 @@ func (cx *EngineImpl) CaptureScriptBacktraces(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&include_variables))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefScriptBacktraceGDExtensionReturnOwner(&ret)
+	return NewRefScriptBacktraceGDExtensionReturnOwner(resolveGoStructObjectReturn[ScriptBacktrace](&ret))
 }
 
 /* IsEditorHint implements Engine.is_editor_hint:
@@ -178115,7 +178115,7 @@ func (cx *EnvironmentImpl) GetSky() RefSky {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkyGDExtensionReturnOwner(&ret)
+	return NewRefSkyGDExtensionReturnOwner(resolveGoStructObjectReturn[Sky](&ret))
 }
 
 /* SetSkyCustomFov implements Environment.set_sky_custom_fov:
@@ -183066,7 +183066,7 @@ func (cx *EnvironmentImpl) GetGlowMap() RefTexture {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureGDExtensionReturnOwner(&ret)
+	return NewRefTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture](&ret))
 }
 
 /* SetFogEnabled implements Environment.set_fog_enabled:
@@ -185580,7 +185580,7 @@ func (cx *EnvironmentImpl) GetAdjustmentColorCorrection() RefTexture {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureGDExtensionReturnOwner(&ret)
+	return NewRefTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture](&ret))
 }
 
 type ExpressionImpl struct {
@@ -187885,7 +187885,7 @@ func (cx *FileAccessImpl) Open(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFileAccessGDExtensionReturnOwner(&ret)
+	return NewRefFileAccessGDExtensionReturnOwner(resolveGoStructObjectReturn[FileAccess](&ret))
 }
 
 /* OpenEncrypted implements FileAccess.open_encrypted:
@@ -187938,7 +187938,7 @@ func (cx *FileAccessImpl) OpenEncrypted(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&iv))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFileAccessGDExtensionReturnOwner(&ret)
+	return NewRefFileAccessGDExtensionReturnOwner(resolveGoStructObjectReturn[FileAccess](&ret))
 }
 
 /* OpenEncryptedWithPass implements FileAccess.open_encrypted_with_pass:
@@ -187988,7 +187988,7 @@ func (cx *FileAccessImpl) OpenEncryptedWithPass(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pass))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFileAccessGDExtensionReturnOwner(&ret)
+	return NewRefFileAccessGDExtensionReturnOwner(resolveGoStructObjectReturn[FileAccess](&ret))
 }
 
 /* OpenCompressed implements FileAccess.open_compressed:
@@ -188038,7 +188038,7 @@ func (cx *FileAccessImpl) OpenCompressed(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&compression_mode))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFileAccessGDExtensionReturnOwner(&ret)
+	return NewRefFileAccessGDExtensionReturnOwner(resolveGoStructObjectReturn[FileAccess](&ret))
 }
 
 /* GetOpenError implements FileAccess.get_open_error:
@@ -188131,7 +188131,7 @@ func (cx *FileAccessImpl) CreateTemp(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&keep))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFileAccessGDExtensionReturnOwner(&ret)
+	return NewRefFileAccessGDExtensionReturnOwner(resolveGoStructObjectReturn[FileAccess](&ret))
 }
 
 /* GetFileAsBytes implements FileAccess.get_file_as_bytes:
@@ -193934,7 +193934,7 @@ func (cx *FogMaterialImpl) GetDensityTexture() RefTexture3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture3DGDExtensionReturnOwner(&ret)
+	return NewRefTexture3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture3D](&ret))
 }
 
 type FogVolumeImpl struct {
@@ -194207,7 +194207,7 @@ func (cx *FogVolumeImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 type FoldableContainerImpl struct {
@@ -194473,7 +194473,7 @@ func (cx *FoldableContainerImpl) GetFoldableGroup() RefFoldableGroup {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFoldableGroupGDExtensionReturnOwner(&ret)
+	return NewRefFoldableGroupGDExtensionReturnOwner(resolveGoStructObjectReturn[FoldableGroup](&ret))
 }
 
 /* SetTitle implements FoldableContainer.set_title:
@@ -195346,7 +195346,7 @@ func (cx *FontImpl) GetFallbacks() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* FindVariation implements Font.find_variation:
@@ -200176,7 +200176,7 @@ func (cx *FontFileImpl) GetTextureImage(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture_index))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* SetTextureOffsets implements FontFile.set_texture_offsets:
@@ -201876,7 +201876,7 @@ func (cx *FontVariationImpl) GetBaseFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* SetVariationOpentype implements FontVariation.set_variation_opentype:
@@ -203049,7 +203049,7 @@ func (cx *GDExtensionManagerImpl) GetExtension(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGDExtensionGDExtensionReturnOwner(&ret)
+	return NewRefGDExtensionGDExtensionReturnOwner(resolveGoStructObjectReturn[GDExtension](&ret))
 }
 
 type GDScriptImpl struct {
@@ -203193,7 +203193,7 @@ func (cx *GDScriptLanguageProtocolImpl) GetTextDocument() RefGDScriptTextDocumen
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGDScriptTextDocumentGDExtensionReturnOwner(&ret)
+	return NewRefGDScriptTextDocumentGDExtensionReturnOwner(resolveGoStructObjectReturn[GDScriptTextDocument](&ret))
 }
 
 /* GetWorkspace implements GDScriptLanguageProtocol.get_workspace:
@@ -203233,7 +203233,7 @@ func (cx *GDScriptLanguageProtocolImpl) GetWorkspace() RefGDScriptWorkspace {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGDScriptWorkspaceGDExtensionReturnOwner(&ret)
+	return NewRefGDScriptWorkspaceGDExtensionReturnOwner(resolveGoStructObjectReturn[GDScriptWorkspace](&ret))
 }
 
 /* IsSmartResolveEnabled implements GDScriptLanguageProtocol.is_smart_resolve_enabled:
@@ -204930,7 +204930,7 @@ func (cx *GLTFAccessorImpl) FromDictionary(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFAccessorGDExtensionReturnOwner(&ret)
+	return NewRefGLTFAccessorGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFAccessor](&ret))
 }
 
 /* ToDictionary implements GLTFAccessor.to_dictionary:
@@ -206580,7 +206580,7 @@ func (cx *GLTFBufferViewImpl) FromDictionary(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFBufferViewGDExtensionReturnOwner(&ret)
+	return NewRefGLTFBufferViewGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFBufferView](&ret))
 }
 
 /* ToDictionary implements GLTFBufferView.to_dictionary:
@@ -207180,7 +207180,7 @@ func (cx *GLTFCameraImpl) FromNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFCameraGDExtensionReturnOwner(&ret)
+	return NewRefGLTFCameraGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFCamera](&ret))
 }
 
 /* ToNode implements GLTFCamera.to_node:
@@ -207264,7 +207264,7 @@ func (cx *GLTFCameraImpl) FromDictionary(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFCameraGDExtensionReturnOwner(&ret)
+	return NewRefGLTFCameraGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFCamera](&ret))
 }
 
 /* ToDictionary implements GLTFCamera.to_dictionary:
@@ -208674,7 +208674,7 @@ func (cx *GLTFDocumentImpl) ImportObjectModelProperty(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&json_pointer))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFObjectModelPropertyGDExtensionReturnOwner(&ret)
+	return NewRefGLTFObjectModelPropertyGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFObjectModelProperty](&ret))
 }
 
 /* ExportObjectModelProperty implements GLTFDocument.export_object_model_property:
@@ -208733,7 +208733,7 @@ func (cx *GLTFDocumentImpl) ExportObjectModelProperty(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gltf_node_index))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFObjectModelPropertyGDExtensionReturnOwner(&ret)
+	return NewRefGLTFObjectModelPropertyGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFObjectModelProperty](&ret))
 }
 
 /* RegisterGltfDocumentExtension implements GLTFDocument.register_gltf_document_extension:
@@ -208983,7 +208983,7 @@ func (cx *GLTFLightImpl) FromNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFLightGDExtensionReturnOwner(&ret)
+	return NewRefGLTFLightGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFLight](&ret))
 }
 
 /* ToNode implements GLTFLight.to_node:
@@ -209067,7 +209067,7 @@ func (cx *GLTFLightImpl) FromDictionary(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFLightGDExtensionReturnOwner(&ret)
+	return NewRefGLTFLightGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFLight](&ret))
 }
 
 /* ToDictionary implements GLTFLight.to_dictionary:
@@ -209829,7 +209829,7 @@ func (cx *GLTFMeshImpl) GetMesh() RefImporterMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImporterMeshGDExtensionReturnOwner(&ret)
+	return NewRefImporterMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ImporterMesh](&ret))
 }
 
 /* SetMesh implements GLTFMesh.set_mesh:
@@ -209994,7 +209994,7 @@ func (cx *GLTFMeshImpl) GetInstanceMaterials() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetInstanceMaterials implements GLTFMesh.set_instance_materials:
@@ -211658,7 +211658,7 @@ func (cx *GLTFObjectModelPropertyImpl) GetGltfToGodotExpression() RefExpression 
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefExpressionGDExtensionReturnOwner(&ret)
+	return NewRefExpressionGDExtensionReturnOwner(resolveGoStructObjectReturn[Expression](&ret))
 }
 
 /* SetGltfToGodotExpression implements GLTFObjectModelProperty.set_gltf_to_godot_expression:
@@ -211742,7 +211742,7 @@ func (cx *GLTFObjectModelPropertyImpl) GetGodotToGltfExpression() RefExpression 
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefExpressionGDExtensionReturnOwner(&ret)
+	return NewRefExpressionGDExtensionReturnOwner(resolveGoStructObjectReturn[Expression](&ret))
 }
 
 /* SetGodotToGltfExpression implements GLTFObjectModelProperty.set_godot_to_gltf_expression:
@@ -212308,7 +212308,7 @@ func (cx *GLTFPhysicsBodyImpl) FromNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFPhysicsBodyGDExtensionReturnOwner(&ret)
+	return NewRefGLTFPhysicsBodyGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFPhysicsBody](&ret))
 }
 
 /* ToNode implements GLTFPhysicsBody.to_node:
@@ -212392,7 +212392,7 @@ func (cx *GLTFPhysicsBodyImpl) FromDictionary(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFPhysicsBodyGDExtensionReturnOwner(&ret)
+	return NewRefGLTFPhysicsBodyGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFPhysicsBody](&ret))
 }
 
 /* ToDictionary implements GLTFPhysicsBody.to_dictionary:
@@ -213154,7 +213154,7 @@ func (cx *GLTFPhysicsShapeImpl) FromNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFPhysicsShapeGDExtensionReturnOwner(&ret)
+	return NewRefGLTFPhysicsShapeGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFPhysicsShape](&ret))
 }
 
 /* ToNode implements GLTFPhysicsShape.to_node:
@@ -213245,7 +213245,7 @@ func (cx *GLTFPhysicsShapeImpl) FromResource(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFPhysicsShapeGDExtensionReturnOwner(&ret)
+	return NewRefGLTFPhysicsShapeGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFPhysicsShape](&ret))
 }
 
 /* ToResource implements GLTFPhysicsShape.to_resource:
@@ -213289,7 +213289,7 @@ func (cx *GLTFPhysicsShapeImpl) ToResource(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&cache_shapes))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape3DGDExtensionReturnOwner(&ret)
+	return NewRefShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape3D](&ret))
 }
 
 /* FromDictionary implements GLTFPhysicsShape.from_dictionary:
@@ -213333,7 +213333,7 @@ func (cx *GLTFPhysicsShapeImpl) FromDictionary(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&dictionary))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFPhysicsShapeGDExtensionReturnOwner(&ret)
+	return NewRefGLTFPhysicsShapeGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFPhysicsShape](&ret))
 }
 
 /* ToDictionary implements GLTFPhysicsShape.to_dictionary:
@@ -213899,7 +213899,7 @@ func (cx *GLTFPhysicsShapeImpl) GetImporterMesh() RefImporterMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImporterMeshGDExtensionReturnOwner(&ret)
+	return NewRefImporterMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ImporterMesh](&ret))
 }
 
 /* SetImporterMesh implements GLTFPhysicsShape.set_importer_mesh:
@@ -215214,7 +215214,7 @@ func (cx *GLTFSkinImpl) GetGodotSkin() RefSkin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinGDExtensionReturnOwner(&ret)
+	return NewRefSkinGDExtensionReturnOwner(resolveGoStructObjectReturn[Skin](&ret))
 }
 
 /* SetGodotSkin implements GLTFSkin.set_godot_skin:
@@ -215325,7 +215325,7 @@ func (cx *GLTFSpecGlossImpl) GetDiffuseImg() RefImage {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* SetDiffuseImg implements GLTFSpecGloss.set_diffuse_img:
@@ -215652,7 +215652,7 @@ func (cx *GLTFSpecGlossImpl) GetSpecGlossImg() RefImage {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* SetSpecGlossImg implements GLTFSpecGloss.set_spec_gloss_img:
@@ -216396,7 +216396,7 @@ func (cx *GLTFStateImpl) GetNodes() RefGLTFNode {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFNodeGDExtensionReturnOwner(&ret)
+	return NewRefGLTFNodeGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFNode](&ret))
 }
 
 /* SetNodes implements GLTFState.set_nodes:
@@ -216561,7 +216561,7 @@ func (cx *GLTFStateImpl) GetBufferViews() RefGLTFBufferView {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFBufferViewGDExtensionReturnOwner(&ret)
+	return NewRefGLTFBufferViewGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFBufferView](&ret))
 }
 
 /* SetBufferViews implements GLTFState.set_buffer_views:
@@ -216645,7 +216645,7 @@ func (cx *GLTFStateImpl) GetAccessors() RefGLTFAccessor {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFAccessorGDExtensionReturnOwner(&ret)
+	return NewRefGLTFAccessorGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFAccessor](&ret))
 }
 
 /* SetAccessors implements GLTFState.set_accessors:
@@ -216729,7 +216729,7 @@ func (cx *GLTFStateImpl) GetMeshes() RefGLTFMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFMeshGDExtensionReturnOwner(&ret)
+	return NewRefGLTFMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFMesh](&ret))
 }
 
 /* SetMeshes implements GLTFState.set_meshes:
@@ -216901,7 +216901,7 @@ func (cx *GLTFStateImpl) GetMaterials() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetMaterials implements GLTFState.set_materials:
@@ -217309,7 +217309,7 @@ func (cx *GLTFStateImpl) GetTextures() RefGLTFTexture {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFTextureGDExtensionReturnOwner(&ret)
+	return NewRefGLTFTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFTexture](&ret))
 }
 
 /* SetTextures implements GLTFState.set_textures:
@@ -217393,7 +217393,7 @@ func (cx *GLTFStateImpl) GetTextureSamplers() RefGLTFTextureSampler {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFTextureSamplerGDExtensionReturnOwner(&ret)
+	return NewRefGLTFTextureSamplerGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFTextureSampler](&ret))
 }
 
 /* SetTextureSamplers implements GLTFState.set_texture_samplers:
@@ -217477,7 +217477,7 @@ func (cx *GLTFStateImpl) GetImages() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetImages implements GLTFState.set_images:
@@ -217561,7 +217561,7 @@ func (cx *GLTFStateImpl) GetSkins() RefGLTFSkin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFSkinGDExtensionReturnOwner(&ret)
+	return NewRefGLTFSkinGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFSkin](&ret))
 }
 
 /* SetSkins implements GLTFState.set_skins:
@@ -217645,7 +217645,7 @@ func (cx *GLTFStateImpl) GetCameras() RefGLTFCamera {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFCameraGDExtensionReturnOwner(&ret)
+	return NewRefGLTFCameraGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFCamera](&ret))
 }
 
 /* SetCameras implements GLTFState.set_cameras:
@@ -217729,7 +217729,7 @@ func (cx *GLTFStateImpl) GetLights() RefGLTFLight {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFLightGDExtensionReturnOwner(&ret)
+	return NewRefGLTFLightGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFLight](&ret))
 }
 
 /* SetLights implements GLTFState.set_lights:
@@ -217975,7 +217975,7 @@ func (cx *GLTFStateImpl) GetSkeletons() RefGLTFSkeleton {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFSkeletonGDExtensionReturnOwner(&ret)
+	return NewRefGLTFSkeletonGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFSkeleton](&ret))
 }
 
 /* SetSkeletons implements GLTFState.set_skeletons:
@@ -218221,7 +218221,7 @@ func (cx *GLTFStateImpl) GetAnimations() RefGLTFAnimation {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGLTFAnimationGDExtensionReturnOwner(&ret)
+	return NewRefGLTFAnimationGDExtensionReturnOwner(resolveGoStructObjectReturn[GLTFAnimation](&ret))
 }
 
 /* SetAnimations implements GLTFState.set_animations:
@@ -220477,7 +220477,7 @@ func (cx *GPUParticles2DImpl) GetProcessMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* GetSpeedScale implements GPUParticles2D.get_speed_scale:
@@ -220762,7 +220762,7 @@ func (cx *GPUParticles2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* CaptureRect implements GPUParticles2D.capture_rect:
@@ -222794,7 +222794,7 @@ func (cx *GPUParticles3DImpl) GetProcessMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* GetSpeedScale implements GPUParticles3D.get_speed_scale:
@@ -223329,7 +223329,7 @@ func (cx *GPUParticles3DImpl) GetDrawPassMesh(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&pass))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetSkin implements GPUParticles3D.set_skin:
@@ -223413,7 +223413,7 @@ func (cx *GPUParticles3DImpl) GetSkin() RefSkin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinGDExtensionReturnOwner(&ret)
+	return NewRefSkinGDExtensionReturnOwner(resolveGoStructObjectReturn[Skin](&ret))
 }
 
 /* Restart implements GPUParticles3D.restart:
@@ -224961,7 +224961,7 @@ func (cx *GPUParticlesAttractorVectorField3DImpl) GetTexture() RefTexture3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture3DGDExtensionReturnOwner(&ret)
+	return NewRefTexture3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture3D](&ret))
 }
 
 type GPUParticlesCollision3DImpl struct {
@@ -225970,7 +225970,7 @@ func (cx *GPUParticlesCollisionSDF3DImpl) GetTexture() RefTexture3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture3DGDExtensionReturnOwner(&ret)
+	return NewRefTexture3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture3D](&ret))
 }
 
 /* SetThickness implements GPUParticlesCollisionSDF3D.set_thickness:
@@ -228968,7 +228968,7 @@ func (cx *GeometryInstance3DImpl) GetMaterialOverride() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetMaterialOverlay implements GeometryInstance3D.set_material_overlay:
@@ -229052,7 +229052,7 @@ func (cx *GeometryInstance3DImpl) GetMaterialOverlay() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetCastShadowsSetting implements GeometryInstance3D.set_cast_shadows_setting:
@@ -231413,7 +231413,7 @@ func (cx *GradientTexture1DImpl) GetGradient() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetWidth implements GradientTexture1D.set_width:
@@ -231646,7 +231646,7 @@ func (cx *GradientTexture2DImpl) GetGradient() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetWidth implements GradientTexture2D.set_width:
@@ -237014,7 +237014,7 @@ func (cx *GraphNodeImpl) GetSlotCustomIconLeft(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetSlotMetadataLeft implements GraphNode.set_slot_metadata_left:
@@ -237457,7 +237457,7 @@ func (cx *GraphNodeImpl) GetSlotCustomIconRight(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&slot_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetSlotMetadataRight implements GraphNode.set_slot_metadata_right:
@@ -238946,7 +238946,7 @@ func (cx *GridMapImpl) GetPhysicsMaterial() RefPhysicsMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsMaterialGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsMaterial](&ret))
 }
 
 /* SetBakeNavigation implements GridMap.set_bake_navigation:
@@ -239192,7 +239192,7 @@ func (cx *GridMapImpl) GetMeshLibrary() RefMeshLibrary {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshLibraryGDExtensionReturnOwner(&ret)
+	return NewRefMeshLibraryGDExtensionReturnOwner(resolveGoStructObjectReturn[MeshLibrary](&ret))
 }
 
 /* SetCellSize implements GridMap.set_cell_size:
@@ -241678,7 +241678,7 @@ func (cx *HTTPClientImpl) GetConnection() RefStreamPeer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStreamPeerGDExtensionReturnOwner(&ret)
+	return NewRefStreamPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[StreamPeer](&ret))
 }
 
 /* RequestRaw implements HTTPClient.request_raw:
@@ -245759,7 +245759,7 @@ func (cx *ImageImpl) Create(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* CreateEmpty implements Image.create_empty:
@@ -245812,7 +245812,7 @@ func (cx *ImageImpl) CreateEmpty(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&format))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* CreateFromData implements Image.create_from_data:
@@ -245868,7 +245868,7 @@ func (cx *ImageImpl) CreateFromData(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&data))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* SetData implements Image.set_data:
@@ -246049,7 +246049,7 @@ func (cx *ImageImpl) LoadFromFile(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* SavePng implements Image.save_png:
@@ -247115,7 +247115,7 @@ func (cx *ImageImpl) RgbeToSrgb() RefImage {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* BumpMapToNormalMap implements Image.bump_map_to_normal_map:
@@ -247587,7 +247587,7 @@ func (cx *ImageImpl) GetRegion(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&region))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* CopyFrom implements Image.copy_from:
@@ -248499,7 +248499,7 @@ func (cx *ImageTextureImpl) CreateFromImage(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageTextureGDExtensionReturnOwner(&ret)
+	return NewRefImageTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[ImageTexture](&ret))
 }
 
 /* SetImage implements ImageTexture.set_image:
@@ -249397,7 +249397,7 @@ func (cx *ImporterMeshImpl) MergeImporterMeshes(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&deduplicate_surfaces))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImporterMeshGDExtensionReturnOwner(&ret)
+	return NewRefImporterMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ImporterMesh](&ret))
 }
 
 /* AddBlendShape implements ImporterMesh.add_blend_shape:
@@ -250066,7 +250066,7 @@ func (cx *ImporterMeshImpl) GetSurfaceMaterial(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* GetSurfaceFormat implements ImporterMesh.get_surface_format:
@@ -250295,7 +250295,7 @@ func (cx *ImporterMeshImpl) GetMesh(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefArrayMeshGDExtensionReturnOwner(&ret)
+	return NewRefArrayMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ArrayMesh](&ret))
 }
 
 /* FromMesh implements ImporterMesh.from_mesh:
@@ -250342,7 +250342,7 @@ func (cx *ImporterMeshImpl) FromMesh(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImporterMeshGDExtensionReturnOwner(&ret)
+	return NewRefImporterMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ImporterMesh](&ret))
 }
 
 /* Clear implements ImporterMesh.clear:
@@ -250571,7 +250571,7 @@ func (cx *ImporterMeshInstance3DImpl) GetMesh() RefImporterMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImporterMeshGDExtensionReturnOwner(&ret)
+	return NewRefImporterMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ImporterMesh](&ret))
 }
 
 /* SetSkin implements ImporterMeshInstance3D.set_skin:
@@ -250655,7 +250655,7 @@ func (cx *ImporterMeshInstance3DImpl) GetSkin() RefSkin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinGDExtensionReturnOwner(&ret)
+	return NewRefSkinGDExtensionReturnOwner(resolveGoStructObjectReturn[Skin](&ret))
 }
 
 /* SetSkeletonPath implements ImporterMeshInstance3D.set_skeleton_path:
@@ -255352,7 +255352,7 @@ func (cx *InputEventImpl) XformedBy(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&local_ofs))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefInputEventGDExtensionReturnOwner(&ret)
+	return NewRefInputEventGDExtensionReturnOwner(resolveGoStructObjectReturn[InputEvent](&ret))
 }
 
 type InputEventActionImpl struct {
@@ -260418,7 +260418,7 @@ func (cx *InputEventShortcutImpl) GetShortcut() RefShortcut {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShortcutGDExtensionReturnOwner(&ret)
+	return NewRefShortcutGDExtensionReturnOwner(resolveGoStructObjectReturn[Shortcut](&ret))
 }
 
 type InputEventWithModifiersImpl struct {
@@ -261487,7 +261487,7 @@ func (cx *InputMapImpl) ActionGetEvents(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&action))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefInputEventGDExtensionReturnOwner(&ret)
+	return NewRefInputEventGDExtensionReturnOwner(resolveGoStructObjectReturn[InputEvent](&ret))
 }
 
 /* EventIsAction implements InputMap.event_is_action:
@@ -262065,7 +262065,7 @@ func (cx *ItemListImpl) GetItemIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetItemTextDirection implements ItemList.set_item_text_direction:
@@ -266088,7 +266088,7 @@ func (cx *IterateIK3DImpl) GetJointLimitation(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&joint))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJointLimitation3DGDExtensionReturnOwner(&ret)
+	return NewRefJointLimitation3DGDExtensionReturnOwner(resolveGoStructObjectReturn[JointLimitation3D](&ret))
 }
 
 /* SetJointLimitationRightAxis implements IterateIK3D.set_joint_limitation_right_axis:
@@ -267428,7 +267428,7 @@ func (cx *JavaClassImpl) GetJavaParentClass() RefJavaClass {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaClassGDExtensionReturnOwner(&ret)
+	return NewRefJavaClassGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaClass](&ret))
 }
 
 /* HasJavaMethod implements JavaClass.has_java_method:
@@ -267543,7 +267543,7 @@ func (cx *JavaClassWrapperImpl) Wrap(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaClassGDExtensionReturnOwner(&ret)
+	return NewRefJavaClassGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaClass](&ret))
 }
 
 /* GetException implements JavaClassWrapper.get_exception:
@@ -267583,7 +267583,7 @@ func (cx *JavaClassWrapperImpl) GetException() RefJavaObject {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaObjectGDExtensionReturnOwner(&ret)
+	return NewRefJavaObjectGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaObject](&ret))
 }
 
 /* CreateSamCallback implements JavaClassWrapper.create_sam_callback:
@@ -267630,7 +267630,7 @@ func (cx *JavaClassWrapperImpl) CreateSamCallback(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callable))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaObjectGDExtensionReturnOwner(&ret)
+	return NewRefJavaObjectGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaObject](&ret))
 }
 
 /* CreateProxy implements JavaClassWrapper.create_proxy:
@@ -267680,7 +267680,7 @@ func (cx *JavaClassWrapperImpl) CreateProxy(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaces))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaObjectGDExtensionReturnOwner(&ret)
+	return NewRefJavaObjectGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaObject](&ret))
 }
 
 type JavaObjectImpl struct {
@@ -267747,7 +267747,7 @@ func (cx *JavaObjectImpl) GetJavaClass() RefJavaClass {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaClassGDExtensionReturnOwner(&ret)
+	return NewRefJavaClassGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaClass](&ret))
 }
 
 /* HasJavaMethod implements JavaObject.has_java_method:
@@ -267909,7 +267909,7 @@ func (cx *JavaScriptBridgeImpl) GetInterface(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interfaceName))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaScriptObjectGDExtensionReturnOwner(&ret)
+	return NewRefJavaScriptObjectGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaScriptObject](&ret))
 }
 
 /* CreateCallback implements JavaScriptBridge.create_callback:
@@ -267953,7 +267953,7 @@ func (cx *JavaScriptBridgeImpl) CreateCallback(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callable))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaScriptObjectGDExtensionReturnOwner(&ret)
+	return NewRefJavaScriptObjectGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaScriptObject](&ret))
 }
 
 /* IsJsBuffer implements JavaScriptBridge.is_js_buffer:
@@ -270727,7 +270727,7 @@ func (cx *LabelImpl) GetLabelSettings() RefLabelSettings {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefLabelSettingsGDExtensionReturnOwner(&ret)
+	return NewRefLabelSettingsGDExtensionReturnOwner(resolveGoStructObjectReturn[LabelSettings](&ret))
 }
 
 /* SetTextDirection implements Label.set_text_direction:
@@ -273476,7 +273476,7 @@ func (cx *Label3DImpl) GetFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* SetFontSize implements Label3D.set_font_size:
@@ -274900,7 +274900,7 @@ func (cx *Label3DImpl) GenerateTriangleMesh() RefTriangleMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTriangleMeshGDExtensionReturnOwner(&ret)
+	return NewRefTriangleMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[TriangleMesh](&ret))
 }
 
 type LabelSettingsImpl struct {
@@ -275173,7 +275173,7 @@ func (cx *LabelSettingsImpl) GetFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* SetFontSize implements LabelSettings.set_font_size:
@@ -279088,7 +279088,7 @@ func (cx *Light3DImpl) GetProjector() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTemperature implements Light3D.set_temperature:
@@ -279320,7 +279320,7 @@ func (cx *LightOccluder2DImpl) GetOccluderPolygon() RefOccluderPolygon2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOccluderPolygon2DGDExtensionReturnOwner(&ret)
+	return NewRefOccluderPolygon2DGDExtensionReturnOwner(resolveGoStructObjectReturn[OccluderPolygon2D](&ret))
 }
 
 /* SetOccluderLightMask implements LightOccluder2D.set_occluder_light_mask:
@@ -279593,7 +279593,7 @@ func (cx *LightmapGIImpl) GetLightData() RefLightmapGIData {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefLightmapGIDataGDExtensionReturnOwner(&ret)
+	return NewRefLightmapGIDataGDExtensionReturnOwner(resolveGoStructObjectReturn[LightmapGIData](&ret))
 }
 
 /* SetBakeQuality implements LightmapGI.set_bake_quality:
@@ -280163,7 +280163,7 @@ func (cx *LightmapGIImpl) GetEnvironmentCustomSky() RefSky {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkyGDExtensionReturnOwner(&ret)
+	return NewRefSkyGDExtensionReturnOwner(resolveGoStructObjectReturn[Sky](&ret))
 }
 
 /* SetEnvironmentCustomColor implements LightmapGI.set_environment_custom_color:
@@ -281300,7 +281300,7 @@ func (cx *LightmapGIImpl) GetCameraAttributes() RefCameraAttributes {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCameraAttributesGDExtensionReturnOwner(&ret)
+	return NewRefCameraAttributesGDExtensionReturnOwner(resolveGoStructObjectReturn[CameraAttributes](&ret))
 }
 
 type LightmapGIDataImpl struct {
@@ -281411,7 +281411,7 @@ func (cx *LightmapGIDataImpl) GetLightmapTextures() RefTextureLayered {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureLayeredGDExtensionReturnOwner(&ret)
+	return NewRefTextureLayeredGDExtensionReturnOwner(resolveGoStructObjectReturn[TextureLayered](&ret))
 }
 
 /* SetShadowmaskTextures implements LightmapGIData.set_shadowmask_textures:
@@ -281495,7 +281495,7 @@ func (cx *LightmapGIDataImpl) GetShadowmaskTextures() RefTextureLayered {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureLayeredGDExtensionReturnOwner(&ret)
+	return NewRefTextureLayeredGDExtensionReturnOwner(resolveGoStructObjectReturn[TextureLayered](&ret))
 }
 
 /* SetUsesSphericalHarmonics implements LightmapGIData.set_uses_spherical_harmonics:
@@ -281831,7 +281831,7 @@ func (cx *LightmapGIDataImpl) GetLightTexture() RefTextureLayered {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureLayeredGDExtensionReturnOwner(&ret)
+	return NewRefTextureLayeredGDExtensionReturnOwner(resolveGoStructObjectReturn[TextureLayered](&ret))
 }
 
 type LightmapProbeImpl struct {
@@ -283185,7 +283185,7 @@ func (cx *Line2DImpl) GetCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetDefaultColor implements Line2D.set_default_color:
@@ -283350,7 +283350,7 @@ func (cx *Line2DImpl) GetGradient() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetTexture implements Line2D.set_texture:
@@ -283434,7 +283434,7 @@ func (cx *Line2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTextureMode implements Line2D.set_texture_mode:
@@ -287621,7 +287621,7 @@ func (cx *LineEditImpl) GetRightIcon() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetIconExpandMode implements LineEdit.set_icon_expand_mode:
@@ -291974,7 +291974,7 @@ func (cx *MaterialImpl) GetNextPass() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetRenderPriority implements Material.set_render_priority:
@@ -292132,7 +292132,7 @@ func (cx *MaterialImpl) CreatePlaceholder() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 type MenuBarImpl struct {
@@ -293876,7 +293876,7 @@ func (cx *MeshImpl) SurfaceGetMaterial(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surf_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* CreatePlaceholder implements Mesh.create_placeholder:
@@ -293916,7 +293916,7 @@ func (cx *MeshImpl) CreatePlaceholder() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* CreateTrimeshShape implements Mesh.create_trimesh_shape:
@@ -293956,7 +293956,7 @@ func (cx *MeshImpl) CreateTrimeshShape() RefConcavePolygonShape3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefConcavePolygonShape3DGDExtensionReturnOwner(&ret)
+	return NewRefConcavePolygonShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[ConcavePolygonShape3D](&ret))
 }
 
 /* CreateConvexShape implements Mesh.create_convex_shape:
@@ -294003,7 +294003,7 @@ func (cx *MeshImpl) CreateConvexShape(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&simplify))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefConvexPolygonShape3DGDExtensionReturnOwner(&ret)
+	return NewRefConvexPolygonShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[ConvexPolygonShape3D](&ret))
 }
 
 /* CreateOutline implements Mesh.create_outline:
@@ -294047,7 +294047,7 @@ func (cx *MeshImpl) CreateOutline(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&margin))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* GenerateTriangleMesh implements Mesh.generate_triangle_mesh:
@@ -294087,7 +294087,7 @@ func (cx *MeshImpl) GenerateTriangleMesh() RefTriangleMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTriangleMeshGDExtensionReturnOwner(&ret)
+	return NewRefTriangleMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[TriangleMesh](&ret))
 }
 
 type MeshConvexDecompositionSettingsImpl struct {
@@ -296860,7 +296860,7 @@ func (cx *MeshDataToolImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 type MeshInstance2DImpl struct {
@@ -296971,7 +296971,7 @@ func (cx *MeshInstance2DImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetTexture implements MeshInstance2D.set_texture:
@@ -297055,7 +297055,7 @@ func (cx *MeshInstance2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 type MeshInstance3DImpl struct {
@@ -297166,7 +297166,7 @@ func (cx *MeshInstance3DImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetSkeletonPath implements MeshInstance3D.set_skeleton_path:
@@ -297331,7 +297331,7 @@ func (cx *MeshInstance3DImpl) GetSkin() RefSkin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinGDExtensionReturnOwner(&ret)
+	return NewRefSkinGDExtensionReturnOwner(resolveGoStructObjectReturn[Skin](&ret))
 }
 
 /* GetSkinReference implements MeshInstance3D.get_skin_reference:
@@ -297371,7 +297371,7 @@ func (cx *MeshInstance3DImpl) GetSkinReference() RefSkinReference {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinReferenceGDExtensionReturnOwner(&ret)
+	return NewRefSkinReferenceGDExtensionReturnOwner(resolveGoStructObjectReturn[SkinReference](&ret))
 }
 
 /* GetSurfaceOverrideMaterialCount implements MeshInstance3D.get_surface_override_material_count:
@@ -297502,7 +297502,7 @@ func (cx *MeshInstance3DImpl) GetSurfaceOverrideMaterial(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* GetActiveMaterial implements MeshInstance3D.get_active_material:
@@ -297546,7 +297546,7 @@ func (cx *MeshInstance3DImpl) GetActiveMaterial(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&surface))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* CreateTrimeshCollision implements MeshInstance3D.create_trimesh_collision:
@@ -297927,7 +297927,7 @@ func (cx *MeshInstance3DImpl) BakeMeshFromCurrentBlendShapeMix(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefArrayMeshGDExtensionReturnOwner(&ret)
+	return NewRefArrayMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ArrayMesh](&ret))
 }
 
 /* BakeMeshFromCurrentSkeletonPose implements MeshInstance3D.bake_mesh_from_current_skeleton_pose:
@@ -297974,7 +297974,7 @@ func (cx *MeshInstance3DImpl) BakeMeshFromCurrentSkeletonPose(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefArrayMeshGDExtensionReturnOwner(&ret)
+	return NewRefArrayMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ArrayMesh](&ret))
 }
 
 type MeshLibraryImpl struct {
@@ -298535,7 +298535,7 @@ func (cx *MeshLibraryImpl) GetItemMesh(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* GetItemMeshTransform implements MeshLibrary.get_item_mesh_transform:
@@ -298667,7 +298667,7 @@ func (cx *MeshLibraryImpl) GetItemNavigationMesh(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNavigationMeshGDExtensionReturnOwner(&ret)
+	return NewRefNavigationMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[NavigationMesh](&ret))
 }
 
 /* GetItemNavigationMeshTransform implements MeshLibrary.get_item_navigation_mesh_transform:
@@ -298843,7 +298843,7 @@ func (cx *MeshLibraryImpl) GetItemPreview(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* RemoveItem implements MeshLibrary.remove_item:
@@ -299196,7 +299196,7 @@ func (cx *MeshTextureImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetImageSize implements MeshTexture.set_image_size:
@@ -299361,7 +299361,7 @@ func (cx *MeshTextureImpl) GetBaseTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 type MethodTweenerImpl struct {
@@ -299432,7 +299432,7 @@ func (cx *MethodTweenerImpl) SetDelay(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&delay))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMethodTweenerGDExtensionReturnOwner(&ret)
+	return NewRefMethodTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[MethodTweener](&ret))
 }
 
 /* SetTrans implements MethodTweener.set_trans:
@@ -299476,7 +299476,7 @@ func (cx *MethodTweenerImpl) SetTrans(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&trans))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMethodTweenerGDExtensionReturnOwner(&ret)
+	return NewRefMethodTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[MethodTweener](&ret))
 }
 
 /* SetEase implements MethodTweener.set_ease:
@@ -299520,7 +299520,7 @@ func (cx *MethodTweenerImpl) SetEase(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ease))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMethodTweenerGDExtensionReturnOwner(&ret)
+	return NewRefMethodTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[MethodTweener](&ret))
 }
 
 type MissingNodeImpl struct {
@@ -301268,7 +301268,7 @@ func (cx *MultiMeshImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetUseColors implements MultiMesh.set_use_colors:
@@ -302541,7 +302541,7 @@ func (cx *MultiMeshInstance2DImpl) GetMultimesh() RefMultiMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMultiMeshGDExtensionReturnOwner(&ret)
+	return NewRefMultiMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[MultiMesh](&ret))
 }
 
 /* SetTexture implements MultiMeshInstance2D.set_texture:
@@ -302625,7 +302625,7 @@ func (cx *MultiMeshInstance2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 type MultiMeshInstance3DImpl struct {
@@ -302736,7 +302736,7 @@ func (cx *MultiMeshInstance3DImpl) GetMultimesh() RefMultiMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMultiMeshGDExtensionReturnOwner(&ret)
+	return NewRefMultiMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[MultiMesh](&ret))
 }
 
 type MultiplayerAPIImpl struct {
@@ -302843,7 +302843,7 @@ func (cx *MultiplayerAPIImpl) GetMultiplayerPeer() RefMultiplayerPeer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMultiplayerPeerGDExtensionReturnOwner(&ret)
+	return NewRefMultiplayerPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[MultiplayerPeer](&ret))
 }
 
 /* SetMultiplayerPeer implements MultiplayerAPI.set_multiplayer_peer:
@@ -303364,7 +303364,7 @@ func (cx *MultiplayerAPIImpl) CreateDefaultInterface() RefMultiplayerAPI {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMultiplayerAPIGDExtensionReturnOwner(&ret)
+	return NewRefMultiplayerAPIGDExtensionReturnOwner(resolveGoStructObjectReturn[MultiplayerAPI](&ret))
 }
 
 type MultiplayerAPIExtensionImpl struct {
@@ -304957,7 +304957,7 @@ func (cx *MultiplayerSynchronizerImpl) GetReplicationConfig() RefSceneReplicatio
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSceneReplicationConfigGDExtensionReturnOwner(&ret)
+	return NewRefSceneReplicationConfigGDExtensionReturnOwner(resolveGoStructObjectReturn[SceneReplicationConfig](&ret))
 }
 
 /* SetVisibilityUpdateMode implements MultiplayerSynchronizer.set_visibility_update_mode:
@@ -307734,7 +307734,7 @@ func (cx *NativeMenuImpl) GetItemIcon(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetItemIndentationLevel implements NativeMenu.get_item_indentation_level:
@@ -311025,7 +311025,7 @@ func (cx *NavigationAgent2DImpl) GetCurrentNavigationResult() RefNavigationPathQ
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNavigationPathQueryResult2DGDExtensionReturnOwner(&ret)
+	return NewRefNavigationPathQueryResult2DGDExtensionReturnOwner(resolveGoStructObjectReturn[NavigationPathQueryResult2D](&ret))
 }
 
 /* GetCurrentNavigationPath implements NavigationAgent2D.get_current_navigation_path:
@@ -314632,7 +314632,7 @@ func (cx *NavigationAgent3DImpl) GetCurrentNavigationResult() RefNavigationPathQ
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNavigationPathQueryResult3DGDExtensionReturnOwner(&ret)
+	return NewRefNavigationPathQueryResult3DGDExtensionReturnOwner(resolveGoStructObjectReturn[NavigationPathQueryResult3D](&ret))
 }
 
 /* GetCurrentNavigationPath implements NavigationAgent3D.get_current_navigation_path:
@@ -327034,7 +327034,7 @@ func (cx *NavigationPolygonImpl) GetNavigationMesh() RefNavigationMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNavigationMeshGDExtensionReturnOwner(&ret)
+	return NewRefNavigationMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[NavigationMesh](&ret))
 }
 
 /* AddOutline implements NavigationPolygon.add_outline:
@@ -328448,7 +328448,7 @@ func (cx *NavigationRegion2DImpl) GetNavigationPolygon() RefNavigationPolygon {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNavigationPolygonGDExtensionReturnOwner(&ret)
+	return NewRefNavigationPolygonGDExtensionReturnOwner(resolveGoStructObjectReturn[NavigationPolygon](&ret))
 }
 
 /* SetEnabled implements NavigationRegion2D.set_enabled:
@@ -329334,7 +329334,7 @@ func (cx *NavigationRegion3DImpl) GetNavigationMesh() RefNavigationMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNavigationMeshGDExtensionReturnOwner(&ret)
+	return NewRefNavigationMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[NavigationMesh](&ret))
 }
 
 /* SetEnabled implements NavigationRegion3D.set_enabled:
@@ -343396,7 +343396,7 @@ func (cx *NinePatchRectImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetPatchMargin implements NinePatchRect.set_patch_margin:
@@ -347582,7 +347582,7 @@ func (cx *NodeImpl) CreateTween() RefTween {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* Duplicate implements Node.duplicate:
@@ -348166,7 +348166,7 @@ func (cx *NodeImpl) GetMultiplayer() RefMultiplayerAPI {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMultiplayerAPIGDExtensionReturnOwner(&ret)
+	return NewRefMultiplayerAPIGDExtensionReturnOwner(resolveGoStructObjectReturn[MultiplayerAPI](&ret))
 }
 
 /* RpcConfig implements Node.rpc_config:
@@ -351821,7 +351821,7 @@ func (cx *Node3DImpl) GetWorld3D() RefWorld3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWorld3DGDExtensionReturnOwner(&ret)
+	return NewRefWorld3DGDExtensionReturnOwner(resolveGoStructObjectReturn[World3D](&ret))
 }
 
 /* ForceUpdateTransform implements Node3D.force_update_transform:
@@ -352060,7 +352060,7 @@ func (cx *Node3DImpl) GetGizmos() RefNode3DGizmo {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNode3DGizmoGDExtensionReturnOwner(&ret)
+	return NewRefNode3DGizmoGDExtensionReturnOwner(resolveGoStructObjectReturn[Node3DGizmo](&ret))
 }
 
 /* ClearGizmos implements Node3D.clear_gizmos:
@@ -353590,7 +353590,7 @@ func (cx *NoiseImpl) GetImage(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&normalize))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* GetSeamlessImage implements Noise.get_seamless_image:
@@ -353649,7 +353649,7 @@ func (cx *NoiseImpl) GetSeamlessImage(
 	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&normalize))
 	pinner.Pin(argPtrSlice[5])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* GetImage3D implements Noise.get_image_3d:
@@ -353705,7 +353705,7 @@ func (cx *NoiseImpl) GetImage3D(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&normalize))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* GetSeamlessImage3D implements Noise.get_seamless_image_3d:
@@ -353764,7 +353764,7 @@ func (cx *NoiseImpl) GetSeamlessImage3D(
 	argPtrSlice[5] = (GDExtensionConstTypePtr)(unsafe.Pointer(&normalize))
 	pinner.Pin(argPtrSlice[5])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 type NoiseTexture2DImpl struct {
@@ -354038,7 +354038,7 @@ func (cx *NoiseTexture2DImpl) GetNoise() RefNoise {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNoiseGDExtensionReturnOwner(&ret)
+	return NewRefNoiseGDExtensionReturnOwner(resolveGoStructObjectReturn[Noise](&ret))
 }
 
 /* SetColorRamp implements NoiseTexture2D.set_color_ramp:
@@ -354122,7 +354122,7 @@ func (cx *NoiseTexture2DImpl) GetColorRamp() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetSeamless implements NoiseTexture2D.set_seamless:
@@ -354923,7 +354923,7 @@ func (cx *NoiseTexture3DImpl) GetNoise() RefNoise {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNoiseGDExtensionReturnOwner(&ret)
+	return NewRefNoiseGDExtensionReturnOwner(resolveGoStructObjectReturn[Noise](&ret))
 }
 
 /* SetColorRamp implements NoiseTexture3D.set_color_ramp:
@@ -355007,7 +355007,7 @@ func (cx *NoiseTexture3DImpl) GetColorRamp() RefGradient {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefGradientGDExtensionReturnOwner(&ret)
+	return NewRefGradientGDExtensionReturnOwner(resolveGoStructObjectReturn[Gradient](&ret))
 }
 
 /* SetSeamless implements NoiseTexture3D.set_seamless:
@@ -361503,7 +361503,7 @@ func (cx *OccluderInstance3DImpl) GetOccluder() RefOccluder3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOccluder3DGDExtensionReturnOwner(&ret)
+	return NewRefOccluder3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Occluder3D](&ret))
 }
 
 type OccluderPolygon2DImpl struct {
@@ -364893,7 +364893,7 @@ func (cx *OpenXRActionMapImpl) FindActionSet(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRActionSetGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRActionSetGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRActionSet](&ret))
 }
 
 /* GetActionSet implements OpenXRActionMap.get_action_set:
@@ -364937,7 +364937,7 @@ func (cx *OpenXRActionMapImpl) GetActionSet(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRActionSetGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRActionSetGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRActionSet](&ret))
 }
 
 /* AddActionSet implements OpenXRActionMap.add_action_set:
@@ -365190,7 +365190,7 @@ func (cx *OpenXRActionMapImpl) FindInteractionProfile(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRInteractionProfileGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRInteractionProfileGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRInteractionProfile](&ret))
 }
 
 /* GetInteractionProfile implements OpenXRActionMap.get_interaction_profile:
@@ -365234,7 +365234,7 @@ func (cx *OpenXRActionMapImpl) GetInteractionProfile(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRInteractionProfileGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRInteractionProfileGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRInteractionProfile](&ret))
 }
 
 /* AddInteractionProfile implements OpenXRActionMap.add_interaction_profile:
@@ -366030,7 +366030,7 @@ func (cx *OpenXRAnalogThresholdModifierImpl) GetOnHaptic() RefOpenXRHapticBase {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRHapticBase](&ret))
 }
 
 /* SetOffHaptic implements OpenXRAnalogThresholdModifier.set_off_haptic:
@@ -366114,7 +366114,7 @@ func (cx *OpenXRAnalogThresholdModifierImpl) GetOffHaptic() RefOpenXRHapticBase 
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRHapticBase](&ret))
 }
 
 type OpenXRAnchorTrackerImpl struct {
@@ -366430,7 +366430,7 @@ func (cx *OpenXRBindingModifierEditorImpl) GetBindingModifier() RefOpenXRBinding
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRBindingModifierGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRBindingModifierGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRBindingModifier](&ret))
 }
 
 /* Setup implements OpenXRBindingModifierEditor.setup:
@@ -367036,7 +367036,7 @@ func (cx *OpenXRCompositionLayerImpl) GetAndroidSurface() RefJavaObject {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefJavaObjectGDExtensionReturnOwner(&ret)
+	return NewRefJavaObjectGDExtensionReturnOwner(resolveGoStructObjectReturn[JavaObject](&ret))
 }
 
 /* IsNativelySupported implements OpenXRCompositionLayer.is_natively_supported:
@@ -369178,7 +369178,7 @@ func (cx *OpenXRDpadBindingModifierImpl) GetActionSet() RefOpenXRActionSet {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRActionSetGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRActionSetGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRActionSet](&ret))
 }
 
 /* SetInputPath implements OpenXRDpadBindingModifier.set_input_path:
@@ -369748,7 +369748,7 @@ func (cx *OpenXRDpadBindingModifierImpl) GetOnHaptic() RefOpenXRHapticBase {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRHapticBase](&ret))
 }
 
 /* SetOffHaptic implements OpenXRDpadBindingModifier.set_off_haptic:
@@ -369832,7 +369832,7 @@ func (cx *OpenXRDpadBindingModifierImpl) GetOffHaptic() RefOpenXRHapticBase {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRHapticBaseGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRHapticBase](&ret))
 }
 
 type OpenXRExtensionWrapperImpl struct {
@@ -369899,7 +369899,7 @@ func (cx *OpenXRExtensionWrapperImpl) GetOpenxrApi() RefOpenXRAPIExtension {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRAPIExtensionGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRAPIExtensionGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRAPIExtension](&ret))
 }
 
 /* RegisterExtensionWrapper implements OpenXRExtensionWrapper.register_extension_wrapper:
@@ -370334,7 +370334,7 @@ func (cx *OpenXRFutureExtensionImpl) RegisterFuture(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&on_success))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* CancelFuture implements OpenXRFutureExtension.cancel_future:
@@ -371431,7 +371431,7 @@ func (cx *OpenXRIPBindingImpl) GetAction() RefOpenXRAction {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRActionGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRActionGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRAction](&ret))
 }
 
 /* SetBindingPath implements OpenXRIPBinding.set_binding_path:
@@ -371596,7 +371596,7 @@ func (cx *OpenXRIPBindingImpl) GetBindingModifier(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRActionBindingModifierGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRActionBindingModifierGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRActionBindingModifier](&ret))
 }
 
 /* SetBindingModifiers implements OpenXRIPBinding.set_binding_modifiers:
@@ -372134,7 +372134,7 @@ func (cx *OpenXRInteractionProfileImpl) GetBinding(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRIPBindingGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRIPBindingGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRIPBinding](&ret))
 }
 
 /* SetBindings implements OpenXRInteractionProfile.set_bindings:
@@ -372299,7 +372299,7 @@ func (cx *OpenXRInteractionProfileImpl) GetBindingModifier(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRIPBindingModifierGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRIPBindingModifierGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRIPBindingModifier](&ret))
 }
 
 /* SetBindingModifiers implements OpenXRInteractionProfile.set_binding_modifiers:
@@ -375063,7 +375063,7 @@ func (cx *OpenXRPlaneTrackerImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* GetShape implements OpenXRPlaneTracker.get_shape:
@@ -375107,7 +375107,7 @@ func (cx *OpenXRPlaneTrackerImpl) GetShape(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&thickness))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape3DGDExtensionReturnOwner(&ret)
+	return NewRefShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape3D](&ret))
 }
 
 type OpenXRRenderModelImpl struct {
@@ -376236,7 +376236,7 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) CreateDefaultPersistenceContext(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* CreatePersistenceContext implements OpenXRSpatialAnchorCapability.create_persistence_context:
@@ -376283,7 +376283,7 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) CreatePersistenceContext(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* GetPersistenceContextHandle implements OpenXRSpatialAnchorCapability.get_persistence_context_handle:
@@ -376421,7 +376421,7 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) CreateNewAnchor(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_2))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRAnchorTrackerGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRAnchorTrackerGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRAnchorTracker](&ret))
 }
 
 /* RemoveAnchor implements OpenXRSpatialAnchorCapability.remove_anchor:
@@ -376518,7 +376518,7 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) PersistAnchor(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* UnpersistAnchor implements OpenXRSpatialAnchorCapability.unpersist_anchor:
@@ -376571,7 +376571,7 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) UnpersistAnchor(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* StartEntityDiscovery implements OpenXRSpatialAnchorCapability.start_entity_discovery:
@@ -376636,7 +376636,7 @@ func (cx *OpenXRSpatialAnchorCapabilityImpl) StartEntityDiscovery(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* DoEntityUpdate implements OpenXRSpatialAnchorCapability.do_entity_update:
@@ -378337,7 +378337,7 @@ func (cx *OpenXRSpatialComponentMesh3DListImpl) GetMesh(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 type OpenXRSpatialComponentParentListImpl struct {
@@ -379106,7 +379106,7 @@ func (cx *OpenXRSpatialEntityExtensionImpl) CreateSpatialContext(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* GetSpatialContextReady implements OpenXRSpatialEntityExtension.get_spatial_context_ready:
@@ -379294,7 +379294,7 @@ func (cx *OpenXRSpatialEntityExtensionImpl) DiscoverSpatialEntitiesWithComponent
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* DiscoverSpatialEntities implements OpenXRSpatialEntityExtension.discover_spatial_entities:
@@ -379350,7 +379350,7 @@ func (cx *OpenXRSpatialEntityExtensionImpl) DiscoverSpatialEntities(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* UpdateSpatialEntities implements OpenXRSpatialEntityExtension.update_spatial_entities:
@@ -380500,7 +380500,7 @@ func (cx *OpenXRSpatialEntityTrackerImpl) GetNext() RefOpenXRStructureBase {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRStructureBaseGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRStructureBaseGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRStructureBase](&ret))
 }
 
 /* AddNext implements OpenXRSpatialEntityTracker.add_next:
@@ -380840,7 +380840,7 @@ func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) StartEntityDiscovery(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 /* DoEntityUpdate implements OpenXRSpatialMarkerTrackingCapability.do_entity_update:
@@ -381031,7 +381031,7 @@ func (cx *OpenXRSpatialPlaneTrackingCapabilityImpl) StartEntityDiscovery(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&user_callback))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRFutureResultGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRFutureResultGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRFutureResult](&ret))
 }
 
 type OpenXRSpatialQueryResultDataImpl struct {
@@ -381337,7 +381337,7 @@ func (cx *OpenXRStructureBaseImpl) GetNext() RefOpenXRStructureBase {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOpenXRStructureBaseGDExtensionReturnOwner(&ret)
+	return NewRefOpenXRStructureBaseGDExtensionReturnOwner(resolveGoStructObjectReturn[OpenXRStructureBase](&ret))
 }
 
 type OpenXRVisibilityMaskImpl struct {
@@ -382233,7 +382233,7 @@ func (cx *OptionButtonImpl) GetItemIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetItemId implements OptionButton.get_item_id:
@@ -383950,7 +383950,7 @@ func (cx *PackedSceneImpl) GetState() RefSceneState {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSceneStateGDExtensionReturnOwner(&ret)
+	return NewRefSceneStateGDExtensionReturnOwner(resolveGoStructObjectReturn[SceneState](&ret))
 }
 
 type PacketPeerImpl struct {
@@ -384648,7 +384648,7 @@ func (cx *PacketPeerStreamImpl) GetStreamPeer() RefStreamPeer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStreamPeerGDExtensionReturnOwner(&ret)
+	return NewRefStreamPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[StreamPeer](&ret))
 }
 
 /* SetInputBufferMaxSize implements PacketPeerStream.set_input_buffer_max_size:
@@ -385540,7 +385540,7 @@ func (cx *PanoramaSkyMaterialImpl) GetPanorama() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetFilteringEnabled implements PanoramaSkyMaterial.set_filtering_enabled:
@@ -388028,7 +388028,7 @@ func (cx *ParticleProcessMaterialImpl) GetParamTexture(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&param))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetColor implements ParticleProcessMaterial.set_color:
@@ -388679,7 +388679,7 @@ func (cx *ParticleProcessMaterialImpl) GetColorRamp() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetAlphaCurve implements ParticleProcessMaterial.set_alpha_curve:
@@ -388763,7 +388763,7 @@ func (cx *ParticleProcessMaterialImpl) GetAlphaCurve() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetEmissionCurve implements ParticleProcessMaterial.set_emission_curve:
@@ -388847,7 +388847,7 @@ func (cx *ParticleProcessMaterialImpl) GetEmissionCurve() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetColorInitialRamp implements ParticleProcessMaterial.set_color_initial_ramp:
@@ -388931,7 +388931,7 @@ func (cx *ParticleProcessMaterialImpl) GetColorInitialRamp() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetVelocityLimitCurve implements ParticleProcessMaterial.set_velocity_limit_curve:
@@ -389015,7 +389015,7 @@ func (cx *ParticleProcessMaterialImpl) GetVelocityLimitCurve() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetParticleFlag implements ParticleProcessMaterial.set_particle_flag:
@@ -389511,7 +389511,7 @@ func (cx *ParticleProcessMaterialImpl) GetEmissionPointTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetEmissionNormalTexture implements ParticleProcessMaterial.set_emission_normal_texture:
@@ -389595,7 +389595,7 @@ func (cx *ParticleProcessMaterialImpl) GetEmissionNormalTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetEmissionColorTexture implements ParticleProcessMaterial.set_emission_color_texture:
@@ -389679,7 +389679,7 @@ func (cx *ParticleProcessMaterialImpl) GetEmissionColorTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetEmissionPointCount implements ParticleProcessMaterial.set_emission_point_count:
@@ -392112,7 +392112,7 @@ func (cx *ParticleProcessMaterialImpl) GetRotationVelocity3DCurve() RefTexture2D
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 type Path2DImpl struct {
@@ -392223,7 +392223,7 @@ func (cx *Path2DImpl) GetCurve() RefCurve2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurve2DGDExtensionReturnOwner(&ret)
+	return NewRefCurve2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve2D](&ret))
 }
 
 type Path3DImpl struct {
@@ -392334,7 +392334,7 @@ func (cx *Path3DImpl) GetCurve() RefCurve3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurve3DGDExtensionReturnOwner(&ret)
+	return NewRefCurve3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve3D](&ret))
 }
 
 /* SetDebugCustomColor implements Path3D.set_debug_custom_color:
@@ -397370,7 +397370,7 @@ func (cx *PhysicalSkyMaterialImpl) GetNightSky() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 type PhysicsBody2DImpl struct {
@@ -397450,7 +397450,7 @@ func (cx *PhysicsBody2DImpl) MoveAndCollide(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&recovery_as_collision))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefKinematicCollision2DGDExtensionReturnOwner(&ret)
+	return NewRefKinematicCollision2DGDExtensionReturnOwner(resolveGoStructObjectReturn[KinematicCollision2D](&ret))
 }
 
 /* TestMove implements PhysicsBody2D.test_move:
@@ -397760,7 +397760,7 @@ func (cx *PhysicsBody3DImpl) MoveAndCollide(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&max_collisions))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefKinematicCollision3DGDExtensionReturnOwner(&ret)
+	return NewRefKinematicCollision3DGDExtensionReturnOwner(resolveGoStructObjectReturn[KinematicCollision3D](&ret))
 }
 
 /* TestMove implements PhysicsBody3D.test_move:
@@ -404402,7 +404402,7 @@ func (cx *PhysicsRayQueryParameters2DImpl) Create(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exclude))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsRayQueryParameters2DGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsRayQueryParameters2DGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsRayQueryParameters2D](&ret))
 }
 
 /* SetFrom implements PhysicsRayQueryParameters2D.set_from:
@@ -405049,7 +405049,7 @@ func (cx *PhysicsRayQueryParameters3DImpl) Create(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exclude))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsRayQueryParameters3DGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsRayQueryParameters3DGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsRayQueryParameters3D](&ret))
 }
 
 /* SetFrom implements PhysicsRayQueryParameters3D.set_from:
@@ -419639,7 +419639,7 @@ func (cx *PhysicsShapeQueryParameters2DImpl) GetShape() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* SetShapeRid implements PhysicsShapeQueryParameters2D.set_shape_rid:
@@ -420398,7 +420398,7 @@ func (cx *PhysicsShapeQueryParameters3DImpl) GetShape() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* SetShapeRid implements PhysicsShapeQueryParameters3D.set_shape_rid:
@@ -425121,7 +425121,7 @@ func (cx *PointLight2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTextureOffset implements PointLight2D.set_texture_offset:
@@ -425817,7 +425817,7 @@ func (cx *Polygon2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTextureOffset implements Polygon2D.set_texture_offset:
@@ -429733,7 +429733,7 @@ func (cx *PopupMenuImpl) GetItemIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetItemIconMaxWidth implements PopupMenu.get_item_icon_max_width:
@@ -430437,7 +430437,7 @@ func (cx *PopupMenuImpl) GetItemShortcut(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShortcutGDExtensionReturnOwner(&ret)
+	return NewRefShortcutGDExtensionReturnOwner(resolveGoStructObjectReturn[Shortcut](&ret))
 }
 
 /* GetItemIndent implements PopupMenu.get_item_indent:
@@ -432446,7 +432446,7 @@ func (cx *PrimitiveMeshImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* GetMeshArrays implements PrimitiveMesh.get_mesh_arrays:
@@ -433714,7 +433714,7 @@ func (cx *ProceduralSkyMaterialImpl) GetSkyCover() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetSkyCoverModulate implements ProceduralSkyMaterial.set_sky_cover_modulate:
@@ -435810,7 +435810,7 @@ func (cx *PropertyTweenerImpl) From(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&value))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 /* FromCurrent implements PropertyTweener.from_current:
@@ -435850,7 +435850,7 @@ func (cx *PropertyTweenerImpl) FromCurrent() RefPropertyTweener {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 /* AsRelative implements PropertyTweener.as_relative:
@@ -435890,7 +435890,7 @@ func (cx *PropertyTweenerImpl) AsRelative() RefPropertyTweener {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 /* SetTrans implements PropertyTweener.set_trans:
@@ -435934,7 +435934,7 @@ func (cx *PropertyTweenerImpl) SetTrans(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&trans))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 /* SetEase implements PropertyTweener.set_ease:
@@ -435978,7 +435978,7 @@ func (cx *PropertyTweenerImpl) SetEase(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ease))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 /* SetCustomInterpolator implements PropertyTweener.set_custom_interpolator:
@@ -436022,7 +436022,7 @@ func (cx *PropertyTweenerImpl) SetCustomInterpolator(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&interpolator_method))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 /* SetDelay implements PropertyTweener.set_delay:
@@ -436066,7 +436066,7 @@ func (cx *PropertyTweenerImpl) SetDelay(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&delay))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 type QuadMeshImpl struct {
@@ -438274,7 +438274,7 @@ func (cx *RDHitGroupImpl) GetClosestHitShader() RefRDPipelineShader {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDPipelineShaderGDExtensionReturnOwner(&ret)
+	return NewRefRDPipelineShaderGDExtensionReturnOwner(resolveGoStructObjectReturn[RDPipelineShader](&ret))
 }
 
 /* SetAnyHitShader implements RDHitGroup.set_any_hit_shader:
@@ -438358,7 +438358,7 @@ func (cx *RDHitGroupImpl) GetAnyHitShader() RefRDPipelineShader {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDPipelineShaderGDExtensionReturnOwner(&ret)
+	return NewRefRDPipelineShaderGDExtensionReturnOwner(resolveGoStructObjectReturn[RDPipelineShader](&ret))
 }
 
 /* SetIntersectionShader implements RDHitGroup.set_intersection_shader:
@@ -438442,7 +438442,7 @@ func (cx *RDHitGroupImpl) GetIntersectionShader() RefRDPipelineShader {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDPipelineShaderGDExtensionReturnOwner(&ret)
+	return NewRefRDPipelineShaderGDExtensionReturnOwner(resolveGoStructObjectReturn[RDPipelineShader](&ret))
 }
 
 type RDPipelineColorBlendStateImpl struct {
@@ -438796,7 +438796,7 @@ func (cx *RDPipelineColorBlendStateImpl) GetAttachments() RefRDPipelineColorBlen
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDPipelineColorBlendStateAttachmentGDExtensionReturnOwner(&ret)
+	return NewRefRDPipelineColorBlendStateAttachmentGDExtensionReturnOwner(resolveGoStructObjectReturn[RDPipelineColorBlendStateAttachment](&ret))
 }
 
 type RDPipelineColorBlendStateAttachmentImpl struct {
@@ -443102,7 +443102,7 @@ func (cx *RDPipelineShaderImpl) GetSpecializationConstants() RefRDPipelineSpecia
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDPipelineSpecializationConstantGDExtensionReturnOwner(&ret)
+	return NewRefRDPipelineSpecializationConstantGDExtensionReturnOwner(resolveGoStructObjectReturn[RDPipelineSpecializationConstant](&ret))
 }
 
 type RDPipelineSpecializationConstantImpl struct {
@@ -444651,7 +444651,7 @@ func (cx *RDShaderFileImpl) GetSpirv(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&version))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDShaderSPIRVGDExtensionReturnOwner(&ret)
+	return NewRefRDShaderSPIRVGDExtensionReturnOwner(resolveGoStructObjectReturn[RDShaderSPIRV](&ret))
 }
 
 /* GetVersionList implements RDShaderFile.get_version_list:
@@ -453369,7 +453369,7 @@ func (cx *RegExImpl) CreateFromString(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&show_error))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRegExGDExtensionReturnOwner(&ret)
+	return NewRefRegExGDExtensionReturnOwner(resolveGoStructObjectReturn[RegEx](&ret))
 }
 
 /* Clear implements RegEx.clear:
@@ -453503,7 +453503,7 @@ func (cx *RegExImpl) Search(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&end))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRegExMatchGDExtensionReturnOwner(&ret)
+	return NewRefRegExMatchGDExtensionReturnOwner(resolveGoStructObjectReturn[RegExMatch](&ret))
 }
 
 /* SearchAll implements RegEx.search_all:
@@ -453553,7 +453553,7 @@ func (cx *RegExImpl) SearchAll(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&end))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRegExMatchGDExtensionReturnOwner(&ret)
+	return NewRefRegExMatchGDExtensionReturnOwner(resolveGoStructObjectReturn[RegExMatch](&ret))
 }
 
 /* Sub implements RegEx.sub:
@@ -455093,7 +455093,7 @@ func (cx *RenderDataImpl) GetRenderSceneBuffers() RefRenderSceneBuffers {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRenderSceneBuffersGDExtensionReturnOwner(&ret)
+	return NewRefRenderSceneBuffersGDExtensionReturnOwner(resolveGoStructObjectReturn[RenderSceneBuffers](&ret))
 }
 
 /* GetRenderSceneData implements RenderData.get_render_scene_data:
@@ -456550,7 +456550,7 @@ func (cx *RenderSceneBuffersRDImpl) GetTextureFormat(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDTextureFormatGDExtensionReturnOwner(&ret)
+	return NewRefRDTextureFormatGDExtensionReturnOwner(resolveGoStructObjectReturn[RDTextureFormat](&ret))
 }
 
 /* GetTextureSlice implements RenderSceneBuffersRD.get_texture_slice:
@@ -458652,7 +458652,7 @@ func (cx *RenderingDeviceImpl) TextureGetFormat(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDTextureFormatGDExtensionReturnOwner(&ret)
+	return NewRefRDTextureFormatGDExtensionReturnOwner(resolveGoStructObjectReturn[RDTextureFormat](&ret))
 }
 
 /* TextureGetNativeHandle implements RenderingDevice.texture_get_native_handle:
@@ -459537,7 +459537,7 @@ func (cx *RenderingDeviceImpl) ShaderCompileSpirvFromSource(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&allow_cache))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefRDShaderSPIRVGDExtensionReturnOwner(&ret)
+	return NewRefRDShaderSPIRVGDExtensionReturnOwner(resolveGoStructObjectReturn[RDShaderSPIRV](&ret))
 }
 
 /* ShaderCompileBinaryFromSpirv implements RenderingDevice.shader_compile_binary_from_spirv:
@@ -464879,7 +464879,7 @@ func (cx *RenderingServerImpl) Texture2DGet(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* Texture2DLayerGet implements RenderingServer.texture_2d_layer_get:
@@ -464926,7 +464926,7 @@ func (cx *RenderingServerImpl) Texture2DLayerGet(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* Texture3DGet implements RenderingServer.texture_3d_get:
@@ -464970,7 +464970,7 @@ func (cx *RenderingServerImpl) Texture3DGet(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* TextureDrawableGenerateMipmaps implements RenderingServer.texture_drawable_generate_mipmaps:
@@ -478249,7 +478249,7 @@ func (cx *RenderingServerImpl) SkyBakePanorama(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&size))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* CompositorEffectCreate implements RenderingServer.compositor_effect_create:
@@ -480081,7 +480081,7 @@ func (cx *RenderingServerImpl) EnvironmentBakePanorama(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&size))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* ScreenSpaceRoughnessLimiterSetActive implements RenderingServer.screen_space_roughness_limiter_set_active:
@@ -482224,7 +482224,7 @@ func (cx *RenderingServerImpl) BakeRenderUv2(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&image_size))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* CanvasCreate implements RenderingServer.canvas_create:
@@ -489232,7 +489232,7 @@ func (cx *ResourceImpl) Duplicate(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&deep))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* DuplicateDeep implements Resource.duplicate_deep:
@@ -489276,7 +489276,7 @@ func (cx *ResourceImpl) DuplicateDeep(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&deep_subresources_mode))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* CopyFromResource implements Resource.copy_from_resource:
@@ -489637,7 +489637,7 @@ func (cx *ResourceImporterOggVorbisImpl) LoadFromBuffer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&stream_data))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamOggVorbis](&ret))
 }
 
 /* LoadFromFile implements ResourceImporterOggVorbis.load_from_file:
@@ -489681,7 +489681,7 @@ func (cx *ResourceImporterOggVorbisImpl) LoadFromFile(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(&ret)
+	return NewRefAudioStreamOggVorbisGDExtensionReturnOwner(resolveGoStructObjectReturn[AudioStreamOggVorbis](&ret))
 }
 
 type ResourceImporterSVGImpl struct {
@@ -489960,7 +489960,7 @@ func (cx *ResourceLoaderImpl) LoadThreadedGet(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* Load implements ResourceLoader.load:
@@ -490010,7 +490010,7 @@ func (cx *ResourceLoaderImpl) Load(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&cache_mode))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* GetRecognizedExtensionsForType implements ResourceLoader.get_recognized_extensions_for_type:
@@ -490318,7 +490318,7 @@ func (cx *ResourceLoaderImpl) GetCachedRef(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* Exists implements ResourceLoader.exists:
@@ -490700,7 +490700,7 @@ func (cx *ResourcePreloaderImpl) GetResource(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 /* GetResourceList implements ResourcePreloader.get_resource_list:
@@ -491711,7 +491711,7 @@ func (cx *RetargetModifier3DImpl) GetProfile() RefSkeletonProfile {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkeletonProfileGDExtensionReturnOwner(&ret)
+	return NewRefSkeletonProfileGDExtensionReturnOwner(resolveGoStructObjectReturn[SkeletonProfile](&ret))
 }
 
 /* SetUseGlobalPose implements RetargetModifier3D.set_use_global_pose:
@@ -492551,7 +492551,7 @@ func (cx *RibbonTrailMeshImpl) GetCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetShape implements RibbonTrailMesh.set_shape:
@@ -498877,7 +498877,7 @@ func (cx *RigidBody2DImpl) GetPhysicsMaterialOverride() RefPhysicsMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsMaterialGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsMaterial](&ret))
 }
 
 /* SetGravityScale implements RigidBody2D.set_gravity_scale:
@@ -501269,7 +501269,7 @@ func (cx *RigidBody3DImpl) GetPhysicsMaterialOverride() RefPhysicsMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsMaterialGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsMaterial](&ret))
 }
 
 /* SetLinearVelocity implements RigidBody3D.set_linear_velocity:
@@ -505334,7 +505334,7 @@ func (cx *SceneStateImpl) GetBaseSceneState() RefSceneState {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSceneStateGDExtensionReturnOwner(&ret)
+	return NewRefSceneStateGDExtensionReturnOwner(resolveGoStructObjectReturn[SceneState](&ret))
 }
 
 /* GetNodeCount implements SceneState.get_node_count:
@@ -505685,7 +505685,7 @@ func (cx *SceneStateImpl) GetNodeInstance(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPackedSceneGDExtensionReturnOwner(&ret)
+	return NewRefPackedSceneGDExtensionReturnOwner(resolveGoStructObjectReturn[PackedScene](&ret))
 }
 
 /* GetNodeGroups implements SceneState.get_node_groups:
@@ -507073,7 +507073,7 @@ func (cx *SceneTreeImpl) CreateTimer(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ignore_time_scale))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSceneTreeTimerGDExtensionReturnOwner(&ret)
+	return NewRefSceneTreeTimerGDExtensionReturnOwner(resolveGoStructObjectReturn[SceneTreeTimer](&ret))
 }
 
 /* CreateTween implements SceneTree.create_tween:
@@ -507113,7 +507113,7 @@ func (cx *SceneTreeImpl) CreateTween() RefTween {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* GetProcessedTweens implements SceneTree.get_processed_tweens:
@@ -507153,7 +507153,7 @@ func (cx *SceneTreeImpl) GetProcessedTweens() RefTween {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* GetNodeCount implements SceneTree.get_node_count:
@@ -508226,7 +508226,7 @@ func (cx *SceneTreeImpl) GetMultiplayer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&for_path))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMultiplayerAPIGDExtensionReturnOwner(&ret)
+	return NewRefMultiplayerAPIGDExtensionReturnOwner(resolveGoStructObjectReturn[MultiplayerAPI](&ret))
 }
 
 /* SetMultiplayerPollEnabled implements SceneTree.set_multiplayer_poll_enabled:
@@ -508687,7 +508687,7 @@ func (cx *ScriptImpl) GetBaseScript() RefScript {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefScriptGDExtensionReturnOwner(&ret)
+	return NewRefScriptGDExtensionReturnOwner(resolveGoStructObjectReturn[Script](&ret))
 }
 
 /* GetInstanceBaseType implements Script.get_instance_base_type:
@@ -510349,7 +510349,7 @@ func (cx *ScriptEditorImpl) GetCurrentScript() RefScript {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefScriptGDExtensionReturnOwner(&ret)
+	return NewRefScriptGDExtensionReturnOwner(resolveGoStructObjectReturn[Script](&ret))
 }
 
 /* GetOpenScripts implements ScriptEditor.get_open_scripts:
@@ -510389,7 +510389,7 @@ func (cx *ScriptEditorImpl) GetOpenScripts() RefScript {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefScriptGDExtensionReturnOwner(&ret)
+	return NewRefScriptGDExtensionReturnOwner(resolveGoStructObjectReturn[Script](&ret))
 }
 
 /* OpenScriptCreateDialog implements ScriptEditor.open_script_create_dialog:
@@ -513109,7 +513109,7 @@ func (cx *ShaderImpl) GetDefaultTextureParameter(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureGDExtensionReturnOwner(&ret)
+	return NewRefTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture](&ret))
 }
 
 /* GetShaderUniformList implements Shader.get_shader_uniform_list:
@@ -513582,7 +513582,7 @@ func (cx *ShaderMaterialImpl) GetShader() RefShader {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShaderGDExtensionReturnOwner(&ret)
+	return NewRefShaderGDExtensionReturnOwner(resolveGoStructObjectReturn[Shader](&ret))
 }
 
 /* SetShaderParameter implements ShaderMaterial.set_shader_parameter:
@@ -514315,7 +514315,7 @@ func (cx *Shape3DImpl) GetDebugMesh() RefArrayMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefArrayMeshGDExtensionReturnOwner(&ret)
+	return NewRefArrayMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ArrayMesh](&ret))
 }
 
 type ShapeCast2DImpl struct {
@@ -514507,7 +514507,7 @@ func (cx *ShapeCast2DImpl) GetShape() RefShape2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape2DGDExtensionReturnOwner(&ret)
+	return NewRefShape2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape2D](&ret))
 }
 
 /* SetTargetPosition implements ShapeCast2D.set_target_position:
@@ -516062,7 +516062,7 @@ func (cx *ShapeCast3DImpl) GetShape() RefShape3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape3DGDExtensionReturnOwner(&ret)
+	return NewRefShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape3D](&ret))
 }
 
 /* SetTargetPosition implements ShapeCast3D.set_target_position:
@@ -517932,7 +517932,7 @@ func (cx *Skeleton2DImpl) GetModificationStack() RefSkeletonModificationStack2D 
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkeletonModificationStack2DGDExtensionReturnOwner(&ret)
+	return NewRefSkeletonModificationStack2DGDExtensionReturnOwner(resolveGoStructObjectReturn[SkeletonModificationStack2D](&ret))
 }
 
 /* ExecuteModifications implements Skeleton2D.execute_modifications:
@@ -518963,7 +518963,7 @@ func (cx *Skeleton3DImpl) CreateSkinFromRestTransforms() RefSkin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinGDExtensionReturnOwner(&ret)
+	return NewRefSkinGDExtensionReturnOwner(resolveGoStructObjectReturn[Skin](&ret))
 }
 
 /* RegisterSkin implements Skeleton3D.register_skin:
@@ -519010,7 +519010,7 @@ func (cx *Skeleton3DImpl) RegisterSkin(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinReferenceGDExtensionReturnOwner(&ret)
+	return NewRefSkinReferenceGDExtensionReturnOwner(resolveGoStructObjectReturn[SkinReference](&ret))
 }
 
 /* LocalizeRests implements Skeleton3D.localize_rests:
@@ -521611,7 +521611,7 @@ func (cx *SkeletonModification2DImpl) GetModificationStack() RefSkeletonModifica
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkeletonModificationStack2DGDExtensionReturnOwner(&ret)
+	return NewRefSkeletonModificationStack2DGDExtensionReturnOwner(resolveGoStructObjectReturn[SkeletonModificationStack2D](&ret))
 }
 
 /* SetIsSetup implements SkeletonModification2D.set_is_setup:
@@ -525932,7 +525932,7 @@ func (cx *SkeletonModification2DStackHolderImpl) GetHeldModificationStack() RefS
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkeletonModificationStack2DGDExtensionReturnOwner(&ret)
+	return NewRefSkeletonModificationStack2DGDExtensionReturnOwner(resolveGoStructObjectReturn[SkeletonModificationStack2D](&ret))
 }
 
 type SkeletonModification2DTwoBoneIKImpl struct {
@@ -526800,7 +526800,7 @@ func (cx *SkeletonModificationStack2DImpl) GetModification(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mod_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkeletonModification2DGDExtensionReturnOwner(&ret)
+	return NewRefSkeletonModification2DGDExtensionReturnOwner(resolveGoStructObjectReturn[SkeletonModification2D](&ret))
 }
 
 /* AddModification implements SkeletonModificationStack2D.add_modification:
@@ -527886,7 +527886,7 @@ func (cx *SkeletonProfileImpl) GetTexture(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&group_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTexture implements SkeletonProfile.set_texture:
@@ -529384,7 +529384,7 @@ func (cx *SkinReferenceImpl) GetSkin() RefSkin {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSkinGDExtensionReturnOwner(&ret)
+	return NewRefSkinGDExtensionReturnOwner(resolveGoStructObjectReturn[Skin](&ret))
 }
 
 type SkyImpl struct {
@@ -529657,7 +529657,7 @@ func (cx *SkyImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 type SliderImpl struct {
@@ -530388,7 +530388,7 @@ func (cx *SocketServerImpl) TakeSocketConnection() RefStreamPeerSocket {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStreamPeerSocketGDExtensionReturnOwner(&ret)
+	return NewRefStreamPeerSocketGDExtensionReturnOwner(resolveGoStructObjectReturn[StreamPeerSocket](&ret))
 }
 
 type SoftBody3DImpl struct {
@@ -535188,7 +535188,7 @@ func (cx *SpringArm3DImpl) GetShape() RefShape3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape3DGDExtensionReturnOwner(&ret)
+	return NewRefShape3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape3D](&ret))
 }
 
 /* AddExcludedObject implements SpringArm3D.add_excluded_object:
@@ -537771,7 +537771,7 @@ func (cx *SpringBoneSimulator3DImpl) GetRadiusDampingCurve(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetStiffness implements SpringBoneSimulator3D.set_stiffness:
@@ -537950,7 +537950,7 @@ func (cx *SpringBoneSimulator3DImpl) GetStiffnessDampingCurve(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetDrag implements SpringBoneSimulator3D.set_drag:
@@ -538129,7 +538129,7 @@ func (cx *SpringBoneSimulator3DImpl) GetDragDampingCurve(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetGravity implements SpringBoneSimulator3D.set_gravity:
@@ -538308,7 +538308,7 @@ func (cx *SpringBoneSimulator3DImpl) GetGravityDampingCurve(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 /* SetGravityDirection implements SpringBoneSimulator3D.set_gravity_direction:
@@ -540242,7 +540242,7 @@ func (cx *Sprite2DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetCentered implements Sprite2D.set_centered:
@@ -541328,7 +541328,7 @@ func (cx *Sprite3DImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetRegionEnabled implements Sprite3D.set_region_enabled:
@@ -543224,7 +543224,7 @@ func (cx *SpriteBase3DImpl) GenerateTriangleMesh() RefTriangleMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTriangleMeshGDExtensionReturnOwner(&ret)
+	return NewRefTriangleMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[TriangleMesh](&ret))
 }
 
 type SpriteFramesImpl struct {
@@ -544010,7 +544010,7 @@ func (cx *SpriteFramesImpl) GetFrameTexture(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetFrameDuration implements SpriteFrames.get_frame_duration:
@@ -544426,7 +544426,7 @@ func (cx *StaticBody2DImpl) GetPhysicsMaterialOverride() RefPhysicsMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsMaterialGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsMaterial](&ret))
 }
 
 type StaticBody3DImpl struct {
@@ -544699,7 +544699,7 @@ func (cx *StaticBody3DImpl) GetPhysicsMaterialOverride() RefPhysicsMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsMaterialGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsMaterial](&ret))
 }
 
 type StatusIndicatorImpl struct {
@@ -544891,7 +544891,7 @@ func (cx *StatusIndicatorImpl) GetIcon() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetVisible implements StatusIndicator.set_visible:
@@ -546913,7 +546913,7 @@ func (cx *StreamPeerBufferImpl) Duplicate() RefStreamPeerBuffer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStreamPeerBufferGDExtensionReturnOwner(&ret)
+	return NewRefStreamPeerBufferGDExtensionReturnOwner(resolveGoStructObjectReturn[StreamPeerBuffer](&ret))
 }
 
 type StreamPeerExtensionImpl struct {
@@ -547817,7 +547817,7 @@ func (cx *StreamPeerTLSImpl) GetStream() RefStreamPeer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStreamPeerGDExtensionReturnOwner(&ret)
+	return NewRefStreamPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[StreamPeer](&ret))
 }
 
 /* DisconnectFromStream implements StreamPeerTLS.disconnect_from_stream:
@@ -550326,7 +550326,7 @@ func (cx *StyleBoxTextureImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTextureMargin implements StyleBoxTexture.set_texture_margin:
@@ -551843,7 +551843,7 @@ func (cx *SubtweenTweenerImpl) SetDelay(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&delay))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSubtweenTweenerGDExtensionReturnOwner(&ret)
+	return NewRefSubtweenTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[SubtweenTweener](&ret))
 }
 
 type SurfaceToolImpl struct {
@@ -553228,7 +553228,7 @@ func (cx *SurfaceToolImpl) Commit(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&flags))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefArrayMeshGDExtensionReturnOwner(&ret)
+	return NewRefArrayMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[ArrayMesh](&ret))
 }
 
 /* CommitToArrays implements SurfaceTool.commit_to_arrays:
@@ -554931,7 +554931,7 @@ func (cx *TCPServerImpl) TakeConnection() RefStreamPeerTCP {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStreamPeerTCPGDExtensionReturnOwner(&ret)
+	return NewRefStreamPeerTCPGDExtensionReturnOwner(resolveGoStructObjectReturn[StreamPeerTCP](&ret))
 }
 
 type TLSOptionsImpl struct {
@@ -555008,7 +555008,7 @@ func (cx *TLSOptionsImpl) Client(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&common_name_override))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTLSOptionsGDExtensionReturnOwner(&ret)
+	return NewRefTLSOptionsGDExtensionReturnOwner(resolveGoStructObjectReturn[TLSOptions](&ret))
 }
 
 /* ClientUnsafe implements TLSOptions.client_unsafe:
@@ -555055,7 +555055,7 @@ func (cx *TLSOptionsImpl) ClientUnsafe(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTLSOptionsGDExtensionReturnOwner(&ret)
+	return NewRefTLSOptionsGDExtensionReturnOwner(resolveGoStructObjectReturn[TLSOptions](&ret))
 }
 
 /* Server implements TLSOptions.server:
@@ -555108,7 +555108,7 @@ func (cx *TLSOptionsImpl) Server(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_1))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTLSOptionsGDExtensionReturnOwner(&ret)
+	return NewRefTLSOptionsGDExtensionReturnOwner(resolveGoStructObjectReturn[TLSOptions](&ret))
 }
 
 /* IsServer implements TLSOptions.is_server:
@@ -555268,7 +555268,7 @@ func (cx *TLSOptionsImpl) GetTrustedCaChain() RefX509Certificate {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefX509CertificateGDExtensionReturnOwner(&ret)
+	return NewRefX509CertificateGDExtensionReturnOwner(resolveGoStructObjectReturn[X509Certificate](&ret))
 }
 
 /* GetPrivateKey implements TLSOptions.get_private_key:
@@ -555308,7 +555308,7 @@ func (cx *TLSOptionsImpl) GetPrivateKey() RefCryptoKey {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCryptoKeyGDExtensionReturnOwner(&ret)
+	return NewRefCryptoKeyGDExtensionReturnOwner(resolveGoStructObjectReturn[CryptoKey](&ret))
 }
 
 /* GetOwnCertificate implements TLSOptions.get_own_certificate:
@@ -555348,7 +555348,7 @@ func (cx *TLSOptionsImpl) GetOwnCertificate() RefX509Certificate {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefX509CertificateGDExtensionReturnOwner(&ret)
+	return NewRefX509CertificateGDExtensionReturnOwner(resolveGoStructObjectReturn[X509Certificate](&ret))
 }
 
 type TabBarImpl struct {
@@ -556100,7 +556100,7 @@ func (cx *TabBarImpl) GetTabIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTabIconMaxWidth implements TabBar.set_tab_icon_max_width:
@@ -556279,7 +556279,7 @@ func (cx *TabBarImpl) GetTabButtonIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTabDisabled implements TabBar.set_tab_disabled:
@@ -558957,7 +558957,7 @@ func (cx *TabContainerImpl) GetTabIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTabIconMaxWidth implements TabContainer.set_tab_icon_max_width:
@@ -559400,7 +559400,7 @@ func (cx *TabContainerImpl) GetTabButtonIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tab_idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetTabIdxAtPoint implements TabContainer.get_tab_idx_at_point:
@@ -569513,7 +569513,7 @@ func (cx *TextEditImpl) GetLineGutterIcon(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&gutter))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetLineGutterItemColor implements TextEdit.set_line_gutter_item_color:
@@ -569873,7 +569873,7 @@ func (cx *TextEditImpl) GetSyntaxHighlighter() RefSyntaxHighlighter {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSyntaxHighlighterGDExtensionReturnOwner(&ret)
+	return NewRefSyntaxHighlighterGDExtensionReturnOwner(resolveGoStructObjectReturn[SyntaxHighlighter](&ret))
 }
 
 /* SetHighlightCurrentLine implements TextEdit.set_highlight_current_line:
@@ -570684,7 +570684,7 @@ func (cx *TextLineImpl) Duplicate() RefTextLine {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextLineGDExtensionReturnOwner(&ret)
+	return NewRefTextLineGDExtensionReturnOwner(resolveGoStructObjectReturn[TextLine](&ret))
 }
 
 /* SetDirection implements TextLine.set_direction:
@@ -572612,7 +572612,7 @@ func (cx *TextMeshImpl) GetFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* SetFontSize implements TextMesh.set_font_size:
@@ -573850,7 +573850,7 @@ func (cx *TextParagraphImpl) Duplicate() RefTextParagraph {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextParagraphGDExtensionReturnOwner(&ret)
+	return NewRefTextParagraphGDExtensionReturnOwner(resolveGoStructObjectReturn[TextParagraph](&ret))
 }
 
 /* SetDirection implements TextParagraph.set_direction:
@@ -580826,7 +580826,7 @@ func (cx *TextServerImpl) FontGetTextureImage(
 	argPtrSlice[2] = (GDExtensionConstTypePtr)(unsafe.Pointer(&texture_index))
 	pinner.Pin(argPtrSlice[2])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* FontSetTextureOffsets implements TextServer.font_set_texture_offsets:
@@ -587967,7 +587967,7 @@ func (cx *TextServerManagerImpl) GetInterface(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextServerGDExtensionReturnOwner(&ret)
+	return NewRefTextServerGDExtensionReturnOwner(resolveGoStructObjectReturn[TextServer](&ret))
 }
 
 /* GetInterfaces implements TextServerManager.get_interfaces:
@@ -588051,7 +588051,7 @@ func (cx *TextServerManagerImpl) FindInterface(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextServerGDExtensionReturnOwner(&ret)
+	return NewRefTextServerGDExtensionReturnOwner(resolveGoStructObjectReturn[TextServer](&ret))
 }
 
 /* SetPrimaryInterface implements TextServerManager.set_primary_interface:
@@ -588135,7 +588135,7 @@ func (cx *TextServerManagerImpl) GetPrimaryInterface() RefTextServer {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextServerGDExtensionReturnOwner(&ret)
+	return NewRefTextServerGDExtensionReturnOwner(resolveGoStructObjectReturn[TextServer](&ret))
 }
 
 type TextureImpl struct {
@@ -588659,7 +588659,7 @@ func (cx *Texture2DImpl) GetImage() RefImage {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* CreatePlaceholder implements Texture2D.create_placeholder:
@@ -588699,7 +588699,7 @@ func (cx *Texture2DImpl) CreatePlaceholder() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 type Texture2DArrayImpl struct {
@@ -588766,7 +588766,7 @@ func (cx *Texture2DArrayImpl) CreatePlaceholder() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 type Texture2DArrayRDImpl struct {
@@ -589159,7 +589159,7 @@ func (cx *Texture3DImpl) GetData() RefImage {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 /* CreatePlaceholder implements Texture3D.create_placeholder:
@@ -589199,7 +589199,7 @@ func (cx *Texture3DImpl) CreatePlaceholder() RefResource {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefResourceGDExtensionReturnOwner(&ret)
+	return NewRefResourceGDExtensionReturnOwner(resolveGoStructObjectReturn[Resource](&ret))
 }
 
 type Texture3DRDImpl struct {
@@ -589882,7 +589882,7 @@ func (cx *TextureButtonImpl) GetTextureNormal() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetTexturePressed implements TextureButton.get_texture_pressed:
@@ -589922,7 +589922,7 @@ func (cx *TextureButtonImpl) GetTexturePressed() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetTextureHover implements TextureButton.get_texture_hover:
@@ -589962,7 +589962,7 @@ func (cx *TextureButtonImpl) GetTextureHover() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetTextureDisabled implements TextureButton.get_texture_disabled:
@@ -590002,7 +590002,7 @@ func (cx *TextureButtonImpl) GetTextureDisabled() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetTextureFocused implements TextureButton.get_texture_focused:
@@ -590042,7 +590042,7 @@ func (cx *TextureButtonImpl) GetTextureFocused() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetClickMask implements TextureButton.get_click_mask:
@@ -590082,7 +590082,7 @@ func (cx *TextureButtonImpl) GetClickMask() RefBitMap {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefBitMapGDExtensionReturnOwner(&ret)
+	return NewRefBitMapGDExtensionReturnOwner(resolveGoStructObjectReturn[BitMap](&ret))
 }
 
 /* GetIgnoreTextureSize implements TextureButton.get_ignore_texture_size:
@@ -590509,7 +590509,7 @@ func (cx *TextureLayeredImpl) GetLayerData(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefImageGDExtensionReturnOwner(&ret)
+	return NewRefImageGDExtensionReturnOwner(resolveGoStructObjectReturn[Image](&ret))
 }
 
 type TextureLayeredRDImpl struct {
@@ -590728,7 +590728,7 @@ func (cx *TextureProgressBarImpl) GetUnderTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetProgressTexture implements TextureProgressBar.set_progress_texture:
@@ -590812,7 +590812,7 @@ func (cx *TextureProgressBarImpl) GetProgressTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetOverTexture implements TextureProgressBar.set_over_texture:
@@ -590896,7 +590896,7 @@ func (cx *TextureProgressBarImpl) GetOverTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetFillMode implements TextureProgressBar.set_fill_mode:
@@ -591824,7 +591824,7 @@ func (cx *TextureRectImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetExpandMode implements TextureRect.set_expand_mode:
@@ -592272,7 +592272,7 @@ func (cx *ThemeImpl) GetIcon(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* HasIcon implements Theme.has_icon:
@@ -592591,7 +592591,7 @@ func (cx *ThemeImpl) GetStylebox(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStyleBoxGDExtensionReturnOwner(&ret)
+	return NewRefStyleBoxGDExtensionReturnOwner(resolveGoStructObjectReturn[StyleBox](&ret))
 }
 
 /* HasStylebox implements Theme.has_stylebox:
@@ -592910,7 +592910,7 @@ func (cx *ThemeImpl) GetFont(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* HasFont implements Theme.has_font:
@@ -594285,7 +594285,7 @@ func (cx *ThemeImpl) GetDefaultFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* HasDefaultFont implements Theme.has_default_font:
@@ -595318,7 +595318,7 @@ func (cx *ThemeDBImpl) GetDefaultTheme() RefTheme {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefThemeGDExtensionReturnOwner(&ret)
+	return NewRefThemeGDExtensionReturnOwner(resolveGoStructObjectReturn[Theme](&ret))
 }
 
 /* GetProjectTheme implements ThemeDB.get_project_theme:
@@ -595358,7 +595358,7 @@ func (cx *ThemeDBImpl) GetProjectTheme() RefTheme {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefThemeGDExtensionReturnOwner(&ret)
+	return NewRefThemeGDExtensionReturnOwner(resolveGoStructObjectReturn[Theme](&ret))
 }
 
 /* SetFallbackBaseScale implements ThemeDB.set_fallback_base_scale:
@@ -595523,7 +595523,7 @@ func (cx *ThemeDBImpl) GetFallbackFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* SetFallbackFontSize implements ThemeDB.set_fallback_font_size:
@@ -595688,7 +595688,7 @@ func (cx *ThemeDBImpl) GetFallbackIcon() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetFallbackStylebox implements ThemeDB.set_fallback_stylebox:
@@ -595772,7 +595772,7 @@ func (cx *ThemeDBImpl) GetFallbackStylebox() RefStyleBox {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStyleBoxGDExtensionReturnOwner(&ret)
+	return NewRefStyleBoxGDExtensionReturnOwner(resolveGoStructObjectReturn[StyleBox](&ret))
 }
 
 type ThreadImpl struct {
@@ -596441,7 +596441,7 @@ func (cx *TileDataImpl) GetMaterial() RefMaterial {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMaterialGDExtensionReturnOwner(&ret)
+	return NewRefMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[Material](&ret))
 }
 
 /* SetTextureOrigin implements TileData.set_texture_origin:
@@ -597044,7 +597044,7 @@ func (cx *TileDataImpl) GetOccluderPolygon(
 	argPtrSlice[4] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transpose))
 	pinner.Pin(argPtrSlice[4])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOccluderPolygon2DGDExtensionReturnOwner(&ret)
+	return NewRefOccluderPolygon2DGDExtensionReturnOwner(resolveGoStructObjectReturn[OccluderPolygon2D](&ret))
 }
 
 /* SetOccluder implements TileData.set_occluder:
@@ -597144,7 +597144,7 @@ func (cx *TileDataImpl) GetOccluder(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transpose))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefOccluderPolygon2DGDExtensionReturnOwner(&ret)
+	return NewRefOccluderPolygon2DGDExtensionReturnOwner(resolveGoStructObjectReturn[OccluderPolygon2D](&ret))
 }
 
 /* SetConstantLinearVelocity implements TileData.set_constant_linear_velocity:
@@ -598169,7 +598169,7 @@ func (cx *TileDataImpl) GetNavigationPolygon(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&transpose))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefNavigationPolygonGDExtensionReturnOwner(&ret)
+	return NewRefNavigationPolygonGDExtensionReturnOwner(resolveGoStructObjectReturn[NavigationPolygon](&ret))
 }
 
 /* SetProbability implements TileData.set_probability:
@@ -598710,7 +598710,7 @@ func (cx *TileMapImpl) GetTileset() RefTileSet {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTileSetGDExtensionReturnOwner(&ret)
+	return NewRefTileSetGDExtensionReturnOwner(resolveGoStructObjectReturn[TileSet](&ret))
 }
 
 /* SetRenderingQuadrantSize implements TileMap.set_rendering_quadrant_size:
@@ -600486,7 +600486,7 @@ func (cx *TileMapImpl) GetPattern(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&coords_array))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTileMapPatternGDExtensionReturnOwner(&ret)
+	return NewRefTileMapPatternGDExtensionReturnOwner(resolveGoStructObjectReturn[TileMapPattern](&ret))
 }
 
 /* MapPattern implements TileMap.map_pattern:
@@ -601878,7 +601878,7 @@ func (cx *TileMapLayerImpl) GetPattern(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&coords_array))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTileMapPatternGDExtensionReturnOwner(&ret)
+	return NewRefTileMapPatternGDExtensionReturnOwner(resolveGoStructObjectReturn[TileMapPattern](&ret))
 }
 
 /* SetPattern implements TileMapLayer.set_pattern:
@@ -602665,7 +602665,7 @@ func (cx *TileMapLayerImpl) GetTileSet() RefTileSet {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTileSetGDExtensionReturnOwner(&ret)
+	return NewRefTileSetGDExtensionReturnOwner(resolveGoStructObjectReturn[TileSet](&ret))
 }
 
 /* SetYSortOrigin implements TileMapLayer.set_y_sort_origin:
@@ -604388,7 +604388,7 @@ func (cx *TileSetImpl) GetSource(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&source_id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTileSetSourceGDExtensionReturnOwner(&ret)
+	return NewRefTileSetSourceGDExtensionReturnOwner(resolveGoStructObjectReturn[TileSetSource](&ret))
 }
 
 /* SetTileShape implements TileSet.set_tile_shape:
@@ -605656,7 +605656,7 @@ func (cx *TileSetImpl) GetPhysicsLayerPhysicsMaterial(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&layer_index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPhysicsMaterialGDExtensionReturnOwner(&ret)
+	return NewRefPhysicsMaterialGDExtensionReturnOwner(resolveGoStructObjectReturn[PhysicsMaterial](&ret))
 }
 
 /* GetTerrainSetsCount implements TileSet.get_terrain_sets_count:
@@ -607878,7 +607878,7 @@ func (cx *TileSetImpl) GetPattern(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTileMapPatternGDExtensionReturnOwner(&ret)
+	return NewRefTileMapPatternGDExtensionReturnOwner(resolveGoStructObjectReturn[TileMapPattern](&ret))
 }
 
 /* RemovePattern implements TileSet.remove_pattern:
@@ -608070,7 +608070,7 @@ func (cx *TileSetAtlasSourceImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetMargins implements TileSetAtlasSource.set_margins:
@@ -609740,7 +609740,7 @@ func (cx *TileSetAtlasSourceImpl) GetRuntimeTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetRuntimeTileTextureRegion implements TileSetAtlasSource.get_runtime_tile_texture_region:
@@ -610127,7 +610127,7 @@ func (cx *TileSetScenesCollectionSourceImpl) GetSceneTileScene(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPackedSceneGDExtensionReturnOwner(&ret)
+	return NewRefPackedSceneGDExtensionReturnOwner(resolveGoStructObjectReturn[PackedScene](&ret))
 }
 
 /* SetSceneTileDisplayPlaceholder implements TileSetScenesCollectionSource.set_scene_tile_display_placeholder:
@@ -612669,7 +612669,7 @@ func (cx *TouchScreenButtonImpl) GetTextureNormal() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTexturePressed implements TouchScreenButton.set_texture_pressed:
@@ -612753,7 +612753,7 @@ func (cx *TouchScreenButtonImpl) GetTexturePressed() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetBitmask implements TouchScreenButton.set_bitmask:
@@ -612837,7 +612837,7 @@ func (cx *TouchScreenButtonImpl) GetBitmask() RefBitMap {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefBitMapGDExtensionReturnOwner(&ret)
+	return NewRefBitMapGDExtensionReturnOwner(resolveGoStructObjectReturn[BitMap](&ret))
 }
 
 /* SetShape implements TouchScreenButton.set_shape:
@@ -612921,7 +612921,7 @@ func (cx *TouchScreenButtonImpl) GetShape() RefShape2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefShape2DGDExtensionReturnOwner(&ret)
+	return NewRefShape2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Shape2D](&ret))
 }
 
 /* SetShapeCentered implements TouchScreenButton.set_shape_centered:
@@ -613984,7 +613984,7 @@ func (cx *TranslationDomainImpl) GetTranslationObject(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTranslationGDExtensionReturnOwner(&ret)
+	return NewRefTranslationGDExtensionReturnOwner(resolveGoStructObjectReturn[Translation](&ret))
 }
 
 /* AddTranslation implements TranslationDomain.add_translation:
@@ -614149,7 +614149,7 @@ func (cx *TranslationDomainImpl) GetTranslations() RefTranslation {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTranslationGDExtensionReturnOwner(&ret)
+	return NewRefTranslationGDExtensionReturnOwner(resolveGoStructObjectReturn[Translation](&ret))
 }
 
 /* HasTranslationForLocale implements TranslationDomain.has_translation_for_locale:
@@ -614290,7 +614290,7 @@ func (cx *TranslationDomainImpl) FindTranslations(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTranslationGDExtensionReturnOwner(&ret)
+	return NewRefTranslationGDExtensionReturnOwner(resolveGoStructObjectReturn[Translation](&ret))
 }
 
 /* Translate implements TranslationDomain.translate:
@@ -616139,7 +616139,7 @@ func (cx *TranslationServerImpl) GetTranslationObject(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&locale))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTranslationGDExtensionReturnOwner(&ret)
+	return NewRefTranslationGDExtensionReturnOwner(resolveGoStructObjectReturn[Translation](&ret))
 }
 
 /* GetTranslations implements TranslationServer.get_translations:
@@ -616179,7 +616179,7 @@ func (cx *TranslationServerImpl) GetTranslations() RefTranslation {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTranslationGDExtensionReturnOwner(&ret)
+	return NewRefTranslationGDExtensionReturnOwner(resolveGoStructObjectReturn[Translation](&ret))
 }
 
 /* FindTranslations implements TranslationServer.find_translations:
@@ -616226,7 +616226,7 @@ func (cx *TranslationServerImpl) FindTranslations(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&exact))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTranslationGDExtensionReturnOwner(&ret)
+	return NewRefTranslationGDExtensionReturnOwner(resolveGoStructObjectReturn[Translation](&ret))
 }
 
 /* HasTranslationForLocale implements TranslationServer.has_translation_for_locale:
@@ -616408,7 +616408,7 @@ func (cx *TranslationServerImpl) GetOrAddDomain(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&domain))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTranslationDomainGDExtensionReturnOwner(&ret)
+	return NewRefTranslationDomainGDExtensionReturnOwner(resolveGoStructObjectReturn[TranslationDomain](&ret))
 }
 
 /* RemoveDomain implements TranslationServer.remove_domain:
@@ -621358,7 +621358,7 @@ func (cx *TreeItemImpl) GetIcon(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetIconOverlay implements TreeItem.set_icon_overlay:
@@ -621449,7 +621449,7 @@ func (cx *TreeItemImpl) GetIconOverlay(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetIconRegion implements TreeItem.set_icon_region:
@@ -622215,7 +622215,7 @@ func (cx *TreeItemImpl) GetCustomStylebox(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStyleBoxGDExtensionReturnOwner(&ret)
+	return NewRefStyleBoxGDExtensionReturnOwner(resolveGoStructObjectReturn[StyleBox](&ret))
 }
 
 /* SetCollapsed implements TreeItem.set_collapsed:
@@ -623145,7 +623145,7 @@ func (cx *TreeItemImpl) GetCustomFont(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&column))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* SetCustomFontSize implements TreeItem.set_custom_font_size:
@@ -623828,7 +623828,7 @@ func (cx *TreeItemImpl) GetButton(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&button_index))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetButtonTooltipText implements TreeItem.set_button_tooltip_text:
@@ -626277,7 +626277,7 @@ func (cx *TubeTrailMeshImpl) GetCurve() RefCurve {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveGDExtensionReturnOwner(&ret)
+	return NewRefCurveGDExtensionReturnOwner(resolveGoStructObjectReturn[Curve](&ret))
 }
 
 type TweenImpl struct {
@@ -626360,7 +626360,7 @@ func (cx *TweenImpl) TweenProperty(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&duration))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPropertyTweenerGDExtensionReturnOwner(&ret)
+	return NewRefPropertyTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[PropertyTweener](&ret))
 }
 
 /* TweenInterval implements Tween.tween_interval:
@@ -626404,7 +626404,7 @@ func (cx *TweenImpl) TweenInterval(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&time))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefIntervalTweenerGDExtensionReturnOwner(&ret)
+	return NewRefIntervalTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[IntervalTweener](&ret))
 }
 
 /* TweenCallback implements Tween.tween_callback:
@@ -626448,7 +626448,7 @@ func (cx *TweenImpl) TweenCallback(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&callback))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCallbackTweenerGDExtensionReturnOwner(&ret)
+	return NewRefCallbackTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[CallbackTweener](&ret))
 }
 
 /* TweenMethod implements Tween.tween_method:
@@ -626501,7 +626501,7 @@ func (cx *TweenImpl) TweenMethod(
 	argPtrSlice[3] = (GDExtensionConstTypePtr)(unsafe.Pointer(&duration))
 	pinner.Pin(argPtrSlice[3])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMethodTweenerGDExtensionReturnOwner(&ret)
+	return NewRefMethodTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[MethodTweener](&ret))
 }
 
 /* TweenSubtween implements Tween.tween_subtween:
@@ -626548,7 +626548,7 @@ func (cx *TweenImpl) TweenSubtween(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefSubtweenTweenerGDExtensionReturnOwner(&ret)
+	return NewRefSubtweenTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[SubtweenTweener](&ret))
 }
 
 /* TweenAwait implements Tween.tween_await:
@@ -626592,7 +626592,7 @@ func (cx *TweenImpl) TweenAwait(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&signal))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefAwaitTweenerGDExtensionReturnOwner(&ret)
+	return NewRefAwaitTweenerGDExtensionReturnOwner(resolveGoStructObjectReturn[AwaitTweener](&ret))
 }
 
 /* CustomStep implements Tween.custom_step:
@@ -626991,7 +626991,7 @@ func (cx *TweenImpl) BindNode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&argObj_0))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* SetProcessMode implements Tween.set_process_mode:
@@ -627035,7 +627035,7 @@ func (cx *TweenImpl) SetProcessMode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mode))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* SetPauseMode implements Tween.set_pause_mode:
@@ -627079,7 +627079,7 @@ func (cx *TweenImpl) SetPauseMode(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&mode))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* SetIgnoreTimeScale implements Tween.set_ignore_time_scale:
@@ -627123,7 +627123,7 @@ func (cx *TweenImpl) SetIgnoreTimeScale(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ignore))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* SetParallel implements Tween.set_parallel:
@@ -627167,7 +627167,7 @@ func (cx *TweenImpl) SetParallel(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&parallel))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* SetLoops implements Tween.set_loops:
@@ -627211,7 +627211,7 @@ func (cx *TweenImpl) SetLoops(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&loops))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* GetLoopsLeft implements Tween.get_loops_left:
@@ -627295,7 +627295,7 @@ func (cx *TweenImpl) SetSpeedScale(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&speed))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* SetTrans implements Tween.set_trans:
@@ -627339,7 +627339,7 @@ func (cx *TweenImpl) SetTrans(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&trans))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* SetEase implements Tween.set_ease:
@@ -627383,7 +627383,7 @@ func (cx *TweenImpl) SetEase(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&ease))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* Parallel implements Tween.parallel:
@@ -627423,7 +627423,7 @@ func (cx *TweenImpl) Parallel() RefTween {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* Chain implements Tween.chain:
@@ -627463,7 +627463,7 @@ func (cx *TweenImpl) Chain() RefTween {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTweenGDExtensionReturnOwner(&ret)
+	return NewRefTweenGDExtensionReturnOwner(resolveGoStructObjectReturn[Tween](&ret))
 }
 
 /* InterpolateValue implements Tween.interpolate_value:
@@ -629073,7 +629073,7 @@ func (cx *UDPServerImpl) TakeConnection() RefPacketPeerUDP {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefPacketPeerUDPGDExtensionReturnOwner(&ret)
+	return NewRefPacketPeerUDPGDExtensionReturnOwner(resolveGoStructObjectReturn[PacketPeerUDP](&ret))
 }
 
 /* Stop implements UDPServer.stop:
@@ -629302,7 +629302,7 @@ func (cx *UDSServerImpl) TakeConnection() RefStreamPeerUDS {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStreamPeerUDSGDExtensionReturnOwner(&ret)
+	return NewRefStreamPeerUDSGDExtensionReturnOwner(resolveGoStructObjectReturn[StreamPeerUDS](&ret))
 }
 
 type UPNPImpl struct {
@@ -629413,7 +629413,7 @@ func (cx *UPNPImpl) GetDevice(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&index))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefUPNPDeviceGDExtensionReturnOwner(&ret)
+	return NewRefUPNPDeviceGDExtensionReturnOwner(resolveGoStructObjectReturn[UPNPDevice](&ret))
 }
 
 /* AddDevice implements UPNP.add_device:
@@ -629622,7 +629622,7 @@ func (cx *UPNPImpl) GetGateway() RefUPNPDevice {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefUPNPDeviceGDExtensionReturnOwner(&ret)
+	return NewRefUPNPDeviceGDExtensionReturnOwner(resolveGoStructObjectReturn[UPNPDevice](&ret))
 }
 
 /* Discover implements UPNP.discover:
@@ -633894,7 +633894,7 @@ func (cx *VideoStreamPlayerImpl) GetStream() RefVideoStream {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefVideoStreamGDExtensionReturnOwner(&ret)
+	return NewRefVideoStreamGDExtensionReturnOwner(resolveGoStructObjectReturn[VideoStream](&ret))
 }
 
 /* Play implements VideoStreamPlayer.play:
@@ -635019,7 +635019,7 @@ func (cx *VideoStreamPlayerImpl) GetVideoTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 type VideoStreamTheoraImpl struct {
@@ -635148,7 +635148,7 @@ func (cx *ViewportImpl) GetWorld2D() RefWorld2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWorld2DGDExtensionReturnOwner(&ret)
+	return NewRefWorld2DGDExtensionReturnOwner(resolveGoStructObjectReturn[World2D](&ret))
 }
 
 /* FindWorld2D implements Viewport.find_world_2d:
@@ -635188,7 +635188,7 @@ func (cx *ViewportImpl) FindWorld2D() RefWorld2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWorld2DGDExtensionReturnOwner(&ret)
+	return NewRefWorld2DGDExtensionReturnOwner(resolveGoStructObjectReturn[World2D](&ret))
 }
 
 /* SetCanvasTransform implements Viewport.set_canvas_transform:
@@ -636528,7 +636528,7 @@ func (cx *ViewportImpl) GetTexture() RefViewportTexture {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefViewportTextureGDExtensionReturnOwner(&ret)
+	return NewRefViewportTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[ViewportTexture](&ret))
 }
 
 /* SetPhysicsObjectPicking implements Viewport.set_physics_object_picking:
@@ -639246,7 +639246,7 @@ func (cx *ViewportImpl) GetWorld3D() RefWorld3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWorld3DGDExtensionReturnOwner(&ret)
+	return NewRefWorld3DGDExtensionReturnOwner(resolveGoStructObjectReturn[World3D](&ret))
 }
 
 /* FindWorld3D implements Viewport.find_world_3d:
@@ -639286,7 +639286,7 @@ func (cx *ViewportImpl) FindWorld3D() RefWorld3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWorld3DGDExtensionReturnOwner(&ret)
+	return NewRefWorld3DGDExtensionReturnOwner(resolveGoStructObjectReturn[World3D](&ret))
 }
 
 /* SetUseOwnWorld3D implements Viewport.set_use_own_world_3d:
@@ -640341,7 +640341,7 @@ func (cx *ViewportImpl) GetVrsTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 type ViewportTextureImpl struct {
@@ -642769,7 +642769,7 @@ func (cx *VisualShaderImpl) GetNode(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&id))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefVisualShaderNodeGDExtensionReturnOwner(&ret)
+	return NewRefVisualShaderNodeGDExtensionReturnOwner(resolveGoStructObjectReturn[VisualShaderNode](&ret))
 }
 
 /* SetNodePosition implements VisualShader.set_node_position:
@@ -645842,7 +645842,7 @@ func (cx *VisualShaderNodeCubemapImpl) GetCubeMap() RefTextureLayered {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureLayeredGDExtensionReturnOwner(&ret)
+	return NewRefTextureLayeredGDExtensionReturnOwner(resolveGoStructObjectReturn[TextureLayered](&ret))
 }
 
 /* SetTextureType implements VisualShaderNodeCubemap.set_texture_type:
@@ -646052,7 +646052,7 @@ func (cx *VisualShaderNodeCurveTextureImpl) GetTexture() RefCurveTexture {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveTextureGDExtensionReturnOwner(&ret)
+	return NewRefCurveTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[CurveTexture](&ret))
 }
 
 type VisualShaderNodeCurveXYZTextureImpl struct {
@@ -646163,7 +646163,7 @@ func (cx *VisualShaderNodeCurveXYZTextureImpl) GetTexture() RefCurveXYZTexture {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCurveXYZTextureGDExtensionReturnOwner(&ret)
+	return NewRefCurveXYZTextureGDExtensionReturnOwner(resolveGoStructObjectReturn[CurveXYZTexture](&ret))
 }
 
 type VisualShaderNodeCustomImpl struct {
@@ -651289,7 +651289,7 @@ func (cx *VisualShaderNodeParticleMeshEmitterImpl) GetMesh() RefMesh {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefMeshGDExtensionReturnOwner(&ret)
+	return NewRefMeshGDExtensionReturnOwner(resolveGoStructObjectReturn[Mesh](&ret))
 }
 
 /* SetUseAllSurfaces implements VisualShaderNodeParticleMeshEmitter.set_use_all_surfaces:
@@ -652754,7 +652754,7 @@ func (cx *VisualShaderNodeTextureImpl) GetTexture() RefTexture2D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* SetTextureType implements VisualShaderNodeTexture.set_texture_type:
@@ -652946,7 +652946,7 @@ func (cx *VisualShaderNodeTexture2DArrayImpl) GetTextureArray() RefTextureLayere
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTextureLayeredGDExtensionReturnOwner(&ret)
+	return NewRefTextureLayeredGDExtensionReturnOwner(resolveGoStructObjectReturn[TextureLayered](&ret))
 }
 
 type VisualShaderNodeTexture2DArrayParameterImpl struct {
@@ -653093,7 +653093,7 @@ func (cx *VisualShaderNodeTexture3DImpl) GetTexture() RefTexture3D {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture3DGDExtensionReturnOwner(&ret)
+	return NewRefTexture3DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture3D](&ret))
 }
 
 type VisualShaderNodeTexture3DParameterImpl struct {
@@ -656552,7 +656552,7 @@ func (cx *VoxelGIImpl) GetProbeData() RefVoxelGIData {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefVoxelGIDataGDExtensionReturnOwner(&ret)
+	return NewRefVoxelGIDataGDExtensionReturnOwner(resolveGoStructObjectReturn[VoxelGIData](&ret))
 }
 
 /* SetSubdiv implements VoxelGI.set_subdiv:
@@ -656798,7 +656798,7 @@ func (cx *VoxelGIImpl) GetCameraAttributes() RefCameraAttributes {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCameraAttributesGDExtensionReturnOwner(&ret)
+	return NewRefCameraAttributesGDExtensionReturnOwner(resolveGoStructObjectReturn[CameraAttributes](&ret))
 }
 
 /* Bake implements VoxelGI.bake:
@@ -659000,7 +659000,7 @@ func (cx *WebRTCPeerConnectionImpl) CreateDataChannel(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&options))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWebRTCDataChannelGDExtensionReturnOwner(&ret)
+	return NewRefWebRTCDataChannelGDExtensionReturnOwner(resolveGoStructObjectReturn[WebRTCDataChannel](&ret))
 }
 
 /* CreateOffer implements WebRTCPeerConnection.create_offer:
@@ -659582,7 +659582,7 @@ func (cx *WebSocketMultiplayerPeerImpl) GetPeer(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&peer_id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefWebSocketPeerGDExtensionReturnOwner(&ret)
+	return NewRefWebSocketPeerGDExtensionReturnOwner(resolveGoStructObjectReturn[WebSocketPeer](&ret))
 }
 
 /* GetPeerAddress implements WebSocketMultiplayerPeer.get_peer_address:
@@ -661899,7 +661899,7 @@ func (cx *WebXRInterfaceImpl) GetInputSourceTracker(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&input_source_id))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefXRControllerTrackerGDExtensionReturnOwner(&ret)
+	return NewRefXRControllerTrackerGDExtensionReturnOwner(resolveGoStructObjectReturn[XRControllerTracker](&ret))
 }
 
 /* GetInputSourceTargetRayMode implements WebXRInterface.get_input_source_target_ray_mode:
@@ -665065,7 +665065,7 @@ func (cx *WindowImpl) GetTheme() RefTheme {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefThemeGDExtensionReturnOwner(&ret)
+	return NewRefThemeGDExtensionReturnOwner(resolveGoStructObjectReturn[Theme](&ret))
 }
 
 /* SetThemeTypeVariation implements Window.set_theme_type_variation:
@@ -665786,7 +665786,7 @@ func (cx *WindowImpl) GetThemeIcon(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefTexture2DGDExtensionReturnOwner(&ret)
+	return NewRefTexture2DGDExtensionReturnOwner(resolveGoStructObjectReturn[Texture2D](&ret))
 }
 
 /* GetThemeStylebox implements Window.get_theme_stylebox:
@@ -665833,7 +665833,7 @@ func (cx *WindowImpl) GetThemeStylebox(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefStyleBoxGDExtensionReturnOwner(&ret)
+	return NewRefStyleBoxGDExtensionReturnOwner(resolveGoStructObjectReturn[StyleBox](&ret))
 }
 
 /* GetThemeFont implements Window.get_theme_font:
@@ -665880,7 +665880,7 @@ func (cx *WindowImpl) GetThemeFont(
 	argPtrSlice[1] = (GDExtensionConstTypePtr)(unsafe.Pointer(&theme_type))
 	pinner.Pin(argPtrSlice[1])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* GetThemeFontSize implements Window.get_theme_font_size:
@@ -666647,7 +666647,7 @@ func (cx *WindowImpl) GetThemeDefaultFont() RefFont {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefFontGDExtensionReturnOwner(&ret)
+	return NewRefFontGDExtensionReturnOwner(resolveGoStructObjectReturn[Font](&ret))
 }
 
 /* GetThemeDefaultFontSize implements Window.get_theme_default_font_size:
@@ -668506,7 +668506,7 @@ func (cx *World3DImpl) GetEnvironment() RefEnvironment {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEnvironmentGDExtensionReturnOwner(&ret)
+	return NewRefEnvironmentGDExtensionReturnOwner(resolveGoStructObjectReturn[Environment](&ret))
 }
 
 /* SetFallbackEnvironment implements World3D.set_fallback_environment:
@@ -668590,7 +668590,7 @@ func (cx *World3DImpl) GetFallbackEnvironment() RefEnvironment {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEnvironmentGDExtensionReturnOwner(&ret)
+	return NewRefEnvironmentGDExtensionReturnOwner(resolveGoStructObjectReturn[Environment](&ret))
 }
 
 /* SetCameraAttributes implements World3D.set_camera_attributes:
@@ -668674,7 +668674,7 @@ func (cx *World3DImpl) GetCameraAttributes() RefCameraAttributes {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCameraAttributesGDExtensionReturnOwner(&ret)
+	return NewRefCameraAttributesGDExtensionReturnOwner(resolveGoStructObjectReturn[CameraAttributes](&ret))
 }
 
 /* GetDirectSpaceState implements World3D.get_direct_space_state:
@@ -669122,7 +669122,7 @@ func (cx *WorldEnvironmentImpl) GetEnvironment() RefEnvironment {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefEnvironmentGDExtensionReturnOwner(&ret)
+	return NewRefEnvironmentGDExtensionReturnOwner(resolveGoStructObjectReturn[Environment](&ret))
 }
 
 /* SetCameraAttributes implements WorldEnvironment.set_camera_attributes:
@@ -669206,7 +669206,7 @@ func (cx *WorldEnvironmentImpl) GetCameraAttributes() RefCameraAttributes {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCameraAttributesGDExtensionReturnOwner(&ret)
+	return NewRefCameraAttributesGDExtensionReturnOwner(resolveGoStructObjectReturn[CameraAttributes](&ret))
 }
 
 /* SetCompositor implements WorldEnvironment.set_compositor:
@@ -669290,7 +669290,7 @@ func (cx *WorldEnvironmentImpl) GetCompositor() RefCompositor {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefCompositorGDExtensionReturnOwner(&ret)
+	return NewRefCompositorGDExtensionReturnOwner(resolveGoStructObjectReturn[Compositor](&ret))
 }
 
 type X509CertificateImpl struct {
@@ -674292,7 +674292,7 @@ func (cx *XRNode3DImpl) GetPose() RefXRPose {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefXRPoseGDExtensionReturnOwner(&ret)
+	return NewRefXRPoseGDExtensionReturnOwner(resolveGoStructObjectReturn[XRPose](&ret))
 }
 
 /* TriggerHapticPulse implements XRNode3D.trigger_haptic_pulse:
@@ -675364,7 +675364,7 @@ func (cx *XRPositionalTrackerImpl) GetPose(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefXRPoseGDExtensionReturnOwner(&ret)
+	return NewRefXRPoseGDExtensionReturnOwner(resolveGoStructObjectReturn[XRPose](&ret))
 }
 
 /* InvalidatePose implements XRPositionalTracker.invalidate_pose:
@@ -676149,7 +676149,7 @@ func (cx *XRServerImpl) GetInterface(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&idx))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefXRInterfaceGDExtensionReturnOwner(&ret)
+	return NewRefXRInterfaceGDExtensionReturnOwner(resolveGoStructObjectReturn[XRInterface](&ret))
 }
 
 /* GetInterfaces implements XRServer.get_interfaces:
@@ -676233,7 +676233,7 @@ func (cx *XRServerImpl) FindInterface(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefXRInterfaceGDExtensionReturnOwner(&ret)
+	return NewRefXRInterfaceGDExtensionReturnOwner(resolveGoStructObjectReturn[XRInterface](&ret))
 }
 
 /* AddTracker implements XRServer.add_tracker:
@@ -676409,7 +676409,7 @@ func (cx *XRServerImpl) GetTracker(
 	argPtrSlice[0] = (GDExtensionConstTypePtr)(unsafe.Pointer(&tracker_name))
 	pinner.Pin(argPtrSlice[0])
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefXRTrackerGDExtensionReturnOwner(&ret)
+	return NewRefXRTrackerGDExtensionReturnOwner(resolveGoStructObjectReturn[XRTracker](&ret))
 }
 
 /* GetPrimaryInterface implements XRServer.get_primary_interface:
@@ -676449,7 +676449,7 @@ func (cx *XRServerImpl) GetPrimaryInterface() RefXRInterface {
 	cArgs := (*GDExtensionConstTypePtr)(unsafe.SliceData(argPtrSlice))
 	pinner.Pin(cArgs)
 	CallFunc_GDExtensionInterfaceObjectMethodBindPtrcall(fn, cOwner, cArgs, retPtr)
-	return NewRefXRInterfaceGDExtensionReturnOwner(&ret)
+	return NewRefXRInterfaceGDExtensionReturnOwner(resolveGoStructObjectReturn[XRInterface](&ret))
 }
 
 /* SetPrimaryInterface implements XRServer.set_primary_interface:

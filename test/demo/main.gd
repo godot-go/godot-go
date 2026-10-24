@@ -812,6 +812,8 @@ func test_return_ownership(example: Example):
 	assert_equal(example.test_return_dropped_releases(cs), 1)
 	assert_equal(example.test_return_unref_idempotence(cs), 1)
 	assert_equal(example.test_borrowed_ref_never_releases(cs), 1)
+	assert_equal(example.test_return_ref_pointee_narrowing(cs), 1)
+	assert_equal(example.test_return_ref_pointee_identity(cs), 1)
 	assert_equal(example.test_null_return_schedules_no_release(cs), 1)
 
 	cs.free()

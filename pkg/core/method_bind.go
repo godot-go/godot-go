@@ -68,6 +68,21 @@ type GoMethodMetadata struct {
 	// the varcall unions (Variant parameters, slices, object/Ref decode-
 	// error seams) leave this nil and run the reflective body unchanged.
 	typedVarcall varcallFn
+	// Fixed-shape engine-callback closures (typed-method-dispatch D6). The
+	// dedicated virtual binds (classdb_callback_binds.go) attach exactly one
+	// of these when registering _notification, _get, _set,
+	// _property_can_revert, _property_get_revert, or to_string; the callback
+	// dispatch sites in classdb_callback.go / to_string.go invoke the
+	// closure directly when present and fall back to the reflective
+	// Func.Call body for name-string registrations. At most one field is
+	// set per metadata: each callback virtual dispatches through its own
+	// slot, so a single bind can only serve one shape.
+	cbNotification  notificationFn
+	cbPropGet       propGetFn
+	cbPropSet       propSetFn
+	cbPropCanRevert propCanRevertFn
+	cbPropGetRevert propGetRevertFn
+	cbToString      toStringFn
 	// Lifecycle-managed StringName objects for PropertyInfo structs.
 	// These persist for the lifetime of GoMethodMetadata to prevent
 	// dangling pointers in GDExtensionPropertyInfo.name/class_name fields.

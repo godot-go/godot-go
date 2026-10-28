@@ -59,6 +59,22 @@ func (s *TypedBindStub) Pair() (int64, string) { return 0, "" }
 // rejection must fire for virtual binds and the prefix ban for instance binds.
 func (s *TypedBindStub) V_Bad() {}
 
+// Qualified callback-shape virtuals for the dedicated callback binds
+// (classdb_callback_binds_test.go): named exactly as the embedding-chain
+// resolution expects, so those binds clear the typed-bind gates and stop at
+// the shared class-existence check like every other gate test here. Bodies
+// never run.
+func (s *TypedBindStub) V_TypedBindStub_Notification(what int32, reversed bool) {}
+func (s *TypedBindStub) V_TypedBindStub_Get(name string) (Variant, bool) {
+	return NewVariantNil(), false
+}
+func (s *TypedBindStub) V_TypedBindStub_Set(name string, value Variant) bool    { return false }
+func (s *TypedBindStub) V_TypedBindStub_PropertyCanRevert(name StringName) bool { return false }
+func (s *TypedBindStub) V_TypedBindStub_PropertyGetRevert(name StringName) (Variant, bool) {
+	return NewVariantNil(), false
+}
+func (s *TypedBindStub) V_TypedBindStub_ToString() string { return "" }
+
 // V_Other_Ready is qualified but names a level the embedding chain does not
 // resolve: the chain-parity check must reject it for gdMethodName "_ready"
 // (whose candidate is V_TypedBindStub_Ready).

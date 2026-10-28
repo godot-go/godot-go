@@ -29,7 +29,7 @@
 
 ## 6. Fixed-shape callback closures
 
-- [ ] 6.1 Replace the generic `Func.Call` sites in `pkg/core/classdb_callback.go` (notification, property get/set, property list, revert, string-conversion) with named typed closures attached at registration, name-string handlers falling back; verify `notification-virtual-dispatch`, `property-access-dispatch`, `property-revert-virtuals`, `to-string-virtual-dispatch` suites stay green
+- [x] 6.1 Replace the generic `Func.Call` sites in `pkg/core/classdb_callback.go` (notification, property get/set, property list, revert, string-conversion) with named typed closures attached at registration, name-string handlers falling back; verify `notification-virtual-dispatch`, `property-access-dispatch`, `property-revert-virtuals`, `to-string-virtual-dispatch` suites stay green (six fixed-shape closure types plus dedicated binds `ClassDBBindVirtualNotification`/`Get`/`Set`/`PropertyCanRevert`/`PropertyGetRevert`/`ToString` in `classdb_callback_binds.go` attach `cbNotification`…`cbToString` on `GoMethodMetadata` through the shared typed-bind validation core; the dispatch sites in `classdb_callback.go`/`to_string.go` prefer the closure and fall back reflectively for name-string registrations — property list already dispatches through class-owned typed data with no `Func.Call` site; `go test ./pkg/core/` green including the shape pass-through and bind-gate fixtures, the engine tier keeps the four suites green through the unchanged fallback, and the compiled callback path gains engine coverage when task 7.1 binds demo classes through the dedicated API)
 
 ## 7. Integration and allocation gates
 

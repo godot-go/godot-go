@@ -196,3 +196,9 @@ type propCanRevertFn func(inst GDClass, name StringName) bool
 // in, (revert value, has-revert) out with the reflective dispatch's bool
 // contract.
 type propGetRevertFn func(inst GDClass, name StringName) (Variant, bool)
+
+// toStringFn is the fixed-shape closure for the `to_string` virtual
+// (to-string-virtual-dispatch), shape from resolveToStringFor: receiver
+// only, a plain Go string out — the shape the reflective dispatch guards on
+// at runtime the bind makes a compile-time guarantee.
+type toStringFn func(inst GDClass) string

@@ -131,7 +131,13 @@ propCanRevertFn    func(inst GDClass, name StringName) bool        // _property_
 propGetRevertFn    func(inst GDClass, name StringName) (Variant, bool)
 ```
 
-Property-list and to-string have no `Func.Call` sites (they already run through typed direct fields such as `ValidateProperty`) and are out of scope. Untyped handlers through name-string registration fall back.
+Property-list has no `Func.Call` site (it already runs through class-owned typed data such as `propertySpecs` and `ValidateProperty`) and is out of scope. Untyped handlers through name-string registration fall back.
+
+Resolved during implementation:
+
+- A sixth shape, `toStringFn func(inst GDClass) string`, joined the set: the `to_string` conversion does have a generic call site (`resolveToStringFor`), contrary to this decision's original text, and it is wired the same way — closure preferred when attached, reflective body otherwise (its runtime "returns a single Go string" guard becomes a compile-time property of the bind).
+- Attachment API: six dedicated binds in `classdb_callback_binds.go` (`ClassDBBindVirtualNotification` / `...Get` / `...Set` / `...PropertyCanRevert` / `...PropertyGetRevert` / `...ToString`) fix the engine-reserved gd-names and argument names internally, run the shared typed-bind validation core unchanged, and attach exactly one closure field on `GoMethodMetadata` (`cbNotification` … `cbToString`, nil-guarded at the dispatch sites exactly like `typedDispatch`). The shape closures resolve the receiver with the same `inst.(S).Self()` assertion the ptrcall wrappers use, so a compiled callback call is one concrete function call with zero reflection and zero allocation.
+- `_notification` (int32/bool) and `_property_can_revert` (StringName→bool) also fit the slot constraint unions, so their explicit-call paths (GDScript calling the method directly) additionally ride the generated ptrcall/varcall closures; `_get`, `_set`, `_property_get_revert`, and `to_string` signatures stay outside the unions (Go `string`/`Variant`), so explicit calls keep the reflective bodies while the engine callback slot itself always uses the compiled closure.
 
 ## Risks / Trade-offs
 

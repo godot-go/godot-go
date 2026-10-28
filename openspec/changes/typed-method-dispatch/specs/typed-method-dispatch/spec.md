@@ -22,12 +22,17 @@ When the engine invokes a bound Go method through ptrcall, dispatch SHALL execut
 
 ### Requirement: Virtual and callback dispatch use the same compiled closures
 
-Virtual method callbacks, notification dispatch, and property/dispatcher callbacks SHALL route through the same compiled-closure mechanism as ptrcall; reflection SHALL survive only at bind time.
+Virtual method callbacks, notification dispatch, and property/dispatcher callbacks bound through the typed registration API SHALL route through the same compiled-closure mechanism as ptrcall; reflection SHALL survive only at bind time for those handlers. Handlers registered through the name-string API keep the reflective dispatch bodies unchanged.
 
 #### Scenario: Notification reaches a compiled closure
 
 - **WHEN** the engine sends a notification callback to a registered Go class
 - **THEN** the handler is invoked through a compiled closure with correctly decoded arguments
+
+#### Scenario: Callback sites of name-string handlers dispatch as before
+
+- **WHEN** the engine sends a notification, property get/set, revert, or string-conversion callback to a class whose virtual was registered through the name-string API
+- **THEN** the reflective dispatch body runs unchanged and produces the same handler call and return contract
 
 ### Requirement: A compile-time-checked registration API exists alongside the name-string API
 

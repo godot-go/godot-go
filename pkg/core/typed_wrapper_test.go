@@ -28,8 +28,9 @@ import (
 // The receivers here satisfy the same contract bound user classes will
 // (one Self() one-liner next to the GetClassName/GetParentClassName pair
 // they already write); a misbound closure fails loudly on the itab check.
-// Engine-tier parity (typed-vs-reflective through a real dispatch) is the
-// task 2.2 fixture tier, run under GODOT.
+// Task 2.2's typed-vs-reflective differential per wrapper kind is in
+// typed_wrapper_kind_matrix_test.go; the kinds whose decode or encode crosses
+// into the engine are pinned by the demo's typed-bound suites under GODOT.
 
 type spotStubClass struct {
 	owner *GodotObject

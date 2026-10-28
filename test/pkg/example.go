@@ -1578,6 +1578,9 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestPtrcallDecodeNullObject", "test_ptrcall_decode_null_object", nil, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeRefRegression", "test_ptrcall_decode_ref_regression", []string{"shape"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeUndecodableInterface", "test_ptrcall_decode_undecodable_interface", []string{"node"}, nil)
+		// typed-method-dispatch 1.3: itself an object-argument bind, so it
+		// can only exist through the name-string API it asserts on.
+		ClassDBBindMethod(t, "TestObjectArgFallbackBoundary", "test_object_arg_fallback_boundary", []string{"node"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeRelease", "test_ptrcall_decode_release", nil, nil)
 		// support-variant-reflect-completeness: Ref argument/return crossing.
 		ClassDBBindMethod(t, "TestRefBoundaryValid", "test_ref_boundary_valid", []string{"ref"}, nil)

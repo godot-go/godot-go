@@ -868,6 +868,7 @@ func test_ptrcall_object_decode(example: Example):
 	assert_equal(example.test_ptrcall_decode_null_object(), 1)
 	assert_equal(example.test_ptrcall_decode_ref_regression(circle), 1)
 	assert_equal(example.test_ptrcall_decode_undecodable_interface(node), 1)
+	assert_equal(example.test_object_arg_fallback_boundary(node), 1)
 
 	node.free()
 	cs.free()

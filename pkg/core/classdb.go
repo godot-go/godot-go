@@ -13,14 +13,18 @@
 //     bind time through the constraint unions in method_bind_typed.go — zero
 //     reflection per call.
 //
-// Fallback contract: a typed bind serves ptrcall dispatch (and virtual
-// dispatch, which is ptrcall-shaped) through its compiled closure; the
-// reflective path remains the varcall (call_func) implementation until the
-// typed varcall closure lands, and the name-string binds keep every
-// signature typeable today. Bind-time validation is identical across both
-// tiers: duplicate-name rejection, the V_ prefix rules, embedding-chain
-// virtual resolution, and the signature gates of validateBindSignature all
-// run before any engine-dependent metadata is allocated.
+// Fallback contract: a typed bind serves both dispatch shapes through compiled
+// closures — ptrcall (and virtual dispatch, which is ptrcall-shaped) and
+// varcall (call_func) — while a name-string bind serves both reflectively.
+// Signatures outside the constraint unions stay name-string-bound by necessity:
+// float32 and Variant parameters (raw-load parity with the reflective decoder),
+// Go string and slice parameters (conversion work), and Object- or Ref-typed
+// parameters, whose decode is per-call instance-binding work in
+// resolveObjectArgument rather than the raw cell load a typed wrapper performs.
+// Bind-time validation is identical across both tiers: duplicate-name
+// rejection, the V_ prefix rules, embedding-chain virtual resolution, and the
+// signature gates of validateBindSignature all run before any engine-dependent
+// metadata is allocated.
 package core
 
 // #include <godot/gdextension_interface.h>

@@ -3,6 +3,7 @@ package core
 import (
 	"encoding/binary"
 	"math"
+	"reflect"
 	"testing"
 	"unsafe"
 
@@ -18,14 +19,14 @@ import (
 // engine cells are synthesized byte arrays and the receiver is a stub
 // GDClass — asserting:
 //   - the instance handoff lands on the handler with the exact concrete *T
-//     (the selfTyped itab assert plus the self() one-liner),
+//     (the selfTyped itab assert plus the Self() one-liner),
 //   - each argument slot is a raw load of the planted cell bytes,
 //   - value-family returns raw-store their bytes into the engine ret cell,
 //   - void-return wrappers leave the ret cell untouched,
 //   - static binds receive no receiver and arity 0 works at both edges.
 //
 // The receivers here satisfy the same contract bound user classes will
-// (one self() one-liner next to the GetClassName/GetParentClassName pair
+// (one Self() one-liner next to the GetClassName/GetParentClassName pair
 // they already write); a misbound closure fails loudly on the itab check.
 // Engine-tier parity (typed-vs-reflective through a real dispatch) is the
 // task 2.2 fixture tier, run under GODOT.
@@ -50,6 +51,10 @@ func (s *spotStubClass) AsGDExtensionTypePtr() GDExtensionTypePtr { return nil }
 func (s *spotStubClass) AsGDExtensionConstTypePtr() GDExtensionConstTypePtr {
 	return nil
 }
+
+// Triple is a pure int64→int64 method bound both ways (typed closure and
+// reflective method expression) in the task 4.2 byte-parity test.
+func (s *spotStubClass) Triple(n int64) int64 { return n * 3 }
 
 func TestTypedWrapperInstanceValueRet(t *testing.T) {
 	stub := &spotStubClass{}
@@ -276,5 +281,95 @@ func TestTypedWrapperStaticCopyRetArity0(t *testing.T) {
 
 	if binary.LittleEndian.Uint64(ret[:]) != 0xABCD {
 		t.Fatalf("ret %v, want 0xABCD", ret)
+	}
+}
+
+// TestPtrcallSelectsTypedDispatch pins the task 4.1 fallback seam in
+// GoMethodMetadata.Ptrcall (the single entry both the ptrcall callback and the
+// virtual callback reach). A metadata carrying a compiled typedDispatch closure
+// dispatches through it with zero reflection; the reflective Func is left as
+// the zero reflect.Value, so a closure that returns the right value also proves
+// the reflective body (which would panic on that zero Value) was never entered.
+func TestPtrcallSelectsTypedDispatch(t *testing.T) {
+	stub := &spotStubClass{}
+	var arg [8]byte
+	binary.LittleEndian.PutUint64(arg[:], 7)
+	args := []GDExtensionConstTypePtr{GDExtensionConstTypePtr(&arg[0])}
+	var ret [8]byte
+
+	md := &GoMethodMetadata{
+		typedDispatch: wrapPtrcallValue1[spotStubClass, *spotStubClass](
+			func(self *spotStubClass, n int64) int64 { return n * 3 }),
+	}
+	md.Ptrcall(stub, args, GDExtensionUninitializedTypePtr(&ret[0]))
+
+	if got := binary.LittleEndian.Uint64(ret[:]); got != 21 {
+		t.Fatalf("typed dispatch produced %d, want 21 (7*3 through the closure)", got)
+	}
+}
+
+// TestPtrcallFallsBackWhenDispatchNil pins the other half of the seam: with no
+// typedDispatch closure (the name-string path, or an untypeable signature) the
+// call runs the reflective body. The unconfigured metadata panics inside that
+// body, which is exactly the path the typed closure would have bypassed — so a
+// panic proves the fallback fired rather than a nil closure being invoked.
+func TestPtrcallFallsBackWhenDispatchNil(t *testing.T) {
+	stub := &spotStubClass{}
+	var arg [8]byte
+	binary.LittleEndian.PutUint64(arg[:], 7)
+	args := []GDExtensionConstTypePtr{GDExtensionConstTypePtr(&arg[0])}
+	var ret [8]byte
+
+	md := &GoMethodMetadata{} // typedDispatch nil
+	_, fired := recoverFatal(func() {
+		md.Ptrcall(stub, args, GDExtensionUninitializedTypePtr(&ret[0]))
+	})
+	if !fired {
+		t.Fatal("nil typedDispatch must fall through to the reflective path")
+	}
+}
+
+// TestPtrcallTypedReflectiveByteParity is task 4.2: the same Go method bound
+// through the typed closure and through the reflective (name-string) body must
+// write byte-identical bytes to the engine return cell. int64 is the cleanest
+// witness — both paths raw-store a native cell with no engine call and no
+// reference effect — so the comparison is a pure Go byte diff, engine-free.
+func TestPtrcallTypedReflectiveByteParity(t *testing.T) {
+	// The reflective body encodes returns through the primitive encoder
+	// globals, which VariantInitBindings normally primes at engine startup.
+	// The int64 reflect encode closure is a raw native-cell store (no engine
+	// pointer dereferenced), so priming through the unit-test seam keeps this
+	// parity check engine-free.
+	InitPrimativeTypeEncodersForUnitTests()
+
+	stub := &spotStubClass{}
+	var arg [8]byte
+	binary.LittleEndian.PutUint64(arg[:], 7)
+	gdArgs := []GDExtensionConstTypePtr{GDExtensionConstTypePtr(&arg[0])}
+
+	var typedRet, reflectRet [8]byte
+
+	typedMD := &GoMethodMetadata{
+		typedDispatch: wrapPtrcallValue1[spotStubClass, *spotStubClass]((*spotStubClass).Triple),
+	}
+	typedMD.Ptrcall(stub, gdArgs, GDExtensionUninitializedTypePtr(&typedRet[0]))
+
+	reflectMD := &GoMethodMetadata{
+		ClassName:        "SpotStub",
+		GdMethodName:     "triple",
+		GoMethodName:     "Triple",
+		Func:             reflect.ValueOf((*spotStubClass).Triple),
+		GoReturnType:     reflect.TypeFor[int64](),
+		GoReturnStyle:    ValueReturnStyle,
+		GoArgumentTypes:  []reflect.Type{reflect.TypeFor[int64]()},
+		gdeArgumentTypes: []GDExtensionVariantType{GDEXTENSION_VARIANT_TYPE_INT},
+	}
+	reflectMD.Ptrcall(stub, gdArgs, GDExtensionUninitializedTypePtr(&reflectRet[0]))
+
+	if typedRet != reflectRet {
+		t.Fatalf("typed dispatch %x != reflective dispatch %x", typedRet, reflectRet)
+	}
+	if binary.LittleEndian.Uint64(typedRet[:]) != 21 {
+		t.Fatalf("both paths produced %d, want 21", binary.LittleEndian.Uint64(typedRet[:]))
 	}
 }

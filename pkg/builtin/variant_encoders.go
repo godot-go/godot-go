@@ -149,6 +149,35 @@ func initPrimativeTypeEncoders() {
 	GoStringUtf8Encoder = createGoStringEncoder(Utf8GoStringFormat)
 	GoStringLatin1Encoder = createGoStringEncoder(Latin1GoStringFormat)
 
-	ObjectEncoder = CreateObjectEncoder[Object]()
+	VariantEncoder = createVariantEncoder()
+}
+
+// InitPrimativeTypeEncodersForUnitTests primes the primitive encoder globals
+// for tests that drive the reflective dispatch path without a live engine. The
+// creators capture engine call pointers through the ffi CallFunc_ wrappers,
+// which read the FFI table at call time, so construction never dereferences
+// them; only encodes/decodes that actually cross into the engine (variant
+// constructors, String chars) would fault if invoked here.
+//
+// The Object encoder is deliberately excluded: its creator requires resolved
+// variant-constructor pointers and panics without a live engine, so its global
+// stays nil exactly as in any engine-free run. VariantInitBindings remains the
+// full engine-time initializer.
+func InitPrimativeTypeEncodersForUnitTests() {
+	UintEncoder = createNumberEncoder[uint, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	IntEncoder = createNumberEncoder[int, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint8Encoder = createNumberEncoder[uint8, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int8Encoder = createNumberEncoder[int8, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint16Encoder = createNumberEncoder[uint16, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int16Encoder = createNumberEncoder[int16, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint32Encoder = createNumberEncoder[uint32, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int32Encoder = createNumberEncoder[int32, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Uint64Encoder = createNumberEncoder[uint64, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Int64Encoder = createNumberEncoder[int64, int64](GDEXTENSION_VARIANT_TYPE_INT)
+	Float32Encoder = createNumberEncoder[float32, float64](GDEXTENSION_VARIANT_TYPE_FLOAT)
+	Float64Encoder = createNumberEncoder[float64, float64](GDEXTENSION_VARIANT_TYPE_FLOAT)
+	BoolEncoder = createBoolEncoder[bool, uint8]()
+	GoStringUtf8Encoder = createGoStringEncoder(Utf8GoStringFormat)
+	GoStringLatin1Encoder = createGoStringEncoder(Latin1GoStringFormat)
 	VariantEncoder = createVariantEncoder()
 }

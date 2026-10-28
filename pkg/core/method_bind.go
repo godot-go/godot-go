@@ -577,6 +577,16 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 
 // Ptrcall is called by GDScript to call into Go
 func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypePtr, rReturn GDExtensionUninitializedTypePtr) {
+	// Typed binds (typed-method-dispatch) carry a compiled closure that serves
+	// this call with zero reflection; the virtual callback reaches the same
+	// seam through this method, so one guard covers both dispatch entry points.
+	// A nil closure means the bind came from the name-string path (or a
+	// signature outside the constraint unions) and runs reflectively below,
+	// byte-for-byte unchanged.
+	if md.typedDispatch != nil {
+		md.typedDispatch(inst, gdArgs, rReturn)
+		return
+	}
 	exepctedArgTypes := md.GoArgumentTypes
 	args := reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst, gdArgs, exepctedArgTypes, !md.IsStatic())
 	ret := md.Func.Call(args)

@@ -33,6 +33,25 @@ To debug with `gdb` with `vscode`, it's important to setup the proper `pathSubst
 }
 ```
 
+### Debug GODEBUG Flags
+
+The launcher's `GODEBUG` is deliberately not the set `make test` uses:
+
+- `sbrk=1` grows the Go heap from the program break instead of the runtime's
+  reserved `mmap` arena, so the heap shows up as ordinary process memory in a
+  `gdb` session (the runtime also skips its mmap hint generation in this mode).
+  `sbrk` is implemented on Linux only; other platforms silently fall back to
+  `mmap`. The headless test run leaves it out because nothing there inspects the
+  heap.
+- `cgocheck=0` relaxes the cgo pointer-passing checks that the test run keeps on
+  with `cgocheck=1`.
+- `asyncpreemptoff=1` keeps the runtime from preempting goroutines at
+  signal-driven safe points. The test run dropped it once async preemption was
+  validated to coexist with Godot; a debug session keeps it for deterministic
+  stop points.
+- `gctrace=1` prints GC cycles to stderr and `tracebackancestors=5` retains the
+  last five goroutine creation stacks per traceback; both are diagnostics only.
+
 ### Path Substitution
 
 The path substitions entries are required if you want your breakpoints to work in vscode. The paths can be determined by inspecting the compiled library files:

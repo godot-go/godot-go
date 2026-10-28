@@ -50,6 +50,15 @@ type GoMethodMetadata struct {
 	gdeArgumentsMetadata   []GDExtensionClassMethodArgumentMetadata
 	gdeArgumentTypes       []GDExtensionVariantType
 	gdeDefaultArgumentPtrs []GDExtensionVariantPtr
+	// typedDispatch, when non-nil, serves ptrcall dispatch through the
+	// compiled closure built at bind time from a typed bind overload
+	// (typed-method-dispatch D1): zero reflection per call. The reflective
+	// body stays authoritative for varcall (call_func) until the typed
+	// varcall closure lands, and for binds whose signature the constraint
+	// unions cannot type — those binds leave this nil and dispatch fully
+	// reflectively. Same-package engine callbacks consult this first
+	// (task 4.1 wiring).
+	typedDispatch ptrcallFn
 	// Lifecycle-managed StringName objects for PropertyInfo structs.
 	// These persist for the lifetime of GoMethodMetadata to prevent
 	// dangling pointers in GDExtensionPropertyInfo.name/class_name fields.

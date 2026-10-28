@@ -19,7 +19,7 @@ import (
 // instance binding, value return
 func wrapPtrcallValue0[TImpl any, S selfTyped[TImpl], R retValueSlot](fn func(*TImpl) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self)
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -28,7 +28,7 @@ func wrapPtrcallValue0[TImpl any, S selfTyped[TImpl], R retValueSlot](fn func(*T
 // instance binding, void return
 func wrapPtrcallNone0[TImpl any, S selfTyped[TImpl]](fn func(*TImpl)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self)
 	}
 }
@@ -52,7 +52,7 @@ func wrapStaticPtrcallNone0(fn func()) ptrcallFn {
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet0[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](fn func(*TImpl) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self)
 		ret.RetEncodeInto(retPtr)
 	}
@@ -69,7 +69,7 @@ func wrapStaticPtrcallCopyRet0[R RetCopyEncodable](fn func() R) ptrcallFn {
 // instance binding, value return
 func wrapPtrcallValue1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R retValueSlot](fn func(*TImpl, A1) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -78,7 +78,7 @@ func wrapPtrcallValue1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R retValueS
 // instance binding, void return
 func wrapPtrcallNone1[TImpl any, S selfTyped[TImpl], A1 nativeSlot](fn func(*TImpl, A1)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]))
 	}
 }
@@ -102,7 +102,7 @@ func wrapStaticPtrcallNone1[A1 nativeSlot](fn func(A1)) ptrcallFn {
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -119,7 +119,7 @@ func wrapStaticPtrcallCopyRet1[A1 nativeSlot, R RetCopyEncodable](fn func(A1) R)
 // instance binding, value return
 func wrapPtrcallValue2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -128,7 +128,7 @@ func wrapPtrcallValue2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot](fn func(*TImpl, A1, A2)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]))
 	}
 }
@@ -152,7 +152,7 @@ func wrapStaticPtrcallNone2[A1 nativeSlot, A2 nativeSlot](fn func(A1, A2)) ptrca
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -169,7 +169,7 @@ func wrapStaticPtrcallCopyRet2[A1 nativeSlot, A2 nativeSlot, R RetCopyEncodable]
 // instance binding, value return
 func wrapPtrcallValue3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -178,7 +178,7 @@ func wrapPtrcallValue3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot](fn func(*TImpl, A1, A2, A3)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]))
 	}
 }
@@ -202,7 +202,7 @@ func wrapStaticPtrcallNone3[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot](fn func
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -219,7 +219,7 @@ func wrapStaticPtrcallCopyRet3[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R Re
 // instance binding, value return
 func wrapPtrcallValue4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -228,7 +228,7 @@ func wrapPtrcallValue4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot](fn func(*TImpl, A1, A2, A3, A4)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]))
 	}
 }
@@ -252,7 +252,7 @@ func wrapStaticPtrcallNone4[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -269,7 +269,7 @@ func wrapStaticPtrcallCopyRet4[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 // instance binding, value return
 func wrapPtrcallValue5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -278,7 +278,7 @@ func wrapPtrcallValue5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]))
 	}
 }
@@ -302,7 +302,7 @@ func wrapStaticPtrcallNone5[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -319,7 +319,7 @@ func wrapStaticPtrcallCopyRet5[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 // instance binding, value return
 func wrapPtrcallValue6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -328,7 +328,7 @@ func wrapPtrcallValue6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]))
 	}
 }
@@ -352,7 +352,7 @@ func wrapStaticPtrcallNone6[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -369,7 +369,7 @@ func wrapStaticPtrcallCopyRet6[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 // instance binding, value return
 func wrapPtrcallValue7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -378,7 +378,7 @@ func wrapPtrcallValue7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]))
 	}
 }
@@ -402,7 +402,7 @@ func wrapStaticPtrcallNone7[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -419,7 +419,7 @@ func wrapStaticPtrcallCopyRet7[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 // instance binding, value return
 func wrapPtrcallValue8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -428,7 +428,7 @@ func wrapPtrcallValue8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]))
 	}
 }
@@ -452,7 +452,7 @@ func wrapStaticPtrcallNone8[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -469,7 +469,7 @@ func wrapStaticPtrcallCopyRet8[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 // instance binding, value return
 func wrapPtrcallValue9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -478,7 +478,7 @@ func wrapPtrcallValue9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
 // instance binding, void return
 func wrapPtrcallNone9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]))
 	}
 }
@@ -502,7 +502,7 @@ func wrapStaticPtrcallNone9[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -519,7 +519,7 @@ func wrapStaticPtrcallCopyRet9[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 // instance binding, value return
 func wrapPtrcallValue10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -528,7 +528,7 @@ func wrapPtrcallValue10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeS
 // instance binding, void return
 func wrapPtrcallNone10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]))
 	}
 }
@@ -552,7 +552,7 @@ func wrapStaticPtrcallNone10[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -569,7 +569,7 @@ func wrapStaticPtrcallCopyRet10[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 // instance binding, value return
 func wrapPtrcallValue11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -578,7 +578,7 @@ func wrapPtrcallValue11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeS
 // instance binding, void return
 func wrapPtrcallNone11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]))
 	}
 }
@@ -602,7 +602,7 @@ func wrapStaticPtrcallNone11[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -619,7 +619,7 @@ func wrapStaticPtrcallCopyRet11[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 // instance binding, value return
 func wrapPtrcallValue12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -628,7 +628,7 @@ func wrapPtrcallValue12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeS
 // instance binding, void return
 func wrapPtrcallNone12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]))
 	}
 }
@@ -652,7 +652,7 @@ func wrapStaticPtrcallNone12[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -669,7 +669,7 @@ func wrapStaticPtrcallCopyRet12[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 // instance binding, value return
 func wrapPtrcallValue13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -678,7 +678,7 @@ func wrapPtrcallValue13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeS
 // instance binding, void return
 func wrapPtrcallNone13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]))
 	}
 }
@@ -702,7 +702,7 @@ func wrapStaticPtrcallNone13[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -719,7 +719,7 @@ func wrapStaticPtrcallCopyRet13[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 // instance binding, value return
 func wrapPtrcallValue14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -728,7 +728,7 @@ func wrapPtrcallValue14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeS
 // instance binding, void return
 func wrapPtrcallNone14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]))
 	}
 }
@@ -752,7 +752,7 @@ func wrapStaticPtrcallNone14[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -769,7 +769,7 @@ func wrapStaticPtrcallCopyRet14[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 // instance binding, value return
 func wrapPtrcallValue15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -778,7 +778,7 @@ func wrapPtrcallValue15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeS
 // instance binding, void return
 func wrapPtrcallNone15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]))
 	}
 }
@@ -802,7 +802,7 @@ func wrapStaticPtrcallNone15[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]))
 		ret.RetEncodeInto(retPtr)
 	}
@@ -819,7 +819,7 @@ func wrapStaticPtrcallCopyRet15[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 // instance binding, value return
 func wrapPtrcallValue16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]), loadTypedSlot[A16](args[15]))
 		storeTypedRet[R]((GDExtensionTypePtr)(retPtr), ret)
 	}
@@ -828,7 +828,7 @@ func wrapPtrcallValue16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeS
 // instance binding, void return
 func wrapPtrcallNone16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16)) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]), loadTypedSlot[A16](args[15]))
 	}
 }
@@ -852,7 +852,7 @@ func wrapStaticPtrcallNone16[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 // never a raw store of a borrowed handle)
 func wrapPtrcallCopyRet16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		self := inst.(S).self()
+		self := inst.(S).Self()
 		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]), loadTypedSlot[A16](args[15]))
 		ret.RetEncodeInto(retPtr)
 	}

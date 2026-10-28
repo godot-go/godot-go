@@ -44,7 +44,7 @@ func wrapPtrcallValue2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSl
     fn func(*TImpl, A1, A2) R,
 ) ptrcallFn {
     return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-        self := inst.(S).self()
+        self := inst.(S).Self()
         out := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]))
         storeTypedRet[R](retPtr, out)
     }
@@ -57,17 +57,17 @@ The instance handoff needs one non-obvious Go-generics fact, pinned empirically:
 // pkg/core/method_bind_typed.go
 type selfTyped[T any] interface {
     GDClass
-    self() *T
+    Self() *T
 }
 ```
 
-— asserting `inst.(S)` (an interface target, always legal) and taking `self()`'s concrete `*T`. A bound class carries one one-liner, exactly alongside the `GetClassName`/`GetParentClassName` pair the API already requires per class and outside the "pure library" boundary (users write their own class code; no user-project codegen step exists):
+— asserting `inst.(S)` (an interface target, always legal) and taking `Self()`'s concrete `*T`. The method is exported because a bound class lives in the user's package and a Go method with an unexported name does not satisfy an interface declared in another package. A bound class carries one one-liner, exactly alongside the `GetClassName`/`GetParentClassName` pair the API already requires per class and outside the "pure library" boundary (users write their own class code; no user-project codegen step exists):
 
 ```go
-func (c *Example) self() *Example { return c }
+func (c *Example) Self() *Example { return c }
 ```
 
-The assertion is a single itab check and `self()` a return; S is not inferable from the handler alone, so the typed bind instantiates with the class pointer and its self-typed twin (`wrapPtrcallValue2[Example, *Example]`, how the spot test drives it) — the bind-overload shape in task 3.1 supplies both parameters to keep user call sites one-argument-deep. A misbound dynamic type fails loudly on the itab check.
+The assertion is a single itab check and `Self()` a return; S is not inferable from the handler alone, so the typed bind instantiates with the class pointer and its self-typed twin (`wrapPtrcallValue2[Example, *Example]`, how the spot test drives it) — the bind-overload shape in task 3.1 supplies both parameters to keep user call sites one-argument-deep. A misbound dynamic type fails loudly on the itab check.
 
 Return encoding has exactly two families, chosen at bind time by the parameter type: `retValueSlot` (native-width scalars, the vector/geometry builtins, RID, and String — raw store, generic, no fan-out; membership pinned to the audited matrix below) and the copy-constructor returns (StringName, NodePath, Callable, Signal, Array, Dictionary, every Packed* — engine copy constructor through per-type methods — D3). A distinct generated wrapper family serves the copy-ret shape. Arity ceiling 16, mirroring the widest signatures the engine's own method metadata declares; above the ceiling or for any parameter type outside the constraint unions, the bind stores no closure and the reflective fallback serves it (spec: "Untypeable signatures fall back without behavior change"). The generated wrappers are plain `.gen.go` files — the same convention as all other generated surfaces in this repo.
 
@@ -148,4 +148,7 @@ Notification, property-list, property-get/set, and revert dispatch are per-class
 ## Open Questions
 
 - Arity ceiling value (16 proposed) — confirm against the widest virtual surfaces actually catalogued for user classes before generation; narrowing requires only regenerating.
-- Final names for the typed overloads (e.g. `ClassDBBindValueMethod` / `ClassDBBindCopyRetMethod` for the value-return and copy-constructor-return families) — cosmetic, decided during implementation.
+
+Resolved during implementation:
+
+- Typed overload names are `ClassDBBind{Value,CopyRet}MethodN` for instance binds, with `Static`/`Virtual` inserted after `ClassDBBind` for the static and virtual shapes (arity `N` in the name, matching the generated wrapper families). `Self()` (not `self()`) is the `selfTyped` method — a bound class lives in the user's package and an unexported method cannot satisfy a core-declared interface across packages.

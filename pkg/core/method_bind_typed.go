@@ -38,22 +38,24 @@ type ptrcallFn func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExten
 // GDClass interface value whose dynamic type is the bound class's own *T; Go
 // generics forbid asserting an interface value to *T (pointer to a type
 // parameter) directly, so the wrapper asserts to the constraint-carried S
-// instead — a compile-time-provable interface whose self() returns exactly
-// the *T the handler expects. The assertion is a single itab check and self()
+// instead — a compile-time-provable interface whose Self() returns exactly
+// the *T the handler expects. The assertion is a single itab check and Self()
 // a one-line method, so this adds no allocation and no reflection anywhere
 // on the dispatch path.
 //
 // Every bound user class carries the same one-liner it already carries for
 // GetClassName/GetParentClassName (pure-library route: no codegen step):
 //
-//	func (c *Example) self() *Example { return c }
+//	func (c *Example) Self() *Example { return c }
 //
-// A class with an incompatible pre-existing self() fails the constraint
-// loudly at its first typed bind, mirroring how shape mismatches already
-// surface at registration today.
+// Self() is exported because a bound class lives in the user's package, and a
+// Go method with an unexported name does not satisfy an interface declared in
+// another package. A class with an incompatible pre-existing Self() fails the
+// constraint loudly at its first typed bind, mirroring how shape mismatches
+// already surface at registration today.
 type selfTyped[T any] interface {
 	GDClass
-	self() *T
+	Self() *T
 }
 
 type varcallFn func(inst GDClass, args []Variant) (Variant, error)

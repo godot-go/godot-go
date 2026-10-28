@@ -34,8 +34,8 @@ type spotStubClass struct {
 	owner *GodotObject
 }
 
-// self is the selfTyped one-liner the wrapper contract requires.
-func (s *spotStubClass) self() *spotStubClass { return s }
+// Self is the selfTyped one-liner the wrapper contract requires.
+func (s *spotStubClass) Self() *spotStubClass { return s }
 
 func (s *spotStubClass) Destroy()                                     {}
 func (s *spotStubClass) GetGodotObjectOwner() *GodotObject            { return s.owner }

@@ -16,6 +16,9 @@ var wrappersText string
 //go:embed ret_encoders.go.tmpl
 var retEncodersText string
 
+//go:embed binds.go.tmpl
+var bindsText string
+
 type templateData struct {
 	ArityRange []int
 }
@@ -48,14 +51,17 @@ var retEncoderTypes = []retEncoderType{
 	{"PackedColorArray", "PackedColorArrayCopyConstructor"},
 }
 
-// Generate runs both typed-dispatch emissions in the project rooted at
-// projectPath: the ptrcall wrapper family for pkg/core and the copy-return
-// encoder methods for pkg/builtin.
+// Generate runs every typed-dispatch emission in the project rooted at
+// projectPath: the ptrcall wrapper family for pkg/core, the copy-return
+// encoder methods for pkg/builtin, and the typed bind overloads for pkg/core.
 func Generate(projectPath string) error {
 	if err := generateWrappers(projectPath); err != nil {
 		return err
 	}
-	return generateRetEncoders(projectPath)
+	if err := generateRetEncoders(projectPath); err != nil {
+		return err
+	}
+	return generateBinds(projectPath)
 }
 
 // generateWrappers renders wrappers.go.tmpl and writes pkg/core/wrappers.gen.go.
@@ -125,6 +131,52 @@ func generateRetEncoders(projectPath string) error {
 	}
 
 	filename := filepath.Join(projectPath, "pkg", "builtin", "typed_ret_encoders.gen.go")
+
+	f, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	_, err = f.Write(formatted)
+
+	return err
+}
+
+// generateBinds renders binds.go.tmpl and writes pkg/core/typed_binds.gen.go,
+// sharing the wrapper template's arity funcmap.
+func generateBinds(projectPath string) error {
+	tmpl, err := template.New("typed_binds.gen.go").Funcs(template.FuncMap{
+		"counts": func(n int) []int {
+			out := make([]int, n)
+			for i := range out {
+				out[i] = i
+			}
+			return out
+		},
+		"inc": func(i int) int { return i + 1 },
+	}).Parse(bindsText)
+	if err != nil {
+		return err
+	}
+
+	arity := 16
+	data := templateData{ArityRange: make([]int, 0, arity+1)}
+	for i := 0; i <= arity; i++ {
+		data.ArityRange = append(data.ArityRange, i)
+	}
+
+	var b bytes.Buffer
+	if err := tmpl.Execute(&b, data); err != nil {
+		return err
+	}
+
+	formatted, err := format.Source(b.Bytes())
+	if err != nil {
+		return fmt.Errorf("format generated binds: %w", err)
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "core", "typed_binds.gen.go")
 
 	f, err := os.Create(filename)
 	if err != nil {

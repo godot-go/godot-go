@@ -14,8 +14,8 @@
 
 ## 3. Typed registration overloads
 
-- [ ] 3.1 Add typed overloads to `pkg/core/classdb.go` accepting method expressions for instance/static/virtual binds; they build the compiled closure at bind time and reuse ALL existing validation (duplicate-name rejection, `V_` prefix rules, embedding-chain virtual resolution); verify unit tests cover validation parity with the name-string path, and document the typed API + fallback contract in the `classdb.go` package doc
-- [ ] 3.2 Add a compile-rejection fixture (testdata package + `go test` harness asserting build failure) proving a mismatched-handler bind via typed overload does not compile; verify the fixture fails without the fix and passes with it
+- [x] 3.1 Add typed overloads to `pkg/core/classdb.go` accepting method expressions for instance/static/virtual binds; they build the compiled closure at bind time and reuse ALL existing validation (duplicate-name rejection, `V_` prefix rules, embedding-chain virtual resolution); verify unit tests cover validation parity with the name-string path, and document the typed API + fallback contract in the `classdb.go` package doc
+- [x] 3.2 Add a compile-rejection fixture (testdata package + `go test` harness asserting build failure) proving a mismatched-handler bind via typed overload does not compile; verify the fixture fails without the fix and passes with it
 
 ## 4. Wire ptrcall and virtual dispatch to compiled closures
 

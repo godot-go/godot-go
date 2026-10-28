@@ -28,6 +28,7 @@ func _ready():
 	test_ptrcall_object_decode(example)
 	test_user_defined_object_args(example)
 	test_varcall_arg_rejection(example)
+	test_compiled_dispatch_allocs(example)
 	test_property_hints(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
@@ -598,6 +599,14 @@ func test_suite(i: int, example: Example):
 
 func _on_Example_custom_signal(signal_name, value):
 	custom_signal_emitted = [signal_name, value]
+
+# Compiled-dispatch allocation budget (openspec: typed-method-dispatch task
+# 7.2). The Go side drives the registered typed bindings through
+# testing.AllocsPerRun and prints one line per shape; a breach returns a
+# negative code. The reflective twin probe must measure above the compiled
+# caps for the assertion to keep its falsification power.
+func test_compiled_dispatch_allocs(example: Example):
+	assert_equal(example.test_compiled_dispatch_allocs(), 1)
 
 # Property hint metadata tests (openspec: support-property-hints). Registers
 # hinted properties on Example in Go and reads them back through the engine.

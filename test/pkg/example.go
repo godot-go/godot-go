@@ -617,6 +617,64 @@ func (e *Example) GetNotificationCodes() PackedInt32Array {
 	return arr
 }
 
+// Allocation-budget probe handlers (typed-method-dispatch task 7.2, driven by
+// test/pkg/dispatch_alloc_budget_tests.go). Both twins run the same tiny
+// arithmetic with no side effects; only the bind differs:
+//
+//   - AllocProbeSum* is bound through the typed overload, so its ptrcall and
+//     varcall paths serve through compiled closures.
+//   - AllocProbeSum*Reflective is bound through the name-string API, so the
+//     same call shape dispatches reflectively.
+//
+// The budget fixture asserts the compiled path stays at its allocation cap
+// and the reflective twins measure strictly above it, proving the budget can
+// actually detect reflect machinery on the dispatch path.
+func (e *Example) AllocProbeSum0() int64 {
+	return 7
+}
+
+func (e *Example) AllocProbeSum2(a, b int64) int64 {
+	return a + b
+}
+
+func (e *Example) AllocProbeSum5(a, b, c, d, f int64) int64 {
+	return a + b + c + d + f
+}
+
+func (e *Example) AllocProbeSum0Reflective() int64 {
+	return 7
+}
+
+func (e *Example) AllocProbeSum2Reflective(a, b int64) int64 {
+	return a + b
+}
+
+func (e *Example) AllocProbeSum5Reflective(a, b, c, d, f int64) int64 {
+	return a + b + c + d + f
+}
+
+// V_Example_AllocProbeZero is the virtual-shape budget probe: registered with
+// the virtual flag like the engine-reserved virtuals, dispatched through the
+// same compiled closures.
+func (e *Example) V_Example_AllocProbeZero() int64 {
+	return 3
+}
+
+// AllocProbeArrayArg takes a container argument and does no engine work: the
+// budget cells around it attribute the argument-decode legs only, with no
+// handler-side allocations to subtract.
+func (e *Example) AllocProbeArrayArg(arr PackedInt64Array) int64 {
+	return 1
+}
+
+// AllocProbeEchoStringNameArg is the copy-return budget probe with an
+// allocation-neutral body: the echo returns the borrow it received, so the
+// only per-call work outside dispatch is the copy-construct encode and the
+// echo-classified release decision.
+func (e *Example) AllocProbeEchoStringNameArg(name StringName) StringName {
+	return name
+}
+
 func (e *Example) V_Example_Set(name string, value Variant) bool {
 	if strings.HasPrefix(name, "dproperty") {
 		tokens := strings.SplitN(name, "_", 2)
@@ -1712,6 +1770,21 @@ func RegisterClassExample() {
 		ClassDBBindCopyRetMethod0(t, (*Example).TestArray, "test_array", nil, nil)
 		ClassDBBindValueMethod1(t, (*Example).TestTArrayArg, "test_tarray_arg", []string{"array"}, nil)
 		ClassDBBindCopyRetMethod0(t, (*Example).TestTArray, "test_tarray", nil, nil)
+		// Allocation-budget probes (task 7.2): the same signatures bound
+		// compiled vs reflective so the budget fixture measures both, plus
+		// the virtual shape.
+		ClassDBBindValueMethod0(t, (*Example).AllocProbeSum0, "alloc_probe_sum0", nil, nil)
+		ClassDBBindValueMethod2(t, (*Example).AllocProbeSum2, "alloc_probe_sum2", []string{"a", "b"}, nil)
+		ClassDBBindValueMethod5(t, (*Example).AllocProbeSum5, "alloc_probe_sum5",
+			[]string{"a", "b", "c", "d", "f"}, nil)
+		ClassDBBindMethod(t, "AllocProbeSum0Reflective", "alloc_probe_sum0_reflective", nil, nil)
+		ClassDBBindMethod(t, "AllocProbeSum2Reflective", "alloc_probe_sum2_reflective", []string{"a", "b"}, nil)
+		ClassDBBindMethod(t, "AllocProbeSum5Reflective", "alloc_probe_sum5_reflective",
+			[]string{"a", "b", "c", "d", "f"}, nil)
+		ClassDBBindVirtualValueMethod0(t, (*Example).V_Example_AllocProbeZero, "alloc_probe_zero", nil, nil)
+		ClassDBBindValueMethod1(t, (*Example).AllocProbeArrayArg, "alloc_probe_array_arg", []string{"array"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).AllocProbeEchoStringNameArg, "alloc_probe_echo_sn", []string{"name"}, nil)
+		ClassDBBindMethod(t, "TestCompiledDispatchAllocs", "test_compiled_dispatch_allocs", nil, nil)
 		ClassDBBindCopyRetMethod0(t, (*Example).TestDictionary, "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)

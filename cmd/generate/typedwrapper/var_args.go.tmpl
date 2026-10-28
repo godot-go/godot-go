@@ -55,8 +55,8 @@ type varArgSlot interface {
 // varRetSlot is the constraint family of varcall return values the typed
 // wrappers construct into a Variant directly: the retValueSlot family plus
 // float32 and Go string, with no destroy-source step — these members own
-// nothing. Copy-constructor return types keep the reflective path until the
-// borrow-echo-aware typed varcall encode (task 5.2).
+// nothing. Copy-constructor return types have their own echo-aware varcall
+// closure family (ret_release.gen.go, design D5).
 type varRetSlot interface {
 {{- range .Types }}{{ if .RetEncoder }}{{ if .RetFirst }}
 	{{ if .Kind }}~{{ end }}{{ .Type }}{{ else }} |

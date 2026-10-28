@@ -9,9 +9,7 @@ package core
 // its compiled ptrcall and varcall closures at bind time and hands the erased
 // function values to the shared validation core classDBBindTyped, which
 // applies the name-string path's gates unchanged. Signatures outside the
-// constraint unions (and copy-constructor varcall returns pending the
-// borrow-echo work, which keep a nil varcall closure) fall back to the
-// reflective bodies.
+// constraint unions fall back to the reflective bodies.
 
 import (
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -31,10 +29,10 @@ func ClassDBBindValueMethod{{ $n }}[TImpl any, S selfTyped[TImpl]{{ range $i, $_
 		wrapVarcallValue{{ $n }}[TImpl, S, {{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod{{ $n }}[TImpl any, S selfTyped[TImpl]{{ range $i, $_ := counts $n }}, A{{ inc $i }} nativeSlot{{ end }}, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl{{ range $i, $_ := counts $n }}, A{{ inc $i }}{{ end }}) R,
@@ -43,7 +41,8 @@ func ClassDBBindCopyRetMethod{{ $n }}[TImpl any, S selfTyped[TImpl]{{ range $i, 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet{{ $n }}[TImpl, S, {{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn), nil)
+		wrapPtrcallCopyRet{{ $n }}[TImpl, S, {{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn),
+		wrapVarcallCopyRet{{ $n }}[TImpl, S, {{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -68,7 +67,8 @@ func ClassDBBindStaticCopyRetMethod{{ $n }}[{{ range $i, $_ := counts $n }}A{{ i
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn), nil)
+		wrapStaticPtrcallCopyRet{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn),
+		wrapStaticVarcallCopyRet{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -95,7 +95,8 @@ func ClassDBBindVirtualCopyRetMethod{{ $n }}[TImpl any, S selfTyped[TImpl]{{ ran
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet{{ $n }}[TImpl, S, {{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn), nil)
+		wrapPtrcallCopyRet{{ $n }}[TImpl, S, {{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn),
+		wrapVarcallCopyRet{{ $n }}[TImpl, S, {{ range $i, $_ := counts $n }}A{{ inc $i }}, {{ end }}R](fn, defaultValues, gdMethodName))
 }
 
 {{ end }}
@@ -114,6 +115,21 @@ func ClassDBBindVariadicValueMethod[TImpl any, S selfTyped[TImpl], R varRetSlot]
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT|METHOD_FLAG_VARARG, argNames, defaultValues,
 		nil, wrapVarcallVariadicValue[TImpl, S, R](fn))
+}
+
+// instance bind, variadic copy-constructor return family. No echo
+// suppression: the handler receives raw Variants and holds no borrows, so
+// the varcall release matrix (StringName/NodePath destroy their source,
+// containers no return-path release) applies unconditionally.
+func ClassDBBindVariadicCopyRetMethod[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](
+	t S,
+	fn func(*TImpl, ...Variant) R,
+	gdMethodName string,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT|METHOD_FLAG_VARARG, argNames, defaultValues,
+		nil, wrapVarcallVariadicCopyRet[TImpl, S, R](fn))
 }
 
 // instance bind, variadic void-return family
@@ -138,6 +154,18 @@ func ClassDBBindStaticVariadicValueMethod[R varRetSlot](
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC|METHOD_FLAG_VARARG, argNames, defaultValues,
 		nil, wrapStaticVarcallVariadicValue[R](fn))
+}
+
+// static bind, variadic copy-constructor return family
+func ClassDBBindStaticVariadicCopyRetMethod[R RetCopyEncodable](
+	t GDClass,
+	fn func(...Variant) R,
+	gdMethodName string,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC|METHOD_FLAG_VARARG, argNames, defaultValues,
+		nil, wrapStaticVarcallVariadicCopyRet[R](fn))
 }
 
 // static bind, variadic void-return family

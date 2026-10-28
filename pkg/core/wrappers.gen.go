@@ -51,20 +51,35 @@ func wrapStaticPtrcallNone0(fn func()) ptrcallFn {
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet0[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](fn func(*TImpl) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
 		ret := fn(self)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet0[R RetCopyEncodable](fn func() R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn()
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -134,6 +149,57 @@ func wrapStaticVarcallNone0(fn func(), defaultValues []Variant, gdMethodName str
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet0[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](fn func(*TImpl) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		ret := fn(self)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet0[R RetCopyEncodable](fn func() R, defaultValues []Variant, gdMethodName string) varcallFn {
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+		ret := fn()
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R retValueSlot](fn func(*TImpl, A1) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -167,20 +233,45 @@ func wrapStaticPtrcallNone1[A1 nativeSlot](fn func(A1)) ptrcallFn {
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]))
+		a1 := loadTypedSlot[A1](args[0])
+		ret := fn(self, a1)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet1[A1 nativeSlot, R RetCopyEncodable](fn func(A1) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]))
+		a1 := loadTypedSlot[A1](args[0])
+		ret := fn(a1)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -258,6 +349,75 @@ func wrapStaticVarcallNone1[A1 varArgSlot](fn func(A1), defaultValues []Variant,
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet1[TImpl any, S selfTyped[TImpl], A1 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 1, 1-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		ret := fn(self, a1)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet1[A1 varArgSlot, R RetCopyEncodable](fn func(A1) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 1, 1-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		ret := fn(a1)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -291,20 +451,55 @@ func wrapStaticPtrcallNone2[A1 nativeSlot, A2 nativeSlot](fn func(A1, A2)) ptrca
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		ret := fn(self, a1, a2)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet2[A1 nativeSlot, A2 nativeSlot, R RetCopyEncodable](fn func(A1, A2) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		ret := fn(a1, a2)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -398,6 +593,97 @@ func wrapStaticVarcallNone2[A1 varArgSlot, A2 varArgSlot](fn func(A1, A2), defau
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet2[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 2, 2-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		ret := fn(self, a1, a2)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet2[A1 varArgSlot, A2 varArgSlot, R RetCopyEncodable](fn func(A1, A2) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 2, 2-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		ret := fn(a1, a2)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -431,20 +717,65 @@ func wrapStaticPtrcallNone3[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot](fn func
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		ret := fn(self, a1, a2, a3)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet3[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		ret := fn(a1, a2, a3)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -554,6 +885,119 @@ func wrapStaticVarcallNone3[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot](fn func
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet3[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 3, 3-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		ret := fn(self, a1, a2, a3)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet3[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 3, 3-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		ret := fn(a1, a2, a3)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -587,20 +1031,75 @@ func wrapStaticPtrcallNone4[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		ret := fn(self, a1, a2, a3, a4)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet4[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		ret := fn(a1, a2, a3, a4)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -726,6 +1225,141 @@ func wrapStaticVarcallNone4[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varA
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet4[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 4, 4-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		ret := fn(self, a1, a2, a3, a4)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet4[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 4, 4-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		ret := fn(a1, a2, a3, a4)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -759,20 +1393,85 @@ func wrapStaticPtrcallNone5[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		ret := fn(self, a1, a2, a3, a4, a5)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet5[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		ret := fn(a1, a2, a3, a4, a5)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -914,6 +1613,163 @@ func wrapStaticVarcallNone5[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varA
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet5[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 5, 5-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		ret := fn(self, a1, a2, a3, a4, a5)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet5[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 5, 5-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		ret := fn(a1, a2, a3, a4, a5)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -947,20 +1803,95 @@ func wrapStaticPtrcallNone6[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		ret := fn(self, a1, a2, a3, a4, a5, a6)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet6[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		ret := fn(a1, a2, a3, a4, a5, a6)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -1118,6 +2049,185 @@ func wrapStaticVarcallNone6[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varA
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet6[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 6, 6-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		ret := fn(self, a1, a2, a3, a4, a5, a6)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet6[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 6, 6-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		ret := fn(a1, a2, a3, a4, a5, a6)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -1151,20 +2261,105 @@ func wrapStaticPtrcallNone7[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet7[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -1338,6 +2533,207 @@ func wrapStaticVarcallNone7[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varA
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet7[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 7, 7-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet7[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 7, 7-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -1371,20 +2767,115 @@ func wrapStaticPtrcallNone8[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet8[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -1574,6 +3065,229 @@ func wrapStaticVarcallNone8[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varA
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet8[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 8, 8-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet8[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 8, 8-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -1607,20 +3321,125 @@ func wrapStaticPtrcallNone9[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nati
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet9[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -1826,6 +3645,251 @@ func wrapStaticVarcallNone9[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varA
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet9[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 9, 9-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet9[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 9, 9-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -1859,20 +3923,135 @@ func wrapStaticPtrcallNone10[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet10[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -2094,6 +4273,273 @@ func wrapStaticVarcallNone10[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 var
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet10[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 10, 10-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet10[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 10, 10-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -2127,20 +4573,145 @@ func wrapStaticPtrcallNone11[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet11[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -2378,6 +4949,295 @@ func wrapStaticVarcallNone11[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 var
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet11[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 11, 11-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet11[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 11, 11-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -2411,20 +5271,155 @@ func wrapStaticPtrcallNone12[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet12[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -2678,6 +5673,317 @@ func wrapStaticVarcallNone12[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 var
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet12[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 12, 12-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet12[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 12, 12-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -2711,20 +6017,165 @@ func wrapStaticPtrcallNone13[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet13[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -2994,6 +6445,339 @@ func wrapStaticVarcallNone13[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 var
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet13[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 13, 13-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet13[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 13, 13-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -3027,20 +6811,175 @@ func wrapStaticPtrcallNone14[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
+	chk14, _ := newEchoCompare[R]().(func(A14, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		a14 := loadTypedSlot[A14](args[13])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet14[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
+	chk14, _ := newEchoCompare[R]().(func(A14, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		a14 := loadTypedSlot[A14](args[13])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -3326,6 +7265,361 @@ func wrapStaticVarcallNone14[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 var
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet14[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	var chk14 func(A14, R) bool
+	if destroy != nil {
+		chk14, _ = newEchoCompare[R]().(func(A14, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 14, 14-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet14[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	var chk14 func(A14, R) bool
+	if destroy != nil {
+		chk14, _ = newEchoCompare[R]().(func(A14, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 14, 14-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -3359,20 +7653,185 @@ func wrapStaticPtrcallNone15[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
+	chk14, _ := newEchoCompare[R]().(func(A14, R) bool)
+	chk15, _ := newEchoCompare[R]().(func(A15, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		a14 := loadTypedSlot[A14](args[13])
+		a15 := loadTypedSlot[A15](args[14])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet15[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
+	chk14, _ := newEchoCompare[R]().(func(A14, R) bool)
+	chk15, _ := newEchoCompare[R]().(func(A15, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		a14 := loadTypedSlot[A14](args[13])
+		a15 := loadTypedSlot[A15](args[14])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -3674,6 +8133,383 @@ func wrapStaticVarcallNone15[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 var
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet15[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	var chk14 func(A14, R) bool
+	if destroy != nil {
+		chk14, _ = newEchoCompare[R]().(func(A14, R) bool)
+	}
+	var chk15 func(A15, R) bool
+	if destroy != nil {
+		chk15, _ = newEchoCompare[R]().(func(A15, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 15, 15-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet15[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	var chk14 func(A14, R) bool
+	if destroy != nil {
+		chk14, _ = newEchoCompare[R]().(func(A14, R) bool)
+	}
+	var chk15 func(A15, R) bool
+	if destroy != nil {
+		chk15, _ = newEchoCompare[R]().(func(A15, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 15, 15-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -3707,20 +8543,195 @@ func wrapStaticPtrcallNone16[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nat
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
+	chk14, _ := newEchoCompare[R]().(func(A14, R) bool)
+	chk15, _ := newEchoCompare[R]().(func(A15, R) bool)
+	chk16, _ := newEchoCompare[R]().(func(A16, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]), loadTypedSlot[A16](args[15]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		a14 := loadTypedSlot[A14](args[13])
+		a15 := loadTypedSlot[A15](args[14])
+		a16 := loadTypedSlot[A16](args[15])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if !echo && chk16 != nil {
+			echo = chk16(a16, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet16[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R) ptrcallFn {
+	chk1, _ := newEchoCompare[R]().(func(A1, R) bool)
+	chk2, _ := newEchoCompare[R]().(func(A2, R) bool)
+	chk3, _ := newEchoCompare[R]().(func(A3, R) bool)
+	chk4, _ := newEchoCompare[R]().(func(A4, R) bool)
+	chk5, _ := newEchoCompare[R]().(func(A5, R) bool)
+	chk6, _ := newEchoCompare[R]().(func(A6, R) bool)
+	chk7, _ := newEchoCompare[R]().(func(A7, R) bool)
+	chk8, _ := newEchoCompare[R]().(func(A8, R) bool)
+	chk9, _ := newEchoCompare[R]().(func(A9, R) bool)
+	chk10, _ := newEchoCompare[R]().(func(A10, R) bool)
+	chk11, _ := newEchoCompare[R]().(func(A11, R) bool)
+	chk12, _ := newEchoCompare[R]().(func(A12, R) bool)
+	chk13, _ := newEchoCompare[R]().(func(A13, R) bool)
+	chk14, _ := newEchoCompare[R]().(func(A14, R) bool)
+	chk15, _ := newEchoCompare[R]().(func(A15, R) bool)
+	chk16, _ := newEchoCompare[R]().(func(A16, R) bool)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]), loadTypedSlot[A16](args[15]))
+		a1 := loadTypedSlot[A1](args[0])
+		a2 := loadTypedSlot[A2](args[1])
+		a3 := loadTypedSlot[A3](args[2])
+		a4 := loadTypedSlot[A4](args[3])
+		a5 := loadTypedSlot[A5](args[4])
+		a6 := loadTypedSlot[A6](args[5])
+		a7 := loadTypedSlot[A7](args[6])
+		a8 := loadTypedSlot[A8](args[7])
+		a9 := loadTypedSlot[A9](args[8])
+		a10 := loadTypedSlot[A10](args[9])
+		a11 := loadTypedSlot[A11](args[10])
+		a12 := loadTypedSlot[A12](args[11])
+		a13 := loadTypedSlot[A13](args[12])
+		a14 := loadTypedSlot[A14](args[13])
+		a15 := loadTypedSlot[A15](args[14])
+		a16 := loadTypedSlot[A16](args[15])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
 		ret.RetEncodeInto(retPtr)
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if !echo && chk16 != nil {
+			echo = chk16(a16, ret)
+		}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -4038,6 +9049,405 @@ func wrapStaticVarcallNone16[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 var
 	}
 }
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet16[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, A16 varArgSlot, R RetCopyEncodable](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	dec16 := newVarArgDecoder[A16]()
+	rel16 := newVarArgReleaser[A16]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	var chk14 func(A14, R) bool
+	if destroy != nil {
+		chk14, _ = newEchoCompare[R]().(func(A14, R) bool)
+	}
+	var chk15 func(A15, R) bool
+	if destroy != nil {
+		chk15, _ = newEchoCompare[R]().(func(A15, R) bool)
+	}
+	var chk16 func(A16, R) bool
+	if destroy != nil {
+		chk16, _ = newEchoCompare[R]().(func(A16, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 16, 16-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		a16 := dec16(callArgs[15])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if !echo && chk16 != nil {
+			echo = chk16(a16, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		rel16(a16)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet16[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, A16 varArgSlot, R RetCopyEncodable](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	dec16 := newVarArgDecoder[A16]()
+	rel16 := newVarArgReleaser[A16]()
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	var chk1 func(A1, R) bool
+	if destroy != nil {
+		chk1, _ = newEchoCompare[R]().(func(A1, R) bool)
+	}
+	var chk2 func(A2, R) bool
+	if destroy != nil {
+		chk2, _ = newEchoCompare[R]().(func(A2, R) bool)
+	}
+	var chk3 func(A3, R) bool
+	if destroy != nil {
+		chk3, _ = newEchoCompare[R]().(func(A3, R) bool)
+	}
+	var chk4 func(A4, R) bool
+	if destroy != nil {
+		chk4, _ = newEchoCompare[R]().(func(A4, R) bool)
+	}
+	var chk5 func(A5, R) bool
+	if destroy != nil {
+		chk5, _ = newEchoCompare[R]().(func(A5, R) bool)
+	}
+	var chk6 func(A6, R) bool
+	if destroy != nil {
+		chk6, _ = newEchoCompare[R]().(func(A6, R) bool)
+	}
+	var chk7 func(A7, R) bool
+	if destroy != nil {
+		chk7, _ = newEchoCompare[R]().(func(A7, R) bool)
+	}
+	var chk8 func(A8, R) bool
+	if destroy != nil {
+		chk8, _ = newEchoCompare[R]().(func(A8, R) bool)
+	}
+	var chk9 func(A9, R) bool
+	if destroy != nil {
+		chk9, _ = newEchoCompare[R]().(func(A9, R) bool)
+	}
+	var chk10 func(A10, R) bool
+	if destroy != nil {
+		chk10, _ = newEchoCompare[R]().(func(A10, R) bool)
+	}
+	var chk11 func(A11, R) bool
+	if destroy != nil {
+		chk11, _ = newEchoCompare[R]().(func(A11, R) bool)
+	}
+	var chk12 func(A12, R) bool
+	if destroy != nil {
+		chk12, _ = newEchoCompare[R]().(func(A12, R) bool)
+	}
+	var chk13 func(A13, R) bool
+	if destroy != nil {
+		chk13, _ = newEchoCompare[R]().(func(A13, R) bool)
+	}
+	var chk14 func(A14, R) bool
+	if destroy != nil {
+		chk14, _ = newEchoCompare[R]().(func(A14, R) bool)
+	}
+	var chk15 func(A15, R) bool
+	if destroy != nil {
+		chk15, _ = newEchoCompare[R]().(func(A15, R) bool)
+	}
+	var chk16 func(A16, R) bool
+	if destroy != nil {
+		chk16, _ = newEchoCompare[R]().(func(A16, R) bool)
+	}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 16, 16-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		a16 := dec16(callArgs[15])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+		if !echo && chk1 != nil {
+			echo = chk1(a1, ret)
+		}
+		if !echo && chk2 != nil {
+			echo = chk2(a2, ret)
+		}
+		if !echo && chk3 != nil {
+			echo = chk3(a3, ret)
+		}
+		if !echo && chk4 != nil {
+			echo = chk4(a4, ret)
+		}
+		if !echo && chk5 != nil {
+			echo = chk5(a5, ret)
+		}
+		if !echo && chk6 != nil {
+			echo = chk6(a6, ret)
+		}
+		if !echo && chk7 != nil {
+			echo = chk7(a7, ret)
+		}
+		if !echo && chk8 != nil {
+			echo = chk8(a8, ret)
+		}
+		if !echo && chk9 != nil {
+			echo = chk9(a9, ret)
+		}
+		if !echo && chk10 != nil {
+			echo = chk10(a10, ret)
+		}
+		if !echo && chk11 != nil {
+			echo = chk11(a11, ret)
+		}
+		if !echo && chk12 != nil {
+			echo = chk12(a12, ret)
+		}
+		if !echo && chk13 != nil {
+			echo = chk13(a13, ret)
+		}
+		if !echo && chk14 != nil {
+			echo = chk14(a14, ret)
+		}
+		if !echo && chk15 != nil {
+			echo = chk15(a15, ret)
+		}
+		if !echo && chk16 != nil {
+			echo = chk16(a16, ret)
+		}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		rel16(a16)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 // variadic varcall closures (design D4): the collected engine Variants ARE
 // the variadic slice, so the compiled closure replaces reflect.Value.
 // CallSlice — the handler is invoked directly with gdArgs spread in place.
@@ -4090,5 +9500,45 @@ func wrapStaticVarcallVariadicNone(fn func(...Variant)) varcallFn {
 	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
 		fn(gdArgs...)
 		return NewVariantNil(), nil
+	}
+}
+
+// variadic copy-constructor returns (design D5, borrow-echo-detection): the
+// handler receives raw Variants and never holds a borrow, so no echo
+// classification applies — the varcall release matrix (StringName/NodePath
+// destroy, containers no release) runs unconditionally, matching the
+// reflective variadic branch's hard-coded destroySource=true.
+func wrapVarcallVariadicCopyRet[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](fn func(*TImpl, ...Variant) R) varcallFn {
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		self := inst.(S).Self()
+		ret := fn(self, gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		if destroy != nil {
+			destroy(ret)
+		}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+func wrapStaticVarcallVariadicCopyRet[R RetCopyEncodable](fn func(...Variant) R) varcallFn {
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		ret := fn(gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		if destroy != nil {
+			destroy(ret)
+		}
+		pinner.Unpin()
+		return out, nil
 	}
 }

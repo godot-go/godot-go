@@ -63,10 +63,10 @@ type GoMethodMetadata struct {
 	// (typed-method-dispatch D4): trailing-default fill and under-supply
 	// panic shared verbatim with the reflective path through
 	// fillVarcallCallArgs, typed decode/release of the constraint-union
-	// arguments, no reflect frames per call. Binds outside the varcall
-	// unions (Variant parameters, slices, object/Ref decode-error seams,
-	// copy-constructor varcall returns pending the borrow-echo work) leave
-	// this nil and run the reflective body unchanged.
+	// arguments, no reflect frames per call. Copy-constructor returns ride
+	// their own echo-aware varcall closure family (design D5). Binds outside
+	// the varcall unions (Variant parameters, slices, object/Ref decode-
+	// error seams) leave this nil and run the reflective body unchanged.
 	typedVarcall varcallFn
 	// Lifecycle-managed StringName objects for PropertyInfo structs.
 	// These persist for the lifetime of GoMethodMetadata to prevent

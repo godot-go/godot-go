@@ -37,14 +37,18 @@ import (
 // exactly: the copy constructor pins its source call-scoped
 // (container_copy_constructors.go / char_string.go), the engine constructor
 // copies the container and takes its own reference, and the destroySource
-// gate (borrow-echo classification, task 5.2) stays with the caller — this
-// method never dictates source destruction.
+// gate (borrow-echo classification, design D5) stays with the caller — this
+// method never dictates source destruction. RetDestroy is the release the
+// caller performs after encoding when classification says the returned value
+// owns a Go-side reference; like the reflective matrix's `inst.Destroy()` it
+// destroys the handle held by the value copy the return encoder consumed.
 //
 // None of these types is in retValueSlot; a raw byte store of a borrowed
 // refcounted handle would alias the source without a reference (the
 // rationale in the audited encoder matrix).
 type RetCopyEncodable interface {
 	RetEncodeInto(retPtr GDExtensionUninitializedTypePtr)
+	RetDestroy()
 }
 
 // RetEncodeInto encodes the returned StringName into the engine's return cell
@@ -55,12 +59,28 @@ func (v StringName) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	StringNameCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side StringName source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v StringName) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned NodePath into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v NodePath) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	NodePathCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side NodePath source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v NodePath) RetDestroy() {
+	v.Destroy()
 }
 
 // RetEncodeInto encodes the returned Callable into the engine's return cell
@@ -71,12 +91,28 @@ func (v Callable) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	CallableCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side Callable source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v Callable) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned Signal into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v Signal) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	SignalCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side Signal source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v Signal) RetDestroy() {
+	v.Destroy()
 }
 
 // RetEncodeInto encodes the returned Array into the engine's return cell
@@ -87,12 +123,28 @@ func (v Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	ArrayCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v Array) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned Dictionary into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v Dictionary) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	DictionaryCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side Dictionary source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v Dictionary) RetDestroy() {
+	v.Destroy()
 }
 
 // RetEncodeInto encodes the returned PackedByteArray into the engine's return cell
@@ -103,12 +155,28 @@ func (v PackedByteArray) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	PackedByteArrayCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side PackedByteArray source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedByteArray) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned PackedInt32Array into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v PackedInt32Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	PackedInt32ArrayCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side PackedInt32Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedInt32Array) RetDestroy() {
+	v.Destroy()
 }
 
 // RetEncodeInto encodes the returned PackedInt64Array into the engine's return cell
@@ -119,12 +187,28 @@ func (v PackedInt64Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) 
 	PackedInt64ArrayCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side PackedInt64Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedInt64Array) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned PackedFloat32Array into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v PackedFloat32Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	PackedFloat32ArrayCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side PackedFloat32Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedFloat32Array) RetDestroy() {
+	v.Destroy()
 }
 
 // RetEncodeInto encodes the returned PackedFloat64Array into the engine's return cell
@@ -135,12 +219,28 @@ func (v PackedFloat64Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr
 	PackedFloat64ArrayCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side PackedFloat64Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedFloat64Array) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned PackedStringArray into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v PackedStringArray) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	PackedStringArrayCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side PackedStringArray source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedStringArray) RetDestroy() {
+	v.Destroy()
 }
 
 // RetEncodeInto encodes the returned PackedVector2Array into the engine's return cell
@@ -151,12 +251,28 @@ func (v PackedVector2Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr
 	PackedVector2ArrayCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side PackedVector2Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedVector2Array) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned PackedVector3Array into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v PackedVector3Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	PackedVector3ArrayCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side PackedVector3Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedVector3Array) RetDestroy() {
+	v.Destroy()
 }
 
 // RetEncodeInto encodes the returned PackedVector4Array into the engine's return cell
@@ -167,10 +283,26 @@ func (v PackedVector4Array) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr
 	PackedVector4ArrayCopyConstructor(retPtr, v.NativeConstPtr())
 }
 
+// RetDestroy releases the Go-side PackedVector4Array source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedVector4Array) RetDestroy() {
+	v.Destroy()
+}
+
 // RetEncodeInto encodes the returned PackedColorArray into the engine's return cell
 // through its engine copy constructor, transferring ownership with an engine
 // reference (AGENTS.md's copy-constructor rule for refcounted natives —
 // never a raw byte store of a borrowed handle).
 func (v PackedColorArray) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	PackedColorArrayCopyConstructor(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side PackedColorArray source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v PackedColorArray) RetDestroy() {
+	v.Destroy()
 }

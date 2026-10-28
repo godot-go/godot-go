@@ -57,20 +57,57 @@ func wrapStaticPtrcallValue{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }}
 
 // instance binding, copy-constructor return (refcounted builtins: the
 // wrapper delegates the ownership transfer to the generated RetEncodeInto —
-// never a raw store of a borrowed handle)
+// never a raw store of a borrowed handle). The borrow-echo classification
+// (design D5) runs against named argument locals: each bind-time type
+// assertion to func(A, R) succeeds only when the slot type equals the return
+// type, mirroring the reflective classifier's same-type requirement, and a
+// per-call check is one concrete byte compare. The source is destroyed
+// exactly when the reflective matrix's `if destroySource { inst.Destroy() }`
+// gate fires — the receiver never joins the comparison on either path.
 func wrapPtrcallCopyRet{{ $n }}[TImpl any, S selfTyped[TImpl]{{ range $i, $_ := counts $n }}, A{{ inc $i }} nativeSlot{{ end }}, R RetCopyEncodable](fn func(*TImpl{{ range $i, $_ := counts $n }}, A{{ inc $i }}{{ end }}) R) ptrcallFn {
+{{- range $i, $_ := counts $n }}
+	chk{{ inc $i }}, _ := newEchoCompare[R]().(func(A{{ inc $i }}, R) bool)
+{{- end }}
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		self := inst.(S).Self()
-		ret := fn(self{{ range $i, $_ := counts $n }}, loadTypedSlot[A{{ inc $i }}](args[{{ $i }}]){{ end }})
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := loadTypedSlot[A{{ inc $i }}](args[{{ $i }}])
+{{- end }}
+		ret := fn(self{{ range $i, $_ := counts $n }}, a{{ inc $i }}{{ end }})
 		ret.RetEncodeInto(retPtr)
+		echo := false
+{{- range $i, $_ := counts $n }}
+		if !echo && chk{{ inc $i }} != nil {
+			echo = chk{{ inc $i }}(a{{ inc $i }}, ret)
+		}
+{{- end }}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
-// static binding, copy-constructor return
+// static binding, copy-constructor return (every argument slot is a
+// parameter — the reflective static path echo-compares all of them too)
 func wrapStaticPtrcallCopyRet{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }} nativeSlot, {{ end }}R RetCopyEncodable](fn func({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}A{{ inc $i }}{{ end }}) R) ptrcallFn {
+{{- range $i, $_ := counts $n }}
+	chk{{ inc $i }}, _ := newEchoCompare[R]().(func(A{{ inc $i }}, R) bool)
+{{- end }}
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
-		ret := fn({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}loadTypedSlot[A{{ inc $i }}](args[{{ $i }}]){{ end }})
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := loadTypedSlot[A{{ inc $i }}](args[{{ $i }}])
+{{- end }}
+		ret := fn({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}a{{ inc $i }}{{ end }})
 		ret.RetEncodeInto(retPtr)
+		echo := false
+{{- range $i, $_ := counts $n }}
+		if !echo && chk{{ inc $i }} != nil {
+			echo = chk{{ inc $i }}(a{{ inc $i }}, ret)
+		}
+{{- end }}
+		if !echo {
+			ret.RetDestroy()
+		}
 	}
 }
 
@@ -206,6 +243,107 @@ func wrapStaticVarcallValue{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }}
 }
 {{ end }}
 
+// instance binding, varcall copy-constructor return (design D5): the return
+// Variant is built through the type's Variant encoder (the reflective Variant
+// return matrix's case), the source is released only where the varcall matrix
+// releases (StringName/NodePath — the destroyer folds to nil for containers),
+// and the echo gate suppresses that release when the returned value byte-
+// matches a decoded same-type argument. Release order matches the reflective
+// path exactly: encode, source release, then owned-argument release.
+func wrapVarcallCopyRet{{ $n }}[TImpl any, S selfTyped[TImpl]{{ range $i, $_ := counts $n }}, A{{ inc $i }} varArgSlot{{ end }}, R RetCopyEncodable](fn func(*TImpl{{ range $i, $_ := counts $n }}, A{{ inc $i }}{{ end }}) R, defaultValues []Variant, gdMethodName string) varcallFn {
+{{- range $i, $_ := counts $n }}
+	dec{{ inc $i }} := newVarArgDecoder[A{{ inc $i }}]()
+	rel{{ inc $i }} := newVarArgReleaser[A{{ inc $i }}]()
+{{- end }}
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+{{- range $i, $_ := counts $n }}
+	var chk{{ inc $i }} func(A{{ inc $i }}, R) bool
+	if destroy != nil {
+		chk{{ inc $i }}, _ = newEchoCompare[R]().(func(A{{ inc $i }}, R) bool)
+	}
+{{- end }}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+{{- if gt $n 0 }}
+		callArgs := fillVarcallCallArgs(gdArgs, {{ $n }}, {{ $n }}-len(defaultValues), defaultValues, gdMethodName)
+{{- else }}
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+{{- end }}
+		self := inst.(S).Self()
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := dec{{ inc $i }}(callArgs[{{ $i }}])
+{{- end }}
+		ret := fn(self{{ range $i, $_ := counts $n }}, a{{ inc $i }}{{ end }})
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+{{- range $i, $_ := counts $n }}
+		if !echo && chk{{ inc $i }} != nil {
+			echo = chk{{ inc $i }}(a{{ inc $i }}, ret)
+		}
+{{- end }}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+{{- range $i, $_ := counts $n }}
+		rel{{ inc $i }}(a{{ inc $i }})
+{{- end }}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall copy-constructor return
+func wrapStaticVarcallCopyRet{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }} varArgSlot, {{ end }}R RetCopyEncodable](fn func({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}A{{ inc $i }}{{ end }}) R, defaultValues []Variant, gdMethodName string) varcallFn {
+{{- range $i, $_ := counts $n }}
+	dec{{ inc $i }} := newVarArgDecoder[A{{ inc $i }}]()
+	rel{{ inc $i }} := newVarArgReleaser[A{{ inc $i }}]()
+{{- end }}
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+{{- range $i, $_ := counts $n }}
+	var chk{{ inc $i }} func(A{{ inc $i }}, R) bool
+	if destroy != nil {
+		chk{{ inc $i }}, _ = newEchoCompare[R]().(func(A{{ inc $i }}, R) bool)
+	}
+{{- end }}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+{{- if gt $n 0 }}
+		callArgs := fillVarcallCallArgs(gdArgs, {{ $n }}, {{ $n }}-len(defaultValues), defaultValues, gdMethodName)
+{{- else }}
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+{{- end }}
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := dec{{ inc $i }}(callArgs[{{ $i }}])
+{{- end }}
+		ret := fn({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}a{{ inc $i }}{{ end }})
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		echo := false
+{{- range $i, $_ := counts $n }}
+		if !echo && chk{{ inc $i }} != nil {
+			echo = chk{{ inc $i }}(a{{ inc $i }}, ret)
+		}
+{{- end }}
+		if destroy != nil && !echo {
+			destroy(ret)
+		}
+{{- range $i, $_ := counts $n }}
+		rel{{ inc $i }}(a{{ inc $i }})
+{{- end }}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
 {{ end }}
 // variadic varcall closures (design D4): the collected engine Variants ARE
 // the variadic slice, so the compiled closure replaces reflect.Value.
@@ -259,5 +397,45 @@ func wrapStaticVarcallVariadicNone(fn func(...Variant)) varcallFn {
 	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
 		fn(gdArgs...)
 		return NewVariantNil(), nil
+	}
+}
+
+// variadic copy-constructor returns (design D5, borrow-echo-detection): the
+// handler receives raw Variants and never holds a borrow, so no echo
+// classification applies — the varcall release matrix (StringName/NodePath
+// destroy, containers no release) runs unconditionally, matching the
+// reflective variadic branch's hard-coded destroySource=true.
+func wrapVarcallVariadicCopyRet[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](fn func(*TImpl, ...Variant) R) varcallFn {
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		self := inst.(S).Self()
+		ret := fn(self, gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		if destroy != nil {
+			destroy(ret)
+		}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+func wrapStaticVarcallVariadicCopyRet[R RetCopyEncodable](fn func(...Variant) R) varcallFn {
+	storeRet := newVarCopyRetEncoder[R]()
+	destroy := newVarcallRetDestroyer[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		ret := fn(gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		if destroy != nil {
+			destroy(ret)
+		}
+		pinner.Unpin()
+		return out, nil
 	}
 }

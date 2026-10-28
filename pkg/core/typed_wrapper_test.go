@@ -218,11 +218,20 @@ func TestTypedWrapperDispatchAllocsPerRun(t *testing.T) {
 // spotRetStub is a stub copy-encodable return standing in for the generated
 // copy-ret methods: it hands its carry bytes to the ret cell exactly like a
 // one-line RetEncodeInto does around its engine constructor (which these
-// engine-free tests cannot call — the global bindings tables are nil).
+// engine-free tests cannot call — the global bindings tables are nil), and
+// counts RetDestroy calls so the destroy-source gate is observable.
 type spotRetStub [8]byte
+
+// spotRetDestroyCount records stub source releases; the copy-ret tests reset
+// it before driving a wrapper.
+var spotRetDestroyCount int
 
 func (r spotRetStub) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	copy((*[8]byte)(unsafe.Pointer(retPtr))[:], r[:])
+}
+
+func (r spotRetStub) RetDestroy() {
+	spotRetDestroyCount++
 }
 
 // Compile-time witnesses: every emitted copy-ret builtin satisfies the
@@ -262,10 +271,17 @@ func TestTypedWrapperInstanceCopyRet(t *testing.T) {
 		binary.LittleEndian.PutUint64(out[:], uint64(n)*100)
 		return out
 	})
+	spotRetDestroyCount = 0
 	fn(stub, args, GDExtensionUninitializedTypePtr(&ret[0]))
 
 	if binary.LittleEndian.Uint64(ret[:]) != 500 {
 		t.Fatalf("ret %v, want 500 (the stub copy-encoder's bytes)", ret)
+	}
+	// The int64 slot is not the return's type, so no echo is possible and the
+	// source release fires exactly like the reflective matrix's
+	// `if destroySource { inst.Destroy() }` gate for a classified-owned value.
+	if spotRetDestroyCount != 1 {
+		t.Fatalf("source destroyed %d times, want 1", spotRetDestroyCount)
 	}
 }
 
@@ -277,10 +293,16 @@ func TestTypedWrapperStaticCopyRetArity0(t *testing.T) {
 		binary.LittleEndian.PutUint64(out[:], 0xABCD)
 		return out
 	})
+	spotRetDestroyCount = 0
 	fn(nil, nil, GDExtensionUninitializedTypePtr(&ret[0]))
 
 	if binary.LittleEndian.Uint64(ret[:]) != 0xABCD {
 		t.Fatalf("ret %v, want 0xABCD", ret)
+	}
+	// No slots means no echo candidate: the freshly built return is owned and
+	// destroyed after encoding.
+	if spotRetDestroyCount != 1 {
+		t.Fatalf("source destroyed %d times, want 1", spotRetDestroyCount)
 	}
 }
 

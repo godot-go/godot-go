@@ -20,9 +20,9 @@ package typedwrapper
 //     must appear here because the shared bind overloads constrain one
 //     parameter list for both dispatch shapes.
 //   - RetEncoder covers the retValueSlot family plus float32 and Go string.
-//     Copy-constructor return types are absent: their varcall encode carries
-//     the borrow-echo destroy-source decision (task 5.2) and keeps the
-//     reflective fallback until then.
+//     Copy-constructor return types are absent: their varcall encode lives in
+//     the dedicated copy-ret emission family (ret_release.gen.go), which
+//     carries its own destroy-source decision (design D5).
 //   - Excluded on purpose: Variant (decoder view semantics), slices (deep
 //     copy), Object/Ref/GDClass parameters (decode-error seam and instance
 //     binding resolution stay with the reflective path).
@@ -88,8 +88,8 @@ var varArgTypes = []varArgType{
 	// conversion, keeps a byte borrow of the result, and destroys the
 	// constructed value -- the handler receives a call-scoped borrow, exactly
 	// like the reflective decoder's StringName/NodePath cases. No return
-	// encoder: their varcall encode carries the borrow-echo destroy-source
-	// decision (task 5.2).
+	// encoder here: their varcall encode lives in the copy-ret emission
+	// family with its own destroy-source decision (design D5).
 	{Type: "StringName", Borrow: true},
 	{Type: "NodePath", Borrow: true},
 

@@ -100,6 +100,25 @@ Notes pinned by this shape:
 
 *Alternative considered:* decode everything generically via `unsafe` casts on `any` — rejected: every load would box into an interface. Per-type interface decode methods returning the concrete type — rejected: an interface-returning call boxes; only a pointer-receiver method-value call avoids that, and the union needs no methods at all.
 
+### D4: Varcall defaults and variadic as first-class closures
+
+The variadic branch compiles to `varcallFn` directly (the collected `[]Variant` is the variadic slice; no `CallSlice`). Non-variadic varcall wrappers know `declared` and `defArgsCount` from bind metadata and reproduce the `fillCallArgs` trailing-default convention exactly (defaults array maps to the *last* defArgsCount parameters), including the loud panic on under-supply from direct Go callers; the callback-side `classifyVarcallArity` pre-validation remains the gate for engine calls.
+
+Arity wrappers for varcall resolve their per-arg Variant decoding through a bind-time cached decoder list (the existing per-type Variant conversion helpers captured as concrete function values); each decoded value crosses into the typed handler as a plain typed value by type assertion, which is unboxing, not reflection. Per-argument decode allocations remain at parity with the reflective path (one boxed value per Variant argument); this eliminates reflect frames, `[]reflect.Value` slices, `Func.Call` machinery, and the DeepEqual-heavy echo check on the hot path.
+
+The trailing-default fill is not re-implemented in the wrappers: `fillCallArgs` and every typed varcall closure call the same `fillVarcallCallArgs(gdArgs, declared, defaultStart, defaults, name)`, so the convention and the loud under-supply panic are literally one code path.
+
+### D5: Borrow-echo classification re-implemented on typed values, semantics bit-identical
+
+The typed return encoder performs echo classification against the decoded arguments using per-type byte-compare helpers that reproduce what `reflect.DeepEqual` compares on the wrapper structs today (shared-storage pointer equality for COW containers, intern equality for `StringName`). This preserves every `borrow-echo-detection` scenario, including the accepted same-content-clone leak, and keeps variadic dispatch free of echo suppression. A differential fixture (same call through both APIs) guards the parity.
+
+Resolved during implementation:
+
+- The classification helpers are a generated factory trio in `pkg/core/ret_release.gen.go`: `newEchoCompare[R]()` returns the concrete `func(T, T) bool` boxed as `any` and the wrapper type-asserts it to `func(A, R)` at bind time (succeeding only on exact type equality — the reflective classifier's `args[i].Type() == ret.Type()` requirement, resolved without per-call reflection); `newVarcallRetDestroyer[R]()` encodes the varcall release matrix (StringName/NodePath destroy, everything else nil); `newVarCopyRetEncoder[R]()` resolves the per-type `XEncoder.EncodeVariantPtrArg` that the reflective Variant return matrix performs. The compare itself is `a == b` on the fixed-size byte arrays these builtins are — byte-for-byte the fields `reflect.DeepEqual` walks, at memequal cost with zero allocation.
+- Release wiring follows the audited matrices exactly: ptrcall copy-ret wrappers hand every non-echo return to `RetDestroy` (the generated value-receiver counterpart of the matrix's `inst.Destroy()`), all 16 family members including `PackedVector4Array` — the main `borrow-echo-detection` spec's "except PackedVector4Array" clause predates PR #158, which upgraded that ptrcall return from a raw store to copy-construct plus gated destroy; the code matrix is the parity contract and the spec text is corrected alongside this change. Varcall copy-ret wrappers release only StringName/NodePath, after encoding and before the owned-argument release, matching the reflective order (encode → source release → `destroyOwnedContainerArgs`).
+- Variadic copy-ret returns (`ClassDBBind{,Static}VariadicCopyRetMethod`) use the varcall destroyer unconditionally — no echo check exists, mirroring the reflective variadic branch's hard-coded `destroySource=true` (raw Variants hold no borrows).
+- The receiver never joins the comparison on either path: the reflective `hasReceiver` skip of `args[0]` corresponds structurally to the typed wrappers keeping the receiver in `self`, outside the parameter slots.
+
 ### D6: Notification and property callbacks get fixed-shape closures
 
 Fixed handler shapes, taken from the actual dispatch sites in `classdb_callback.go`, become named closure types attached at registration, removing the last generic `Func.Call` sites there:
@@ -113,22 +132,6 @@ propGetRevertFn    func(inst GDClass, name StringName) (Variant, bool)
 ```
 
 Property-list and to-string have no `Func.Call` sites (they already run through typed direct fields such as `ValidateProperty`) and are out of scope. Untyped handlers through name-string registration fall back.
-
-### D4: Varcall defaults and variadic as first-class closures
-
-The variadic branch compiles to `varcallFn` directly (the collected `[]Variant` is the variadic slice; no `CallSlice`). Non-variadic varcall wrappers know `declared` and `defArgsCount` from bind metadata and reproduce the `fillCallArgs` trailing-default convention exactly (defaults array maps to the *last* defArgsCount parameters), including the loud panic on under-supply from direct Go callers; the callback-side `classifyVarcallArity` pre-validation remains the gate for engine calls.
-
-Arity wrappers for varcall resolve their per-arg Variant decoding through a bind-time cached decoder list (the existing per-type Variant conversion helpers captured as concrete function values); each decoded value crosses into the typed handler as a plain typed value by type assertion, which is unboxing, not reflection. Per-argument decode allocations remain at parity with the reflective path (one boxed value per Variant argument); this eliminates reflect frames, `[]reflect.Value` slices, `Func.Call` machinery, and the DeepEqual-heavy echo check on the hot path.
-
-The trailing-default fill is not re-implemented in the wrappers: `fillCallArgs` and every typed varcall closure call the same `fillVarcallCallArgs(gdArgs, declared, defaultStart, defaults, name)`, so the convention and the loud under-supply panic are literally one code path.
-
-### D5: Borrow-echo classification re-implemented on typed values, semantics bit-identical
-
-The typed return encoder performs echo classification against the decoded arguments using per-type byte-compare helpers that reproduce what `reflect.DeepEqual` compares on the wrapper structs today (shared-storage pointer equality for COW containers, intern equality for `StringName`). This preserves every `borrow-echo-detection` scenario, including the accepted same-content-clone leak, and keeps variadic dispatch free of echo suppression. A differential fixture (same call through both APIs) guards the parity.
-
-### D6: Notification and property callbacks get fixed-shape closures
-
-Notification, property-list, property-get/set, and revert dispatch are per-class shapes already catalogued by the virtual-surface registration; they become named closure types (e.g. `func(GDClass, int32)` for notifications) attached at registration, removing the last generic `Func.Call` sites in `classdb_callback.go`. Untyped handlers through name-string registration fall back.
 
 ## Risks / Trade-offs
 
@@ -155,5 +158,5 @@ Resolved during implementation:
 
 - Typed overload names are `ClassDBBind{Value,CopyRet}MethodN` for instance binds, with `Static`/`Virtual` inserted after `ClassDBBind` for the static and virtual shapes (arity `N` in the name, matching the generated wrapper families). `Self()` (not `self()`) is the `selfTyped` method — a bound class lives in the user's package and an unexported method cannot satisfy a core-declared interface across packages.
 - The bind-time decoder list is a generated factory trio in `pkg/core/var_args.gen.go` (`newVarArgDecoder`, `newVarArgReleaser`, `newVarRetEncoder`): each resolves `reflect.TypeFor[T]()` once at bind time and returns the concrete closure the wrapper captures — scalar families by `Kind` (so named types decode exactly as the reflective kind switch does), array-kind builtins by exact type (the reflective decoder's inner switch). Per-type *method* families are impossible: Go forbids methods on predeclared types (`bool`, `int`, …), and a tilde member (`~int64`) cannot be type-switched. Bind-time reflection is allowed; per-call reflection is not.
-- Varcall argument coverage is a strict superset of the ptrcall `nativeSlot` union (the shared bind overloads constrain one parameter list for both shapes) and additionally admits `float32` and Go `string`, which the varcall decoder serves natively. `Variant`, slices, and `Object`/`Ref`/`GDClass` parameters remain reflective-only, as does every copy-constructor varcall *return*: its Variant encode carries the D5 destroy-source decision, so `ClassDBBind{,Static,Virtual}CopyRetMethodN` register a nil varcall closure and ride the reflective body until task 5.2 lands the echo-aware encode.
+- Varcall argument coverage is a strict superset of the ptrcall `nativeSlot` union (the shared bind overloads constrain one parameter list for both shapes) and additionally admits `float32` and Go `string`, which the varcall decoder serves natively. `Variant`, slices, and `Object`/`Ref`/`GDClass` parameters remain reflective-only. Copy-constructor varcall *returns* ride their own echo-aware closure family (`wrap{Static,}VarcallCopyRet{N}` plus the variadic pair, landed with task 5.2): encode through the type's Variant encoder, then release per the varcall matrix only when the return is not an echo.
 - Variadic binds are varcall-only: `ClassDBBind{,Static}Variadic{Value,None}Method` bake `METHOD_FLAG_VARARG`, register no ptrcall closure (the engine varcalls vararg binds), and spread the collected `[]Variant` straight into the handler — no fill, no per-parameter decode, so no borrows are held and the always-destroy return discipline holds trivially.

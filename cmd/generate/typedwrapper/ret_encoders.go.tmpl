@@ -37,14 +37,18 @@ import (
 // exactly: the copy constructor pins its source call-scoped
 // (container_copy_constructors.go / char_string.go), the engine constructor
 // copies the container and takes its own reference, and the destroySource
-// gate (borrow-echo classification, task 5.2) stays with the caller — this
-// method never dictates source destruction.
+// gate (borrow-echo classification, design D5) stays with the caller — this
+// method never dictates source destruction. RetDestroy is the release the
+// caller performs after encoding when classification says the returned value
+// owns a Go-side reference; like the reflective matrix's `inst.Destroy()` it
+// destroys the handle held by the value copy the return encoder consumed.
 //
 // None of these types is in retValueSlot; a raw byte store of a borrowed
 // refcounted handle would alias the source without a reference (the
 // rationale in the audited encoder matrix).
 type RetCopyEncodable interface {
 	RetEncodeInto(retPtr GDExtensionUninitializedTypePtr)
+	RetDestroy()
 }
 
 {{ range .Types }}// RetEncodeInto encodes the returned {{ .Type }} into the engine's return cell
@@ -53,6 +57,14 @@ type RetCopyEncodable interface {
 // never a raw byte store of a borrowed handle).
 func (v {{ .Type }}) RetEncodeInto(retPtr GDExtensionUninitializedTypePtr) {
 	{{ .Ctor }}(retPtr, v.NativeConstPtr())
+}
+
+// RetDestroy releases the Go-side {{ .Type }} source after the return encoder
+// has copied it. The typed dispatch calls it exactly when the reflective
+// matrix's `if destroySource { inst.Destroy() }` gate fires — never for a
+// borrow echo (classification is the caller's, design D5).
+func (v {{ .Type }}) RetDestroy() {
+	v.Destroy()
 }
 
 {{ end }}

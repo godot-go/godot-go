@@ -16,6 +16,9 @@ var wrappersText string
 //go:embed ret_encoders.go.tmpl
 var retEncodersText string
 
+//go:embed ret_release.go.tmpl
+var retReleaseText string
+
 //go:embed binds.go.tmpl
 var bindsText string
 
@@ -56,13 +59,17 @@ var retEncoderTypes = []retEncoderType{
 
 // Generate runs every typed-dispatch emission in the project rooted at
 // projectPath: the ptrcall wrapper family for pkg/core, the copy-return
-// encoder methods for pkg/builtin, the varcall slot methods for pkg/builtin,
-// and the typed bind overloads for pkg/core.
+// encoder methods for pkg/builtin, the copy-return release factories for
+// pkg/core, the varcall slot factories for pkg/core, and the typed bind
+// overloads for pkg/core.
 func Generate(projectPath string) error {
 	if err := generateWrappers(projectPath); err != nil {
 		return err
 	}
 	if err := generateRetEncoders(projectPath); err != nil {
+		return err
+	}
+	if err := generateRetRelease(projectPath); err != nil {
 		return err
 	}
 	if err := generateVarArgs(projectPath); err != nil {
@@ -177,6 +184,38 @@ func generateRetEncoders(projectPath string) error {
 	}
 
 	filename := filepath.Join(projectPath, "pkg", "builtin", "typed_ret_encoders.gen.go")
+
+	f, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	_, err = f.Write(formatted)
+
+	return err
+}
+
+// generateRetRelease renders ret_release.go.tmpl and writes
+// pkg/core/ret_release.gen.go: the bind-time borrow-echo classification and
+// copy-return source-release factories (design D5).
+func generateRetRelease(projectPath string) error {
+	tmpl, err := template.New("ret_release.gen.go").Parse(retReleaseText)
+	if err != nil {
+		return err
+	}
+
+	var b bytes.Buffer
+	if err := tmpl.Execute(&b, struct{ Types []retEncoderType }{retEncoderTypes}); err != nil {
+		return err
+	}
+
+	formatted, err := format.Source(b.Bytes())
+	if err != nil {
+		return fmt.Errorf("format generated ret release family: %w", err)
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "core", "ret_release.gen.go")
 
 	f, err := os.Create(filename)
 	if err != nil {

@@ -9,9 +9,7 @@ package core
 // its compiled ptrcall and varcall closures at bind time and hands the erased
 // function values to the shared validation core classDBBindTyped, which
 // applies the name-string path's gates unchanged. Signatures outside the
-// constraint unions (and copy-constructor varcall returns pending the
-// borrow-echo work, which keep a nil varcall closure) fall back to the
-// reflective bodies.
+// constraint unions fall back to the reflective bodies.
 
 import (
 	. "github.com/godot-go/godot-go/pkg/builtin"
@@ -31,10 +29,10 @@ func ClassDBBindValueMethod0[TImpl any, S selfTyped[TImpl], R retValueSlot](
 		wrapVarcallValue0[TImpl, S, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod0[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](
 	t S,
 	fn func(*TImpl) R,
@@ -43,7 +41,8 @@ func ClassDBBindCopyRetMethod0[TImpl any, S selfTyped[TImpl], R RetCopyEncodable
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet0[TImpl, S, R](fn), nil)
+		wrapPtrcallCopyRet0[TImpl, S, R](fn),
+		wrapVarcallCopyRet0[TImpl, S, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -68,7 +67,8 @@ func ClassDBBindStaticCopyRetMethod0[R RetCopyEncodable](
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet0[R](fn), nil)
+		wrapStaticPtrcallCopyRet0[R](fn),
+		wrapStaticVarcallCopyRet0[R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -95,7 +95,8 @@ func ClassDBBindVirtualCopyRetMethod0[TImpl any, S selfTyped[TImpl], R RetCopyEn
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet0[TImpl, S, R](fn), nil)
+		wrapPtrcallCopyRet0[TImpl, S, R](fn),
+		wrapVarcallCopyRet0[TImpl, S, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -111,10 +112,10 @@ func ClassDBBindValueMethod1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R ret
 		wrapVarcallValue1[TImpl, S, A1, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1) R,
@@ -123,7 +124,8 @@ func ClassDBBindCopyRetMethod1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R R
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet1[TImpl, S, A1, R](fn), nil)
+		wrapPtrcallCopyRet1[TImpl, S, A1, R](fn),
+		wrapVarcallCopyRet1[TImpl, S, A1, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -148,7 +150,8 @@ func ClassDBBindStaticCopyRetMethod1[A1 nativeSlot, R RetCopyEncodable](
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet1[A1, R](fn), nil)
+		wrapStaticPtrcallCopyRet1[A1, R](fn),
+		wrapStaticVarcallCopyRet1[A1, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -175,7 +178,8 @@ func ClassDBBindVirtualCopyRetMethod1[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet1[TImpl, S, A1, R](fn), nil)
+		wrapPtrcallCopyRet1[TImpl, S, A1, R](fn),
+		wrapVarcallCopyRet1[TImpl, S, A1, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -191,10 +195,10 @@ func ClassDBBindValueMethod2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue2[TImpl, S, A1, A2, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2) R,
@@ -203,7 +207,8 @@ func ClassDBBindCopyRetMethod2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet2[TImpl, S, A1, A2, R](fn), nil)
+		wrapPtrcallCopyRet2[TImpl, S, A1, A2, R](fn),
+		wrapVarcallCopyRet2[TImpl, S, A1, A2, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -228,7 +233,8 @@ func ClassDBBindStaticCopyRetMethod2[A1 nativeSlot, A2 nativeSlot, R RetCopyEnco
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet2[A1, A2, R](fn), nil)
+		wrapStaticPtrcallCopyRet2[A1, A2, R](fn),
+		wrapStaticVarcallCopyRet2[A1, A2, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -255,7 +261,8 @@ func ClassDBBindVirtualCopyRetMethod2[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet2[TImpl, S, A1, A2, R](fn), nil)
+		wrapPtrcallCopyRet2[TImpl, S, A1, A2, R](fn),
+		wrapVarcallCopyRet2[TImpl, S, A1, A2, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -271,10 +278,10 @@ func ClassDBBindValueMethod3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue3[TImpl, S, A1, A2, A3, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3) R,
@@ -283,7 +290,8 @@ func ClassDBBindCopyRetMethod3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet3[TImpl, S, A1, A2, A3, R](fn), nil)
+		wrapPtrcallCopyRet3[TImpl, S, A1, A2, A3, R](fn),
+		wrapVarcallCopyRet3[TImpl, S, A1, A2, A3, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -308,7 +316,8 @@ func ClassDBBindStaticCopyRetMethod3[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet3[A1, A2, A3, R](fn), nil)
+		wrapStaticPtrcallCopyRet3[A1, A2, A3, R](fn),
+		wrapStaticVarcallCopyRet3[A1, A2, A3, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -335,7 +344,8 @@ func ClassDBBindVirtualCopyRetMethod3[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet3[TImpl, S, A1, A2, A3, R](fn), nil)
+		wrapPtrcallCopyRet3[TImpl, S, A1, A2, A3, R](fn),
+		wrapVarcallCopyRet3[TImpl, S, A1, A2, A3, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -351,10 +361,10 @@ func ClassDBBindValueMethod4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue4[TImpl, S, A1, A2, A3, A4, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4) R,
@@ -363,7 +373,8 @@ func ClassDBBindCopyRetMethod4[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet4[TImpl, S, A1, A2, A3, A4, R](fn), nil)
+		wrapPtrcallCopyRet4[TImpl, S, A1, A2, A3, A4, R](fn),
+		wrapVarcallCopyRet4[TImpl, S, A1, A2, A3, A4, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -388,7 +399,8 @@ func ClassDBBindStaticCopyRetMethod4[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet4[A1, A2, A3, A4, R](fn), nil)
+		wrapStaticPtrcallCopyRet4[A1, A2, A3, A4, R](fn),
+		wrapStaticVarcallCopyRet4[A1, A2, A3, A4, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -415,7 +427,8 @@ func ClassDBBindVirtualCopyRetMethod4[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet4[TImpl, S, A1, A2, A3, A4, R](fn), nil)
+		wrapPtrcallCopyRet4[TImpl, S, A1, A2, A3, A4, R](fn),
+		wrapVarcallCopyRet4[TImpl, S, A1, A2, A3, A4, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -431,10 +444,10 @@ func ClassDBBindValueMethod5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue5[TImpl, S, A1, A2, A3, A4, A5, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5) R,
@@ -443,7 +456,8 @@ func ClassDBBindCopyRetMethod5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet5[TImpl, S, A1, A2, A3, A4, A5, R](fn), nil)
+		wrapPtrcallCopyRet5[TImpl, S, A1, A2, A3, A4, A5, R](fn),
+		wrapVarcallCopyRet5[TImpl, S, A1, A2, A3, A4, A5, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -468,7 +482,8 @@ func ClassDBBindStaticCopyRetMethod5[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet5[A1, A2, A3, A4, A5, R](fn), nil)
+		wrapStaticPtrcallCopyRet5[A1, A2, A3, A4, A5, R](fn),
+		wrapStaticVarcallCopyRet5[A1, A2, A3, A4, A5, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -495,7 +510,8 @@ func ClassDBBindVirtualCopyRetMethod5[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet5[TImpl, S, A1, A2, A3, A4, A5, R](fn), nil)
+		wrapPtrcallCopyRet5[TImpl, S, A1, A2, A3, A4, A5, R](fn),
+		wrapVarcallCopyRet5[TImpl, S, A1, A2, A3, A4, A5, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -511,10 +527,10 @@ func ClassDBBindValueMethod6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue6[TImpl, S, A1, A2, A3, A4, A5, A6, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6) R,
@@ -523,7 +539,8 @@ func ClassDBBindCopyRetMethod6[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet6[TImpl, S, A1, A2, A3, A4, A5, A6, R](fn), nil)
+		wrapPtrcallCopyRet6[TImpl, S, A1, A2, A3, A4, A5, A6, R](fn),
+		wrapVarcallCopyRet6[TImpl, S, A1, A2, A3, A4, A5, A6, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -548,7 +565,8 @@ func ClassDBBindStaticCopyRetMethod6[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet6[A1, A2, A3, A4, A5, A6, R](fn), nil)
+		wrapStaticPtrcallCopyRet6[A1, A2, A3, A4, A5, A6, R](fn),
+		wrapStaticVarcallCopyRet6[A1, A2, A3, A4, A5, A6, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -575,7 +593,8 @@ func ClassDBBindVirtualCopyRetMethod6[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet6[TImpl, S, A1, A2, A3, A4, A5, A6, R](fn), nil)
+		wrapPtrcallCopyRet6[TImpl, S, A1, A2, A3, A4, A5, A6, R](fn),
+		wrapVarcallCopyRet6[TImpl, S, A1, A2, A3, A4, A5, A6, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -591,10 +610,10 @@ func ClassDBBindValueMethod7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue7[TImpl, S, A1, A2, A3, A4, A5, A6, A7, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R,
@@ -603,7 +622,8 @@ func ClassDBBindCopyRetMethod7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet7[TImpl, S, A1, A2, A3, A4, A5, A6, A7, R](fn), nil)
+		wrapPtrcallCopyRet7[TImpl, S, A1, A2, A3, A4, A5, A6, A7, R](fn),
+		wrapVarcallCopyRet7[TImpl, S, A1, A2, A3, A4, A5, A6, A7, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -628,7 +648,8 @@ func ClassDBBindStaticCopyRetMethod7[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet7[A1, A2, A3, A4, A5, A6, A7, R](fn), nil)
+		wrapStaticPtrcallCopyRet7[A1, A2, A3, A4, A5, A6, A7, R](fn),
+		wrapStaticVarcallCopyRet7[A1, A2, A3, A4, A5, A6, A7, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -655,7 +676,8 @@ func ClassDBBindVirtualCopyRetMethod7[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet7[TImpl, S, A1, A2, A3, A4, A5, A6, A7, R](fn), nil)
+		wrapPtrcallCopyRet7[TImpl, S, A1, A2, A3, A4, A5, A6, A7, R](fn),
+		wrapVarcallCopyRet7[TImpl, S, A1, A2, A3, A4, A5, A6, A7, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -671,10 +693,10 @@ func ClassDBBindValueMethod8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue8[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8) R,
@@ -683,7 +705,8 @@ func ClassDBBindCopyRetMethod8[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet8[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, R](fn), nil)
+		wrapPtrcallCopyRet8[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, R](fn),
+		wrapVarcallCopyRet8[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -708,7 +731,8 @@ func ClassDBBindStaticCopyRetMethod8[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet8[A1, A2, A3, A4, A5, A6, A7, A8, R](fn), nil)
+		wrapStaticPtrcallCopyRet8[A1, A2, A3, A4, A5, A6, A7, A8, R](fn),
+		wrapStaticVarcallCopyRet8[A1, A2, A3, A4, A5, A6, A7, A8, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -735,7 +759,8 @@ func ClassDBBindVirtualCopyRetMethod8[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet8[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, R](fn), nil)
+		wrapPtrcallCopyRet8[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, R](fn),
+		wrapVarcallCopyRet8[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -751,10 +776,10 @@ func ClassDBBindValueMethod9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 na
 		wrapVarcallValue9[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R,
@@ -763,7 +788,8 @@ func ClassDBBindCopyRetMethod9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet9[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn), nil)
+		wrapPtrcallCopyRet9[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn),
+		wrapVarcallCopyRet9[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -788,7 +814,8 @@ func ClassDBBindStaticCopyRetMethod9[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet9[A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn), nil)
+		wrapStaticPtrcallCopyRet9[A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn),
+		wrapStaticVarcallCopyRet9[A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -815,7 +842,8 @@ func ClassDBBindVirtualCopyRetMethod9[TImpl any, S selfTyped[TImpl], A1 nativeSl
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet9[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn), nil)
+		wrapPtrcallCopyRet9[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn),
+		wrapVarcallCopyRet9[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -831,10 +859,10 @@ func ClassDBBindValueMethod10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 n
 		wrapVarcallValue10[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R,
@@ -843,7 +871,8 @@ func ClassDBBindCopyRetMethod10[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet10[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn), nil)
+		wrapPtrcallCopyRet10[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn),
+		wrapVarcallCopyRet10[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -868,7 +897,8 @@ func ClassDBBindStaticCopyRetMethod10[A1 nativeSlot, A2 nativeSlot, A3 nativeSlo
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet10[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn), nil)
+		wrapStaticPtrcallCopyRet10[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn),
+		wrapStaticVarcallCopyRet10[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -895,7 +925,8 @@ func ClassDBBindVirtualCopyRetMethod10[TImpl any, S selfTyped[TImpl], A1 nativeS
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet10[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn), nil)
+		wrapPtrcallCopyRet10[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn),
+		wrapVarcallCopyRet10[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -911,10 +942,10 @@ func ClassDBBindValueMethod11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 n
 		wrapVarcallValue11[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R,
@@ -923,7 +954,8 @@ func ClassDBBindCopyRetMethod11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet11[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn), nil)
+		wrapPtrcallCopyRet11[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn),
+		wrapVarcallCopyRet11[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -948,7 +980,8 @@ func ClassDBBindStaticCopyRetMethod11[A1 nativeSlot, A2 nativeSlot, A3 nativeSlo
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet11[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn), nil)
+		wrapStaticPtrcallCopyRet11[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn),
+		wrapStaticVarcallCopyRet11[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -975,7 +1008,8 @@ func ClassDBBindVirtualCopyRetMethod11[TImpl any, S selfTyped[TImpl], A1 nativeS
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet11[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn), nil)
+		wrapPtrcallCopyRet11[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn),
+		wrapVarcallCopyRet11[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -991,10 +1025,10 @@ func ClassDBBindValueMethod12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 n
 		wrapVarcallValue12[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R,
@@ -1003,7 +1037,8 @@ func ClassDBBindCopyRetMethod12[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet12[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn), nil)
+		wrapPtrcallCopyRet12[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn),
+		wrapVarcallCopyRet12[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -1028,7 +1063,8 @@ func ClassDBBindStaticCopyRetMethod12[A1 nativeSlot, A2 nativeSlot, A3 nativeSlo
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet12[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn), nil)
+		wrapStaticPtrcallCopyRet12[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn),
+		wrapStaticVarcallCopyRet12[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -1055,7 +1091,8 @@ func ClassDBBindVirtualCopyRetMethod12[TImpl any, S selfTyped[TImpl], A1 nativeS
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet12[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn), nil)
+		wrapPtrcallCopyRet12[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn),
+		wrapVarcallCopyRet12[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -1071,10 +1108,10 @@ func ClassDBBindValueMethod13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 n
 		wrapVarcallValue13[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R,
@@ -1083,7 +1120,8 @@ func ClassDBBindCopyRetMethod13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet13[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn), nil)
+		wrapPtrcallCopyRet13[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn),
+		wrapVarcallCopyRet13[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -1108,7 +1146,8 @@ func ClassDBBindStaticCopyRetMethod13[A1 nativeSlot, A2 nativeSlot, A3 nativeSlo
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet13[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn), nil)
+		wrapStaticPtrcallCopyRet13[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn),
+		wrapStaticVarcallCopyRet13[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -1135,7 +1174,8 @@ func ClassDBBindVirtualCopyRetMethod13[TImpl any, S selfTyped[TImpl], A1 nativeS
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet13[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn), nil)
+		wrapPtrcallCopyRet13[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn),
+		wrapVarcallCopyRet13[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -1151,10 +1191,10 @@ func ClassDBBindValueMethod14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 n
 		wrapVarcallValue14[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R,
@@ -1163,7 +1203,8 @@ func ClassDBBindCopyRetMethod14[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet14[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn), nil)
+		wrapPtrcallCopyRet14[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn),
+		wrapVarcallCopyRet14[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -1188,7 +1229,8 @@ func ClassDBBindStaticCopyRetMethod14[A1 nativeSlot, A2 nativeSlot, A3 nativeSlo
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet14[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn), nil)
+		wrapStaticPtrcallCopyRet14[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn),
+		wrapStaticVarcallCopyRet14[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -1215,7 +1257,8 @@ func ClassDBBindVirtualCopyRetMethod14[TImpl any, S selfTyped[TImpl], A1 nativeS
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet14[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn), nil)
+		wrapPtrcallCopyRet14[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn),
+		wrapVarcallCopyRet14[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -1231,10 +1274,10 @@ func ClassDBBindValueMethod15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 n
 		wrapVarcallValue15[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R,
@@ -1243,7 +1286,8 @@ func ClassDBBindCopyRetMethod15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet15[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn), nil)
+		wrapPtrcallCopyRet15[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn),
+		wrapVarcallCopyRet15[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -1268,7 +1312,8 @@ func ClassDBBindStaticCopyRetMethod15[A1 nativeSlot, A2 nativeSlot, A3 nativeSlo
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet15[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn), nil)
+		wrapStaticPtrcallCopyRet15[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn),
+		wrapStaticVarcallCopyRet15[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -1295,7 +1340,8 @@ func ClassDBBindVirtualCopyRetMethod15[TImpl any, S selfTyped[TImpl], A1 nativeS
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet15[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn), nil)
+		wrapPtrcallCopyRet15[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn),
+		wrapVarcallCopyRet15[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, R](fn, defaultValues, gdMethodName))
 }
 
 // instance bind, value-return family
@@ -1311,10 +1357,10 @@ func ClassDBBindValueMethod16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 n
 		wrapVarcallValue16[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn, defaultValues, gdMethodName))
 }
 
-// instance bind, copy-constructor return family. The varcall closure stays
-// nil: the copy-construct-into-Variant encode carries the borrow-echo
-// destroy-source decision (task 5.2), so varcalls ride the reflective body
-// unchanged until then.
+// instance bind, copy-constructor return family. The varcall closure carries
+// the borrow-echo-aware copy-construct-into-Variant encode (design D5): the
+// return Variant is encoded first, the source released only per the varcall
+// release matrix and only when it is not an echo of a decoded argument.
 func ClassDBBindCopyRetMethod16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot, R RetCopyEncodable](
 	t S,
 	fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R,
@@ -1323,7 +1369,8 @@ func ClassDBBindCopyRetMethod16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT, argNames, defaultValues,
-		wrapPtrcallCopyRet16[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn), nil)
+		wrapPtrcallCopyRet16[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn),
+		wrapVarcallCopyRet16[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn, defaultValues, gdMethodName))
 }
 
 // static bind, value-return family
@@ -1348,7 +1395,8 @@ func ClassDBBindStaticCopyRetMethod16[A1 nativeSlot, A2 nativeSlot, A3 nativeSlo
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC, argNames, defaultValues,
-		wrapStaticPtrcallCopyRet16[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn), nil)
+		wrapStaticPtrcallCopyRet16[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn),
+		wrapStaticVarcallCopyRet16[A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn, defaultValues, gdMethodName))
 }
 
 // virtual bind, value-return family (virtual dispatch is ptrcall-shaped, so
@@ -1375,7 +1423,8 @@ func ClassDBBindVirtualCopyRetMethod16[TImpl any, S selfTyped[TImpl], A1 nativeS
 	defaultValues []Variant,
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_VIRTUAL, argNames, defaultValues,
-		wrapPtrcallCopyRet16[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn), nil)
+		wrapPtrcallCopyRet16[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn),
+		wrapVarcallCopyRet16[TImpl, S, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16, R](fn, defaultValues, gdMethodName))
 }
 
 // variadic binds (design D4): the VARARG flag is part of the shape, the
@@ -1393,6 +1442,21 @@ func ClassDBBindVariadicValueMethod[TImpl any, S selfTyped[TImpl], R varRetSlot]
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT|METHOD_FLAG_VARARG, argNames, defaultValues,
 		nil, wrapVarcallVariadicValue[TImpl, S, R](fn))
+}
+
+// instance bind, variadic copy-constructor return family. No echo
+// suppression: the handler receives raw Variants and holds no borrows, so
+// the varcall release matrix (StringName/NodePath destroy their source,
+// containers no return-path release) applies unconditionally.
+func ClassDBBindVariadicCopyRetMethod[TImpl any, S selfTyped[TImpl], R RetCopyEncodable](
+	t S,
+	fn func(*TImpl, ...Variant) R,
+	gdMethodName string,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAGS_DEFAULT|METHOD_FLAG_VARARG, argNames, defaultValues,
+		nil, wrapVarcallVariadicCopyRet[TImpl, S, R](fn))
 }
 
 // instance bind, variadic void-return family
@@ -1417,6 +1481,18 @@ func ClassDBBindStaticVariadicValueMethod[R varRetSlot](
 ) {
 	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC|METHOD_FLAG_VARARG, argNames, defaultValues,
 		nil, wrapStaticVarcallVariadicValue[R](fn))
+}
+
+// static bind, variadic copy-constructor return family
+func ClassDBBindStaticVariadicCopyRetMethod[R RetCopyEncodable](
+	t GDClass,
+	fn func(...Variant) R,
+	gdMethodName string,
+	argNames []string,
+	defaultValues []Variant,
+) {
+	classDBBindTyped(t, fn, gdMethodName, METHOD_FLAG_STATIC|METHOD_FLAG_VARARG, argNames, defaultValues,
+		nil, wrapStaticVarcallVariadicCopyRet[R](fn))
 }
 
 // static bind, variadic void-return family

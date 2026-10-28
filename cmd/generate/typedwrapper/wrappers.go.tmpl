@@ -12,6 +12,8 @@ package core
 // nothing here is executed per call except the single decoded call.
 
 import (
+	"runtime"
+
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
@@ -72,4 +74,190 @@ func wrapStaticPtrcallCopyRet{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i 
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue{{ $n }}[TImpl any, S selfTyped[TImpl]{{ range $i, $_ := counts $n }}, A{{ inc $i }} varArgSlot{{ end }}, R varRetSlot](fn func(*TImpl{{ range $i, $_ := counts $n }}, A{{ inc $i }}{{ end }}) R, defaultValues []Variant, gdMethodName string) varcallFn {
+{{- range $i, $_ := counts $n }}
+	dec{{ inc $i }} := newVarArgDecoder[A{{ inc $i }}]()
+	rel{{ inc $i }} := newVarArgReleaser[A{{ inc $i }}]()
+{{- end }}
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+{{- if gt $n 0 }}
+		callArgs := fillVarcallCallArgs(gdArgs, {{ $n }}, {{ $n }}-len(defaultValues), defaultValues, gdMethodName)
+{{- else }}
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+{{- end }}
+		self := inst.(S).Self()
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := dec{{ inc $i }}(callArgs[{{ $i }}])
+{{- end }}
+		ret := fn(self{{ range $i, $_ := counts $n }}, a{{ inc $i }}{{ end }})
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+{{- range $i, $_ := counts $n }}
+		rel{{ inc $i }}(a{{ inc $i }})
+{{- end }}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone{{ $n }}[TImpl any, S selfTyped[TImpl]{{ range $i, $_ := counts $n }}, A{{ inc $i }} varArgSlot{{ end }}](fn func(*TImpl{{ range $i, $_ := counts $n }}, A{{ inc $i }}{{ end }}), defaultValues []Variant, gdMethodName string) varcallFn {
+{{- range $i, $_ := counts $n }}
+	dec{{ inc $i }} := newVarArgDecoder[A{{ inc $i }}]()
+	rel{{ inc $i }} := newVarArgReleaser[A{{ inc $i }}]()
+{{- end }}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+{{- if gt $n 0 }}
+		callArgs := fillVarcallCallArgs(gdArgs, {{ $n }}, {{ $n }}-len(defaultValues), defaultValues, gdMethodName)
+{{- else }}
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+{{- end }}
+		self := inst.(S).Self()
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := dec{{ inc $i }}(callArgs[{{ $i }}])
+{{- end }}
+		fn(self{{ range $i, $_ := counts $n }}, a{{ inc $i }}{{ end }})
+{{- range $i, $_ := counts $n }}
+		rel{{ inc $i }}(a{{ inc $i }})
+{{- end }}
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue{{ $n }}[{{ range $i, $_ := counts $n }}A{{ inc $i }} varArgSlot, {{ end }}R varRetSlot](fn func({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}A{{ inc $i }}{{ end }}) R, defaultValues []Variant, gdMethodName string) varcallFn {
+{{- range $i, $_ := counts $n }}
+	dec{{ inc $i }} := newVarArgDecoder[A{{ inc $i }}]()
+	rel{{ inc $i }} := newVarArgReleaser[A{{ inc $i }}]()
+{{- end }}
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+{{- if gt $n 0 }}
+		callArgs := fillVarcallCallArgs(gdArgs, {{ $n }}, {{ $n }}-len(defaultValues), defaultValues, gdMethodName)
+{{- else }}
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+{{- end }}
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := dec{{ inc $i }}(callArgs[{{ $i }}])
+{{- end }}
+		ret := fn({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}a{{ inc $i }}{{ end }})
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+{{- range $i, $_ := counts $n }}
+		rel{{ inc $i }}(a{{ inc $i }})
+{{- end }}
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+{{ if gt $n 0 }}func wrapStaticVarcallNone{{ $n }}[{{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}A{{ inc $i }} varArgSlot{{ end }}](fn func({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}A{{ inc $i }}{{ end }}), defaultValues []Variant, gdMethodName string) varcallFn {
+{{- range $i, $_ := counts $n }}
+	dec{{ inc $i }} := newVarArgDecoder[A{{ inc $i }}]()
+	rel{{ inc $i }} := newVarArgReleaser[A{{ inc $i }}]()
+{{- end }}
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+{{- if gt $n 0 }}
+		callArgs := fillVarcallCallArgs(gdArgs, {{ $n }}, {{ $n }}-len(defaultValues), defaultValues, gdMethodName)
+{{- else }}
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+{{- end }}
+{{- range $i, $_ := counts $n }}
+		a{{ inc $i }} := dec{{ inc $i }}(callArgs[{{ $i }}])
+{{- end }}
+		fn({{ range $i, $_ := counts $n }}{{ if gt $i 0 }}, {{ end }}a{{ inc $i }}{{ end }})
+{{- range $i, $_ := counts $n }}
+		rel{{ inc $i }}(a{{ inc $i }})
+{{- end }}
+		return NewVariantNil(), nil
+	}
+}
+{{ else }}func wrapStaticVarcallNone0(fn func(), defaultValues []Variant, gdMethodName string) varcallFn {
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+		fn()
+		return NewVariantNil(), nil
+	}
+}
 {{ end }}
+
+{{ end }}
+// variadic varcall closures (design D4): the collected engine Variants ARE
+// the variadic slice, so the compiled closure replaces reflect.Value.
+// CallSlice — the handler is invoked directly with gdArgs spread in place.
+// No fill step: the reflective variadic branch never reads callArgs (its
+// fillCallArgs returns nil), and variadic arguments are never decoded, so
+// borrows cannot be held and the ptrcall-side destroy-never discipline
+// trivially holds. Variadic binds carry no compiled ptrcall closure: the
+// engine varcalls vararg binds, and their ptrcall stays reflective.
+
+// instance binding, variadic value return
+func wrapVarcallVariadicValue[TImpl any, S selfTyped[TImpl], R varRetSlot](fn func(*TImpl, ...Variant) R) varcallFn {
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		self := inst.(S).Self()
+		ret := fn(self, gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, variadic void return
+func wrapVarcallVariadicNone[TImpl any, S selfTyped[TImpl]](fn func(*TImpl, ...Variant)) varcallFn {
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		self := inst.(S).Self()
+		fn(self, gdArgs...)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, variadic value return
+func wrapStaticVarcallVariadicValue[R varRetSlot](fn func(...Variant) R) varcallFn {
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		ret := fn(gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, variadic void return
+func wrapStaticVarcallVariadicNone(fn func(...Variant)) varcallFn {
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		fn(gdArgs...)
+		return NewVariantNil(), nil
+	}
+}

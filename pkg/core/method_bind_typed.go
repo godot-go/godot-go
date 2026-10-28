@@ -164,6 +164,10 @@ func storeTypedRet[R retValueSlot](retPtr GDExtensionTypePtr, value R) {
 	*(*R)(unsafe.Pointer(retPtr)) = value
 }
 
+// Varcall-side constraints (varArgSlot/varRetSlot) and the bind-time slot
+// factories (newVarArgDecoder, newVarArgReleaser, newVarRetEncoder) are
+// generated into var_args.gen.go from cmd/generate/typedwrapper.
+
 // notificationFn is the fixed-shape closure for the notification virtual
 // (design D6 / notification-virtual-dispatch): shape taken from
 // GoCallback_ClassCreationInfoNotification — int32 what plus the

@@ -53,12 +53,21 @@ type GoMethodMetadata struct {
 	// typedDispatch, when non-nil, serves ptrcall dispatch through the
 	// compiled closure built at bind time from a typed bind overload
 	// (typed-method-dispatch D1): zero reflection per call. The reflective
-	// body stays authoritative for varcall (call_func) until the typed
-	// varcall closure lands, and for binds whose signature the constraint
+	// body stays authoritative for binds whose signature the constraint
 	// unions cannot type — those binds leave this nil and dispatch fully
 	// reflectively. Same-package engine callbacks consult this first
 	// (task 4.1 wiring).
 	typedDispatch ptrcallFn
+	// typedVarcall, when non-nil, serves varcall dispatch (Call/
+	// CallWithError) through the compiled closure built at bind time
+	// (typed-method-dispatch D4): trailing-default fill and under-supply
+	// panic shared verbatim with the reflective path through
+	// fillVarcallCallArgs, typed decode/release of the constraint-union
+	// arguments, no reflect frames per call. Binds outside the varcall
+	// unions (Variant parameters, slices, object/Ref decode-error seams,
+	// copy-constructor varcall returns pending the borrow-echo work) leave
+	// this nil and run the reflective body unchanged.
+	typedVarcall varcallFn
 	// Lifecycle-managed StringName objects for PropertyInfo structs.
 	// These persist for the lifetime of GoMethodMetadata to prevent
 	// dangling pointers in GDExtensionPropertyInfo.name/class_name fields.
@@ -426,17 +435,28 @@ func (md *GoMethodMetadata) fillCallArgs(gdArgs []Variant) []Variant {
 	if md.IsVariadic {
 		return nil
 	}
-	gdArgsCount := len(gdArgs)
 	defArgsCount := len(md.gdeDefaultArgumentPtrs)
 	declared := len(md.gdeArgumentTypes)
-	defaultStart := declared - defArgsCount
+	return fillVarcallCallArgs(gdArgs, declared, declared-defArgsCount, md.DefaultArguments, md.GdMethodName)
+}
+
+// fillVarcallCallArgs is the trailing-default convention shared by the
+// reflective fill above and every typed varcall closure (typed-method-
+// dispatch D4): the bound defaults array maps to the LAST defArgsCount
+// parameters, so defaults[k] fills parameter (defaultStart + k) where
+// defaultStart = declared - defArgsCount. The bind-time guard ensures
+// defArgsCount <= declared, so defaultStart >= 0. The typed families pass
+// their statically-known arity, making the engine-side and typed-side fill
+// literally the same code.
+func fillVarcallCallArgs(gdArgs []Variant, declared, defaultStart int, defaults []Variant, gdMethodName string) []Variant {
+	gdArgsCount := len(gdArgs)
 	callArgs := make([]Variant, declared)
 	for i := range callArgs {
 		switch {
 		case i < gdArgsCount:
 			callArgs[i] = gdArgs[i]
 		case i >= defaultStart:
-			callArgs[i] = md.DefaultArguments[i-defaultStart]
+			callArgs[i] = defaults[i-defaultStart]
 		default:
 			// Unfilled slot. The varcall callback pre-validates via
 			// classifyVarcallArity, so the engine path never reaches here.
@@ -444,11 +464,11 @@ func (md *GoMethodMetadata) fillCallArgs(gdArgs []Variant) []Variant {
 			// arguments is a misuse: report it loudly instead of silently
 			// delivering a zero-value Variant.
 			log.Panic("Call invoked with too few arguments to fill the signature",
-				zap.String("method", md.GdMethodName),
+				zap.String("method", gdMethodName),
 				zap.Int("unfilled_slot", i),
 				zap.Int("declared", declared),
 				zap.Int("supplied", gdArgsCount),
-				zap.Int("defaults", defArgsCount),
+				zap.Int("defaults", len(defaults)),
 			)
 		}
 	}
@@ -486,6 +506,15 @@ func (md *GoMethodMetadata) Call(inst GDClass, gdArgs ...Variant) Variant {
 // returns no error because its arguments are collected raw as Variants with no
 // per-parameter decode to fail.
 func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Variant, error) {
+	// Typed varcall binds (typed-method-dispatch D4) carry a compiled closure
+	// that fills the trailing-default convention through the shared
+	// fillVarcallCallArgs and decodes without reflect frames; the returned
+	// error seam is unchanged (union decodes never fail — decode-error
+	// signatures keep the reflective body below). Call, the panic facade,
+	// inherits the selection through this method.
+	if md.typedVarcall != nil {
+		return md.typedVarcall(inst, gdArgs)
+	}
 	var pinner runtime.Pinner
 	defer pinner.Unpin()
 	callArgs := md.fillCallArgs(gdArgs)

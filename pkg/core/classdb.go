@@ -604,8 +604,9 @@ func classDBBindTyped(
 	argNames []string,
 	defaultValues []Variant,
 	dispatch ptrcallFn,
+	varDispatch varcallFn,
 ) {
-	md := classDBBuildTypedMetadata(t, fn, gdMethodName, methodFlags, argNames, defaultValues, dispatch)
+	md := classDBBuildTypedMetadata(t, fn, gdMethodName, methodFlags, argNames, defaultValues, dispatch, varDispatch)
 	classDBRegisterMethod(md, md.GoMethodName)
 }
 
@@ -636,6 +637,7 @@ func classDBBuildTypedMetadata(
 	argNames []string,
 	defaultValues []Variant,
 	dispatch ptrcallFn,
+	varDispatch varcallFn,
 ) *GoMethodMetadata {
 	className := t.GetClassName()
 	isStatic := (methodFlags & METHOD_FLAG_STATIC) == METHOD_FLAG_STATIC
@@ -729,6 +731,7 @@ func classDBBuildTypedMetadata(
 	validateBindSignature(mt, argumentBase, argNames, defaultValues, methodFlags, className, gdMethodName)
 	md := newGoMethodMetadataFromFunc(fnValue, mt, argumentBase, className, gdMethodName, goMethodName, defaultValues, methodFlags)
 	md.typedDispatch = dispatch
+	md.typedVarcall = varDispatch
 	return md
 }
 

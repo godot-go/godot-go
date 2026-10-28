@@ -12,6 +12,8 @@ package core
 // nothing here is executed per call except the single decoded call.
 
 import (
+	"runtime"
+
 	. "github.com/godot-go/godot-go/pkg/builtin"
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
@@ -66,6 +68,72 @@ func wrapStaticPtrcallCopyRet0[R RetCopyEncodable](fn func() R) ptrcallFn {
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue0[TImpl any, S selfTyped[TImpl], R varRetSlot](fn func(*TImpl) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		ret := fn(self)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone0[TImpl any, S selfTyped[TImpl]](fn func(*TImpl), defaultValues []Variant, gdMethodName string) varcallFn {
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		fn(self)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue0[R varRetSlot](fn func() R, defaultValues []Variant, gdMethodName string) varcallFn {
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+		ret := fn()
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone0(fn func(), defaultValues []Variant, gdMethodName string) varcallFn {
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		// Validation refuses defaults on a zero-parameter signature, so this
+		// fill can never panic; it runs to keep the family uniform.
+		fillVarcallCallArgs(gdArgs, 0, 0, defaultValues, gdMethodName)
+		fn()
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue1[TImpl any, S selfTyped[TImpl], A1 nativeSlot, R retValueSlot](fn func(*TImpl, A1) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -113,6 +181,80 @@ func wrapStaticPtrcallCopyRet1[A1 nativeSlot, R RetCopyEncodable](fn func(A1) R)
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue1[TImpl any, S selfTyped[TImpl], A1 varArgSlot, R varRetSlot](fn func(*TImpl, A1) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 1, 1-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		ret := fn(self, a1)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone1[TImpl any, S selfTyped[TImpl], A1 varArgSlot](fn func(*TImpl, A1), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 1, 1-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		fn(self, a1)
+		rel1(a1)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue1[A1 varArgSlot, R varRetSlot](fn func(A1) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 1, 1-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		ret := fn(a1)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone1[A1 varArgSlot](fn func(A1), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 1, 1-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		fn(a1)
+		rel1(a1)
+		return NewVariantNil(), nil
 	}
 }
 
@@ -166,6 +308,96 @@ func wrapStaticPtrcallCopyRet2[A1 nativeSlot, A2 nativeSlot, R RetCopyEncodable]
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue2[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 2, 2-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		ret := fn(self, a1, a2)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone2[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot](fn func(*TImpl, A1, A2), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 2, 2-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		fn(self, a1, a2)
+		rel1(a1)
+		rel2(a2)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue2[A1 varArgSlot, A2 varArgSlot, R varRetSlot](fn func(A1, A2) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 2, 2-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		ret := fn(a1, a2)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone2[A1 varArgSlot, A2 varArgSlot](fn func(A1, A2), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 2, 2-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		fn(a1, a2)
+		rel1(a1)
+		rel2(a2)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue3[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -213,6 +445,112 @@ func wrapStaticPtrcallCopyRet3[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, R Re
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue3[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 3, 3-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		ret := fn(self, a1, a2, a3)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone3[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot](fn func(*TImpl, A1, A2, A3), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 3, 3-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		fn(self, a1, a2, a3)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue3[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, R varRetSlot](fn func(A1, A2, A3) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 3, 3-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		ret := fn(a1, a2, a3)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone3[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot](fn func(A1, A2, A3), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 3, 3-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		fn(a1, a2, a3)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		return NewVariantNil(), nil
 	}
 }
 
@@ -266,6 +604,128 @@ func wrapStaticPtrcallCopyRet4[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue4[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 4, 4-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		ret := fn(self, a1, a2, a3, a4)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone4[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot](fn func(*TImpl, A1, A2, A3, A4), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 4, 4-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		fn(self, a1, a2, a3, a4)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue4[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 4, 4-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		ret := fn(a1, a2, a3, a4)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone4[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot](fn func(A1, A2, A3, A4), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 4, 4-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		fn(a1, a2, a3, a4)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue5[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -313,6 +773,144 @@ func wrapStaticPtrcallCopyRet5[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue5[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 5, 5-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		ret := fn(self, a1, a2, a3, a4, a5)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone5[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 5, 5-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		fn(self, a1, a2, a3, a4, a5)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue5[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 5, 5-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		ret := fn(a1, a2, a3, a4, a5)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone5[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot](fn func(A1, A2, A3, A4, A5), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 5, 5-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		fn(a1, a2, a3, a4, a5)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		return NewVariantNil(), nil
 	}
 }
 
@@ -366,6 +964,160 @@ func wrapStaticPtrcallCopyRet6[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue6[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 6, 6-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		ret := fn(self, a1, a2, a3, a4, a5, a6)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone6[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 6, 6-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		fn(self, a1, a2, a3, a4, a5, a6)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue6[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 6, 6-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		ret := fn(a1, a2, a3, a4, a5, a6)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone6[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot](fn func(A1, A2, A3, A4, A5, A6), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 6, 6-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		fn(a1, a2, a3, a4, a5, a6)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue7[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -413,6 +1165,176 @@ func wrapStaticPtrcallCopyRet7[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue7[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 7, 7-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone7[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 7, 7-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		fn(self, a1, a2, a3, a4, a5, a6, a7)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue7[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 7, 7-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone7[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 7, 7-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		fn(a1, a2, a3, a4, a5, a6, a7)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		return NewVariantNil(), nil
 	}
 }
 
@@ -466,6 +1388,192 @@ func wrapStaticPtrcallCopyRet8[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue8[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 8, 8-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone8[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 8, 8-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue8[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 8, 8-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone8[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 8, 8-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue9[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -513,6 +1621,208 @@ func wrapStaticPtrcallCopyRet9[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 n
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue9[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 9, 9-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone9[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 9, 9-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue9[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 9, 9-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone9[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 9, 9-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		return NewVariantNil(), nil
 	}
 }
 
@@ -566,6 +1876,224 @@ func wrapStaticPtrcallCopyRet10[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue10[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 10, 10-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone10[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 10, 10-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue10[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 10, 10-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone10[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 10, 10-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue11[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -613,6 +2141,240 @@ func wrapStaticPtrcallCopyRet11[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue11[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 11, 11-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone11[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 11, 11-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue11[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 11, 11-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone11[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 11, 11-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		return NewVariantNil(), nil
 	}
 }
 
@@ -666,6 +2428,256 @@ func wrapStaticPtrcallCopyRet12[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue12[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 12, 12-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone12[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 12, 12-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue12[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 12, 12-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone12[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 12, 12-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue13[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -713,6 +2725,272 @@ func wrapStaticPtrcallCopyRet13[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue13[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 13, 13-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone13[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 13, 13-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue13[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 13, 13-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone13[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 13, 13-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		return NewVariantNil(), nil
 	}
 }
 
@@ -766,6 +3044,288 @@ func wrapStaticPtrcallCopyRet14[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue14[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 14, 14-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone14[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 14, 14-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue14[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 14, 14-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone14[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 14, 14-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue15[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -816,6 +3376,304 @@ func wrapStaticPtrcallCopyRet15[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 	}
 }
 
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue15[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 15, 15-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone15[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 15, 15-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue15[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 15, 15-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone15[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 15, 15-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		return NewVariantNil(), nil
+	}
+}
+
 // instance binding, value return
 func wrapPtrcallValue16[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 nativeSlot, A5 nativeSlot, A6 nativeSlot, A7 nativeSlot, A8 nativeSlot, A9 nativeSlot, A10 nativeSlot, A11 nativeSlot, A12 nativeSlot, A13 nativeSlot, A14 nativeSlot, A15 nativeSlot, A16 nativeSlot, R retValueSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R) ptrcallFn {
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
@@ -863,5 +3721,374 @@ func wrapStaticPtrcallCopyRet16[A1 nativeSlot, A2 nativeSlot, A3 nativeSlot, A4 
 	return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
 		ret := fn(loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]), loadTypedSlot[A3](args[2]), loadTypedSlot[A4](args[3]), loadTypedSlot[A5](args[4]), loadTypedSlot[A6](args[5]), loadTypedSlot[A7](args[6]), loadTypedSlot[A8](args[7]), loadTypedSlot[A9](args[8]), loadTypedSlot[A10](args[9]), loadTypedSlot[A11](args[10]), loadTypedSlot[A12](args[11]), loadTypedSlot[A13](args[12]), loadTypedSlot[A14](args[13]), loadTypedSlot[A15](args[14]), loadTypedSlot[A16](args[15]))
 		ret.RetEncodeInto(retPtr)
+	}
+}
+
+// instance binding, varcall value return (design D4): the slot decode/release
+// and return-encode closures are built ONCE at bind time (factory reflection
+// at bind, never per call); the trailing-default convention runs before any
+// decode (shared fillVarcallCallArgs, so the under-supply panic is literally
+// the reflective path's), decoded arguments ride plain typed locals, owned
+// container arguments are released after the return Variant has been
+// constructed exactly like destroyOwnedContainerArgs ordering requires, and
+// the constructed Variant is the Go memory the engine variant constructor
+// writes through — pinned like the reflective encode does.
+func wrapVarcallValue16[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, A16 varArgSlot, R varRetSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	dec16 := newVarArgDecoder[A16]()
+	rel16 := newVarArgReleaser[A16]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 16, 16-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		a16 := dec16(callArgs[15])
+		ret := fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		rel16(a16)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, varcall void return
+func wrapVarcallNone16[TImpl any, S selfTyped[TImpl], A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, A16 varArgSlot](fn func(*TImpl, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	dec16 := newVarArgDecoder[A16]()
+	rel16 := newVarArgReleaser[A16]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 16, 16-len(defaultValues), defaultValues, gdMethodName)
+		self := inst.(S).Self()
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		a16 := dec16(callArgs[15])
+		fn(self, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		rel16(a16)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, varcall value return
+func wrapStaticVarcallValue16[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, A16 varArgSlot, R varRetSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16) R, defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	dec16 := newVarArgDecoder[A16]()
+	rel16 := newVarArgReleaser[A16]()
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 16, 16-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		a16 := dec16(callArgs[15])
+		ret := fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		rel16(a16)
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, varcall void return
+func wrapStaticVarcallNone16[A1 varArgSlot, A2 varArgSlot, A3 varArgSlot, A4 varArgSlot, A5 varArgSlot, A6 varArgSlot, A7 varArgSlot, A8 varArgSlot, A9 varArgSlot, A10 varArgSlot, A11 varArgSlot, A12 varArgSlot, A13 varArgSlot, A14 varArgSlot, A15 varArgSlot, A16 varArgSlot](fn func(A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A13, A14, A15, A16), defaultValues []Variant, gdMethodName string) varcallFn {
+	dec1 := newVarArgDecoder[A1]()
+	rel1 := newVarArgReleaser[A1]()
+	dec2 := newVarArgDecoder[A2]()
+	rel2 := newVarArgReleaser[A2]()
+	dec3 := newVarArgDecoder[A3]()
+	rel3 := newVarArgReleaser[A3]()
+	dec4 := newVarArgDecoder[A4]()
+	rel4 := newVarArgReleaser[A4]()
+	dec5 := newVarArgDecoder[A5]()
+	rel5 := newVarArgReleaser[A5]()
+	dec6 := newVarArgDecoder[A6]()
+	rel6 := newVarArgReleaser[A6]()
+	dec7 := newVarArgDecoder[A7]()
+	rel7 := newVarArgReleaser[A7]()
+	dec8 := newVarArgDecoder[A8]()
+	rel8 := newVarArgReleaser[A8]()
+	dec9 := newVarArgDecoder[A9]()
+	rel9 := newVarArgReleaser[A9]()
+	dec10 := newVarArgDecoder[A10]()
+	rel10 := newVarArgReleaser[A10]()
+	dec11 := newVarArgDecoder[A11]()
+	rel11 := newVarArgReleaser[A11]()
+	dec12 := newVarArgDecoder[A12]()
+	rel12 := newVarArgReleaser[A12]()
+	dec13 := newVarArgDecoder[A13]()
+	rel13 := newVarArgReleaser[A13]()
+	dec14 := newVarArgDecoder[A14]()
+	rel14 := newVarArgReleaser[A14]()
+	dec15 := newVarArgDecoder[A15]()
+	rel15 := newVarArgReleaser[A15]()
+	dec16 := newVarArgDecoder[A16]()
+	rel16 := newVarArgReleaser[A16]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		callArgs := fillVarcallCallArgs(gdArgs, 16, 16-len(defaultValues), defaultValues, gdMethodName)
+		a1 := dec1(callArgs[0])
+		a2 := dec2(callArgs[1])
+		a3 := dec3(callArgs[2])
+		a4 := dec4(callArgs[3])
+		a5 := dec5(callArgs[4])
+		a6 := dec6(callArgs[5])
+		a7 := dec7(callArgs[6])
+		a8 := dec8(callArgs[7])
+		a9 := dec9(callArgs[8])
+		a10 := dec10(callArgs[9])
+		a11 := dec11(callArgs[10])
+		a12 := dec12(callArgs[11])
+		a13 := dec13(callArgs[12])
+		a14 := dec14(callArgs[13])
+		a15 := dec15(callArgs[14])
+		a16 := dec16(callArgs[15])
+		fn(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
+		rel1(a1)
+		rel2(a2)
+		rel3(a3)
+		rel4(a4)
+		rel5(a5)
+		rel6(a6)
+		rel7(a7)
+		rel8(a8)
+		rel9(a9)
+		rel10(a10)
+		rel11(a11)
+		rel12(a12)
+		rel13(a13)
+		rel14(a14)
+		rel15(a15)
+		rel16(a16)
+		return NewVariantNil(), nil
+	}
+}
+
+// variadic varcall closures (design D4): the collected engine Variants ARE
+// the variadic slice, so the compiled closure replaces reflect.Value.
+// CallSlice — the handler is invoked directly with gdArgs spread in place.
+// No fill step: the reflective variadic branch never reads callArgs (its
+// fillCallArgs returns nil), and variadic arguments are never decoded, so
+// borrows cannot be held and the ptrcall-side destroy-never discipline
+// trivially holds. Variadic binds carry no compiled ptrcall closure: the
+// engine varcalls vararg binds, and their ptrcall stays reflective.
+
+// instance binding, variadic value return
+func wrapVarcallVariadicValue[TImpl any, S selfTyped[TImpl], R varRetSlot](fn func(*TImpl, ...Variant) R) varcallFn {
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		self := inst.(S).Self()
+		ret := fn(self, gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// instance binding, variadic void return
+func wrapVarcallVariadicNone[TImpl any, S selfTyped[TImpl]](fn func(*TImpl, ...Variant)) varcallFn {
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		self := inst.(S).Self()
+		fn(self, gdArgs...)
+		return NewVariantNil(), nil
+	}
+}
+
+// static binding, variadic value return
+func wrapStaticVarcallVariadicValue[R varRetSlot](fn func(...Variant) R) varcallFn {
+	storeRet := newVarRetEncoder[R]()
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		ret := fn(gdArgs...)
+		var out Variant
+		var pinner runtime.Pinner
+		pinner.Pin(&out)
+		storeRet(ret, (GDExtensionUninitializedVariantPtr)(out.NativePtr()))
+		pinner.Unpin()
+		return out, nil
+	}
+}
+
+// static binding, variadic void return
+func wrapStaticVarcallVariadicNone(fn func(...Variant)) varcallFn {
+	return func(inst GDClass, gdArgs []Variant) (Variant, error) {
+		fn(gdArgs...)
+		return NewVariantNil(), nil
 	}
 }

@@ -114,7 +114,7 @@ func TestTypedBindRejectsNonFunction(t *testing.T) {
 	withRegisteredClasses(t, map[string]*ClassInfo{"TypedBindStub": typedBindProbe()}, func() {
 		stub := &TypedBindStub{}
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, 42, "echo", METHOD_FLAGS_DEFAULT, nil, nil, nil)
+			classDBBuildTypedMetadata(stub, 42, "echo", METHOD_FLAGS_DEFAULT, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a non-function bind value must fail the bind")
@@ -131,7 +131,7 @@ func TestTypedBindRejectsBareFuncAsInstanceBind(t *testing.T) {
 		// Instance shape expects the receiver as In(0); a bare function is
 		// only valid under the static flag — with or without parameters.
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, func(n int64) int64 { return n }, "echo", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil)
+			classDBBuildTypedMetadata(stub, func(n int64) int64 { return n }, "echo", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a bare function under instance flags must fail the bind")
@@ -140,7 +140,7 @@ func TestTypedBindRejectsBareFuncAsInstanceBind(t *testing.T) {
 			t.Fatalf("unexpected diagnostic: %s", msg)
 		}
 		msg, fired = recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, func() {}, "noop", METHOD_FLAGS_DEFAULT, nil, nil, nil)
+			classDBBuildTypedMetadata(stub, func() {}, "noop", METHOD_FLAGS_DEFAULT, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a parameterless bare function under instance flags must fail the bind")
@@ -155,7 +155,7 @@ func TestTypedBindRejectsInstanceVPrefix(t *testing.T) {
 	withRegisteredClasses(t, map[string]*ClassInfo{"TypedBindStub": typedBindProbe()}, func() {
 		stub := &TypedBindStub{}
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).V_Bad, "bad", METHOD_FLAGS_DEFAULT, nil, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).V_Bad, "bad", METHOD_FLAGS_DEFAULT, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a V_-prefixed instance bind must fail")
@@ -170,7 +170,7 @@ func TestTypedBindRejectsVirtualWithoutPrefix(t *testing.T) {
 	withRegisteredClasses(t, map[string]*ClassInfo{"TypedBindStub": typedBindProbe()}, func() {
 		stub := &TypedBindStub{}
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).Ready, "_ready", METHOD_FLAG_VIRTUAL, nil, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).Ready, "_ready", METHOD_FLAG_VIRTUAL, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a virtual bind without the V_ prefix must fail")
@@ -185,7 +185,7 @@ func TestTypedBindRejectsFlatVirtualName(t *testing.T) {
 	withRegisteredClasses(t, map[string]*ClassInfo{"TypedBindStub": typedBindProbe()}, func() {
 		stub := &TypedBindStub{}
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).V_Bad, "_bad", METHOD_FLAG_VIRTUAL, nil, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).V_Bad, "_bad", METHOD_FLAG_VIRTUAL, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a flat V_<Method> virtual bind must fail")
@@ -203,7 +203,7 @@ func TestTypedBindRejectsVirtualChainMismatch(t *testing.T) {
 		// finds V_TypedBindStub_Ready at this class's level, so the supplied
 		// expression is not what the name-string path would bind.
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).V_Other_Ready, "_ready", METHOD_FLAG_VIRTUAL, nil, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).V_Other_Ready, "_ready", METHOD_FLAG_VIRTUAL, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a virtual expression off the chain resolution must fail")
@@ -218,7 +218,7 @@ func TestTypedBindRejectsReceiverClassMismatch(t *testing.T) {
 	withRegisteredClasses(t, map[string]*ClassInfo{"TypedBindStub": typedBindProbe()}, func() {
 		// The expression belongs to OtherBindStub while t registers TypedBindStub.
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(&TypedBindStub{}, (*OtherBindStub).Ping, "ping", METHOD_FLAGS_DEFAULT, nil, nil, nil)
+			classDBBuildTypedMetadata(&TypedBindStub{}, (*OtherBindStub).Ping, "ping", METHOD_FLAGS_DEFAULT, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a receiver type from another class must fail the bind")
@@ -233,7 +233,7 @@ func TestTypedBindRejectsDuplicateNames(t *testing.T) {
 	withRegisteredClasses(t, map[string]*ClassInfo{"TypedBindStub": typedBindProbeTaken()}, func() {
 		stub := &TypedBindStub{}
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).Echo, "taken_method", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).Echo, "taken_method", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a duplicate method name must fail the typed bind")
@@ -242,7 +242,7 @@ func TestTypedBindRejectsDuplicateNames(t *testing.T) {
 			t.Fatalf("unexpected diagnostic: %s", msg)
 		}
 		msg, fired = recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).Echo, "taken_virtual", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).Echo, "taken_virtual", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a name bound as virtual must fail the typed bind")
@@ -257,7 +257,7 @@ func TestTypedBindRejectsUnregisteredClass(t *testing.T) {
 	withRegisteredClasses(t, map[string]*ClassInfo{}, func() {
 		stub := &TypedBindStub{}
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).Echo, "echo", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).Echo, "echo", METHOD_FLAGS_DEFAULT, []string{"n"}, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a bind for an unregistered class must fail")
@@ -273,7 +273,7 @@ func TestTypedBindRejectsSignatureOverflow(t *testing.T) {
 		stub := &TypedBindStub{}
 		msg, fired := recoverFatal(func() {
 			classDBBuildTypedMetadata(stub, (*TypedBindStub).Echo, "echo", METHOD_FLAGS_DEFAULT,
-				[]string{"a", "b"}, nil, nil)
+				[]string{"a", "b"}, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("more argument names than parameters must fail the typed bind")
@@ -283,7 +283,7 @@ func TestTypedBindRejectsSignatureOverflow(t *testing.T) {
 		}
 		msg, fired = recoverFatal(func() {
 			classDBBuildTypedMetadata(stub, (*TypedBindStub).Ready, "ready", METHOD_FLAGS_DEFAULT,
-				nil, []Variant{{}}, nil)
+				nil, []Variant{{}}, nil, nil)
 		})
 		if !fired {
 			t.Fatal("more default arguments than parameters must fail the typed bind")
@@ -302,7 +302,7 @@ func TestTypedBindRejectsVariadicMisalignment(t *testing.T) {
 		// the receiver-free form, so the variadic gate is what fires.
 		msg, fired := recoverFatal(func() {
 			classDBBuildTypedMetadata(stub, func(nums ...int64) int64 { return 0 }, "sum",
-				METHOD_FLAG_STATIC, nil, nil, nil)
+				METHOD_FLAG_STATIC, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a variadic signature without the VARARG flag must fail")
@@ -319,7 +319,7 @@ func TestTypedBindRejectsSecondReturnNonBool(t *testing.T) {
 		// Fires inside newGoMethodMetadataFromFunc before any engine-backed
 		// StringName construction, so it stays engine-free.
 		msg, fired := recoverFatal(func() {
-			classDBBuildTypedMetadata(stub, (*TypedBindStub).Pair, "pair", METHOD_FLAGS_DEFAULT, nil, nil, nil)
+			classDBBuildTypedMetadata(stub, (*TypedBindStub).Pair, "pair", METHOD_FLAGS_DEFAULT, nil, nil, nil, nil)
 		})
 		if !fired {
 			t.Fatal("a non-bool second return value must fail the typed bind")

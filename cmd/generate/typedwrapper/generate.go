@@ -19,6 +19,9 @@ var retEncodersText string
 //go:embed binds.go.tmpl
 var bindsText string
 
+//go:embed var_args.go.tmpl
+var varArgsText string
+
 type templateData struct {
 	ArityRange []int
 }
@@ -53,7 +56,8 @@ var retEncoderTypes = []retEncoderType{
 
 // Generate runs every typed-dispatch emission in the project rooted at
 // projectPath: the ptrcall wrapper family for pkg/core, the copy-return
-// encoder methods for pkg/builtin, and the typed bind overloads for pkg/core.
+// encoder methods for pkg/builtin, the varcall slot methods for pkg/builtin,
+// and the typed bind overloads for pkg/core.
 func Generate(projectPath string) error {
 	if err := generateWrappers(projectPath); err != nil {
 		return err
@@ -61,7 +65,49 @@ func Generate(projectPath string) error {
 	if err := generateRetEncoders(projectPath); err != nil {
 		return err
 	}
+	if err := generateVarArgs(projectPath); err != nil {
+		return err
+	}
 	return generateBinds(projectPath)
+}
+
+// generateVarArgs renders var_args.go.tmpl and writes pkg/core/var_args.gen.go.
+func generateVarArgs(projectPath string) error {
+	tmpl, err := template.New("var_args.gen.go").Parse(varArgsText)
+	if err != nil {
+		return err
+	}
+
+	types := make([]varArgType, len(varArgTypes))
+	copy(types, varArgTypes)
+	for i := range types {
+		if types[i].RetEncoder != "" {
+			types[i].RetFirst = true
+			break
+		}
+	}
+
+	var b bytes.Buffer
+	if err := tmpl.Execute(&b, struct{ Types []varArgType }{types}); err != nil {
+		return err
+	}
+
+	formatted, err := format.Source(b.Bytes())
+	if err != nil {
+		return fmt.Errorf("format generated var arg family: %w", err)
+	}
+
+	filename := filepath.Join(projectPath, "pkg", "core", "var_args.gen.go")
+
+	f, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	_, err = f.Write(formatted)
+
+	return err
 }
 
 // generateWrappers renders wrappers.go.tmpl and writes pkg/core/wrappers.gen.go.

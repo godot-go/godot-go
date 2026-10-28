@@ -19,12 +19,12 @@
 
 ## 4. Wire ptrcall and virtual dispatch to compiled closures
 
-- [ ] 4.1 Add the `dispatch` closure fields to `GoMethodMetadata` with fallback selection (`dispatch == nil` → reflective path) in `Ptrcall` and the virtual-callback path; verify typed-bound methods dispatch through closures in unit tests and the existing suites stay green
-- [ ] 4.2 Confirm the reflective path byte-for-byte unchanged for name-string binds; verify by diffing dispatch flow in a unit test that forces fallback via an untypeable signature and compares results against a typed bind's results
+- [x] 4.1 Add the `dispatch` closure fields to `GoMethodMetadata` with fallback selection (`dispatch == nil` → reflective path) in `Ptrcall` and the virtual-callback path; verify typed-bound methods dispatch through closures in unit tests and the existing suites stay green
+- [x] 4.2 Confirm the reflective path byte-for-byte unchanged for name-string binds; verify by diffing dispatch flow in a unit test that forces fallback via an untypeable signature and compares results against a typed bind's results
 
 ## 5. Varcall typed closures with defaults/variadic parity
 
-- [ ] 5.1 Implement typed varcall wrappers: direct variadic closures (`...Variant`, no `CallSlice`) and non-variadic wrappers reproducing `fillCallArgs` trailing-default convention including the loud under-supply panic; verify existing varcall suites extended to typed-bound examples stay green and the panic test parity holds
+- [x] 5.1 Implement typed varcall wrappers: direct variadic closures (`...Variant`, no `CallSlice`) and non-variadic wrappers reproducing `fillCallArgs` trailing-default convention including the loud under-supply panic; verify existing varcall suites extended to typed-bound examples stay green and the panic test parity holds (typed-bound demo examples arrive with 7.1; `GODOT=… make test` passes both gates with the generated varcall closures live — 1487 passes / 0 failures — and engine-free unit tests cover fill delegation, under-supply panic parity, `CallWithError` selection/fallback, and factory construction)
 - [ ] 5.2 Re-implement borrow-echo classification with typed compare helpers per D5 and add differential fixtures (echo, non-echo, COW same-content clone, StringName intern equality, variadic no-suppression) asserting identical classification on both paths; verify every `borrow-echo-detection` scenario passes through the typed path
 
 ## 6. Fixed-shape callback closures

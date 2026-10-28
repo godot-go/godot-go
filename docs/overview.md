@@ -15,6 +15,7 @@ governs. The specs live under `openspec/specs/`.
 | Variant type mapping | [`variant-type-mapping`](../openspec/specs/variant-type-mapping/spec.md) | `core.ReflectTypeToGDExtensionVariantType`, the `ArgumentEncoder` registered for each class |
 | Property access dispatch | [`property-access-dispatch`](../openspec/specs/property-access-dispatch/spec.md) | The `_get`/`_set`/`_property_can_revert`/`_property_get_revert` virtuals bound with `core.ClassDBBindMethodVirtual`, and the validator passed to `core.ClassDBRegisterClass` |
 | Vararg method binding | [`vararg-method-binding`](../openspec/specs/vararg-method-binding/spec.md) | `core.ClassDBBindMethodVarargs`, `core.ClassDBBindStaticMethod` (variadic statics) |
+| Typed method dispatch | [`typed-method-dispatch`](../openspec/specs/typed-method-dispatch/spec.md) | `core.ClassDBBindValueMethodN` and `core.ClassDBBindCopyRetMethodN` with their `Static`/`Virtual` siblings, plus `core.ClassDBBindVariadic{Value,CopyRet,None}Method` (`N` = 0..16) — a mismatched handler fails to compile; the name-string `ClassDBBindMethod` family stays reflective |
 | Object wrapper and cast | [`object-wrapper-cast`](../openspec/specs/object-wrapper-cast/spec.md) | `builtin.WrappedImpl`, `builtin.NewWrappedFromGodotObject`, `builtin.ObjectFromInstanceBinding`, `builtin.ObjectFromVariant`, `builtin.ObjectInheritsClass`, `builtin.ObjectArgPtr`; generated returns resolve to the runtime-class wrapper (non-ref directly, ref via `Ptr()`), so narrowing them is a plain assertion |
 
 # Class Metadata and Diagnostics

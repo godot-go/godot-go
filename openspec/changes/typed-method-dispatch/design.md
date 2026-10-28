@@ -36,34 +36,89 @@ The pointed-to `args []GDExtensionConstTypePtr` slice and pointer-arithmetic rei
 
 ### D2: Arity family via existing `.tmpl` generation, not hand-written maps
 
-Go generics abstract types but not arity, so the repo's template machinery emits generic wrappers per arity (0..16) × return style (`None`, `Value`, `ValueAndBool`) × static/instance × ptrcall/varcall. Example core shape:
+Go generics abstract types but not arity, so the repo's template machinery emits generic wrappers per arity (0..16) × return family × static/instance × ptrcall/varcall. Decode and encode are package-level generics parameterized by one constraint union per slot (D3); the wrappers carry no per-type logic. Example core shape (instance, value-return family):
 
 ```go
 // generated:
-func wrapPtrcall2[T GDClass, A1 argDecode, A2 argDecode, R returnEncode](
-    fn func(*T, A1, A2) R,
+func wrapPtrcallValue2[TImpl any, S selfTyped[TImpl], A1 nativeSlot, A2 nativeSlot, R retValueSlot](
+    fn func(*TImpl, A1, A2) R,
 ) ptrcallFn {
-    return func(inst GDClass, args []GDExtensionConstTypePtr, ret unsafe.Pointer) {
-        self := inst.(*T)
-        out := fn(self, decodeArg[A1](args[0]), decodeArg[A2](args[1]))
-        encodeReturn(out, ret)
+    return func(inst GDClass, args []GDExtensionConstTypePtr, retPtr GDExtensionUninitializedTypePtr) {
+        self := inst.(S).self()
+        out := fn(self, loadTypedSlot[A1](args[0]), loadTypedSlot[A2](args[1]))
+        storeTypedRet[R](retPtr, out)
     }
 }
 ```
 
-Arity ceiling 16, mirroring the widest signatures the engine's own method metadata declares; above the ceiling or for any parameter type lacking a decoder implementation, the bind silently stores no closure and the reflective fallback serves it (spec: "Untypeable signatures fall back without behavior change"). The generated wrappers are plain `.gen.go` files — the same convention as all other generated surfaces in this repo.
+The instance handoff needs one non-obvious Go-generics fact, pinned empirically: `inst.(*T)` with `T` interface-constrained is a compile-time impossible type assertion ("type *T is pointer to type parameter, not type parameter"), so the receiver is resolved through the `selfTyped` contract instead —
 
-### D3: Typed decode through per-type interfaces implemented by generated code
+```go
+// pkg/core/method_bind_typed.go
+type selfTyped[T any] interface {
+    GDClass
+    self() *T
+}
+```
 
-`argDecode` / `returnEncode` / and a varcall-only Variant decode path are interfaces the generated builtin types (`pkg/builtin`) implement — native-layout loads for vector/POD builtins; copy-constructor construction for returned refcounted types; borrow wrapper without copy for refcounted *arguments*; object args via the existing object-argument decode semantics.
+— asserting `inst.(S)` (an interface target, always legal) and taking `self()`'s concrete `*T`. A bound class carries one one-liner, exactly alongside the `GetClassName`/`GetParentClassName` pair the API already requires per class and outside the "pure library" boundary (users write their own class code; no user-project codegen step exists):
 
-Semantics are copied from the existing decode functions parameter-for-parameter; the interfaces are the carrier, not a redesign. Sensitive corner preserved as-is: the class shape requirement (first embedded field = parent `Impl`) means `inst.(*T)` receiver access and `GDClass`-typed parameters both work through the existing object decode.
+```go
+func (c *Example) self() *Example { return c }
+```
 
-*Alternative considered:* decode everything generically via `unsafe` casts on `any` — rejected: it papers over the copy-construct vs borrow distinction for refcounted types and would reintroduce boxing for objects; the per-type interface is where that chemistry is already correct.
+The assertion is a single itab check and `self()` a return; S is not inferable from the handler alone, so the typed bind instantiates with the class pointer and its self-typed twin (`wrapPtrcallValue2[Example, *Example]`, how the spot test drives it) — the bind-overload shape in task 3.1 supplies both parameters to keep user call sites one-argument-deep. A misbound dynamic type fails loudly on the itab check.
+
+Return encoding has exactly two families, chosen at bind time by the parameter type: `retValueSlot` (native-width scalars, the vector/geometry builtins, RID, and String — raw store, generic, no fan-out; membership pinned to the audited matrix below) and the copy-constructor returns (StringName, NodePath, Callable, Signal, Array, Dictionary, every Packed* — engine copy constructor through per-type methods — D3). A distinct generated wrapper family serves the copy-ret shape. Arity ceiling 16, mirroring the widest signatures the engine's own method metadata declares; above the ceiling or for any parameter type outside the constraint unions, the bind stores no closure and the reflective fallback serves it (spec: "Untypeable signatures fall back without behavior change"). The generated wrappers are plain `.gen.go` files — the same convention as all other generated surfaces in this repo.
+
+### D3: Typed decode is a constraint-union raw load, byte-identical to the reflective decoder
+
+Investigation against the live reflective decoder (`reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs`) showed every engine ptrcall cell is already raw-loaded in Go today: scalar slots are direct `*(*A)(arg)` dereferences; Color, Array, Dictionary, Callable, Signal, RID, String, StringName, NodePath, and every Packed*Array load raw with pure borrow semantics ("nothing was acquired, released nowhere"); only the vector/geometry family (Vector2..Vector4i, Rect2, Transform2D, Basis, AABB, Plane, Quaternion, Transform3D, Projection) funnels through engine copy constructors that juggle call-scoped `runtime.Pinner` records — pins whose sole purpose is protecting a Go destination during a synchronous copy of POD bytes. All generated builtins are `[N]uint8` native-layout byte arrays, so a single constraint union plus a raw load compiles per-instantiation to the byte-identical operation for the whole family:
+
+```go
+// constraint unions (pkg/core/method_bind_typed.go):
+type nativeSlot interface {
+    bool | ~int | ~int8 | ~int16 | ~int32 | ~int64 |
+        ~uint | ~uint8 | ~uint16 | ~uint32 | ~uint64 | ~float64 |
+        Vector2 | .. | Color | RID | Callable | Signal |
+        Array | Dictionary | PackedByteArray | .. | PackedColorArray
+}
+
+func loadTypedSlot[A nativeSlot](ptr GDExtensionConstTypePtr) A {
+    return *(*A)(unsafe.Pointer(ptr))
+}
+```
+
+Notes pinned by this shape:
+
+- No per-type decode methods are emitted for arguments; the interface-method shape originally sketched here would have boxed every loaded struct back into an `any` (the allocation this change removes), and scalar types cannot carry methods at all.
+- Small integers (int8..int32, uint8..uint32) load byte-truncating exactly like the reflective decoder's own direct loads (both read the low bytes of the int64 cell on little-endian), so value parity is code-equality, not accidental.
+- float32 is excluded: the reflective decoder double-loads and truncates, while a raw `*(*float32)` read would break parity; it stays reflective.
+- The vector-family raw load deliberately drops the reflective copy-constructor's engine call and pins. Copy constructors of POD values are byte copies with no reference effects, so observable semantics are unchanged while the per-arg pinner records and engine round-trips disappear — this is part of the change's allocation goal, and the engine tier's fixtures assert value equality.
+- Go `string` (UTF-8 conversion), `[]T` slices (deep copy), `Object`/`Ref` parameters (binding resolution / ref acquisition), `Variant` arguments and `Variant` returns (view/construct semantics differ from a raw load/store) all stay on the reflective fallback; they are the exact boundary of the two constraint unions.
+- Refcounted *returns* split by the audited return-encoder matrix (`variant_refect_value.go`, backed by `test/pkg/variant_matrix_audit_tests.go`): String returns through `StringEncoder.EncodeTypePtrArg`, which is exactly a raw store (`*(*R)(pOut) = value`) — String therefore *joins* `retValueSlot`. StringName, NodePath, Callable, Signal, Array, Dictionary, and every Packed*Array return through their engine copy constructor plus a conditional source `Destroy()` gated on `destroySource` (echo classification decides it upstream) — those 16 types are the per-type emission family: generated value-receiver encode methods (`RetEncodeInto`, pkg/builtin/typed_ret_encoders.gen.go) calling `XCopyConstructor` with call-scoped pinning, invoked through the exported method constraint `RetCopyEncodable` (declared beside the methods in pkg/builtin — a dot-import only brings exported identifiers into scope) so no fan-out over refcounted types is needed and no raw byte store ever transfers refcount ownership (AGENTS.md's copy-constructor rule).
+
+*Alternative considered:* decode everything generically via `unsafe` casts on `any` — rejected: every load would box into an interface. Per-type interface decode methods returning the concrete type — rejected: an interface-returning call boxes; only a pointer-receiver method-value call avoids that, and the union needs no methods at all.
+
+### D6: Notification and property callbacks get fixed-shape closures
+
+Fixed handler shapes, taken from the actual dispatch sites in `classdb_callback.go`, become named closure types attached at registration, removing the last generic `Func.Call` sites there:
+
+```go
+notificationFn     func(inst GDClass, what int32, reversed bool)  // GoCallback_ClassCreationInfoNotification
+propGetFn          func(inst GDClass, name string) (Variant, bool) // GoCallback_ClassCreationInfoGet
+propSetFn          func(inst GDClass, name string, value Variant) bool
+propCanRevertFn    func(inst GDClass, name StringName) bool        // _property_can_revert
+propGetRevertFn    func(inst GDClass, name StringName) (Variant, bool)
+```
+
+Property-list and to-string have no `Func.Call` sites (they already run through typed direct fields such as `ValidateProperty`) and are out of scope. Untyped handlers through name-string registration fall back.
 
 ### D4: Varcall defaults and variadic as first-class closures
 
 The variadic branch compiles to `varcallFn` directly (the collected `[]Variant` is the variadic slice; no `CallSlice`). Non-variadic varcall wrappers know `declared` and `defArgsCount` from bind metadata and reproduce the `fillCallArgs` trailing-default convention exactly (defaults array maps to the *last* defArgsCount parameters), including the loud panic on under-supply from direct Go callers; the callback-side `classifyVarcallArity` pre-validation remains the gate for engine calls.
+
+Arity wrappers for varcall resolve their per-arg Variant decoding through a bind-time cached decoder list (the existing per-type Variant conversion helpers captured as concrete function values); each decoded value crosses into the typed handler as a plain typed value by type assertion, which is unboxing, not reflection. Per-argument decode allocations remain at parity with the reflective path (one boxed value per Variant argument); this eliminates reflect frames, `[]reflect.Value` slices, `Func.Call` machinery, and the DeepEqual-heavy echo check on the hot path.
 
 ### D5: Borrow-echo classification re-implemented on typed values, semantics bit-identical
 
@@ -79,6 +134,7 @@ Notification, property-list, property-get/set, and revert dispatch are per-class
 - [Arity/style fan-out blows up generated code] → Hard ceiling (arity 16) with reflective fallback beyond; fan-out is 2 styles × ~3 return shapes × 2 arity families — bounded, generated once.
 - [Echo-compare parity depends on reproducing `DeepEqual`'s exact field semantics] → Per-type compare helpers are written against the wrapper structs' fields, with fixtures covering echo, non-echo, COW clone, and intern-equality cases before the reflect path is demoted.
 - [Registration complexity grows: two APIs to support indefinitely] → Name-string API is the fallback contract and stays; typed API is additive; no engine ABI or registration-flag changes.
+- [Typed coverage excludes common-but-decode-heavy signatures: Go string, []T slices, Object/Ref parameters, float32, Variant] → These binds keep the reflective path (identical semantics); a generated arity×family fan-out can extend coverage later without changing the constraint unions or the fallback behaviors.
 - [cgo dispatch shape unchanged, but closure capture extends object lifetimes] → Closures are per-bind, created at registration and dropped at unregister (same lifetime as metadata); no per-call captures that could pin engine memory.
 
 ## Migration Plan
@@ -92,4 +148,4 @@ Notification, property-list, property-get/set, and revert dispatch are per-class
 ## Open Questions
 
 - Arity ceiling value (16 proposed) — confirm against the widest virtual surfaces actually catalogued for user classes before generation; narrowing requires only regenerating.
-- Final names for the typed overloads (e.g. `ClassDBBindTypeCheckedMethod`) — cosmetic, decided during implementation.
+- Final names for the typed overloads (e.g. `ClassDBBindValueMethod` / `ClassDBBindCopyRetMethod` for the value-return and copy-constructor-return families) — cosmetic, decided during implementation.

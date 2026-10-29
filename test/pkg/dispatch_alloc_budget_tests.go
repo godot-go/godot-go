@@ -36,10 +36,12 @@ import (
 //
 // What the caps cannot express — "no reflect machinery came back" — the
 // reflective twins assert: the same signatures through the name-string API
-// measure 27-56 ptrcall / 38-249 varcall allocations per call against the
-// compiled 0 / 3-14, so the margin check (reflective ≥ reflectMargin ×
-// compiled, plus an absolute floor) fails loudly if a compiled path is ever
-// swapped back to Func.Call.
+// measure 8-13 ptrcall / 16-37 varcall allocations per call against the
+// compiled 0 / 3-14 (before the lazy dispatch payloads of
+// trim-dispatch-overhead: 27-56 / 38-249 — the eager diagnostic strings were
+// the bulk of the reflective cost), so the margin check (reflective ≥
+// reflectMargin × compiled, plus an absolute floor) fails loudly if a
+// compiled path is ever swapped back to Func.Call.
 //
 // Varcall probes destroy each measured return Variant, and the copy-return
 // ptrcall probe destroys each encoded cell: the encoding transfers an engine

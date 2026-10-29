@@ -30,6 +30,7 @@ func _ready():
 	test_varcall_arg_rejection(example)
 	test_compiled_dispatch_allocs(example)
 	test_dispatch_times(example)
+	test_dispatch_diagnostics(example)
 	test_property_hints(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
@@ -621,6 +622,16 @@ func test_compiled_dispatch_allocs(example: Example):
 # failed (a probe fell back to the reflective path, or a panic).
 func test_dispatch_times(example: Example):
 	assert_equal(example.test_dispatch_times(), 1)
+
+# Diagnostics cost of dispatch (openspec: trim-dispatch-overhead tasks 2.2/2.3).
+# The Go side counts engine variant_stringify crossings for the reflective
+# fallback varcalls at a suppressing and a permitting threshold, and captures
+# the written entries to check their fields. Records print as
+# "dispatch_diag: threshold=… shape=… crossings=…"; a negative code means a
+# discarded call asked the engine to stringify, or a written entry lost its
+# identifying fields.
+func test_dispatch_diagnostics(example: Example):
+	assert_equal(example.test_dispatch_diagnostics(), 1)
 
 # Property hint metadata tests (openspec: support-property-hints). Registers
 # hinted properties on Example in Go and reads them back through the engine.

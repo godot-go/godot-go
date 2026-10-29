@@ -2,6 +2,102 @@
 
 Running log of measured figures and gate output backing each completed task.
 
+## Task 2.1 — lazy dispatch payloads
+
+`pkg/core/dispatch_payload.go` adds `zapcore.ObjectMarshaler`/
+`ArrayMarshaler`/`Stringer` payloads — `GoMethodMetadata.MarshalLogObject`
+(class, method, paired `go_type/VARIANT_ENUM` argument types, return type),
+`variantCollection` (per-element `Stringify()` at encode time),
+`resolvedCollection` (cell-equality dedup → `resolution=same as gd_args`),
+and `lazyText`. Eight eager sites rewired: four in `method_bind.go`
+("Call Variadic", "Calling", "Call", "Ptrcall"), two "reflect method called"
+in `classdb_callback.go` (the `_get` twin also moved its `v.ToString()`
+engine crossing into the payload), two `spew.Sdump("argument converted")` in
+`method_bind_reflect.go`. `pkg/log` gained a `swapWriter` indirection making
+`SetWriteSyncer` actually live (the core captured stdout at init; it now
+returns the previous writer).
+
+Unit witnesses (`pkg/core/dispatch_payload_test.go`, engine-free):
+`TestLazyPayloadsNotMarshaledWhileSuppressed` — capturing syncer, zero
+marshaler/Stringer invocations while suppressed, exactly one each after
+raising; `TestPtrcallSiteSuppressedWritesNothingRaisedRestoresContent` — the
+real dispatch site writes nothing at warn and the same field names and
+identification content at info; plus bind-structure (JSON), nil-metadata,
+empty-collection, and dedup checks. Engine-free reach caveat: a non-empty
+`variantCollection` marshal calls `Variant.Stringify`, which SIGSEGVs without
+the engine table — so non-empty content assertions live in the in-engine
+diag fixture, and that fault-is-the-proof split means a regression
+reintroducing eager payloads faults the engine-free tier loudly.
+
+## Task 2.2 — variadic duplicate removed
+
+The variadic site's `resolved_args` field deleted outright (the handler
+receives the collected Variants unchanged, so it was always a second
+description of `gd_args`). Captured entry at the permitting threshold, from
+the in-engine run (fixture `TestDispatchDiagnostics`, asserts exactly one
+`"values"` array, both values present, no `resolved_args`):
+
+```
+Call Variadic {"bind": {"class": "Example", "method": "VarargsFunc",
+  "argument_types": ["/GDEXTENSION_VARIANT_TYPE_VARIANT_MAX"],
+  "return_type": "Variant"}, "gd_args": {"values": ["2", "3"]},
+  "ret": "(Variant/array(<builtin.Variant Value>))"}
+```
+
+Before (red run): `"gd_args": "[]Variant(2, 3)", "resolved_args": "[]Variant(2, 3)"`.
+
+## Task 2.3 — stringify crossings for discarded calls
+
+Fixture `test/pkg/dispatch_diag_tests.go` swaps the loaded interface table's
+`variant_stringify` for a `//export`ed Go counter (static C helper returns
+its address; the swap lives only across the fixture's own dispatches and
+defer-restores). Thresholds forced via `log.SetLevel`, never inherited.
+Reflective fallback varcalls at arity 0/2/5:
+
+| threshold | arity 0 | arity 2 | arity 5 |
+|---|---|---|---|
+| suppress — before | 0 | 8 | 20 |
+| suppress — after | 0 | 0 | 0 |
+| raised — before | 0 | 8 | 20 |
+| raised — after | 0 | 2 | 5 |
+
+Before-figures grew with arity (eager signature: `gd_args` + `resolved_args`
+stringified per call, ×2 because the discarded Debug "Calling" entry also
+paid eagerly). After: flat zero while suppressed; raised costs exactly one
+stringify per argument (the dedup means `resolved_args` crosses only when
+the fill actually changed cells). `GODOT=… make test` green with the whole
+matrix and both captured entries printed.
+
+## Task 2.4 — budgets re-baselined after laziness
+
+- Engine-free gating (`go test ./pkg/core/ -run Budget`): 30 compiled-shape
+  rows unchanged at zero; reflective control at arity 1 measured **9**
+  allocations/call (was 32 — ~23 were the eager payload strings), so the
+  vacuity floor moved 16 → 4 (half-margin philosophy kept, still ≫ the
+  compiled zero). Green.
+- In-engine budget fixture reflective twins now measure **8/10/13 ptrcall**
+  and **16/25/37 varcall** allocs/call at arity 0/2/5 (was 27-56 / 38-249);
+  floor 4 + margin ×2 checks intact, all pass. The checks are floor +
+  relative, so nothing to tighten upward; the fixture header comment updated
+  to the new figures with the before-figures noted.
+- Side-effect free performance (timing fixture, recorded only): reflective
+  varcall arity2 91908 → 53330 ns/call (−42%), arity5 157167 → 56000 ns/call
+  (−64%) at the default warn threshold — the eager payloads were on the
+  fallback hot path. arity0 unchanged (15638 → 16245, noise).
+
+## Task 2.5 — no gate depends on a suppressed dispatch line
+
+`GODOT=… make test` at the default (warn) threshold: exit 0, FAILURES: 0,
+gate PASS line green. `LOG_LEVEL=info GODOT=… make test`: exit 0, FAILURES:
+0 — the diag fixture's self-forced thresholds keep its matrix identical
+under the raised env (suppress section still flat zero). `make test_gate`:
+27/27 fixture cases. Which checks read dispatch diagnostics: **none** —
+`check_test_output.sh` reads driver banners, probe records
+(`stacktrace-probe`, `callable-panic-probe`, `dispatch_time:`,
+`dispatch_budget:`) and engine error lines; the `Call`/`Call Variadic`/
+`Ptrcall` entries were grep-verified as having no consumers before rewiring,
+and flooding them at info breaks no check.
+
 ## Task 1.6 — baseline consolidated + discoverability
 
 Consolidated pre-change baseline table added at the top of this file.

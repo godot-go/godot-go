@@ -31,6 +31,7 @@ func _ready():
 	test_compiled_dispatch_allocs(example)
 	test_dispatch_times(example)
 	test_dispatch_diagnostics(example)
+	test_teardown_tolerance(example)
 	test_property_hints(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
@@ -632,6 +633,18 @@ func test_dispatch_times(example: Example):
 # identifying fields.
 func test_dispatch_diagnostics(example: Example):
 	assert_equal(example.test_dispatch_diagnostics(), 1)
+
+# Pins the class callback prologues' teardown tolerance (openspec
+# trim-dispatch-overhead task 4.1): a delivery for an instance whose reported
+# class has no GDClass registration — the presentation a destructing instance
+# makes during shutdown — must be absorbed silently and revert queries must
+# answer no, while the same deliveries to the registered Example class still
+# dispatch. The Label is only that presentation: the prologues read its class
+# name and nothing else.
+func test_teardown_tolerance(example: Example) -> void:
+	var probe := Label.new()
+	assert_equal(example.test_teardown_tolerance(probe), 1)
+	probe.free()
 
 # Property hint metadata tests (openspec: support-property-hints). Registers
 # hinted properties on Example in Go and reads them back through the engine.

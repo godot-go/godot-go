@@ -2,6 +2,36 @@
 
 Running log of measured figures and gate output backing each completed task.
 
+## Task 4.1 — teardown-tolerance pins (pre-change basis)
+
+Fixture `test/pkg/teardown_tolerance_tests.go`, driven from the demo
+`main.gd` right after the diagnostics fixture. The engine presents the
+teardown shape (instance reporting a parent class name) only during
+shutdown, after the extension class leaves the class DB, so the fixture
+cannot wait for it; the new `pkg/core/classdb_callback_probe.go` delivers
+the identical callbacks through a transient `cgo.Handle` and the prologues
+run unchanged. The unregistered presentation is a plain engine `Label`.
+
+Three cells, all at the permitting (info) threshold with a capturing
+writer, so silence is measured where entries would be written:
+
+- Absorbed: pre-delete-shaped notification for the unregistered
+  presentation returns with no panic and no log entry.
+- Declined: `property_can_revert` answers false and `property_get_revert`
+  produces no value, silently.
+- Live control: the identical deliveries to the registered `Example` run
+  the Go virtuals — the notification code is recorded (then restored, as
+  the timing fixture does) and both revert queries answer for
+  `property_from_list` — so cells 1–2 are decisions, not dead plumbing.
+
+In-engine run: exit 0, FAILURES: 0. Printed record:
+
+```
+teardown_tolerance: absorbed pre-delete delivery for *gdclassimpl.LabelImpl, no log
+teardown_tolerance: revert queries declined for the unregistered presentation
+teardown_tolerance: live path still dispatches; absorption and decline are the unregistered branch alone
+```
+
 ## Task 3.1 — codegen nil check
 
 `cmd/generate/gdclassimpl/classes.go.tmpl` emits, per generated class,

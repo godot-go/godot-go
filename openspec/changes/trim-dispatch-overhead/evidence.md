@@ -2,6 +2,89 @@
 
 Running log of measured figures and gate output backing each completed task.
 
+## Task 5.1 — integration gate on the final tree
+
+- `go test ./pkg/...` (excluding `pkg/builtin`'s pre-existing engine-free
+  `TestRefAcquireUnrefReleasesExactlyOnce` SIGSEGV, documented by the
+  previous change): every package ok.
+- `GOTMPDIR=… GODOT=/home/pcting/bin/godot make test`: exit 0,
+  `FAILURES: 0`, 22/22 `dispatch_time:` records, `make test_gate` 27/27.
+- `Orphan StringName` lines: 0 in `test-output.log` and 0 in
+  `editor-output.log`.
+- `instance_churn` counters unchanged: `weak_alive=0/2048`,
+  phase deltas +332 KiB / +1558 KiB inside the 976 KiB / 4883 KiB bands,
+  `live=1 base=1`.
+- `make test_dispatch_budget`: green (zero-allocation budgets hold on the
+  final tree).
+
+## Task 5.2 — change-level before/after cost table
+
+Before = the group 1 consolidated baseline (`b463cdf`, cool machine).
+After = the final group-4 tree (`f31ff8e`), same in-engine timing fixture,
+hot machine (load-avg 6–10): every in-engine cell is inflated against the
+baseline table, so rows carry the raw figures and the reading is floor- and
+gate-relative. Allocation rows are gated and directly comparable.
+
+Allocations per call (in-engine budget fixture, `dispatch_budget:` records;
+after-run values identical to the group-2 post-change records — no group
+moved an allocation budget):
+
+| shape | before (group 1) | after | gate |
+|---|---|---|---|
+| compiled ptrcall (all cells) | 0 | 0 | budget 0 |
+| compiled varcall (arity 0/2/5, virtual, container, copy-ret echo) | 3–14 (range as recorded) | 3 / 8 / 14 / 3 / 8 / 7 | caps 5 / 12 / 20 / 5 / 12 / 11 |
+| reflective ptrcall (arity 0/2/5) | 27–56 (range as recorded) | 8 / 10 / 13 | floor 4, margin ×2 |
+| reflective varcall (arity 0/2/5) | 38–249 (range as recorded) | 16 / 25 / 37 | floor 4, margin ×2 |
+| engine-free budgets, 30 shapes | 0 | 0 | budget 0 (reflective control 32, floor 16) |
+
+In-engine ns/call (timing fixture, recorded, presence-gated only):
+
+| shape | before | after (hot machine) | reading |
+|---|---|---|---|
+| static_add_ptrcall | 35.1 | 107.0 | floor cell (~3.0x inflation) |
+| value_arity0_ptrcall | 29.8 | 92.5 | floor cell (~3.1x) |
+| value_arity2_ptrcall | 34.4 | 113.9 | floor cell |
+| value_arity5_ptrcall | 47.7 | 153.2 | floor cell |
+| virtual_arity0_ptrcall | 29.8 | 135.1 | floor cell |
+| container_arg_ptrcall | 31.8 | 123.2 | floor cell |
+| static_add_varcall | 3235.6 | 11484.5 | ~3.5x band |
+| value_arity0_varcall | 1136.5 | 4735.2 | ~4.2x band |
+| value_arity2_varcall | 3078.5 | 12876.2 | ~4.2x band |
+| value_arity5_varcall | 5408.4 | 21774.0 | ~4.0x band |
+| virtual_arity0_varcall | 1131.6 | 5033.1 | ~4.4x band |
+| container_arg_varcall | 3647.0 | 15811.1 | ~4.3x band |
+| copy_ret_ptrcall | 2593.5 | 11810.1 | ~4.6x band |
+| copy_ret_varcall | 2831.2 | 11829.5 | ~4.2x band |
+| reflective_value_arity0_ptrcall | 11464.7 | 7779.1 | below cool-machine baseline despite load |
+| reflective_value_arity0_varcall | 15637.5 | 21222.4 | ~1.4x, under load inflation |
+| reflective_value_arity2_ptrcall | 17451.4 | 18663.5 | flat |
+| reflective_value_arity2_varcall | 91908.3 | 31873.7 | −65% (group 2 lazy payloads) |
+| reflective_value_arity5_ptrcall | 24041.7 | 25896.8 | flat |
+| reflective_value_arity5_varcall | 157166.8 | 54007.1 | −66% (group 2 lazy payloads) |
+| prologue_notification | 29362.4 | 52518.1 | floor-normalized ~17k: ~42% under baseline |
+| prologue_property_get | 48355.2 | 90663.7 | floor-normalized ~29k: ~40% under baseline |
+
+Sources, per row family: allocations from the `dispatch_budget:` records in
+`test-output.log` of the final `GODOT=… make test` run (gate:
+`check_test_output.sh` + budgets in `test/pkg/dispatch_alloc_budget_tests.go`);
+timing from the same run's `dispatch_time:` records
+(`test/pkg/dispatch_time_tests.go`); the engine-free prologue resolve bench
+(`BenchmarkDispatchPrologueNotification`/`PropGet`, 0 allocs/op, 243/340
+ns/op hot vs 91/128 cool) and the two switched nil-check sites
+(`object_return_bench_test.go`, `object_arg_bench_test.go`) carry their own
+same-run A/B controls in the task 3.3 entry.
+
+Honest summary: allocations moved exactly where the group 2/3 changes
+intended (reflective dispatch −67..−85%, compiled paths untouched at zero,
+new nil-check and identity paths allocation-free); the wall-clock rows are
+presence-recorded and load-dominated — the two figures the change itself
+targets (the reflective fallback varcalls, −65%/−66%, and the prologues,
+~40% under baseline after floor normalization) are the ones that hold up
+under the hot machine, and no row shows a regression the change owns.
+`docs/overview.md` carries no numeric cost claim contradicted by these
+figures; its statement that the name-string `ClassDBBindMethod` family
+"stays reflective" remains true (change B will address it).
+
 ## Tasks 4.2–4.3 — freeing state and instance-held class name
 
 `WrappedClassInstance` gained `MarkFreeing()`/`IsFreeing()` (a plain bool;

@@ -34,8 +34,8 @@
 
 ## 5. Integration gate
 
-- [ ] 5.1 Run `go test ./pkg/...` (excluding the pre-existing engine-free `pkg/builtin` fault already documented by the previous change), then `GOTMPDIR=… GODOT=… make test` and `make test_gate`; verify zero failures, both gates green, zero `Orphan StringName` lines in `test-output.log` and `editor-output.log`, and the `instance_churn` counters unchanged
-- [ ] 5.2 Record the before/after cost table (allocations per shape from the budgets, in-engine ns/call from the timing fixture) in the task evidence, and correct any cost claim in `docs/overview.md` that the new numbers contradict; verify the table is committed and each row names its measurement source
+- [x] 5.1 Run `go test ./pkg/...` (excluding the pre-existing engine-free `pkg/builtin` fault already documented by the previous change), then `GOTMPDIR=… GODOT=… make test` and `make test_gate`; verify zero failures, both gates green, zero `Orphan StringName` lines in `test-output.log` and `editor-output.log`, and the `instance_churn` counters unchanged
+- [x] 5.2 Record the before/after cost table (allocations per shape from the budgets, in-engine ns/call from the timing fixture) in the task evidence, and correct any cost claim in `docs/overview.md` that the new numbers contradict; verify the table is committed and each row names its measurement source
 
 ## Workflow follow-up
 

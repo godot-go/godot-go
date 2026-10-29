@@ -2,6 +2,102 @@
 
 Running log of measured figures and gate output backing each completed task.
 
+## Tasks 4.2–4.3 — freeing state and instance-held class name
+
+`WrappedClassInstance` gained `MarkFreeing()`/`IsFreeing()` (a plain bool;
+the instance-free callback and the class prologues are all engine callbacks
+on the main thread) and a `ClassName string` field. `FreeInstance` calls
+`MarkFreeing()` immediately after the re-entrancy guard deletes the
+`GDClassInstances` entry — before the deferred `Destroy()` begins any
+Go-side teardown — so the mark spans exactly the window a teardown delivery
+can arrive in. The mark is idempotent; the re-entrant second free still
+panics through the guard unchanged (class-instance-lifecycle contract).
+`ClassName` is populated at all five construction sites: `SetConstructInfo`
+and `WrappedPostInitialize` from the `extensionClassName` parameter (the
+same registered name the handle is stored under), and the three probes from
+the Go-side `GetClassName()`. Compile-time coverage is by construction — the
+struct literal at every site names the field; a missing value would be a
+visible zero, and the probe/bench witnesses exercise all shapes.
+
+No program-lifetime retention: the string is a Go value inside the
+per-instance wrapper, reachable only through the engine-held
+`cgo.Handle`, released with it — no map or package variable keyed by
+instance is touched. The instance-churn bands (`test_instance_churn` phase
+gates) pass unchanged in-engine with the wrapper growth, and the
+engine-free dispatch-budget gate (`make test_dispatch_budget`) stays at
+zero allocations per call.
+
+Unit witnesses: `TestWrappedClassInstanceMarkFreeingTransitions` (fresh
+wrapper not freeing; mark observable; second mark a no-op) and
+`TestWrappedClassInstanceIsFreeingNilReceiver` in
+`pkg/builtin/wrapped_nil_ptr_test.go`.
+
+## Tasks 4.4–4.5 — prologues read the instance identity; teardown declines on the freeing guard
+
+All seven class callback prologues in `pkg/core/classdb_callback.go`
+(`GetPropertyList`, `PropertyCanRevert`, `PropertyGetRevert`,
+`ValidateProperty`, `Notification`, `Get`, `Set`) replaced the
+`GetClass()`/`ToUtf8()`/`defer Destroy()` engine ceremony with
+`className := wci.ClassName`, and each now opens with an `IsFreeing()`
+decline (absorb for void deliveries, negative answer for queries) before
+any registration lookup. `gdStrClass` no longer appears in the file.
+The stale "reports its parent class name during teardown" rationale on the
+lookup-miss branches was updated: that shape is now caught by the freeing
+guard, and the miss branch remains as the unregistered-class defense — the
+loud half (`Get`/`Set`/`ValidateProperty`/`GetPropertyList` panic
+"invalid registered GDClass") is unchanged, the quiet half
+(`Notification`/reverts) unchanged too. Two mislabeled diagnostics in the
+`Set` prologue (`zap.String("class", name)` against the property name) were
+fixed to log `className` while touching those branches.
+
+Fixture: `test/pkg/teardown_tolerance_tests.go` extends the 4.1 pins with
+the decline and loud-fail cells on the new basis, driving the real
+callbacks through the extended probes (`*MarkedFreeing` variants build a
+transient wrapper with `MarkFreeing()` set — the probe's private wrapper
+only; the engine's binding for the same object keeps reporting not-freeing,
+and `ValidateProperty` is exercised on the decline path only, since an
+accepted validation would dereference probe-zero property info inside the
+class hook). Cells and their meaning:
+
+- Live control (registered `Example`): notification recorded, both revert
+  queries answer, get reads `property_from_list`, set mutates it.
+- Freeing-marked `Example`: notification not recorded, revert queries
+  decline, get produces no value, set declined and the Go field untouched,
+  validate and property-list decline/empty — all with a capturing writer
+  at the permitting threshold showing zero log bytes.
+- Loud half: get, set, validate and property-list for the unregistered
+  presentation each raise through the fatal channel with the existing
+  "invalid registered GDClass" diagnostic (observed via recover), so the
+  fatal branch stays reachable on the new basis.
+
+In-engine run: exit 0, FAILURES: 0, `make test_gate` 27/27. Printed
+records:
+
+```
+teardown_tolerance: absorbed pre-delete delivery for *gdclassimpl.LabelImpl, no log
+teardown_tolerance: revert queries declined for the unregistered presentation
+teardown_tolerance: live path still dispatches get and set
+teardown_tolerance: freeing-marked wrapper declines every delivery class, silently
+teardown_tolerance: unregistered get, set, validate, and property-list requests still fail loudly
+```
+
+Prologue cost, live-path cells (recorded, not gated; the machine ran hot
+at load-avg 6–10, so read them against same-run controls, not against the
+group-1 absolutes):
+
+| shape | group 1 | this run | same-run engine-crossing controls |
+|---|---|---|---|
+| prologue_notification | 29362.4 | 52518.1 | `static_add_ptrcall` 35.1→107.0, `value_arity0_ptrcall` 29.8→92.5 (~3.1x floor inflation) |
+| prologue_property_get | 48355.2 | 90663.7 | `virtual_arity0_ptrcall` 29.8→135.1 |
+
+Normalizing by the ~3.1x floor inflation the compiled ptrcall cells show,
+the prologue cells land at ~17k/~29k ns — roughly 40–45% under their
+group-1 figures. The engine-free prologue benches
+(`BenchmarkDispatchPrologueNotification`/`PropGet`) were switched to read
+the stored `ClassName` exactly as the prologues now do; they measure the
+shared resolve floor (243/340 ns/op, 0 allocs, hot machine vs the group-1
+91–128 ns band) and confirm the new basis itself is allocation-free.
+
 ## Task 4.1 — teardown-tolerance pins (pre-change basis)
 
 Fixture `test/pkg/teardown_tolerance_tests.go`, driven from the demo

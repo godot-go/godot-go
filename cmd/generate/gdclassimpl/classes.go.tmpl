@@ -67,6 +67,14 @@ func NewGDExtensionClassFrom{{ $c.Name }}Owner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *{{ goClassStructName $c.Name }}) IsNil() bool {
+	return cx == nil
+}
+
 func New{{ $c.Name }}WithGodotOwnerObject(owner *GodotObject) {{ if $view.IsRefcountedClassName $c.Name }}Ref{{ $c.Name }}{{ else }}{{ $c.Name }}{{ end }} {
 	inst := &{{ goClassStructName $c.Name }}{}
 	inst.Owner = owner

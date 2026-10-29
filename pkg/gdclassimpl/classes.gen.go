@@ -60,6 +60,14 @@ func NewGDExtensionClassFromAESContextOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AESContextImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAESContextWithGodotOwnerObject(owner *GodotObject) RefAESContext {
 	inst := &AESContextImpl{}
 	inst.Owner = owner
@@ -256,6 +264,14 @@ func NewGDExtensionClassFromAStar2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AStar2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAStar2DWithGodotOwnerObject(owner *GodotObject) RefAStar2D {
@@ -1379,6 +1395,14 @@ func NewGDExtensionClassFromAStar3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AStar3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAStar3DWithGodotOwnerObject(owner *GodotObject) RefAStar3D {
 	inst := &AStar3DImpl{}
 	inst.Owner = owner
@@ -2498,6 +2522,14 @@ func NewGDExtensionClassFromAStarGrid2DOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AStarGrid2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAStarGrid2DWithGodotOwnerObject(owner *GodotObject) RefAStarGrid2D {
@@ -3913,6 +3945,14 @@ func NewGDExtensionClassFromAcceptDialogOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AcceptDialogImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAcceptDialogWithGodotOwnerObject(owner *GodotObject) AcceptDialog {
 	inst := &AcceptDialogImpl{}
 	inst.Owner = owner
@@ -4605,6 +4645,14 @@ func NewGDExtensionClassFromAccessibilityServerOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AccessibilityServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAccessibilityServerWithGodotOwnerObject(owner *GodotObject) AccessibilityServer {
@@ -7990,6 +8038,14 @@ func NewGDExtensionClassFromAimModifier3DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AimModifier3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAimModifier3DWithGodotOwnerObject(owner *GodotObject) AimModifier3D {
 	inst := &AimModifier3DImpl{}
 	inst.Owner = owner
@@ -8457,6 +8513,14 @@ func NewGDExtensionClassFromAnimatableBody2DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimatableBody2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimatableBody2DWithGodotOwnerObject(owner *GodotObject) AnimatableBody2D {
 	inst := &AnimatableBody2DImpl{}
 	inst.Owner = owner
@@ -8565,6 +8629,14 @@ func NewGDExtensionClassFromAnimatableBody3DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimatableBody3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimatableBody3DWithGodotOwnerObject(owner *GodotObject) AnimatableBody3D {
 	inst := &AnimatableBody3DImpl{}
 	inst.Owner = owner
@@ -8671,6 +8743,14 @@ func NewGDExtensionClassFromAnimatedSprite2DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimatedSprite2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimatedSprite2DWithGodotOwnerObject(owner *GodotObject) AnimatedSprite2D {
@@ -9799,6 +9879,14 @@ func NewGDExtensionClassFromAnimatedSprite3DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimatedSprite3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimatedSprite3DWithGodotOwnerObject(owner *GodotObject) AnimatedSprite3D {
 	inst := &AnimatedSprite3DImpl{}
 	inst.Owner = owner
@@ -10601,6 +10689,14 @@ func NewGDExtensionClassFromAnimatedTextureOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimatedTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimatedTextureWithGodotOwnerObject(owner *GodotObject) RefAnimatedTexture {
 	inst := &AnimatedTextureImpl{}
 	inst.Owner = owner
@@ -11210,6 +11306,14 @@ func NewGDExtensionClassFromAnimationOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationWithGodotOwnerObject(owner *GodotObject) RefAnimation {
@@ -15128,6 +15232,14 @@ func NewGDExtensionClassFromAnimationLibraryOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationLibraryImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationLibraryWithGodotOwnerObject(owner *GodotObject) RefAnimationLibrary {
 	inst := &AnimationLibraryImpl{}
 	inst.Owner = owner
@@ -15456,6 +15568,14 @@ func NewGDExtensionClassFromAnimationMixerOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationMixerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationMixerWithGodotOwnerObject(owner *GodotObject) AnimationMixer {
@@ -17148,6 +17268,14 @@ func NewGDExtensionClassFromAnimationNodeOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeWithGodotOwnerObject(owner *GodotObject) RefAnimationNode {
 	inst := &AnimationNodeImpl{}
 	inst.Owner = owner
@@ -17967,6 +18095,14 @@ func NewGDExtensionClassFromAnimationNodeAdd2Owner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeAdd2Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeAdd2WithGodotOwnerObject(owner *GodotObject) RefAnimationNodeAdd2 {
 	inst := &AnimationNodeAdd2Impl{}
 	inst.Owner = owner
@@ -17985,6 +18121,14 @@ func NewGDExtensionClassFromAnimationNodeAdd3Owner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeAdd3Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeAdd3WithGodotOwnerObject(owner *GodotObject) RefAnimationNodeAdd3 {
 	inst := &AnimationNodeAdd3Impl{}
 	inst.Owner = owner
@@ -18001,6 +18145,14 @@ func NewGDExtensionClassFromAnimationNodeAnimationOwner(owner *GodotObject) GDEx
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeAnimationImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeAnimationWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeAnimation {
@@ -18678,6 +18830,14 @@ func NewGDExtensionClassFromAnimationNodeBlend2Owner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeBlend2Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeBlend2WithGodotOwnerObject(owner *GodotObject) RefAnimationNodeBlend2 {
 	inst := &AnimationNodeBlend2Impl{}
 	inst.Owner = owner
@@ -18696,6 +18856,14 @@ func NewGDExtensionClassFromAnimationNodeBlend3Owner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeBlend3Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeBlend3WithGodotOwnerObject(owner *GodotObject) RefAnimationNodeBlend3 {
 	inst := &AnimationNodeBlend3Impl{}
 	inst.Owner = owner
@@ -18712,6 +18880,14 @@ func NewGDExtensionClassFromAnimationNodeBlendSpace1DOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeBlendSpace1DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeBlendSpace1DWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeBlendSpace1D {
@@ -19876,6 +20052,14 @@ func NewGDExtensionClassFromAnimationNodeBlendSpace2DOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeBlendSpace2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeBlendSpace2DWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeBlendSpace2D {
@@ -21382,6 +21566,14 @@ func NewGDExtensionClassFromAnimationNodeBlendTreeOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeBlendTreeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeBlendTreeWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeBlendTree {
 	inst := &AnimationNodeBlendTreeImpl{}
 	inst.Owner = owner
@@ -21932,6 +22124,14 @@ func NewGDExtensionClassFromAnimationNodeExtensionOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeExtensionWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeExtension {
 	inst := &AnimationNodeExtensionImpl{}
 	inst.Owner = owner
@@ -22048,6 +22248,14 @@ func NewGDExtensionClassFromAnimationNodeOneShotOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeOneShotImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeOneShotWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeOneShot {
@@ -22893,6 +23101,14 @@ func NewGDExtensionClassFromAnimationNodeOutputOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeOutputImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeOutputWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeOutput {
 	inst := &AnimationNodeOutputImpl{}
 	inst.Owner = owner
@@ -22909,6 +23125,14 @@ func NewGDExtensionClassFromAnimationNodeStateMachineOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeStateMachineImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeStateMachineWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeStateMachine {
@@ -24061,6 +24285,14 @@ func NewGDExtensionClassFromAnimationNodeStateMachinePlaybackOwner(owner *GodotO
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeStateMachinePlaybackImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeStateMachinePlaybackWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeStateMachinePlayback {
 	inst := &AnimationNodeStateMachinePlaybackImpl{}
 	inst.Owner = owner
@@ -24648,6 +24880,14 @@ func NewGDExtensionClassFromAnimationNodeStateMachineTransitionOwner(owner *Godo
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeStateMachineTransitionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeStateMachineTransitionWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeStateMachineTransition {
@@ -25409,6 +25649,14 @@ func NewGDExtensionClassFromAnimationNodeSub2Owner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeSub2Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeSub2WithGodotOwnerObject(owner *GodotObject) RefAnimationNodeSub2 {
 	inst := &AnimationNodeSub2Impl{}
 	inst.Owner = owner
@@ -25425,6 +25673,14 @@ func NewGDExtensionClassFromAnimationNodeSyncOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeSyncImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeSyncWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeSync {
@@ -25535,6 +25791,14 @@ func NewGDExtensionClassFromAnimationNodeTimeScaleOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeTimeScaleImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationNodeTimeScaleWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeTimeScale {
 	inst := &AnimationNodeTimeScaleImpl{}
 	inst.Owner = owner
@@ -25551,6 +25815,14 @@ func NewGDExtensionClassFromAnimationNodeTimeSeekOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeTimeSeekImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeTimeSeekWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeTimeSeek {
@@ -25659,6 +25931,14 @@ func NewGDExtensionClassFromAnimationNodeTransitionOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationNodeTransitionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationNodeTransitionWithGodotOwnerObject(owner *GodotObject) RefAnimationNodeTransition {
@@ -26237,6 +26517,14 @@ func NewGDExtensionClassFromAnimationPlayerOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationPlayerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationPlayerWithGodotOwnerObject(owner *GodotObject) AnimationPlayer {
@@ -28554,6 +28842,14 @@ func NewGDExtensionClassFromAnimationRootNodeOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationRootNodeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAnimationRootNodeWithGodotOwnerObject(owner *GodotObject) RefAnimationRootNode {
 	inst := &AnimationRootNodeImpl{}
 	inst.Owner = owner
@@ -28570,6 +28866,14 @@ func NewGDExtensionClassFromAnimationTreeOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AnimationTreeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAnimationTreeWithGodotOwnerObject(owner *GodotObject) AnimationTree {
@@ -28924,6 +29228,14 @@ func NewGDExtensionClassFromArea2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Area2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewArea2DWithGodotOwnerObject(owner *GodotObject) Area2D {
@@ -30420,6 +30732,14 @@ func NewGDExtensionClassFromArea3DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Area3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewArea3DWithGodotOwnerObject(owner *GodotObject) Area3D {
@@ -32485,6 +32805,14 @@ func NewGDExtensionClassFromAreaLight3DOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AreaLight3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAreaLight3DWithGodotOwnerObject(owner *GodotObject) AreaLight3D {
 	inst := &AreaLight3DImpl{}
 	inst.Owner = owner
@@ -32756,6 +33084,14 @@ func NewGDExtensionClassFromArrayMeshOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ArrayMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewArrayMeshWithGodotOwnerObject(owner *GodotObject) RefArrayMesh {
@@ -33901,6 +34237,14 @@ func NewGDExtensionClassFromArrayOccluder3DOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ArrayOccluder3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewArrayOccluder3DWithGodotOwnerObject(owner *GodotObject) RefArrayOccluder3D {
 	inst := &ArrayOccluder3DImpl{}
 	inst.Owner = owner
@@ -34052,6 +34396,14 @@ func NewGDExtensionClassFromAspectRatioContainerOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AspectRatioContainerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAspectRatioContainerWithGodotOwnerObject(owner *GodotObject) AspectRatioContainer {
@@ -34403,6 +34755,14 @@ func NewGDExtensionClassFromAtlasTextureOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AtlasTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAtlasTextureWithGodotOwnerObject(owner *GodotObject) RefAtlasTexture {
@@ -34759,6 +35119,14 @@ func NewGDExtensionClassFromAudioBusLayoutOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioBusLayoutImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioBusLayoutWithGodotOwnerObject(owner *GodotObject) RefAudioBusLayout {
 	inst := &AudioBusLayoutImpl{}
 	inst.Owner = owner
@@ -34775,6 +35143,14 @@ func NewGDExtensionClassFromAudioEffectOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectWithGodotOwnerObject(owner *GodotObject) RefAudioEffect {
@@ -34802,6 +35178,14 @@ func NewGDExtensionClassFromAudioEffectAmplifyOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectAmplifyImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectAmplifyWithGodotOwnerObject(owner *GodotObject) RefAudioEffectAmplify {
@@ -34993,6 +35377,14 @@ func NewGDExtensionClassFromAudioEffectBandLimitFilterOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectBandLimitFilterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectBandLimitFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectBandLimitFilter {
 	inst := &AudioEffectBandLimitFilterImpl{}
 	inst.Owner = owner
@@ -35011,6 +35403,14 @@ func NewGDExtensionClassFromAudioEffectBandPassFilterOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectBandPassFilterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectBandPassFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectBandPassFilter {
 	inst := &AudioEffectBandPassFilterImpl{}
 	inst.Owner = owner
@@ -35027,6 +35427,14 @@ func NewGDExtensionClassFromAudioEffectCaptureOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectCaptureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectCaptureWithGodotOwnerObject(owner *GodotObject) RefAudioEffectCapture {
@@ -35420,6 +35828,14 @@ func NewGDExtensionClassFromAudioEffectChorusOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectChorusImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectChorusWithGodotOwnerObject(owner *GodotObject) RefAudioEffectChorus {
@@ -36220,6 +36636,14 @@ func NewGDExtensionClassFromAudioEffectCompressorOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectCompressorImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectCompressorWithGodotOwnerObject(owner *GodotObject) RefAudioEffectCompressor {
 	inst := &AudioEffectCompressorImpl{}
 	inst.Owner = owner
@@ -36812,6 +37236,14 @@ func NewGDExtensionClassFromAudioEffectDelayOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectDelayImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectDelayWithGodotOwnerObject(owner *GodotObject) RefAudioEffectDelay {
@@ -37894,6 +38326,14 @@ func NewGDExtensionClassFromAudioEffectDistortionOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectDistortionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectDistortionWithGodotOwnerObject(owner *GodotObject) RefAudioEffectDistortion {
 	inst := &AudioEffectDistortionImpl{}
 	inst.Owner = owner
@@ -38326,6 +38766,14 @@ func NewGDExtensionClassFromAudioEffectEQOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectEQImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectEQWithGodotOwnerObject(owner *GodotObject) RefAudioEffectEQ {
 	inst := &AudioEffectEQImpl{}
 	inst.Owner = owner
@@ -38481,6 +38929,14 @@ func NewGDExtensionClassFromAudioEffectEQ10Owner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectEQ10Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectEQ10WithGodotOwnerObject(owner *GodotObject) RefAudioEffectEQ10 {
 	inst := &AudioEffectEQ10Impl{}
 	inst.Owner = owner
@@ -38497,6 +38953,14 @@ func NewGDExtensionClassFromAudioEffectEQ21Owner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectEQ21Impl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectEQ21WithGodotOwnerObject(owner *GodotObject) RefAudioEffectEQ21 {
@@ -38517,6 +38981,14 @@ func NewGDExtensionClassFromAudioEffectEQ6Owner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectEQ6Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectEQ6WithGodotOwnerObject(owner *GodotObject) RefAudioEffectEQ6 {
 	inst := &AudioEffectEQ6Impl{}
 	inst.Owner = owner
@@ -38533,6 +39005,14 @@ func NewGDExtensionClassFromAudioEffectFilterOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectFilterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectFilter {
@@ -38886,6 +39366,14 @@ func NewGDExtensionClassFromAudioEffectHardLimiterOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectHardLimiterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectHardLimiterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectHardLimiter {
 	inst := &AudioEffectHardLimiterImpl{}
 	inst.Owner = owner
@@ -39156,6 +39644,14 @@ func NewGDExtensionClassFromAudioEffectHighPassFilterOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectHighPassFilterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectHighPassFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectHighPassFilter {
 	inst := &AudioEffectHighPassFilterImpl{}
 	inst.Owner = owner
@@ -39174,6 +39670,14 @@ func NewGDExtensionClassFromAudioEffectHighShelfFilterOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectHighShelfFilterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectHighShelfFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectHighShelfFilter {
 	inst := &AudioEffectHighShelfFilterImpl{}
 	inst.Owner = owner
@@ -39190,6 +39694,14 @@ func NewGDExtensionClassFromAudioEffectInstanceOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectInstanceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectInstanceWithGodotOwnerObject(owner *GodotObject) RefAudioEffectInstance {
@@ -39217,6 +39729,14 @@ func NewGDExtensionClassFromAudioEffectLimiterOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectLimiterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectLimiterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectLimiter {
@@ -39570,6 +40090,14 @@ func NewGDExtensionClassFromAudioEffectLowPassFilterOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectLowPassFilterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectLowPassFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectLowPassFilter {
 	inst := &AudioEffectLowPassFilterImpl{}
 	inst.Owner = owner
@@ -39586,6 +40114,14 @@ func NewGDExtensionClassFromAudioEffectLowShelfFilterOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectLowShelfFilterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectLowShelfFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectLowShelfFilter {
@@ -39606,6 +40142,14 @@ func NewGDExtensionClassFromAudioEffectNotchFilterOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectNotchFilterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectNotchFilterWithGodotOwnerObject(owner *GodotObject) RefAudioEffectNotchFilter {
 	inst := &AudioEffectNotchFilterImpl{}
 	inst.Owner = owner
@@ -39622,6 +40166,14 @@ func NewGDExtensionClassFromAudioEffectPannerOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectPannerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectPannerWithGodotOwnerObject(owner *GodotObject) RefAudioEffectPanner {
@@ -39730,6 +40282,14 @@ func NewGDExtensionClassFromAudioEffectPhaserOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectPhaserImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectPhaserWithGodotOwnerObject(owner *GodotObject) RefAudioEffectPhaser {
@@ -40164,6 +40724,14 @@ func NewGDExtensionClassFromAudioEffectPitchShiftOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectPitchShiftImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectPitchShiftWithGodotOwnerObject(owner *GodotObject) RefAudioEffectPitchShift {
 	inst := &AudioEffectPitchShiftImpl{}
 	inst.Owner = owner
@@ -40434,6 +41002,14 @@ func NewGDExtensionClassFromAudioEffectRecordOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectRecordImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectRecordWithGodotOwnerObject(owner *GodotObject) RefAudioEffectRecord {
 	inst := &AudioEffectRecordImpl{}
 	inst.Owner = owner
@@ -40661,6 +41237,14 @@ func NewGDExtensionClassFromAudioEffectReverbOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectReverbImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectReverbWithGodotOwnerObject(owner *GodotObject) RefAudioEffectReverb {
@@ -41338,6 +41922,14 @@ func NewGDExtensionClassFromAudioEffectSpectrumAnalyzerOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectSpectrumAnalyzerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectSpectrumAnalyzerWithGodotOwnerObject(owner *GodotObject) RefAudioEffectSpectrumAnalyzer {
 	inst := &AudioEffectSpectrumAnalyzerImpl{}
 	inst.Owner = owner
@@ -41527,6 +42119,14 @@ func NewGDExtensionClassFromAudioEffectSpectrumAnalyzerInstanceOwner(owner *Godo
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectSpectrumAnalyzerInstanceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioEffectSpectrumAnalyzerInstanceWithGodotOwnerObject(owner *GodotObject) RefAudioEffectSpectrumAnalyzerInstance {
 	inst := &AudioEffectSpectrumAnalyzerInstanceImpl{}
 	inst.Owner = owner
@@ -41602,6 +42202,14 @@ func NewGDExtensionClassFromAudioEffectStereoEnhanceOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioEffectStereoEnhanceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioEffectStereoEnhanceWithGodotOwnerObject(owner *GodotObject) RefAudioEffectStereoEnhance {
@@ -41874,6 +42482,14 @@ func NewGDExtensionClassFromAudioListener2DOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioListener2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioListener2DWithGodotOwnerObject(owner *GodotObject) AudioListener2D {
 	inst := &AudioListener2DImpl{}
 	inst.Owner = owner
@@ -42013,6 +42629,14 @@ func NewGDExtensionClassFromAudioListener3DOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioListener3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioListener3DWithGodotOwnerObject(owner *GodotObject) AudioListener3D {
@@ -42277,6 +42901,14 @@ func NewGDExtensionClassFromAudioSampleOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioSampleImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioSampleWithGodotOwnerObject(owner *GodotObject) RefAudioSample {
 	inst := &AudioSampleImpl{}
 	inst.Owner = owner
@@ -42295,6 +42927,14 @@ func NewGDExtensionClassFromAudioSamplePlaybackOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioSamplePlaybackImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioSamplePlaybackWithGodotOwnerObject(owner *GodotObject) RefAudioSamplePlayback {
 	inst := &AudioSamplePlaybackImpl{}
 	inst.Owner = owner
@@ -42311,6 +42951,14 @@ func NewGDExtensionClassFromAudioServerOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioServerWithGodotOwnerObject(owner *GodotObject) AudioServer {
@@ -44782,6 +45430,14 @@ func NewGDExtensionClassFromAudioStreamOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamWithGodotOwnerObject(owner *GodotObject) RefAudioStream {
 	inst := &AudioStreamImpl{}
 	inst.Owner = owner
@@ -45047,6 +45703,14 @@ func NewGDExtensionClassFromAudioStreamGeneratorOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamGeneratorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamGeneratorWithGodotOwnerObject(owner *GodotObject) RefAudioStreamGenerator {
@@ -45317,6 +45981,14 @@ func NewGDExtensionClassFromAudioStreamGeneratorPlaybackOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamGeneratorPlaybackImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamGeneratorPlaybackWithGodotOwnerObject(owner *GodotObject) RefAudioStreamGeneratorPlayback {
@@ -45593,6 +46265,14 @@ func NewGDExtensionClassFromAudioStreamInteractiveOwner(owner *GodotObject) GDEx
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamInteractiveImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamInteractiveWithGodotOwnerObject(owner *GodotObject) RefAudioStreamInteractive {
@@ -46664,6 +47344,14 @@ func NewGDExtensionClassFromAudioStreamMP3Owner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamMP3Impl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamMP3WithGodotOwnerObject(owner *GodotObject) RefAudioStreamMP3 {
 	inst := &AudioStreamMP3Impl{}
 	inst.Owner = owner
@@ -47265,6 +47953,14 @@ func NewGDExtensionClassFromAudioStreamMicrophoneOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamMicrophoneImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamMicrophoneWithGodotOwnerObject(owner *GodotObject) RefAudioStreamMicrophone {
 	inst := &AudioStreamMicrophoneImpl{}
 	inst.Owner = owner
@@ -47281,6 +47977,14 @@ func NewGDExtensionClassFromAudioStreamOggVorbisOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamOggVorbisImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamOggVorbisWithGodotOwnerObject(owner *GodotObject) RefAudioStreamOggVorbis {
@@ -47968,6 +48672,14 @@ func NewGDExtensionClassFromAudioStreamPlaybackOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaybackImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPlaybackWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlayback {
 	inst := &AudioStreamPlaybackImpl{}
 	inst.Owner = owner
@@ -48365,6 +49077,14 @@ func NewGDExtensionClassFromAudioStreamPlaybackInteractiveOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaybackInteractiveImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPlaybackInteractiveWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlaybackInteractive {
 	inst := &AudioStreamPlaybackInteractiveImpl{}
 	inst.Owner = owner
@@ -48514,6 +49234,14 @@ func NewGDExtensionClassFromAudioStreamPlaybackOggVorbisOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaybackOggVorbisImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPlaybackOggVorbisWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlaybackOggVorbis {
 	inst := &AudioStreamPlaybackOggVorbisImpl{}
 	inst.Owner = owner
@@ -48532,6 +49260,14 @@ func NewGDExtensionClassFromAudioStreamPlaybackPlaylistOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaybackPlaylistImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPlaybackPlaylistWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlaybackPlaylist {
 	inst := &AudioStreamPlaybackPlaylistImpl{}
 	inst.Owner = owner
@@ -48548,6 +49284,14 @@ func NewGDExtensionClassFromAudioStreamPlaybackPolyphonicOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaybackPolyphonicImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamPlaybackPolyphonicWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlaybackPolyphonic {
@@ -48812,6 +49556,14 @@ func NewGDExtensionClassFromAudioStreamPlaybackResampledOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaybackResampledImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPlaybackResampledWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlaybackResampled {
 	inst := &AudioStreamPlaybackResampledImpl{}
 	inst.Owner = owner
@@ -48876,6 +49628,14 @@ func NewGDExtensionClassFromAudioStreamPlaybackSynchronizedOwner(owner *GodotObj
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaybackSynchronizedImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPlaybackSynchronizedWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlaybackSynchronized {
 	inst := &AudioStreamPlaybackSynchronizedImpl{}
 	inst.Owner = owner
@@ -48892,6 +49652,14 @@ func NewGDExtensionClassFromAudioStreamPlayerOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlayerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamPlayerWithGodotOwnerObject(owner *GodotObject) AudioStreamPlayer {
@@ -50052,6 +50820,14 @@ func NewGDExtensionClassFromAudioStreamPlayer2DOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlayer2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamPlayer2DWithGodotOwnerObject(owner *GodotObject) AudioStreamPlayer2D {
@@ -51455,6 +52231,14 @@ func NewGDExtensionClassFromAudioStreamPlayer3DOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlayer3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamPlayer3DWithGodotOwnerObject(owner *GodotObject) AudioStreamPlayer3D {
@@ -53508,6 +54292,14 @@ func NewGDExtensionClassFromAudioStreamPlaylistOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPlaylistImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPlaylistWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPlaylist {
 	inst := &AudioStreamPlaylistImpl{}
 	inst.Owner = owner
@@ -53990,6 +54782,14 @@ func NewGDExtensionClassFromAudioStreamPolyphonicOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamPolyphonicImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamPolyphonicWithGodotOwnerObject(owner *GodotObject) RefAudioStreamPolyphonic {
 	inst := &AudioStreamPolyphonicImpl{}
 	inst.Owner = owner
@@ -54096,6 +54896,14 @@ func NewGDExtensionClassFromAudioStreamRandomizerOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamRandomizerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamRandomizerWithGodotOwnerObject(owner *GodotObject) RefAudioStreamRandomizer {
@@ -54844,6 +55652,14 @@ func NewGDExtensionClassFromAudioStreamSynchronizedOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamSynchronizedImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAudioStreamSynchronizedWithGodotOwnerObject(owner *GodotObject) RefAudioStreamSynchronized {
 	inst := &AudioStreamSynchronizedImpl{}
 	inst.Owner = owner
@@ -55129,6 +55945,14 @@ func NewGDExtensionClassFromAudioStreamWAVOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AudioStreamWAVImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewAudioStreamWAVWithGodotOwnerObject(owner *GodotObject) RefAudioStreamWAV {
@@ -55944,6 +56768,14 @@ func NewGDExtensionClassFromAwaitTweenerOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *AwaitTweenerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewAwaitTweenerWithGodotOwnerObject(owner *GodotObject) RefAwaitTweener {
 	inst := &AwaitTweenerImpl{}
 	inst.Owner = owner
@@ -56013,6 +56845,14 @@ func NewGDExtensionClassFromBackBufferCopyOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BackBufferCopyImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBackBufferCopyWithGodotOwnerObject(owner *GodotObject) BackBufferCopy {
@@ -56202,6 +57042,14 @@ func NewGDExtensionClassFromBaseButtonOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BaseButtonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBaseButtonWithGodotOwnerObject(owner *GodotObject) BaseButton {
@@ -57166,6 +58014,14 @@ func NewGDExtensionClassFromBaseMaterial3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BaseMaterial3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBaseMaterial3DWithGodotOwnerObject(owner *GodotObject) RefBaseMaterial3D {
@@ -63456,6 +64312,14 @@ func NewGDExtensionClassFromBitMapOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BitMapImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewBitMapWithGodotOwnerObject(owner *GodotObject) RefBitMap {
 	inst := &BitMapImpl{}
 	inst.Owner = owner
@@ -64049,6 +64913,14 @@ func NewGDExtensionClassFromBlitMaterialOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BlitMaterialImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewBlitMaterialWithGodotOwnerObject(owner *GodotObject) RefBlitMaterial {
 	inst := &BlitMaterialImpl{}
 	inst.Owner = owner
@@ -64155,6 +65027,14 @@ func NewGDExtensionClassFromBone2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Bone2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBone2DWithGodotOwnerObject(owner *GodotObject) Bone2D {
@@ -64623,6 +65503,14 @@ func NewGDExtensionClassFromBoneAttachment3DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoneAttachment3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBoneAttachment3DWithGodotOwnerObject(owner *GodotObject) BoneAttachment3D {
@@ -65132,6 +66020,14 @@ func NewGDExtensionClassFromBoneConstraint3DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoneConstraint3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBoneConstraint3DWithGodotOwnerObject(owner *GodotObject) BoneConstraint3D {
@@ -65895,6 +66791,14 @@ func NewGDExtensionClassFromBoneMapOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoneMapImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewBoneMapWithGodotOwnerObject(owner *GodotObject) RefBoneMap {
 	inst := &BoneMapImpl{}
 	inst.Owner = owner
@@ -66136,6 +67040,14 @@ func NewGDExtensionClassFromBoneTwistDisperser3DOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoneTwistDisperser3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBoneTwistDisperser3DWithGodotOwnerObject(owner *GodotObject) BoneTwistDisperser3D {
@@ -67655,6 +68567,14 @@ func NewGDExtensionClassFromBoxContainerOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoxContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewBoxContainerWithGodotOwnerObject(owner *GodotObject) BoxContainer {
 	inst := &BoxContainerImpl{}
 	inst.Owner = owner
@@ -67886,6 +68806,14 @@ func NewGDExtensionClassFromBoxMeshOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoxMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewBoxMeshWithGodotOwnerObject(owner *GodotObject) RefBoxMesh {
@@ -68239,6 +69167,14 @@ func NewGDExtensionClassFromBoxOccluder3DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoxOccluder3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewBoxOccluder3DWithGodotOwnerObject(owner *GodotObject) RefBoxOccluder3D {
 	inst := &BoxOccluder3DImpl{}
 	inst.Owner = owner
@@ -68347,6 +69283,14 @@ func NewGDExtensionClassFromBoxShape3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *BoxShape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewBoxShape3DWithGodotOwnerObject(owner *GodotObject) RefBoxShape3D {
 	inst := &BoxShape3DImpl{}
 	inst.Owner = owner
@@ -68453,6 +69397,14 @@ func NewGDExtensionClassFromButtonOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ButtonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewButtonWithGodotOwnerObject(owner *GodotObject) Button {
@@ -69538,6 +70490,14 @@ func NewGDExtensionClassFromButtonGroupOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ButtonGroupImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewButtonGroupWithGodotOwnerObject(owner *GodotObject) RefButtonGroup {
 	inst := &ButtonGroupImpl{}
 	inst.Owner = owner
@@ -69726,6 +70686,14 @@ func NewGDExtensionClassFromCCDIK3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CCDIK3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCCDIK3DWithGodotOwnerObject(owner *GodotObject) CCDIK3D {
 	inst := &CCDIK3DImpl{}
 	inst.Owner = owner
@@ -69742,6 +70710,14 @@ func NewGDExtensionClassFromCPUParticles2DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CPUParticles2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCPUParticles2DWithGodotOwnerObject(owner *GodotObject) CPUParticles2D {
@@ -72941,6 +73917,14 @@ func NewGDExtensionClassFromCPUParticles3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CPUParticles3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCPUParticles3DWithGodotOwnerObject(owner *GodotObject) CPUParticles3D {
@@ -76671,6 +77655,14 @@ func NewGDExtensionClassFromCSGBox3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGBox3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCSGBox3DWithGodotOwnerObject(owner *GodotObject) CSGBox3D {
 	inst := &CSGBox3DImpl{}
 	inst.Owner = owner
@@ -76863,6 +77855,14 @@ func NewGDExtensionClassFromCSGCombiner3DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGCombiner3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCSGCombiner3DWithGodotOwnerObject(owner *GodotObject) CSGCombiner3D {
 	inst := &CSGCombiner3DImpl{}
 	inst.Owner = owner
@@ -76879,6 +77879,14 @@ func NewGDExtensionClassFromCSGCylinder3DOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGCylinder3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCSGCylinder3DWithGodotOwnerObject(owner *GodotObject) CSGCylinder3D {
@@ -77397,6 +78405,14 @@ func NewGDExtensionClassFromCSGMesh3DOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGMesh3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCSGMesh3DWithGodotOwnerObject(owner *GodotObject) CSGMesh3D {
 	inst := &CSGMesh3DImpl{}
 	inst.Owner = owner
@@ -77590,6 +78606,14 @@ func NewGDExtensionClassFromCSGPolygon3DOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGPolygon3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCSGPolygon3DWithGodotOwnerObject(owner *GodotObject) CSGPolygon3D {
@@ -78999,6 +80023,14 @@ func NewGDExtensionClassFromCSGPrimitive3DOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGPrimitive3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCSGPrimitive3DWithGodotOwnerObject(owner *GodotObject) CSGPrimitive3D {
 	inst := &CSGPrimitive3DImpl{}
 	inst.Owner = owner
@@ -79105,6 +80137,14 @@ func NewGDExtensionClassFromCSGShape3DOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGShape3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCSGShape3DWithGodotOwnerObject(owner *GodotObject) CSGShape3D {
@@ -80199,6 +81239,14 @@ func NewGDExtensionClassFromCSGSphere3DOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGSphere3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCSGSphere3DWithGodotOwnerObject(owner *GodotObject) CSGSphere3D {
 	inst := &CSGSphere3DImpl{}
 	inst.Owner = owner
@@ -80632,6 +81680,14 @@ func NewGDExtensionClassFromCSGTorus3DOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CSGTorus3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCSGTorus3DWithGodotOwnerObject(owner *GodotObject) CSGTorus3D {
@@ -81150,6 +82206,14 @@ func NewGDExtensionClassFromCallbackTweenerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CallbackTweenerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCallbackTweenerWithGodotOwnerObject(owner *GodotObject) RefCallbackTweener {
 	inst := &CallbackTweenerImpl{}
 	inst.Owner = owner
@@ -81219,6 +82283,14 @@ func NewGDExtensionClassFromCamera2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Camera2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCamera2DWithGodotOwnerObject(owner *GodotObject) Camera2D {
@@ -83355,6 +84427,14 @@ func NewGDExtensionClassFromCamera3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Camera3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCamera3DWithGodotOwnerObject(owner *GodotObject) Camera3D {
 	inst := &Camera3DImpl{}
 	inst.Owner = owner
@@ -85427,6 +86507,14 @@ func NewGDExtensionClassFromCameraAttributesOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CameraAttributesImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCameraAttributesWithGodotOwnerObject(owner *GodotObject) RefCameraAttributes {
 	inst := &CameraAttributesImpl{}
 	inst.Owner = owner
@@ -85857,6 +86945,14 @@ func NewGDExtensionClassFromCameraAttributesPhysicalOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CameraAttributesPhysicalImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCameraAttributesPhysicalWithGodotOwnerObject(owner *GodotObject) RefCameraAttributesPhysical {
@@ -86572,6 +87668,14 @@ func NewGDExtensionClassFromCameraAttributesPracticalOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CameraAttributesPracticalImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCameraAttributesPracticalWithGodotOwnerObject(owner *GodotObject) RefCameraAttributesPractical {
@@ -87330,6 +88434,14 @@ func NewGDExtensionClassFromCameraFeedOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CameraFeedImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCameraFeedWithGodotOwnerObject(owner *GodotObject) RefCameraFeed {
 	inst := &CameraFeedImpl{}
 	inst.Owner = owner
@@ -88074,6 +89186,14 @@ func NewGDExtensionClassFromCameraServerOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CameraServerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCameraServerWithGodotOwnerObject(owner *GodotObject) CameraServer {
 	inst := &CameraServerImpl{}
 	inst.Owner = owner
@@ -88394,6 +89514,14 @@ func NewGDExtensionClassFromCameraTextureOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CameraTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCameraTextureWithGodotOwnerObject(owner *GodotObject) RefCameraTexture {
 	inst := &CameraTextureImpl{}
 	inst.Owner = owner
@@ -88664,6 +89792,14 @@ func NewGDExtensionClassFromCanvasGroupOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CanvasGroupImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCanvasGroupWithGodotOwnerObject(owner *GodotObject) CanvasGroup {
 	inst := &CanvasGroupImpl{}
 	inst.Owner = owner
@@ -88932,6 +90068,14 @@ func NewGDExtensionClassFromCanvasItemOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CanvasItemImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCanvasItemWithGodotOwnerObject(owner *GodotObject) CanvasItem {
@@ -93243,6 +94387,14 @@ func NewGDExtensionClassFromCanvasItemMaterialOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CanvasItemMaterialImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCanvasItemMaterialWithGodotOwnerObject(owner *GodotObject) RefCanvasItemMaterial {
 	inst := &CanvasItemMaterialImpl{}
 	inst.Owner = owner
@@ -93754,6 +94906,14 @@ func NewGDExtensionClassFromCanvasLayerOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CanvasLayerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCanvasLayerWithGodotOwnerObject(owner *GodotObject) CanvasLayer {
@@ -94669,6 +95829,14 @@ func NewGDExtensionClassFromCanvasModulateOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CanvasModulateImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCanvasModulateWithGodotOwnerObject(owner *GodotObject) CanvasModulate {
 	inst := &CanvasModulateImpl{}
 	inst.Owner = owner
@@ -94775,6 +95943,14 @@ func NewGDExtensionClassFromCanvasTextureOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CanvasTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCanvasTextureWithGodotOwnerObject(owner *GodotObject) RefCanvasTexture {
@@ -95380,6 +96556,14 @@ func NewGDExtensionClassFromCapsuleMeshOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CapsuleMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCapsuleMeshWithGodotOwnerObject(owner *GodotObject) RefCapsuleMesh {
 	inst := &CapsuleMeshImpl{}
 	inst.Owner = owner
@@ -95731,6 +96915,14 @@ func NewGDExtensionClassFromCapsuleShape2DOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CapsuleShape2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCapsuleShape2DWithGodotOwnerObject(owner *GodotObject) RefCapsuleShape2D {
 	inst := &CapsuleShape2DImpl{}
 	inst.Owner = owner
@@ -95999,6 +97191,14 @@ func NewGDExtensionClassFromCapsuleShape3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CapsuleShape3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCapsuleShape3DWithGodotOwnerObject(owner *GodotObject) RefCapsuleShape3D {
@@ -96271,6 +97471,14 @@ func NewGDExtensionClassFromCenterContainerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CenterContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCenterContainerWithGodotOwnerObject(owner *GodotObject) CenterContainer {
 	inst := &CenterContainerImpl{}
 	inst.Owner = owner
@@ -96377,6 +97585,14 @@ func NewGDExtensionClassFromChainIK3DOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ChainIK3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewChainIK3DWithGodotOwnerObject(owner *GodotObject) ChainIK3D {
@@ -97158,6 +98374,14 @@ func NewGDExtensionClassFromCharFXTransformOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CharFXTransformImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCharFXTransformWithGodotOwnerObject(owner *GodotObject) RefCharFXTransform {
@@ -98238,6 +99462,14 @@ func NewGDExtensionClassFromCharacterBody2DOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CharacterBody2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCharacterBody2DWithGodotOwnerObject(owner *GodotObject) CharacterBody2D {
@@ -100205,6 +101437,14 @@ func NewGDExtensionClassFromCharacterBody3DOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CharacterBody3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCharacterBody3DWithGodotOwnerObject(owner *GodotObject) CharacterBody3D {
@@ -102214,6 +103454,14 @@ func NewGDExtensionClassFromCheckBoxOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CheckBoxImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCheckBoxWithGodotOwnerObject(owner *GodotObject) CheckBox {
 	inst := &CheckBoxImpl{}
 	inst.Owner = owner
@@ -102232,6 +103480,14 @@ func NewGDExtensionClassFromCheckButtonOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CheckButtonImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCheckButtonWithGodotOwnerObject(owner *GodotObject) CheckButton {
 	inst := &CheckButtonImpl{}
 	inst.Owner = owner
@@ -102248,6 +103504,14 @@ func NewGDExtensionClassFromCircleShape2DOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CircleShape2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCircleShape2DWithGodotOwnerObject(owner *GodotObject) RefCircleShape2D {
@@ -102356,6 +103620,14 @@ func NewGDExtensionClassFromClassDBOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ClassDBImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewClassDBWithGodotOwnerObject(owner *GodotObject) ClassDB {
@@ -103805,6 +105077,14 @@ func NewGDExtensionClassFromCodeEditOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CodeEditImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCodeEditWithGodotOwnerObject(owner *GodotObject) CodeEdit {
@@ -108530,6 +109810,14 @@ func NewGDExtensionClassFromCodeHighlighterOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CodeHighlighterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCodeHighlighterWithGodotOwnerObject(owner *GodotObject) RefCodeHighlighter {
 	inst := &CodeHighlighterImpl{}
 	inst.Owner = owner
@@ -109714,6 +111002,14 @@ func NewGDExtensionClassFromCollisionObject2DOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CollisionObject2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCollisionObject2DWithGodotOwnerObject(owner *GodotObject) CollisionObject2D {
@@ -111290,6 +112586,14 @@ func NewGDExtensionClassFromCollisionObject3DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CollisionObject3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCollisionObject3DWithGodotOwnerObject(owner *GodotObject) CollisionObject3D {
 	inst := &CollisionObject3DImpl{}
 	inst.Owner = owner
@@ -112681,6 +113985,14 @@ func NewGDExtensionClassFromCollisionPolygon2DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CollisionPolygon2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCollisionPolygon2DWithGodotOwnerObject(owner *GodotObject) CollisionPolygon2D {
 	inst := &CollisionPolygon2DImpl{}
 	inst.Owner = owner
@@ -113194,6 +114506,14 @@ func NewGDExtensionClassFromCollisionPolygon3DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CollisionPolygon3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCollisionPolygon3DWithGodotOwnerObject(owner *GodotObject) CollisionPolygon3D {
 	inst := &CollisionPolygon3DImpl{}
 	inst.Owner = owner
@@ -113705,6 +115025,14 @@ func NewGDExtensionClassFromCollisionShape2DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CollisionShape2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCollisionShape2DWithGodotOwnerObject(owner *GodotObject) CollisionShape2D {
@@ -114223,6 +115551,14 @@ func NewGDExtensionClassFromCollisionShape3DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CollisionShape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCollisionShape3DWithGodotOwnerObject(owner *GodotObject) CollisionShape3D {
 	inst := &CollisionShape3DImpl{}
 	inst.Owner = owner
@@ -114658,6 +115994,14 @@ func NewGDExtensionClassFromColorPaletteOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ColorPaletteImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewColorPaletteWithGodotOwnerObject(owner *GodotObject) RefColorPalette {
 	inst := &ColorPaletteImpl{}
 	inst.Owner = owner
@@ -114764,6 +116108,14 @@ func NewGDExtensionClassFromColorPickerOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ColorPickerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewColorPickerWithGodotOwnerObject(owner *GodotObject) ColorPicker {
@@ -116009,6 +117361,14 @@ func NewGDExtensionClassFromColorPickerButtonOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ColorPickerButtonImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewColorPickerButtonWithGodotOwnerObject(owner *GodotObject) ColorPickerButton {
 	inst := &ColorPickerButtonImpl{}
 	inst.Owner = owner
@@ -116359,6 +117719,14 @@ func NewGDExtensionClassFromColorRectOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ColorRectImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewColorRectWithGodotOwnerObject(owner *GodotObject) ColorRect {
 	inst := &ColorRectImpl{}
 	inst.Owner = owner
@@ -116465,6 +117833,14 @@ func NewGDExtensionClassFromCompositorOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompositorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCompositorWithGodotOwnerObject(owner *GodotObject) RefCompositor {
@@ -116576,6 +117952,14 @@ func NewGDExtensionClassFromCompositorEffectOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompositorEffectImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCompositorEffectWithGodotOwnerObject(owner *GodotObject) RefCompositorEffect {
@@ -117172,6 +118556,14 @@ func NewGDExtensionClassFromCompressedCubemapOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompressedCubemapImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCompressedCubemapWithGodotOwnerObject(owner *GodotObject) RefCompressedCubemap {
 	inst := &CompressedCubemapImpl{}
 	inst.Owner = owner
@@ -117190,6 +118582,14 @@ func NewGDExtensionClassFromCompressedCubemapArrayOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompressedCubemapArrayImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCompressedCubemapArrayWithGodotOwnerObject(owner *GodotObject) RefCompressedCubemapArray {
 	inst := &CompressedCubemapArrayImpl{}
 	inst.Owner = owner
@@ -117206,6 +118606,14 @@ func NewGDExtensionClassFromCompressedTexture2DOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompressedTexture2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCompressedTexture2DWithGodotOwnerObject(owner *GodotObject) RefCompressedTexture2D {
@@ -117319,6 +118727,14 @@ func NewGDExtensionClassFromCompressedTexture2DArrayOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompressedTexture2DArrayImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCompressedTexture2DArrayWithGodotOwnerObject(owner *GodotObject) RefCompressedTexture2DArray {
 	inst := &CompressedTexture2DArrayImpl{}
 	inst.Owner = owner
@@ -117335,6 +118751,14 @@ func NewGDExtensionClassFromCompressedTexture3DOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompressedTexture3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCompressedTexture3DWithGodotOwnerObject(owner *GodotObject) RefCompressedTexture3D {
@@ -117448,6 +118872,14 @@ func NewGDExtensionClassFromCompressedTextureLayeredOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CompressedTextureLayeredImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCompressedTextureLayeredWithGodotOwnerObject(owner *GodotObject) RefCompressedTextureLayered {
 	inst := &CompressedTextureLayeredImpl{}
 	inst.Owner = owner
@@ -117559,6 +118991,14 @@ func NewGDExtensionClassFromConcavePolygonShape2DOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConcavePolygonShape2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewConcavePolygonShape2DWithGodotOwnerObject(owner *GodotObject) RefConcavePolygonShape2D {
 	inst := &ConcavePolygonShape2DImpl{}
 	inst.Owner = owner
@@ -117665,6 +119105,14 @@ func NewGDExtensionClassFromConcavePolygonShape3DOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConcavePolygonShape3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewConcavePolygonShape3DWithGodotOwnerObject(owner *GodotObject) RefConcavePolygonShape3D {
@@ -117856,6 +119304,14 @@ func NewGDExtensionClassFromConeTwistJoint3DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConeTwistJoint3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewConeTwistJoint3DWithGodotOwnerObject(owner *GodotObject) ConeTwistJoint3D {
 	inst := &ConeTwistJoint3DImpl{}
 	inst.Owner = owner
@@ -117969,6 +119425,14 @@ func NewGDExtensionClassFromConfigFileOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConfigFileImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewConfigFileWithGodotOwnerObject(owner *GodotObject) RefConfigFile {
@@ -118752,6 +120216,14 @@ func NewGDExtensionClassFromConfirmationDialogOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConfirmationDialogImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewConfirmationDialogWithGodotOwnerObject(owner *GodotObject) ConfirmationDialog {
 	inst := &ConfirmationDialogImpl{}
 	inst.Owner = owner
@@ -118898,6 +120370,14 @@ func NewGDExtensionClassFromContainerOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ContainerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewContainerWithGodotOwnerObject(owner *GodotObject) Container {
@@ -119090,6 +120570,14 @@ func NewGDExtensionClassFromControlOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ControlImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewControlWithGodotOwnerObject(owner *GodotObject) Control {
@@ -126636,6 +128124,14 @@ func NewGDExtensionClassFromConvertTransformModifier3DOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConvertTransformModifier3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewConvertTransformModifier3DWithGodotOwnerObject(owner *GodotObject) ConvertTransformModifier3D {
 	inst := &ConvertTransformModifier3DImpl{}
 	inst.Owner = owner
@@ -127543,6 +129039,14 @@ func NewGDExtensionClassFromConvexPolygonShape2DOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConvexPolygonShape2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewConvexPolygonShape2DWithGodotOwnerObject(owner *GodotObject) RefConvexPolygonShape2D {
 	inst := &ConvexPolygonShape2DImpl{}
 	inst.Owner = owner
@@ -127692,6 +129196,14 @@ func NewGDExtensionClassFromConvexPolygonShape3DOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ConvexPolygonShape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewConvexPolygonShape3DWithGodotOwnerObject(owner *GodotObject) RefConvexPolygonShape3D {
 	inst := &ConvexPolygonShape3DImpl{}
 	inst.Owner = owner
@@ -127798,6 +129310,14 @@ func NewGDExtensionClassFromCopyTransformModifier3DOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CopyTransformModifier3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCopyTransformModifier3DWithGodotOwnerObject(owner *GodotObject) CopyTransformModifier3D {
@@ -129059,6 +130579,14 @@ func NewGDExtensionClassFromCryptoOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CryptoImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCryptoWithGodotOwnerObject(owner *GodotObject) RefCrypto {
 	inst := &CryptoImpl{}
 	inst.Owner = owner
@@ -129536,6 +131064,14 @@ func NewGDExtensionClassFromCryptoKeyOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CryptoKeyImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCryptoKeyWithGodotOwnerObject(owner *GodotObject) RefCryptoKey {
 	inst := &CryptoKeyImpl{}
 	inst.Owner = owner
@@ -129788,6 +131324,14 @@ func NewGDExtensionClassFromCubemapOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CubemapImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCubemapWithGodotOwnerObject(owner *GodotObject) RefCubemap {
 	inst := &CubemapImpl{}
 	inst.Owner = owner
@@ -129855,6 +131399,14 @@ func NewGDExtensionClassFromCubemapArrayOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CubemapArrayImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCubemapArrayWithGodotOwnerObject(owner *GodotObject) RefCubemapArray {
 	inst := &CubemapArrayImpl{}
 	inst.Owner = owner
@@ -129920,6 +131472,14 @@ func NewGDExtensionClassFromCurveOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CurveImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCurveWithGodotOwnerObject(owner *GodotObject) RefCurve {
@@ -131298,6 +132858,14 @@ func NewGDExtensionClassFromCurve2DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Curve2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCurve2DWithGodotOwnerObject(owner *GodotObject) RefCurve2D {
 	inst := &Curve2DImpl{}
 	inst.Owner = owner
@@ -132324,6 +133892,14 @@ func NewGDExtensionClassFromCurve3DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Curve3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCurve3DWithGodotOwnerObject(owner *GodotObject) RefCurve3D {
@@ -133734,6 +135310,14 @@ func NewGDExtensionClassFromCurveTextureOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CurveTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCurveTextureWithGodotOwnerObject(owner *GodotObject) RefCurveTexture {
 	inst := &CurveTextureImpl{}
 	inst.Owner = owner
@@ -133965,6 +135549,14 @@ func NewGDExtensionClassFromCurveXYZTextureOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CurveXYZTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCurveXYZTextureWithGodotOwnerObject(owner *GodotObject) RefCurveXYZTexture {
@@ -134285,6 +135877,14 @@ func NewGDExtensionClassFromCylinderMeshOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CylinderMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewCylinderMeshWithGodotOwnerObject(owner *GodotObject) RefCylinderMesh {
@@ -134881,6 +136481,14 @@ func NewGDExtensionClassFromCylinderShape3DOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *CylinderShape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewCylinderShape3DWithGodotOwnerObject(owner *GodotObject) RefCylinderShape3D {
 	inst := &CylinderShape3DImpl{}
 	inst.Owner = owner
@@ -135068,6 +136676,14 @@ func NewGDExtensionClassFromDPITextureOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DPITextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewDPITextureWithGodotOwnerObject(owner *GodotObject) RefDPITexture {
@@ -135717,6 +137333,14 @@ func NewGDExtensionClassFromDTLSServerOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DTLSServerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewDTLSServerWithGodotOwnerObject(owner *GodotObject) RefDTLSServer {
 	inst := &DTLSServerImpl{}
 	inst.Owner = owner
@@ -135836,6 +137460,14 @@ func NewGDExtensionClassFromDampedSpringJoint2DOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DampedSpringJoint2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewDampedSpringJoint2DWithGodotOwnerObject(owner *GodotObject) DampedSpringJoint2D {
@@ -136187,6 +137819,14 @@ func NewGDExtensionClassFromDecalOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DecalImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewDecalWithGodotOwnerObject(owner *GodotObject) Decal {
@@ -137196,6 +138836,14 @@ func NewGDExtensionClassFromDirAccessOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DirAccessImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewDirAccessWithGodotOwnerObject(owner *GodotObject) RefDirAccess {
@@ -139039,6 +140687,14 @@ func NewGDExtensionClassFromDirectionalLight2DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DirectionalLight2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewDirectionalLight2DWithGodotOwnerObject(owner *GodotObject) DirectionalLight2D {
 	inst := &DirectionalLight2DImpl{}
 	inst.Owner = owner
@@ -139145,6 +140801,14 @@ func NewGDExtensionClassFromDirectionalLight3DOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DirectionalLight3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewDirectionalLight3DWithGodotOwnerObject(owner *GodotObject) DirectionalLight3D {
@@ -139415,6 +141079,14 @@ func NewGDExtensionClassFromDisplayServerOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DisplayServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewDisplayServerWithGodotOwnerObject(owner *GodotObject) DisplayServer {
@@ -152238,6 +153910,14 @@ func NewGDExtensionClassFromDrawableTexture2DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *DrawableTexture2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewDrawableTexture2DWithGodotOwnerObject(owner *GodotObject) RefDrawableTexture2D {
 	inst := &DrawableTexture2DImpl{}
 	inst.Owner = owner
@@ -152599,6 +154279,14 @@ func NewGDExtensionClassFromENetConnectionOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ENetConnectionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewENetConnectionWithGodotOwnerObject(owner *GodotObject) RefENetConnection {
@@ -153433,6 +155121,14 @@ func NewGDExtensionClassFromENetMultiplayerPeerOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ENetMultiplayerPeerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewENetMultiplayerPeerWithGodotOwnerObject(owner *GodotObject) RefENetMultiplayerPeer {
 	inst := &ENetMultiplayerPeerImpl{}
 	inst.Owner = owner
@@ -153792,6 +155488,14 @@ func NewGDExtensionClassFromENetPacketPeerOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ENetPacketPeerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewENetPacketPeerWithGodotOwnerObject(owner *GodotObject) RefENetPacketPeer {
@@ -154487,6 +156191,14 @@ func NewGDExtensionClassFromEditorCommandPaletteOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorCommandPaletteImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorCommandPaletteWithGodotOwnerObject(owner *GodotObject) EditorCommandPalette {
 	inst := &EditorCommandPaletteImpl{}
 	inst.Owner = owner
@@ -154603,6 +156315,14 @@ func NewGDExtensionClassFromEditorContextMenuPluginOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorContextMenuPluginImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorContextMenuPluginWithGodotOwnerObject(owner *GodotObject) RefEditorContextMenuPlugin {
@@ -154835,6 +156555,14 @@ func NewGDExtensionClassFromEditorDebuggerPluginOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorDebuggerPluginImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorDebuggerPluginWithGodotOwnerObject(owner *GodotObject) RefEditorDebuggerPlugin {
 	inst := &EditorDebuggerPluginImpl{}
 	inst.Owner = owner
@@ -154944,6 +156672,14 @@ func NewGDExtensionClassFromEditorDebuggerSessionOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorDebuggerSessionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorDebuggerSessionWithGodotOwnerObject(owner *GodotObject) RefEditorDebuggerSession {
@@ -155317,6 +157053,14 @@ func NewGDExtensionClassFromEditorDockOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorDockImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorDockWithGodotOwnerObject(owner *GodotObject) EditorDock {
@@ -156433,6 +158177,14 @@ func NewGDExtensionClassFromEditorExportPlatformOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorExportPlatformWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatform {
@@ -157794,6 +159546,14 @@ func NewGDExtensionClassFromEditorExportPlatformAndroidOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformAndroidImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorExportPlatformAndroidWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformAndroid {
 	inst := &EditorExportPlatformAndroidImpl{}
 	inst.Owner = owner
@@ -157812,6 +159572,14 @@ func NewGDExtensionClassFromEditorExportPlatformAppleEmbeddedOwner(owner *GodotO
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformAppleEmbeddedImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorExportPlatformAppleEmbeddedWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformAppleEmbedded {
 	inst := &EditorExportPlatformAppleEmbeddedImpl{}
 	inst.Owner = owner
@@ -157828,6 +159596,14 @@ func NewGDExtensionClassFromEditorExportPlatformExtensionOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorExportPlatformExtensionWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformExtension {
@@ -158019,6 +159795,14 @@ func NewGDExtensionClassFromEditorExportPlatformIOSOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformIOSImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorExportPlatformIOSWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformIOS {
 	inst := &EditorExportPlatformIOSImpl{}
 	inst.Owner = owner
@@ -158035,6 +159819,14 @@ func NewGDExtensionClassFromEditorExportPlatformLinuxBSDOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformLinuxBSDImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorExportPlatformLinuxBSDWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformLinuxBSD {
@@ -158055,6 +159847,14 @@ func NewGDExtensionClassFromEditorExportPlatformMacOSOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformMacOSImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorExportPlatformMacOSWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformMacOS {
 	inst := &EditorExportPlatformMacOSImpl{}
 	inst.Owner = owner
@@ -158071,6 +159871,14 @@ func NewGDExtensionClassFromEditorExportPlatformPCOwner(owner *GodotObject) GDEx
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformPCImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorExportPlatformPCWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformPC {
@@ -158091,6 +159899,14 @@ func NewGDExtensionClassFromEditorExportPlatformVisionOSOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformVisionOSImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorExportPlatformVisionOSWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformVisionOS {
 	inst := &EditorExportPlatformVisionOSImpl{}
 	inst.Owner = owner
@@ -158107,6 +159923,14 @@ func NewGDExtensionClassFromEditorExportPlatformWebOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformWebImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorExportPlatformWebWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformWeb {
@@ -158127,6 +159951,14 @@ func NewGDExtensionClassFromEditorExportPlatformWindowsOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPlatformWindowsImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorExportPlatformWindowsWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlatformWindows {
 	inst := &EditorExportPlatformWindowsImpl{}
 	inst.Owner = owner
@@ -158143,6 +159975,14 @@ func NewGDExtensionClassFromEditorExportPluginOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPluginImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorExportPluginWithGodotOwnerObject(owner *GodotObject) RefEditorExportPlugin {
@@ -159040,6 +160880,14 @@ func NewGDExtensionClassFromEditorExportPresetOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorExportPresetImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorExportPresetWithGodotOwnerObject(owner *GodotObject) RefEditorExportPreset {
@@ -160102,6 +161950,14 @@ func NewGDExtensionClassFromEditorFeatureProfileOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorFeatureProfileImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorFeatureProfileWithGodotOwnerObject(owner *GodotObject) RefEditorFeatureProfile {
 	inst := &EditorFeatureProfileImpl{}
 	inst.Owner = owner
@@ -160619,6 +162475,14 @@ func NewGDExtensionClassFromEditorFileDialogOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorFileDialogImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorFileDialogWithGodotOwnerObject(owner *GodotObject) EditorFileDialog {
 	inst := &EditorFileDialogImpl{}
 	inst.Owner = owner
@@ -160772,6 +162636,14 @@ func NewGDExtensionClassFromEditorFileSystemOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorFileSystemImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorFileSystemWithGodotOwnerObject(owner *GodotObject) EditorFileSystem {
@@ -161203,6 +163075,14 @@ func NewGDExtensionClassFromEditorFileSystemDirectoryOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorFileSystemDirectoryImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorFileSystemDirectoryWithGodotOwnerObject(owner *GodotObject) EditorFileSystemDirectory {
@@ -161828,6 +163708,14 @@ func NewGDExtensionClassFromEditorFileSystemImportFormatSupportQueryOwner(owner 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorFileSystemImportFormatSupportQueryImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorFileSystemImportFormatSupportQueryWithGodotOwnerObject(owner *GodotObject) RefEditorFileSystemImportFormatSupportQuery {
 	inst := &EditorFileSystemImportFormatSupportQueryImpl{}
 	inst.Owner = owner
@@ -161853,6 +163741,14 @@ func NewGDExtensionClassFromEditorImportPluginOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorImportPluginImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorImportPluginWithGodotOwnerObject(owner *GodotObject) RefEditorImportPlugin {
@@ -161933,6 +163829,14 @@ func NewGDExtensionClassFromEditorInspectorOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorInspectorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorInspectorWithGodotOwnerObject(owner *GodotObject) EditorInspector {
@@ -162309,6 +164213,14 @@ func NewGDExtensionClassFromEditorInspectorPluginOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorInspectorPluginImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorInspectorPluginWithGodotOwnerObject(owner *GodotObject) RefEditorInspectorPlugin {
 	inst := &EditorInspectorPluginImpl{}
 	inst.Owner = owner
@@ -162481,6 +164393,14 @@ func NewGDExtensionClassFromEditorInterfaceOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorInterfaceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorInterfaceWithGodotOwnerObject(owner *GodotObject) EditorInterface {
@@ -165503,6 +167423,14 @@ func NewGDExtensionClassFromEditorNode3DGizmoOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorNode3DGizmoImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorNode3DGizmoWithGodotOwnerObject(owner *GodotObject) RefEditorNode3DGizmo {
 	inst := &EditorNode3DGizmoImpl{}
 	inst.Owner = owner
@@ -166119,6 +168047,14 @@ func NewGDExtensionClassFromEditorNode3DGizmoPluginOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorNode3DGizmoPluginImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorNode3DGizmoPluginWithGodotOwnerObject(owner *GodotObject) RefEditorNode3DGizmoPlugin {
 	inst := &EditorNode3DGizmoPluginImpl{}
 	inst.Owner = owner
@@ -166399,6 +168335,14 @@ func NewGDExtensionClassFromEditorPathsOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorPathsImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorPathsWithGodotOwnerObject(owner *GodotObject) EditorPaths {
 	inst := &EditorPathsImpl{}
 	inst.Owner = owner
@@ -166664,6 +168608,14 @@ func NewGDExtensionClassFromEditorPluginOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorPluginImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorPluginWithGodotOwnerObject(owner *GodotObject) EditorPlugin {
@@ -168930,6 +170882,14 @@ func NewGDExtensionClassFromEditorPropertyOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorPropertyImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorPropertyWithGodotOwnerObject(owner *GodotObject) EditorProperty {
 	inst := &EditorPropertyImpl{}
 	inst.Owner = owner
@@ -170393,6 +172353,14 @@ func NewGDExtensionClassFromEditorResourceConversionPluginOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorResourceConversionPluginImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorResourceConversionPluginWithGodotOwnerObject(owner *GodotObject) RefEditorResourceConversionPlugin {
 	inst := &EditorResourceConversionPluginImpl{}
 	inst.Owner = owner
@@ -170418,6 +172386,14 @@ func NewGDExtensionClassFromEditorResourcePickerOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorResourcePickerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorResourcePickerWithGodotOwnerObject(owner *GodotObject) EditorResourcePicker {
@@ -170855,6 +172831,14 @@ func NewGDExtensionClassFromEditorResourcePreviewOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorResourcePreviewImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorResourcePreviewWithGodotOwnerObject(owner *GodotObject) EditorResourcePreview {
 	inst := &EditorResourcePreviewImpl{}
 	inst.Owner = owner
@@ -171120,6 +173104,14 @@ func NewGDExtensionClassFromEditorResourcePreviewGeneratorOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorResourcePreviewGeneratorImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorResourcePreviewGeneratorWithGodotOwnerObject(owner *GodotObject) RefEditorResourcePreviewGenerator {
 	inst := &EditorResourcePreviewGeneratorImpl{}
 	inst.Owner = owner
@@ -171186,6 +173178,14 @@ func NewGDExtensionClassFromEditorResourceTooltipPluginOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorResourceTooltipPluginImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorResourceTooltipPluginWithGodotOwnerObject(owner *GodotObject) RefEditorResourceTooltipPlugin {
@@ -171260,6 +173260,14 @@ func NewGDExtensionClassFromEditorSceneFormatImporterOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSceneFormatImporterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorSceneFormatImporterWithGodotOwnerObject(owner *GodotObject) RefEditorSceneFormatImporter {
@@ -171389,6 +173397,14 @@ func NewGDExtensionClassFromEditorSceneFormatImporterBlendOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSceneFormatImporterBlendImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorSceneFormatImporterBlendWithGodotOwnerObject(owner *GodotObject) RefEditorSceneFormatImporterBlend {
 	inst := &EditorSceneFormatImporterBlendImpl{}
 	inst.Owner = owner
@@ -171405,6 +173421,14 @@ func NewGDExtensionClassFromEditorSceneFormatImporterFBX2GLTFOwner(owner *GodotO
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSceneFormatImporterFBX2GLTFImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorSceneFormatImporterFBX2GLTFWithGodotOwnerObject(owner *GodotObject) RefEditorSceneFormatImporterFBX2GLTF {
@@ -171425,6 +173449,14 @@ func NewGDExtensionClassFromEditorSceneFormatImporterGLTFOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSceneFormatImporterGLTFImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorSceneFormatImporterGLTFWithGodotOwnerObject(owner *GodotObject) RefEditorSceneFormatImporterGLTF {
 	inst := &EditorSceneFormatImporterGLTFImpl{}
 	inst.Owner = owner
@@ -171443,6 +173475,14 @@ func NewGDExtensionClassFromEditorSceneFormatImporterUFBXOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSceneFormatImporterUFBXImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorSceneFormatImporterUFBXWithGodotOwnerObject(owner *GodotObject) RefEditorSceneFormatImporterUFBX {
 	inst := &EditorSceneFormatImporterUFBXImpl{}
 	inst.Owner = owner
@@ -171459,6 +173499,14 @@ func NewGDExtensionClassFromEditorScenePostImportOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorScenePostImportImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorScenePostImportWithGodotOwnerObject(owner *GodotObject) RefEditorScenePostImport {
@@ -171526,6 +173574,14 @@ func NewGDExtensionClassFromEditorScenePostImportPluginOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorScenePostImportPluginImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorScenePostImportPluginWithGodotOwnerObject(owner *GodotObject) RefEditorScenePostImportPlugin {
@@ -171699,6 +173755,14 @@ func NewGDExtensionClassFromEditorScriptOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorScriptImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorScriptWithGodotOwnerObject(owner *GodotObject) RefEditorScript {
 	inst := &EditorScriptImpl{}
 	inst.Owner = owner
@@ -171850,6 +173914,14 @@ func NewGDExtensionClassFromEditorScriptPickerOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorScriptPickerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorScriptPickerWithGodotOwnerObject(owner *GodotObject) EditorScriptPicker {
 	inst := &EditorScriptPickerImpl{}
 	inst.Owner = owner
@@ -171959,6 +174031,14 @@ func NewGDExtensionClassFromEditorSelectionOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSelectionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorSelectionWithGodotOwnerObject(owner *GodotObject) EditorSelection {
@@ -172231,6 +174311,14 @@ func NewGDExtensionClassFromEditorSettingsOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSettingsImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorSettingsWithGodotOwnerObject(owner *GodotObject) RefEditorSettings {
@@ -173218,6 +175306,14 @@ func NewGDExtensionClassFromEditorSpinSliderOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSpinSliderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorSpinSliderWithGodotOwnerObject(owner *GodotObject) EditorSpinSlider {
 	inst := &EditorSpinSliderImpl{}
 	inst.Owner = owner
@@ -173893,6 +175989,14 @@ func NewGDExtensionClassFromEditorSyntaxHighlighterOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorSyntaxHighlighterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorSyntaxHighlighterWithGodotOwnerObject(owner *GodotObject) RefEditorSyntaxHighlighter {
 	inst := &EditorSyntaxHighlighterImpl{}
 	inst.Owner = owner
@@ -173918,6 +176022,14 @@ func NewGDExtensionClassFromEditorToasterOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorToasterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorToasterWithGodotOwnerObject(owner *GodotObject) EditorToaster {
@@ -173994,6 +176106,14 @@ func NewGDExtensionClassFromEditorTranslationParserPluginOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorTranslationParserPluginImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorTranslationParserPluginWithGodotOwnerObject(owner *GodotObject) RefEditorTranslationParserPlugin {
 	inst := &EditorTranslationParserPluginImpl{}
 	inst.Owner = owner
@@ -174019,6 +176139,14 @@ func NewGDExtensionClassFromEditorUndoRedoManagerOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorUndoRedoManagerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEditorUndoRedoManagerWithGodotOwnerObject(owner *GodotObject) EditorUndoRedoManager {
@@ -174657,6 +176785,14 @@ func NewGDExtensionClassFromEditorVCSInterfaceOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EditorVCSInterfaceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEditorVCSInterfaceWithGodotOwnerObject(owner *GodotObject) EditorVCSInterface {
 	inst := &EditorVCSInterfaceImpl{}
 	inst.Owner = owner
@@ -175078,6 +177214,14 @@ func NewGDExtensionClassFromEncodedObjectAsIDOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EncodedObjectAsIDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEncodedObjectAsIDWithGodotOwnerObject(owner *GodotObject) RefEncodedObjectAsID {
 	inst := &EncodedObjectAsIDImpl{}
 	inst.Owner = owner
@@ -175184,6 +177328,14 @@ func NewGDExtensionClassFromEngineOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EngineImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEngineWithGodotOwnerObject(owner *GodotObject) Engine {
@@ -176898,6 +179050,14 @@ func NewGDExtensionClassFromEngineDebuggerOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EngineDebuggerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEngineDebuggerWithGodotOwnerObject(owner *GodotObject) EngineDebugger {
 	inst := &EngineDebuggerImpl{}
 	inst.Owner = owner
@@ -177910,6 +180070,14 @@ func NewGDExtensionClassFromEngineProfilerOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EngineProfilerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewEngineProfilerWithGodotOwnerObject(owner *GodotObject) RefEngineProfiler {
 	inst := &EngineProfilerImpl{}
 	inst.Owner = owner
@@ -177935,6 +180103,14 @@ func NewGDExtensionClassFromEnvironmentOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *EnvironmentImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewEnvironmentWithGodotOwnerObject(owner *GodotObject) RefEnvironment {
@@ -185594,6 +187770,14 @@ func NewGDExtensionClassFromExpressionOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ExpressionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewExpressionWithGodotOwnerObject(owner *GodotObject) RefExpression {
 	inst := &ExpressionImpl{}
 	inst.Owner = owner
@@ -185804,6 +187988,14 @@ func NewGDExtensionClassFromExternalTextureOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ExternalTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewExternalTextureWithGodotOwnerObject(owner *GodotObject) RefExternalTexture {
 	inst := &ExternalTextureImpl{}
 	inst.Owner = owner
@@ -185953,6 +188145,14 @@ func NewGDExtensionClassFromFABRIK3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FABRIK3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFABRIK3DWithGodotOwnerObject(owner *GodotObject) FABRIK3D {
 	inst := &FABRIK3DImpl{}
 	inst.Owner = owner
@@ -185971,6 +188171,14 @@ func NewGDExtensionClassFromFBXDocumentOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FBXDocumentImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFBXDocumentWithGodotOwnerObject(owner *GodotObject) RefFBXDocument {
 	inst := &FBXDocumentImpl{}
 	inst.Owner = owner
@@ -185987,6 +188195,14 @@ func NewGDExtensionClassFromFBXStateOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FBXStateImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFBXStateWithGodotOwnerObject(owner *GodotObject) RefFBXState {
@@ -186095,6 +188311,14 @@ func NewGDExtensionClassFromFastNoiseLiteOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FastNoiseLiteImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFastNoiseLiteWithGodotOwnerObject(owner *GodotObject) RefFastNoiseLite {
@@ -187823,6 +190047,14 @@ func NewGDExtensionClassFromFileAccessOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FileAccessImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFileAccessWithGodotOwnerObject(owner *GodotObject) RefFileAccess {
@@ -190810,6 +193042,14 @@ func NewGDExtensionClassFromFileDialogOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FileDialogImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFileDialogWithGodotOwnerObject(owner *GodotObject) FileDialog {
 	inst := &FileDialogImpl{}
 	inst.Owner = owner
@@ -192885,6 +195125,14 @@ func NewGDExtensionClassFromFileSystemDockOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FileSystemDockImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFileSystemDockWithGodotOwnerObject(owner *GodotObject) FileSystemDock {
 	inst := &FileSystemDockImpl{}
 	inst.Owner = owner
@@ -193039,6 +195287,14 @@ func NewGDExtensionClassFromFlowContainerOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FlowContainerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFlowContainerWithGodotOwnerObject(owner *GodotObject) FlowContainer {
@@ -193430,6 +195686,14 @@ func NewGDExtensionClassFromFogMaterialOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FogMaterialImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFogMaterialWithGodotOwnerObject(owner *GodotObject) RefFogMaterial {
@@ -193948,6 +196212,14 @@ func NewGDExtensionClassFromFogVolumeOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FogVolumeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFogVolumeWithGodotOwnerObject(owner *GodotObject) FogVolume {
 	inst := &FogVolumeImpl{}
 	inst.Owner = owner
@@ -194219,6 +196491,14 @@ func NewGDExtensionClassFromFoldableContainerOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FoldableContainerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFoldableContainerWithGodotOwnerObject(owner *GodotObject) FoldableContainer {
@@ -195061,6 +197341,14 @@ func NewGDExtensionClassFromFoldableGroupOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FoldableGroupImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFoldableGroupWithGodotOwnerObject(owner *GodotObject) RefFoldableGroup {
 	inst := &FoldableGroupImpl{}
 	inst.Owner = owner
@@ -195247,6 +197535,14 @@ func NewGDExtensionClassFromFontOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FontImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFontWithGodotOwnerObject(owner *GodotObject) RefFont {
@@ -197080,6 +199376,14 @@ func NewGDExtensionClassFromFontFileOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FontFileImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewFontFileWithGodotOwnerObject(owner *GodotObject) RefFontFile {
@@ -201779,6 +204083,14 @@ func NewGDExtensionClassFromFontVariationOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FontVariationImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFontVariationWithGodotOwnerObject(owner *GodotObject) RefFontVariation {
 	inst := &FontVariationImpl{}
 	inst.Owner = owner
@@ -202542,6 +204854,14 @@ func NewGDExtensionClassFromFramebufferCacheRDOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *FramebufferCacheRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewFramebufferCacheRDWithGodotOwnerObject(owner *GodotObject) FramebufferCacheRD {
 	inst := &FramebufferCacheRDImpl{}
 	inst.Owner = owner
@@ -202620,6 +204940,14 @@ func NewGDExtensionClassFromGDExtensionOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GDExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGDExtensionWithGodotOwnerObject(owner *GodotObject) RefGDExtension {
@@ -202727,6 +205055,14 @@ func NewGDExtensionClassFromGDExtensionManagerOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GDExtensionManagerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGDExtensionManagerWithGodotOwnerObject(owner *GodotObject) GDExtensionManager {
@@ -203063,6 +205399,14 @@ func NewGDExtensionClassFromGDScriptOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GDScriptImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGDScriptWithGodotOwnerObject(owner *GodotObject) RefGDScript {
 	inst := &GDScriptImpl{}
 	inst.Owner = owner
@@ -203138,6 +205482,14 @@ func NewGDExtensionClassFromGDScriptLanguageProtocolOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GDScriptLanguageProtocolImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGDScriptLanguageProtocolWithGodotOwnerObject(owner *GodotObject) GDScriptLanguageProtocol {
@@ -203540,6 +205892,14 @@ func NewGDExtensionClassFromGDScriptSyntaxHighlighterOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GDScriptSyntaxHighlighterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGDScriptSyntaxHighlighterWithGodotOwnerObject(owner *GodotObject) RefGDScriptSyntaxHighlighter {
 	inst := &GDScriptSyntaxHighlighterImpl{}
 	inst.Owner = owner
@@ -203556,6 +205916,14 @@ func NewGDExtensionClassFromGDScriptTextDocumentOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GDScriptTextDocumentImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGDScriptTextDocumentWithGodotOwnerObject(owner *GodotObject) RefGDScriptTextDocument {
@@ -204491,6 +206859,14 @@ func NewGDExtensionClassFromGDScriptWorkspaceOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GDScriptWorkspaceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGDScriptWorkspaceWithGodotOwnerObject(owner *GodotObject) RefGDScriptWorkspace {
 	inst := &GDScriptWorkspaceImpl{}
 	inst.Owner = owner
@@ -204871,6 +207247,14 @@ func NewGDExtensionClassFromGLTFAccessorOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFAccessorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFAccessorWithGodotOwnerObject(owner *GodotObject) RefGLTFAccessor {
@@ -206199,6 +208583,14 @@ func NewGDExtensionClassFromGLTFAnimationOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFAnimationImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFAnimationWithGodotOwnerObject(owner *GodotObject) RefGLTFAnimation {
 	inst := &GLTFAnimationImpl{}
 	inst.Owner = owner
@@ -206474,6 +208866,14 @@ func NewGDExtensionClassFromGLTFBufferViewOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFBufferViewImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFBufferViewWithGodotOwnerObject(owner *GodotObject) RefGLTFBufferView {
@@ -207120,6 +209520,14 @@ func NewGDExtensionClassFromGLTFCameraOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFCameraImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFCameraWithGodotOwnerObject(owner *GodotObject) RefGLTFCamera {
 	inst := &GLTFCameraImpl{}
 	inst.Owner = owner
@@ -207721,6 +210129,14 @@ func NewGDExtensionClassFromGLTFDocumentOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFDocumentImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFDocumentWithGodotOwnerObject(owner *GodotObject) RefGLTFDocument {
@@ -208878,6 +211294,14 @@ func NewGDExtensionClassFromGLTFDocumentExtensionOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFDocumentExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFDocumentExtensionWithGodotOwnerObject(owner *GodotObject) RefGLTFDocumentExtension {
 	inst := &GLTFDocumentExtensionImpl{}
 	inst.Owner = owner
@@ -208905,6 +211329,14 @@ func NewGDExtensionClassFromGLTFDocumentExtensionConvertImporterMeshOwner(owner 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFDocumentExtensionConvertImporterMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFDocumentExtensionConvertImporterMeshWithGodotOwnerObject(owner *GodotObject) RefGLTFDocumentExtensionConvertImporterMesh {
 	inst := &GLTFDocumentExtensionConvertImporterMeshImpl{}
 	inst.Owner = owner
@@ -208921,6 +211353,14 @@ func NewGDExtensionClassFromGLTFLightOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFLightImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFLightWithGodotOwnerObject(owner *GodotObject) RefGLTFLight {
@@ -209695,6 +212135,14 @@ func NewGDExtensionClassFromGLTFMeshOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFMeshWithGodotOwnerObject(owner *GodotObject) RefGLTFMesh {
 	inst := &GLTFMeshImpl{}
 	inst.Owner = owner
@@ -210138,6 +212586,14 @@ func NewGDExtensionClassFromGLTFNodeOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFNodeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFNodeWithGodotOwnerObject(owner *GodotObject) RefGLTFNode {
@@ -211480,6 +213936,14 @@ func NewGDExtensionClassFromGLTFObjectModelPropertyOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFObjectModelPropertyImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFObjectModelPropertyWithGodotOwnerObject(owner *GodotObject) RefGLTFObjectModelProperty {
 	inst := &GLTFObjectModelPropertyImpl{}
 	inst.Owner = owner
@@ -212246,6 +214710,14 @@ func NewGDExtensionClassFromGLTFPhysicsBodyOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFPhysicsBodyImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFPhysicsBodyWithGodotOwnerObject(owner *GodotObject) RefGLTFPhysicsBody {
@@ -213092,6 +215564,14 @@ func NewGDExtensionClassFromGLTFPhysicsShapeOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFPhysicsShapeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFPhysicsShapeWithGodotOwnerObject(owner *GodotObject) RefGLTFPhysicsShape {
@@ -213957,6 +216437,14 @@ func NewGDExtensionClassFromGLTFSkeletonOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFSkeletonImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFSkeletonWithGodotOwnerObject(owner *GodotObject) RefGLTFSkeleton {
 	inst := &GLTFSkeletonImpl{}
 	inst.Owner = owner
@@ -214430,6 +216918,14 @@ func NewGDExtensionClassFromGLTFSkinOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFSkinImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFSkinWithGodotOwnerObject(owner *GodotObject) RefGLTFSkin {
@@ -215272,6 +217768,14 @@ func NewGDExtensionClassFromGLTFSpecGlossOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFSpecGlossImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFSpecGlossWithGodotOwnerObject(owner *GodotObject) RefGLTFSpecGloss {
 	inst := &GLTFSpecGlossImpl{}
 	inst.Owner = owner
@@ -215708,6 +218212,14 @@ func NewGDExtensionClassFromGLTFStateOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFStateImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFStateWithGodotOwnerObject(owner *GodotObject) RefGLTFState {
@@ -218701,6 +221213,14 @@ func NewGDExtensionClassFromGLTFTextureOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGLTFTextureWithGodotOwnerObject(owner *GodotObject) RefGLTFTexture {
 	inst := &GLTFTextureImpl{}
 	inst.Owner = owner
@@ -218888,6 +221408,14 @@ func NewGDExtensionClassFromGLTFTextureSamplerOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GLTFTextureSamplerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGLTFTextureSamplerWithGodotOwnerObject(owner *GodotObject) RefGLTFTextureSampler {
@@ -219239,6 +221767,14 @@ func NewGDExtensionClassFromGPUParticles2DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticles2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGPUParticles2DWithGodotOwnerObject(owner *GodotObject) GPUParticles2D {
@@ -221600,6 +224136,14 @@ func NewGDExtensionClassFromGPUParticles3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticles3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGPUParticles3DWithGodotOwnerObject(owner *GodotObject) GPUParticles3D {
@@ -224216,6 +226760,14 @@ func NewGDExtensionClassFromGPUParticlesAttractor3DOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesAttractor3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGPUParticlesAttractor3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesAttractor3D {
 	inst := &GPUParticlesAttractor3DImpl{}
 	inst.Owner = owner
@@ -224567,6 +227119,14 @@ func NewGDExtensionClassFromGPUParticlesAttractorBox3DOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesAttractorBox3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGPUParticlesAttractorBox3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesAttractorBox3D {
 	inst := &GPUParticlesAttractorBox3DImpl{}
 	inst.Owner = owner
@@ -224675,6 +227235,14 @@ func NewGDExtensionClassFromGPUParticlesAttractorSphere3DOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesAttractorSphere3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGPUParticlesAttractorSphere3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesAttractorSphere3D {
 	inst := &GPUParticlesAttractorSphere3DImpl{}
 	inst.Owner = owner
@@ -224781,6 +227349,14 @@ func NewGDExtensionClassFromGPUParticlesAttractorVectorField3DOwner(owner *Godot
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesAttractorVectorField3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGPUParticlesAttractorVectorField3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesAttractorVectorField3D {
@@ -224975,6 +227551,14 @@ func NewGDExtensionClassFromGPUParticlesCollision3DOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesCollision3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGPUParticlesCollision3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesCollision3D {
 	inst := &GPUParticlesCollision3DImpl{}
 	inst.Owner = owner
@@ -225083,6 +227667,14 @@ func NewGDExtensionClassFromGPUParticlesCollisionBox3DOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesCollisionBox3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGPUParticlesCollisionBox3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesCollisionBox3D {
 	inst := &GPUParticlesCollisionBox3DImpl{}
 	inst.Owner = owner
@@ -225189,6 +227781,14 @@ func NewGDExtensionClassFromGPUParticlesCollisionHeightField3DOwner(owner *Godot
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesCollisionHeightField3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGPUParticlesCollisionHeightField3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesCollisionHeightField3D {
@@ -225709,6 +228309,14 @@ func NewGDExtensionClassFromGPUParticlesCollisionSDF3DOwner(owner *GodotObject) 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesCollisionSDF3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGPUParticlesCollisionSDF3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesCollisionSDF3D {
@@ -226234,6 +228842,14 @@ func NewGDExtensionClassFromGPUParticlesCollisionSphere3DOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GPUParticlesCollisionSphere3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGPUParticlesCollisionSphere3DWithGodotOwnerObject(owner *GodotObject) GPUParticlesCollisionSphere3D {
 	inst := &GPUParticlesCollisionSphere3DImpl{}
 	inst.Owner = owner
@@ -226340,6 +228956,14 @@ func NewGDExtensionClassFromGeneric6DOFJoint3DOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Generic6DOFJoint3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGeneric6DOFJoint3DWithGodotOwnerObject(owner *GodotObject) Generic6DOFJoint3D {
@@ -226895,6 +229519,14 @@ func NewGDExtensionClassFromGeometry2DOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Geometry2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGeometry2DWithGodotOwnerObject(owner *GodotObject) Geometry2D {
@@ -228082,6 +230714,14 @@ func NewGDExtensionClassFromGeometry3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Geometry3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGeometry3DWithGodotOwnerObject(owner *GodotObject) Geometry3D {
 	inst := &Geometry3DImpl{}
 	inst.Owner = owner
@@ -228869,6 +231509,14 @@ func NewGDExtensionClassFromGeometryInstance3DOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GeometryInstance3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGeometryInstance3DWithGodotOwnerObject(owner *GodotObject) GeometryInstance3D {
@@ -230288,6 +232936,14 @@ func NewGDExtensionClassFromGodotInstanceOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GodotInstanceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGodotInstanceWithGodotOwnerObject(owner *GodotObject) GodotInstance {
 	inst := &GodotInstanceImpl{}
 	inst.Owner = owner
@@ -230581,6 +233237,14 @@ func NewGDExtensionClassFromGradientOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GradientImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGradientWithGodotOwnerObject(owner *GodotObject) RefGradient {
@@ -231316,6 +233980,14 @@ func NewGDExtensionClassFromGradientTexture1DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GradientTexture1DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGradientTexture1DWithGodotOwnerObject(owner *GodotObject) RefGradientTexture1D {
 	inst := &GradientTexture1DImpl{}
 	inst.Owner = owner
@@ -231547,6 +234219,14 @@ func NewGDExtensionClassFromGradientTexture2DOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GradientTexture2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGradientTexture2DWithGodotOwnerObject(owner *GodotObject) RefGradientTexture2D {
@@ -232145,6 +234825,14 @@ func NewGDExtensionClassFromGraphEditOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GraphEditImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGraphEditWithGodotOwnerObject(owner *GodotObject) GraphEdit {
@@ -235307,6 +237995,14 @@ func NewGDExtensionClassFromGraphElementOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GraphElementImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGraphElementWithGodotOwnerObject(owner *GodotObject) GraphElement {
 	inst := &GraphElementImpl{}
 	inst.Owner = owner
@@ -235818,6 +238514,14 @@ func NewGDExtensionClassFromGraphFrameOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GraphFrameImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGraphFrameWithGodotOwnerObject(owner *GodotObject) GraphFrame {
@@ -236371,6 +239075,14 @@ func NewGDExtensionClassFromGraphNodeOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GraphNodeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGraphNodeWithGodotOwnerObject(owner *GodotObject) GraphNode {
@@ -238241,6 +240953,14 @@ func NewGDExtensionClassFromGridContainerOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GridContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGridContainerWithGodotOwnerObject(owner *GodotObject) GridContainer {
 	inst := &GridContainerImpl{}
 	inst.Owner = owner
@@ -238347,6 +241067,14 @@ func NewGDExtensionClassFromGridMapOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GridMapImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewGridMapWithGodotOwnerObject(owner *GodotObject) GridMap {
@@ -240724,6 +243452,14 @@ func NewGDExtensionClassFromGridMapEditorPluginOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GridMapEditorPluginImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGridMapEditorPluginWithGodotOwnerObject(owner *GodotObject) GridMapEditorPlugin {
 	inst := &GridMapEditorPluginImpl{}
 	inst.Owner = owner
@@ -241073,6 +243809,14 @@ func NewGDExtensionClassFromGrooveJoint2DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *GrooveJoint2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewGrooveJoint2DWithGodotOwnerObject(owner *GodotObject) GrooveJoint2D {
 	inst := &GrooveJoint2DImpl{}
 	inst.Owner = owner
@@ -241262,6 +244006,14 @@ func NewGDExtensionClassFromHBoxContainerOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HBoxContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewHBoxContainerWithGodotOwnerObject(owner *GodotObject) HBoxContainer {
 	inst := &HBoxContainerImpl{}
 	inst.Owner = owner
@@ -241280,6 +244032,14 @@ func NewGDExtensionClassFromHFlowContainerOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HFlowContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewHFlowContainerWithGodotOwnerObject(owner *GodotObject) HFlowContainer {
 	inst := &HFlowContainerImpl{}
 	inst.Owner = owner
@@ -241296,6 +244056,14 @@ func NewGDExtensionClassFromHMACContextOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HMACContextImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewHMACContextWithGodotOwnerObject(owner *GodotObject) RefHMACContext {
@@ -241456,6 +244224,14 @@ func NewGDExtensionClassFromHScrollBarOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HScrollBarImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewHScrollBarWithGodotOwnerObject(owner *GodotObject) HScrollBar {
 	inst := &HScrollBarImpl{}
 	inst.Owner = owner
@@ -241472,6 +244248,14 @@ func NewGDExtensionClassFromHSeparatorOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HSeparatorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewHSeparatorWithGodotOwnerObject(owner *GodotObject) HSeparator {
@@ -241492,6 +244276,14 @@ func NewGDExtensionClassFromHSliderOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HSliderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewHSliderWithGodotOwnerObject(owner *GodotObject) HSlider {
 	inst := &HSliderImpl{}
 	inst.Owner = owner
@@ -241510,6 +244302,14 @@ func NewGDExtensionClassFromHSplitContainerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HSplitContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewHSplitContainerWithGodotOwnerObject(owner *GodotObject) HSplitContainer {
 	inst := &HSplitContainerImpl{}
 	inst.Owner = owner
@@ -241526,6 +244326,14 @@ func NewGDExtensionClassFromHTTPClientOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HTTPClientImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewHTTPClientWithGodotOwnerObject(owner *GodotObject) RefHTTPClient {
@@ -242487,6 +245295,14 @@ func NewGDExtensionClassFromHTTPRequestOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HTTPRequestImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewHTTPRequestWithGodotOwnerObject(owner *GodotObject) HTTPRequest {
@@ -243478,6 +246294,14 @@ func NewGDExtensionClassFromHashingContextOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HashingContextImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewHashingContextWithGodotOwnerObject(owner *GodotObject) RefHashingContext {
 	inst := &HashingContextImpl{}
 	inst.Owner = owner
@@ -243631,6 +246455,14 @@ func NewGDExtensionClassFromHeightMapShape3DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HeightMapShape3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewHeightMapShape3DWithGodotOwnerObject(owner *GodotObject) RefHeightMapShape3D {
@@ -244033,6 +246865,14 @@ func NewGDExtensionClassFromHingeJoint3DOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *HingeJoint3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewHingeJoint3DWithGodotOwnerObject(owner *GodotObject) HingeJoint3D {
 	inst := &HingeJoint3DImpl{}
 	inst.Owner = owner
@@ -244234,6 +247074,14 @@ func NewGDExtensionClassFromIKModifier3DOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *IKModifier3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewIKModifier3DWithGodotOwnerObject(owner *GodotObject) IKModifier3D {
@@ -244497,6 +247345,14 @@ func NewGDExtensionClassFromIPOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *IPImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewIPWithGodotOwnerObject(owner *GodotObject) IP {
@@ -244959,6 +247815,14 @@ func NewGDExtensionClassFromImageOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImageImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewImageWithGodotOwnerObject(owner *GodotObject) RefImage {
@@ -248320,6 +251184,14 @@ func NewGDExtensionClassFromImageFormatLoaderOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImageFormatLoaderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewImageFormatLoaderWithGodotOwnerObject(owner *GodotObject) RefImageFormatLoader {
 	inst := &ImageFormatLoaderImpl{}
 	inst.Owner = owner
@@ -248336,6 +251208,14 @@ func NewGDExtensionClassFromImageFormatLoaderExtensionOwner(owner *GodotObject) 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImageFormatLoaderExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewImageFormatLoaderExtensionWithGodotOwnerObject(owner *GodotObject) RefImageFormatLoaderExtension {
@@ -248437,6 +251317,14 @@ func NewGDExtensionClassFromImageTextureOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImageTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewImageTextureWithGodotOwnerObject(owner *GodotObject) RefImageTexture {
@@ -248642,6 +251530,14 @@ func NewGDExtensionClassFromImageTexture3DOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImageTexture3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewImageTexture3DWithGodotOwnerObject(owner *GodotObject) RefImageTexture3D {
 	inst := &ImageTexture3DImpl{}
 	inst.Owner = owner
@@ -248775,6 +251671,14 @@ func NewGDExtensionClassFromImageTextureLayeredOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImageTextureLayeredImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewImageTextureLayeredWithGodotOwnerObject(owner *GodotObject) RefImageTextureLayered {
 	inst := &ImageTextureLayeredImpl{}
 	inst.Owner = owner
@@ -248894,6 +251798,14 @@ func NewGDExtensionClassFromImmediateMeshOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImmediateMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewImmediateMeshWithGodotOwnerObject(owner *GodotObject) RefImmediateMesh {
@@ -249329,6 +252241,14 @@ func NewGDExtensionClassFromImporterMeshOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImporterMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewImporterMeshWithGodotOwnerObject(owner *GodotObject) RefImporterMesh {
@@ -250474,6 +253394,14 @@ func NewGDExtensionClassFromImporterMeshInstance3DOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ImporterMeshInstance3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewImporterMeshInstance3DWithGodotOwnerObject(owner *GodotObject) ImporterMeshInstance3D {
 	inst := &ImporterMeshInstance3DImpl{}
 	inst.Owner = owner
@@ -251315,6 +254243,14 @@ func NewGDExtensionClassFromInputOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputWithGodotOwnerObject(owner *GodotObject) Input {
@@ -254683,6 +257619,14 @@ func NewGDExtensionClassFromInputEventOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventWithGodotOwnerObject(owner *GodotObject) RefInputEvent {
 	inst := &InputEventImpl{}
 	inst.Owner = owner
@@ -255366,6 +258310,14 @@ func NewGDExtensionClassFromInputEventActionOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventActionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventActionWithGodotOwnerObject(owner *GodotObject) RefInputEventAction {
 	inst := &InputEventActionImpl{}
 	inst.Owner = owner
@@ -255677,6 +258629,14 @@ func NewGDExtensionClassFromInputEventFromWindowOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventFromWindowImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventFromWindowWithGodotOwnerObject(owner *GodotObject) RefInputEventFromWindow {
 	inst := &InputEventFromWindowImpl{}
 	inst.Owner = owner
@@ -255785,6 +258745,14 @@ func NewGDExtensionClassFromInputEventGestureOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventGestureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventGestureWithGodotOwnerObject(owner *GodotObject) RefInputEventGesture {
 	inst := &InputEventGestureImpl{}
 	inst.Owner = owner
@@ -255891,6 +258859,14 @@ func NewGDExtensionClassFromInputEventJoypadButtonOwner(owner *GodotObject) GDEx
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventJoypadButtonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputEventJoypadButtonWithGodotOwnerObject(owner *GodotObject) RefInputEventJoypadButton {
@@ -256123,6 +259099,14 @@ func NewGDExtensionClassFromInputEventJoypadMotionOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventJoypadMotionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventJoypadMotionWithGodotOwnerObject(owner *GodotObject) RefInputEventJoypadMotion {
 	inst := &InputEventJoypadMotionImpl{}
 	inst.Owner = owner
@@ -256310,6 +259294,14 @@ func NewGDExtensionClassFromInputEventKeyOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventKeyImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputEventKeyWithGodotOwnerObject(owner *GodotObject) RefInputEventKey {
@@ -257106,6 +260098,14 @@ func NewGDExtensionClassFromInputEventMIDIOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventMIDIImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventMIDIWithGodotOwnerObject(owner *GodotObject) RefInputEventMIDI {
 	inst := &InputEventMIDIImpl{}
 	inst.Owner = owner
@@ -257781,6 +260781,14 @@ func NewGDExtensionClassFromInputEventMagnifyGestureOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventMagnifyGestureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventMagnifyGestureWithGodotOwnerObject(owner *GodotObject) RefInputEventMagnifyGesture {
 	inst := &InputEventMagnifyGestureImpl{}
 	inst.Owner = owner
@@ -257887,6 +260895,14 @@ func NewGDExtensionClassFromInputEventMouseOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventMouseImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputEventMouseWithGodotOwnerObject(owner *GodotObject) RefInputEventMouse {
@@ -258157,6 +261173,14 @@ func NewGDExtensionClassFromInputEventMouseButtonOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventMouseButtonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputEventMouseButtonWithGodotOwnerObject(owner *GodotObject) RefInputEventMouseButton {
@@ -258509,6 +261533,14 @@ func NewGDExtensionClassFromInputEventMouseMotionOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventMouseMotionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputEventMouseMotionWithGodotOwnerObject(owner *GodotObject) RefInputEventMouseMotion {
@@ -259105,6 +262137,14 @@ func NewGDExtensionClassFromInputEventPanGestureOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventPanGestureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventPanGestureWithGodotOwnerObject(owner *GodotObject) RefInputEventPanGesture {
 	inst := &InputEventPanGestureImpl{}
 	inst.Owner = owner
@@ -259211,6 +262251,14 @@ func NewGDExtensionClassFromInputEventScreenDragOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventScreenDragImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputEventScreenDragWithGodotOwnerObject(owner *GodotObject) RefInputEventScreenDrag {
@@ -259969,6 +263017,14 @@ func NewGDExtensionClassFromInputEventScreenTouchOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventScreenTouchImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventScreenTouchWithGodotOwnerObject(owner *GodotObject) RefInputEventScreenTouch {
 	inst := &InputEventScreenTouchImpl{}
 	inst.Owner = owner
@@ -260321,6 +263377,14 @@ func NewGDExtensionClassFromInputEventShortcutOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventShortcutImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInputEventShortcutWithGodotOwnerObject(owner *GodotObject) RefInputEventShortcut {
 	inst := &InputEventShortcutImpl{}
 	inst.Owner = owner
@@ -260430,6 +263494,14 @@ func NewGDExtensionClassFromInputEventWithModifiersOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputEventWithModifiersImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputEventWithModifiersWithGodotOwnerObject(owner *GodotObject) RefInputEventWithModifiers {
@@ -260942,6 +264014,14 @@ func NewGDExtensionClassFromInputMapOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InputMapImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewInputMapWithGodotOwnerObject(owner *GodotObject) InputMap {
@@ -261591,6 +264671,14 @@ func NewGDExtensionClassFromInstancePlaceholderOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *InstancePlaceholderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewInstancePlaceholderWithGodotOwnerObject(owner *GodotObject) InstancePlaceholder {
 	inst := &InstancePlaceholderImpl{}
 	inst.Owner = owner
@@ -261752,6 +264840,14 @@ func NewGDExtensionClassFromIntervalTweenerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *IntervalTweenerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewIntervalTweenerWithGodotOwnerObject(owner *GodotObject) RefIntervalTweener {
 	inst := &IntervalTweenerImpl{}
 	inst.Owner = owner
@@ -261768,6 +264864,14 @@ func NewGDExtensionClassFromItemListOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ItemListImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewItemListWithGodotOwnerObject(owner *GodotObject) ItemList {
@@ -265378,6 +268482,14 @@ func NewGDExtensionClassFromIterateIK3DOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *IterateIK3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewIterateIK3DWithGodotOwnerObject(owner *GodotObject) IterateIK3D {
 	inst := &IterateIK3DImpl{}
 	inst.Owner = owner
@@ -266384,6 +269496,14 @@ func NewGDExtensionClassFromJNISingletonOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JNISingletonImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewJNISingletonWithGodotOwnerObject(owner *GodotObject) JNISingleton {
 	inst := &JNISingletonImpl{}
 	inst.Owner = owner
@@ -266453,6 +269573,14 @@ func NewGDExtensionClassFromJSONOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JSONImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewJSONWithGodotOwnerObject(owner *GodotObject) RefJSON {
@@ -266921,6 +270049,14 @@ func NewGDExtensionClassFromJSONRPCOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JSONRPCImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewJSONRPCWithGodotOwnerObject(owner *GodotObject) JSONRPC {
 	inst := &JSONRPCImpl{}
 	inst.Owner = owner
@@ -267277,6 +270413,14 @@ func NewGDExtensionClassFromJacobianIK3DOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JacobianIK3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewJacobianIK3DWithGodotOwnerObject(owner *GodotObject) JacobianIK3D {
 	inst := &JacobianIK3DImpl{}
 	inst.Owner = owner
@@ -267293,6 +270437,14 @@ func NewGDExtensionClassFromJavaClassOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JavaClassImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewJavaClassWithGodotOwnerObject(owner *GodotObject) RefJavaClass {
@@ -267484,6 +270636,14 @@ func NewGDExtensionClassFromJavaClassWrapperOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JavaClassWrapperImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewJavaClassWrapperWithGodotOwnerObject(owner *GodotObject) JavaClassWrapper {
@@ -267694,6 +270854,14 @@ func NewGDExtensionClassFromJavaObjectOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JavaObjectImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewJavaObjectWithGodotOwnerObject(owner *GodotObject) RefJavaObject {
 	inst := &JavaObjectImpl{}
 	inst.Owner = owner
@@ -267803,6 +270971,14 @@ func NewGDExtensionClassFromJavaScriptBridgeOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JavaScriptBridgeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewJavaScriptBridgeWithGodotOwnerObject(owner *GodotObject) JavaScriptBridge {
@@ -268280,6 +271456,14 @@ func NewGDExtensionClassFromJavaScriptObjectOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JavaScriptObjectImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewJavaScriptObjectWithGodotOwnerObject(owner *GodotObject) RefJavaScriptObject {
 	inst := &JavaScriptObjectImpl{}
 	inst.Owner = owner
@@ -268296,6 +271480,14 @@ func NewGDExtensionClassFromJoint2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Joint2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewJoint2DWithGodotOwnerObject(owner *GodotObject) Joint2D {
@@ -268689,6 +271881,14 @@ func NewGDExtensionClassFromJoint3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Joint3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewJoint3DWithGodotOwnerObject(owner *GodotObject) Joint3D {
 	inst := &Joint3DImpl{}
 	inst.Owner = owner
@@ -269080,6 +272280,14 @@ func NewGDExtensionClassFromJointLimitation3DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JointLimitation3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewJointLimitation3DWithGodotOwnerObject(owner *GodotObject) RefJointLimitation3D {
 	inst := &JointLimitation3DImpl{}
 	inst.Owner = owner
@@ -269096,6 +272304,14 @@ func NewGDExtensionClassFromJointLimitationCone3DOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *JointLimitationCone3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewJointLimitationCone3DWithGodotOwnerObject(owner *GodotObject) RefJointLimitationCone3D {
@@ -269204,6 +272420,14 @@ func NewGDExtensionClassFromKinematicCollision2DOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *KinematicCollision2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewKinematicCollision2DWithGodotOwnerObject(owner *GodotObject) RefKinematicCollision2D {
@@ -269755,6 +272979,14 @@ func NewGDExtensionClassFromKinematicCollision3DOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *KinematicCollision3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewKinematicCollision3DWithGodotOwnerObject(owner *GodotObject) RefKinematicCollision3D {
@@ -270385,6 +273617,14 @@ func NewGDExtensionClassFromLabelOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LabelImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLabelWithGodotOwnerObject(owner *GodotObject) Label {
@@ -272405,6 +275645,14 @@ func NewGDExtensionClassFromLabel3DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Label3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLabel3DWithGodotOwnerObject(owner *GodotObject) Label3D {
@@ -274914,6 +278162,14 @@ func NewGDExtensionClassFromLabelSettingsOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LabelSettingsImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLabelSettingsWithGodotOwnerObject(owner *GodotObject) RefLabelSettings {
 	inst := &LabelSettingsImpl{}
 	inst.Owner = owner
@@ -276608,6 +279864,14 @@ func NewGDExtensionClassFromLight2DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Light2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLight2DWithGodotOwnerObject(owner *GodotObject) Light2D {
 	inst := &Light2DImpl{}
 	inst.Owner = owner
@@ -277931,6 +281195,14 @@ func NewGDExtensionClassFromLight3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Light3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLight3DWithGodotOwnerObject(owner *GodotObject) Light3D {
 	inst := &Light3DImpl{}
 	inst.Owner = owner
@@ -279223,6 +282495,14 @@ func NewGDExtensionClassFromLightOccluder2DOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LightOccluder2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLightOccluder2DWithGodotOwnerObject(owner *GodotObject) LightOccluder2D {
 	inst := &LightOccluder2DImpl{}
 	inst.Owner = owner
@@ -279494,6 +282774,14 @@ func NewGDExtensionClassFromLightmapGIOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LightmapGIImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLightmapGIWithGodotOwnerObject(owner *GodotObject) LightmapGI {
@@ -281314,6 +284602,14 @@ func NewGDExtensionClassFromLightmapGIDataOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LightmapGIDataImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLightmapGIDataWithGodotOwnerObject(owner *GodotObject) RefLightmapGIData {
 	inst := &LightmapGIDataImpl{}
 	inst.Owner = owner
@@ -281845,6 +285141,14 @@ func NewGDExtensionClassFromLightmapProbeOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LightmapProbeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLightmapProbeWithGodotOwnerObject(owner *GodotObject) LightmapProbe {
 	inst := &LightmapProbeImpl{}
 	inst.Owner = owner
@@ -281861,6 +285165,14 @@ func NewGDExtensionClassFromLightmapperOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LightmapperImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLightmapperWithGodotOwnerObject(owner *GodotObject) RefLightmapper {
@@ -281881,6 +285193,14 @@ func NewGDExtensionClassFromLightmapperRDOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LightmapperRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLightmapperRDWithGodotOwnerObject(owner *GodotObject) RefLightmapperRD {
 	inst := &LightmapperRDImpl{}
 	inst.Owner = owner
@@ -281897,6 +285217,14 @@ func NewGDExtensionClassFromLimitAngularVelocityModifier3DOwner(owner *GodotObje
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LimitAngularVelocityModifier3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLimitAngularVelocityModifier3DWithGodotOwnerObject(owner *GodotObject) LimitAngularVelocityModifier3D {
@@ -282593,6 +285921,14 @@ func NewGDExtensionClassFromLine2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Line2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLine2DWithGodotOwnerObject(owner *GodotObject) Line2D {
@@ -284013,6 +287349,14 @@ func NewGDExtensionClassFromLineEditOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LineEditImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLineEditWithGodotOwnerObject(owner *GodotObject) LineEdit {
@@ -287959,6 +291303,14 @@ func NewGDExtensionClassFromLinkButtonOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LinkButtonImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLinkButtonWithGodotOwnerObject(owner *GodotObject) LinkButton {
 	inst := &LinkButtonImpl{}
 	inst.Owner = owner
@@ -288715,6 +292067,14 @@ func NewGDExtensionClassFromLoggerOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LoggerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewLoggerWithGodotOwnerObject(owner *GodotObject) RefLogger {
 	inst := &LoggerImpl{}
 	inst.Owner = owner
@@ -288740,6 +292100,14 @@ func NewGDExtensionClassFromLookAtModifier3DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *LookAtModifier3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewLookAtModifier3DWithGodotOwnerObject(owner *GodotObject) LookAtModifier3D {
@@ -291319,6 +294687,14 @@ func NewGDExtensionClassFromMainLoopOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MainLoopImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMainLoopWithGodotOwnerObject(owner *GodotObject) MainLoop {
 	inst := &MainLoopImpl{}
 	inst.Owner = owner
@@ -291346,6 +294722,14 @@ func NewGDExtensionClassFromMarginContainerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MarginContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMarginContainerWithGodotOwnerObject(owner *GodotObject) MarginContainer {
 	inst := &MarginContainerImpl{}
 	inst.Owner = owner
@@ -291362,6 +294746,14 @@ func NewGDExtensionClassFromMarker2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Marker2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMarker2DWithGodotOwnerObject(owner *GodotObject) Marker2D {
@@ -291472,6 +294864,14 @@ func NewGDExtensionClassFromMarker3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Marker3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMarker3DWithGodotOwnerObject(owner *GodotObject) Marker3D {
 	inst := &Marker3DImpl{}
 	inst.Owner = owner
@@ -291578,6 +294978,14 @@ func NewGDExtensionClassFromMarshallsOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MarshallsImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMarshallsWithGodotOwnerObject(owner *GodotObject) Marshalls {
@@ -291877,6 +295285,14 @@ func NewGDExtensionClassFromMaterialOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MaterialImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMaterialWithGodotOwnerObject(owner *GodotObject) RefMaterial {
 	inst := &MaterialImpl{}
 	inst.Owner = owner
@@ -292144,6 +295560,14 @@ func NewGDExtensionClassFromMenuBarOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MenuBarImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMenuBarWithGodotOwnerObject(owner *GodotObject) MenuBar {
@@ -293176,6 +296600,14 @@ func NewGDExtensionClassFromMenuButtonOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MenuButtonImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMenuButtonWithGodotOwnerObject(owner *GodotObject) MenuButton {
 	inst := &MenuButtonImpl{}
 	inst.Owner = owner
@@ -293481,6 +296913,14 @@ func NewGDExtensionClassFromMeshOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMeshWithGodotOwnerObject(owner *GodotObject) RefMesh {
@@ -294099,6 +297539,14 @@ func NewGDExtensionClassFromMeshConvexDecompositionSettingsOwner(owner *GodotObj
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MeshConvexDecompositionSettingsImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMeshConvexDecompositionSettingsWithGodotOwnerObject(owner *GodotObject) RefMeshConvexDecompositionSettings {
@@ -295179,6 +298627,14 @@ func NewGDExtensionClassFromMeshDataToolOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MeshDataToolImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMeshDataToolWithGodotOwnerObject(owner *GodotObject) RefMeshDataTool {
@@ -296874,6 +300330,14 @@ func NewGDExtensionClassFromMeshInstance2DOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MeshInstance2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMeshInstance2DWithGodotOwnerObject(owner *GodotObject) MeshInstance2D {
 	inst := &MeshInstance2DImpl{}
 	inst.Owner = owner
@@ -297067,6 +300531,14 @@ func NewGDExtensionClassFromMeshInstance3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MeshInstance3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMeshInstance3DWithGodotOwnerObject(owner *GodotObject) MeshInstance3D {
@@ -297986,6 +301458,14 @@ func NewGDExtensionClassFromMeshLibraryOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MeshLibraryImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMeshLibraryWithGodotOwnerObject(owner *GodotObject) RefMeshLibrary {
@@ -299099,6 +302579,14 @@ func NewGDExtensionClassFromMeshTextureOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MeshTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMeshTextureWithGodotOwnerObject(owner *GodotObject) RefMeshTexture {
 	inst := &MeshTextureImpl{}
 	inst.Owner = owner
@@ -299375,6 +302863,14 @@ func NewGDExtensionClassFromMethodTweenerOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MethodTweenerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMethodTweenerWithGodotOwnerObject(owner *GodotObject) RefMethodTweener {
 	inst := &MethodTweenerImpl{}
 	inst.Owner = owner
@@ -299532,6 +303028,14 @@ func NewGDExtensionClassFromMissingNodeOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MissingNodeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMissingNodeWithGodotOwnerObject(owner *GodotObject) MissingNode {
@@ -299885,6 +303389,14 @@ func NewGDExtensionClassFromMissingResourceOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MissingResourceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMissingResourceWithGodotOwnerObject(owner *GodotObject) RefMissingResource {
 	inst := &MissingResourceImpl{}
 	inst.Owner = owner
@@ -300072,6 +303584,14 @@ func NewGDExtensionClassFromMobileVRInterfaceOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MobileVRInterfaceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMobileVRInterfaceWithGodotOwnerObject(owner *GodotObject) RefMobileVRInterface {
@@ -300911,6 +304431,14 @@ func NewGDExtensionClassFromModifierBoneTarget3DOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ModifierBoneTarget3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewModifierBoneTarget3DWithGodotOwnerObject(owner *GodotObject) ModifierBoneTarget3D {
 	inst := &ModifierBoneTarget3DImpl{}
 	inst.Owner = owner
@@ -301100,6 +304628,14 @@ func NewGDExtensionClassFromMovieWriterOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MovieWriterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMovieWriterWithGodotOwnerObject(owner *GodotObject) MovieWriter {
 	inst := &MovieWriterImpl{}
 	inst.Owner = owner
@@ -301169,6 +304705,14 @@ func NewGDExtensionClassFromMultiMeshOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMultiMeshWithGodotOwnerObject(owner *GodotObject) RefMultiMesh {
@@ -302444,6 +305988,14 @@ func NewGDExtensionClassFromMultiMeshInstance2DOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiMeshInstance2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMultiMeshInstance2DWithGodotOwnerObject(owner *GodotObject) MultiMeshInstance2D {
 	inst := &MultiMeshInstance2DImpl{}
 	inst.Owner = owner
@@ -302639,6 +306191,14 @@ func NewGDExtensionClassFromMultiMeshInstance3DOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiMeshInstance3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMultiMeshInstance3DWithGodotOwnerObject(owner *GodotObject) MultiMeshInstance3D {
 	inst := &MultiMeshInstance3DImpl{}
 	inst.Owner = owner
@@ -302748,6 +306308,14 @@ func NewGDExtensionClassFromMultiplayerAPIOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiplayerAPIImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMultiplayerAPIWithGodotOwnerObject(owner *GodotObject) RefMultiplayerAPI {
@@ -303378,6 +306946,14 @@ func NewGDExtensionClassFromMultiplayerAPIExtensionOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiplayerAPIExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMultiplayerAPIExtensionWithGodotOwnerObject(owner *GodotObject) RefMultiplayerAPIExtension {
 	inst := &MultiplayerAPIExtensionImpl{}
 	inst.Owner = owner
@@ -303403,6 +306979,14 @@ func NewGDExtensionClassFromMultiplayerPeerOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiplayerPeerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMultiplayerPeerWithGodotOwnerObject(owner *GodotObject) RefMultiplayerPeer {
@@ -304114,6 +307698,14 @@ func NewGDExtensionClassFromMultiplayerPeerExtensionOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiplayerPeerExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMultiplayerPeerExtensionWithGodotOwnerObject(owner *GodotObject) RefMultiplayerPeerExtension {
 	inst := &MultiplayerPeerExtensionImpl{}
 	inst.Owner = owner
@@ -304139,6 +307731,14 @@ func NewGDExtensionClassFromMultiplayerSpawnerOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiplayerSpawnerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMultiplayerSpawnerWithGodotOwnerObject(owner *GodotObject) MultiplayerSpawner {
@@ -304615,6 +308215,14 @@ func NewGDExtensionClassFromMultiplayerSynchronizerOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MultiplayerSynchronizerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewMultiplayerSynchronizerWithGodotOwnerObject(owner *GodotObject) MultiplayerSynchronizer {
@@ -305344,6 +308952,14 @@ func NewGDExtensionClassFromMutexOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *MutexImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewMutexWithGodotOwnerObject(owner *GodotObject) RefMutex {
 	inst := &MutexImpl{}
 	inst.Owner = owner
@@ -305483,6 +309099,14 @@ func NewGDExtensionClassFromNativeMenuOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NativeMenuImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNativeMenuWithGodotOwnerObject(owner *GodotObject) NativeMenu {
@@ -308820,6 +312444,14 @@ func NewGDExtensionClassFromNavigationAgent2DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationAgent2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationAgent2DWithGodotOwnerObject(owner *GodotObject) NavigationAgent2D {
 	inst := &NavigationAgent2DImpl{}
 	inst.Owner = owner
@@ -312101,6 +315733,14 @@ func NewGDExtensionClassFromNavigationAgent3DOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationAgent3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationAgent3DWithGodotOwnerObject(owner *GodotObject) NavigationAgent3D {
@@ -315629,6 +319269,14 @@ func NewGDExtensionClassFromNavigationLink2DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationLink2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationLink2DWithGodotOwnerObject(owner *GodotObject) NavigationLink2D {
 	inst := &NavigationLink2DImpl{}
 	inst.Owner = owner
@@ -316594,6 +320242,14 @@ func NewGDExtensionClassFromNavigationLink3DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationLink3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationLink3DWithGodotOwnerObject(owner *GodotObject) NavigationLink3D {
 	inst := &NavigationLink3DImpl{}
 	inst.Owner = owner
@@ -317557,6 +321213,14 @@ func NewGDExtensionClassFromNavigationMeshOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationMeshWithGodotOwnerObject(owner *GodotObject) RefNavigationMesh {
@@ -319942,6 +323606,14 @@ func NewGDExtensionClassFromNavigationMeshGeneratorOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationMeshGeneratorImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationMeshGeneratorWithGodotOwnerObject(owner *GodotObject) NavigationMeshGenerator {
 	inst := &NavigationMeshGeneratorImpl{}
 	inst.Owner = owner
@@ -320173,6 +323845,14 @@ func NewGDExtensionClassFromNavigationMeshSourceGeometryData2DOwner(owner *Godot
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationMeshSourceGeometryData2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationMeshSourceGeometryData2DWithGodotOwnerObject(owner *GodotObject) RefNavigationMeshSourceGeometryData2D {
@@ -320849,6 +324529,14 @@ func NewGDExtensionClassFromNavigationMeshSourceGeometryData3DOwner(owner *Godot
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationMeshSourceGeometryData3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationMeshSourceGeometryData3DWithGodotOwnerObject(owner *GodotObject) RefNavigationMeshSourceGeometryData3D {
@@ -321546,6 +325234,14 @@ func NewGDExtensionClassFromNavigationObstacle2DOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationObstacle2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationObstacle2DWithGodotOwnerObject(owner *GodotObject) NavigationObstacle2D {
@@ -322349,6 +326045,14 @@ func NewGDExtensionClassFromNavigationObstacle3DOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationObstacle3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationObstacle3DWithGodotOwnerObject(owner *GodotObject) NavigationObstacle3D {
@@ -323314,6 +327018,14 @@ func NewGDExtensionClassFromNavigationPathQueryParameters2DOwner(owner *GodotObj
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationPathQueryParameters2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationPathQueryParameters2DWithGodotOwnerObject(owner *GodotObject) RefNavigationPathQueryParameters2D {
@@ -324558,6 +328270,14 @@ func NewGDExtensionClassFromNavigationPathQueryParameters3DOwner(owner *GodotObj
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationPathQueryParameters3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationPathQueryParameters3DWithGodotOwnerObject(owner *GodotObject) RefNavigationPathQueryParameters3D {
 	inst := &NavigationPathQueryParameters3DImpl{}
 	inst.Owner = owner
@@ -325800,6 +329520,14 @@ func NewGDExtensionClassFromNavigationPathQueryResult2DOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationPathQueryResult2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationPathQueryResult2DWithGodotOwnerObject(owner *GodotObject) RefNavigationPathQueryResult2D {
 	inst := &NavigationPathQueryResult2DImpl{}
 	inst.Owner = owner
@@ -326269,6 +329997,14 @@ func NewGDExtensionClassFromNavigationPathQueryResult3DOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationPathQueryResult3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationPathQueryResult3DWithGodotOwnerObject(owner *GodotObject) RefNavigationPathQueryResult3D {
 	inst := &NavigationPathQueryResult3DImpl{}
 	inst.Owner = owner
@@ -326736,6 +330472,14 @@ func NewGDExtensionClassFromNavigationPolygonOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationPolygonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationPolygonWithGodotOwnerObject(owner *GodotObject) RefNavigationPolygon {
@@ -328311,6 +332055,14 @@ func NewGDExtensionClassFromNavigationRegion2DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationRegion2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationRegion2DWithGodotOwnerObject(owner *GodotObject) NavigationRegion2D {
 	inst := &NavigationRegion2DImpl{}
 	inst.Owner = owner
@@ -329197,6 +332949,14 @@ func NewGDExtensionClassFromNavigationRegion3DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationRegion3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationRegion3DWithGodotOwnerObject(owner *GodotObject) NavigationRegion3D {
 	inst := &NavigationRegion3DImpl{}
 	inst.Owner = owner
@@ -330081,6 +333841,14 @@ func NewGDExtensionClassFromNavigationServer2DOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationServer2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationServer2DWithGodotOwnerObject(owner *GodotObject) NavigationServer2D {
@@ -336187,6 +339955,14 @@ func NewGDExtensionClassFromNavigationServer2DManagerOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationServer2DManagerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationServer2DManagerWithGodotOwnerObject(owner *GodotObject) NavigationServer2DManager {
 	inst := &NavigationServer2DManagerImpl{}
 	inst.Owner = owner
@@ -336300,6 +340076,14 @@ func NewGDExtensionClassFromNavigationServer3DOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationServer3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNavigationServer3DWithGodotOwnerObject(owner *GodotObject) NavigationServer3D {
@@ -343184,6 +346968,14 @@ func NewGDExtensionClassFromNavigationServer3DManagerOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NavigationServer3DManagerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNavigationServer3DManagerWithGodotOwnerObject(owner *GodotObject) NavigationServer3DManager {
 	inst := &NavigationServer3DManagerImpl{}
 	inst.Owner = owner
@@ -343297,6 +347089,14 @@ func NewGDExtensionClassFromNinePatchRectOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NinePatchRectImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNinePatchRectWithGodotOwnerObject(owner *GodotObject) NinePatchRect {
@@ -343820,6 +347620,14 @@ func NewGDExtensionClassFromNodeOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NodeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNodeWithGodotOwnerObject(owner *GodotObject) Node {
@@ -348960,6 +352768,14 @@ func NewGDExtensionClassFromNode2DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Node2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNode2DWithGodotOwnerObject(owner *GodotObject) Node2D {
 	inst := &Node2DImpl{}
 	inst.Owner = owner
@@ -350349,6 +354165,14 @@ func NewGDExtensionClassFromNode3DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Node3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNode3DWithGodotOwnerObject(owner *GodotObject) Node3D {
@@ -353274,6 +357098,14 @@ func NewGDExtensionClassFromNode3DGizmoOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Node3DGizmoImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNode3DGizmoWithGodotOwnerObject(owner *GodotObject) RefNode3DGizmo {
 	inst := &Node3DGizmoImpl{}
 	inst.Owner = owner
@@ -353290,6 +357122,14 @@ func NewGDExtensionClassFromNoiseOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NoiseImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNoiseWithGodotOwnerObject(owner *GodotObject) RefNoise {
@@ -353776,6 +357616,14 @@ func NewGDExtensionClassFromNoiseTexture2DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NoiseTexture2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewNoiseTexture2DWithGodotOwnerObject(owner *GodotObject) RefNoiseTexture2D {
@@ -354703,6 +358551,14 @@ func NewGDExtensionClassFromNoiseTexture3DOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *NoiseTexture3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewNoiseTexture3DWithGodotOwnerObject(owner *GodotObject) RefNoiseTexture3D {
 	inst := &NoiseTexture3DImpl{}
 	inst.Owner = owner
@@ -355345,6 +359201,14 @@ func NewGDExtensionClassFromORMMaterial3DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ORMMaterial3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewORMMaterial3DWithGodotOwnerObject(owner *GodotObject) RefORMMaterial3D {
 	inst := &ORMMaterial3DImpl{}
 	inst.Owner = owner
@@ -355361,6 +359225,14 @@ func NewGDExtensionClassFromOSOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OSImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOSWithGodotOwnerObject(owner *GodotObject) OS {
@@ -358889,6 +362761,14 @@ func NewGDExtensionClassFromObjectOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ObjectImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewObjectWithGodotOwnerObject(owner *GodotObject) Object {
 	inst := &ObjectImpl{}
 	inst.Owner = owner
@@ -361049,6 +364929,14 @@ func NewGDExtensionClassFromOccluder3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Occluder3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOccluder3DWithGodotOwnerObject(owner *GodotObject) RefOccluder3D {
 	inst := &Occluder3DImpl{}
 	inst.Owner = owner
@@ -361154,6 +365042,14 @@ func NewGDExtensionClassFromOccluderInstance3DOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OccluderInstance3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOccluderInstance3DWithGodotOwnerObject(owner *GodotObject) OccluderInstance3D {
@@ -361517,6 +365413,14 @@ func NewGDExtensionClassFromOccluderPolygon2DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OccluderPolygon2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOccluderPolygon2DWithGodotOwnerObject(owner *GodotObject) RefOccluderPolygon2D {
 	inst := &OccluderPolygon2DImpl{}
 	inst.Owner = owner
@@ -361787,6 +365691,14 @@ func NewGDExtensionClassFromOfflineMultiplayerPeerOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OfflineMultiplayerPeerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOfflineMultiplayerPeerWithGodotOwnerObject(owner *GodotObject) RefOfflineMultiplayerPeer {
 	inst := &OfflineMultiplayerPeerImpl{}
 	inst.Owner = owner
@@ -361803,6 +365715,14 @@ func NewGDExtensionClassFromOggPacketSequenceOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OggPacketSequenceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOggPacketSequenceWithGodotOwnerObject(owner *GodotObject) RefOggPacketSequence {
@@ -362115,6 +366035,14 @@ func NewGDExtensionClassFromOggPacketSequencePlaybackOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OggPacketSequencePlaybackImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOggPacketSequencePlaybackWithGodotOwnerObject(owner *GodotObject) RefOggPacketSequencePlayback {
 	inst := &OggPacketSequencePlaybackImpl{}
 	inst.Owner = owner
@@ -362131,6 +366059,14 @@ func NewGDExtensionClassFromOmniLight3DOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OmniLight3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOmniLight3DWithGodotOwnerObject(owner *GodotObject) OmniLight3D {
@@ -362239,6 +366175,14 @@ func NewGDExtensionClassFromOpenXRAPIExtensionOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRAPIExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRAPIExtensionWithGodotOwnerObject(owner *GodotObject) RefOpenXRAPIExtension {
@@ -364427,6 +368371,14 @@ func NewGDExtensionClassFromOpenXRActionOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRActionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRActionWithGodotOwnerObject(owner *GodotObject) RefOpenXRAction {
 	inst := &OpenXRActionImpl{}
 	inst.Owner = owner
@@ -364697,6 +368649,14 @@ func NewGDExtensionClassFromOpenXRActionBindingModifierOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRActionBindingModifierImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRActionBindingModifierWithGodotOwnerObject(owner *GodotObject) RefOpenXRActionBindingModifier {
 	inst := &OpenXRActionBindingModifierImpl{}
 	inst.Owner = owner
@@ -364713,6 +368673,14 @@ func NewGDExtensionClassFromOpenXRActionMapOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRActionMapImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRActionMapWithGodotOwnerObject(owner *GodotObject) RefOpenXRActionMap {
@@ -365373,6 +369341,14 @@ func NewGDExtensionClassFromOpenXRActionSetOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRActionSetImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRActionSetWithGodotOwnerObject(owner *GodotObject) RefOpenXRActionSet {
 	inst := &OpenXRActionSetImpl{}
 	inst.Owner = owner
@@ -365771,6 +369747,14 @@ func NewGDExtensionClassFromOpenXRAnalogThresholdModifierOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRAnalogThresholdModifierImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRAnalogThresholdModifierWithGodotOwnerObject(owner *GodotObject) RefOpenXRAnalogThresholdModifier {
 	inst := &OpenXRAnalogThresholdModifierImpl{}
 	inst.Owner = owner
@@ -366128,6 +370112,14 @@ func NewGDExtensionClassFromOpenXRAnchorTrackerOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRAnchorTrackerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRAnchorTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRAnchorTracker {
 	inst := &OpenXRAnchorTrackerImpl{}
 	inst.Owner = owner
@@ -366276,6 +370268,14 @@ func NewGDExtensionClassFromOpenXRAndroidThreadSettingsExtensionOwner(owner *God
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRAndroidThreadSettingsExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRAndroidThreadSettingsExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRAndroidThreadSettingsExtension {
 	inst := &OpenXRAndroidThreadSettingsExtensionImpl{}
 	inst.Owner = owner
@@ -366350,6 +370350,14 @@ func NewGDExtensionClassFromOpenXRBindingModifierOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRBindingModifierImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRBindingModifierWithGodotOwnerObject(owner *GodotObject) RefOpenXRBindingModifier {
 	inst := &OpenXRBindingModifierImpl{}
 	inst.Owner = owner
@@ -366375,6 +370383,14 @@ func NewGDExtensionClassFromOpenXRBindingModifierEditorOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRBindingModifierEditorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRBindingModifierEditorWithGodotOwnerObject(owner *GodotObject) OpenXRBindingModifierEditor {
@@ -366492,6 +370508,14 @@ func NewGDExtensionClassFromOpenXRCompositionLayerOwner(owner *GodotObject) GDEx
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRCompositionLayerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRCompositionLayerWithGodotOwnerObject(owner *GodotObject) OpenXRCompositionLayer {
@@ -368190,6 +372214,14 @@ func NewGDExtensionClassFromOpenXRCompositionLayerCylinderOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRCompositionLayerCylinderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRCompositionLayerCylinderWithGodotOwnerObject(owner *GodotObject) OpenXRCompositionLayerCylinder {
 	inst := &OpenXRCompositionLayerCylinderImpl{}
 	inst.Owner = owner
@@ -368539,6 +372571,14 @@ func NewGDExtensionClassFromOpenXRCompositionLayerEquirectOwner(owner *GodotObje
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRCompositionLayerEquirectImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRCompositionLayerEquirectWithGodotOwnerObject(owner *GodotObject) OpenXRCompositionLayerEquirect {
@@ -368973,6 +373013,14 @@ func NewGDExtensionClassFromOpenXRCompositionLayerQuadOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRCompositionLayerQuadImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRCompositionLayerQuadWithGodotOwnerObject(owner *GodotObject) OpenXRCompositionLayerQuad {
 	inst := &OpenXRCompositionLayerQuadImpl{}
 	inst.Owner = owner
@@ -369079,6 +373127,14 @@ func NewGDExtensionClassFromOpenXRDpadBindingModifierOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRDpadBindingModifierImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRDpadBindingModifierWithGodotOwnerObject(owner *GodotObject) RefOpenXRDpadBindingModifier {
@@ -369846,6 +373902,14 @@ func NewGDExtensionClassFromOpenXRExtensionWrapperOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRExtensionWrapperImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRExtensionWrapperWithGodotOwnerObject(owner *GodotObject) OpenXRExtensionWrapper {
 	inst := &OpenXRExtensionWrapperImpl{}
 	inst.Owner = owner
@@ -369950,6 +374014,14 @@ func NewGDExtensionClassFromOpenXRExtensionWrapperExtensionOwner(owner *GodotObj
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRExtensionWrapperExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRExtensionWrapperExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRExtensionWrapperExtension {
 	inst := &OpenXRExtensionWrapperExtensionImpl{}
 	inst.Owner = owner
@@ -369966,6 +374038,14 @@ func NewGDExtensionClassFromOpenXRFrameSynthesisExtensionOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRFrameSynthesisExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRFrameSynthesisExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRFrameSynthesisExtension {
@@ -370234,6 +374314,14 @@ func NewGDExtensionClassFromOpenXRFutureExtensionOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRFutureExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRFutureExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRFutureExtension {
 	inst := &OpenXRFutureExtensionImpl{}
 	inst.Owner = owner
@@ -370387,6 +374475,14 @@ func NewGDExtensionClassFromOpenXRFutureResultOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRFutureResultImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRFutureResultWithGodotOwnerObject(owner *GodotObject) RefOpenXRFutureResult {
@@ -370612,6 +374708,14 @@ func NewGDExtensionClassFromOpenXRHandOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRHandImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRHandWithGodotOwnerObject(owner *GodotObject) OpenXRHand {
@@ -371046,6 +375150,14 @@ func NewGDExtensionClassFromOpenXRHapticBaseOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRHapticBaseImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRHapticBaseWithGodotOwnerObject(owner *GodotObject) RefOpenXRHapticBase {
 	inst := &OpenXRHapticBaseImpl{}
 	inst.Owner = owner
@@ -371062,6 +375174,14 @@ func NewGDExtensionClassFromOpenXRHapticVibrationOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRHapticVibrationImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRHapticVibrationWithGodotOwnerObject(owner *GodotObject) RefOpenXRHapticVibration {
@@ -371332,6 +375452,14 @@ func NewGDExtensionClassFromOpenXRIPBindingOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRIPBindingImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRIPBindingWithGodotOwnerObject(owner *GodotObject) RefOpenXRIPBinding {
@@ -371938,6 +376066,14 @@ func NewGDExtensionClassFromOpenXRIPBindingModifierOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRIPBindingModifierImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRIPBindingModifierWithGodotOwnerObject(owner *GodotObject) RefOpenXRIPBindingModifier {
 	inst := &OpenXRIPBindingModifierImpl{}
 	inst.Owner = owner
@@ -371954,6 +376090,14 @@ func NewGDExtensionClassFromOpenXRInteractionProfileOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRInteractionProfileImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRInteractionProfileWithGodotOwnerObject(owner *GodotObject) RefOpenXRInteractionProfile {
@@ -372394,6 +376538,14 @@ func NewGDExtensionClassFromOpenXRInteractionProfileEditorOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRInteractionProfileEditorImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRInteractionProfileEditorWithGodotOwnerObject(owner *GodotObject) OpenXRInteractionProfileEditor {
 	inst := &OpenXRInteractionProfileEditorImpl{}
 	inst.Owner = owner
@@ -372410,6 +376562,14 @@ func NewGDExtensionClassFromOpenXRInteractionProfileEditorBaseOwner(owner *Godot
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRInteractionProfileEditorBaseImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRInteractionProfileEditorBaseWithGodotOwnerObject(owner *GodotObject) OpenXRInteractionProfileEditorBase {
@@ -372487,6 +376647,14 @@ func NewGDExtensionClassFromOpenXRInteractionProfileMetadataOwner(owner *GodotOb
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRInteractionProfileMetadataImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRInteractionProfileMetadataWithGodotOwnerObject(owner *GodotObject) OpenXRInteractionProfileMetadata {
@@ -372752,6 +376920,14 @@ func NewGDExtensionClassFromOpenXRInterfaceOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRInterfaceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRInterfaceWithGodotOwnerObject(owner *GodotObject) RefOpenXRInterface {
@@ -374292,6 +378468,14 @@ func NewGDExtensionClassFromOpenXRMarkerTrackerOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRMarkerTrackerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRMarkerTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRMarkerTracker {
 	inst := &OpenXRMarkerTrackerImpl{}
 	inst.Owner = owner
@@ -374641,6 +378825,14 @@ func NewGDExtensionClassFromOpenXRPlaneTrackerOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRPlaneTrackerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRPlaneTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRPlaneTracker {
@@ -375121,6 +379313,14 @@ func NewGDExtensionClassFromOpenXRRenderModelOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRRenderModelImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRRenderModelWithGodotOwnerObject(owner *GodotObject) OpenXRRenderModel {
 	inst := &OpenXRRenderModelImpl{}
 	inst.Owner = owner
@@ -375267,6 +379467,14 @@ func NewGDExtensionClassFromOpenXRRenderModelExtensionOwner(owner *GodotObject) 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRRenderModelExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRRenderModelExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRRenderModelExtension {
@@ -375866,6 +380074,14 @@ func NewGDExtensionClassFromOpenXRRenderModelManagerOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRRenderModelManagerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRRenderModelManagerWithGodotOwnerObject(owner *GodotObject) OpenXRRenderModelManager {
 	inst := &OpenXRRenderModelManagerImpl{}
 	inst.Owner = owner
@@ -376053,6 +380269,14 @@ func NewGDExtensionClassFromOpenXRSpatialAnchorCapabilityOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialAnchorCapabilityImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialAnchorCapabilityWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialAnchorCapability {
@@ -376709,6 +380933,14 @@ func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationAnchorOwner(owne
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialCapabilityConfigurationAnchorImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialCapabilityConfigurationAnchorWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationAnchor {
 	inst := &OpenXRSpatialCapabilityConfigurationAnchorImpl{}
 	inst.Owner = owner
@@ -376774,6 +381006,14 @@ func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationAprilTagOwner(ow
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialCapabilityConfigurationAprilTagImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialCapabilityConfigurationAprilTagWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationAprilTag {
@@ -376924,6 +381164,14 @@ func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationArucoOwner(owner
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialCapabilityConfigurationArucoImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialCapabilityConfigurationArucoWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationAruco {
 	inst := &OpenXRSpatialCapabilityConfigurationArucoImpl{}
 	inst.Owner = owner
@@ -377072,6 +381320,14 @@ func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationBaseHeaderOwner(
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialCapabilityConfigurationBaseHeaderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialCapabilityConfigurationBaseHeaderWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationBaseHeader {
 	inst := &OpenXRSpatialCapabilityConfigurationBaseHeaderImpl{}
 	inst.Owner = owner
@@ -377179,6 +381435,14 @@ func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationMicroQrCodeOwner
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialCapabilityConfigurationMicroQrCodeWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationMicroQrCode {
 	inst := &OpenXRSpatialCapabilityConfigurationMicroQrCodeImpl{}
 	inst.Owner = owner
@@ -377244,6 +381508,14 @@ func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationPlaneTrackingOwn
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialCapabilityConfigurationPlaneTrackingImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialCapabilityConfigurationPlaneTrackingWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationPlaneTracking {
@@ -377433,6 +381705,14 @@ func NewGDExtensionClassFromOpenXRSpatialCapabilityConfigurationQrCodeOwner(owne
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialCapabilityConfigurationQrCodeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialCapabilityConfigurationQrCodeWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialCapabilityConfigurationQrCode {
 	inst := &OpenXRSpatialCapabilityConfigurationQrCodeImpl{}
 	inst.Owner = owner
@@ -377498,6 +381778,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentAnchorListOwner(owner *GodotOb
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentAnchorListImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialComponentAnchorListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentAnchorList {
@@ -377569,6 +381857,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentBounded2DListOwner(owner *Godo
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentBounded2DListImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialComponentBounded2DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentBounded2DList {
@@ -377686,6 +381982,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentBounded3DListOwner(owner *Godo
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentBounded3DListImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialComponentBounded3DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentBounded3DList {
 	inst := &OpenXRSpatialComponentBounded3DListImpl{}
 	inst.Owner = owner
@@ -377801,6 +382105,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentDataOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentDataImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialComponentDataWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentData {
 	inst := &OpenXRSpatialComponentDataImpl{}
 	inst.Owner = owner
@@ -377907,6 +382219,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentMarkerListOwner(owner *GodotOb
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentMarkerListImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialComponentMarkerListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentMarkerList {
@@ -378069,6 +382389,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentMesh2DListOwner(owner *GodotOb
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentMesh2DListImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialComponentMesh2DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentMesh2DList {
@@ -378236,6 +382564,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentMesh3DListOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentMesh3DListImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialComponentMesh3DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentMesh3DList {
 	inst := &OpenXRSpatialComponentMesh3DListImpl{}
 	inst.Owner = owner
@@ -378351,6 +382687,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentParentListOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentParentListImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialComponentParentListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentParentList {
 	inst := &OpenXRSpatialComponentParentListImpl{}
 	inst.Owner = owner
@@ -378420,6 +382764,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentPersistenceListOwner(owner *Go
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentPersistenceListImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialComponentPersistenceListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPersistenceList {
@@ -378537,6 +382889,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentPlaneAlignmentListOwner(owner 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentPlaneAlignmentListImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialComponentPlaneAlignmentListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPlaneAlignmentList {
 	inst := &OpenXRSpatialComponentPlaneAlignmentListImpl{}
 	inst.Owner = owner
@@ -378608,6 +382968,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentPlaneSemanticLabelListOwner(ow
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentPlaneSemanticLabelListImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialComponentPlaneSemanticLabelListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPlaneSemanticLabelList {
 	inst := &OpenXRSpatialComponentPlaneSemanticLabelListImpl{}
 	inst.Owner = owner
@@ -378677,6 +383045,14 @@ func NewGDExtensionClassFromOpenXRSpatialComponentPolygon2DListOwner(owner *Godo
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialComponentPolygon2DListImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialComponentPolygon2DListWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialComponentPolygon2DList {
@@ -378795,6 +383171,14 @@ func NewGDExtensionClassFromOpenXRSpatialContextPersistenceConfigOwner(owner *Go
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialContextPersistenceConfigImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialContextPersistenceConfigWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialContextPersistenceConfig {
@@ -378944,6 +383328,14 @@ func NewGDExtensionClassFromOpenXRSpatialEntityExtensionOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialEntityExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialEntityExtensionWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialEntityExtension {
@@ -380204,6 +384596,14 @@ func NewGDExtensionClassFromOpenXRSpatialEntityTrackerOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialEntityTrackerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialEntityTrackerWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialEntityTracker {
 	inst := &OpenXRSpatialEntityTrackerImpl{}
 	inst.Owner = owner
@@ -380602,6 +385002,14 @@ func NewGDExtensionClassFromOpenXRSpatialMarkerTrackingCapabilityOwner(owner *Go
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialMarkerTrackingCapabilityImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialMarkerTrackingCapabilityWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialMarkerTrackingCapability {
 	inst := &OpenXRSpatialMarkerTrackingCapabilityImpl{}
 	inst.Owner = owner
@@ -380913,6 +385321,14 @@ func NewGDExtensionClassFromOpenXRSpatialPlaneTrackingCapabilityOwner(owner *God
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialPlaneTrackingCapabilityImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRSpatialPlaneTrackingCapabilityWithGodotOwnerObject(owner *GodotObject) OpenXRSpatialPlaneTrackingCapability {
 	inst := &OpenXRSpatialPlaneTrackingCapabilityImpl{}
 	inst.Owner = owner
@@ -381043,6 +385459,14 @@ func NewGDExtensionClassFromOpenXRSpatialQueryResultDataOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRSpatialQueryResultDataImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOpenXRSpatialQueryResultDataWithGodotOwnerObject(owner *GodotObject) RefOpenXRSpatialQueryResultData {
@@ -381200,6 +385624,14 @@ func NewGDExtensionClassFromOpenXRStructureBaseOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRStructureBaseImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRStructureBaseWithGodotOwnerObject(owner *GodotObject) RefOpenXRStructureBase {
 	inst := &OpenXRStructureBaseImpl{}
 	inst.Owner = owner
@@ -381351,6 +385783,14 @@ func NewGDExtensionClassFromOpenXRVisibilityMaskOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OpenXRVisibilityMaskImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewOpenXRVisibilityMaskWithGodotOwnerObject(owner *GodotObject) OpenXRVisibilityMask {
 	inst := &OpenXRVisibilityMaskImpl{}
 	inst.Owner = owner
@@ -381367,6 +385807,14 @@ func NewGDExtensionClassFromOptimizedTranslationOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OptimizedTranslationImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOptimizedTranslationWithGodotOwnerObject(owner *GodotObject) RefOptimizedTranslation {
@@ -381441,6 +385889,14 @@ func NewGDExtensionClassFromOptionButtonOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *OptionButtonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewOptionButtonWithGodotOwnerObject(owner *GodotObject) OptionButton {
@@ -383320,6 +387776,14 @@ func NewGDExtensionClassFromPCKPackerOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PCKPackerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPCKPackerWithGodotOwnerObject(owner *GodotObject) RefPCKPacker {
 	inst := &PCKPackerImpl{}
 	inst.Owner = owner
@@ -383588,6 +388052,14 @@ func NewGDExtensionClassFromPackedDataContainerOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PackedDataContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPackedDataContainerWithGodotOwnerObject(owner *GodotObject) RefPackedDataContainer {
 	inst := &PackedDataContainerImpl{}
 	inst.Owner = owner
@@ -383699,6 +388171,14 @@ func NewGDExtensionClassFromPackedDataContainerRefOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PackedDataContainerRefImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPackedDataContainerRefWithGodotOwnerObject(owner *GodotObject) RefPackedDataContainerRef {
 	inst := &PackedDataContainerRefImpl{}
 	inst.Owner = owner
@@ -383764,6 +388244,14 @@ func NewGDExtensionClassFromPackedSceneOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PackedSceneImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPackedSceneWithGodotOwnerObject(owner *GodotObject) RefPackedScene {
@@ -383962,6 +388450,14 @@ func NewGDExtensionClassFromPacketPeerOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PacketPeerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPacketPeerWithGodotOwnerObject(owner *GodotObject) RefPacketPeer {
@@ -384327,6 +388823,14 @@ func NewGDExtensionClassFromPacketPeerDTLSOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PacketPeerDTLSImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPacketPeerDTLSWithGodotOwnerObject(owner *GodotObject) RefPacketPeerDTLS {
 	inst := &PacketPeerDTLSImpl{}
 	inst.Owner = owner
@@ -384524,6 +389028,14 @@ func NewGDExtensionClassFromPacketPeerExtensionOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PacketPeerExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPacketPeerExtensionWithGodotOwnerObject(owner *GodotObject) RefPacketPeerExtension {
 	inst := &PacketPeerExtensionImpl{}
 	inst.Owner = owner
@@ -384549,6 +389061,14 @@ func NewGDExtensionClassFromPacketPeerStreamOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PacketPeerStreamImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPacketPeerStreamWithGodotOwnerObject(owner *GodotObject) RefPacketPeerStream {
@@ -384822,6 +389342,14 @@ func NewGDExtensionClassFromPacketPeerUDPOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PacketPeerUDPImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPacketPeerUDPWithGodotOwnerObject(owner *GodotObject) RefPacketPeerUDP {
@@ -385407,6 +389935,14 @@ func NewGDExtensionClassFromPanelOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PanelImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPanelWithGodotOwnerObject(owner *GodotObject) Panel {
 	inst := &PanelImpl{}
 	inst.Owner = owner
@@ -385425,6 +389961,14 @@ func NewGDExtensionClassFromPanelContainerOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PanelContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPanelContainerWithGodotOwnerObject(owner *GodotObject) PanelContainer {
 	inst := &PanelContainerImpl{}
 	inst.Owner = owner
@@ -385441,6 +389985,14 @@ func NewGDExtensionClassFromPanoramaSkyMaterialOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PanoramaSkyMaterialImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPanoramaSkyMaterialWithGodotOwnerObject(owner *GodotObject) RefPanoramaSkyMaterial {
@@ -385714,6 +390266,14 @@ func NewGDExtensionClassFromParallax2DOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Parallax2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewParallax2DWithGodotOwnerObject(owner *GodotObject) Parallax2D {
@@ -386553,6 +391113,14 @@ func NewGDExtensionClassFromParallaxBackgroundOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ParallaxBackgroundImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewParallaxBackgroundWithGodotOwnerObject(owner *GodotObject) ParallaxBackground {
 	inst := &ParallaxBackgroundImpl{}
 	inst.Owner = owner
@@ -387066,6 +391634,14 @@ func NewGDExtensionClassFromParallaxLayerOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ParallaxLayerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewParallaxLayerWithGodotOwnerObject(owner *GodotObject) ParallaxLayer {
 	inst := &ParallaxLayerImpl{}
 	inst.Owner = owner
@@ -387334,6 +391910,14 @@ func NewGDExtensionClassFromParticleProcessMaterialOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ParticleProcessMaterialImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewParticleProcessMaterialWithGodotOwnerObject(owner *GodotObject) RefParticleProcessMaterial {
@@ -392126,6 +396710,14 @@ func NewGDExtensionClassFromPath2DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Path2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPath2DWithGodotOwnerObject(owner *GodotObject) Path2D {
 	inst := &Path2DImpl{}
 	inst.Owner = owner
@@ -392235,6 +396827,14 @@ func NewGDExtensionClassFromPath3DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Path3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPath3DWithGodotOwnerObject(owner *GodotObject) Path3D {
@@ -392427,6 +397027,14 @@ func NewGDExtensionClassFromPathFollow2DOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PathFollow2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPathFollow2DWithGodotOwnerObject(owner *GodotObject) PathFollow2D {
@@ -393021,6 +397629,14 @@ func NewGDExtensionClassFromPathFollow3DOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PathFollow3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPathFollow3DWithGodotOwnerObject(owner *GodotObject) PathFollow3D {
@@ -393826,6 +398442,14 @@ func NewGDExtensionClassFromPerformanceOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PerformanceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPerformanceWithGodotOwnerObject(owner *GodotObject) Performance {
 	inst := &PerformanceImpl{}
 	inst.Owner = owner
@@ -394194,6 +398818,14 @@ func NewGDExtensionClassFromPhysicalBone2DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicalBone2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicalBone2DWithGodotOwnerObject(owner *GodotObject) PhysicalBone2D {
@@ -394706,6 +399338,14 @@ func NewGDExtensionClassFromPhysicalBone3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicalBone3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicalBone3DWithGodotOwnerObject(owner *GodotObject) PhysicalBone3D {
@@ -396236,6 +400876,14 @@ func NewGDExtensionClassFromPhysicalBoneSimulator3DOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicalBoneSimulator3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicalBoneSimulator3DWithGodotOwnerObject(owner *GodotObject) PhysicalBoneSimulator3D {
 	inst := &PhysicalBoneSimulator3DImpl{}
 	inst.Owner = owner
@@ -396461,6 +401109,14 @@ func NewGDExtensionClassFromPhysicalSkyMaterialOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicalSkyMaterialImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicalSkyMaterialWithGodotOwnerObject(owner *GodotObject) RefPhysicalSkyMaterial {
@@ -397384,6 +402040,14 @@ func NewGDExtensionClassFromPhysicsBody2DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsBody2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsBody2DWithGodotOwnerObject(owner *GodotObject) PhysicsBody2D {
 	inst := &PhysicsBody2DImpl{}
 	inst.Owner = owner
@@ -397689,6 +402353,14 @@ func NewGDExtensionClassFromPhysicsBody3DOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsBody3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsBody3DWithGodotOwnerObject(owner *GodotObject) PhysicsBody3D {
@@ -398090,6 +402762,14 @@ func NewGDExtensionClassFromPhysicsDirectBodyState2DOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectBodyState2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsDirectBodyState2DWithGodotOwnerObject(owner *GodotObject) PhysicsDirectBodyState2D {
@@ -400110,6 +404790,14 @@ func NewGDExtensionClassFromPhysicsDirectBodyState2DExtensionOwner(owner *GodotO
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectBodyState2DExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsDirectBodyState2DExtensionWithGodotOwnerObject(owner *GodotObject) PhysicsDirectBodyState2DExtension {
 	inst := &PhysicsDirectBodyState2DExtensionImpl{}
 	inst.Owner = owner
@@ -400135,6 +404823,14 @@ func NewGDExtensionClassFromPhysicsDirectBodyState3DOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectBodyState3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsDirectBodyState3DWithGodotOwnerObject(owner *GodotObject) PhysicsDirectBodyState3D {
@@ -402235,6 +406931,14 @@ func NewGDExtensionClassFromPhysicsDirectBodyState3DExtensionOwner(owner *GodotO
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectBodyState3DExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsDirectBodyState3DExtensionWithGodotOwnerObject(owner *GodotObject) PhysicsDirectBodyState3DExtension {
 	inst := &PhysicsDirectBodyState3DExtensionImpl{}
 	inst.Owner = owner
@@ -402260,6 +406964,14 @@ func NewGDExtensionClassFromPhysicsDirectSpaceState2DOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectSpaceState2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsDirectSpaceState2DWithGodotOwnerObject(owner *GodotObject) PhysicsDirectSpaceState2D {
@@ -402580,6 +407292,14 @@ func NewGDExtensionClassFromPhysicsDirectSpaceState2DExtensionOwner(owner *Godot
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectSpaceState2DExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsDirectSpaceState2DExtensionWithGodotOwnerObject(owner *GodotObject) PhysicsDirectSpaceState2DExtension {
 	inst := &PhysicsDirectSpaceState2DExtensionImpl{}
 	inst.Owner = owner
@@ -402649,6 +407369,14 @@ func NewGDExtensionClassFromPhysicsDirectSpaceState3DOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectSpaceState3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsDirectSpaceState3DWithGodotOwnerObject(owner *GodotObject) PhysicsDirectSpaceState3D {
@@ -402969,6 +407697,14 @@ func NewGDExtensionClassFromPhysicsDirectSpaceState3DExtensionOwner(owner *Godot
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsDirectSpaceState3DExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsDirectSpaceState3DExtensionWithGodotOwnerObject(owner *GodotObject) PhysicsDirectSpaceState3DExtension {
 	inst := &PhysicsDirectSpaceState3DExtensionImpl{}
 	inst.Owner = owner
@@ -403038,6 +407774,14 @@ func NewGDExtensionClassFromPhysicsMaterialOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsMaterialImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsMaterialWithGodotOwnerObject(owner *GodotObject) RefPhysicsMaterial {
@@ -403389,6 +408133,14 @@ func NewGDExtensionClassFromPhysicsPointQueryParameters2DOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsPointQueryParameters2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsPointQueryParameters2DWithGodotOwnerObject(owner *GodotObject) RefPhysicsPointQueryParameters2D {
@@ -403904,6 +408656,14 @@ func NewGDExtensionClassFromPhysicsPointQueryParameters3DOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsPointQueryParameters3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsPointQueryParameters3DWithGodotOwnerObject(owner *GodotObject) RefPhysicsPointQueryParameters3D {
 	inst := &PhysicsPointQueryParameters3DImpl{}
 	inst.Owner = owner
@@ -404334,6 +409094,14 @@ func NewGDExtensionClassFromPhysicsRayQueryParameters2DOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsRayQueryParameters2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsRayQueryParameters2DWithGodotOwnerObject(owner *GodotObject) RefPhysicsRayQueryParameters2D {
@@ -404981,6 +409749,14 @@ func NewGDExtensionClassFromPhysicsRayQueryParameters3DOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsRayQueryParameters3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsRayQueryParameters3DWithGodotOwnerObject(owner *GodotObject) RefPhysicsRayQueryParameters3D {
@@ -405709,6 +410485,14 @@ func NewGDExtensionClassFromPhysicsServer2DOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsServer2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsServer2DWithGodotOwnerObject(owner *GodotObject) PhysicsServer2D {
@@ -411058,6 +415842,14 @@ func NewGDExtensionClassFromPhysicsServer2DExtensionOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsServer2DExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsServer2DExtensionWithGodotOwnerObject(owner *GodotObject) PhysicsServer2DExtension {
 	inst := &PhysicsServer2DExtensionImpl{}
 	inst.Owner = owner
@@ -411173,6 +415965,14 @@ func NewGDExtensionClassFromPhysicsServer2DManagerOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsServer2DManagerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsServer2DManagerWithGodotOwnerObject(owner *GodotObject) PhysicsServer2DManager {
 	inst := &PhysicsServer2DManagerImpl{}
 	inst.Owner = owner
@@ -411286,6 +416086,14 @@ func NewGDExtensionClassFromPhysicsServer3DOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsServer3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsServer3DWithGodotOwnerObject(owner *GodotObject) PhysicsServer3D {
@@ -419156,6 +423964,14 @@ func NewGDExtensionClassFromPhysicsServer3DExtensionOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsServer3DExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsServer3DExtensionWithGodotOwnerObject(owner *GodotObject) PhysicsServer3DExtension {
 	inst := &PhysicsServer3DExtensionImpl{}
 	inst.Owner = owner
@@ -419271,6 +424087,14 @@ func NewGDExtensionClassFromPhysicsServer3DManagerOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsServer3DManagerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsServer3DManagerWithGodotOwnerObject(owner *GodotObject) PhysicsServer3DManager {
 	inst := &PhysicsServer3DManagerImpl{}
 	inst.Owner = owner
@@ -419384,6 +424208,14 @@ func NewGDExtensionClassFromPhysicsServer3DRenderingServerHandlerOwner(owner *Go
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsServer3DRenderingServerHandlerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsServer3DRenderingServerHandlerWithGodotOwnerObject(owner *GodotObject) PhysicsServer3DRenderingServerHandler {
@@ -419540,6 +424372,14 @@ func NewGDExtensionClassFromPhysicsShapeQueryParameters2DOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsShapeQueryParameters2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsShapeQueryParameters2DWithGodotOwnerObject(owner *GodotObject) RefPhysicsShapeQueryParameters2D {
@@ -420301,6 +425141,14 @@ func NewGDExtensionClassFromPhysicsShapeQueryParameters3DOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsShapeQueryParameters3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsShapeQueryParameters3DWithGodotOwnerObject(owner *GodotObject) RefPhysicsShapeQueryParameters3D {
 	inst := &PhysicsShapeQueryParameters3DImpl{}
 	inst.Owner = owner
@@ -421060,6 +425908,14 @@ func NewGDExtensionClassFromPhysicsTestMotionParameters2DOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsTestMotionParameters2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsTestMotionParameters2DWithGodotOwnerObject(owner *GodotObject) RefPhysicsTestMotionParameters2D {
 	inst := &PhysicsTestMotionParameters2DImpl{}
 	inst.Owner = owner
@@ -421652,6 +426508,14 @@ func NewGDExtensionClassFromPhysicsTestMotionParameters3DOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsTestMotionParameters3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsTestMotionParameters3DWithGodotOwnerObject(owner *GodotObject) RefPhysicsTestMotionParameters3D {
@@ -422329,6 +427193,14 @@ func NewGDExtensionClassFromPhysicsTestMotionResult2DOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsTestMotionResult2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPhysicsTestMotionResult2DWithGodotOwnerObject(owner *GodotObject) RefPhysicsTestMotionResult2D {
 	inst := &PhysicsTestMotionResult2DImpl{}
 	inst.Owner = owner
@@ -422874,6 +427746,14 @@ func NewGDExtensionClassFromPhysicsTestMotionResult3DOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PhysicsTestMotionResult3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPhysicsTestMotionResult3DWithGodotOwnerObject(owner *GodotObject) RefPhysicsTestMotionResult3D {
@@ -423499,6 +428379,14 @@ func NewGDExtensionClassFromPinJoint2DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PinJoint2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPinJoint2DWithGodotOwnerObject(owner *GodotObject) PinJoint2D {
 	inst := &PinJoint2DImpl{}
 	inst.Owner = owner
@@ -424012,6 +428900,14 @@ func NewGDExtensionClassFromPinJoint3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PinJoint3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPinJoint3DWithGodotOwnerObject(owner *GodotObject) PinJoint3D {
 	inst := &PinJoint3DImpl{}
 	inst.Owner = owner
@@ -424127,6 +429023,14 @@ func NewGDExtensionClassFromPlaceholderCubemapOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderCubemapImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPlaceholderCubemapWithGodotOwnerObject(owner *GodotObject) RefPlaceholderCubemap {
 	inst := &PlaceholderCubemapImpl{}
 	inst.Owner = owner
@@ -424143,6 +429047,14 @@ func NewGDExtensionClassFromPlaceholderCubemapArrayOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderCubemapArrayImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPlaceholderCubemapArrayWithGodotOwnerObject(owner *GodotObject) RefPlaceholderCubemapArray {
@@ -424163,6 +429075,14 @@ func NewGDExtensionClassFromPlaceholderMaterialOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderMaterialImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPlaceholderMaterialWithGodotOwnerObject(owner *GodotObject) RefPlaceholderMaterial {
 	inst := &PlaceholderMaterialImpl{}
 	inst.Owner = owner
@@ -424179,6 +429099,14 @@ func NewGDExtensionClassFromPlaceholderMeshOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPlaceholderMeshWithGodotOwnerObject(owner *GodotObject) RefPlaceholderMesh {
@@ -424249,6 +429177,14 @@ func NewGDExtensionClassFromPlaceholderTexture2DOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderTexture2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPlaceholderTexture2DWithGodotOwnerObject(owner *GodotObject) RefPlaceholderTexture2D {
 	inst := &PlaceholderTexture2DImpl{}
 	inst.Owner = owner
@@ -424317,6 +429253,14 @@ func NewGDExtensionClassFromPlaceholderTexture2DArrayOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderTexture2DArrayImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPlaceholderTexture2DArrayWithGodotOwnerObject(owner *GodotObject) RefPlaceholderTexture2DArray {
 	inst := &PlaceholderTexture2DArrayImpl{}
 	inst.Owner = owner
@@ -424333,6 +429277,14 @@ func NewGDExtensionClassFromPlaceholderTexture3DOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderTexture3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPlaceholderTexture3DWithGodotOwnerObject(owner *GodotObject) RefPlaceholderTexture3D {
@@ -424441,6 +429393,14 @@ func NewGDExtensionClassFromPlaceholderTextureLayeredOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaceholderTextureLayeredImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPlaceholderTextureLayeredWithGodotOwnerObject(owner *GodotObject) RefPlaceholderTextureLayered {
@@ -424590,6 +429550,14 @@ func NewGDExtensionClassFromPlaneMeshOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PlaneMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPlaneMeshWithGodotOwnerObject(owner *GodotObject) RefPlaneMesh {
@@ -425024,6 +429992,14 @@ func NewGDExtensionClassFromPointLight2DOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PointLight2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPointLight2DWithGodotOwnerObject(owner *GodotObject) PointLight2D {
 	inst := &PointLight2DImpl{}
 	inst.Owner = owner
@@ -425297,6 +430273,14 @@ func NewGDExtensionClassFromPointMeshOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PointMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPointMeshWithGodotOwnerObject(owner *GodotObject) RefPointMesh {
 	inst := &PointMeshImpl{}
 	inst.Owner = owner
@@ -425313,6 +430297,14 @@ func NewGDExtensionClassFromPolygon2DOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Polygon2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPolygon2DWithGodotOwnerObject(owner *GodotObject) Polygon2D {
@@ -426898,6 +431890,14 @@ func NewGDExtensionClassFromPolygonOccluder3DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PolygonOccluder3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPolygonOccluder3DWithGodotOwnerObject(owner *GodotObject) RefPolygonOccluder3D {
 	inst := &PolygonOccluder3DImpl{}
 	inst.Owner = owner
@@ -427004,6 +432004,14 @@ func NewGDExtensionClassFromPolygonPathFinderOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PolygonPathFinderImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPolygonPathFinderWithGodotOwnerObject(owner *GodotObject) RefPolygonPathFinder {
@@ -427387,6 +432395,14 @@ func NewGDExtensionClassFromPopupOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PopupImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPopupWithGodotOwnerObject(owner *GodotObject) Popup {
 	inst := &PopupImpl{}
 	inst.Owner = owner
@@ -427403,6 +432419,14 @@ func NewGDExtensionClassFromPopupMenuOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PopupMenuImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPopupMenuWithGodotOwnerObject(owner *GodotObject) PopupMenu {
@@ -431924,6 +436948,14 @@ func NewGDExtensionClassFromPopupPanelOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PopupPanelImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPopupPanelWithGodotOwnerObject(owner *GodotObject) PopupPanel {
 	inst := &PopupPanelImpl{}
 	inst.Owner = owner
@@ -431940,6 +436972,14 @@ func NewGDExtensionClassFromPortableCompressedTexture2DOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PortableCompressedTexture2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPortableCompressedTexture2DWithGodotOwnerObject(owner *GodotObject) RefPortableCompressedTexture2D {
@@ -432347,6 +437387,14 @@ func NewGDExtensionClassFromPrimitiveMeshOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PrimitiveMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewPrimitiveMeshWithGodotOwnerObject(owner *GodotObject) RefPrimitiveMesh {
@@ -432861,6 +437909,14 @@ func NewGDExtensionClassFromPrismMeshOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PrismMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPrismMeshWithGodotOwnerObject(owner *GodotObject) RefPrismMesh {
 	inst := &PrismMeshImpl{}
 	inst.Owner = owner
@@ -433291,6 +438347,14 @@ func NewGDExtensionClassFromProceduralSkyMaterialOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ProceduralSkyMaterialImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewProceduralSkyMaterialWithGodotOwnerObject(owner *GodotObject) RefProceduralSkyMaterial {
@@ -434457,6 +439521,14 @@ func NewGDExtensionClassFromProgressBarOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ProgressBarImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewProgressBarWithGodotOwnerObject(owner *GodotObject) ProgressBar {
 	inst := &ProgressBarImpl{}
 	inst.Owner = owner
@@ -434806,6 +439878,14 @@ func NewGDExtensionClassFromProjectSettingsOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ProjectSettingsImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewProjectSettingsWithGodotOwnerObject(owner *GodotObject) ProjectSettings {
@@ -435753,6 +440833,14 @@ func NewGDExtensionClassFromPropertyTweenerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *PropertyTweenerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewPropertyTweenerWithGodotOwnerObject(owner *GodotObject) RefPropertyTweener {
 	inst := &PropertyTweenerImpl{}
 	inst.Owner = owner
@@ -436080,6 +441168,14 @@ func NewGDExtensionClassFromQuadMeshOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *QuadMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewQuadMeshWithGodotOwnerObject(owner *GodotObject) RefQuadMesh {
 	inst := &QuadMeshImpl{}
 	inst.Owner = owner
@@ -436096,6 +441192,14 @@ func NewGDExtensionClassFromQuadOccluder3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *QuadOccluder3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewQuadOccluder3DWithGodotOwnerObject(owner *GodotObject) RefQuadOccluder3D {
@@ -436204,6 +441308,14 @@ func NewGDExtensionClassFromRDAccelerationStructureGeometryOwner(owner *GodotObj
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDAccelerationStructureGeometryImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDAccelerationStructureGeometryWithGodotOwnerObject(owner *GodotObject) RefRDAccelerationStructureGeometry {
@@ -436962,6 +442074,14 @@ func NewGDExtensionClassFromRDAccelerationStructureInstanceOwner(owner *GodotObj
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDAccelerationStructureInstanceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDAccelerationStructureInstanceWithGodotOwnerObject(owner *GodotObject) RefRDAccelerationStructureInstance {
 	inst := &RDAccelerationStructureInstanceImpl{}
 	inst.Owner = owner
@@ -437475,6 +442595,14 @@ func NewGDExtensionClassFromRDAttachmentFormatOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDAttachmentFormatImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDAttachmentFormatWithGodotOwnerObject(owner *GodotObject) RefRDAttachmentFormat {
 	inst := &RDAttachmentFormatImpl{}
 	inst.Owner = owner
@@ -437743,6 +442871,14 @@ func NewGDExtensionClassFromRDFramebufferPassOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDFramebufferPassImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDFramebufferPassWithGodotOwnerObject(owner *GodotObject) RefRDFramebufferPass {
@@ -438177,6 +443313,14 @@ func NewGDExtensionClassFromRDHitGroupOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDHitGroupImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDHitGroupWithGodotOwnerObject(owner *GodotObject) RefRDHitGroup {
 	inst := &RDHitGroupImpl{}
 	inst.Owner = owner
@@ -438454,6 +443598,14 @@ func NewGDExtensionClassFromRDPipelineColorBlendStateOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDPipelineColorBlendStateImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDPipelineColorBlendStateWithGodotOwnerObject(owner *GodotObject) RefRDPipelineColorBlendState {
@@ -438808,6 +443960,14 @@ func NewGDExtensionClassFromRDPipelineColorBlendStateAttachmentOwner(owner *Godo
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDPipelineColorBlendStateAttachmentImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDPipelineColorBlendStateAttachmentWithGodotOwnerObject(owner *GodotObject) RefRDPipelineColorBlendStateAttachment {
@@ -439763,6 +444923,14 @@ func NewGDExtensionClassFromRDPipelineDepthStencilStateOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDPipelineDepthStencilStateImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDPipelineDepthStencilStateWithGodotOwnerObject(owner *GodotObject) RefRDPipelineDepthStencilState {
@@ -441493,6 +446661,14 @@ func NewGDExtensionClassFromRDPipelineMultisampleStateOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDPipelineMultisampleStateImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDPipelineMultisampleStateWithGodotOwnerObject(owner *GodotObject) RefRDPipelineMultisampleState {
 	inst := &RDPipelineMultisampleStateImpl{}
 	inst.Owner = owner
@@ -442004,6 +447180,14 @@ func NewGDExtensionClassFromRDPipelineRasterizationStateOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDPipelineRasterizationStateImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDPipelineRasterizationStateWithGodotOwnerObject(owner *GodotObject) RefRDPipelineRasterizationState {
@@ -442924,6 +448108,14 @@ func NewGDExtensionClassFromRDPipelineShaderOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDPipelineShaderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDPipelineShaderWithGodotOwnerObject(owner *GodotObject) RefRDPipelineShader {
 	inst := &RDPipelineShaderImpl{}
 	inst.Owner = owner
@@ -443116,6 +448308,14 @@ func NewGDExtensionClassFromRDPipelineSpecializationConstantOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDPipelineSpecializationConstantImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDPipelineSpecializationConstantWithGodotOwnerObject(owner *GodotObject) RefRDPipelineSpecializationConstant {
 	inst := &RDPipelineSpecializationConstantImpl{}
 	inst.Owner = owner
@@ -443303,6 +448503,14 @@ func NewGDExtensionClassFromRDSamplerStateOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDSamplerStateImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDSamplerStateWithGodotOwnerObject(owner *GodotObject) RefRDSamplerState {
@@ -444547,6 +449755,14 @@ func NewGDExtensionClassFromRDShaderFileOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDShaderFileImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDShaderFileWithGodotOwnerObject(owner *GodotObject) RefRDShaderFile {
 	inst := &RDShaderFileImpl{}
 	inst.Owner = owner
@@ -444786,6 +450002,14 @@ func NewGDExtensionClassFromRDShaderSPIRVOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDShaderSPIRVImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDShaderSPIRVWithGodotOwnerObject(owner *GodotObject) RefRDShaderSPIRV {
 	inst := &RDShaderSPIRVImpl{}
 	inst.Owner = owner
@@ -444989,6 +450213,14 @@ func NewGDExtensionClassFromRDShaderSourceOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDShaderSourceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDShaderSourceWithGodotOwnerObject(owner *GodotObject) RefRDShaderSource {
 	inst := &RDShaderSourceImpl{}
 	inst.Owner = owner
@@ -445183,6 +450415,14 @@ func NewGDExtensionClassFromRDTextureFormatOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDTextureFormatImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDTextureFormatWithGodotOwnerObject(owner *GodotObject) RefRDTextureFormat {
@@ -446185,6 +451425,14 @@ func NewGDExtensionClassFromRDTextureViewOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDTextureViewImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDTextureViewWithGodotOwnerObject(owner *GodotObject) RefRDTextureView {
 	inst := &RDTextureViewImpl{}
 	inst.Owner = owner
@@ -446617,6 +451865,14 @@ func NewGDExtensionClassFromRDUniformOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDUniformImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRDUniformWithGodotOwnerObject(owner *GodotObject) RefRDUniform {
 	inst := &RDUniformImpl{}
 	inst.Owner = owner
@@ -446922,6 +452178,14 @@ func NewGDExtensionClassFromRDVertexAttributeOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RDVertexAttributeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRDVertexAttributeWithGodotOwnerObject(owner *GodotObject) RefRDVertexAttribute {
@@ -447437,6 +452701,14 @@ func NewGDExtensionClassFromRandomNumberGeneratorOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RandomNumberGeneratorImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRandomNumberGeneratorWithGodotOwnerObject(owner *GodotObject) RefRandomNumberGenerator {
 	inst := &RandomNumberGeneratorImpl{}
 	inst.Owner = owner
@@ -447926,6 +453198,14 @@ func NewGDExtensionClassFromRangeOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RangeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRangeWithGodotOwnerObject(owner *GodotObject) Range {
@@ -448885,6 +454165,14 @@ func NewGDExtensionClassFromRayCast2DOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RayCast2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRayCast2DWithGodotOwnerObject(owner *GodotObject) RayCast2D {
@@ -450051,6 +455339,14 @@ func NewGDExtensionClassFromRayCast3DOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RayCast3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRayCast3DWithGodotOwnerObject(owner *GodotObject) RayCast3D {
@@ -451502,6 +456798,14 @@ func NewGDExtensionClassFromRectangleShape2DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RectangleShape2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRectangleShape2DWithGodotOwnerObject(owner *GodotObject) RefRectangleShape2D {
 	inst := &RectangleShape2DImpl{}
 	inst.Owner = owner
@@ -451608,6 +456912,14 @@ func NewGDExtensionClassFromRefCountedOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RefCountedImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRefCountedWithGodotOwnerObject(owner *GodotObject) RefRefCounted {
@@ -451795,6 +457107,14 @@ func NewGDExtensionClassFromReferenceRectOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ReferenceRectImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewReferenceRectWithGodotOwnerObject(owner *GodotObject) ReferenceRect {
@@ -452065,6 +457385,14 @@ func NewGDExtensionClassFromReflectionProbeOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ReflectionProbeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewReflectionProbeWithGodotOwnerObject(owner *GodotObject) ReflectionProbe {
@@ -453309,6 +458637,14 @@ func NewGDExtensionClassFromRegExOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RegExImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRegExWithGodotOwnerObject(owner *GodotObject) RefRegEx {
 	inst := &RegExImpl{}
 	inst.Owner = owner
@@ -453783,6 +459119,14 @@ func NewGDExtensionClassFromRegExMatchOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RegExMatchImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRegExMatchWithGodotOwnerObject(owner *GodotObject) RefRegExMatch {
 	inst := &RegExMatchImpl{}
 	inst.Owner = owner
@@ -454100,6 +459444,14 @@ func NewGDExtensionClassFromRemoteTransform2DOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RemoteTransform2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRemoteTransform2DWithGodotOwnerObject(owner *GodotObject) RemoteTransform2D {
@@ -454571,6 +459923,14 @@ func NewGDExtensionClassFromRemoteTransform3DOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RemoteTransform3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRemoteTransform3DWithGodotOwnerObject(owner *GodotObject) RemoteTransform3D {
 	inst := &RemoteTransform3DImpl{}
 	inst.Owner = owner
@@ -455040,6 +460400,14 @@ func NewGDExtensionClassFromRenderDataOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderDataImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRenderDataWithGodotOwnerObject(owner *GodotObject) RenderData {
 	inst := &RenderDataImpl{}
 	inst.Owner = owner
@@ -455227,6 +460595,14 @@ func NewGDExtensionClassFromRenderDataExtensionOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderDataExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRenderDataExtensionWithGodotOwnerObject(owner *GodotObject) RenderDataExtension {
 	inst := &RenderDataExtensionImpl{}
 	inst.Owner = owner
@@ -455254,6 +460630,14 @@ func NewGDExtensionClassFromRenderDataRDOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderDataRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRenderDataRDWithGodotOwnerObject(owner *GodotObject) RenderDataRD {
 	inst := &RenderDataRDImpl{}
 	inst.Owner = owner
@@ -455270,6 +460654,14 @@ func NewGDExtensionClassFromRenderSceneBuffersOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderSceneBuffersImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRenderSceneBuffersWithGodotOwnerObject(owner *GodotObject) RefRenderSceneBuffers {
@@ -455341,6 +460733,14 @@ func NewGDExtensionClassFromRenderSceneBuffersConfigurationOwner(owner *GodotObj
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderSceneBuffersConfigurationImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRenderSceneBuffersConfigurationWithGodotOwnerObject(owner *GodotObject) RefRenderSceneBuffersConfiguration {
@@ -456180,6 +461580,14 @@ func NewGDExtensionClassFromRenderSceneBuffersExtensionOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderSceneBuffersExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRenderSceneBuffersExtensionWithGodotOwnerObject(owner *GodotObject) RefRenderSceneBuffersExtension {
 	inst := &RenderSceneBuffersExtensionImpl{}
 	inst.Owner = owner
@@ -456205,6 +461613,14 @@ func NewGDExtensionClassFromRenderSceneBuffersRDOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderSceneBuffersRDImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRenderSceneBuffersRDWithGodotOwnerObject(owner *GodotObject) RefRenderSceneBuffersRD {
@@ -457492,6 +462908,14 @@ func NewGDExtensionClassFromRenderSceneDataOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderSceneDataImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRenderSceneDataWithGodotOwnerObject(owner *GodotObject) RenderSceneData {
 	inst := &RenderSceneDataImpl{}
 	inst.Owner = owner
@@ -457767,6 +463191,14 @@ func NewGDExtensionClassFromRenderSceneDataExtensionOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderSceneDataExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRenderSceneDataExtensionWithGodotOwnerObject(owner *GodotObject) RenderSceneDataExtension {
 	inst := &RenderSceneDataExtensionImpl{}
 	inst.Owner = owner
@@ -457794,6 +463226,14 @@ func NewGDExtensionClassFromRenderSceneDataRDOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderSceneDataRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRenderSceneDataRDWithGodotOwnerObject(owner *GodotObject) RenderSceneDataRD {
 	inst := &RenderSceneDataRDImpl{}
 	inst.Owner = owner
@@ -457810,6 +463250,14 @@ func NewGDExtensionClassFromRenderingDeviceOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderingDeviceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRenderingDeviceWithGodotOwnerObject(owner *GodotObject) RenderingDevice {
@@ -464175,6 +469623,14 @@ func NewGDExtensionClassFromRenderingServerOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RenderingServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRenderingServerWithGodotOwnerObject(owner *GodotObject) RenderingServer {
@@ -488410,6 +493866,14 @@ func NewGDExtensionClassFromResourceOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceWithGodotOwnerObject(owner *GodotObject) RefResource {
 	inst := &ResourceImpl{}
 	inst.Owner = owner
@@ -489337,6 +494801,14 @@ func NewGDExtensionClassFromResourceFormatLoaderOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceFormatLoaderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceFormatLoaderWithGodotOwnerObject(owner *GodotObject) RefResourceFormatLoader {
 	inst := &ResourceFormatLoaderImpl{}
 	inst.Owner = owner
@@ -489362,6 +494834,14 @@ func NewGDExtensionClassFromResourceFormatSaverOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceFormatSaverImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceFormatSaverWithGodotOwnerObject(owner *GodotObject) RefResourceFormatSaver {
@@ -489391,6 +494871,14 @@ func NewGDExtensionClassFromResourceImporterOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterWithGodotOwnerObject(owner *GodotObject) RefResourceImporter {
 	inst := &ResourceImporterImpl{}
 	inst.Owner = owner
@@ -489418,6 +494906,14 @@ func NewGDExtensionClassFromResourceImporterBMFontOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterBMFontImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterBMFontWithGodotOwnerObject(owner *GodotObject) RefResourceImporterBMFont {
 	inst := &ResourceImporterBMFontImpl{}
 	inst.Owner = owner
@@ -489434,6 +494930,14 @@ func NewGDExtensionClassFromResourceImporterBitMapOwner(owner *GodotObject) GDEx
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterBitMapImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceImporterBitMapWithGodotOwnerObject(owner *GodotObject) RefResourceImporterBitMap {
@@ -489454,6 +494958,14 @@ func NewGDExtensionClassFromResourceImporterCSVTranslationOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterCSVTranslationImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterCSVTranslationWithGodotOwnerObject(owner *GodotObject) RefResourceImporterCSVTranslation {
 	inst := &ResourceImporterCSVTranslationImpl{}
 	inst.Owner = owner
@@ -489470,6 +494982,14 @@ func NewGDExtensionClassFromResourceImporterDynamicFontOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterDynamicFontImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceImporterDynamicFontWithGodotOwnerObject(owner *GodotObject) RefResourceImporterDynamicFont {
@@ -489490,6 +495010,14 @@ func NewGDExtensionClassFromResourceImporterImageOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterImageImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterImageWithGodotOwnerObject(owner *GodotObject) RefResourceImporterImage {
 	inst := &ResourceImporterImageImpl{}
 	inst.Owner = owner
@@ -489506,6 +495034,14 @@ func NewGDExtensionClassFromResourceImporterImageFontOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterImageFontImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceImporterImageFontWithGodotOwnerObject(owner *GodotObject) RefResourceImporterImageFont {
@@ -489526,6 +495062,14 @@ func NewGDExtensionClassFromResourceImporterLayeredTextureOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterLayeredTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterLayeredTextureWithGodotOwnerObject(owner *GodotObject) RefResourceImporterLayeredTexture {
 	inst := &ResourceImporterLayeredTextureImpl{}
 	inst.Owner = owner
@@ -489542,6 +495086,14 @@ func NewGDExtensionClassFromResourceImporterMP3Owner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterMP3Impl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceImporterMP3WithGodotOwnerObject(owner *GodotObject) RefResourceImporterMP3 {
@@ -489562,6 +495114,14 @@ func NewGDExtensionClassFromResourceImporterOBJOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterOBJImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterOBJWithGodotOwnerObject(owner *GodotObject) RefResourceImporterOBJ {
 	inst := &ResourceImporterOBJImpl{}
 	inst.Owner = owner
@@ -489578,6 +495138,14 @@ func NewGDExtensionClassFromResourceImporterOggVorbisOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterOggVorbisImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceImporterOggVorbisWithGodotOwnerObject(owner *GodotObject) RefResourceImporterOggVorbis {
@@ -489695,6 +495263,14 @@ func NewGDExtensionClassFromResourceImporterSVGOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterSVGImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterSVGWithGodotOwnerObject(owner *GodotObject) RefResourceImporterSVG {
 	inst := &ResourceImporterSVGImpl{}
 	inst.Owner = owner
@@ -489711,6 +495287,14 @@ func NewGDExtensionClassFromResourceImporterSceneOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterSceneImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceImporterSceneWithGodotOwnerObject(owner *GodotObject) RefResourceImporterScene {
@@ -489731,6 +495315,14 @@ func NewGDExtensionClassFromResourceImporterShaderFileOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterShaderFileImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterShaderFileWithGodotOwnerObject(owner *GodotObject) RefResourceImporterShaderFile {
 	inst := &ResourceImporterShaderFileImpl{}
 	inst.Owner = owner
@@ -489747,6 +495339,14 @@ func NewGDExtensionClassFromResourceImporterTextureOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceImporterTextureWithGodotOwnerObject(owner *GodotObject) RefResourceImporterTexture {
@@ -489767,6 +495367,14 @@ func NewGDExtensionClassFromResourceImporterTextureAtlasOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterTextureAtlasImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterTextureAtlasWithGodotOwnerObject(owner *GodotObject) RefResourceImporterTextureAtlas {
 	inst := &ResourceImporterTextureAtlasImpl{}
 	inst.Owner = owner
@@ -489785,6 +495393,14 @@ func NewGDExtensionClassFromResourceImporterWAVOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceImporterWAVImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourceImporterWAVWithGodotOwnerObject(owner *GodotObject) RefResourceImporterWAV {
 	inst := &ResourceImporterWAVImpl{}
 	inst.Owner = owner
@@ -489801,6 +495417,14 @@ func NewGDExtensionClassFromResourceLoaderOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceLoaderImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceLoaderWithGodotOwnerObject(owner *GodotObject) ResourceLoader {
@@ -490467,6 +496091,14 @@ func NewGDExtensionClassFromResourcePreloaderOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourcePreloaderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewResourcePreloaderWithGodotOwnerObject(owner *GodotObject) ResourcePreloader {
 	inst := &ResourcePreloaderImpl{}
 	inst.Owner = owner
@@ -490752,6 +496384,14 @@ func NewGDExtensionClassFromResourceSaverOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceSaverImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceSaverWithGodotOwnerObject(owner *GodotObject) ResourceSaver {
@@ -491064,6 +496704,14 @@ func NewGDExtensionClassFromResourceUIDOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ResourceUIDImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewResourceUIDWithGodotOwnerObject(owner *GodotObject) ResourceUID {
@@ -491614,6 +497262,14 @@ func NewGDExtensionClassFromRetargetModifier3DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RetargetModifier3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRetargetModifier3DWithGodotOwnerObject(owner *GodotObject) RetargetModifier3D {
 	inst := &RetargetModifier3DImpl{}
 	inst.Owner = owner
@@ -492128,6 +497784,14 @@ func NewGDExtensionClassFromRibbonTrailMeshOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RibbonTrailMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRibbonTrailMeshWithGodotOwnerObject(owner *GodotObject) RefRibbonTrailMesh {
@@ -492646,6 +498310,14 @@ func NewGDExtensionClassFromRichTextEffectOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RichTextEffectImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRichTextEffectWithGodotOwnerObject(owner *GodotObject) RefRichTextEffect {
 	inst := &RichTextEffectImpl{}
 	inst.Owner = owner
@@ -492671,6 +498343,14 @@ func NewGDExtensionClassFromRichTextLabelOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RichTextLabelImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRichTextLabelWithGodotOwnerObject(owner *GodotObject) RichTextLabel {
@@ -498456,6 +504136,14 @@ func NewGDExtensionClassFromRigidBody2DOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RigidBody2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRigidBody2DWithGodotOwnerObject(owner *GodotObject) RigidBody2D {
 	inst := &RigidBody2DImpl{}
 	inst.Owner = owner
@@ -500846,6 +506534,14 @@ func NewGDExtensionClassFromRigidBody3DOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RigidBody3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewRigidBody3DWithGodotOwnerObject(owner *GodotObject) RigidBody3D {
@@ -503280,6 +508976,14 @@ func NewGDExtensionClassFromRootMotionViewOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *RootMotionViewImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewRootMotionViewWithGodotOwnerObject(owner *GodotObject) RootMotionView {
 	inst := &RootMotionViewImpl{}
 	inst.Owner = owner
@@ -503710,6 +509414,14 @@ func NewGDExtensionClassFromSceneMultiplayerOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SceneMultiplayerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSceneMultiplayerWithGodotOwnerObject(owner *GodotObject) RefSceneMultiplayer {
@@ -504649,6 +510361,14 @@ func NewGDExtensionClassFromSceneReplicationConfigOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SceneReplicationConfigImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSceneReplicationConfigWithGodotOwnerObject(owner *GodotObject) RefSceneReplicationConfig {
 	inst := &SceneReplicationConfigImpl{}
 	inst.Owner = owner
@@ -505239,6 +510959,14 @@ func NewGDExtensionClassFromSceneStateOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SceneStateImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSceneStateWithGodotOwnerObject(owner *GodotObject) RefSceneState {
@@ -506271,6 +511999,14 @@ func NewGDExtensionClassFromSceneTreeOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SceneTreeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSceneTreeWithGodotOwnerObject(owner *GodotObject) SceneTree {
@@ -508321,6 +514057,14 @@ func NewGDExtensionClassFromSceneTreeTimerOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SceneTreeTimerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSceneTreeTimerWithGodotOwnerObject(owner *GodotObject) RefSceneTreeTimer {
 	inst := &SceneTreeTimerImpl{}
 	inst.Owner = owner
@@ -508427,6 +514171,14 @@ func NewGDExtensionClassFromScriptOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewScriptWithGodotOwnerObject(owner *GodotObject) RefScript {
@@ -509240,6 +514992,14 @@ func NewGDExtensionClassFromScriptBacktraceOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptBacktraceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewScriptBacktraceWithGodotOwnerObject(owner *GodotObject) RefScriptBacktrace {
 	inst := &ScriptBacktraceImpl{}
 	inst.Owner = owner
@@ -509970,6 +515730,14 @@ func NewGDExtensionClassFromScriptCreateDialogOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptCreateDialogImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewScriptCreateDialogWithGodotOwnerObject(owner *GodotObject) ScriptCreateDialog {
 	inst := &ScriptCreateDialogImpl{}
 	inst.Owner = owner
@@ -510045,6 +515813,14 @@ func NewGDExtensionClassFromScriptEditorOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptEditorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewScriptEditorWithGodotOwnerObject(owner *GodotObject) ScriptEditor {
@@ -510734,6 +516510,14 @@ func NewGDExtensionClassFromScriptEditorBaseOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptEditorBaseImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewScriptEditorBaseWithGodotOwnerObject(owner *GodotObject) ScriptEditorBase {
 	inst := &ScriptEditorBaseImpl{}
 	inst.Owner = owner
@@ -510845,6 +516629,14 @@ func NewGDExtensionClassFromScriptExtensionOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewScriptExtensionWithGodotOwnerObject(owner *GodotObject) RefScriptExtension {
 	inst := &ScriptExtensionImpl{}
 	inst.Owner = owner
@@ -510872,6 +516664,14 @@ func NewGDExtensionClassFromScriptLanguageOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptLanguageImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewScriptLanguageWithGodotOwnerObject(owner *GodotObject) ScriptLanguage {
 	inst := &ScriptLanguageImpl{}
 	inst.Owner = owner
@@ -510888,6 +516688,14 @@ func NewGDExtensionClassFromScriptLanguageExtensionOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScriptLanguageExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewScriptLanguageExtensionWithGodotOwnerObject(owner *GodotObject) ScriptLanguageExtension {
@@ -510915,6 +516723,14 @@ func NewGDExtensionClassFromScrollBarOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScrollBarImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewScrollBarWithGodotOwnerObject(owner *GodotObject) ScrollBar {
@@ -511023,6 +516839,14 @@ func NewGDExtensionClassFromScrollContainerOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ScrollContainerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewScrollContainerWithGodotOwnerObject(owner *GodotObject) ScrollContainer {
@@ -512148,6 +517972,14 @@ func NewGDExtensionClassFromSegmentShape2DOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SegmentShape2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSegmentShape2DWithGodotOwnerObject(owner *GodotObject) RefSegmentShape2D {
 	inst := &SegmentShape2DImpl{}
 	inst.Owner = owner
@@ -512337,6 +518169,14 @@ func NewGDExtensionClassFromSemaphoreOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SemaphoreImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSemaphoreWithGodotOwnerObject(owner *GodotObject) RefSemaphore {
 	inst := &SemaphoreImpl{}
 	inst.Owner = owner
@@ -512480,6 +518320,14 @@ func NewGDExtensionClassFromSeparationRayShape2DOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SeparationRayShape2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSeparationRayShape2DWithGodotOwnerObject(owner *GodotObject) RefSeparationRayShape2D {
@@ -512671,6 +518519,14 @@ func NewGDExtensionClassFromSeparationRayShape3DOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SeparationRayShape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSeparationRayShape3DWithGodotOwnerObject(owner *GodotObject) RefSeparationRayShape3D {
 	inst := &SeparationRayShape3DImpl{}
 	inst.Owner = owner
@@ -512860,6 +518716,14 @@ func NewGDExtensionClassFromSeparatorOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SeparatorImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSeparatorWithGodotOwnerObject(owner *GodotObject) Separator {
 	inst := &SeparatorImpl{}
 	inst.Owner = owner
@@ -512876,6 +518740,14 @@ func NewGDExtensionClassFromShaderOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShaderImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewShaderWithGodotOwnerObject(owner *GodotObject) RefShader {
@@ -513204,6 +519076,14 @@ func NewGDExtensionClassFromShaderGlobalsOverrideOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShaderGlobalsOverrideImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewShaderGlobalsOverrideWithGodotOwnerObject(owner *GodotObject) ShaderGlobalsOverride {
 	inst := &ShaderGlobalsOverrideImpl{}
 	inst.Owner = owner
@@ -513220,6 +519100,14 @@ func NewGDExtensionClassFromShaderIncludeOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShaderIncludeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewShaderIncludeWithGodotOwnerObject(owner *GodotObject) RefShaderInclude {
@@ -513328,6 +519216,14 @@ func NewGDExtensionClassFromShaderIncludeDBOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShaderIncludeDBImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewShaderIncludeDBWithGodotOwnerObject(owner *GodotObject) ShaderIncludeDB {
@@ -513483,6 +519379,14 @@ func NewGDExtensionClassFromShaderMaterialOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShaderMaterialImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewShaderMaterialWithGodotOwnerObject(owner *GodotObject) RefShaderMaterial {
@@ -513682,6 +519586,14 @@ func NewGDExtensionClassFromShape2DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Shape2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewShape2DWithGodotOwnerObject(owner *GodotObject) RefShape2D {
@@ -514100,6 +520012,14 @@ func NewGDExtensionClassFromShape3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Shape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewShape3DWithGodotOwnerObject(owner *GodotObject) RefShape3D {
 	inst := &Shape3DImpl{}
 	inst.Owner = owner
@@ -514327,6 +520247,14 @@ func NewGDExtensionClassFromShapeCast2DOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShapeCast2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewShapeCast2DWithGodotOwnerObject(owner *GodotObject) ShapeCast2D {
@@ -515838,6 +521766,14 @@ func NewGDExtensionClassFromShapeCast3DOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShapeCast3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewShapeCast3DWithGodotOwnerObject(owner *GodotObject) ShapeCast3D {
@@ -517476,6 +523412,14 @@ func NewGDExtensionClassFromShortcutOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ShortcutImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewShortcutWithGodotOwnerObject(owner *GodotObject) RefShortcut {
 	inst := &ShortcutImpl{}
 	inst.Owner = owner
@@ -517709,6 +523653,14 @@ func NewGDExtensionClassFromSkeleton2DOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Skeleton2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkeleton2DWithGodotOwnerObject(owner *GodotObject) Skeleton2D {
@@ -518082,6 +524034,14 @@ func NewGDExtensionClassFromSkeleton3DOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Skeleton3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkeleton3DWithGodotOwnerObject(owner *GodotObject) Skeleton3D {
@@ -520482,6 +526442,14 @@ func NewGDExtensionClassFromSkeletonIK3DOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonIK3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonIK3DWithGodotOwnerObject(owner *GodotObject) SkeletonIK3D {
 	inst := &SkeletonIK3DImpl{}
 	inst.Owner = owner
@@ -521477,6 +527445,14 @@ func NewGDExtensionClassFromSkeletonModification2DOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonModification2DWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2D {
 	inst := &SkeletonModification2DImpl{}
 	inst.Owner = owner
@@ -521919,6 +527895,14 @@ func NewGDExtensionClassFromSkeletonModification2DCCDIKOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DCCDIKImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkeletonModification2DCCDIKWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2DCCDIK {
@@ -522807,6 +528791,14 @@ func NewGDExtensionClassFromSkeletonModification2DFABRIKOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DFABRIKImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonModification2DFABRIKWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2DFABRIK {
 	inst := &SkeletonModification2DFABRIKImpl{}
 	inst.Owner = owner
@@ -523346,6 +529338,14 @@ func NewGDExtensionClassFromSkeletonModification2DJiggleOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DJiggleImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkeletonModification2DJiggleWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2DJiggle {
@@ -524845,6 +530845,14 @@ func NewGDExtensionClassFromSkeletonModification2DLookAtOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DLookAtImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonModification2DLookAtWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2DLookAt {
 	inst := &SkeletonModification2DLookAtImpl{}
 	inst.Owner = owner
@@ -525520,6 +531528,14 @@ func NewGDExtensionClassFromSkeletonModification2DPhysicalBonesOwner(owner *Godo
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DPhysicalBonesImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonModification2DPhysicalBonesWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2DPhysicalBones {
 	inst := &SkeletonModification2DPhysicalBonesImpl{}
 	inst.Owner = owner
@@ -525835,6 +531851,14 @@ func NewGDExtensionClassFromSkeletonModification2DStackHolderOwner(owner *GodotO
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DStackHolderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonModification2DStackHolderWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2DStackHolder {
 	inst := &SkeletonModification2DStackHolderImpl{}
 	inst.Owner = owner
@@ -525944,6 +531968,14 @@ func NewGDExtensionClassFromSkeletonModification2DTwoBoneIKOwner(owner *GodotObj
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModification2DTwoBoneIKImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkeletonModification2DTwoBoneIKWithGodotOwnerObject(owner *GodotObject) RefSkeletonModification2DTwoBoneIK {
@@ -526621,6 +532653,14 @@ func NewGDExtensionClassFromSkeletonModificationStack2DOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModificationStack2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonModificationStack2DWithGodotOwnerObject(owner *GodotObject) RefSkeletonModificationStack2D {
 	inst := &SkeletonModificationStack2DImpl{}
 	inst.Owner = owner
@@ -527269,6 +533309,14 @@ func NewGDExtensionClassFromSkeletonModifier3DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonModifier3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonModifier3DWithGodotOwnerObject(owner *GodotObject) SkeletonModifier3D {
 	inst := &SkeletonModifier3DImpl{}
 	inst.Owner = owner
@@ -527496,6 +533544,14 @@ func NewGDExtensionClassFromSkeletonProfileOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonProfileImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkeletonProfileWithGodotOwnerObject(owner *GodotObject) RefSkeletonProfile {
@@ -528776,6 +534832,14 @@ func NewGDExtensionClassFromSkeletonProfileHumanoidOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkeletonProfileHumanoidImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkeletonProfileHumanoidWithGodotOwnerObject(owner *GodotObject) RefSkeletonProfileHumanoid {
 	inst := &SkeletonProfileHumanoidImpl{}
 	inst.Owner = owner
@@ -528792,6 +534856,14 @@ func NewGDExtensionClassFromSkinOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkinImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkinWithGodotOwnerObject(owner *GodotObject) RefSkin {
@@ -529291,6 +535363,14 @@ func NewGDExtensionClassFromSkinReferenceOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkinReferenceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSkinReferenceWithGodotOwnerObject(owner *GodotObject) RefSkinReference {
 	inst := &SkinReferenceImpl{}
 	inst.Owner = owner
@@ -529396,6 +535476,14 @@ func NewGDExtensionClassFromSkyOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SkyImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSkyWithGodotOwnerObject(owner *GodotObject) RefSky {
@@ -529669,6 +535757,14 @@ func NewGDExtensionClassFromSliderOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SliderImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSliderWithGodotOwnerObject(owner *GodotObject) Slider {
@@ -530103,6 +536199,14 @@ func NewGDExtensionClassFromSliderJoint3DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SliderJoint3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSliderJoint3DWithGodotOwnerObject(owner *GodotObject) SliderJoint3D {
 	inst := &SliderJoint3DImpl{}
 	inst.Owner = owner
@@ -530216,6 +536320,14 @@ func NewGDExtensionClassFromSocketServerOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SocketServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSocketServerWithGodotOwnerObject(owner *GodotObject) RefSocketServer {
@@ -530400,6 +536512,14 @@ func NewGDExtensionClassFromSoftBody3DOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SoftBody3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSoftBody3DWithGodotOwnerObject(owner *GodotObject) SoftBody3D {
@@ -532053,6 +538173,14 @@ func NewGDExtensionClassFromSphereMeshOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SphereMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSphereMeshWithGodotOwnerObject(owner *GodotObject) RefSphereMesh {
 	inst := &SphereMeshImpl{}
 	inst.Owner = owner
@@ -532485,6 +538613,14 @@ func NewGDExtensionClassFromSphereOccluder3DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SphereOccluder3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSphereOccluder3DWithGodotOwnerObject(owner *GodotObject) RefSphereOccluder3D {
 	inst := &SphereOccluder3DImpl{}
 	inst.Owner = owner
@@ -532593,6 +538729,14 @@ func NewGDExtensionClassFromSphereShape3DOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SphereShape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSphereShape3DWithGodotOwnerObject(owner *GodotObject) RefSphereShape3D {
 	inst := &SphereShape3DImpl{}
 	inst.Owner = owner
@@ -532699,6 +538843,14 @@ func NewGDExtensionClassFromSpinBoxOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpinBoxImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSpinBoxWithGodotOwnerObject(owner *GodotObject) SpinBox {
@@ -533453,6 +539605,14 @@ func NewGDExtensionClassFromSplineIK3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SplineIK3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSplineIK3DWithGodotOwnerObject(owner *GodotObject) SplineIK3D {
 	inst := &SplineIK3DImpl{}
 	inst.Owner = owner
@@ -533830,6 +539990,14 @@ func NewGDExtensionClassFromSplitContainerOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SplitContainerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSplitContainerWithGodotOwnerObject(owner *GodotObject) SplitContainer {
@@ -534952,6 +541120,14 @@ func NewGDExtensionClassFromSpotLight3DOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpotLight3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSpotLight3DWithGodotOwnerObject(owner *GodotObject) SpotLight3D {
 	inst := &SpotLight3DImpl{}
 	inst.Owner = owner
@@ -534968,6 +541144,14 @@ func NewGDExtensionClassFromSpringArm3DOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpringArm3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSpringArm3DWithGodotOwnerObject(owner *GodotObject) SpringArm3D {
@@ -535486,6 +541670,14 @@ func NewGDExtensionClassFromSpringBoneCollision3DOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpringBoneCollision3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSpringBoneCollision3DWithGodotOwnerObject(owner *GodotObject) SpringBoneCollision3D {
 	inst := &SpringBoneCollision3DImpl{}
 	inst.Owner = owner
@@ -535877,6 +542069,14 @@ func NewGDExtensionClassFromSpringBoneCollisionCapsule3DOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpringBoneCollisionCapsule3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSpringBoneCollisionCapsule3DWithGodotOwnerObject(owner *GodotObject) SpringBoneCollisionCapsule3D {
 	inst := &SpringBoneCollisionCapsule3DImpl{}
 	inst.Owner = owner
@@ -536228,6 +542428,14 @@ func NewGDExtensionClassFromSpringBoneCollisionPlane3DOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpringBoneCollisionPlane3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSpringBoneCollisionPlane3DWithGodotOwnerObject(owner *GodotObject) SpringBoneCollisionPlane3D {
 	inst := &SpringBoneCollisionPlane3DImpl{}
 	inst.Owner = owner
@@ -536244,6 +542452,14 @@ func NewGDExtensionClassFromSpringBoneCollisionSphere3DOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpringBoneCollisionSphere3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSpringBoneCollisionSphere3DWithGodotOwnerObject(owner *GodotObject) SpringBoneCollisionSphere3D {
@@ -536433,6 +542649,14 @@ func NewGDExtensionClassFromSpringBoneSimulator3DOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpringBoneSimulator3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSpringBoneSimulator3DWithGodotOwnerObject(owner *GodotObject) SpringBoneSimulator3D {
@@ -540145,6 +546369,14 @@ func NewGDExtensionClassFromSprite2DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Sprite2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSprite2DWithGodotOwnerObject(owner *GodotObject) Sprite2D {
 	inst := &Sprite2DImpl{}
 	inst.Owner = owner
@@ -541231,6 +547463,14 @@ func NewGDExtensionClassFromSprite3DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Sprite3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSprite3DWithGodotOwnerObject(owner *GodotObject) Sprite3D {
 	inst := &Sprite3DImpl{}
 	inst.Owner = owner
@@ -541826,6 +548066,14 @@ func NewGDExtensionClassFromSpriteBase3DOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpriteBase3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSpriteBase3DWithGodotOwnerObject(owner *GodotObject) SpriteBase3D {
@@ -543238,6 +549486,14 @@ func NewGDExtensionClassFromSpriteFramesOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SpriteFramesImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSpriteFramesWithGodotOwnerObject(owner *GodotObject) RefSpriteFrames {
 	inst := &SpriteFramesImpl{}
 	inst.Owner = owner
@@ -544149,6 +550405,14 @@ func NewGDExtensionClassFromStandardMaterial3DOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StandardMaterial3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStandardMaterial3DWithGodotOwnerObject(owner *GodotObject) RefStandardMaterial3D {
 	inst := &StandardMaterial3DImpl{}
 	inst.Owner = owner
@@ -544165,6 +550429,14 @@ func NewGDExtensionClassFromStaticBody2DOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StaticBody2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStaticBody2DWithGodotOwnerObject(owner *GodotObject) StaticBody2D {
@@ -544440,6 +550712,14 @@ func NewGDExtensionClassFromStaticBody3DOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StaticBody3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStaticBody3DWithGodotOwnerObject(owner *GodotObject) StaticBody3D {
 	inst := &StaticBody3DImpl{}
 	inst.Owner = owner
@@ -544711,6 +550991,14 @@ func NewGDExtensionClassFromStatusIndicatorOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StatusIndicatorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStatusIndicatorWithGodotOwnerObject(owner *GodotObject) StatusIndicator {
@@ -545105,6 +551393,14 @@ func NewGDExtensionClassFromStreamPeerOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStreamPeerWithGodotOwnerObject(owner *GodotObject) RefStreamPeer {
@@ -546580,6 +552876,14 @@ func NewGDExtensionClassFromStreamPeerBufferOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerBufferImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStreamPeerBufferWithGodotOwnerObject(owner *GodotObject) RefStreamPeerBuffer {
 	inst := &StreamPeerBufferImpl{}
 	inst.Owner = owner
@@ -546927,6 +553231,14 @@ func NewGDExtensionClassFromStreamPeerExtensionOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStreamPeerExtensionWithGodotOwnerObject(owner *GodotObject) RefStreamPeerExtension {
 	inst := &StreamPeerExtensionImpl{}
 	inst.Owner = owner
@@ -546952,6 +553264,14 @@ func NewGDExtensionClassFromStreamPeerGZIPOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerGZIPImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStreamPeerGZIPWithGodotOwnerObject(owner *GodotObject) RefStreamPeerGZIP {
@@ -547152,6 +553472,14 @@ func NewGDExtensionClassFromStreamPeerSocketOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerSocketImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStreamPeerSocketWithGodotOwnerObject(owner *GodotObject) RefStreamPeerSocket {
 	inst := &StreamPeerSocketImpl{}
 	inst.Owner = owner
@@ -547294,6 +553622,14 @@ func NewGDExtensionClassFromStreamPeerTCPOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerTCPImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStreamPeerTCPWithGodotOwnerObject(owner *GodotObject) RefStreamPeerTCP {
@@ -547576,6 +553912,14 @@ func NewGDExtensionClassFromStreamPeerTLSOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerTLSImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStreamPeerTLSWithGodotOwnerObject(owner *GodotObject) RefStreamPeerTLS {
@@ -547868,6 +554212,14 @@ func NewGDExtensionClassFromStreamPeerUDSOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StreamPeerUDSImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStreamPeerUDSWithGodotOwnerObject(owner *GodotObject) RefStreamPeerUDS {
 	inst := &StreamPeerUDSImpl{}
 	inst.Owner = owner
@@ -548021,6 +554373,14 @@ func NewGDExtensionClassFromStyleBoxOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StyleBoxImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStyleBoxWithGodotOwnerObject(owner *GodotObject) RefStyleBox {
@@ -548434,6 +554794,14 @@ func NewGDExtensionClassFromStyleBoxEmptyOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StyleBoxEmptyImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStyleBoxEmptyWithGodotOwnerObject(owner *GodotObject) RefStyleBoxEmpty {
 	inst := &StyleBoxEmptyImpl{}
 	inst.Owner = owner
@@ -548450,6 +554818,14 @@ func NewGDExtensionClassFromStyleBoxFlatOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StyleBoxFlatImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStyleBoxFlatWithGodotOwnerObject(owner *GodotObject) RefStyleBoxFlat {
@@ -549797,6 +556173,14 @@ func NewGDExtensionClassFromStyleBoxLineOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StyleBoxLineImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewStyleBoxLineWithGodotOwnerObject(owner *GodotObject) RefStyleBoxLine {
 	inst := &StyleBoxLineImpl{}
 	inst.Owner = owner
@@ -550227,6 +556611,14 @@ func NewGDExtensionClassFromStyleBoxTextureOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *StyleBoxTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewStyleBoxTextureWithGodotOwnerObject(owner *GodotObject) RefStyleBoxTexture {
@@ -551003,6 +557395,14 @@ func NewGDExtensionClassFromSubViewportOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SubViewportImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSubViewportWithGodotOwnerObject(owner *GodotObject) SubViewport {
 	inst := &SubViewportImpl{}
 	inst.Owner = owner
@@ -551516,6 +557916,14 @@ func NewGDExtensionClassFromSubViewportContainerOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SubViewportContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSubViewportContainerWithGodotOwnerObject(owner *GodotObject) SubViewportContainer {
 	inst := &SubViewportContainerImpl{}
 	inst.Owner = owner
@@ -551786,6 +558194,14 @@ func NewGDExtensionClassFromSubtweenTweenerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SubtweenTweenerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSubtweenTweenerWithGodotOwnerObject(owner *GodotObject) RefSubtweenTweener {
 	inst := &SubtweenTweenerImpl{}
 	inst.Owner = owner
@@ -551855,6 +558271,14 @@ func NewGDExtensionClassFromSurfaceToolOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SurfaceToolImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSurfaceToolWithGodotOwnerObject(owner *GodotObject) RefSurfaceTool {
@@ -553282,6 +559706,14 @@ func NewGDExtensionClassFromSyntaxHighlighterOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SyntaxHighlighterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewSyntaxHighlighterWithGodotOwnerObject(owner *GodotObject) RefSyntaxHighlighter {
 	inst := &SyntaxHighlighterImpl{}
 	inst.Owner = owner
@@ -553465,6 +559897,14 @@ func NewGDExtensionClassFromSystemFontOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *SystemFontImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewSystemFontWithGodotOwnerObject(owner *GodotObject) RefSystemFont {
@@ -554791,6 +561231,14 @@ func NewGDExtensionClassFromTCPServerOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TCPServerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTCPServerWithGodotOwnerObject(owner *GodotObject) RefTCPServer {
 	inst := &TCPServerImpl{}
 	inst.Owner = owner
@@ -554943,6 +561391,14 @@ func NewGDExtensionClassFromTLSOptionsOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TLSOptionsImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTLSOptionsWithGodotOwnerObject(owner *GodotObject) RefTLSOptions {
@@ -555360,6 +561816,14 @@ func NewGDExtensionClassFromTabBarOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TabBarImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTabBarWithGodotOwnerObject(owner *GodotObject) TabBar {
@@ -557907,6 +564371,14 @@ func NewGDExtensionClassFromTabContainerOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TabContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTabContainerWithGodotOwnerObject(owner *GodotObject) TabContainer {
 	inst := &TabContainerImpl{}
 	inst.Owner = owner
@@ -560073,6 +566545,14 @@ func NewGDExtensionClassFromTextEditOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextEditImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextEditWithGodotOwnerObject(owner *GodotObject) TextEdit {
@@ -570594,6 +577074,14 @@ func NewGDExtensionClassFromTextLineOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextLineImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextLineWithGodotOwnerObject(owner *GodotObject) RefTextLine {
 	inst := &TextLineImpl{}
 	inst.Owner = owner
@@ -572272,6 +578760,14 @@ func NewGDExtensionClassFromTextMeshOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextMeshWithGodotOwnerObject(owner *GodotObject) RefTextMesh {
 	inst := &TextMeshImpl{}
 	inst.Owner = owner
@@ -573758,6 +580254,14 @@ func NewGDExtensionClassFromTextParagraphOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextParagraphImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextParagraphWithGodotOwnerObject(owner *GodotObject) RefTextParagraph {
@@ -576473,6 +582977,14 @@ func NewGDExtensionClassFromTextServerOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextServerWithGodotOwnerObject(owner *GodotObject) RefTextServer {
@@ -587719,6 +594231,14 @@ func NewGDExtensionClassFromTextServerAdvancedOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextServerAdvancedImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextServerAdvancedWithGodotOwnerObject(owner *GodotObject) RefTextServerAdvanced {
 	inst := &TextServerAdvancedImpl{}
 	inst.Owner = owner
@@ -587737,6 +594257,14 @@ func NewGDExtensionClassFromTextServerDummyOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextServerDummyImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextServerDummyWithGodotOwnerObject(owner *GodotObject) RefTextServerDummy {
 	inst := &TextServerDummyImpl{}
 	inst.Owner = owner
@@ -587753,6 +594281,14 @@ func NewGDExtensionClassFromTextServerExtensionOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextServerExtensionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextServerExtensionWithGodotOwnerObject(owner *GodotObject) RefTextServerExtension {
@@ -587780,6 +594316,14 @@ func NewGDExtensionClassFromTextServerManagerOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextServerManagerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextServerManagerWithGodotOwnerObject(owner *GodotObject) TextServerManager {
@@ -588149,6 +594693,14 @@ func NewGDExtensionClassFromTextureOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextureWithGodotOwnerObject(owner *GodotObject) RefTexture {
 	inst := &TextureImpl{}
 	inst.Owner = owner
@@ -588165,6 +594717,14 @@ func NewGDExtensionClassFromTexture2DOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Texture2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTexture2DWithGodotOwnerObject(owner *GodotObject) RefTexture2D {
@@ -588713,6 +595273,14 @@ func NewGDExtensionClassFromTexture2DArrayOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Texture2DArrayImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTexture2DArrayWithGodotOwnerObject(owner *GodotObject) RefTexture2DArray {
 	inst := &Texture2DArrayImpl{}
 	inst.Owner = owner
@@ -588780,6 +595348,14 @@ func NewGDExtensionClassFromTexture2DArrayRDOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Texture2DArrayRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTexture2DArrayRDWithGodotOwnerObject(owner *GodotObject) RefTexture2DArrayRD {
 	inst := &Texture2DArrayRDImpl{}
 	inst.Owner = owner
@@ -588796,6 +595372,14 @@ func NewGDExtensionClassFromTexture2DRDOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Texture2DRDImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTexture2DRDWithGodotOwnerObject(owner *GodotObject) RefTexture2DRD {
@@ -588904,6 +595488,14 @@ func NewGDExtensionClassFromTexture3DOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Texture3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTexture3DWithGodotOwnerObject(owner *GodotObject) RefTexture3D {
@@ -589213,6 +595805,14 @@ func NewGDExtensionClassFromTexture3DRDOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *Texture3DRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTexture3DRDWithGodotOwnerObject(owner *GodotObject) RefTexture3DRD {
 	inst := &Texture3DRDImpl{}
 	inst.Owner = owner
@@ -589319,6 +595919,14 @@ func NewGDExtensionClassFromTextureButtonOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureButtonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextureButtonWithGodotOwnerObject(owner *GodotObject) TextureButton {
@@ -590176,6 +596784,14 @@ func NewGDExtensionClassFromTextureCubemapArrayRDOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureCubemapArrayRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextureCubemapArrayRDWithGodotOwnerObject(owner *GodotObject) RefTextureCubemapArrayRD {
 	inst := &TextureCubemapArrayRDImpl{}
 	inst.Owner = owner
@@ -590194,6 +596810,14 @@ func NewGDExtensionClassFromTextureCubemapRDOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureCubemapRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextureCubemapRDWithGodotOwnerObject(owner *GodotObject) RefTextureCubemapRD {
 	inst := &TextureCubemapRDImpl{}
 	inst.Owner = owner
@@ -590210,6 +596834,14 @@ func NewGDExtensionClassFromTextureLayeredOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureLayeredImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextureLayeredWithGodotOwnerObject(owner *GodotObject) RefTextureLayered {
@@ -590523,6 +597155,14 @@ func NewGDExtensionClassFromTextureLayeredRDOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureLayeredRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextureLayeredRDWithGodotOwnerObject(owner *GodotObject) RefTextureLayeredRD {
 	inst := &TextureLayeredRDImpl{}
 	inst.Owner = owner
@@ -590629,6 +597269,14 @@ func NewGDExtensionClassFromTextureProgressBarOwner(owner *GodotObject) GDExtens
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureProgressBarImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTextureProgressBarWithGodotOwnerObject(owner *GodotObject) TextureProgressBar {
@@ -591727,6 +598375,14 @@ func NewGDExtensionClassFromTextureRectOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TextureRectImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTextureRectWithGodotOwnerObject(owner *GodotObject) TextureRect {
 	inst := &TextureRectImpl{}
 	inst.Owner = owner
@@ -592160,6 +598816,14 @@ func NewGDExtensionClassFromThemeOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ThemeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewThemeWithGodotOwnerObject(owner *GodotObject) RefTheme {
@@ -595265,6 +601929,14 @@ func NewGDExtensionClassFromThemeDBOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ThemeDBImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewThemeDBWithGodotOwnerObject(owner *GodotObject) ThemeDB {
 	inst := &ThemeDBImpl{}
 	inst.Owner = owner
@@ -595786,6 +602458,14 @@ func NewGDExtensionClassFromThreadOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ThreadImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewThreadWithGodotOwnerObject(owner *GodotObject) RefThread {
 	inst := &ThreadImpl{}
 	inst.Owner = owner
@@ -596099,6 +602779,14 @@ func NewGDExtensionClassFromTileDataOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileDataImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTileDataWithGodotOwnerObject(owner *GodotObject) TileData {
@@ -598482,6 +605170,14 @@ func NewGDExtensionClassFromTileMapOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileMapImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTileMapWithGodotOwnerObject(owner *GodotObject) TileMap {
@@ -601218,6 +607914,14 @@ func NewGDExtensionClassFromTileMapLayerOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileMapLayerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTileMapLayerWithGodotOwnerObject(owner *GodotObject) TileMapLayer {
 	inst := &TileMapLayerImpl{}
 	inst.Owner = owner
@@ -603570,6 +610274,14 @@ func NewGDExtensionClassFromTileMapPatternOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileMapPatternImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTileMapPatternWithGodotOwnerObject(owner *GodotObject) RefTileMapPattern {
 	inst := &TileMapPatternImpl{}
 	inst.Owner = owner
@@ -604026,6 +610738,14 @@ func NewGDExtensionClassFromTileSetOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileSetImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTileSetWithGodotOwnerObject(owner *GodotObject) RefTileSet {
@@ -607973,6 +614693,14 @@ func NewGDExtensionClassFromTileSetAtlasSourceOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileSetAtlasSourceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTileSetAtlasSourceWithGodotOwnerObject(owner *GodotObject) RefTileSetAtlasSource {
 	inst := &TileSetAtlasSourceImpl{}
 	inst.Owner = owner
@@ -609801,6 +616529,14 @@ func NewGDExtensionClassFromTileSetScenesCollectionSourceOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileSetScenesCollectionSourceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTileSetScenesCollectionSourceWithGodotOwnerObject(owner *GodotObject) RefTileSetScenesCollectionSource {
 	inst := &TileSetScenesCollectionSourceImpl{}
 	inst.Owner = owner
@@ -610310,6 +617046,14 @@ func NewGDExtensionClassFromTileSetSourceOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TileSetSourceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTileSetSourceWithGodotOwnerObject(owner *GodotObject) RefTileSetSource {
 	inst := &TileSetSourceImpl{}
 	inst.Owner = owner
@@ -610601,6 +617345,14 @@ func NewGDExtensionClassFromTimeOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TimeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTimeWithGodotOwnerObject(owner *GodotObject) Time {
@@ -611550,6 +618302,14 @@ func NewGDExtensionClassFromTimerOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TimerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTimerWithGodotOwnerObject(owner *GodotObject) Timer {
 	inst := &TimerImpl{}
 	inst.Owner = owner
@@ -612221,6 +618981,14 @@ func NewGDExtensionClassFromTorusMeshOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TorusMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTorusMeshWithGodotOwnerObject(owner *GodotObject) RefTorusMesh {
 	inst := &TorusMeshImpl{}
 	inst.Owner = owner
@@ -612570,6 +619338,14 @@ func NewGDExtensionClassFromTouchScreenButtonOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TouchScreenButtonImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTouchScreenButtonWithGodotOwnerObject(owner *GodotObject) TouchScreenButton {
@@ -613380,6 +620156,14 @@ func NewGDExtensionClassFromTranslationOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TranslationImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTranslationWithGodotOwnerObject(owner *GodotObject) RefTranslation {
 	inst := &TranslationImpl{}
 	inst.Owner = owner
@@ -613925,6 +620709,14 @@ func NewGDExtensionClassFromTranslationDomainOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TranslationDomainImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTranslationDomainWithGodotOwnerObject(owner *GodotObject) RefTranslationDomain {
@@ -615337,6 +622129,14 @@ func NewGDExtensionClassFromTranslationServerOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TranslationServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTranslationServerWithGodotOwnerObject(owner *GodotObject) TranslationServer {
@@ -616838,6 +623638,14 @@ func NewGDExtensionClassFromTreeOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TreeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTreeWithGodotOwnerObject(owner *GodotObject) Tree {
@@ -619888,6 +626696,14 @@ func NewGDExtensionClassFromTreeItemOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TreeItemImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTreeItemWithGodotOwnerObject(owner *GodotObject) TreeItem {
@@ -625408,6 +632224,14 @@ func NewGDExtensionClassFromTriangleMeshOwner(owner *GodotObject) GDExtensionCla
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TriangleMeshImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTriangleMeshWithGodotOwnerObject(owner *GodotObject) RefTriangleMesh {
 	inst := &TriangleMeshImpl{}
 	inst.Owner = owner
@@ -625611,6 +632435,14 @@ func NewGDExtensionClassFromTubeTrailMeshOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TubeTrailMeshImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTubeTrailMeshWithGodotOwnerObject(owner *GodotObject) RefTubeTrailMesh {
@@ -626289,6 +633121,14 @@ func NewGDExtensionClassFromTweenOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TweenImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTweenWithGodotOwnerObject(owner *GodotObject) RefTween {
@@ -627536,6 +634376,14 @@ func NewGDExtensionClassFromTweenerOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TweenerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewTweenerWithGodotOwnerObject(owner *GodotObject) RefTweener {
 	inst := &TweenerImpl{}
 	inst.Owner = owner
@@ -627552,6 +634400,14 @@ func NewGDExtensionClassFromTwoBoneIK3DOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *TwoBoneIK3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewTwoBoneIK3DWithGodotOwnerObject(owner *GodotObject) TwoBoneIK3D {
@@ -628813,6 +635669,14 @@ func NewGDExtensionClassFromUDPServerOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *UDPServerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewUDPServerWithGodotOwnerObject(owner *GodotObject) RefUDPServer {
 	inst := &UDPServerImpl{}
 	inst.Owner = owner
@@ -629205,6 +636069,14 @@ func NewGDExtensionClassFromUDSServerOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *UDSServerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewUDSServerWithGodotOwnerObject(owner *GodotObject) RefUDSServer {
 	inst := &UDSServerImpl{}
 	inst.Owner = owner
@@ -629314,6 +636186,14 @@ func NewGDExtensionClassFromUPNPOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *UPNPImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewUPNPWithGodotOwnerObject(owner *GodotObject) RefUPNP {
@@ -630072,6 +636952,14 @@ func NewGDExtensionClassFromUPNPDeviceOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *UPNPDeviceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewUPNPDeviceWithGodotOwnerObject(owner *GodotObject) RefUPNPDevice {
 	inst := &UPNPDeviceImpl{}
 	inst.Owner = owner
@@ -630766,6 +637654,14 @@ func NewGDExtensionClassFromUndoRedoOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *UndoRedoImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewUndoRedoWithGodotOwnerObject(owner *GodotObject) UndoRedo {
@@ -631753,6 +638649,14 @@ func NewGDExtensionClassFromUniformSetCacheRDOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *UniformSetCacheRDImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewUniformSetCacheRDWithGodotOwnerObject(owner *GodotObject) UniformSetCacheRD {
 	inst := &UniformSetCacheRDImpl{}
 	inst.Owner = owner
@@ -631833,6 +638737,14 @@ func NewGDExtensionClassFromVBoxContainerOwner(owner *GodotObject) GDExtensionCl
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VBoxContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVBoxContainerWithGodotOwnerObject(owner *GodotObject) VBoxContainer {
 	inst := &VBoxContainerImpl{}
 	inst.Owner = owner
@@ -631849,6 +638761,14 @@ func NewGDExtensionClassFromVFlowContainerOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VFlowContainerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVFlowContainerWithGodotOwnerObject(owner *GodotObject) VFlowContainer {
@@ -631869,6 +638789,14 @@ func NewGDExtensionClassFromVScrollBarOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VScrollBarImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVScrollBarWithGodotOwnerObject(owner *GodotObject) VScrollBar {
 	inst := &VScrollBarImpl{}
 	inst.Owner = owner
@@ -631885,6 +638813,14 @@ func NewGDExtensionClassFromVSeparatorOwner(owner *GodotObject) GDExtensionClass
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VSeparatorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVSeparatorWithGodotOwnerObject(owner *GodotObject) VSeparator {
@@ -631905,6 +638841,14 @@ func NewGDExtensionClassFromVSliderOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VSliderImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVSliderWithGodotOwnerObject(owner *GodotObject) VSlider {
 	inst := &VSliderImpl{}
 	inst.Owner = owner
@@ -631923,6 +638867,14 @@ func NewGDExtensionClassFromVSplitContainerOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VSplitContainerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVSplitContainerWithGodotOwnerObject(owner *GodotObject) VSplitContainer {
 	inst := &VSplitContainerImpl{}
 	inst.Owner = owner
@@ -631939,6 +638891,14 @@ func NewGDExtensionClassFromVehicleBody3DOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VehicleBody3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVehicleBody3DWithGodotOwnerObject(owner *GodotObject) VehicleBody3D {
@@ -632209,6 +639169,14 @@ func NewGDExtensionClassFromVehicleWheel3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VehicleWheel3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVehicleWheel3DWithGodotOwnerObject(owner *GodotObject) VehicleWheel3D {
@@ -633612,6 +640580,14 @@ func NewGDExtensionClassFromVideoStreamOwner(owner *GodotObject) GDExtensionClas
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VideoStreamImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVideoStreamWithGodotOwnerObject(owner *GodotObject) RefVideoStream {
 	inst := &VideoStreamImpl{}
 	inst.Owner = owner
@@ -633720,6 +640696,14 @@ func NewGDExtensionClassFromVideoStreamPlaybackOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VideoStreamPlaybackImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVideoStreamPlaybackWithGodotOwnerObject(owner *GodotObject) RefVideoStreamPlayback {
 	inst := &VideoStreamPlaybackImpl{}
 	inst.Owner = owner
@@ -633795,6 +640779,14 @@ func NewGDExtensionClassFromVideoStreamPlayerOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VideoStreamPlayerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVideoStreamPlayerWithGodotOwnerObject(owner *GodotObject) VideoStreamPlayer {
@@ -635033,6 +642025,14 @@ func NewGDExtensionClassFromVideoStreamTheoraOwner(owner *GodotObject) GDExtensi
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VideoStreamTheoraImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVideoStreamTheoraWithGodotOwnerObject(owner *GodotObject) RefVideoStreamTheora {
 	inst := &VideoStreamTheoraImpl{}
 	inst.Owner = owner
@@ -635049,6 +642049,14 @@ func NewGDExtensionClassFromViewportOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ViewportImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewViewportWithGodotOwnerObject(owner *GodotObject) Viewport {
@@ -640355,6 +647363,14 @@ func NewGDExtensionClassFromViewportTextureOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ViewportTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewViewportTextureWithGodotOwnerObject(owner *GodotObject) RefViewportTexture {
 	inst := &ViewportTextureImpl{}
 	inst.Owner = owner
@@ -640461,6 +647477,14 @@ func NewGDExtensionClassFromVirtualJoystickOwner(owner *GodotObject) GDExtension
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VirtualJoystickImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVirtualJoystickWithGodotOwnerObject(owner *GodotObject) VirtualJoystick {
@@ -641381,6 +648405,14 @@ func NewGDExtensionClassFromVisibleOnScreenEnabler2DOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisibleOnScreenEnabler2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisibleOnScreenEnabler2DWithGodotOwnerObject(owner *GodotObject) VisibleOnScreenEnabler2D {
 	inst := &VisibleOnScreenEnabler2DImpl{}
 	inst.Owner = owner
@@ -641570,6 +648602,14 @@ func NewGDExtensionClassFromVisibleOnScreenEnabler3DOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisibleOnScreenEnabler3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisibleOnScreenEnabler3DWithGodotOwnerObject(owner *GodotObject) VisibleOnScreenEnabler3D {
 	inst := &VisibleOnScreenEnabler3DImpl{}
 	inst.Owner = owner
@@ -641757,6 +648797,14 @@ func NewGDExtensionClassFromVisibleOnScreenNotifier2DOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisibleOnScreenNotifier2DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisibleOnScreenNotifier2DWithGodotOwnerObject(owner *GodotObject) VisibleOnScreenNotifier2D {
@@ -641988,6 +649036,14 @@ func NewGDExtensionClassFromVisibleOnScreenNotifier3DOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisibleOnScreenNotifier3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisibleOnScreenNotifier3DWithGodotOwnerObject(owner *GodotObject) VisibleOnScreenNotifier3D {
 	inst := &VisibleOnScreenNotifier3DImpl{}
 	inst.Owner = owner
@@ -642094,6 +649150,14 @@ func NewGDExtensionClassFromVisualInstance3DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualInstance3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualInstance3DWithGodotOwnerObject(owner *GodotObject) VisualInstance3D {
@@ -642613,6 +649677,14 @@ func NewGDExtensionClassFromVisualShaderOwner(owner *GodotObject) GDExtensionCla
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderWithGodotOwnerObject(owner *GodotObject) RefVisualShader {
@@ -643678,6 +650750,14 @@ func NewGDExtensionClassFromVisualShaderNodeOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNode {
 	inst := &VisualShaderNodeImpl{}
 	inst.Owner = owner
@@ -644161,6 +651241,14 @@ func NewGDExtensionClassFromVisualShaderNodeBillboardOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeBillboardImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeBillboardWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeBillboard {
 	inst := &VisualShaderNodeBillboardImpl{}
 	inst.Owner = owner
@@ -644350,6 +651438,14 @@ func NewGDExtensionClassFromVisualShaderNodeBooleanConstantOwner(owner *GodotObj
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeBooleanConstantImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeBooleanConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeBooleanConstant {
 	inst := &VisualShaderNodeBooleanConstantImpl{}
 	inst.Owner = owner
@@ -644456,6 +651552,14 @@ func NewGDExtensionClassFromVisualShaderNodeBooleanParameterOwner(owner *GodotOb
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeBooleanParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeBooleanParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeBooleanParameter {
@@ -644647,6 +651751,14 @@ func NewGDExtensionClassFromVisualShaderNodeClampOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeClampImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeClampWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeClamp {
 	inst := &VisualShaderNodeClampImpl{}
 	inst.Owner = owner
@@ -644753,6 +651865,14 @@ func NewGDExtensionClassFromVisualShaderNodeColorConstantOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeColorConstantImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeColorConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeColorConstant {
@@ -644863,6 +651983,14 @@ func NewGDExtensionClassFromVisualShaderNodeColorFuncOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeColorFuncImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeColorFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeColorFunc {
 	inst := &VisualShaderNodeColorFuncImpl{}
 	inst.Owner = owner
@@ -644971,6 +652099,14 @@ func NewGDExtensionClassFromVisualShaderNodeColorOpOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeColorOpImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeColorOpWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeColorOp {
 	inst := &VisualShaderNodeColorOpImpl{}
 	inst.Owner = owner
@@ -645077,6 +652213,14 @@ func NewGDExtensionClassFromVisualShaderNodeColorParameterOwner(owner *GodotObje
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeColorParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeColorParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeColorParameter {
@@ -645268,6 +652412,14 @@ func NewGDExtensionClassFromVisualShaderNodeCommentOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeCommentImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeCommentWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeComment {
 	inst := &VisualShaderNodeCommentImpl{}
 	inst.Owner = owner
@@ -645374,6 +652526,14 @@ func NewGDExtensionClassFromVisualShaderNodeCompareOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeCompareImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeCompareWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeCompare {
@@ -645646,6 +652806,14 @@ func NewGDExtensionClassFromVisualShaderNodeConstantOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeConstantImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeConstant {
 	inst := &VisualShaderNodeConstantImpl{}
 	inst.Owner = owner
@@ -645662,6 +652830,14 @@ func NewGDExtensionClassFromVisualShaderNodeCubemapOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeCubemapImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeCubemapWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeCubemap {
@@ -645937,6 +653113,14 @@ func NewGDExtensionClassFromVisualShaderNodeCubemapParameterOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeCubemapParameterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeCubemapParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeCubemapParameter {
 	inst := &VisualShaderNodeCubemapParameterImpl{}
 	inst.Owner = owner
@@ -645953,6 +653137,14 @@ func NewGDExtensionClassFromVisualShaderNodeCurveTextureOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeCurveTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeCurveTextureWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeCurveTexture {
@@ -646066,6 +653258,14 @@ func NewGDExtensionClassFromVisualShaderNodeCurveXYZTextureOwner(owner *GodotObj
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeCurveXYZTextureImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeCurveXYZTextureWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeCurveXYZTexture {
 	inst := &VisualShaderNodeCurveXYZTextureImpl{}
 	inst.Owner = owner
@@ -646177,6 +653377,14 @@ func NewGDExtensionClassFromVisualShaderNodeCustomOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeCustomImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeCustomWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeCustom {
 	inst := &VisualShaderNodeCustomImpl{}
 	inst.Owner = owner
@@ -646246,6 +653454,14 @@ func NewGDExtensionClassFromVisualShaderNodeDerivativeFuncOwner(owner *GodotObje
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeDerivativeFuncImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeDerivativeFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeDerivativeFunc {
@@ -646518,6 +653734,14 @@ func NewGDExtensionClassFromVisualShaderNodeDeterminantOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeDeterminantImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeDeterminantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeDeterminant {
 	inst := &VisualShaderNodeDeterminantImpl{}
 	inst.Owner = owner
@@ -646534,6 +653758,14 @@ func NewGDExtensionClassFromVisualShaderNodeDistanceFadeOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeDistanceFadeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeDistanceFadeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeDistanceFade {
@@ -646554,6 +653786,14 @@ func NewGDExtensionClassFromVisualShaderNodeDotProductOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeDotProductImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeDotProductWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeDotProduct {
 	inst := &VisualShaderNodeDotProductImpl{}
 	inst.Owner = owner
@@ -646570,6 +653810,14 @@ func NewGDExtensionClassFromVisualShaderNodeExpressionOwner(owner *GodotObject) 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeExpressionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeExpressionWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeExpression {
@@ -646680,6 +653928,14 @@ func NewGDExtensionClassFromVisualShaderNodeFaceForwardOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeFaceForwardImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeFaceForwardWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeFaceForward {
 	inst := &VisualShaderNodeFaceForwardImpl{}
 	inst.Owner = owner
@@ -646696,6 +653952,14 @@ func NewGDExtensionClassFromVisualShaderNodeFloatConstantOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeFloatConstantImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeFloatConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeFloatConstant {
@@ -646806,6 +654070,14 @@ func NewGDExtensionClassFromVisualShaderNodeFloatFuncOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeFloatFuncImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeFloatFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeFloatFunc {
 	inst := &VisualShaderNodeFloatFuncImpl{}
 	inst.Owner = owner
@@ -646914,6 +654186,14 @@ func NewGDExtensionClassFromVisualShaderNodeFloatOpOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeFloatOpImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeFloatOpWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeFloatOp {
 	inst := &VisualShaderNodeFloatOpImpl{}
 	inst.Owner = owner
@@ -647020,6 +654300,14 @@ func NewGDExtensionClassFromVisualShaderNodeFloatParameterOwner(owner *GodotObje
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeFloatParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeFloatParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeFloatParameter {
@@ -647533,6 +654821,14 @@ func NewGDExtensionClassFromVisualShaderNodeFrameOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeFrameImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeFrameWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeFrame {
@@ -648049,6 +655345,14 @@ func NewGDExtensionClassFromVisualShaderNodeFresnelOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeFresnelImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeFresnelWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeFresnel {
 	inst := &VisualShaderNodeFresnelImpl{}
 	inst.Owner = owner
@@ -648067,6 +655371,14 @@ func NewGDExtensionClassFromVisualShaderNodeGlobalExpressionOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeGlobalExpressionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeGlobalExpressionWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeGlobalExpression {
 	inst := &VisualShaderNodeGlobalExpressionImpl{}
 	inst.Owner = owner
@@ -648083,6 +655395,14 @@ func NewGDExtensionClassFromVisualShaderNodeGroupBaseOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeGroupBaseImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeGroupBaseWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeGroupBase {
@@ -648992,6 +656312,14 @@ func NewGDExtensionClassFromVisualShaderNodeIfOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeIfImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeIfWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeIf {
 	inst := &VisualShaderNodeIfImpl{}
 	inst.Owner = owner
@@ -649008,6 +656336,14 @@ func NewGDExtensionClassFromVisualShaderNodeInputOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeInputImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeInputWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeInput {
@@ -649158,6 +656494,14 @@ func NewGDExtensionClassFromVisualShaderNodeIntConstantOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeIntConstantImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeIntConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeIntConstant {
 	inst := &VisualShaderNodeIntConstantImpl{}
 	inst.Owner = owner
@@ -649264,6 +656608,14 @@ func NewGDExtensionClassFromVisualShaderNodeIntFuncOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeIntFuncImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeIntFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeIntFunc {
@@ -649374,6 +656726,14 @@ func NewGDExtensionClassFromVisualShaderNodeIntOpOwner(owner *GodotObject) GDExt
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeIntOpImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeIntOpWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeIntOp {
 	inst := &VisualShaderNodeIntOpImpl{}
 	inst.Owner = owner
@@ -649480,6 +656840,14 @@ func NewGDExtensionClassFromVisualShaderNodeIntParameterOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeIntParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeIntParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeIntParameter {
@@ -650076,6 +657444,14 @@ func NewGDExtensionClassFromVisualShaderNodeIsOwner(owner *GodotObject) GDExtens
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeIsImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeIsWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeIs {
 	inst := &VisualShaderNodeIsImpl{}
 	inst.Owner = owner
@@ -650184,6 +657560,14 @@ func NewGDExtensionClassFromVisualShaderNodeLinearSceneDepthOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeLinearSceneDepthImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeLinearSceneDepthWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeLinearSceneDepth {
 	inst := &VisualShaderNodeLinearSceneDepthImpl{}
 	inst.Owner = owner
@@ -650200,6 +657584,14 @@ func NewGDExtensionClassFromVisualShaderNodeMixOwner(owner *GodotObject) GDExten
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeMixImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeMixWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeMix {
@@ -650310,6 +657702,14 @@ func NewGDExtensionClassFromVisualShaderNodeMultiplyAddOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeMultiplyAddImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeMultiplyAddWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeMultiplyAdd {
 	inst := &VisualShaderNodeMultiplyAddImpl{}
 	inst.Owner = owner
@@ -650418,6 +657818,14 @@ func NewGDExtensionClassFromVisualShaderNodeOuterProductOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeOuterProductImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeOuterProductWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeOuterProduct {
 	inst := &VisualShaderNodeOuterProductImpl{}
 	inst.Owner = owner
@@ -650436,6 +657844,14 @@ func NewGDExtensionClassFromVisualShaderNodeOutputOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeOutputImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeOutputWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeOutput {
 	inst := &VisualShaderNodeOutputImpl{}
 	inst.Owner = owner
@@ -650452,6 +657868,14 @@ func NewGDExtensionClassFromVisualShaderNodeParameterOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParameter {
@@ -650724,6 +658148,14 @@ func NewGDExtensionClassFromVisualShaderNodeParameterRefOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParameterRefImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeParameterRefWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParameterRef {
 	inst := &VisualShaderNodeParameterRefImpl{}
 	inst.Owner = owner
@@ -650830,6 +658262,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleAcceleratorOwner(owner *Godo
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleAcceleratorImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeParticleAcceleratorWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleAccelerator {
@@ -650940,6 +658380,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleBoxEmitterOwner(owner *Godot
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleBoxEmitterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeParticleBoxEmitterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleBoxEmitter {
 	inst := &VisualShaderNodeParticleBoxEmitterImpl{}
 	inst.Owner = owner
@@ -650958,6 +658406,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleConeVelocityOwner(owner *God
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleConeVelocityImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeParticleConeVelocityWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleConeVelocity {
 	inst := &VisualShaderNodeParticleConeVelocityImpl{}
 	inst.Owner = owner
@@ -650974,6 +658430,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleEmitOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleEmitImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeParticleEmitWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleEmit {
@@ -651084,6 +658548,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleEmitterOwner(owner *GodotObj
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleEmitterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeParticleEmitterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleEmitter {
 	inst := &VisualShaderNodeParticleEmitterImpl{}
 	inst.Owner = owner
@@ -651190,6 +658662,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleMeshEmitterOwner(owner *Godo
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleMeshEmitterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeParticleMeshEmitterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleMeshEmitter {
@@ -651465,6 +658945,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleMultiplyByAxisAngleOwner(own
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleMultiplyByAxisAngleImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeParticleMultiplyByAxisAngleWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleMultiplyByAxisAngle {
 	inst := &VisualShaderNodeParticleMultiplyByAxisAngleImpl{}
 	inst.Owner = owner
@@ -651573,6 +659061,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleOutputOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleOutputImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeParticleOutputWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleOutput {
 	inst := &VisualShaderNodeParticleOutputImpl{}
 	inst.Owner = owner
@@ -651589,6 +659085,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleRandomnessOwner(owner *Godot
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleRandomnessImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeParticleRandomnessWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleRandomness {
@@ -651699,6 +659203,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleRingEmitterOwner(owner *Godo
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleRingEmitterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeParticleRingEmitterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleRingEmitter {
 	inst := &VisualShaderNodeParticleRingEmitterImpl{}
 	inst.Owner = owner
@@ -651715,6 +659227,14 @@ func NewGDExtensionClassFromVisualShaderNodeParticleSphereEmitterOwner(owner *Go
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeParticleSphereEmitterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeParticleSphereEmitterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeParticleSphereEmitter {
@@ -651735,6 +659255,14 @@ func NewGDExtensionClassFromVisualShaderNodeProximityFadeOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeProximityFadeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeProximityFadeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeProximityFade {
 	inst := &VisualShaderNodeProximityFadeImpl{}
 	inst.Owner = owner
@@ -651753,6 +659281,14 @@ func NewGDExtensionClassFromVisualShaderNodeRandomRangeOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeRandomRangeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeRandomRangeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeRandomRange {
 	inst := &VisualShaderNodeRandomRangeImpl{}
 	inst.Owner = owner
@@ -651769,6 +659305,14 @@ func NewGDExtensionClassFromVisualShaderNodeRemapOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeRemapImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeRemapWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeRemap {
@@ -651879,6 +659423,14 @@ func NewGDExtensionClassFromVisualShaderNodeRerouteOwner(owner *GodotObject) GDE
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeRerouteImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeRerouteWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeReroute {
 	inst := &VisualShaderNodeRerouteImpl{}
 	inst.Owner = owner
@@ -651944,6 +659496,14 @@ func NewGDExtensionClassFromVisualShaderNodeResizableBaseOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeResizableBaseImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeResizableBaseWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeResizableBase {
@@ -652054,6 +659614,14 @@ func NewGDExtensionClassFromVisualShaderNodeRotationByAxisOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeRotationByAxisImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeRotationByAxisWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeRotationByAxis {
 	inst := &VisualShaderNodeRotationByAxisImpl{}
 	inst.Owner = owner
@@ -652070,6 +659638,14 @@ func NewGDExtensionClassFromVisualShaderNodeSDFRaymarchOwner(owner *GodotObject)
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeSDFRaymarchImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeSDFRaymarchWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeSDFRaymarch {
@@ -652090,6 +659666,14 @@ func NewGDExtensionClassFromVisualShaderNodeSDFToScreenUVOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeSDFToScreenUVImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeSDFToScreenUVWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeSDFToScreenUV {
 	inst := &VisualShaderNodeSDFToScreenUVImpl{}
 	inst.Owner = owner
@@ -652106,6 +659690,14 @@ func NewGDExtensionClassFromVisualShaderNodeSample3DOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeSample3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeSample3DWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeSample3D {
@@ -652216,6 +659808,14 @@ func NewGDExtensionClassFromVisualShaderNodeScreenNormalWorldSpaceOwner(owner *G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeScreenNormalWorldSpaceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeScreenNormalWorldSpaceWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeScreenNormalWorldSpace {
 	inst := &VisualShaderNodeScreenNormalWorldSpaceImpl{}
 	inst.Owner = owner
@@ -652234,6 +659834,14 @@ func NewGDExtensionClassFromVisualShaderNodeScreenUVToSDFOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeScreenUVToSDFImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeScreenUVToSDFWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeScreenUVToSDF {
 	inst := &VisualShaderNodeScreenUVToSDFImpl{}
 	inst.Owner = owner
@@ -652250,6 +659858,14 @@ func NewGDExtensionClassFromVisualShaderNodeSmoothStepOwner(owner *GodotObject) 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeSmoothStepImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeSmoothStepWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeSmoothStep {
@@ -652360,6 +659976,14 @@ func NewGDExtensionClassFromVisualShaderNodeStepOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeStepImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeStepWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeStep {
 	inst := &VisualShaderNodeStepImpl{}
 	inst.Owner = owner
@@ -652468,6 +660092,14 @@ func NewGDExtensionClassFromVisualShaderNodeSwitchOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeSwitchImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeSwitchWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeSwitch {
 	inst := &VisualShaderNodeSwitchImpl{}
 	inst.Owner = owner
@@ -652574,6 +660206,14 @@ func NewGDExtensionClassFromVisualShaderNodeTextureOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTextureImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeTextureWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTexture {
@@ -652849,6 +660489,14 @@ func NewGDExtensionClassFromVisualShaderNodeTexture2DArrayOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTexture2DArrayImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTexture2DArrayWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTexture2DArray {
 	inst := &VisualShaderNodeTexture2DArrayImpl{}
 	inst.Owner = owner
@@ -652960,6 +660608,14 @@ func NewGDExtensionClassFromVisualShaderNodeTexture2DArrayParameterOwner(owner *
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTexture2DArrayParameterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTexture2DArrayParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTexture2DArrayParameter {
 	inst := &VisualShaderNodeTexture2DArrayParameterImpl{}
 	inst.Owner = owner
@@ -652978,6 +660634,14 @@ func NewGDExtensionClassFromVisualShaderNodeTexture2DParameterOwner(owner *Godot
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTexture2DParameterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTexture2DParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTexture2DParameter {
 	inst := &VisualShaderNodeTexture2DParameterImpl{}
 	inst.Owner = owner
@@ -652994,6 +660658,14 @@ func NewGDExtensionClassFromVisualShaderNodeTexture3DOwner(owner *GodotObject) G
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTexture3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeTexture3DWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTexture3D {
@@ -653107,6 +660779,14 @@ func NewGDExtensionClassFromVisualShaderNodeTexture3DParameterOwner(owner *Godot
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTexture3DParameterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTexture3DParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTexture3DParameter {
 	inst := &VisualShaderNodeTexture3DParameterImpl{}
 	inst.Owner = owner
@@ -653123,6 +660803,14 @@ func NewGDExtensionClassFromVisualShaderNodeTextureParameterOwner(owner *GodotOb
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTextureParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeTextureParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTextureParameter {
@@ -653557,6 +661245,14 @@ func NewGDExtensionClassFromVisualShaderNodeTextureParameterTriplanarOwner(owner
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTextureParameterTriplanarImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTextureParameterTriplanarWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTextureParameterTriplanar {
 	inst := &VisualShaderNodeTextureParameterTriplanarImpl{}
 	inst.Owner = owner
@@ -653573,6 +661269,14 @@ func NewGDExtensionClassFromVisualShaderNodeTextureSDFOwner(owner *GodotObject) 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTextureSDFImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeTextureSDFWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTextureSDF {
@@ -653593,6 +661297,14 @@ func NewGDExtensionClassFromVisualShaderNodeTextureSDFNormalOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTextureSDFNormalImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTextureSDFNormalWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTextureSDFNormal {
 	inst := &VisualShaderNodeTextureSDFNormalImpl{}
 	inst.Owner = owner
@@ -653611,6 +661323,14 @@ func NewGDExtensionClassFromVisualShaderNodeTransformComposeOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTransformComposeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTransformComposeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTransformCompose {
 	inst := &VisualShaderNodeTransformComposeImpl{}
 	inst.Owner = owner
@@ -653627,6 +661347,14 @@ func NewGDExtensionClassFromVisualShaderNodeTransformConstantOwner(owner *GodotO
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTransformConstantImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeTransformConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTransformConstant {
@@ -653737,6 +661465,14 @@ func NewGDExtensionClassFromVisualShaderNodeTransformDecomposeOwner(owner *Godot
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTransformDecomposeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTransformDecomposeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTransformDecompose {
 	inst := &VisualShaderNodeTransformDecomposeImpl{}
 	inst.Owner = owner
@@ -653753,6 +661489,14 @@ func NewGDExtensionClassFromVisualShaderNodeTransformFuncOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTransformFuncImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeTransformFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTransformFunc {
@@ -653863,6 +661607,14 @@ func NewGDExtensionClassFromVisualShaderNodeTransformOpOwner(owner *GodotObject)
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTransformOpImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTransformOpWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTransformOp {
 	inst := &VisualShaderNodeTransformOpImpl{}
 	inst.Owner = owner
@@ -653969,6 +661721,14 @@ func NewGDExtensionClassFromVisualShaderNodeTransformParameterOwner(owner *Godot
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTransformParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeTransformParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTransformParameter {
@@ -654160,6 +661920,14 @@ func NewGDExtensionClassFromVisualShaderNodeTransformVecMultOwner(owner *GodotOb
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeTransformVecMultImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeTransformVecMultWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeTransformVecMult {
 	inst := &VisualShaderNodeTransformVecMultImpl{}
 	inst.Owner = owner
@@ -654266,6 +662034,14 @@ func NewGDExtensionClassFromVisualShaderNodeUIntConstantOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeUIntConstantImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeUIntConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeUIntConstant {
@@ -654376,6 +662152,14 @@ func NewGDExtensionClassFromVisualShaderNodeUIntFuncOwner(owner *GodotObject) GD
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeUIntFuncImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeUIntFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeUIntFunc {
 	inst := &VisualShaderNodeUIntFuncImpl{}
 	inst.Owner = owner
@@ -654484,6 +662268,14 @@ func NewGDExtensionClassFromVisualShaderNodeUIntOpOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeUIntOpImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeUIntOpWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeUIntOp {
 	inst := &VisualShaderNodeUIntOpImpl{}
 	inst.Owner = owner
@@ -654590,6 +662382,14 @@ func NewGDExtensionClassFromVisualShaderNodeUIntParameterOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeUIntParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeUIntParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeUIntParameter {
@@ -654781,6 +662581,14 @@ func NewGDExtensionClassFromVisualShaderNodeUVFuncOwner(owner *GodotObject) GDEx
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeUVFuncImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeUVFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeUVFunc {
 	inst := &VisualShaderNodeUVFuncImpl{}
 	inst.Owner = owner
@@ -654889,6 +662697,14 @@ func NewGDExtensionClassFromVisualShaderNodeUVPolarCoordOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeUVPolarCoordImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeUVPolarCoordWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeUVPolarCoord {
 	inst := &VisualShaderNodeUVPolarCoordImpl{}
 	inst.Owner = owner
@@ -654905,6 +662721,14 @@ func NewGDExtensionClassFromVisualShaderNodeVaryingOwner(owner *GodotObject) GDE
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVaryingImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVaryingWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVarying {
@@ -655096,6 +662920,14 @@ func NewGDExtensionClassFromVisualShaderNodeVaryingGetterOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVaryingGetterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVaryingGetterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVaryingGetter {
 	inst := &VisualShaderNodeVaryingGetterImpl{}
 	inst.Owner = owner
@@ -655114,6 +662946,14 @@ func NewGDExtensionClassFromVisualShaderNodeVaryingSetterOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVaryingSetterImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVaryingSetterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVaryingSetter {
 	inst := &VisualShaderNodeVaryingSetterImpl{}
 	inst.Owner = owner
@@ -655130,6 +662970,14 @@ func NewGDExtensionClassFromVisualShaderNodeVec2ConstantOwner(owner *GodotObject
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVec2ConstantImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVec2ConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVec2Constant {
@@ -655238,6 +663086,14 @@ func NewGDExtensionClassFromVisualShaderNodeVec2ParameterOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVec2ParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVec2ParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVec2Parameter {
@@ -655429,6 +663285,14 @@ func NewGDExtensionClassFromVisualShaderNodeVec3ConstantOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVec3ConstantImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVec3ConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVec3Constant {
 	inst := &VisualShaderNodeVec3ConstantImpl{}
 	inst.Owner = owner
@@ -655535,6 +663399,14 @@ func NewGDExtensionClassFromVisualShaderNodeVec3ParameterOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVec3ParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVec3ParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVec3Parameter {
@@ -655726,6 +663598,14 @@ func NewGDExtensionClassFromVisualShaderNodeVec4ConstantOwner(owner *GodotObject
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVec4ConstantImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVec4ConstantWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVec4Constant {
 	inst := &VisualShaderNodeVec4ConstantImpl{}
 	inst.Owner = owner
@@ -655832,6 +663712,14 @@ func NewGDExtensionClassFromVisualShaderNodeVec4ParameterOwner(owner *GodotObjec
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVec4ParameterImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVec4ParameterWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVec4Parameter {
@@ -656023,6 +663911,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorBaseOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorBaseImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVectorBaseWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorBase {
 	inst := &VisualShaderNodeVectorBaseImpl{}
 	inst.Owner = owner
@@ -656131,6 +664027,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorComposeOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorComposeImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVectorComposeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorCompose {
 	inst := &VisualShaderNodeVectorComposeImpl{}
 	inst.Owner = owner
@@ -656147,6 +664051,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorDecomposeOwner(owner *GodotObj
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorDecomposeImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVectorDecomposeWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorDecompose {
@@ -656167,6 +664079,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorDistanceOwner(owner *GodotObje
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorDistanceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVectorDistanceWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorDistance {
 	inst := &VisualShaderNodeVectorDistanceImpl{}
 	inst.Owner = owner
@@ -656183,6 +664103,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorFuncOwner(owner *GodotObject) 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorFuncImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVectorFuncWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorFunc {
@@ -656293,6 +664221,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorLenOwner(owner *GodotObject) G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorLenImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVectorLenWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorLen {
 	inst := &VisualShaderNodeVectorLenImpl{}
 	inst.Owner = owner
@@ -656309,6 +664245,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorOpOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorOpImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVisualShaderNodeVectorOpWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorOp {
@@ -656419,6 +664363,14 @@ func NewGDExtensionClassFromVisualShaderNodeVectorRefractOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeVectorRefractImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeVectorRefractWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeVectorRefract {
 	inst := &VisualShaderNodeVectorRefractImpl{}
 	inst.Owner = owner
@@ -656437,6 +664389,14 @@ func NewGDExtensionClassFromVisualShaderNodeWorldPositionFromDepthOwner(owner *G
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VisualShaderNodeWorldPositionFromDepthImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewVisualShaderNodeWorldPositionFromDepthWithGodotOwnerObject(owner *GodotObject) RefVisualShaderNodeWorldPositionFromDepth {
 	inst := &VisualShaderNodeWorldPositionFromDepthImpl{}
 	inst.Owner = owner
@@ -656453,6 +664413,14 @@ func NewGDExtensionClassFromVoxelGIOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VoxelGIImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVoxelGIWithGodotOwnerObject(owner *GodotObject) VoxelGI {
@@ -656894,6 +664862,14 @@ func NewGDExtensionClassFromVoxelGIDataOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *VoxelGIDataImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewVoxelGIDataWithGodotOwnerObject(owner *GodotObject) RefVoxelGIData {
@@ -657789,6 +665765,14 @@ func NewGDExtensionClassFromWeakRefOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WeakRefImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWeakRefWithGodotOwnerObject(owner *GodotObject) RefWeakRef {
 	inst := &WeakRefImpl{}
 	inst.Owner = owner
@@ -657854,6 +665838,14 @@ func NewGDExtensionClassFromWebRTCDataChannelOwner(owner *GodotObject) GDExtensi
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebRTCDataChannelImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWebRTCDataChannelWithGodotOwnerObject(owner *GodotObject) RefWebRTCDataChannel {
@@ -658441,6 +666433,14 @@ func NewGDExtensionClassFromWebRTCDataChannelExtensionOwner(owner *GodotObject) 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebRTCDataChannelExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWebRTCDataChannelExtensionWithGodotOwnerObject(owner *GodotObject) RefWebRTCDataChannelExtension {
 	inst := &WebRTCDataChannelExtensionImpl{}
 	inst.Owner = owner
@@ -658466,6 +666466,14 @@ func NewGDExtensionClassFromWebRTCMultiplayerPeerOwner(owner *GodotObject) GDExt
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebRTCMultiplayerPeerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWebRTCMultiplayerPeerWithGodotOwnerObject(owner *GodotObject) RefWebRTCMultiplayerPeer {
@@ -658853,6 +666861,14 @@ func NewGDExtensionClassFromWebRTCPeerConnectionOwner(owner *GodotObject) GDExte
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebRTCPeerConnectionImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWebRTCPeerConnectionWithGodotOwnerObject(owner *GodotObject) RefWebRTCPeerConnection {
@@ -659395,6 +667411,14 @@ func NewGDExtensionClassFromWebRTCPeerConnectionExtensionOwner(owner *GodotObjec
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebRTCPeerConnectionExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWebRTCPeerConnectionExtensionWithGodotOwnerObject(owner *GodotObject) RefWebRTCPeerConnectionExtension {
 	inst := &WebRTCPeerConnectionExtensionImpl{}
 	inst.Owner = owner
@@ -659420,6 +667444,14 @@ func NewGDExtensionClassFromWebSocketMultiplayerPeerOwner(owner *GodotObject) GD
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebSocketMultiplayerPeerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWebSocketMultiplayerPeerWithGodotOwnerObject(owner *GodotObject) RefWebSocketMultiplayerPeer {
@@ -660168,6 +668200,14 @@ func NewGDExtensionClassFromWebSocketPeerOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebSocketPeerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWebSocketPeerWithGodotOwnerObject(owner *GodotObject) RefWebSocketPeer {
@@ -661353,6 +669393,14 @@ func NewGDExtensionClassFromWebXRInterfaceOwner(owner *GodotObject) GDExtensionC
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WebXRInterfaceImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWebXRInterfaceWithGodotOwnerObject(owner *GodotObject) RefWebXRInterface {
 	inst := &WebXRInterfaceImpl{}
 	inst.Owner = owner
@@ -662116,6 +670164,14 @@ func NewGDExtensionClassFromWindowOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WindowImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWindowWithGodotOwnerObject(owner *GodotObject) Window {
@@ -667672,6 +675728,14 @@ func NewGDExtensionClassFromWorkerThreadPoolOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WorkerThreadPoolImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWorkerThreadPoolWithGodotOwnerObject(owner *GodotObject) WorkerThreadPool {
 	inst := &WorkerThreadPoolImpl{}
 	inst.Owner = owner
@@ -668102,6 +676166,14 @@ func NewGDExtensionClassFromWorld2DOwner(owner *GodotObject) GDExtensionClass {
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *World2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWorld2DWithGodotOwnerObject(owner *GodotObject) RefWorld2D {
 	inst := &World2DImpl{}
 	inst.Owner = owner
@@ -668287,6 +676359,14 @@ func NewGDExtensionClassFromWorld3DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *World3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWorld3DWithGodotOwnerObject(owner *GodotObject) RefWorld3D {
@@ -668728,6 +676808,14 @@ func NewGDExtensionClassFromWorldBoundaryShape2DOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WorldBoundaryShape2DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWorldBoundaryShape2DWithGodotOwnerObject(owner *GodotObject) RefWorldBoundaryShape2D {
 	inst := &WorldBoundaryShape2DImpl{}
 	inst.Owner = owner
@@ -668917,6 +677005,14 @@ func NewGDExtensionClassFromWorldBoundaryShape3DOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WorldBoundaryShape3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewWorldBoundaryShape3DWithGodotOwnerObject(owner *GodotObject) RefWorldBoundaryShape3D {
 	inst := &WorldBoundaryShape3DImpl{}
 	inst.Owner = owner
@@ -669023,6 +677119,14 @@ func NewGDExtensionClassFromWorldEnvironmentOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *WorldEnvironmentImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewWorldEnvironmentWithGodotOwnerObject(owner *GodotObject) WorldEnvironment {
@@ -669304,6 +677408,14 @@ func NewGDExtensionClassFromX509CertificateOwner(owner *GodotObject) GDExtension
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *X509CertificateImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewX509CertificateWithGodotOwnerObject(owner *GodotObject) RefX509Certificate {
 	inst := &X509CertificateImpl{}
 	inst.Owner = owner
@@ -669501,6 +677613,14 @@ func NewGDExtensionClassFromXMLParserOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XMLParserImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXMLParserWithGodotOwnerObject(owner *GodotObject) RefXMLParser {
@@ -670239,6 +678359,14 @@ func NewGDExtensionClassFromXRAnchor3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRAnchor3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXRAnchor3DWithGodotOwnerObject(owner *GodotObject) XRAnchor3D {
 	inst := &XRAnchor3DImpl{}
 	inst.Owner = owner
@@ -670344,6 +678472,14 @@ func NewGDExtensionClassFromXRBodyModifier3DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRBodyModifier3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRBodyModifier3DWithGodotOwnerObject(owner *GodotObject) XRBodyModifier3D {
@@ -670614,6 +678750,14 @@ func NewGDExtensionClassFromXRBodyTrackerOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRBodyTrackerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRBodyTrackerWithGodotOwnerObject(owner *GodotObject) RefXRBodyTracker {
@@ -670981,6 +679125,14 @@ func NewGDExtensionClassFromXRCamera3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRCamera3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXRCamera3DWithGodotOwnerObject(owner *GodotObject) XRCamera3D {
 	inst := &XRCamera3DImpl{}
 	inst.Owner = owner
@@ -670997,6 +679149,14 @@ func NewGDExtensionClassFromXRController3DOwner(owner *GodotObject) GDExtensionC
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRController3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRController3DWithGodotOwnerObject(owner *GodotObject) XRController3D {
@@ -671242,6 +679402,14 @@ func NewGDExtensionClassFromXRControllerTrackerOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRControllerTrackerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXRControllerTrackerWithGodotOwnerObject(owner *GodotObject) RefXRControllerTracker {
 	inst := &XRControllerTrackerImpl{}
 	inst.Owner = owner
@@ -671258,6 +679426,14 @@ func NewGDExtensionClassFromXRFaceModifier3DOwner(owner *GodotObject) GDExtensio
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRFaceModifier3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRFaceModifier3DWithGodotOwnerObject(owner *GodotObject) XRFaceModifier3D {
@@ -671447,6 +679623,14 @@ func NewGDExtensionClassFromXRFaceTrackerOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRFaceTrackerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRFaceTrackerWithGodotOwnerObject(owner *GodotObject) RefXRFaceTracker {
@@ -671645,6 +679829,14 @@ func NewGDExtensionClassFromXRHandModifier3DOwner(owner *GodotObject) GDExtensio
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRHandModifier3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXRHandModifier3DWithGodotOwnerObject(owner *GodotObject) XRHandModifier3D {
 	inst := &XRHandModifier3DImpl{}
 	inst.Owner = owner
@@ -671832,6 +680024,14 @@ func NewGDExtensionClassFromXRHandTrackerOwner(owner *GodotObject) GDExtensionCl
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRHandTrackerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRHandTrackerWithGodotOwnerObject(owner *GodotObject) RefXRHandTracker {
@@ -672461,6 +680661,14 @@ func NewGDExtensionClassFromXRInterfaceOwner(owner *GodotObject) GDExtensionClas
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRInterfaceImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRInterfaceWithGodotOwnerObject(owner *GodotObject) RefXRInterface {
@@ -673654,6 +681862,14 @@ func NewGDExtensionClassFromXRInterfaceExtensionOwner(owner *GodotObject) GDExte
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRInterfaceExtensionImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXRInterfaceExtensionWithGodotOwnerObject(owner *GodotObject) RefXRInterfaceExtension {
 	inst := &XRInterfaceExtensionImpl{}
 	inst.Owner = owner
@@ -673914,6 +682130,14 @@ func NewGDExtensionClassFromXRNode3DOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRNode3DImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRNode3DWithGodotOwnerObject(owner *GodotObject) XRNode3D {
@@ -674359,6 +682583,14 @@ func NewGDExtensionClassFromXROrigin3DOwner(owner *GodotObject) GDExtensionClass
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XROrigin3DImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXROrigin3DWithGodotOwnerObject(owner *GodotObject) XROrigin3D {
 	inst := &XROrigin3DImpl{}
 	inst.Owner = owner
@@ -674546,6 +682778,14 @@ func NewGDExtensionClassFromXRPoseOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRPoseImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRPoseWithGodotOwnerObject(owner *GodotObject) RefXRPose {
@@ -675101,6 +683341,14 @@ func NewGDExtensionClassFromXRPositionalTrackerOwner(owner *GodotObject) GDExten
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRPositionalTrackerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXRPositionalTrackerWithGodotOwnerObject(owner *GodotObject) RefXRPositionalTracker {
 	inst := &XRPositionalTrackerImpl{}
 	inst.Owner = owner
@@ -675558,6 +683806,14 @@ func NewGDExtensionClassFromXRServerOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRServerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRServerWithGodotOwnerObject(owner *GodotObject) XRServer {
@@ -676507,6 +684763,14 @@ func NewGDExtensionClassFromXRTrackerOwner(owner *GodotObject) GDExtensionClass 
 	return (GDExtensionClass)(inst)
 }
 
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRTrackerImpl) IsNil() bool {
+	return cx == nil
+}
+
 func NewXRTrackerWithGodotOwnerObject(owner *GodotObject) RefXRTracker {
 	inst := &XRTrackerImpl{}
 	inst.Owner = owner
@@ -676775,6 +685039,14 @@ func NewGDExtensionClassFromXRVRSOwner(owner *GodotObject) GDExtensionClass {
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *XRVRSImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewXRVRSWithGodotOwnerObject(owner *GodotObject) XRVRS {
@@ -677092,6 +685364,14 @@ func NewGDExtensionClassFromZIPPackerOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ZIPPackerImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewZIPPackerWithGodotOwnerObject(owner *GodotObject) RefZIPPacker {
@@ -677471,6 +685751,14 @@ func NewGDExtensionClassFromZIPReaderOwner(owner *GodotObject) GDExtensionClass 
 	inst.Owner = owner
 	pnr.Pin(inst)
 	return (GDExtensionClass)(inst)
+}
+
+// IsNil reports whether this wrapper pointer is nil. Declared on the outer
+// pointer type of every generated class: a call promoted through the
+// embedded parent faults on a typed nil while Go addresses the embedded
+// field, before any method body can run.
+func (cx *ZIPReaderImpl) IsNil() bool {
+	return cx == nil
 }
 
 func NewZIPReaderWithGodotOwnerObject(owner *GodotObject) RefZIPReader {

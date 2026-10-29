@@ -93,10 +93,6 @@ func createBuiltinClassEncoder[T any](t GDExtensionVariantType, opaqueSize int) 
 		)
 		return pOut
 	}
-	decodeReflectTypePtr := func(ptr GDExtensionConstTypePtr) reflect.Value {
-		v := decodeTypePtr(ptr)
-		return reflect.ValueOf(v)
-	}
 	encodeReflectTypePtrArg := func(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
 		v := rv.Interface().(T)
 		encodeTypePtrArg(v, pOut)
@@ -106,10 +102,6 @@ func createBuiltinClassEncoder[T any](t GDExtensionVariantType, opaqueSize int) 
 		pOut := (GDExtensionTypePtr)(unsafe.Pointer(&out))
 		encodeReflectTypePtrArg(rv, (GDExtensionUninitializedTypePtr)(pOut))
 		return pOut
-	}
-	decodeReflectVariantPtr := func(ptr GDExtensionConstVariantPtr) reflect.Value {
-		v := decodeVariantPtr(ptr)
-		return reflect.ValueOf(v)
 	}
 	encodeReflectVariantPtrArg := func(rv reflect.Value, pOut GDExtensionUninitializedVariantPtr) {
 		v := rv.Interface().(T)
@@ -130,10 +122,8 @@ func createBuiltinClassEncoder[T any](t GDExtensionVariantType, opaqueSize int) 
 		DecodeVariantPtr:           decodeVariantPtr,
 		EncodeVariantPtrArg:        encodeVariantPtrArg,
 		EncodeVariantPtr:           encodeVariantPtr,
-		decodeReflectTypePtr:       decodeReflectTypePtr,
 		encodeReflectTypePtrArg:    encodeReflectTypePtrArg,
 		encodeReflectTypePtr:       encodeReflectTypePtr,
-		decodeReflectVariantPtr:    decodeReflectVariantPtr,
 		encodeReflectVariantPtrArg: encodeReflectVariantPtrArg,
 		encodeReflectVariantPtr:    encodeReflectVariantPtr,
 	}

@@ -457,23 +457,24 @@ func benchPrologueStub() (restore func()) {
 // the VirtualMethodMap lookup, and the compiled callback dispatch.
 //
 // Engine-free reach caveat (recorded in the task evidence): the name is read
-// from the Go-side GetClassName() — the instance-held identity this change
-// plans to provide — because the CURRENT prologue's engine GetClass() +
-// ToUtf8() + Destroy() ceremony cannot execute without a live engine. These
-// cells therefore measure the shared floor of before/after, NOT today's full
-// prologue; the engine ceremony itself is recorded in-engine by task 1.4.
+// from the wrapper's stored ClassName, exactly as the prologue does since the
+// instance-held-identity switch (design D1). The pre-switch prologue's engine
+// GetClass() + ToUtf8() + Destroy() ceremony cannot execute engine-free, so
+// these cells measure the shared floor plus the new basis, NOT the old full
+// prologue; the old ceremony's cost is recorded in-engine by task 1.4 and its
+// removal by task 4.5.
 func BenchmarkDispatchPrologueNotification(b *testing.B) {
 	restore := benchPrologueStub()
 	defer restore()
 	inst := &benchPrologueObject{}
-	wci := &WrappedClassInstance{Instance: inst}
+	wci := &WrappedClassInstance{Instance: inst, ClassName: inst.GetClassName()}
 	handle := cgo.NewHandle(wci)
 	defer handle.Delete()
 	b.ReportAllocs()
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := handle.Value().(*WrappedClassInstance)
-		ci, ok := Internal.GDRegisteredGDClasses.Get(w.Instance.GetClassName())
+		ci, ok := Internal.GDRegisteredGDClasses.Get(w.ClassName)
 		if !ok {
 			b.Fatal("SpotStub not resolvable in the bench registry")
 		}
@@ -499,7 +500,7 @@ func BenchmarkDispatchProloguePropGet(b *testing.B) {
 	restore := benchPrologueStub()
 	defer restore()
 	inst := &benchPrologueObject{}
-	wci := &WrappedClassInstance{Instance: inst}
+	wci := &WrappedClassInstance{Instance: inst, ClassName: inst.GetClassName()}
 	handle := cgo.NewHandle(wci)
 	defer handle.Delete()
 	const name = "dproperty_1"
@@ -507,7 +508,7 @@ func BenchmarkDispatchProloguePropGet(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := handle.Value().(*WrappedClassInstance)
-		ci, ok := Internal.GDRegisteredGDClasses.Get(w.Instance.GetClassName())
+		ci, ok := Internal.GDRegisteredGDClasses.Get(w.ClassName)
 		if !ok {
 			b.Fatal("SpotStub not resolvable in the bench registry")
 		}

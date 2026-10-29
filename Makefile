@@ -117,7 +117,10 @@ ci_gen_test_project_files: ## Generate test project files for CI
 		echo 'res://example.gdextension' >> test/demo/.godot/extension_list.cfg; \
 	fi
 
-test: build ## Run headless tests: runtime suite, then the editor-plugin run (green only if both gates pass)
+test_dispatch_budget: ## Gate per-call allocation budgets for every dispatch shape (no Godot needed)
+	@go test ./pkg/core/ -run 'Budget' -count=1
+
+test: build test_dispatch_budget ## Run headless tests: runtime suite, then the editor-plugin run (green only if both gates pass)
 	@status=0; \
 	bash -o pipefail -ec ' \
 		CI=1 \

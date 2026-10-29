@@ -2,6 +2,44 @@
 
 Running log of measured figures and gate output backing each completed task.
 
+## Task 1.3 — gating budget tests over the benchmark shape set
+
+Added `pkg/core/dispatch_budget_gate_test.go`: 30 zero-budget rows covering
+every benchmark shape (instance/static value-void-copy-ret, six callback
+closures, prologue cells, four seam cells) plus the reflective control with a
+floor of 16 (baseline 32). Each row reports `measured / budget / handler_calls`
+every run and carries a witness-based vacuity guard (handler must advance at
+least once per measured call). Wired into `make test` as the
+`test_dispatch_budget` target (`go test ./pkg/core/ -run Budget -count=1`,
+prerequisite of `test:`).
+
+Falsification runs (each temporary, reverted immediately after capture):
+
+1. Sabotage — handler allocates once per call
+   (`gateSabotageSink = make([]byte, 8)` in the arity-0 value handler):
+
+   ```
+   dispatch budget instance value-ret arity-0  measured=1 budget=0 handler_calls=201
+   instance value-ret arity-0 allocates 1 per call, budget 0
+   --- FAIL: TestDispatchBudgetGateInstancePtrcall
+   ```
+
+   names the shape, the measured figure, and the budget, as required.
+
+2. Sabotage — shape stops dispatching (handler witness increment removed):
+
+   ```
+   dispatch budget instance value-ret arity-0  measured=0 budget=0 handler_calls=0
+   instance value-ret arity-0: vacuous budget — handler ran 0 times across
+   200 measured calls; the shape stopped dispatching, so the budget cannot
+   observe it
+   --- FAIL: TestDispatchBudgetGateInstancePtrcall
+   ```
+
+3. After revert: `make test_dispatch_budget` green and
+   `go test ./pkg/core/ -count=1` green; all 30 rows measured=0, control
+   measured=32 against floor 16, every row handler_calls=201.
+
 ## Task 1.2 — prologue resolve-and-dispatch cells (engine-free reach)
 
 Added `BenchmarkDispatchPrologueNotification` / `BenchmarkDispatchProloguePropGet`

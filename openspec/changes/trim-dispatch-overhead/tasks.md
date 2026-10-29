@@ -19,10 +19,10 @@
 
 ## 3. Nil detection and dead encoder surface
 
-- [ ] 3.1 Emit a nil check on each generated wrapper type from the `cmd/generate` template (declared on the outer pointer type, never promoted through the embedded value), regenerate with `make generate`, and review the generated diff for shape; verify `go build ./...` and `gofmt -l` are clean and the generated files differ only by the new method
-- [ ] 3.2 Add the nil check to the wrapper contract and switch `pkg/builtin/object_arg.go:30` and `pkg/gdclassimpl/object_return.go:78` from `reflect.ValueOf` to it; update every hand-written implementer found by the compile-time assertions in the same commit; verify the existing typed-nil encoding fixtures still encode a null pointer and the object-argument suites are green
-- [ ] 3.3 Re-measure the two switched call sites against the group 1 baseline and record the delta in the task evidence (the previous figures were ~6.7ns against ~0.47ns for the bare accessor); verify the timing fixture or an engine-free benchmark shows the improvement
-- [ ] 3.4 Remove the unused `DecodeReflectTypePtr` / `DecodeReflectVariantPtr` methods from the encoder interface and every per-type encoder; verify `grep -rn` finds no remaining callers, `go build ./...` succeeds, and the suite is green
+- [x] 3.1 Emit a nil check on each generated wrapper type from the `cmd/generate` template (declared on the outer pointer type, never promoted through the embedded value), regenerate with `make generate`, and review the generated diff for shape; verify `go build ./...` and `gofmt -l` are clean and the generated files differ only by the new method
+- [x] 3.2 Add the nil check to the wrapper contract and switch `pkg/builtin/object_arg.go:30` and `pkg/gdclassimpl/object_return.go:78` from `reflect.ValueOf` to it; update every hand-written implementer found by the compile-time assertions in the same commit; verify the existing typed-nil encoding fixtures still encode a null pointer and the object-argument suites are green
+- [x] 3.3 Re-measure the two switched call sites against the group 1 baseline and record the delta in the task evidence (the previous figures were ~6.7ns against ~0.47ns for the bare accessor); verify the timing fixture or an engine-free benchmark shows the improvement
+- [x] 3.4 Remove the unused `DecodeReflectTypePtr` / `DecodeReflectVariantPtr` methods from the encoder interface and every per-type encoder; verify `grep -rn` finds no remaining callers, `go build ./...` succeeds, and the suite is green
 
 ## 4. Instance-held class identity and the teardown basis
 

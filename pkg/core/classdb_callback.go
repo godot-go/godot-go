@@ -468,11 +468,17 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 		log.Debug("_get call returned false")
 		return 0
 	}
-	gdStrV := v.ToString()
-	defer gdStrV.Destroy()
 	log.Info("reflect method called",
-		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
-		zap.String("v", gdStrV.ToUtf8()),
+		zap.Stringer("ret", lazyText(func() string { return util.ReflectValueSliceToString(reflectedRet) })),
+		// Variant-to-String conversion is an engine crossing, so it belongs
+		// to the lazy payload: a discarded entry must not touch the engine.
+		// v stays valid until the rRet assignment below copies the cell out,
+		// and marshaling runs before this function returns.
+		zap.Stringer("v", lazyText(func() string {
+			s := v.ToString()
+			defer s.Destroy()
+			return s.ToUtf8()
+		})),
 	)
 	*(*Variant)(unsafe.Pointer(rRet)) = v
 	return 1
@@ -524,7 +530,7 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 	}
 	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
 	log.Info("reflect method called",
-		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
+		zap.Stringer("ret", lazyText(func() string { return util.ReflectValueSliceToString(reflectedRet) })),
 	)
 	if !reflectedRet[0].Bool() {
 		return 0

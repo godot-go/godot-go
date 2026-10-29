@@ -283,11 +283,12 @@ func TestDispatchBudgetGatePrologue(t *testing.T) {
 }
 
 // TestDispatchBudgetGateReflectiveControlFloor is the falsification partner:
-// the name-string reflective body must keep measuring allocations (floor 16,
-// baseline 32 at arity 1 per typed_dispatch_budget_test.go — the floor sits
-// low so Go-version drift cannot make the control vacuous). If this fails,
-// every zero-budget row above has lost its proof that the gate can observe a
-// regression at all.
+// the name-string reflective body must keep measuring allocations (floor 4,
+// baseline 9 at arity 1 — 32 before the lazy dispatch payloads of
+// trim-dispatch-overhead removed the eager diagnostic strings from the
+// reflective body; the floor sits low so Go-version drift cannot make the
+// control vacuous). If this fails, every zero-budget row above has lost its
+// proof that the gate can observe a regression at all.
 func TestDispatchBudgetGateReflectiveControlFloor(t *testing.T) {
 	InitPrimativeTypeEncodersForUnitTests()
 
@@ -309,7 +310,7 @@ func TestDispatchBudgetGateReflectiveControlFloor(t *testing.T) {
 		gdeArgumentTypes: []GDExtensionVariantType{GDEXTENSION_VARIANT_TYPE_INT},
 	}
 
-	const floor = 16
+	const floor = 4
 	const runs = 200
 	n := testing.AllocsPerRun(runs, func() {
 		md.Ptrcall(stub, args1, GDExtensionUninitializedTypePtr(&ret[0]))

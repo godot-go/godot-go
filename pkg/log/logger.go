@@ -4,14 +4,60 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"sync"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
 
 // Pattern sourced from here: https://stackoverflow.com/questions/30257622/golang-zap-how-to-do-a-centralized-configuration
+// swapWriter is an io.Writer that forwards to a replaceable target. zap
+// captures the writer inside the core when the logger is built (in init), so
+// reassigning the package `output` variable would leave the running logger
+// writing to the original stdout. Routing the core through this indirection
+// lets SetWriteSyncer point entries at a capture buffer (and restore stdout
+// afterwards) at runtime, which the diagnostic-capture tests depend on.
+//
+// Zap already serialises writes with the outer zapcore.Lock, so the only state
+// here that needs guarding is the target pointer itself: Swap rewrites it while
+// concurrent writers read it.
+type swapWriter struct {
+	mu     sync.RWMutex
+	target io.Writer
+}
+
+func (w *swapWriter) Write(p []byte) (int, error) {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	return w.target.Write(p)
+}
+
+// Swap replaces the write target and returns the previous one so a caller can
+// restore it.
+func (w *swapWriter) Swap(next io.Writer) io.Writer {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	prev := w.target
+	w.target = next
+	return prev
+}
+
+// Sync forwards to the target when it supports syncing, preserving the
+// behaviour AddSync gave the original *os.File target.
+func (w *swapWriter) Sync() error {
+	w.mu.RLock()
+	defer w.mu.RUnlock()
+	if s, ok := w.target.(interface{ Sync() error }); ok {
+		return s.Sync()
+	}
+	return nil
+}
+
 var (
-	output          io.Writer = os.Stdout
+	// stdoutSink is the writer installed in the logger core. SetWriteSyncer
+	// swaps its target rather than rebinding the variable.
+	stdoutSink                = &swapWriter{target: os.Stdout}
+	output          io.Writer = stdoutSink
 	logger          *zap.Logger
 	envLogLevel     = "LOG_LEVEL"
 	defaultLogLevel = zap.WarnLevel
@@ -90,9 +136,11 @@ func init() {
 	)
 }
 
-// SetWriteSyncer sets the underlying logger
-func SetWriteSyncer(out io.Writer) {
-	output = out
+// SetWriteSyncer redirects subsequent entries to out and returns the previous
+// writer so the caller can restore it. The swap takes effect for the already
+// built logger: the core writes through stdoutSink, whose target changes here.
+func SetWriteSyncer(out io.Writer) io.Writer {
+	return stdoutSink.Swap(out)
 }
 
 // SetLevel calls SetLevel on the underlying logger

@@ -355,8 +355,9 @@ func TestDispatchForSeam(t *testing.T) {
 // strictly positive per-call cost. If someone reintroduces reflect machinery
 // on the compiled path, this control is what proves the zero-cap cells above
 // can actually detect it (a zero-cap assertion is only meaningful when the
-// alternative is observably nonzero). Measured baseline: 32 allocations per
-// call at arity 1; the floor asserts well below that to stay stable.
+// alternative is observably nonzero). Measured baseline: 9 allocations per
+// call at arity 1 (32 before the lazy dispatch payloads of
+// trim-dispatch-overhead); the floor asserts well below that to stay stable.
 func TestDispatchBudgetReflectiveControlAllocates(t *testing.T) {
 	InitPrimativeTypeEncodersForUnitTests()
 

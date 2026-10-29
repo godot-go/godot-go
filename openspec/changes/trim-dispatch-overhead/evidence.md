@@ -2,6 +2,68 @@
 
 Running log of measured figures and gate output backing each completed task.
 
+## Task 1.6 — baseline consolidated + discoverability
+
+Consolidated pre-change baseline table added at the top of this file.
+AGENTS.md gained a "Dispatch Cost Baseline" subsection under Testing (budget
+gate, bench target, in-engine records, and the shape-list coupling). Makefile
+gained `test_dispatch_bench` (`go test ./pkg/core/ -bench 'Dispatch'
+-benchmem -run 'XXXnoTests'`); `make help` now lists both dispatch targets:
+
+```
+test_dispatch_bench   Record engine-free dispatch timings (ns/op; recorded, never gated)
+test_dispatch_budget  Gate per-call allocation budgets for every dispatch shape (no Godot needed)
+```
+
+`make test_dispatch_bench` verified to print the matrix (prologue cells
+92.3/115.1 ns/op, seam cells 16.7/20.0 ns/op on the verification run).
+
+## Pre-change baseline (group 1 consolidated)
+
+The figures every later group diffs against. Per-task detail follows in the
+1.1–1.5 entries; recorded on `feat-trim-dispatch-overhead` at commit
+`b463cdf`, linux/amd64, Intel Core i7-8650U @ 1.90GHz, Godot 4.8.beta.
+
+| tier | figure | gate? |
+|---|---|---|
+| engine-free allocations, 30 compiled/budget shapes | 0 per call | gated (budget = 0) |
+| engine-free allocations, reflective control (arity 1) | 32 per call | gated (floor 16) |
+| engine-free timing | see task 1.1 / 1.2 tables (instance ~3ns, copy-ret ~14-17ns, seam ~18-22ns, varcall seam hand-off ~38ns, prologue resolve 91-128ns) | recorded |
+| in-engine allocations (budget fixture) | compiled 0 ptrcall / 3-14 varcall; reflective 27-56 ptrcall / 38-249 varcall | gated (caps + margin) |
+| in-engine timing, 22 shapes | see task 1.4 table | recorded (presence gated) |
+
+Headline in-engine numbers for the before/after table (task 5.x):
+compiled ptrcall ~30-48ns/call; compiled varcall ~1.1-5.4µs/call; reflective
+ptrcall ~11-24µs/call; prologue_notification 29362.4ns/call;
+prologue_property_get 48355.2ns/call.
+
+## Task 1.5 — output gate requires the timing records
+
+`test/check_test_output.sh` gained check 12 (`dispatch-timing-records-missing`):
+the 22 shape names (list coupled to the `dispatch_time_tests.go` header) must
+each appear as `dispatch_time: shape=<name> ns/call=`; values are never read.
+The failure message names every missing shape. The old check 12
+(godot-exited-non-zero) renumbered to 13; the PASS line gained
+"dispatch timing records present".
+
+`test/fixtures/run_fixture_tests.sh` coverage, per the task's three cases:
+
+- present: `clean_pass.log` and `stacktrace_stub.log` extended with the 22
+  records (still exit 0);
+- missing-shape: new `dispatch_time_partial.log` (20 of 22 records; fails the
+  mode) plus a targeted assertion that the message names both dropped shapes
+  (`prologue_notification`, `copy_ret_varcall`);
+- absent-log: already covered by the existing `does_not_exist.log` loop.
+- bonus `dispatch_time_absent.log`: whole section vanished (driver drift) —
+  same mode, all 22 named.
+
+`godot_nonzero.log` (pre-existing, clean-driver-with-nonzero-exit) predates
+timing and would have tripped check 12 before reaching its intended 13 — it
+now carries the records too, matching what a current run looks like.
+
+`make test_gate`: 27 passed, 0 failed. The gate re-run against the live
+`test-output.log` passes with the extended PASS line (1490 assertions).
+
 ## Task 1.4 — in-engine timing fixture
 
 Added `test/pkg/dispatch_time_tests.go` (`TestDispatchTimes`), bound via

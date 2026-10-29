@@ -194,13 +194,46 @@ if grep -qa 'inheritance was not checked' <<<"$plain"; then
 		'inheritance was not checked'
 fi
 
-# 12. The gate found nothing wrong, yet godot still exited non-zero. Report it
-#    rather than passing: something outside the known modes went wrong.
+# 12. Dispatch timing records. The in-engine timing fixture
+#     (Example.test_dispatch_times, openspec: trim-dispatch-overhead) prints one
+#     'dispatch_time: shape=<name> ns/call=<figure>' line per dispatch shape.
+#     Only presence is required, one record per shape -- never a value (a slow
+#     CI machine must not fail; a fixture that vanished or died mid-section
+#     must). The shape list is coupled to the fixture header in
+#     test/pkg/dispatch_time_tests.go; drift here fails loudly naming the
+#     shapes, never as a false pass.
+dispatch_time_shapes=(
+	static_add_ptrcall static_add_varcall
+	value_arity0_ptrcall value_arity0_varcall
+	value_arity2_ptrcall value_arity2_varcall
+	value_arity5_ptrcall value_arity5_varcall
+	virtual_arity0_ptrcall virtual_arity0_varcall
+	container_arg_ptrcall container_arg_varcall
+	copy_ret_ptrcall copy_ret_varcall
+	reflective_value_arity0_ptrcall reflective_value_arity0_varcall
+	reflective_value_arity2_ptrcall reflective_value_arity2_varcall
+	reflective_value_arity5_ptrcall reflective_value_arity5_varcall
+	prologue_notification prologue_property_get
+)
+missing_timing=""
+for shape in "${dispatch_time_shapes[@]}"; do
+	if ! grep -qaF "dispatch_time: shape=${shape} ns/call=" <<<"$plain"; then
+		missing_timing+=" ${shape}"
+	fi
+done
+if [[ -n "$missing_timing" ]]; then
+	fail dispatch-timing-records-missing \
+		"the dispatch timing fixture printed no record for:${missing_timing}; expected one 'dispatch_time: shape=… ns/call=…' line per shape from Example.test_dispatch_times (presence is gated, values never are)" \
+		'dispatch_time|TESTS FINISHED'
+fi
+
+# 13. The gate found nothing wrong, yet godot still exited non-zero. Report it
+#     rather than passing: something outside the known modes went wrong.
 if [[ "$godot_status" -ne 0 ]]; then
 	fail godot-exited-non-zero \
 		"godot exited with status ${godot_status} although the driver reported a clean run (${passes} passed, 0 failed)" \
 		'ERROR|SCRIPT ERROR|handle_cr|Segmentation fault'
 fi
 
-echo "PASS: extension loaded, ${total} assertions ran, 0 failures, main-loop shutdown marker present, no leaked engine objects"
+echo "PASS: extension loaded, ${total} assertions ran, 0 failures, main-loop shutdown marker present, no leaked engine objects, dispatch timing records present"
 exit 0

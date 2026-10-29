@@ -44,6 +44,8 @@ cases=(
 	"stacktrace_no_go_stack.log|0|1|FAIL[stacktrace-go-stack-missing]"
 	"callable_panic_silent.log|0|1|FAIL[callable-panic-entry-missing]"
 	"signal_gate_degraded.log|0|1|FAIL[signal-gate-degraded]"
+	"dispatch_time_partial.log|0|1|FAIL[dispatch-timing-records-missing]"
+	"dispatch_time_absent.log|0|1|FAIL[dispatch-timing-records-missing]"
 )
 
 # editor gate fixture | godot_status | want_gate_exit | want_message_substring
@@ -118,6 +120,18 @@ for check_gate in "$gate" "$editor_gate"; do
 		fail=$((fail + 1))
 	fi
 done
+
+# The missing-shape timing failure must name the shapes it is missing -- the
+# per-shape list is what makes the failure actionable rather than a bare mode.
+out="$(bash "$gate" "${here}/dispatch_time_partial.log" 0 2>&1)"
+if [[ $? -ne 0 && "$out" == *"prologue_notification"* && "$out" == *"copy_ret_varcall"* ]]; then
+	echo "  ok   dispatch_time_partial.log  (names the two missing shapes)"
+	pass=$((pass + 1))
+else
+	echo "  FAIL dispatch_time_partial.log did not name the missing shapes"
+	printf '%s\n' "$out" | sed 's/^/           | /'
+	fail=$((fail + 1))
+fi
 
 echo ""
 echo "fixture tests: ${pass} passed, ${fail} failed"

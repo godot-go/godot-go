@@ -6,8 +6,8 @@
 - [x] 1.2 Add the callback-prologue measurement path engine-free (resolve-and-dispatch a notification and a property-get against a registered stub class), documenting in the task evidence which parts of the prologue the engine-free tier cannot reach (the engine `GetClass()` call itself)
 - [x] 1.3 Turn the benchmark set into gating allocation budgets with floor-plus-margin assertions and a per-shape vacuity guard, in the style of `pkg/core/typed_dispatch_budget_test.go`; verify by sabotaging one compiled shape to allocate, confirming that shape's budget test fails naming shape, measured figure and budget, then reverting and confirming green
 - [x] 1.4 Add the in-engine timing fixture in `test/pkg` printing one `dispatch_time: shape=… ns/call=…` line per covered shape (bind it in `test/pkg/example.go`, drive it from `test/demo/main.gd`); verify `GODOT=… make test` shows one line per shape in `test-output.log`
-- [ ] 1.5 Teach `test/check_test_output.sh` to require the timing records (presence per shape, never values) with matching cases in the gate's own fixture suite (`test/fixtures/run_fixture_tests.sh`); verify `make test_gate` covers the present, the missing-shape, and the absent-log cases
-- [ ] 1.6 Record the pre-change baseline figures (per-shape allocations and in-engine ns/call) in this change's task evidence, and document the new benchmark and budget invocations in the AGENTS.md testing section and `make help`; verify the figures are committed and the help text lists the targets
+- [x] 1.5 Teach `test/check_test_output.sh` to require the timing records (presence per shape, never values) with matching cases in the gate's own fixture suite (`test/fixtures/run_fixture_tests.sh`); verify `make test_gate` covers the present, the missing-shape, and the absent-log cases
+- [x] 1.6 Record the pre-change baseline figures (per-shape allocations and in-engine ns/call) in this change's task evidence, and document the new benchmark and budget invocations in the AGENTS.md testing section and `make help`; verify the figures are committed and the help text lists the targets
 
 ## 2. Diagnostics that cost nothing when discarded
 

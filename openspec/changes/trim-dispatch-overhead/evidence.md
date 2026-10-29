@@ -2,6 +2,60 @@
 
 Running log of measured figures and gate output backing each completed task.
 
+## Task 1.4 — in-engine timing fixture
+
+Added `test/pkg/dispatch_time_tests.go` (`TestDispatchTimes`), bound via
+`ClassDBBindMethod(t, "TestDispatchTimes", "test_dispatch_times", nil, nil)`
+in `test/pkg/example.go`, driven from `test/demo/main.gd`
+(`test_dispatch_times(example)`). Fixture verifies `Compiled()` on the seven
+typed probes and `!Compiled()` on the three reflective twins before timing
+(a silent fallback would mislabel records), reuses the budget fixture's
+registered probe binds, and prints 22 machine-readable records.
+`GODOT=… make test` run on this machine (i7-8650U, Godot 4.8.beta): all 22
+`dispatch_time: shape=… ns/call=…` lines present, `FAILURES: 0`, gate green.
+
+Pre-change in-engine baseline (ns/call, recorded — never gated):
+
+| shape | ns/call |
+|---|---|
+| static_add_ptrcall | 35.1 |
+| static_add_varcall | 3235.6 |
+| value_arity0_ptrcall | 29.8 |
+| value_arity0_varcall | 1136.5 |
+| value_arity2_ptrcall | 34.4 |
+| value_arity2_varcall | 3078.5 |
+| value_arity5_ptrcall | 47.7 |
+| value_arity5_varcall | 5408.4 |
+| virtual_arity0_ptrcall | 29.8 |
+| virtual_arity0_varcall | 1131.6 |
+| container_arg_ptrcall | 31.8 |
+| container_arg_varcall | 3647.0 |
+| copy_ret_ptrcall | 2593.5 |
+| copy_ret_varcall | 2831.2 |
+| reflective_value_arity0_ptrcall | 11464.7 |
+| reflective_value_arity0_varcall | 15637.5 |
+| reflective_value_arity2_ptrcall | 17451.4 |
+| reflective_value_arity2_varcall | 91908.3 |
+| reflective_value_arity5_ptrcall | 24041.7 |
+| reflective_value_arity5_varcall | 157166.8 |
+| prologue_notification | 29362.4 |
+| prologue_property_get | 48355.2 |
+
+Reading for later tasks:
+
+- Compiled ptrcall in-engine is ~30-48ns — the Go-side closure (~3ns) plus
+  the test-side seam and measurement floor. Reflective ptrcall is 11-24µs
+  (≈350-500x), consistent with the alloc-count gap (27-56 vs 0).
+- Varcall figures include per-call Variant decode/encode crossings and the
+  `ret.Destroy()` the probe owes the engine (same convention as the budget
+  fixture's leak gates).
+- The two prologue cells ride live engine paths (Object notification,
+  property read through `_get`), so they include the engine round trip;
+  that constant makes them the before/after pair for the task 4.4 hoist —
+  notification ~29µs, property-get ~48µs pre-change.
+- `e.notificationCodes` is restored after the notification cell; downstream
+  notification assertions stayed green (FAILURES: 0).
+
 ## Task 1.3 — gating budget tests over the benchmark shape set
 
 Added `pkg/core/dispatch_budget_gate_test.go`: 30 zero-budget rows covering

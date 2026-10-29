@@ -1800,6 +1800,7 @@ func RegisterClassExample() {
 		ClassDBBindValueMethod1(t, (*Example).AllocProbeArrayArg, "alloc_probe_array_arg", []string{"array"}, nil)
 		ClassDBBindCopyRetMethod1(t, (*Example).AllocProbeEchoStringNameArg, "alloc_probe_echo_sn", []string{"name"}, nil)
 		ClassDBBindMethod(t, "TestCompiledDispatchAllocs", "test_compiled_dispatch_allocs", nil, nil)
+		ClassDBBindMethod(t, "TestDispatchTimes", "test_dispatch_times", nil, nil)
 		ClassDBBindCopyRetMethod0(t, (*Example).TestDictionary, "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)

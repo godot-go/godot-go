@@ -29,6 +29,7 @@ func _ready():
 	test_user_defined_object_args(example)
 	test_varcall_arg_rejection(example)
 	test_compiled_dispatch_allocs(example)
+	test_dispatch_times(example)
 	test_property_hints(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
@@ -611,6 +612,15 @@ func _on_Example_custom_signal(signal_name, value):
 # caps for the assertion to keep its falsification power.
 func test_compiled_dispatch_allocs(example: Example):
 	assert_equal(example.test_compiled_dispatch_allocs(), 1)
+
+# In-engine dispatch timing baseline (openspec: trim-dispatch-overhead task
+# 1.4). The Go side times each dispatch shape with the engine running and
+# prints one "dispatch_time: shape=… ns/call=…" record per shape; the output
+# gate requires the records to exist, never a particular figure (wall-clock
+# numbers are recorded, not gated). A negative code means a precondition
+# failed (a probe fell back to the reflective path, or a panic).
+func test_dispatch_times(example: Example):
+	assert_equal(example.test_dispatch_times(), 1)
 
 # Property hint metadata tests (openspec: support-property-hints). Registers
 # hinted properties on Example in Go and reads them back through the engine.

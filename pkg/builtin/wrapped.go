@@ -65,6 +65,34 @@ func NewWrappedFromGodotObject(owner *GodotObject) *WrappedImpl {
 
 type WrappedClassInstance struct {
 	Instance Object
+	// ClassName is the registered extension class name the instance was
+	// created under, stored at construction so the class callback prologues
+	// read a Go string they already own instead of paying an engine
+	// crossing per callback (openspec trim-dispatch-overhead design D1).
+	// An immutable Go string: the registration outlives the instance and
+	// the field adds no program-lifetime retention.
+	ClassName string
+	// freeing marks that the engine has begun releasing this instance: the
+	// instance-free callback sets it at the re-entrancy guard point, before
+	// any Go-side teardown (Destroy) begins. Class callback prologues read
+	// it through IsFreeing to decline deliveries that arrive while the
+	// wrapper is dying. Both the free callback and the prologues are engine
+	// callbacks on the main thread, so a plain bool suffices.
+	freeing bool
+}
+
+// MarkFreeing records that the engine has begun releasing this instance.
+// The instance-free callback is the sole caller, at the point its
+// re-entrancy guard admits the first (and only) free; calling it again —
+// e.g. from a re-entrant pass that the guard then trips — is a no-op.
+func (w *WrappedClassInstance) MarkFreeing() {
+	w.freeing = true
+}
+
+// IsFreeing reports whether the engine has begun releasing this instance.
+// A nil wrapper reports false: it holds no instance to free.
+func (w *WrappedClassInstance) IsFreeing() bool {
+	return w != nil && w.freeing
 }
 
 func (w *WrappedClassInstance) GetClassName() string {

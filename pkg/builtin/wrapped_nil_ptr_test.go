@@ -150,6 +150,39 @@ func TestWrappedClassInstanceDestroyIsNoOp(t *testing.T) {
 	nilWrapper.Destroy()
 }
 
+// The freeing mark is the basis the class callback prologues will read
+// instead of asking the engine for a class name (openspec
+// trim-dispatch-overhead design D2), so its transitions are pinned here.
+// The mark is independent of the wrapped instance, so a zero wrapper is a
+// faithful subject; the class-callback probes deliver into a wrapper marked
+// this way to pin the decline itself.
+func TestWrappedClassInstanceMarkFreeingTransitions(t *testing.T) {
+	w := &WrappedClassInstance{}
+	if w.IsFreeing() {
+		t.Fatal("a freshly constructed wrapper must not report freeing")
+	}
+
+	w.MarkFreeing()
+	if !w.IsFreeing() {
+		t.Fatal("MarkFreeing must be observable through IsFreeing")
+	}
+
+	// The instance-free callback's re-entrancy guard admits one free, but a
+	// repeated mark must stay a no-op: the state has no counter and no
+	// second transition to lose.
+	w.MarkFreeing()
+	if !w.IsFreeing() {
+		t.Fatal("second MarkFreeing changed the state; it must be a no-op")
+	}
+}
+
+func TestWrappedClassInstanceIsFreeingNilReceiver(t *testing.T) {
+	var w *WrappedClassInstance
+	if w.IsFreeing() {
+		t.Fatal("nil wrapper holds no instance to free; want false")
+	}
+}
+
 // --- ObjectArgPtr: the shape the generated code actually uses ---
 
 func TestObjectArgPtrNilInterface(t *testing.T) {

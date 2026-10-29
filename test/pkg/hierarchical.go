@@ -24,6 +24,12 @@ func (t *TestHierarchicalBase) GetParentClassName() string {
 	return "Control"
 }
 
+// IsNil is declared on the outer type per the Wrapped contract: the call
+// promoted through the embedded ControlImpl would fault on a typed nil.
+func (t *TestHierarchicalBase) IsNil() bool {
+	return t == nil
+}
+
 // V_TestHierarchicalBase_GetMaximumSize is the base-level implementation of
 // the _get_maximum_size virtual under the qualified naming convention.
 func (t *TestHierarchicalBase) V_TestHierarchicalBase_GetMaximumSize() Vector2 {
@@ -55,6 +61,12 @@ func (t *TestHierarchicalDerived) GetClassName() string {
 
 func (t *TestHierarchicalDerived) GetParentClassName() string {
 	return "Control"
+}
+
+// IsNil is declared on the outer type per the Wrapped contract: the call
+// promoted through the embedded ControlImpl would fault on a typed nil.
+func (t *TestHierarchicalDerived) IsNil() bool {
+	return t == nil
 }
 
 // V_TestHierarchicalDerived_GetMaximumSize is the most-derived

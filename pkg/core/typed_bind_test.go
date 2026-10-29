@@ -36,6 +36,7 @@ func (s *TypedBindStub) GetGodotObjectOwner() *GodotObject            { return s
 func (s *TypedBindStub) SetGodotObjectOwner(owner *GodotObject)       { s.owner = owner }
 func (s *TypedBindStub) GetClassName() string                         { return "TypedBindStub" }
 func (s *TypedBindStub) GetParentClassName() string                   { return "Object" }
+func (s *TypedBindStub) IsNil() bool                                  { return s == nil }
 func (s *TypedBindStub) AsGDExtensionObjectPtr() GDExtensionObjectPtr { return nil }
 func (s *TypedBindStub) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
 	return nil
@@ -95,6 +96,7 @@ func (s *OtherBindStub) GetGodotObjectOwner() *GodotObject            { return s
 func (s *OtherBindStub) SetGodotObjectOwner(owner *GodotObject)       { s.owner = owner }
 func (s *OtherBindStub) GetClassName() string                         { return "OtherBindStub" }
 func (s *OtherBindStub) GetParentClassName() string                   { return "Object" }
+func (s *OtherBindStub) IsNil() bool                                  { return s == nil }
 func (s *OtherBindStub) AsGDExtensionObjectPtr() GDExtensionObjectPtr { return nil }
 func (s *OtherBindStub) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
 	return nil

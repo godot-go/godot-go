@@ -74,6 +74,13 @@ func (c *Example) GetParentClassName() string {
 	return "Control"
 }
 
+// IsNil is declared on the outer type per the Wrapped contract: the call
+// promoted through the embedded ControlImpl would fault on a typed nil
+// before any body could answer.
+func (c *Example) IsNil() bool {
+	return c == nil
+}
+
 func (e *Example) SimpleFunc() {
 	println("  Simple func called.")
 	e.EmitCustomSignal("simple_func", 3)

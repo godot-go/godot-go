@@ -1,8 +1,6 @@
 package builtin
 
 import (
-	"reflect"
-
 	. "github.com/godot-go/godot-go/pkg/ffi"
 )
 
@@ -15,19 +13,20 @@ import (
 // instead hands Godot the {itab, dataptr} header, which it reads as an object
 // pointer and crashes.
 //
-// The reflect check is load-bearing rather than defensive padding. Generated Impl
+// The typed-nil test is load-bearing rather than defensive padding. Generated Impl
 // types embed WrappedImpl by value (NodeImpl -> ObjectImpl -> WrappedImpl), so a
 // call to a promoted method on a typed nil faults while Go addresses the embedded
 // field, before any nil check inside the method body can run. A plain
 // `obj != nil` test does not catch a typed nil, because a typed nil satisfies it.
-//
-// Measured cost is ~6.7ns per call against ~0.47ns for the bare accessor, i.e.
-// roughly 0.1% of a single cgo boundary crossing.
+// The contract's IsNil answers through a method declared on the outer pointer
+// type of every wrapper (codegen for generated classes; hand-written wrappers
+// must declare it too), so the check is an ordinary interface call instead of
+// reflect.ValueOf.
 func ObjectArgPtr(obj Wrapped) GDExtensionObjectPtr {
 	if obj == nil {
 		return nil
 	}
-	if v := reflect.ValueOf(obj); v.Kind() == reflect.Ptr && v.IsNil() {
+	if obj.IsNil() {
 		return nil
 	}
 	return obj.AsGDExtensionObjectPtr()

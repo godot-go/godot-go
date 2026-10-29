@@ -44,6 +44,7 @@ func (s *spotStubClass) GetGodotObjectOwner() *GodotObject            { return s
 func (s *spotStubClass) SetGodotObjectOwner(owner *GodotObject)       { s.owner = owner }
 func (s *spotStubClass) GetClassName() string                         { return "SpotStub" }
 func (s *spotStubClass) GetParentClassName() string                   { return "Object" }
+func (s *spotStubClass) IsNil() bool                                  { return s == nil }
 func (s *spotStubClass) AsGDExtensionObjectPtr() GDExtensionObjectPtr { return nil }
 func (s *spotStubClass) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
 	return nil

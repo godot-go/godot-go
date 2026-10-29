@@ -29,6 +29,12 @@ func (t *TestDelegationRepro) GetParentClassName() string {
 	return "Control"
 }
 
+// IsNil is declared on the outer type per the Wrapped contract: the call
+// promoted through the embedded ControlImpl would fault on a typed nil.
+func (t *TestDelegationRepro) IsNil() bool {
+	return t == nil
+}
+
 const delegationDepthCap = 25
 
 func (t *TestDelegationRepro) V_TestDelegationRepro_GetMaximumSize() Vector2 {

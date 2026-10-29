@@ -17,15 +17,16 @@ func sentinelOwner(marker int) *GodotObject {
 	return (*GodotObject)(unsafe.Pointer(&v))
 }
 
-// typedProbe models a generated Impl type: it embeds WrappedImpl by value and
-// completes the Wrapped contract, so a typed nil of it addresses the embedded
-// field exactly as (*NodeImpl)(nil) would.
+// typedProbe models a generated Impl type: it embeds WrappedImpl by value,
+// completes the Wrapped contract, and declares its own IsNil exactly as
+// classes.go.tmpl emits, so a typed nil of it behaves like (*NodeImpl)(nil).
 type typedProbe struct {
 	WrappedImpl
 }
 
 func (p *typedProbe) GetClassName() string       { return "typedProbe" }
 func (p *typedProbe) GetParentClassName() string { return "Object" }
+func (p *typedProbe) IsNil() bool                { return p == nil }
 
 // fakeRef implements the Ref contract without real refcounting, so the helper's
 // IsValid-before-ToObject gate can be exercised in isolation. Real Ref behaviour is
@@ -158,8 +159,9 @@ func TestObjectArgPtrNilInterface(t *testing.T) {
 	}
 }
 
-// The case receiver hardening cannot reach: a typed nil faults while Go addresses
-// the embedded WrappedImpl, so only the helper's reflect check makes it safe.
+// The case promoted-method hardening cannot reach: without the outer type's
+// own IsNil the call faults while Go addresses the embedded WrappedImpl, so
+// the contract declaration is what makes the typed-nil answer possible.
 func TestObjectArgPtrTypedNil(t *testing.T) {
 	var obj Wrapped = (*typedProbe)(nil)
 	if got := ObjectArgPtr(obj); got != nil {

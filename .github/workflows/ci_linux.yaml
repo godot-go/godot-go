@@ -112,6 +112,29 @@ jobs:
           LOG_LEVEL: "debug"
           LANG: "en_US.utf8"
 
+      # Recorded benchmarks and the gate script's own fixture suite stay out
+      # of `make test`; CI runs them as separate steps so a gate-script
+      # regression (which only run_fixture_tests.sh can catch) still fails
+      # the build, attributed by step name instead of bundling ~a minute of
+      # engine-free benchmarks into the gated test step.
+      - name: Benchmark
+        if: ${{ matrix.os == 'linux' }}
+        timeout-minutes: 5
+        run: |
+          make benchmark
+        env:
+          CI: 1
+          LANG: "en_US.utf8"
+
+      - name: Integration Test
+        if: ${{ matrix.os == 'linux' }}
+        timeout-minutes: 5
+        run: |
+          make integration_test
+        env:
+          CI: 1
+          LANG: "en_US.utf8"
+
   build_alpine:
     name: "build on alpine (musl)"
     runs-on: ubuntu-latest

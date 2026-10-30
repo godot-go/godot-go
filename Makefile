@@ -33,7 +33,7 @@ endif
 # own C file because that is the version libbacktrace can consume.
 DEBUG_INFO_CFLAGS=-ggdb
 
-.PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_delegation_trap interactive_test open_demo_in_editor
+.PHONY: goenv installdeps generate fmt update_godot_headers_from_binary build build-full clean_src clean remote_debug_test ci_gen_test_project_files test test_dispatch_budget test_dispatch_bench benchmark integration_test test_delegation_trap interactive_test open_demo_in_editor
 
 goenv: ## Print Go environment variables
 	go env
@@ -143,6 +143,10 @@ test: build test_dispatch_budget ## Run headless tests: runtime suite, then the 
 
 test_gate: ## Run the fixture tests for the test-output gate itself (no Godot needed)
 	@bash $(CURDIR)/test/fixtures/run_fixture_tests.sh
+
+benchmark: test_dispatch_bench ## Run every recorded (non-gating) benchmark target
+
+integration_test: test_gate ## Run secondary verification the base `make test` keeps out of its hot path
 
 check_type_rejection: build ## Assert the engine rejects a wrong-class typed argument (negative fixture)
 	@out="$$($(GODOT) --headless --check-only --script res://type_rejection.gd --path test/demo/ 2>&1)"; \

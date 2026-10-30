@@ -152,7 +152,7 @@ The project includes a test demo at `test/demo/` that:
 - Keep the subject imperative, lowercase, under ~72 chars
 
 ### Requirements
-- Go 1.25.0+
+- Go 1.27.0+
 - Godot 4.5 binary
 - clang-format for C code formatting
 - goimports for Go code formatting

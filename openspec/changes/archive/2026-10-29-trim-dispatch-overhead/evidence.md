@@ -643,3 +643,14 @@ Notes for later comparisons:
 - The seam cells land ~15ns above the bare closures — first candidate reading
   for where metadata-seam ceremony goes; task 1.2 adds the prologue cells where
   the engine-lookup ceremony lives.
+
+## Post-archive — CI wiring of the secondary targets (2026-10-30)
+
+Follow-up to the PR #193 review note that `test/fixtures/run_fixture_tests.sh`
+(the gate script's own fixture suite) ran in no CI workflow. The Makefile
+gained umbrella targets `benchmark` (wraps `test_dispatch_bench`) and
+`integration_test` (wraps `test_gate`); the Linux CI workflow runs both as
+steps after `make test`. `make test` is unchanged in content — it already
+excluded the benchmarks, and it keeps the allocation-budget gate the
+dispatch-cost-baseline spec requires of the test target. AGENTS.md's Dispatch
+Cost Baseline subsection records the split.

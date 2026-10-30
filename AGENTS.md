@@ -36,15 +36,22 @@
 Dispatch cost has two tiers: allocation budgets are gated, wall-clock timings are only recorded.
 ```bash
 # Gate per-call allocation budgets for every dispatch shape (engine-free, part of make test)
-GODOT=/path/to/godot make test_dispatch_budget
+make test_dispatch_budget
 
-# Record engine-free per-shape timings (ns/op; never gated)
+# Record engine-free per-shape timings (ns/op; never gated; grouped under make benchmark)
 make test_dispatch_bench
 
 # In-engine timings: make test prints "dispatch_time: shape=… ns/call=…" per shape
 # into test-output.log; the output gate requires the records to exist, never a value
 GODOT=/path/to/godot make test
+
+# Gate-script fixture self-tests (engine-free; grouped under make integration_test)
+make test_gate
 ```
+- `make test` keeps only what it gates (the build, the budget gate, the engine
+  runs and their output gates). CI runs the recorded benchmarks via
+  `make benchmark` and the gate script's own fixture suite via
+  `make integration_test` as separate steps.
 - The in-engine timing fixture lives in `test/pkg/dispatch_time_tests.go`; its shape
   list is coupled to `test/check_test_output.sh` — if a shape is added or renamed,
   update both and re-run `make test_gate`.

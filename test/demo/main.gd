@@ -128,11 +128,15 @@ func test_suite(i: int, example: Example):
 
 	# Basic built-in types: String / StringName / NodePath args (ptrcall).
 	assert_equal(example.test_string_arg_echo("hello"), "hello")
+	assert_equal(example.test_string_arg_echo_typed("hello"), "hello")
 	assert_equal(example.test_string_name_arg_echo(&"my_name"), "my_name")
 	assert_equal(example.test_node_path_arg_echo(NodePath("root/child")), "root/child")
 
 	# Basic built-in types via Variant call (varcall).
 	assert_equal(example.call("test_string_arg_echo", "hello"), "hello")
+	# Typed-bound String arg: the compiled varcall closure acquires the
+	# decoded copy and must release it after the return is encoded.
+	assert_equal(example.call("test_string_arg_echo_typed", "hello"), "hello")
 	assert_equal(example.call("test_string_name_arg_echo", &"my_name"), "my_name")
 	assert_equal(example.call("test_node_path_arg_echo", NodePath("root/child")), "root/child")
 

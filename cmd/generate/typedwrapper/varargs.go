@@ -82,7 +82,10 @@ var varArgTypes = []varArgType{
 	{Type: "Color", Decode: "v.ToColor()", RetEncoder: "ColorEncoder"},
 
 	{Type: "RID", Decode: "v.ToRID()", RetEncoder: "RIDEncoder"},
-	{Type: "String", Decode: "v.ToString()", RetEncoder: "StringEncoder"},
+	// String is an owned copy like the containers below: v.ToString()
+	// constructs through the variant constructor (acquire), and
+	// destroyOwnedContainerArgs now releases it after the return encoding.
+	{Type: "String", Decode: "v.ToString()", Release: true, RetEncoder: "StringEncoder"},
 
 	// StringName/NodePath varcall decode constructs through the engine
 	// conversion, keeps a byte borrow of the result, and destroys the
@@ -94,9 +97,7 @@ var varArgTypes = []varArgType{
 	{Type: "NodePath", Borrow: true},
 
 	// Owned container copies: released after the return encoding, mirroring
-	// destroyOwnedContainerArgs. Engine String is deliberately no release --
-	// the reflective release site has no String case, and parity is
-	// code-equality with that site.
+	// destroyOwnedContainerArgs (whose String case joins the set above).
 	{Type: "Callable", Decode: "v.ToCallable()", Release: true},
 	{Type: "Signal", Decode: "v.ToSignal()", Release: true},
 	{Type: "Array", Decode: "v.ToArray()", Release: true},

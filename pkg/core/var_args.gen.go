@@ -418,6 +418,8 @@ func newVarArgDecoderExact[A varArgSlot]() func(Variant) A {
 // also misses — releases nothing.
 func newVarArgReleaser[A varArgSlot]() func(A) {
 	switch t := reflect.TypeFor[A](); t {
+	case reflect.TypeFor[String]():
+		return func(a A) { (*(*String)(unsafe.Pointer(&a))).Destroy() }
 	case reflect.TypeFor[Callable]():
 		return func(a A) { (*(*Callable)(unsafe.Pointer(&a))).Destroy() }
 	case reflect.TypeFor[Signal]():

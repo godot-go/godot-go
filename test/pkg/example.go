@@ -901,6 +901,14 @@ func (e *Example) TestStringArgEcho(p_str String) String {
 	return NewStringWithUtf8Chars(p_str.ToUtf8())
 }
 
+// TestStringArgEchoTyped is the typed-bound twin of TestStringArgEcho: the
+// compiled varcall closure owns the decoded String copy (variant constructor
+// acquire) and must release it after the return Variant is encoded, so the
+// pair pins the release on both dispatch tiers.
+func (e *Example) TestStringArgEchoTyped(p_str String) String {
+	return NewStringWithUtf8Chars(p_str.ToUtf8())
+}
+
 // TestStringNameArgEcho decodes a Godot StringName argument and returns its
 // content as a fresh String.
 func (e *Example) TestStringNameArgEcho(p_name StringName) String {
@@ -1530,6 +1538,10 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestRefLifecycle", "test_ref_lifecycle", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "TestFinalizerRelease", "test_finalizer_release", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "TestStringArgEcho", "test_string_arg_echo", []string{"str"}, nil)
+		// Typed twin: the compiled varcall closure owns the decoded String
+		// copy and releases it post-return; the name-string bind above keeps
+		// the reflective release site covered too.
+		ClassDBBindValueMethod1(t, (*Example).TestStringArgEchoTyped, "test_string_arg_echo_typed", []string{"str"}, nil)
 		ClassDBBindValueMethod1(t, (*Example).TestStringNameArgEcho, "test_string_name_arg_echo", []string{"name"}, nil)
 		ClassDBBindValueMethod1(t, (*Example).TestNodePathArgEcho, "test_node_path_arg_echo", []string{"path"}, nil)
 		ClassDBBindCopyRetMethod0(t, (*Example).TestReturnStringName, "test_return_string_name", nil, nil)

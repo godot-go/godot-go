@@ -100,7 +100,12 @@ jobs:
           LANG: "en_US.UTF-8"
 
       - name: Test
-        timeout-minutes: 7
+        # The build prerequisite can rebuild from scratch: -gcflags=all="-N -l"
+        # invalidates the toolchain cache for every package including the
+        # stdlib, and the measured cold build is ~8.5min on the Intel leg.
+        # Budget that plus the suite (~2-3min of engine runs) with margin;
+        # the 7-minute budget killed healthy runs mid-prerequisite.
+        timeout-minutes: 15
         run: make test
         env:
           CI: 1

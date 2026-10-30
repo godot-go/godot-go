@@ -149,6 +149,21 @@ func initPrimativeTypeEncoders() {
 	GoStringUtf8Encoder = createGoStringEncoder(Utf8GoStringFormat)
 	GoStringLatin1Encoder = createGoStringEncoder(Latin1GoStringFormat)
 
-	ObjectEncoder = CreateObjectEncoder[Object]()
 	VariantEncoder = createVariantEncoder()
+}
+
+// InitPrimativeTypeEncodersForUnitTests primes the primitive encoder globals
+// for tests that drive the reflective dispatch path without a live engine. The
+// creators capture engine call pointers through the ffi CallFunc_ wrappers,
+// which read the FFI table at call time, so construction never dereferences
+// them; only encodes/decodes that actually cross into the engine (variant
+// constructors, String chars) would fault if invoked here.
+//
+// It is exactly initPrimativeTypeEncoders: the Object encoder is excluded
+// there, because its creator requires resolved variant-constructor pointers
+// and panics without a live engine, so its global stays nil exactly as in any
+// engine-free run. VariantInitBindings adds the Object encoder back and
+// remains the full engine-time initializer.
+func InitPrimativeTypeEncodersForUnitTests() {
+	initPrimativeTypeEncoders()
 }

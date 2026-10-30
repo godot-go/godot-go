@@ -28,6 +28,7 @@ func _ready():
 	test_ptrcall_object_decode(example)
 	test_user_defined_object_args(example)
 	test_varcall_arg_rejection(example)
+	test_compiled_dispatch_allocs(example)
 	test_property_hints(example)
 	# example.group_subgroup_custom_position = Vector2(0, 0)
 	# custom_signal_emitted = null
@@ -127,11 +128,15 @@ func test_suite(i: int, example: Example):
 
 	# Basic built-in types: String / StringName / NodePath args (ptrcall).
 	assert_equal(example.test_string_arg_echo("hello"), "hello")
+	assert_equal(example.test_string_arg_echo_typed("hello"), "hello")
 	assert_equal(example.test_string_name_arg_echo(&"my_name"), "my_name")
 	assert_equal(example.test_node_path_arg_echo(NodePath("root/child")), "root/child")
 
 	# Basic built-in types via Variant call (varcall).
 	assert_equal(example.call("test_string_arg_echo", "hello"), "hello")
+	# Typed-bound String arg: the compiled varcall closure acquires the
+	# decoded copy and must release it after the return is encoded.
+	assert_equal(example.call("test_string_arg_echo_typed", "hello"), "hello")
 	assert_equal(example.call("test_string_name_arg_echo", &"my_name"), "my_name")
 	assert_equal(example.call("test_node_path_arg_echo", NodePath("root/child")), "root/child")
 
@@ -599,6 +604,14 @@ func test_suite(i: int, example: Example):
 func _on_Example_custom_signal(signal_name, value):
 	custom_signal_emitted = [signal_name, value]
 
+# Compiled-dispatch allocation budget (openspec: typed-method-dispatch task
+# 7.2). The Go side drives the registered typed bindings through
+# testing.AllocsPerRun and prints one line per shape; a breach returns a
+# negative code. The reflective twin probe must measure above the compiled
+# caps for the assertion to keep its falsification power.
+func test_compiled_dispatch_allocs(example: Example):
+	assert_equal(example.test_compiled_dispatch_allocs(), 1)
+
 # Property hint metadata tests (openspec: support-property-hints). Registers
 # hinted properties on Example in Go and reads them back through the engine.
 func test_property_hints(example: Example):
@@ -859,6 +872,7 @@ func test_ptrcall_object_decode(example: Example):
 	assert_equal(example.test_ptrcall_decode_null_object(), 1)
 	assert_equal(example.test_ptrcall_decode_ref_regression(circle), 1)
 	assert_equal(example.test_ptrcall_decode_undecodable_interface(node), 1)
+	assert_equal(example.test_object_arg_fallback_boundary(node), 1)
 
 	node.free()
 	cs.free()

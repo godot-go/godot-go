@@ -95,7 +95,7 @@ remote_debug_test: ## Start Godot with gdbserver for remote debugging
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=crash \
-	GODEBUG=asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GODEBUG=cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	gdbserver --once :55555 "$(GODOT)" --headless --verbose --debug --path test/demo/
 
 ci_gen_test_project_files: ## Generate test project files for CI
@@ -110,7 +110,7 @@ ci_gen_test_project_files: ## Generate test project files for CI
 	CI=1 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
-	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GODEBUG=gctrace=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	"$(GODOT)" --headless --verbose --path test/demo/ --editor --frame-delay 16 --quit-after 600
 	# hack until fix lands: https://github.com/godotengine/godot/issues/84460
 	if [ ! -f "test/demo/.godot/extension_list.cfg" ]; then \
@@ -123,7 +123,7 @@ test: build ## Run headless tests: runtime suite, then the editor-plugin run (gr
 		CI=1 \
 		LOG_LEVEL=WARN \
 		GOTRACEBACK=single \
-		GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
+		GODEBUG=gctrace=1,cgocheck=1,invalidptr=1,clobberfree=1 \
 		"$(GODOT)" --headless --verbose --path test/demo/ --quit-after 12 2>&1 | tee $(CURDIR)/test-output.log' || status=$$?; \
 	bash $(CURDIR)/test/check_test_output.sh $(CURDIR)/test-output.log $$status || exit 1; \
 	edstatus=0; \
@@ -131,7 +131,7 @@ test: build ## Run headless tests: runtime suite, then the editor-plugin run (gr
 		CI=1 \
 		LOG_LEVEL=WARN \
 		GOTRACEBACK=single \
-		GODEBUG=asyncpreemptoff=1,cgocheck=1,invalidptr=1 \
+		GODEBUG=cgocheck=1,invalidptr=1 \
 		"$(GODOT)" --headless --verbose --path test/demo/ --editor --quit-after 12 2>&1 | tee $(CURDIR)/editor-output.log' || edstatus=$$?; \
 	bash $(CURDIR)/test/check_editor_output.sh $(CURDIR)/editor-output.log $$edstatus
 
@@ -165,7 +165,7 @@ test_delegation_trap: build ## Expect the delegating virtual repro to abort godo
 	@CI=1 \
 	LOG_LEVEL=WARN \
 	GOTRACEBACK=single \
-	GODEBUG=asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1 \
+	GODEBUG=cgocheck=1,invalidptr=1,clobberfree=1 \
 	"$(GODOT)" --headless --verbose --path test/demo/ res://delegation_trap.tscn > $(CURDIR)/delegation-trap-output.log 2>&1; \
 	status=$$?; \
 	if [ $$status -eq 0 ]; then \
@@ -183,14 +183,14 @@ test_delegation_trap: build ## Expect the delegating virtual repro to abort godo
 interactive_test: ## Run Godot editor with debugging for interactive testing
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
-	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GODEBUG=gctrace=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	"$(GODOT)" --verbose --debug --path test/demo/
 
 open_demo_in_editor: ## Open demo project in Godot editor with debugging
 	DISPLAY=:0 \
 	LOG_LEVEL=info \
 	GOTRACEBACK=1 \
-	GODEBUG=gctrace=1,asyncpreemptoff=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
+	GODEBUG=gctrace=1,cgocheck=1,invalidptr=1,clobberfree=1,tracebackancestors=5 \
 	"$(GODOT)" --verbose --debug --path test/demo/ --editor
 
 help: ## Display this help screen

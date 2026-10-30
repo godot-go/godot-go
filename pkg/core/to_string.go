@@ -47,6 +47,17 @@ func resolveToStringFor(recv any, className string, instanceId uint64) string {
 		return defaultToStringFormat(className, instanceId)
 	}
 
+	if cb := mcmi.GoMethodMetadata.cbToString; cb != nil {
+		// Compiled callback shape (design D6): a plain Go string out with
+		// the single-string guarantee made compile-time. The GDClass
+		// assertion mirrors the dispatch receivers; a receiver that cannot
+		// satisfy it (a synthetic unit-test value) falls through to the
+		// reflective body.
+		if gd, isGD := recv.(GDClass); isGD {
+			return cb(gd)
+		}
+	}
+
 	ret := mcmi.GoMethodMetadata.Func.Call([]reflect.Value{reflect.ValueOf(recv)})
 	if len(ret) != 1 || ret[0].Kind() != reflect.String {
 		log.Warn("to_string virtual did not return a single Go string; using default format",

@@ -273,6 +273,14 @@ func GoCallback_ClassCreationInfoPropertyCanRevert(p_instance C.GDExtensionClass
 		// report absence immediately without logging.
 		return 0
 	}
+	if cb := mcmi.GoMethodMetadata.cbPropCanRevert; cb != nil {
+		// Compiled callback shape (design D6): the StringName is the same
+		// Godot-owned borrow the reflective path boxes, passed by value.
+		if cb(wci.Instance, *gdName) {
+			return 1
+		}
+		return 0
+	}
 	args := []reflect.Value{
 		reflect.ValueOf(wci.Instance),
 		reflect.ValueOf(*gdName),
@@ -307,6 +315,17 @@ func GoCallback_ClassCreationInfoPropertyGetRevert(p_instance C.GDExtensionClass
 		// Revert queries are frequent (the inspector asks per property);
 		// report absence immediately without logging.
 		return 0
+	}
+	if cb := mcmi.GoMethodMetadata.cbPropGetRevert; cb != nil {
+		// Compiled callback shape (design D6): the concrete (Variant, bool)
+		// return makes the reflective path's interface-cast guard
+		// structurally guaranteed.
+		v, found := cb(wci.Instance, *gdName)
+		if !found {
+			return 0
+		}
+		*(*Variant)(unsafe.Pointer(r_ret)) = v
+		return 1
 	}
 	args := []reflect.Value{
 		reflect.ValueOf(wci.Instance),
@@ -375,6 +394,12 @@ func GoCallback_ClassCreationInfoNotification(p_instance C.GDExtensionClassInsta
 		// silent no-op without logging.
 		return
 	}
+	if cb := mcmi.GoMethodMetadata.cbNotification; cb != nil {
+		// Compiled callback shape (design D6): the same int32 what and
+		// GDExtensionBool-to-Go-bool conversion the reflective boxes carry.
+		cb(wci.Instance, int32(p_what), p_reversed != 0)
+		return
+	}
 	args := []reflect.Value{
 		reflect.ValueOf(wci.Instance),
 		reflect.ValueOf(int32(p_what)),
@@ -413,6 +438,20 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 			zap.String("method_name", name),
 		)
 		return 0
+	}
+	if cb := mcmi.GoMethodMetadata.cbPropGet; cb != nil {
+		// Compiled callback shape (design D6): UTF-8 name in exactly as the
+		// reflective box, (value, exists) out with the same
+		// false-means-unhandled contract; no per-call diagnostic allocates
+		// here, so the reflective path's ToString logging stays reflective-
+		// only.
+		v, found := cb(wci.Instance, name)
+		if !found {
+			log.Debug("_get call returned false")
+			return 0
+		}
+		*(*Variant)(unsafe.Pointer(rRet)) = v
+		return 1
 	}
 	args := []reflect.Value{
 		reflect.ValueOf(wci.Instance),
@@ -468,6 +507,14 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 		log.Info("no V_Set method registered",
 			zap.String("class", name),
 		)
+		return 0
+	}
+	if cb := mcmi.GoMethodMetadata.cbPropSet; cb != nil {
+		// Compiled callback shape (design D6): the same UTF-8 name and
+		// engine-owned Variant view the reflective boxes carry.
+		if cb(wci.Instance, name, v) {
+			return 1
+		}
 		return 0
 	}
 	args := []reflect.Value{

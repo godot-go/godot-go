@@ -17,6 +17,7 @@ import (
 	"github.com/godot-go/godot-go/cmd/generate/gdclassimpl"
 	"github.com/godot-go/godot-go/cmd/generate/gdclassinit"
 	"github.com/godot-go/godot-go/cmd/generate/gdutilfunc"
+	"github.com/godot-go/godot-go/cmd/generate/typedwrapper"
 	"github.com/godot-go/godot-go/cmd/generate/nativestructure"
 
 	"github.com/spf13/cobra"
@@ -121,6 +122,12 @@ var rootCmd = &cobra.Command{
 			constant.Generate(packagePath, eapi)
 			nativestructure.Generate(packagePath, eapi)
 			gdutilfunc.Generate(packagePath, eapi)
+		}
+		if verbose {
+			println("Generating typed dispatch wrappers...")
+		}
+		if err := typedwrapper.Generate(packagePath); err != nil {
+			panic(err)
 		}
 		if verbose {
 			println("cli tool done")

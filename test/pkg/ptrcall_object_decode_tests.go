@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	"encoding/binary"
 	"fmt"
 	"reflect"
 	"runtime"
@@ -195,6 +196,96 @@ func (e *Example) TestPtrcallDecodeRelease() int32 {
 	return objectArgGuard("ptrcall_decode_release", func() int32 {
 		runtime.GC()
 		runtime.GC()
+		return 1
+	})
+}
+
+// TestObjectArgFallbackBoundary pins the fallback boundary of
+// typed-method-dispatch (task 1.3) on live registration data. An Object- or
+// Ref-typed parameter sits outside the typed unions — the testdata fixtures
+// typedbindobjectarg and typedbindrefarg prove the typed API rejects such a
+// signature at compile time — because decoding it is per-call instance-binding
+// work a raw load cannot express. Two things follow, and both are asserted here:
+//
+//   - no bind carrying an object or reference parameter serves dispatch through
+//     a compiled closure (were the unions ever widened, a raw-loaded interface
+//     would reach the handler in place of the resolved instance), and
+//   - such a bind still dispatches through the reflective decoder, resolving the
+//     receiver and the argument instance exactly as before the typed path existed.
+//
+// The classification mirrors the decoder's own boundary in
+// reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs: an interface
+// declaration implementing Object or Ref takes the instance-binding branch.
+func (e *Example) TestObjectArgFallbackBoundary(node Node) int32 {
+	return objectArgGuard("object_arg_fallback_boundary", func() int32 {
+		if isNullObject(node) {
+			return -1
+		}
+
+		objectType := reflect.TypeFor[Object]()
+		refType := reflect.TypeFor[Ref]()
+		declaresObjectArgument := func(decls []reflect.Type) bool {
+			for _, decl := range decls {
+				if decl == nil || decl.Kind() != reflect.Interface {
+					continue
+				}
+				if decl.Implements(objectType) || decl.Implements(refType) {
+					return true
+				}
+			}
+			return false
+		}
+
+		objectBinds := 0
+		for _, ci := range Internal.GDRegisteredGDClasses.Values() {
+			if err := ci.HasError(); err != nil {
+				continue
+			}
+			for _, binds := range []map[string]*MethodBindAndClassMethodInfo{ci.MethodMap, ci.VirtualMethodMap} {
+				for gdName, mcmi := range binds {
+					md := mcmi.GoMethodMetadata
+					if md == nil || !declaresObjectArgument(md.GoArgumentTypes) {
+						continue
+					}
+					objectBinds++
+					d, found := DispatchFor(ci.Name, gdName)
+					if !found {
+						fmt.Printf("  object_arg_boundary: FAIL: %s.%s unresolvable through the dispatch seam\n", ci.Name, gdName)
+						return -2
+					}
+					if d.Compiled() {
+						fmt.Printf("  object_arg_boundary: FAIL: %s.%s carries a compiled closure despite its object argument\n", ci.Name, gdName)
+						return -3
+					}
+				}
+			}
+		}
+		if objectBinds == 0 {
+			// The demo registers object-argument binds (the neighbouring
+			// decoder fixtures' own binds do); zero means the walk lost its
+			// subject and the assertion above would pass vacuously.
+			fmt.Println("  object_arg_boundary: FAIL: no object-argument bind found to check")
+			return -4
+		}
+
+		// Drive one through the entry the engine uses. The handler is the
+		// plain-object decoder fixture, which returns 1 only when its own
+		// decode of the argument cell produced the same instance.
+		d, found := DispatchFor("Example", "test_ptrcall_decode_plain_object")
+		if !found {
+			fmt.Println("  object_arg_boundary: FAIL: test_ptrcall_decode_plain_object unresolvable")
+			return -5
+		}
+		cell := ObjectArgPtr(node)
+		cells := []GDExtensionConstTypePtr{(GDExtensionConstTypePtr)(unsafe.Pointer(&cell))}
+		var ret [8]byte
+		d.Ptrcall(e, cells, GDExtensionUninitializedTypePtr(&ret[0]))
+		if code := int32(binary.LittleEndian.Uint64(ret[:])); code != 1 {
+			fmt.Printf("  object_arg_boundary: FAIL: fallback dispatch returned %d, want 1\n", code)
+			return -6
+		}
+		fmt.Printf("  object_arg_boundary: %d object/Ref-argument binds, all reflective; fallback dispatch resolved instance %d\n",
+			objectBinds, node.GetInstanceId())
 		return 1
 	})
 }

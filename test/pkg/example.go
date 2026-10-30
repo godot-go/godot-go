@@ -64,6 +64,8 @@ type Example struct {
 	sliceHeld []byte
 }
 
+func (c *Example) Self() *Example { return c }
+
 func (c *Example) GetClassName() string {
 	return "Example"
 }
@@ -615,6 +617,64 @@ func (e *Example) GetNotificationCodes() PackedInt32Array {
 	return arr
 }
 
+// Allocation-budget probe handlers (typed-method-dispatch task 7.2, driven by
+// test/pkg/dispatch_alloc_budget_tests.go). Both twins run the same tiny
+// arithmetic with no side effects; only the bind differs:
+//
+//   - AllocProbeSum* is bound through the typed overload, so its ptrcall and
+//     varcall paths serve through compiled closures.
+//   - AllocProbeSum*Reflective is bound through the name-string API, so the
+//     same call shape dispatches reflectively.
+//
+// The budget fixture asserts the compiled path stays at its allocation cap
+// and the reflective twins measure strictly above it, proving the budget can
+// actually detect reflect machinery on the dispatch path.
+func (e *Example) AllocProbeSum0() int64 {
+	return 7
+}
+
+func (e *Example) AllocProbeSum2(a, b int64) int64 {
+	return a + b
+}
+
+func (e *Example) AllocProbeSum5(a, b, c, d, f int64) int64 {
+	return a + b + c + d + f
+}
+
+func (e *Example) AllocProbeSum0Reflective() int64 {
+	return 7
+}
+
+func (e *Example) AllocProbeSum2Reflective(a, b int64) int64 {
+	return a + b
+}
+
+func (e *Example) AllocProbeSum5Reflective(a, b, c, d, f int64) int64 {
+	return a + b + c + d + f
+}
+
+// V_Example_AllocProbeZero is the virtual-shape budget probe: registered with
+// the virtual flag like the engine-reserved virtuals, dispatched through the
+// same compiled closures.
+func (e *Example) V_Example_AllocProbeZero() int64 {
+	return 3
+}
+
+// AllocProbeArrayArg takes a container argument and does no engine work: the
+// budget cells around it attribute the argument-decode legs only, with no
+// handler-side allocations to subtract.
+func (e *Example) AllocProbeArrayArg(arr PackedInt64Array) int64 {
+	return 1
+}
+
+// AllocProbeEchoStringNameArg is the copy-return budget probe with an
+// allocation-neutral body: the echo returns the borrow it received, so the
+// only per-call work outside dispatch is the copy-construct encode and the
+// echo-classified release decision.
+func (e *Example) AllocProbeEchoStringNameArg(name StringName) StringName {
+	return name
+}
+
 func (e *Example) V_Example_Set(name string, value Variant) bool {
 	if strings.HasPrefix(name, "dproperty") {
 		tokens := strings.SplitN(name, "_", 2)
@@ -838,6 +898,14 @@ func (e *Example) TestFinalizerRelease(ref RefRefCounted) int32 {
 // TestStringArgEcho decodes a Godot String argument and returns a fresh
 // String built from its content (avoids aliasing the caller-owned arg).
 func (e *Example) TestStringArgEcho(p_str String) String {
+	return NewStringWithUtf8Chars(p_str.ToUtf8())
+}
+
+// TestStringArgEchoTyped is the typed-bound twin of TestStringArgEcho: the
+// compiled varcall closure owns the decoded String copy (variant constructor
+// acquire) and must release it after the return Variant is encoded, so the
+// pair pins the release on both dispatch tiers.
+func (e *Example) TestStringArgEchoTyped(p_str String) String {
 	return NewStringWithUtf8Chars(p_str.ToUtf8())
 }
 
@@ -1450,11 +1518,16 @@ func RegisterClassExample() {
 		ClassDBBindMethodVirtual(t, "V_Example_ToString", "to_string", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Example_Ready", "_ready", nil, nil)
 		ClassDBBindMethodVirtual(t, "V_Example_Input", "_input", []string{"event"}, nil)
-		ClassDBBindMethodVirtual(t, "V_Example_Set", "_set", []string{"name", "value"}, nil)
-		ClassDBBindMethodVirtual(t, "V_Example_Get", "_get", []string{"name"}, nil)
-		ClassDBBindMethodVirtual(t, "V_Example_PropertyCanRevert", "_property_can_revert", []string{"name"}, nil)
-		ClassDBBindMethodVirtual(t, "V_Example_PropertyGetRevert", "_property_get_revert", []string{"name"}, nil)
-		ClassDBBindMethodVirtual(t, "V_Example_Notification", "_notification", []string{"what", "reversed"}, nil)
+		// Callback virtuals through the dedicated typed binds (typed-method-
+		// dispatch D6): the engine slots run compiled fixed-shape closures.
+		// to_string stays name-string-bound, keeping the reflective fallback
+		// under the to-string suite while every other callback suite runs
+		// its compiled path.
+		ClassDBBindVirtualSet(t, (*Example).V_Example_Set)
+		ClassDBBindVirtualGet(t, (*Example).V_Example_Get)
+		ClassDBBindVirtualPropertyCanRevert(t, (*Example).V_Example_PropertyCanRevert)
+		ClassDBBindVirtualPropertyGetRevert(t, (*Example).V_Example_PropertyGetRevert)
+		ClassDBBindVirtualNotification(t, (*Example).V_Example_Notification)
 
 		ClassDBBindMethod(t, "SimpleFunc", "simple_func", nil, nil)
 		ClassDBBindMethod(t, "SimpleConstFunc", "simple_const_func", []string{"a"}, nil)
@@ -1465,14 +1538,23 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestRefLifecycle", "test_ref_lifecycle", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "TestFinalizerRelease", "test_finalizer_release", []string{"ref"}, nil)
 		ClassDBBindMethod(t, "TestStringArgEcho", "test_string_arg_echo", []string{"str"}, nil)
-		ClassDBBindMethod(t, "TestStringNameArgEcho", "test_string_name_arg_echo", []string{"name"}, nil)
-		ClassDBBindMethod(t, "TestNodePathArgEcho", "test_node_path_arg_echo", []string{"path"}, nil)
-		ClassDBBindMethod(t, "TestReturnStringName", "test_return_string_name", nil, nil)
-		ClassDBBindMethod(t, "TestReturnNodePath", "test_return_node_path", nil, nil)
-		ClassDBBindMethod(t, "TestEchoStringNameArg", "test_echo_string_name_arg", []string{"name"}, nil)
-		ClassDBBindMethod(t, "TestFreshStringName", "test_fresh_string_name", []string{"name"}, nil)
-		ClassDBBindMethod(t, "TestEchoNodePathArg", "test_echo_node_path_arg", []string{"path"}, nil)
-		ClassDBBindMethod(t, "TestFreshNodePath", "test_fresh_node_path", []string{"path"}, nil)
+		// Typed twin: the compiled varcall closure owns the decoded String
+		// copy and releases it post-return; the name-string bind above keeps
+		// the reflective release site covered too.
+		ClassDBBindValueMethod1(t, (*Example).TestStringArgEchoTyped, "test_string_arg_echo_typed", []string{"str"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestStringNameArgEcho, "test_string_name_arg_echo", []string{"name"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestNodePathArgEcho, "test_node_path_arg_echo", []string{"path"}, nil)
+		ClassDBBindCopyRetMethod0(t, (*Example).TestReturnStringName, "test_return_string_name", nil, nil)
+		ClassDBBindCopyRetMethod0(t, (*Example).TestReturnNodePath, "test_return_node_path", nil, nil)
+		// Borrow-echo fixtures through the typed copy-return family (design
+		// D5): echo calls classify as borrows and skip the source release;
+		// fresh returns are classified owned and destroyed after encoding.
+		// The shutdown leak gates compare the totals against the reflective
+		// baseline the same fixtures produced before conversion.
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoStringNameArg, "test_echo_string_name_arg", []string{"name"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestFreshStringName, "test_fresh_string_name", []string{"name"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoNodePathArg, "test_echo_node_path_arg", []string{"path"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestFreshNodePath, "test_fresh_node_path", []string{"path"}, nil)
 		// Object-argument encoding (openspec: fix-object-arg-ptrcall-encoding).
 		ClassDBBindMethod(t, "TestObjectArgAddChild", "test_object_arg_add_child", []string{"child"}, nil)
 		ClassDBBindMethod(t, "TestObjectArgIdentity", "test_object_arg_identity", []string{"parent", "child"}, nil)
@@ -1508,6 +1590,9 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestPtrcallDecodeNullObject", "test_ptrcall_decode_null_object", nil, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeRefRegression", "test_ptrcall_decode_ref_regression", []string{"shape"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeUndecodableInterface", "test_ptrcall_decode_undecodable_interface", []string{"node"}, nil)
+		// typed-method-dispatch 1.3: itself an object-argument bind, so it
+		// can only exist through the name-string API it asserts on.
+		ClassDBBindMethod(t, "TestObjectArgFallbackBoundary", "test_object_arg_fallback_boundary", []string{"node"}, nil)
 		ClassDBBindMethod(t, "TestPtrcallDecodeRelease", "test_ptrcall_decode_release", nil, nil)
 		// support-variant-reflect-completeness: Ref argument/return crossing.
 		ClassDBBindMethod(t, "TestRefBoundaryValid", "test_ref_boundary_valid", []string{"ref"}, nil)
@@ -1556,7 +1641,9 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "AwaitTimerStart", "await_timer_start", []string{"timer"}, nil)
 		ClassDBBindMethod(t, "AwaitTimerCode", "await_timer_code", nil, nil)
 		// support-static-methods: Go package functions bound as class statics.
-		ClassDBBindStaticMethod(t, "static_add", ExampleStaticAdd, []string{"a", "b"}, nil)
+		// static_add rides the typed static bind (compiled value family);
+		// the remaining statics keep the name-string path.
+		ClassDBBindStaticValueMethod2(t, ExampleStaticAdd, "static_add", []string{"a", "b"}, nil)
 		ClassDBBindStaticMethod(t, "static_with_default", ExampleStaticWithDefault,
 			[]string{"base", "bonus"}, []Variant{NewVariantInt64(10)})
 		ClassDBBindStaticMethod(t, "static_sum_varargs", ExampleStaticSumVarargs, nil, nil)
@@ -1647,30 +1734,34 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestSliceRetainStore", "test_slice_retain_store", []string{"p_in"}, nil)
 		ClassDBBindMethod(t, "TestSliceRetainVerify", "test_slice_retain_verify", []string{"p_expected_len", "p_expected_sum"}, nil)
 		ClassDBBindMethod(t, "TestSliceMutateProbe", "test_slice_mutate_probe", []string{"p_in"}, nil)
-		ClassDBBindMethod(t, "TestEchoVector2i", "test_echo_vector2i", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoVector3", "test_echo_vector3", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoVector3i", "test_echo_vector3i", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoRect2", "test_echo_rect2", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoRect2i", "test_echo_rect2i", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoTransform2D", "test_echo_transform2d", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoVector4i", "test_echo_vector4i", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPlane", "test_echo_plane", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoQuaternion", "test_echo_quaternion", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoAABB", "test_echo_aabb", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoBasis", "test_echo_basis", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoTransform3D", "test_echo_transform3d", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoProjection", "test_echo_projection", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoArray", "test_echo_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedByteArray", "test_echo_packed_byte_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedInt32Array", "test_echo_packed_int32_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedInt64Array", "test_echo_packed_int64_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedFloat32Array", "test_echo_packed_float32_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedFloat64Array", "test_echo_packed_float64_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedStringArray", "test_echo_packed_string_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedVector2Array", "test_echo_packed_vector2_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedVector3Array", "test_echo_packed_vector3_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedVector4Array", "test_echo_packed_vector4_array", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoPackedColorArray", "test_echo_packed_color_array", []string{"v"}, nil)
+		// Value-family echoes through typed binds (compiled ptrcall/varcall).
+		ClassDBBindValueMethod1(t, (*Example).TestEchoVector2i, "test_echo_vector2i", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoVector3, "test_echo_vector3", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoVector3i, "test_echo_vector3i", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoRect2, "test_echo_rect2", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoRect2i, "test_echo_rect2i", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoTransform2D, "test_echo_transform2d", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoVector4i, "test_echo_vector4i", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoPlane, "test_echo_plane", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoQuaternion, "test_echo_quaternion", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoAABB, "test_echo_aabb", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoBasis, "test_echo_basis", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoTransform3D, "test_echo_transform3d", []string{"v"}, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestEchoProjection, "test_echo_projection", []string{"v"}, nil)
+		// Container echoes through the typed copy-return family: the echo
+		// classification must keep every shared-storage borrow unreleased
+		// (borrow-echo-detection), which the shutdown leak gates assert.
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoArray, "test_echo_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedByteArray, "test_echo_packed_byte_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedInt32Array, "test_echo_packed_int32_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedInt64Array, "test_echo_packed_int64_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedFloat32Array, "test_echo_packed_float32_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedFloat64Array, "test_echo_packed_float64_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedStringArray, "test_echo_packed_string_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedVector2Array, "test_echo_packed_vector2_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedVector3Array, "test_echo_packed_vector3_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedVector4Array, "test_echo_packed_vector4_array", []string{"v"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoPackedColorArray, "test_echo_packed_color_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestConsumeArray", "test_consume_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestConsumePackedByteArray", "test_consume_packed_byte_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestConsumePackedInt32Array", "test_consume_packed_int32_array", []string{"v"}, nil)
@@ -1684,17 +1775,32 @@ func RegisterClassExample() {
 		ClassDBBindMethod(t, "TestMutateArray", "test_mutate_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestCloneEchoArray", "test_clone_echo_array", []string{"v"}, nil)
 		ClassDBBindMethod(t, "TestRebuildArrayPlus", "test_rebuild_array_plus", []string{"v"}, nil)
-		ClassDBBindMethod(t, "TestEchoDictionary", "test_echo_dictionary", []string{"d"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).TestEchoDictionary, "test_echo_dictionary", []string{"d"}, nil)
 		ClassDBBindMethod(t, "TestConsumeDictionary", "test_consume_dictionary", []string{"d"}, nil)
 		ClassDBBindMethod(t, "TestMutateDictionary", "test_mutate_dictionary", []string{"d"}, nil)
 		ClassDBBindMethod(t, "ReturnSomething", "return_something", []string{"base", "f32", "f64", "i", "i8", "i16", "i32", "i64"}, nil)
 		ClassDBBindMethod(t, "ReturnSomethingConst", "return_something_const", nil, nil)
 		ClassDBBindMethod(t, "ReturnEmptyRef", "return_empty_ref", nil, nil)
 
-		ClassDBBindMethod(t, "TestArray", "test_array", nil, nil)
-		ClassDBBindMethod(t, "TestTArrayArg", "test_tarray_arg", []string{"array"}, nil)
-		ClassDBBindMethod(t, "TestTArray", "test_tarray", nil, nil)
-		ClassDBBindMethod(t, "TestDictionary", "test_dictionary", nil, nil)
+		ClassDBBindCopyRetMethod0(t, (*Example).TestArray, "test_array", nil, nil)
+		ClassDBBindValueMethod1(t, (*Example).TestTArrayArg, "test_tarray_arg", []string{"array"}, nil)
+		ClassDBBindCopyRetMethod0(t, (*Example).TestTArray, "test_tarray", nil, nil)
+		// Allocation-budget probes (task 7.2): the same signatures bound
+		// compiled vs reflective so the budget fixture measures both, plus
+		// the virtual shape.
+		ClassDBBindValueMethod0(t, (*Example).AllocProbeSum0, "alloc_probe_sum0", nil, nil)
+		ClassDBBindValueMethod2(t, (*Example).AllocProbeSum2, "alloc_probe_sum2", []string{"a", "b"}, nil)
+		ClassDBBindValueMethod5(t, (*Example).AllocProbeSum5, "alloc_probe_sum5",
+			[]string{"a", "b", "c", "d", "f"}, nil)
+		ClassDBBindMethod(t, "AllocProbeSum0Reflective", "alloc_probe_sum0_reflective", nil, nil)
+		ClassDBBindMethod(t, "AllocProbeSum2Reflective", "alloc_probe_sum2_reflective", []string{"a", "b"}, nil)
+		ClassDBBindMethod(t, "AllocProbeSum5Reflective", "alloc_probe_sum5_reflective",
+			[]string{"a", "b", "c", "d", "f"}, nil)
+		ClassDBBindVirtualValueMethod0(t, (*Example).V_Example_AllocProbeZero, "alloc_probe_zero", nil, nil)
+		ClassDBBindValueMethod1(t, (*Example).AllocProbeArrayArg, "alloc_probe_array_arg", []string{"array"}, nil)
+		ClassDBBindCopyRetMethod1(t, (*Example).AllocProbeEchoStringNameArg, "alloc_probe_echo_sn", []string{"name"}, nil)
+		ClassDBBindMethod(t, "TestCompiledDispatchAllocs", "test_compiled_dispatch_allocs", nil, nil)
+		ClassDBBindCopyRetMethod0(t, (*Example).TestDictionary, "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)
 		ClassDBBindMethod(t, "TestStrUtility", "test_str_utility", nil, nil)
@@ -1726,7 +1832,7 @@ func RegisterClassExample() {
 		ClassDBAddPropertySubgroup(t, "Test subgroup", "group_subgroup_")
 
 		ClassDBBindMethod(t, "GetV4", "get_v4", nil, nil)
-		ClassDBBindMethod(t, "GetNotificationCodes", "get_notification_codes", nil, nil)
+		ClassDBBindCopyRetMethod0(t, (*Example).GetNotificationCodes, "get_notification_codes", nil, nil)
 		ClassDBBindMethod(t, "GetCustomPosition", "get_custom_position", nil, nil)
 		ClassDBBindMethod(t, "SetCustomPosition", "set_custom_position", []string{"position"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_VECTOR2, "group_subgroup_custom_position", "set_custom_position", "get_custom_position")

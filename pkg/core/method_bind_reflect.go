@@ -80,6 +80,13 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass
 func destroyOwnedContainerArgs(args []reflect.Value) {
 	for _, arg := range args {
 		switch v := arg.Interface().(type) {
+		case String:
+			// convertVariantToGoTypeReflectValue decodes String through the
+			// variant constructor, which acquires; the release was missing
+			// here and leaked the constructed String per call. Handlers that
+			// need the value past the call take their own Copy(), the same
+			// discipline the StringName/NodePath borrows impose.
+			v.Destroy()
 		case Array:
 			v.Destroy()
 		case Dictionary:

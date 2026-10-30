@@ -19,6 +19,8 @@ type TestDelegationRepro struct {
 	delegationDepth int32
 }
 
+func (t *TestDelegationRepro) Self() *TestDelegationRepro { return t }
+
 func (t *TestDelegationRepro) GetClassName() string {
 	return "TestDelegationRepro"
 }
@@ -48,7 +50,7 @@ func NewTestDelegationReproFromOwnerObject(owner *GodotObject) GDClass {
 
 func RegisterClassTestDelegationRepro() {
 	ClassDBRegisterClass(NewTestDelegationReproFromOwnerObject, nil, nil, func(t *TestDelegationRepro) {
-		ClassDBBindMethodVirtual(t, "V_TestDelegationRepro_GetMaximumSize", "_get_maximum_size", nil, nil)
+		ClassDBBindVirtualValueMethod0(t, (*TestDelegationRepro).V_TestDelegationRepro_GetMaximumSize, "_get_maximum_size", nil, nil)
 	})
 	log.Debug("TestDelegationRepro registered")
 }

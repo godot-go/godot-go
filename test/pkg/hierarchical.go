@@ -14,6 +14,8 @@ type TestHierarchicalBase struct {
 	ControlImpl
 }
 
+func (t *TestHierarchicalBase) Self() *TestHierarchicalBase { return t }
+
 func (t *TestHierarchicalBase) GetClassName() string {
 	return "TestHierarchicalBase"
 }
@@ -45,6 +47,8 @@ type TestHierarchicalDerived struct {
 	TestHierarchicalBase
 }
 
+func (t *TestHierarchicalDerived) Self() *TestHierarchicalDerived { return t }
+
 func (t *TestHierarchicalDerived) GetClassName() string {
 	return "TestHierarchicalDerived"
 }
@@ -69,14 +73,14 @@ func NewTestHierarchicalDerivedFromOwnerObject(owner *GodotObject) GDClass {
 
 func RegisterClassTestHierarchicalBase() {
 	ClassDBRegisterClass(NewTestHierarchicalBaseFromOwnerObject, nil, nil, func(t *TestHierarchicalBase) {
-		ClassDBBindMethodVirtual(t, "V_TestHierarchicalBase_GetMaximumSize", "_get_maximum_size", nil, nil)
+		ClassDBBindVirtualValueMethod0(t, (*TestHierarchicalBase).V_TestHierarchicalBase_GetMaximumSize, "_get_maximum_size", nil, nil)
 	})
 	log.Debug("TestHierarchicalBase registered")
 }
 
 func RegisterClassTestHierarchicalDerived() {
 	ClassDBRegisterClass(NewTestHierarchicalDerivedFromOwnerObject, nil, nil, func(t *TestHierarchicalDerived) {
-		ClassDBBindMethodVirtual(t, "V_TestHierarchicalDerived_GetMaximumSize", "_get_maximum_size", nil, nil)
+		ClassDBBindVirtualValueMethod0(t, (*TestHierarchicalDerived).V_TestHierarchicalDerived_GetMaximumSize, "_get_maximum_size", nil, nil)
 	})
 	log.Debug("TestHierarchicalDerived registered")
 }

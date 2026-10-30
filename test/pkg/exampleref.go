@@ -16,6 +16,8 @@ type ExampleRef struct {
 	Id int32
 }
 
+func (c *ExampleRef) Self() *ExampleRef { return c }
+
 func (c *ExampleRef) GetClassName() string {
 	return "ExampleRef"
 }
@@ -40,7 +42,10 @@ func NewExampleRefFromOwnerObject(owner *GodotObject) GDClass {
 
 func RegisterClassExampleRef() {
 	ClassDBRegisterClass(NewExampleRefFromOwnerObject, nil, nil, func(t *ExampleRef) {
-		ClassDBBindMethod(t, "GetId", "get_id", nil, nil)
+		ClassDBBindValueMethod0(t, (*ExampleRef).GetId, "get_id", nil, nil)
+		// SetId stays name-string-bound: the typed overload surface has no
+		// fixed-arity void-return family, so this class also exercises the
+		// reflective fallback for the property set path.
 		ClassDBBindMethod(t, "SetId", "set_id", []string{"id"}, nil)
 		ClassDBAddProperty(t, GDEXTENSION_VARIANT_TYPE_INT, "group_subgroup_id", "set_id", "get_id")
 		log.Debug("ExampleRef registered")

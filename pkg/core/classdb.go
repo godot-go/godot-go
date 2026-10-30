@@ -1,3 +1,30 @@
+// Package core provides the GDExtension class registration and method
+// dispatch machinery that hosts user classes inside Godot.
+//
+// Method binds come in two API tiers sharing one registration and validation
+// pipeline:
+//
+//   - The name-string binds (ClassDBBindMethod and siblings) resolve a Go
+//     method by name through reflection and dispatch every call reflectively.
+//   - The typed overloads (ClassDBBindValueMethodN, ClassDBBindCopyRetMethodN
+//     and their Static/Virtual siblings, generated in typed_binds.gen.go)
+//     take the method expression itself, infer every type parameter from
+//     (receiver, expression), and compile the per-call dispatch closure at
+//     bind time through the constraint unions in method_bind_typed.go — zero
+//     reflection per call.
+//
+// Fallback contract: a typed bind serves both dispatch shapes through compiled
+// closures — ptrcall (and virtual dispatch, which is ptrcall-shaped) and
+// varcall (call_func) — while a name-string bind serves both reflectively.
+// Signatures outside the constraint unions stay name-string-bound by necessity:
+// float32 and Variant parameters (raw-load parity with the reflective decoder),
+// Go string and slice parameters (conversion work), and Object- or Ref-typed
+// parameters, whose decode is per-call instance-binding work in
+// resolveObjectArgument rather than the raw cell load a typed wrapper performs.
+// Bind-time validation is identical across both tiers: duplicate-name
+// rejection, the V_ prefix rules, embedding-chain virtual resolution, and the
+// signature gates of validateBindSignature all run before any engine-dependent
+// metadata is allocated.
 package core
 
 // #include <godot/gdextension_interface.h>
@@ -564,6 +591,152 @@ func classDBRegisterMethod(md *GoMethodMetadata, goMethodName string) {
 		cnName.AsGDExtensionConstStringNamePtr(),
 		cmi,
 	)
+}
+
+// classDBBindTyped is the shared registration core behind the generated
+// typed bind overloads (typed_binds.gen.go). The generated overload infers
+// every type parameter from (t, fn), instantiates the compiled dispatch
+// closure, and hands the erased function value here; this core applies the
+// same validation gates the name-string binds run — in the same order and
+// with the same diagnostics — then builds the metadata and records the
+// closure for the task 4.1 dispatch wiring.
+func classDBBindTyped(
+	t GDClass,
+	fn any,
+	gdMethodName string,
+	methodFlags MethodFlags,
+	argNames []string,
+	defaultValues []Variant,
+	dispatch ptrcallFn,
+	varDispatch varcallFn,
+) {
+	md := classDBBuildTypedMetadata(t, fn, gdMethodName, methodFlags, argNames, defaultValues, dispatch, varDispatch)
+	classDBRegisterMethod(md, md.GoMethodName)
+}
+
+// classDBBuildTypedMetadata runs every typed-bind validation gate and builds
+// the metadata carrying the compiled dispatch closure. Engine-free: no engine
+// call happens here, so the validation parity with the name-string path is
+// unit-testable without a running engine. Gates, in the name-string path's
+// order:
+//
+//  1. V_ prefix rules — virtual binds require the qualified V_ form (flat
+//     V_<Method> rejected exactly like classDBBindMethod does); non-virtual
+//     instance binds refuse a V_ prefix. Static binds carry no receiver and
+//     no V_ logic, matching the name-string static path.
+//  2. Virtual binds: the supplied method expression must be exactly the
+//     implementation resolveQualifiedVirtualMethod finds along the
+//     registering class's embedding chain (same name, same signature).
+//  3. Duplicate-name rejection before any engine-dependent metadata exists
+//     (ensureMethodNameAvailable, so a refused bind leaks nothing).
+//  4. validateBindSignature with the same argument base the shape implies
+//     (1 for instance/virtual, 0 for static) and, for non-virtual instance
+//     binds, the same strict receiver-name check NewGoMethodMetadata runs
+//     (virtuals may declare the implementation at any embedding-chain level).
+func classDBBuildTypedMetadata(
+	t GDClass,
+	fn any,
+	gdMethodName string,
+	methodFlags MethodFlags,
+	argNames []string,
+	defaultValues []Variant,
+	dispatch ptrcallFn,
+	varDispatch varcallFn,
+) *GoMethodMetadata {
+	className := t.GetClassName()
+	isStatic := (methodFlags & METHOD_FLAG_STATIC) == METHOD_FLAG_STATIC
+	isVirtual := (methodFlags & METHOD_FLAG_VIRTUAL) == METHOD_FLAG_VIRTUAL
+	fnValue := reflect.ValueOf(fn)
+	if !fnValue.IsValid() || fnValue.Kind() != reflect.Func {
+		log.Panic("typed bind requires a method expression or function",
+			zap.String("class", className),
+			zap.String("method", gdMethodName),
+		)
+	}
+	// Method-expression symbols carry the "-fm" wrapper suffix; the bare
+	// final segment restores the reflect.Method name the name-string path
+	// records. Statics keep the full symbol, matching newGoMethodMetadataStatic.
+	fp := runtime.FuncForPC(fnValue.Pointer())
+	if fp == nil {
+		log.Panic("typed bind requires a real function value",
+			zap.String("class", className),
+			zap.String("method", gdMethodName),
+		)
+	}
+	goMethodName := fp.Name()
+	if !isStatic {
+		if i := strings.LastIndex(goMethodName, "."); i >= 0 {
+			goMethodName = goMethodName[i+1:]
+		}
+		goMethodName = strings.TrimSuffix(goMethodName, "-fm")
+	}
+	if isVirtual {
+		if !strings.HasPrefix(goMethodName, "V_") {
+			log.Panic(`virtual method name must have a prefix of "V_".`)
+		}
+		if !strings.Contains(strings.TrimPrefix(goMethodName, "V_"), "_") {
+			log.Panic("flat virtual method name is no longer supported; use the qualified form",
+				zap.String("gd_method_name", gdMethodName),
+				zap.String("flat_go_name", goMethodName),
+				zap.String("expected_shape", "V_<ClassName>_"+pascalFromGdVirtual(gdMethodName)),
+			)
+		}
+		// The typed expression already names its implementation; parity with
+		// the name-string path's embedding-chain resolution means checking
+		// that the chain resolution finds exactly this method.
+		resolved, ok, searched := resolveQualifiedVirtualMethod(reflect.TypeOf(t), gdMethodName)
+		if !ok || resolved.Name != goMethodName || resolved.Func.Type() != fnValue.Type() {
+			log.Panic("typed virtual bind expression does not match the embedding-chain resolution",
+				zap.String("gd_method_name", gdMethodName),
+				zap.String("go_name", goMethodName),
+				zap.String("searched_names", strings.Join(searched, ", ")),
+				zap.String("expected_shape", "V_<ClassName>_"+pascalFromGdVirtual(gdMethodName)),
+			)
+		}
+	} else if !isStatic {
+		if strings.HasPrefix(goMethodName, "V_") {
+			log.Panic(`method name cannot have a prefix of "V_".`)
+		}
+	}
+	// Reject duplicate names before any engine-dependent metadata is
+	// allocated: a refused bind must leak nothing (StringNames included).
+	ensureMethodNameAvailable(className, gdMethodName, goMethodName)
+	mt := fnValue.Type()
+	if !isStatic && (mt.NumIn() < 1 || mt.In(0).Kind() != reflect.Pointer) {
+		// Instance/virtual binds carry the receiver as In(0), always a pointer
+		// for method expressions; a bare function cannot serve them (statics
+		// are the no-receiver shape).
+		log.Panic("typed instance bind requires a method expression with a receiver",
+			zap.String("class", className),
+			zap.String("method", gdMethodName),
+		)
+	}
+	if !isStatic && !isVirtual {
+		// Receiver-name parity with NewGoMethodMetadata, in its order
+		// (receiver check before the signature gates): non-virtual instance
+		// binds require the registering class to own the implementation,
+		// while virtuals may declare it at any embedding-chain level.
+		recv := mt.In(0)
+		if recv.Kind() == reflect.Pointer {
+			recv = recv.Elem()
+		}
+		if className != recv.Name() {
+			log.Panic("class name did not match reciever type",
+				zap.String("class", className),
+				zap.String("method", gdMethodName),
+				zap.String("reciover", recv.Name()),
+			)
+		}
+	}
+	argumentBase := 1
+	if isStatic {
+		argumentBase = 0
+	}
+	validateBindSignature(mt, argumentBase, argNames, defaultValues, methodFlags, className, gdMethodName)
+	md := newGoMethodMetadataFromFunc(fnValue, mt, argumentBase, className, gdMethodName, goMethodName, defaultValues, methodFlags)
+	md.typedDispatch = dispatch
+	md.typedVarcall = varDispatch
+	return md
 }
 
 // ClassDBBindConstant binds a constant in godot.

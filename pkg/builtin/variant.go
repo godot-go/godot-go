@@ -26,6 +26,10 @@ func VariantInitBindings() {
 		typeFromVariantConstructor[i] = CallFunc_GDExtensionInterfaceGetVariantToTypeConstructor(i)
 	}
 	initPrimativeTypeEncoders()
+	// The object encoder's creator requires resolved variant-constructor
+	// pointers, so it lives outside the unit-test-primable set (see
+	// InitPrimativeTypeEncodersForUnitTests) and is created here at engine time.
+	ObjectEncoder = CreateObjectEncoder[Object]()
 	initBuiltinClassEncoders()
 	builtinClassesInitBindings()
 }

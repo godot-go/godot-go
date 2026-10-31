@@ -104,7 +104,12 @@ jobs:
 
       - name: Test
         if: ${{ matrix.os == 'linux' }}
-        timeout-minutes: 2
+        # The build prerequisite is binary: cache hit (instant, silent) or a
+        # wedged rebuild (stalled cgo, the flake that killed runs at 2 min
+        # with zero slack left for the ~1m50s suite). Budget a full rebuild
+        # (~2.5min with the -N -l gcflags invalidating the toolchain cache)
+        # plus the suite with margin.
+        timeout-minutes: 5
         run: |
           make test
         env:

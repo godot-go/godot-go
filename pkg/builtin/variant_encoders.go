@@ -11,10 +11,8 @@ import (
 )
 
 type ArgumentEncoder interface {
-	DecodeReflectTypePtr(GDExtensionConstTypePtr) reflect.Value
 	EncodeReflectTypePtrArg(reflect.Value, GDExtensionUninitializedTypePtr)
 	EncodeReflectTypePtr(reflect.Value) GDExtensionTypePtr
-	DecodeReflectVariantPtr(GDExtensionConstVariantPtr) reflect.Value
 	EncodeReflectVariantPtrArg(reflect.Value, GDExtensionUninitializedVariantPtr)
 	EncodeReflectVariantPtr(reflect.Value) GDExtensionVariantPtr
 }
@@ -28,16 +26,10 @@ type argumentEncoder[T any, E any] struct {
 	DecodeVariantPtr           func(GDExtensionConstVariantPtr) T
 	EncodeVariantPtrArg        func(T, GDExtensionUninitializedVariantPtr)
 	EncodeVariantPtr           func(T) GDExtensionVariantPtr
-	decodeReflectTypePtr       func(GDExtensionConstTypePtr) reflect.Value
 	encodeReflectTypePtrArg    func(reflect.Value, GDExtensionUninitializedTypePtr)
 	encodeReflectTypePtr       func(reflect.Value) GDExtensionTypePtr
-	decodeReflectVariantPtr    func(GDExtensionConstVariantPtr) reflect.Value
 	encodeReflectVariantPtrArg func(reflect.Value, GDExtensionUninitializedVariantPtr)
 	encodeReflectVariantPtr    func(reflect.Value) GDExtensionVariantPtr
-}
-
-func (e argumentEncoder[T, E]) DecodeReflectTypePtr(ptr GDExtensionConstTypePtr) reflect.Value {
-	return e.decodeReflectTypePtr(ptr)
 }
 
 func (e argumentEncoder[T, E]) EncodeReflectTypePtrArg(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
@@ -46,10 +38,6 @@ func (e argumentEncoder[T, E]) EncodeReflectTypePtrArg(rv reflect.Value, pOut GD
 
 func (e argumentEncoder[T, E]) EncodeReflectTypePtr(rv reflect.Value) GDExtensionTypePtr {
 	return e.encodeReflectTypePtr(rv)
-}
-
-func (e argumentEncoder[T, E]) DecodeReflectVariantPtr(ptr GDExtensionConstVariantPtr) reflect.Value {
-	return e.decodeReflectVariantPtr(ptr)
 }
 
 func (e argumentEncoder[T, E]) EncodeReflectVariantPtrArg(rv reflect.Value, pOut GDExtensionUninitializedVariantPtr) {
@@ -69,16 +57,10 @@ type objectArgumentEncoder[T Object] struct {
 	DecodeVariantPtr           func(GDExtensionConstVariantPtr) T
 	EncodeVariantPtrArg        func(T, GDExtensionUninitializedVariantPtr)
 	EncodeVariantPtr           func(T) GDExtensionVariantPtr
-	decodeReflectTypePtr       func(GDExtensionConstTypePtr) reflect.Value
 	encodeReflectTypePtrArg    func(reflect.Value, GDExtensionUninitializedTypePtr)
 	encodeReflectTypePtr       func(reflect.Value) GDExtensionTypePtr
-	decodeReflectVariantPtr    func(GDExtensionConstVariantPtr) reflect.Value
 	encodeReflectVariantPtrArg func(reflect.Value, GDExtensionUninitializedVariantPtr)
 	encodeReflectVariantPtr    func(reflect.Value) GDExtensionVariantPtr
-}
-
-func (e objectArgumentEncoder[T]) DecodeReflectTypePtr(ptr GDExtensionConstTypePtr) reflect.Value {
-	return e.decodeReflectTypePtr(ptr)
 }
 
 func (e objectArgumentEncoder[T]) EncodeReflectTypePtrArg(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
@@ -87,10 +69,6 @@ func (e objectArgumentEncoder[T]) EncodeReflectTypePtrArg(rv reflect.Value, pOut
 
 func (e objectArgumentEncoder[T]) EncodeReflectTypePtr(rv reflect.Value) GDExtensionTypePtr {
 	return e.encodeReflectTypePtr(rv)
-}
-
-func (e objectArgumentEncoder[T]) DecodeReflectVariantPtr(ptr GDExtensionConstVariantPtr) reflect.Value {
-	return e.decodeReflectVariantPtr(ptr)
 }
 
 func (e objectArgumentEncoder[T]) EncodeReflectVariantPtrArg(rv reflect.Value, pOut GDExtensionUninitializedVariantPtr) {

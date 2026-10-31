@@ -53,7 +53,8 @@ func SetConstructInfo(w Wrapped, extensionClassName string, cbs ffi.GDExtensionI
 	// resolves and releases it — the single release owner for every shape
 	// that stores this instance (openspec fix-instance-handle-lifecycle).
 	inst := &WrappedClassInstance{
-		Instance: obj,
+		Instance:  obj,
+		ClassName: extensionClassName,
 	}
 	snExtensionClassName := NewStringNameWithLatin1Chars(extensionClassName)
 	defer snExtensionClassName.Destroy()
@@ -106,7 +107,8 @@ func WrappedPostInitialize(extensionClassName string, w Wrapped) {
 		log.Panic("unable to cast to Object")
 	}
 	inst := &WrappedClassInstance{
-		Instance: obj,
+		Instance:  obj,
+		ClassName: extensionClassName,
 	}
 	// No per-instance value is retained on the program-lifetime pinner
 	// (openspec fix-instance-handle-lifecycle, issue #152). The Handle below

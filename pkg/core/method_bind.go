@@ -546,11 +546,14 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 			}
 		}
 		ret := md.Func.CallSlice(args)
+		// The variadic handler receives the collected Variants unchanged, so
+		// the old resolved_args field was always a second description of the
+		// same collection; it is removed (trim-dispatch-overhead D3). Every
+		// remaining payload marshals only if this entry is written.
 		log.Info("Call Variadic",
-			zap.String("bind", md.String()),
-			zap.String("gd_args", VariantSliceToString(gdArgs)),
-			zap.String("resolved_args", VariantSliceToString(gdArgs)),
-			zap.String("ret", util.ReflectValueSliceToString(ret)),
+			zap.Object("bind", md),
+			zap.Object("gd_args", variantCollection(gdArgs)),
+			zap.Stringer("ret", lazyText(func() string { return util.ReflectValueSliceToString(ret) })),
 		)
 		switch md.GoReturnStyle {
 		case NoneReturnStyle:
@@ -579,16 +582,16 @@ func (md *GoMethodMetadata) CallWithError(inst GDClass, gdArgs ...Variant) (Vari
 			return NewVariantNil(), err
 		}
 		log.Debug("Calling",
-			zap.String("bind", md.String()),
-			zap.String("gd_args", VariantSliceToString(gdArgs)),
-			zap.String("resolved_args", VariantSliceToString(callArgs)),
+			zap.Object("bind", md),
+			zap.Object("gd_args", variantCollection(gdArgs)),
+			zap.Object("resolved_args", resolvedCollection{resolved: callArgs, supplied: gdArgs}),
 		)
 		ret := md.Func.Call(args)
 		log.Info("Call",
-			zap.String("bind", md.String()),
-			zap.String("gd_args", VariantSliceToString(gdArgs)),
-			zap.String("resolved_args", VariantSliceToString(callArgs)),
-			zap.String("ret", util.ReflectValueSliceToString(ret)),
+			zap.Object("bind", md),
+			zap.Object("gd_args", variantCollection(gdArgs)),
+			zap.Object("resolved_args", resolvedCollection{resolved: callArgs, supplied: gdArgs}),
+			zap.Stringer("ret", lazyText(func() string { return util.ReflectValueSliceToString(ret) })),
 		)
 		var retVariant Variant
 		switch md.GoReturnStyle {
@@ -635,8 +638,8 @@ func (md *GoMethodMetadata) Ptrcall(inst GDClass, gdArgs []GDExtensionConstTypeP
 	args := reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst, gdArgs, exepctedArgTypes, !md.IsStatic())
 	ret := md.Func.Call(args)
 	log.Info("Ptrcall",
-		zap.String("bind", md.String()),
-		zap.String("ret", util.ReflectValueSliceToString(ret)),
+		zap.Object("bind", md),
+		zap.Stringer("ret", lazyText(func() string { return util.ReflectValueSliceToString(ret) })),
 	)
 	if err := validateReturnValues(ret, md.GoReturnStyle, md.GoReturnType); err != nil {
 		log.Panic("return error",

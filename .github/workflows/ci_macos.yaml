@@ -41,7 +41,10 @@ jobs:
     runs-on: ${{ matrix.runner }}
     env:
       GODOT: ./Godot.app/Contents/MacOS/Godot
-    timeout-minutes: 30
+    # Must envelope the step budgets' worst case: a pathologically slow cold
+    # build leg (~20min observed) plus the Test step's full 30min. The 30-min
+    # ceiling cut healthy jobs down at 30m42s.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -100,7 +103,11 @@ jobs:
           LANG: "en_US.UTF-8"
 
       - name: Test
-        timeout-minutes: 7
+        # The build prerequisite can rebuild from scratch: -gcflags=all="-N -l"
+        # invalidates the toolchain cache for every package including the
+        # stdlib, and the cold build measured 4-19min on the macOS legs; the
+        # 15-minute budget died mid-suite on the slow legs.
+        timeout-minutes: 30
         run: make test
         env:
           CI: 1

@@ -32,6 +32,30 @@
 - Fix any test or type errors until the whole suite is green.
 - Add or update tests for the code you change, even if nobody asked.
 
+### Dispatch Cost Baseline
+Dispatch cost has two tiers: allocation budgets are gated, wall-clock timings are only recorded.
+```bash
+# Gate per-call allocation budgets for every dispatch shape (engine-free, part of make test)
+make test_dispatch_budget
+
+# Record engine-free per-shape timings (ns/op; never gated; grouped under make benchmark)
+make test_dispatch_bench
+
+# In-engine timings: make test prints "dispatch_time: shape=… ns/call=…" per shape
+# into test-output.log; the output gate requires the records to exist, never a value
+GODOT=/path/to/godot make test
+
+# Gate-script fixture self-tests (engine-free; grouped under make integration_test)
+make test_gate
+```
+- `make test` keeps only what it gates (the build, the budget gate, the engine
+  runs and their output gates). CI runs the recorded benchmarks via
+  `make benchmark` and the gate script's own fixture suite via
+  `make integration_test` as separate steps.
+- The in-engine timing fixture lives in `test/pkg/dispatch_time_tests.go`; its shape
+  list is coupled to `test/check_test_output.sh` — if a shape is added or renamed,
+  update both and re-run `make test_gate`.
+
 ### Tooling
 ```bash
 # Generate test project files for first time (may fail initially)
@@ -128,7 +152,7 @@ The project includes a test demo at `test/demo/` that:
 - Keep the subject imperative, lowercase, under ~72 chars
 
 ### Requirements
-- Go 1.25.0+
+- Go 1.27.0+
 - Godot 4.5 binary
 - clang-format for C code formatting
 - goimports for Go code formatting

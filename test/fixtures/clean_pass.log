@@ -32,6 +32,29 @@ stacktrace-probe go-stack
 goroutine 1 [running]:
 github.com/godot-go/godot-go/test/pkg.(*Example).TestStacktraceProbe(0xc0000e4018, 0x1)
 	/workspace/godot-go/test/pkg/example.go:1237 +0x45
+dispatch_time: shape=static_add_ptrcall ns/call=35.1
+dispatch_time: shape=static_add_varcall ns/call=3235.6
+dispatch_time: shape=value_arity0_ptrcall ns/call=29.8
+dispatch_time: shape=value_arity0_varcall ns/call=1136.5
+dispatch_time: shape=value_arity2_ptrcall ns/call=34.4
+dispatch_time: shape=value_arity2_varcall ns/call=3078.5
+dispatch_time: shape=value_arity5_ptrcall ns/call=47.7
+dispatch_time: shape=value_arity5_varcall ns/call=5408.4
+dispatch_time: shape=virtual_arity0_ptrcall ns/call=29.8
+dispatch_time: shape=virtual_arity0_varcall ns/call=1131.6
+dispatch_time: shape=container_arg_ptrcall ns/call=31.8
+dispatch_time: shape=container_arg_varcall ns/call=3647.0
+dispatch_time: shape=copy_ret_ptrcall ns/call=2593.5
+dispatch_time: shape=copy_ret_varcall ns/call=2831.2
+dispatch_time: shape=reflective_value_arity0_ptrcall ns/call=11464.7
+dispatch_time: shape=reflective_value_arity0_varcall ns/call=15637.5
+dispatch_time: shape=reflective_value_arity2_ptrcall ns/call=17451.4
+dispatch_time: shape=reflective_value_arity2_varcall ns/call=91908.3
+dispatch_time: shape=reflective_value_arity5_ptrcall ns/call=24041.7
+dispatch_time: shape=reflective_value_arity5_varcall ns/call=157166.8
+dispatch_time: shape=prologue_notification ns/call=29362.4
+dispatch_time: shape=prologue_property_get ns/call=48355.2
+
 [92m ==== TESTS FINISHED ==== [39m[0m
 
    PASSES: [92m1079[39m[0m

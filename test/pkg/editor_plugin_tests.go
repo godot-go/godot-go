@@ -40,6 +40,12 @@ func (p *ExampleEditorPlugin) GetParentClassName() string {
 	return "EditorPlugin"
 }
 
+// IsNil is declared on the outer type per the Wrapped contract: the call
+// promoted through the embedded EditorPluginImpl would fault on a typed nil.
+func (p *ExampleEditorPlugin) IsNil() bool {
+	return p == nil
+}
+
 // V_ExampleEditorPlugin_EnterTree fires when the editor adds the plugin to
 // the tree, proving the engine instantiated the Go class. WARN level keeps
 // the marker visible under the gate run's LOG_LEVEL=WARN, matching the

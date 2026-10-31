@@ -74,6 +74,13 @@ func (c *Example) GetParentClassName() string {
 	return "Control"
 }
 
+// IsNil is declared on the outer type per the Wrapped contract: the call
+// promoted through the embedded ControlImpl would fault on a typed nil
+// before any body could answer.
+func (c *Example) IsNil() bool {
+	return c == nil
+}
+
 func (e *Example) SimpleFunc() {
 	println("  Simple func called.")
 	e.EmitCustomSignal("simple_func", 3)
@@ -1800,6 +1807,9 @@ func RegisterClassExample() {
 		ClassDBBindValueMethod1(t, (*Example).AllocProbeArrayArg, "alloc_probe_array_arg", []string{"array"}, nil)
 		ClassDBBindCopyRetMethod1(t, (*Example).AllocProbeEchoStringNameArg, "alloc_probe_echo_sn", []string{"name"}, nil)
 		ClassDBBindMethod(t, "TestCompiledDispatchAllocs", "test_compiled_dispatch_allocs", nil, nil)
+		ClassDBBindMethod(t, "TestDispatchTimes", "test_dispatch_times", nil, nil)
+		ClassDBBindMethod(t, "TestDispatchDiagnostics", "test_dispatch_diagnostics", nil, nil)
+		ClassDBBindMethod(t, "TestTeardownTolerance", "test_teardown_tolerance", []string{"instance"}, nil)
 		ClassDBBindCopyRetMethod0(t, (*Example).TestDictionary, "test_dictionary", nil, nil)
 		ClassDBBindMethod(t, "TestNodeArgument", "test_node_argument", []string{"example"}, nil)
 		ClassDBBindMethod(t, "TestStringOps", "test_string_ops", nil, nil)

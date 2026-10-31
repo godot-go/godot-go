@@ -13,8 +13,6 @@ package gdclassimpl
 // resolve-object-returns-through-binding.
 
 import (
-	"reflect"
-
 	"github.com/godot-go/godot-go/pkg/builtin"
 )
 
@@ -69,12 +67,12 @@ func resolveObjectReturnFrom[T builtin.Object](declared T, bound builtin.Object,
 // isNilObjectWrapper reports whether an object-typed value holds no wrapper.
 //
 // A plain `obj == nil` test does not catch a typed nil, because an interface
-// holding a nil *NodeImpl satisfies it. The reflect check mirrors
-// builtin.ObjectArgPtr, which carries the fault this guards against.
+// holding a nil *NodeImpl satisfies it. The contract's IsNil answers through
+// a method declared on the outer pointer type, which makes the call legal on
+// a typed nil; builtin.ObjectArgPtr carries the fault this guards against.
 func isNilObjectWrapper(obj builtin.Object) bool {
 	if obj == nil {
 		return true
 	}
-	v := reflect.ValueOf(obj)
-	return v.Kind() == reflect.Ptr && v.IsNil()
+	return obj.IsNil()
 }

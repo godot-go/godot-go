@@ -68,7 +68,7 @@ func reflectFuncCallArgsFromGDExtensionConstVariantPtrSliceArgs(reciever GDClass
 		args[i+base] = v
 	}
 	log.Debug("argument converted",
-		zap.String("args", spew.Sdump(args)),
+		zap.Stringer("args", lazyText(func() string { return spew.Sdump(args) })),
 	)
 	return args, nil
 }
@@ -1246,7 +1246,7 @@ func reflectFuncCallArgsFromGDExtensionConstTypePtrSliceArgs(inst GDClass, suppl
 		}
 	}
 	log.Debug("argument converted",
-		zap.String("args", spew.Sdump(args)),
+		zap.Stringer("args", lazyText(func() string { return spew.Sdump(args) })),
 	)
 	return args
 }

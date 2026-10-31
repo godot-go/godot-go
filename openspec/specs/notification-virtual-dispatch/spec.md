@@ -19,8 +19,12 @@ A Go-registered class that does not register `_notification` SHALL accept notifi
 - **THEN** delivery completes silently with no observable behavior or per-call logging
 
 ### Requirement: Notification Dispatch Survives Teardown Deliveries
-When Godot delivers a notification to an instance whose reported class is not a registered GDClass — which occurs when a destructing extension instance presents its parent class name instead (observed as a pre-delete delivery under `"Control"`) — the binding SHALL absorb it silently.
+When Godot delivers a notification to an instance whose Go wrapper has begun being freed — observed as a pre-delete delivery on a destructing extension instance — the binding SHALL absorb it silently. Absorption SHALL NOT depend on the class name the engine reports for the instance.
 
 #### Scenario: Pre-delete delivery under the parent class name is absorbed
-- **WHEN** a notification arrives for an instance whose reported class fails the registered-class lookup during destruction
+- **WHEN** a notification arrives for a destructing instance — the delivery the engine presents under a parent class name — whose wrapper has begun being freed
 - **THEN** delivery completes silently with no panic and no per-call logging
+
+#### Scenario: A live instance keeps receiving notifications while the extension shuts down
+- **WHEN** a notification arrives for an instance whose wrapper has not begun being freed
+- **THEN** the class's `_notification` virtual runs as registered

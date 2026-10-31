@@ -86,10 +86,6 @@ func createGoStringEncoder(format GoStringFormat) argumentEncoder[string, String
 		encodeVariantPtrArg(in, (GDExtensionUninitializedVariantPtr)(pOut))
 		return pOut
 	}
-	decodeReflectTypePtr := func(ptr GDExtensionConstTypePtr) reflect.Value {
-		content := decodeTypePtr(ptr)
-		return reflect.ValueOf(content)
-	}
 	encodeReflectTypePtrArg := func(rv reflect.Value, pOut GDExtensionUninitializedTypePtr) {
 		content := rv.String()
 		encodeTypePtrArg(content, pOut)
@@ -99,11 +95,6 @@ func createGoStringEncoder(format GoStringFormat) argumentEncoder[string, String
 		pOut := (GDExtensionTypePtr)(&out)
 		encodeReflectTypePtrArg(rv, (GDExtensionUninitializedTypePtr)(pOut))
 		return pOut
-	}
-	decodeReflectVariantPtr := func(ptr GDExtensionConstVariantPtr) reflect.Value {
-		var v String
-		CallFunc_GDExtensionTypeFromVariantConstructorFunc(tfn, (GDExtensionUninitializedTypePtr)(v.NativePtr()), (GDExtensionVariantPtr)(ptr))
-		return reflect.ValueOf(v)
 	}
 	encodeReflectVariantPtrArg := func(rv reflect.Value, pOut GDExtensionUninitializedVariantPtr) {
 		content := rv.String()
@@ -128,10 +119,8 @@ func createGoStringEncoder(format GoStringFormat) argumentEncoder[string, String
 		DecodeVariantPtr:           decodeVariantPtr,
 		EncodeVariantPtrArg:        encodeVariantPtrArg,
 		EncodeVariantPtr:           encodeVariantPtr,
-		decodeReflectTypePtr:       decodeReflectTypePtr,
 		encodeReflectTypePtrArg:    encodeReflectTypePtrArg,
 		encodeReflectTypePtr:       encodeReflectTypePtr,
-		decodeReflectVariantPtr:    decodeReflectVariantPtr,
 		encodeReflectVariantPtrArg: encodeReflectVariantPtrArg,
 		encodeReflectVariantPtr:    encodeReflectVariantPtr,
 	}

@@ -17,15 +17,16 @@ func sentinelOwner(marker int) *GodotObject {
 	return (*GodotObject)(unsafe.Pointer(&v))
 }
 
-// typedProbe models a generated Impl type: it embeds WrappedImpl by value and
-// completes the Wrapped contract, so a typed nil of it addresses the embedded
-// field exactly as (*NodeImpl)(nil) would.
+// typedProbe models a generated Impl type: it embeds WrappedImpl by value,
+// completes the Wrapped contract, and declares its own IsNil exactly as
+// classes.go.tmpl emits, so a typed nil of it behaves like (*NodeImpl)(nil).
 type typedProbe struct {
 	WrappedImpl
 }
 
 func (p *typedProbe) GetClassName() string       { return "typedProbe" }
 func (p *typedProbe) GetParentClassName() string { return "Object" }
+func (p *typedProbe) IsNil() bool                { return p == nil }
 
 // fakeRef implements the Ref contract without real refcounting, so the helper's
 // IsValid-before-ToObject gate can be exercised in isolation. Real Ref behaviour is
@@ -149,6 +150,39 @@ func TestWrappedClassInstanceDestroyIsNoOp(t *testing.T) {
 	nilWrapper.Destroy()
 }
 
+// The freeing mark is the basis the class callback prologues will read
+// instead of asking the engine for a class name (openspec
+// trim-dispatch-overhead design D2), so its transitions are pinned here.
+// The mark is independent of the wrapped instance, so a zero wrapper is a
+// faithful subject; the class-callback probes deliver into a wrapper marked
+// this way to pin the decline itself.
+func TestWrappedClassInstanceMarkFreeingTransitions(t *testing.T) {
+	w := &WrappedClassInstance{}
+	if w.IsFreeing() {
+		t.Fatal("a freshly constructed wrapper must not report freeing")
+	}
+
+	w.MarkFreeing()
+	if !w.IsFreeing() {
+		t.Fatal("MarkFreeing must be observable through IsFreeing")
+	}
+
+	// The instance-free callback's re-entrancy guard admits one free, but a
+	// repeated mark must stay a no-op: the state has no counter and no
+	// second transition to lose.
+	w.MarkFreeing()
+	if !w.IsFreeing() {
+		t.Fatal("second MarkFreeing changed the state; it must be a no-op")
+	}
+}
+
+func TestWrappedClassInstanceIsFreeingNilReceiver(t *testing.T) {
+	var w *WrappedClassInstance
+	if w.IsFreeing() {
+		t.Fatal("nil wrapper holds no instance to free; want false")
+	}
+}
+
 // --- ObjectArgPtr: the shape the generated code actually uses ---
 
 func TestObjectArgPtrNilInterface(t *testing.T) {
@@ -158,8 +192,9 @@ func TestObjectArgPtrNilInterface(t *testing.T) {
 	}
 }
 
-// The case receiver hardening cannot reach: a typed nil faults while Go addresses
-// the embedded WrappedImpl, so only the helper's reflect check makes it safe.
+// The case promoted-method hardening cannot reach: without the outer type's
+// own IsNil the call faults while Go addresses the embedded WrappedImpl, so
+// the contract declaration is what makes the typed-nil answer possible.
 func TestObjectArgPtrTypedNil(t *testing.T) {
 	var obj Wrapped = (*typedProbe)(nil)
 	if got := ObjectArgPtr(obj); got != nil {

@@ -32,6 +32,11 @@ func newFakeRefCounted() *fakeRefCounted {
 
 func (f *fakeRefCounted) AsGDExtensionObjectPtr() GDExtensionObjectPtr { return f.ptr }
 
+// IsNil is declared so a typed nil answers without dereferencing the fake:
+// the promotion through the embedded RefCounted interface would fault, the
+// same contract every hand-written wrapper obeys.
+func (f *fakeRefCounted) IsNil() bool { return f == nil }
+
 func (f *fakeRefCounted) Reference() bool {
 	f.refs.Add(1)
 	return true
@@ -86,7 +91,7 @@ func TestRefAcquireUnrefReleasesExactlyOnce(t *testing.T) {
 }
 
 func TestRefAcquireOverNoObjectTakesNothing(t *testing.T) {
-	// A typed nil reaches ObjectArgPtr's reflect guard: Reference() must not
+	// A typed nil reaches ObjectArgPtr's nil guard: Reference() must not
 	// run against it (the fake would dereference nil) and no finalizer may be
 	// installed.
 	var obj *fakeRefCounted

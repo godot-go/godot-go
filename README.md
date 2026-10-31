@@ -24,7 +24,7 @@ Here are some high level bullet points:
 Requirements:
 * clang-format
 * gcc
-* go 1.25.x
+* go 1.27.x
 * goimport
 
 ### Building Godot-Go

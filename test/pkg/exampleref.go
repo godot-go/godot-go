@@ -26,6 +26,12 @@ func (c *ExampleRef) GetParentClassName() string {
 	return "RefCounted"
 }
 
+// IsNil is declared on the outer type per the Wrapped contract: the call
+// promoted through the embedded RefCountedImpl would fault on a typed nil.
+func (c *ExampleRef) IsNil() bool {
+	return c == nil
+}
+
 func (e *ExampleRef) SetId(id int32) {
 	e.Id = id
 }

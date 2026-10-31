@@ -204,6 +204,12 @@ func GoCallback_ClassCreationInfoFreeInstance(data unsafe.Pointer, ptr C.GDExten
 		log.Panic("GDClass instance not found to free", zap.Any("id", id))
 	}
 	Internal.GDClassInstances.Delete(id)
+	// The guard admitted this free: the wrapper is now being torn down.
+	// Marking it here — before the deferred Destroy runs any Go-side
+	// teardown — lets class callback prologues decline deliveries that
+	// arrive during teardown without consulting the engine for a class
+	// name (openspec trim-dispatch-overhead design D2).
+	wrapped.MarkFreeing()
 }
 
 //export GoCallback_ClassCreationInfoGetPropertyList
@@ -213,9 +219,14 @@ func GoCallback_ClassCreationInfoGetPropertyList(pInstance C.GDExtensionClassIns
 		*rCount = (C.uint32_t)(0)
 		return (*C.GDExtensionPropertyInfo)(nil)
 	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
+	if wci.IsFreeing() {
+		// The wrapper is being freed; report an empty list rather than run
+		// queries against a dying instance (openspec trim-dispatch-overhead
+		// design D2).
+		*rCount = (C.uint32_t)(0)
+		return (*C.GDExtensionPropertyInfo)(nil)
+	}
+	className := wci.ClassName
 	log.Debug("GoCallback_ClassCreationInfoGetPropertyList called",
 		zap.String("class", className),
 	)
@@ -255,16 +266,21 @@ func GoCallback_ClassCreationInfoPropertyCanRevert(p_instance C.GDExtensionClass
 	if wci == nil {
 		return 0
 	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
+	if wci.IsFreeing() {
+		// A revert query arriving while the wrapper is being freed takes that
+		// as a deliberate decline (openspec trim-dispatch-overhead design D2):
+		// answer "no revert support" without touching the handler.
+		return 0
+	}
+	className := wci.ClassName
 	// p_name is Godot-owned — NEVER Destroy() it
 	gdName := (*StringName)(p_name)
 	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
 	if !ok {
-		// During teardown an instance can report its parent class name
-		// (e.g. "Control") which is not a registered GDClass; treat it
-		// as absence of support instead of failing.
+		// An instance whose class has no registration cannot answer a
+		// revert; report absence of support instead of failing. The
+		// teardown shape is already declined by the freeing guard above
+		// (openspec property-revert-virtuals, design D2).
 		return 0
 	}
 	mcmi, ok := ci.VirtualMethodMap["_property_can_revert"]
@@ -298,16 +314,21 @@ func GoCallback_ClassCreationInfoPropertyGetRevert(p_instance C.GDExtensionClass
 	if wci == nil {
 		return 0
 	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
+	if wci.IsFreeing() {
+		// A revert query arriving while the wrapper is being freed takes that
+		// as a deliberate decline (openspec trim-dispatch-overhead design D2):
+		// answer "no revert support" without touching the handler.
+		return 0
+	}
+	className := wci.ClassName
 	// p_name is Godot-owned — NEVER Destroy() it
 	gdName := (*StringName)(p_name)
 	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
 	if !ok {
-		// During teardown an instance can report its parent class name
-		// (e.g. "Control") which is not a registered GDClass; treat it
-		// as absence of support instead of failing.
+		// An instance whose class has no registration cannot answer a
+		// revert; report absence of support instead of failing. The
+		// teardown shape is already declined by the freeing guard above
+		// (openspec property-revert-virtuals, design D2).
 		return 0
 	}
 	mcmi, ok := ci.VirtualMethodMap["_property_get_revert"]
@@ -351,9 +372,13 @@ func GoCallback_ClassCreationInfoValidateProperty(pInstance C.GDExtensionClassIn
 	if wci == nil {
 		return 0
 	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
+	if wci.IsFreeing() {
+		// The wrapper is being freed; decline validation rather than run the
+		// class hook against a dying instance (openspec trim-dispatch-overhead
+		// design D2).
+		return 0
+	}
+	className := wci.ClassName
 	log.Debug("GoCallback_ClassCreationInfoValidateProperty called",
 		zap.String("class", className),
 	)
@@ -378,14 +403,20 @@ func GoCallback_ClassCreationInfoNotification(p_instance C.GDExtensionClassInsta
 	if wci == nil {
 		return
 	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
+	if wci.IsFreeing() {
+		// A delivery arriving while the wrapper is being freed is absorbed
+		// silently: the freeing guard is the teardown basis, so absorption no
+		// longer depends on the class name the engine reports (openspec
+		// notification-virtual-dispatch, design D2).
+		return
+	}
+	className := wci.ClassName
 	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
 	if !ok {
-		// During teardown an instance can report its parent class name
-		// (e.g. "Control") which is not a registered GDClass; treat it
-		// as a silent no-op instead of failing.
+		// An instance whose class has no registration has no handler that
+		// could receive the delivery; treat it as a silent no-op instead
+		// of failing. The teardown shape is already absorbed by the
+		// freeing guard above (openspec notification-virtual-dispatch).
 		return
 	}
 	mcmi, ok := ci.VirtualMethodMap["_notification"]
@@ -414,9 +445,13 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 	if wci == nil {
 		return 0
 	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
+	if wci.IsFreeing() {
+		// The wrapper is being freed; decline the get rather than run _get
+		// against a dying instance (openspec trim-dispatch-overhead design
+		// D2).
+		return 0
+	}
+	className := wci.ClassName
 	// pName is Godot-owned — safe to read via ToUtf8(), NEVER Destroy() pName itself
 	gdName := (*StringName)(pName)
 	name := gdName.ToUtf8()
@@ -468,11 +503,17 @@ func GoCallback_ClassCreationInfoGet(pInstance C.GDExtensionClassInstancePtr, pN
 		log.Debug("_get call returned false")
 		return 0
 	}
-	gdStrV := v.ToString()
-	defer gdStrV.Destroy()
 	log.Info("reflect method called",
-		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
-		zap.String("v", gdStrV.ToUtf8()),
+		zap.Stringer("ret", lazyText(func() string { return util.ReflectValueSliceToString(reflectedRet) })),
+		// Variant-to-String conversion is an engine crossing, so it belongs
+		// to the lazy payload: a discarded entry must not touch the engine.
+		// v stays valid until the rRet assignment below copies the cell out,
+		// and marshaling runs before this function returns.
+		zap.Stringer("v", lazyText(func() string {
+			s := v.ToString()
+			defer s.Destroy()
+			return s.ToUtf8()
+		})),
 	)
 	*(*Variant)(unsafe.Pointer(rRet)) = v
 	return 1
@@ -484,9 +525,13 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 	if wci == nil {
 		return 0
 	}
-	gdStrClass := wci.Instance.GetClass()
-	defer gdStrClass.Destroy()
-	className := gdStrClass.ToUtf8()
+	if wci.IsFreeing() {
+		// The wrapper is being freed; decline the set rather than run _set
+		// against a dying instance (openspec trim-dispatch-overhead design
+		// D2).
+		return 0
+	}
+	className := wci.ClassName
 	// pName is Godot-owned — safe to read via ToUtf8(), NEVER Destroy() pName itself
 	gdName := (*StringName)(pName)
 	name := gdName.ToUtf8()
@@ -499,13 +544,13 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 	ci, ok := Internal.GDRegisteredGDClasses.Get(className)
 	if !ok {
 		log.Panic("invalid registered GDClass",
-			zap.String("class", name),
+			zap.String("class", className),
 		)
 	}
 	mcmi, ok := ci.VirtualMethodMap["_set"]
 	if !ok {
 		log.Info("no V_Set method registered",
-			zap.String("class", name),
+			zap.String("class", className),
 		)
 		return 0
 	}
@@ -524,7 +569,7 @@ func GoCallback_ClassCreationInfoSet(pInstance C.GDExtensionClassInstancePtr, pN
 	}
 	reflectedRet := mcmi.GoMethodMetadata.Func.Call(args)
 	log.Info("reflect method called",
-		zap.String("ret", util.ReflectValueSliceToString(reflectedRet)),
+		zap.Stringer("ret", lazyText(func() string { return util.ReflectValueSliceToString(reflectedRet) })),
 	)
 	if !reflectedRet[0].Bool() {
 		return 0

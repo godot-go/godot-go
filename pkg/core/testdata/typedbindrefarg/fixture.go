@@ -23,6 +23,7 @@ func (f *Fixture) GetGodotObjectOwner() *GodotObject            { return f.owner
 func (f *Fixture) SetGodotObjectOwner(owner *GodotObject)       { f.owner = owner }
 func (f *Fixture) GetClassName() string                         { return "Fixture" }
 func (f *Fixture) GetParentClassName() string                   { return "Object" }
+func (f *Fixture) IsNil() bool                                  { return f == nil }
 func (f *Fixture) AsGDExtensionObjectPtr() GDExtensionObjectPtr { return nil }
 func (f *Fixture) AsGDExtensionConstObjectPtr() GDExtensionConstObjectPtr {
 	return nil

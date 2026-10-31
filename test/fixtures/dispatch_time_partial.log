@@ -1,0 +1,65 @@
+Godot Engine v4.5.stable.official
+Using Vulkan device
+ERROR: Attempt to get non-existent interface function: 'get_variant_get_internal_ptr_func'.
+   at: get_interface_function (core/extension/gdextension.cpp:728)
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "get_variant_get_internal_ptr_func"}
+ERROR: Attempt to get non-existent interface function: 'callable_custom_get_user_data'.
+   at: get_interface_function (core/extension/gdextension.cpp:728)
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "callable_custom_get_user_data"}
+ERROR: Attempt to get non-existent interface function: 'classdb_register_extension_class_5'.
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "classdb_register_extension_class_5"}
+ERROR: Attempt to get non-existent interface function: 'classdb_register_extension_class_6'.
+[33mWARN[0m	ffi/ffi.gen.go:402	GDExtensionInterfaceGetProcAddress Error	{"name": "classdb_register_extension_class_6"}
+gdclass registered class=Example parent_type=Control
+
+[31mERROR[0m	core/go_callable.go:117	go callable panicked	{"panic": "go callable fixture panic", "stack": "goroutine 22 [running]:
+github.com/godot-go/godot-go/test/pkg.(*Example).CreatePanicCallable.func1
+	/workspace/godot-go/test/pkg/go_callable_tests.go:64 +0x1c"}
+callable-panic-probe attempted=2
+stacktrace-probe capture=1
+___ C start backtrace ___________
+[0] godotgo!cgo_callfn_GDExtensionVariantFromTypeConstructorFunc+0x0
+[1] godotgo!GoCallback_MethodBind+0x1a4
+[2] godot!GDScriptFunction::call+0x1c2f
+___ C end backtrace   ___________
+
+___ C start backtrace ___________
+[0] libgodotgo-test-windows-amd64.dll+0x4f2a10 (ip 0x7ff9a43f2a10)
+[1] Godot_v4.7-stable_win64.exe+0x2c8b341 (ip 0x7ff6b2c8b341)
+___ C end backtrace   ___________
+
+stacktrace-probe go-stack
+goroutine 1 [running]:
+github.com/godot-go/godot-go/test/pkg.(*Example).TestStacktraceProbe(0xc0000e4018, 0x1)
+	/workspace/godot-go/test/pkg/example.go:1237 +0x45
+dispatch_time: shape=static_add_ptrcall ns/call=35.1
+dispatch_time: shape=static_add_varcall ns/call=3235.6
+dispatch_time: shape=value_arity0_ptrcall ns/call=29.8
+dispatch_time: shape=value_arity0_varcall ns/call=1136.5
+dispatch_time: shape=value_arity2_ptrcall ns/call=34.4
+dispatch_time: shape=value_arity2_varcall ns/call=3078.5
+dispatch_time: shape=value_arity5_ptrcall ns/call=47.7
+dispatch_time: shape=value_arity5_varcall ns/call=5408.4
+dispatch_time: shape=virtual_arity0_ptrcall ns/call=29.8
+dispatch_time: shape=virtual_arity0_varcall ns/call=1131.6
+dispatch_time: shape=container_arg_ptrcall ns/call=31.8
+dispatch_time: shape=container_arg_varcall ns/call=3647.0
+dispatch_time: shape=copy_ret_ptrcall ns/call=2593.5
+dispatch_time: shape=reflective_value_arity0_ptrcall ns/call=11464.7
+dispatch_time: shape=reflective_value_arity0_varcall ns/call=15637.5
+dispatch_time: shape=reflective_value_arity2_ptrcall ns/call=17451.4
+dispatch_time: shape=reflective_value_arity2_varcall ns/call=91908.3
+dispatch_time: shape=reflective_value_arity5_ptrcall ns/call=24041.7
+dispatch_time: shape=reflective_value_arity5_varcall ns/call=157166.8
+dispatch_time: shape=prologue_property_get ns/call=48355.2
+
+[92m ==== TESTS FINISHED ==== [39m[0m
+
+   PASSES: [92m1079[39m[0m
+   FAILURES: [91m0[39m[0m
+
+[92m ******** PASSED ******** [39m[0m
+
+
+[33mWARN[0m	pkg/example.go:419	GODOTGO_MAIN_LOOP_SHUTDOWN
+github.com/godot-go/godot-go/test/pkg.LogMainLoopShutdownMarker
